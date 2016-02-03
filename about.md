@@ -16,6 +16,7 @@ La idea inicial de la creación de este sitio es poder escribir sobre cosas que 
 Desde el primer día hay muchos posts publicados, pero no te asustes. Simplemente recogí un backup antiguo de una web que ya no existe en la que escribía (quizá a alguno os suene: programando en .net) y los he publicado en este nuevo blog. Si quieres saber que es lo nuevo, empieza en 2016 ;).
 
 Si quieres contactar conmigo, te dejo algunos datos:
+
  * [@fernandoescolar](https://twitter.com/fernandoescolar)
  * [LinkedIn](https://es.linkedin.com/in/fernandoescolar)
  * [GitHub](https://github.com/fernandoescolar/)
