@@ -1,0 +1,26 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: false
+
+# Setup
+title:            Hyde
+tagline:          'El blog de Fernando Escolar'
+description:      'Un lugar donde leer las paranoias de un developer'
+url:              http://fernandoescolar.github.io
+baseurl:          http://fernandoescolar.github.io/
+
+author:
+  name:           'Fernando Escolar'
+  url:            https://twitter.com/fernandoescolar
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/fernandoescolar
