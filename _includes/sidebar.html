@@ -25,10 +25,19 @@
           {% endif %}
         {% endif %}
       {% endfor %}
-
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
-      <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+      {% for post in paginator.posts %}
+	  <a class="sidebar-nav-item" href="{{ post.url }}">{{ post.title }}</a>
+	  {% endfor %}
+	  {% if paginator.next_page %}
+      <a class="sidebar-nav-item" href="{{ site.baseurl }}page{{paginator.next_page}}">Más Antiguos</a>
+      {% endif %}
+	  {% if paginator.previous_page %}
+       {% if paginator.page == 2 %}
+      <a class="sidebar-nav-item" href="{{ site.baseurl }}">Newer</a>
+       {% else %}
+      <a class="sidebar-nav-item" href="{{ site.baseurl }}page{{paginator.previous_page}}">Más Nuevos</a>
+       {% endif %}
+      {% endif %}
     </nav>
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
