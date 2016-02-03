@@ -9,7 +9,7 @@ relative_permalinks: false
 # Setup
 title:            Home
 tagline:          'El blog de Fernando Escolar'
-description:      'Un lugar donde leer las paranoias de un developer'
+description:      'El blog de las aventuras y desventuras <a href="/about/">de un developer</a>'
 url:              http://fernandoescolar.github.io
 baseurl:          http://fernandoescolar.github.io/
 
