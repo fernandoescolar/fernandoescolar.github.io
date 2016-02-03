@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 El pasado fin de semana <a title="@Quiqu3" href="https://twitter.com/quiqu3" target="_blank">@quiqu3</a> y <a title="@fernandoescolar" href="https://twitter.com/fernandoescolar" target="_blank">@fernandoescolar</a> estuvieron en Madrid, en la <strong>codemotion</strong>, en representación de <strong>programando en .net</strong>. Además tuvieron el placer de impartir una pequeña charla de 45 minutos acerca de las reactive extensions. Aprovechando este hecho, nos gustaría cerrar de una forma más o menos elegante la serie de artículos sobre rx, aportando un índice de los artículos, un breve resumen basado en la charla y varios programas de ejemplo (incluida la red social de moda: <strong>BeerToBeer</strong>).
+<!--break-->
 <h2>Reactive extensions</h2>
 Las reactive extensions es el nombre que recibe <strong>una framework</strong> que nos ayudará a desarrollar de una forma novedosa y cercana al lenguaje natural. Fueron creadas por<strong> Eric Meijer</strong>, el <strong>padre de Linq</strong>. Y basa su forma de trabajar en esta herramienta.
 

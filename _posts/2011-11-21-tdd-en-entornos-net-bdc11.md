@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 La semana pasada, los días 17, 18 y 19, estuvimos en la: <a href="http://bcndevcon.org/">Barcelona Developers Conference</a>.
-
+<!--break-->
 El primer día por la mañana tuve el placer de, además de escuchar grandes ponencias, dar una charla sobre <strong>TDD en entornos .net</strong>. Y de coletilla, <em>para el mundo real</em>. Esta última frase que hacía del título algo parecido a una película mala de antena 3 por la tarde, venía a raíz de que mucha gente habla de <strong>TDD</strong>, y casi nadie de cómo se aplica realmente en el desarrollo diario.
 
 Durante poco más de una hora intenté que los asistentes entendieran el por qué de esta metodología, cómo nos beneficia y cómo aplicarla en el desarrollo diario.

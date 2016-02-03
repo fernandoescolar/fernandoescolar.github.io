@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 En el mundo de la programación orientada a objetos una de las máximas que debemos cumplir, si queremos desarrollar un código de calidad, es que debemos buscar una elevada cohesión con bajo acoplamiento. Y con el fin de ayudarnos en esta ardua tarea, aparece el patrón Mediator.
+<!--break-->
 
 La <strong>cohesión</strong> es una de las características más importantes de la OOP (<em>Object Oriented Programming</em>). Se refiere a que hay que dotar a las clases de un solo ámbito de desarrollo, y que a su vez, todo lo referente a ese ámbito, quede encapsulado dentro de una sola clase. Si hemos conseguido esto, diremos que tenemos una alta cohesión. Es un concepto semejante al primer principio de SOLID, el principio de responsabilidad única: una clase solo debe tener una, y solo una, razón para se modificada.
 

@@ -8,7 +8,9 @@ post_date: 2012-09-18 09:15:52
 post_excerpt: ""
 layout: post
 ---
-Se han escrito muchas líneas acerca de la seguridad de las aplicaciones que realizamos en .Net. Se dice que son muy fáciles de hackear, que aun usando herramientas de ofuscación, la seguridad de los empaquetados que se distribuyen es nula. Así pues, nos hemos propuesto buscar una aplicación comercial realizada con la Framework de .net de Microsoft y saltarnos su seguridad para poder disfrutar de todas las ventajas que tiene, pero sin pasar por caja.
+Se han escrito muchas líneas acerca de la seguridad de las aplicaciones que realizamos en .Net. Se dice que son muy fáciles de hackear, que aun usando herramientas de ofuscación, la seguridad de los empaquetados que se distribuyen es nula. 
+<!--break-->
+Así pues, nos hemos propuesto buscar una aplicación comercial realizada con la Framework de .net de Microsoft y saltarnos su seguridad para poder disfrutar de todas las ventajas que tiene, pero sin pasar por caja.
 
 Para evitar problemas legales y que la aplicación se distribuya de forma ilegal, no vamos a publicar su nombre y el método empleado no será del todo completo. Pero si esperamos que el lector comprenda la dificultad y los pasos a dar para conseguir piratear una aplicación.
 

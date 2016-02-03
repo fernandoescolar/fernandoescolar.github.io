@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 <p>Cuando hablamos de un <strong>patr&oacute;n de dise&ntilde;o nos referimos a una soluci&oacute;n a un problema concreto en el desarrollo de software</strong>. Pero no cualquier soluci&oacute;n, s&oacute;lo aquellas que se ha desmostrado que <span style="text-decoration: underline;">son eficientes en diferentes escenarios</span> y&nbsp;<span style="text-decoration: underline;">reutilizables en gran cantidad de contextos</span> de aplicaciones. Por lo tanto, aunque los ejemplos que podamos dar est&eacute;n en un lenguaje de programaci&oacute;n concreto, la idea ser&aacute; extrapolable a diferentes lenguajes de programaci&oacute;n orientada a objetos.</p>
+<!--break-->
 <h2>Singleton</h2>
 <p>El patr&oacute;n singleton consiste en crear una instancia de un objeto y solo una, para toda nuestra aplicaci&oacute;n. Ser&iacute;a como una especie de variable global que almacena nuestro objeto.</p>
 <p>En un primer momento esta definici&oacute;n puede sonar muy extra&ntilde;a. Por lo general, siempre se recomienda no usar variables globales en una aplicaci&oacute;n, y mucho menos en programaci&oacute;n orientada a objetos. Pero cuando hablamos de singleton, estamos jugando a crear una especie de variable global de forma encubierta. &iquest;C&oacute;mo puede ser esto un patr&oacute;n?</p>

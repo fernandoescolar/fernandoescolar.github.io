@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 <strong>Windows Phone 7</strong> es un sistema operativo móvil desarrollado por <strong>Microsoft</strong> como sustituto de <strong>Windows Mobile</strong>. Pero se diferencia de este último en que está pensando para un mercado generalista, en detrimento del empresarial. En adición no mantiene compatibilidad con su antecesor, debido a que es un desarrollo nuevo, y no una evolución.
+<!--break-->
 <div style="text-align: center;"><img src="/public/uploads/2012/09/windows-marketplace.jpg" alt="" width="500" height="348" align="middle" /></div>
 Dentro de las características que hacen diferente a Windows Phone 7 del resto de productos que existen en el mercado, encontramos:
 <ul>

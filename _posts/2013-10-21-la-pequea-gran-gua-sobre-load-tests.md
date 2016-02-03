@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 Las pruebas de carga se usan para observar y analizar un sistema en unas circunstancias específicas. Por ejemplo, podríamos crear un portal web en el que esperamos un número determinado de usuarios. Y antes de ponerlo en producción queremos estar seguros de que se va a comportar correctamente cuando lleguemos al cupo esperado.
-
+<!--break-->
 La idea es montar un entorno de pruebas que simule estas condiciones y así monitorizar los servidores implicados, en busca de unas estadísticas. El resultado de ejecutar este tipo de prueba es una gran cantidad de datos que nos informarán de si el sistema se ha comportado como esperábamos y qué cuellos de botella se han encontrado.
 
 Hay que tener cuidado y no confundir las pruebas de estrés con pruebas de carga. Las de estrés tratan de llevar al límite un sistema, para poder observar si tiene estabilidad en condiciones difíciles y encontrar cual es el máximo que le podemos pedir antes de que empiece a fallar. Mientras que las de carga, aunque son muy parecidas y de una se puede sacar la otra cambiando unos parámetros de la configuración, no buscan llegar al límite. Solo observar el comportamiento en unas condiciones normales/esperadas.

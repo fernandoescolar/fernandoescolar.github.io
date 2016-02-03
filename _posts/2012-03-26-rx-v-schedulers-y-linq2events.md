@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 Hoy os vamos a proponer el último artículo teórico acerca de las <strong>reactive extensions</strong>. Una vez hemos <a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">definido las rx</a>, sabemos <a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">qué son los <strong>sujetos</strong></a> y las operaciónes de <a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">creación</a> y <a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables"><strong>Linq</strong></a>, ya podemos hablar de el último parámetro de la fórmula que definimos en su día: los <strong>Schedulers</strong>.
-
+<!--break-->
 <img style="display: block; margin-left: auto; margin-right: auto;" src="/public/uploads/2012/10/rx-schedulers.png" alt="Rx Schedulers" width="450" height="182" align="middle" />
 
 Es muy normal en el contexto actual de aplicaciones hablar de hilos de ejecución (<strong>Thread</strong>), de las <strong>Task Parallel Library</strong> o de <strong>sincronismo/asincronismo</strong>. Y es aquí donde vamos a encontrar la utilidad de los <strong>schedulers</strong> de las<strong> reactive extensions</strong>:

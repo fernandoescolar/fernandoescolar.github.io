@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 <p>Hemos llegado al cuarto art&iacute;culo sobre <strong>reactive extensions</strong> en el que vamos a hablar de operaciones que se pueden realizar con observables. Pero, como hace unos d&iacute;as que no public&aacute;bamos nada al respecto, vamos a hacer primero una peque&ntilde;a retrospectiva. Hasta ahora hemos tratado de explicar <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - Qu&eacute; son las Reactive eXtensions">rx como una f&oacute;rmula matem&aacute;tica</a>:</p>
+<!--break-->
 <p style="align: center;"><img src="/public/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" /></p>
 <p>Dentro de esta formula hemos intentado exponer que el componente b&aacute;sico son <a href="2011/12/19/rx-ii-observables-los-sujetos" title="Rx II - Observables: los sujetos">los sujetos</a> (observables), y tambi&eacute;n las <a href="/2012/01/02/rx-iii-linq-crear-objetos-observables" title="Rx III - Linq: crear objetos observables">operaciones b&aacute;sicas de creaci&oacute;n</a>&nbsp;(linq). En este art&iacute;culo explicaremos m&aacute;s a fondo el resto de operaciones y operadores que podemos encontrar.</p>
 <p>Pero antes de entrar en materia vamos a conocer unos diagramas que nos ayudar&aacute;n a explicar y entender m&aacute;s f&aacute;cilmente c&oacute;mo se comportan las operaciones:</p>

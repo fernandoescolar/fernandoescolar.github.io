@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 <p>No hace mucho, estabamos tomando unas cervezas algunos desarrolladores de .net de Barcelona. Entonces sali&oacute; el tema de los talibanes del c&oacute;digo. Cosas como <em>fxCop</em> o <em>styleCop</em>. Aunque estas herramientas y sus reglas dan para varios art&iacute;culos de debate, el caso es que surgi&oacute; una norma del<strong> code analysis</strong> (<em>fxCop</em>) que recomienda no usar la palabra en clave "<em>ref</em>".</p>
+<!--break-->
 <p>En ese momento varios afirmamos que estaba bien porque no era necesario, al menos con objetos. Entonces uno de los comensales, <strong>Jaume Jornet</strong> (@jaumejornet) rapidamente respondi&oacute; con un "<em>es un doble-aster&iacute;sco de c</em>". A partir de ah&iacute; ya le hab&iacute;amos comprado la respuesta, pero puso un ejemplo r&aacute;pido usando un dibujo del <strong>heap</strong> y otro del <strong>stack</strong>, que para las personas que siempre han usado lenguajes manejados puede resultar muy &uacute;til.</p>
 <p>Como es un tema muy interesante, vamos a intentar ampliar la explicaci&oacute;n que nos di&oacute; de Jaume y comentar el uso de la palabra en clave <em>ref.</em></p>
 <p>Antes de empezar vamos a explicar vagamente qu&eacute; es la stack y qu&eacute; el heap:</p>

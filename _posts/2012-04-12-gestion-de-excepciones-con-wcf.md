@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: post
 ---
 Hace unos días en los <a title="Cual es la diferencia entre Faults y Exception " href="http://social.msdn.microsoft.com/Forums/es-ES/wcfes/thread/fa88fa15-fe22-42a8-98ef-85f260a8c97b" target="_blank">foros de Windows Communication Foundation de MSDN</a> un usuario preguntaba por la diferencia entre <strong>Faults</strong> y <strong>Exceptions</strong> dentro de esta plataforma. La respuesta me llevó a escribir una pequeña introducción a la <strong>gestión de excepciones para los servicios WCF</strong> que me gustaría ampliar en este artículo. Para los más experimentados resultará un texto algo básico. Para los demás sin embargo, les puede ayudar a programar siguiendo las buenas prácticas en el desarrollo de sus servicios.
-
+<!--break-->
 Para empezar lo que vamos a necesitar es crear un servicio WCF que nos sirva como prueba. Este servicio tendrá que cumplir el siguiente contrato:
 <div id="CodeDiv" dir="ltr">
 <pre class="brush: csharp">[ServiceContract]
