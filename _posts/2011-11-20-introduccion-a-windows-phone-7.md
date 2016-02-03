@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2011-11-20 21:30:03
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/introduccion-a-windows-phone-7/
-published: true
 ---
 <strong>Windows Phone 7</strong> es un sistema operativo móvil desarrollado por <strong>Microsoft</strong> como sustituto de <strong>Windows Mobile</strong>. Pero se diferencia de este último en que está pensando para un mercado generalista, en detrimento del empresarial. En adición no mantiene compatibilidad con su antecesor, debido a que es un desarrollo nuevo, y no una evolución.
 <div style="text-align: center;"><img src="/public/uploads/2012/09/windows-marketplace.jpg" alt="" width="500" height="348" align="middle" /></div>

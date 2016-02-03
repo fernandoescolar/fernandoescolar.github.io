@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2011-12-12 10:15:01
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/rx-i-que-son-las-reactive-extensions/
-published: true
 ---
 <p>Dentro de las librer&iacute;as de moda para .net la, posiblemente, m&aacute;s dif&iacute;cil de explicar tiene el nombre de <strong>Reactive eXtensions</strong> o <strong>Rx</strong>. Una idea que nace en el contexto actual de aplicaciones distribuidas. Donde la informaci&oacute;n se encuentra en la nube, y mediante llamadas as&iacute;ncronas podemos procesarla usando clientes que interaccionan con el usuario bas&aacute;ndose en eventos.</p>
 <center><img src="/public/uploads/2012/09/rx1.gif" alt="" align="middle" width="500" height="209" /></center>

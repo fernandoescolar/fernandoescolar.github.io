@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2012-09-10 13:06:17
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/patrones-diseno-singleton/
-published: true
 ---
 <p>Cuando hablamos de un <strong>patr&oacute;n de dise&ntilde;o nos referimos a una soluci&oacute;n a un problema concreto en el desarrollo de software</strong>. Pero no cualquier soluci&oacute;n, s&oacute;lo aquellas que se ha desmostrado que <span style="text-decoration: underline;">son eficientes en diferentes escenarios</span> y&nbsp;<span style="text-decoration: underline;">reutilizables en gran cantidad de contextos</span> de aplicaciones. Por lo tanto, aunque los ejemplos que podamos dar est&eacute;n en un lenguaje de programaci&oacute;n concreto, la idea ser&aacute; extrapolable a diferentes lenguajes de programaci&oacute;n orientada a objetos.</p>
 <h2>Singleton</h2>

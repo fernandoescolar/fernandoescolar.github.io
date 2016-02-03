@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2012-02-15 10:15:08
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/rx-iv-linq-operaciones-con-observables/
-published: true
 ---
 <p>Hemos llegado al cuarto art&iacute;culo sobre <strong>reactive extensions</strong> en el que vamos a hablar de operaciones que se pueden realizar con observables. Pero, como hace unos d&iacute;as que no public&aacute;bamos nada al respecto, vamos a hacer primero una peque&ntilde;a retrospectiva. Hasta ahora hemos tratado de explicar <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - Qu&eacute; son las Reactive eXtensions">rx como una f&oacute;rmula matem&aacute;tica</a>:</p>
 <p style="align: center;"><img src="/public/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" /></p>

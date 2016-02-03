@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2011-12-19 10:00:06
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/rx-ii-observables-los-sujetos/
-published: true
 ---
 <p>Hace <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - &iquest;Qu&eacute; son las Reactive eXtensions?">unos d&iacute;as empezamos a hablar de las <strong>Reactive eXtensions</strong></a>. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacute;s expusimos la&nbsp;f&oacute;rmula&nbsp;creada por los <strong>Microsoft Live Labs</strong> para definirla. Y terminamos el art&iacute;culo comentando que resolver&iacute;amos esta f&oacute;rmula en futuras publicaciones. Hoy es el d&iacute;a de resolver el primer par&aacute;metro: <strong>Observables</strong>.&nbsp;</p>
 <center><img src="/public/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" /></center>

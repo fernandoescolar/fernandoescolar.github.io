@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2011-11-21 15:00:08
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/tdd-en-entornos-net-bdc11/
-published: true
 ---
 La semana pasada, los días 17, 18 y 19, estuvimos en la: <a href="http://bcndevcon.org/">Barcelona Developers Conference</a>.
 

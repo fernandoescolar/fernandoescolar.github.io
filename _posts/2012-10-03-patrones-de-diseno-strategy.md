@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2012-10-03 14:10:06
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/patrones-de-diseno-strategy/
-published: true
 ---
 La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos. Caemos en la trampa de, al intentar escribir código mejor, generar deuda técnica, ya que el patrón aplicado no resolvía el problema que teníamos en realidad. Es por eso que la pregunta más importante que tenemos que responder cuando empezamos a estudiar un patrón de diseño es: ¿para qué sirve?.
 

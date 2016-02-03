@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2012-03-26 15:30:57
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/rx-v-schedulers-y-linq2events/
-published: true
 ---
 Hoy os vamos a proponer el último artículo teórico acerca de las <strong>reactive extensions</strong>. Una vez hemos <a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">definido las rx</a>, sabemos <a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">qué son los <strong>sujetos</strong></a> y las operaciónes de <a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">creación</a> y <a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables"><strong>Linq</strong></a>, ya podemos hablar de el último parámetro de la fórmula que definimos en su día: los <strong>Schedulers</strong>.
 

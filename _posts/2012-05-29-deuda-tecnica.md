@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2012-05-29 12:15:18
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/deuda-tecnica/
-published: true
 ---
 ¿Qué desarrollador de software nunca ha estado una semana programando a toda velocidad, casi sin saber que hace, ya que la fecha de entrega está cerca y todo tiene que estar terminado “para ayer”? ¿Quién no se ha encontrado en la situación de saber que está programando una chapuza, pensando que otro día lo mejorará, y ese día nunca llega? ¿Quién alguna vez, al ver una porción de código fuente no ha exclamado indignado: ¡qué narices hace este código! o ¡quién leches lo ha programado!?
 

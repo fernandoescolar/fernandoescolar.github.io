@@ -5,9 +5,6 @@ author: fernandoescolar
 post_date: 2013-01-07 11:13:39
 post_excerpt: ""
 layout: post
-permalink: >
-  http://www.dotnetodology.com/patrones-de-diseo-repository/
-published: true
 ---
 <em>En todos los asuntos de opinión, nuestros adversarios están locos</em> (Oscar Wilde). Por suerte los locos con los que puedes compartir opiniones en la lista de correo de la fundación <a href="http://www.techdencias.net" target="_blank">[T]echdencias</a>, son magníficos profesionales como <a href="https://twitter.com/Marc_Rubino" target="_blank">@Marc_Rubino</a> o <a href="https://twitter.com/mserrate" target="_blank">@mserrate</a>. Hace unos días tuvimos la oportunidad de discutir sobre el patrón "Repository". Y aunque nuestras opiniones pueden diferir, me gustaría compartir algunas conclusiones personales:
 <h3>Un poco de historia</h3>
