@@ -9,7 +9,7 @@ relative_permalinks: false
 # Setup
 title:            developerro
 tagline:          'El blog de Fernando Escolar'
-description:      'cuando en mi máquina tampoco funciona'
+description:      'cuando en mi máquina tampoco funciona...'
 url:              http://fernandoescolar.github.io
 baseurl:          http://fernandoescolar.github.io/
 
