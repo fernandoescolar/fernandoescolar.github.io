@@ -1,6 +1,6 @@
 ---
 ID: 23
-post_title: 'Patrones de diseño: Singleton'
+title: 'Patrones de diseño: Singleton'
 author: fernandoescolar
 post_date: 2012-09-10 13:06:17
 post_excerpt: ""

@@ -1,6 +1,6 @@
 ---
 ID: 208
-post_title: >
+title: >
   Analizando la seguridad de una
   aplicación en .net
 author: fernandoescolar

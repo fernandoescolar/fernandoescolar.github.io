@@ -1,6 +1,6 @@
 ---
 ID: 156
-post_title: 'Reactive Extensions (#codemotion)'
+title: 'Reactive Extensions (#codemotion)'
 author: fernandoescolar
 post_date: 2012-03-27 09:30:32
 post_excerpt: ""

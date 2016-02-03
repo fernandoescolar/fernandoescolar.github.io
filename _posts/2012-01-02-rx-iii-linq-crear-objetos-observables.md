@@ -1,12 +1,12 @@
 ---
 ID: 95
-post_title: 'Rx III &#8211; Linq: crear objetos observables'
+title: 'Rx III &#8211; Linq: crear objetos observables'
 author: fernandoescolar
 post_date: 2012-01-02 12:30:10
 post_excerpt: ""
 layout: post
 ---
-<p>A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework</strong>. Hasta ahora hemos visto <a href="2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)</a> e incluso introdujimos el uso de una clase llamada <em><strong>Observable</strong></em> que contiene m&eacute;todos y extensiones para que todo esto sea m&aacute;s sencillo.</p>
+<p>A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework</strong>. Hasta ahora hemos visto <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)</a> e incluso introdujimos el uso de una clase llamada <em><strong>Observable</strong></em> que contiene m&eacute;todos y extensiones para que todo esto sea m&aacute;s sencillo.</p>
 <p>Si mediante el navegador de objetos o cualquier otra herramienta de estudio de ensamblados, abrimos el archivo "<em>System.Reactive.dll</em>", en el namespace "<em>System.Reactive.Linq</em>" encontramos una clase est&aacute;tica cargada de m&eacute;todos y extensiones llamada <em><strong>Observable</strong></em>. Dentro de este objeto se encuentra definido el segundo par&aacute;metro de la f&oacute;rmula que define las <strong>reactive extensions</strong>: <strong>Linq</strong>.</p>
 <p><img src="/public/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" /></p>
 <p>Para empezar Observable contiene extensiones con, si no todos, la mayor&iacute;a de los operadores que ya conocemos de Linq. Pero, en este caso los encontraremos aplicados a objetos tipo&nbsp;<em>IObservable&lt;T&gt;</em>.&nbsp;</p>

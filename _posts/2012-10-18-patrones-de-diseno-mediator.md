@@ -1,6 +1,6 @@
 ---
 ID: 281
-post_title: 'Patrones de dise&ntilde;o: Mediator'
+title: 'Patrones de dise&ntilde;o: Mediator'
 author: fernandoescolar
 post_date: 2012-10-18 09:32:22
 post_excerpt: ""

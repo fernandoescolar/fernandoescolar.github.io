@@ -1,6 +1,6 @@
 ---
 ID: 454
-post_title: 'Team Foundation Server: Mac OS X+Java+Eclipse+Maven'
+title: 'Team Foundation Server: Mac OS X+Java+Eclipse+Maven'
 author: fernandoescolar
 post_date: 2012-11-26 09:41:48
 post_excerpt: ""

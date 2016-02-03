@@ -1,6 +1,6 @@
 ---
 ID: 60
-post_title: 'Usando la palabra clave &#8220;ref&#8221;'
+title: 'Usando la palabra clave &#8220;ref&#8221;'
 author: fernandoescolar
 post_date: 2011-12-07 11:45:20
 post_excerpt: ""

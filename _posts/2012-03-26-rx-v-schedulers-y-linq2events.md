@@ -1,6 +1,6 @@
 ---
 ID: 152
-post_title: 'Rx V &#8211; Schedulers y Linq2Events'
+title: 'Rx V &#8211; Schedulers y Linq2Events'
 author: fernandoescolar
 post_date: 2012-03-26 15:30:57
 post_excerpt: ""

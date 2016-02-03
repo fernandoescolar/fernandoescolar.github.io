@@ -1,6 +1,6 @@
 ---
 ID: 1198
-post_title: 'La peque&ntilde;a gran gu&iacute;a sobre Load Tests'
+title: 'La peque&ntilde;a gran gu&iacute;a sobre Load Tests'
 author: fernandoescolar
 post_date: 2013-10-21 09:41:58
 post_excerpt: ""

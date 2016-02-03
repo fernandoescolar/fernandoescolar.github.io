@@ -1,6 +1,6 @@
 ---
 ID: 162
-post_title: Gestión de excepciones con WCF
+title: Gestión de excepciones con WCF
 author: fernandoescolar
 post_date: 2012-04-12 15:45:34
 post_excerpt: ""

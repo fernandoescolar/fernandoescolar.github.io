@@ -1,6 +1,6 @@
 ---
 ID: 40
-post_title: 'TDD en entornos .net #bdc11'
+title: 'TDD en entornos .net #bdc11'
 author: fernandoescolar
 post_date: 2011-11-21 15:00:08
 post_excerpt: ""

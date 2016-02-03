@@ -1,6 +1,6 @@
 ---
 ID: 90
-post_title: 'Rx II &#8211; Observables: los sujetos'
+title: 'Rx II &#8211; Observables: los sujetos'
 author: fernandoescolar
 post_date: 2011-12-19 10:00:06
 post_excerpt: ""

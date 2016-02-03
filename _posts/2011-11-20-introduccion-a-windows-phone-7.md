@@ -1,6 +1,6 @@
 ---
 ID: 34
-post_title: Introducción a Windows Phone 7
+title: Introducción a Windows Phone 7
 author: fernandoescolar
 post_date: 2011-11-20 21:30:03
 post_excerpt: ""

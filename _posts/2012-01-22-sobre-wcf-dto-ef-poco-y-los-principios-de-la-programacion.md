@@ -1,6 +1,6 @@
 ---
 ID: 100
-post_title: >
+title: >
   Sobre WCF, DTO, EF, POCO y los
   principios de la programación
 author: fernandoescolar

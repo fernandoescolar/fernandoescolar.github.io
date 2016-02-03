@@ -1,6 +1,6 @@
 ---
 ID: 563
-post_title: 'Patrones de dise&ntilde;o: Repository'
+title: 'Patrones de dise&ntilde;o: Repository'
 author: fernandoescolar
 post_date: 2013-01-07 11:13:39
 post_excerpt: ""

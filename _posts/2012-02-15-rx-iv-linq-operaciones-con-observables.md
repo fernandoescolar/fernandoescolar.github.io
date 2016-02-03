@@ -1,6 +1,6 @@
 ---
 ID: 137
-post_title: 'Rx IV &#8211; Linq: operaciones con observables'
+title: 'Rx IV &#8211; Linq: operaciones con observables'
 author: fernandoescolar
 post_date: 2012-02-15 10:15:08
 post_excerpt: ""

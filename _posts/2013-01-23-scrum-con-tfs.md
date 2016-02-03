@@ -1,6 +1,6 @@
 ---
 ID: 720
-post_title: Scrum con TFS
+title: Scrum con TFS
 author: fernandoescolar
 post_date: 2013-01-23 09:13:27
 post_excerpt: ""

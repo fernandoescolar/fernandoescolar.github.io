@@ -1,6 +1,6 @@
 ---
 ID: 248
-post_title: 'Patrones de diseño: Strategy'
+title: 'Patrones de diseño: Strategy'
 author: fernandoescolar
 post_date: 2012-10-03 14:10:06
 post_excerpt: ""

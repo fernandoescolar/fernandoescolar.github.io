@@ -1,6 +1,6 @@
 ---
 ID: 171
-post_title: Deuda Técnica
+title: Deuda Técnica
 author: fernandoescolar
 post_date: 2012-05-29 12:15:18
 post_excerpt: ""

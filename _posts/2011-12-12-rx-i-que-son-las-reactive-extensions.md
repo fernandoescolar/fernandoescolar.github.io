@@ -1,6 +1,6 @@
 ---
 ID: 68
-post_title: 'Rx I &#8211; Qué son las Reactive eXtensions'
+title: 'Rx I &#8211; Qué son las Reactive eXtensions'
 author: fernandoescolar
 post_date: 2011-12-12 10:15:01
 post_excerpt: ""

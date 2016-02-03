@@ -1,6 +1,6 @@
 ---
 ID: 1235
-post_title: Mesa redonda sobre SPA
+title: Mesa redonda sobre SPA
 author: fernandoescolar
 post_date: 2014-01-22 17:57:42
 post_excerpt: ""
