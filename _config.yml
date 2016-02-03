@@ -7,9 +7,9 @@ permalink:        pretty
 relative_permalinks: false
 
 # Setup
-title:            Home
+title:            developerro
 tagline:          'El blog de Fernando Escolar'
-description:      'El blog de las aventuras y desventuras <a href="/about/">de un developer</a>'
+description:      'cuando en mi máquina tampoco funciona'
 url:              http://fernandoescolar.github.io
 baseurl:          http://fernandoescolar.github.io/
 
