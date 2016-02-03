@@ -99,11 +99,11 @@ Y si por un casual, ahora necesitáramos añadir un nuevo formato a nuestro prog
 
 Dando un repaso a los objetos que hemos ido desarrollando hasta este momento, podríamos extraer un diagrama de clases como este:
 
-<a href="/uploads/2012/10/styler-strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="styler-strategy-pattern" src="/uploads/2012/10/styler-strategy-pattern_thumb.png" alt="styler-strategy-pattern" width="546" height="171" border="0" /></a>
+<a href="/public/uploads/2012/10/styler-strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="styler-strategy-pattern" src="/public/uploads/2012/10/styler-strategy-pattern_thumb.png" alt="styler-strategy-pattern" width="546" height="171" border="0" /></a>
 
 Donde vemos que nuestro objeto “Styler” consume objetos que implementan “IStyler” como son “BoldStyler”, “ItalicStyler”, … . Un diagrama semejante al que define el patrón Strategy:
 
-<a href="/uploads/2012/10/strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="strategy-pattern" src="/uploads/2012/10/strategy-pattern_thumb.png" alt="strategy-pattern" width="545" height="171" border="0" /></a>
+<a href="/public/uploads/2012/10/strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="strategy-pattern" src="/public/uploads/2012/10/strategy-pattern_thumb.png" alt="strategy-pattern" width="545" height="171" border="0" /></a>
 
 Donde los artefactos son:
 <ul>

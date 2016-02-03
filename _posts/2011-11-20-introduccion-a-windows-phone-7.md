@@ -10,7 +10,7 @@ permalink: >
 published: true
 ---
 <strong>Windows Phone 7</strong> es un sistema operativo móvil desarrollado por <strong>Microsoft</strong> como sustituto de <strong>Windows Mobile</strong>. Pero se diferencia de este último en que está pensando para un mercado generalista, en detrimento del empresarial. En adición no mantiene compatibilidad con su antecesor, debido a que es un desarrollo nuevo, y no una evolución.
-<div style="text-align: center;"><img src="/uploads/2012/09/windows-marketplace.jpg" alt="" width="500" height="348" align="middle" /></div>
+<div style="text-align: center;"><img src="/public/uploads/2012/09/windows-marketplace.jpg" alt="" width="500" height="348" align="middle" /></div>
 Dentro de las características que hacen diferente a Windows Phone 7 del resto de productos que existen en el mercado, encontramos:
 <ul>
 	<li>La novedosa <strong>pantalla de inicio</strong>. Esta se basa en mosaicos dinámicos que nos muestran información en tiempo real, como mensajes recibidos, llamadas, correos electrónicos, etc. Esta novedosa interfaz recibe el nombre de Metro.</li>
@@ -22,14 +22,14 @@ Dentro de las características que hacen diferente a Windows Phone 7 del resto d
 <strong>Windows Phone 7</strong> apuesta por un modelo base de hardware para garantizar compatibilidad. O dicho de otra forma, una serie de características base, que se pueden ampliar, pero no recortar, en un terminal móvil, para que pueda instalar <strong>Windows Phone 7</strong>.
 
 A estas especificaciones se le llaman <strong>Chasis</strong>. Y aquí podemos ver la primera versión:
-<div style="text-align: center;"><img src="/uploads/2012/09/chasis1.jpg" alt="" width="468" height="268" /></div>
+<div style="text-align: center;"><img src="/public/uploads/2012/09/chasis1.jpg" alt="" width="468" height="268" /></div>
 Las razones de hacer esto es poder garantizar que todo teléfono con <strong>Windows Phone 7</strong> dé la misma experiencia satisfactoria al usuario. Al contrario de lo que puede pasar con algún terminal de bajas prestaciones android. Pero <strong>Microsoft</strong> tampoco desea crear un sistema cerrado que solo funcione en un solo terminal, como podría ser un iPhone.
 
 Podríamos decir que es un punto intermedio entre las filosofías de sus competidores más directos.
 <h2>¿de donde viene windows phone 7?</h2>
 En un principio, el sistema para móviles de <strong>Microsoft</strong> era una evolución del sistema de pocket PC. Se manejaba con un puntero y nos ofrecía todas las características que un ordenador de sobremesa, ayudándose de herramientas para la sincronización entre ambos.
 
-<img src="/uploads/2012/09/history.jpg" alt="" width="266" height="276" align="left" />
+<img src="/public/uploads/2012/09/history.jpg" alt="" width="266" height="276" align="left" />
 
 Este sistema parecía un poco anticuado y fue cuando se dieron cuenta de que tenían que crear algo nuevo. Allí nació el proyecto con nombre en clave Photon. Donde aunarían las características de un Smartphone y un PocketPC en un sistema revolucionario.
 

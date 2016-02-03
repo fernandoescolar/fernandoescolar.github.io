@@ -10,17 +10,17 @@ permalink: >
 published: true
 ---
 <p>Hace <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - &iquest;Qu&eacute; son las Reactive eXtensions?">unos d&iacute;as empezamos a hablar de las <strong>Reactive eXtensions</strong></a>. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacute;s expusimos la&nbsp;f&oacute;rmula&nbsp;creada por los <strong>Microsoft Live Labs</strong> para definirla. Y terminamos el art&iacute;culo comentando que resolver&iacute;amos esta f&oacute;rmula en futuras publicaciones. Hoy es el d&iacute;a de resolver el primer par&aacute;metro: <strong>Observables</strong>.&nbsp;</p>
-<center><img src="/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" /></center>
+<center><img src="/public/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" /></center>
 <p>Pero antes, vamos a ver c&oacute;mo podemos instalar y referenciar las <strong>Rx</strong> en nuestro proyecto.</p>
 <h2>Instalando Rx</h2>
 <p>Existen dos formas b&aacute;sicas de distribuci&oacute;n de las extensiones reactivas. La primera es desde la propia web de microsoft, mediante&nbsp;<a href="http://msdn.microsoft.com/en-us/data/gg577610">este enlace</a>. Aqu&iacute; te podr&aacute;s descargar un paquete con los ensamblados principales, adem&aacute;s de los espec&iacute;ficos para cada distribuci&oacute;n.</p>
 <p>La segunda opci&oacute;n es utilizar nuget, desde donde podr&aacute;s descargarte los diferentes ensamblados (en su versi&oacute;n estable o en la experimental) haciendo una b&uacute;squeda de "rx" en su interfaz de gesti&oacute;n de paquetes:</p>
-<center><img src="/uploads/2012/09/rx-II-1.gif" alt="" width="437" height="250" /></center>
+<center><img src="/public/uploads/2012/09/rx-II-1.gif" alt="" width="437" height="250" /></center>
 <p>Dentro del &aacute;mbito de este art&iacute;culo, bastar&aacute; con crear un proyecto nuevo de consola e instalar desde nuget el paquete "<em>Rx-Main</em>". O si ya descargamos todos los ensamblados, deber&iacute;amos a&ntilde;adir la referencia a "<em>System.Reactive</em>".</p>
 <p>Una vez tenemos esto, ya podemos remangarnos y empezar a trabajar:</p>
 <h2>Observables</h2>
 <p>Cuando decimos "<em>observables</em>" en la f&oacute;rmula que define las reactive extensions, nos referimos a los objetos del patr&oacute;n observable: <strong>Observador</strong> y <strong>Observable</strong>. Y dentro de la framework 4.0, en el namespace <em>System</em>, podremos encontrar los <em>contratos</em> que nos exponen su comportamiento:</p>
-<center><img src="/uploads/2012/09/rx5.gif" alt="" width="483" height="179" /></center>
+<center><img src="/public/uploads/2012/09/rx5.gif" alt="" width="483" height="179" /></center>
 <p>Por lo tanto ya tenemos las "normas" para empezar a trabajar. Como prueba, vamos a crear una clase base gen&eacute;rica que implemente la interfaz IObservable:</p>
 <pre class="brush: c#">public class Observable&lt;T&gt; : IObservable&lt;T&gt;
 {

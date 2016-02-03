@@ -15,7 +15,7 @@ La <strong>cohesión</strong> es una de las características más importantes de
 
 Para poder exponerlo claramente vamos a desarrollar un ejemplo de una aplicación cualquiera de escritorio:
 
-<a href="/uploads/2012/10/mediator-mockup.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="mediator-mockup" src="/uploads/2012/10/mediator-mockup_thumb.png" alt="mediator-mockup" width="420" height="284" border="0" /></a>
+<a href="/public/uploads/2012/10/mediator-mockup.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="mediator-mockup" src="/public/uploads/2012/10/mediator-mockup_thumb.png" alt="mediator-mockup" width="420" height="284" border="0" /></a>
 
 En este <em>mockup</em> podemos observar que nuestra aplicación va a constar de tres controles de usuario. Con un recuadro rojo representamos el control encargado de pedir los datos al usuario para realizar las búsquedas. En azul un panel en el que se mostrará un listado de resultados de las búsquedas. Y para terminar en verde, mostraremos los detalles del resultado de la búsqueda que seleccionemos. El código de los controles podría ser algo parecido a esto:
 <pre class="brush: csharp">public class SearchControl
@@ -360,7 +360,7 @@ Básicamente lo que hemos hecho es añadir en el constructor unas funciones de "
 
 Con estas últimas modificaciones por fin hemos conseguido desacoplar nuestros controles y también la clase "MessageBoard". Y a esto se le conoce comúnmente como patrón Mediador (<em>Mediator Pattern</em>).
 
-<a href="/uploads/2012/10/mediator-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="mediator-pattern" src="/uploads/2012/10/mediator-pattern_thumb.png" alt="mediator-pattern" width="565" height="205" border="0" /></a>
+<a href="/public/uploads/2012/10/mediator-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="mediator-pattern" src="/public/uploads/2012/10/mediator-pattern_thumb.png" alt="mediator-pattern" width="565" height="205" border="0" /></a>
 
 En nuestro caso particular, el “Mediator” sería el “MessageBoard” y los “Colleagues” estarían representados por los “CommunityControls”. La idea de este patrón es comunicar diferentes clases que implementan “IColleague” usando un “IMediator”. Y aunque aquí hemos expuesto una implementación del mismo, existen unas cuantas variaciones sobre cómo tiene lugar la comunicación.
 

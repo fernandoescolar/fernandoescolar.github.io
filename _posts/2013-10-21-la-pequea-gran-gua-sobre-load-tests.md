@@ -37,21 +37,21 @@ La idea de todo entorno para este tipo de pruebas es usar:
 	<li>Un controlador que sirve para orquestar la ejecución de las pruebas y recolectar los datos.</li>
 	<li>Una serie de agentes cuya misión es simular el escenario, ejecutar las pruebas.</li>
 </ul>
-<a href="/uploads/2013/10/Entorno-de-pruebas.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="Entorno de pruebas" alt="Entorno de pruebas" src="/uploads/2013/10/Entorno-de-pruebas_thumb.png" width="356" height="309" border="0" /></a>
+<a href="/public/uploads/2013/10/Entorno-de-pruebas.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="Entorno de pruebas" alt="Entorno de pruebas" src="/public/uploads/2013/10/Entorno-de-pruebas_thumb.png" width="356" height="309" border="0" /></a>
 
 Para tener este entorno se recomienda bien crear una serie de máquinas virtuales en azure o bien físicamente poseer estos equipos e instarles el software de Visual Studio Test Agent o Test Controller según corresponda.
 
-<a href="/uploads/2013/10/controller-config.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="controller-config" alt="controller-config" src="/uploads/2013/10/controller-config_thumb.png" width="383" height="449" border="0" /></a>
+<a href="/public/uploads/2013/10/controller-config.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="controller-config" alt="controller-config" src="/public/uploads/2013/10/controller-config_thumb.png" width="383" height="449" border="0" /></a>
 
 En la configuración del controlador se nos solicitará la cuenta que va a ejecutar el servicio, opcionalmente si queremos registrar el controlador en un TFS (para ejecutar las pruebas desde ahí) y por último, un servidor de base de datos donde almacenar los resultados.
 
-<a href="/uploads/2013/10/agent-config.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="agent-config" alt="agent-config" src="/uploads/2013/10/agent-config_thumb.png" width="389" height="397" border="0" /></a>
+<a href="/public/uploads/2013/10/agent-config.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="agent-config" alt="agent-config" src="/public/uploads/2013/10/agent-config_thumb.png" width="389" height="397" border="0" /></a>
 
 En cuanto a los agentes, después de preguntar si deseamos ejecutar el agente como un proceso interactivo o como un servicio (recomendamos esta última), deberemos especificar la cuenta encargada de ejecutar el servicio y cuál es el equipo que tiene instalado el controlador.
 
 En la nueva versión de Visual Studio 2013 no tendremos la obligación de crear este entorno, ya que los tests de carga se podrán ejecutar directamente en el TFService (azure):
 
-<a href="/uploads/2013/10/vs2013-tfs-controller.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="vs2013-tfs-controller" alt="vs2013-tfs-controller" src="/uploads/2013/10/vs2013-tfs-controller_thumb.png" width="517" height="337" border="0" /></a>
+<a href="/public/uploads/2013/10/vs2013-tfs-controller.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="vs2013-tfs-controller" alt="vs2013-tfs-controller" src="/public/uploads/2013/10/vs2013-tfs-controller_thumb.png" width="517" height="337" border="0" /></a>
 
 Bastará con configurar un archivo de Test Settings y especificarlo. Luego en el Team Explorer habrá que conectarse con una cuenta de TFService (TFS en la nube) y ya se ejecutarán allí automáticamente.
 
@@ -66,29 +66,29 @@ Un Web Performance Test está compuesto por una serie peticiones web, dentro de 
 
 Para crear un Web Performance Test vamos a necesitar tener primero un proyecto de tipo de load test abierto. Entonces a este proyecto le añadimos un nuevo elemento de tipo Web Permormance Test y se nos abrirá una ventana de Internet Explorer con el plugin Web Test Recorder a mano izquierda:
 
-<a href="/uploads/2013/10/web-test-recorder-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-recorder-1" alt="web-test-recorder-1" src="/uploads/2013/10/web-test-recorder-1_thumb.png" width="623" height="321" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-recorder-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-recorder-1" alt="web-test-recorder-1" src="/public/uploads/2013/10/web-test-recorder-1_thumb.png" width="623" height="321" border="0" /></a>
 
 Nuestra misión ahora será ir ejecutando un caso de prueba desde nuestra web. Por ejemplo puede ser realizar una búsqueda:
 
-<a href="/uploads/2013/10/web-test-recorder-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-recorder-2" alt="web-test-recorder-2" src="/uploads/2013/10/web-test-recorder-2_thumb.png" width="623" height="321" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-recorder-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-recorder-2" alt="web-test-recorder-2" src="/public/uploads/2013/10/web-test-recorder-2_thumb.png" width="623" height="321" border="0" /></a>
 
 Una vez hayamos terminado presionamos en el botón de Stop. Entonces volverá a aparecer en primer plano el Visual Studio con las request capturadas dentro de nuestro test. Ahí el sistema analizará las relaciones entre las peticiones. Es decir, que si por ejemplo un input de tipo hidden tiene un valor que se pasa en un post de un formulario, hacerlo dinámicamente, sin que nosotros tengamos que especificarlo. Una vez haya realizado estas comprobaciones tendremos algo como esto:
 
-<a href="/uploads/2013/10/web-test-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-1" alt="web-test-1" src="/uploads/2013/10/web-test-1_thumb.png" width="308" height="271" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-1" alt="web-test-1" src="/public/uploads/2013/10/web-test-1_thumb.png" width="308" height="271" border="0" /></a>
 
 Aquí vemos que hemos realizado dos peticiones, una a la página principal y otra que es la búsqueda, que contiene una serie de datos en forma de parámetros. Una de las primeras acciones que es recomendable hacer es parametrizar los servidores web, presionando el segundo botón del ratón y seleccionando la opción de Parameterize Web Servers. Aquí nos propondrá una variable de contexto con nuestro nombre de servidor. Así si cambiamos de entorno, solo tenemos que modificar el valor de este parámetro.
 
-<a href="/uploads/2013/10/web-test-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-2" alt="web-test-2" src="/uploads/2013/10/web-test-2_thumb.png" width="314" height="327" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-2" alt="web-test-2" src="/public/uploads/2013/10/web-test-2_thumb.png" width="314" height="327" border="0" /></a>
 
 Ahora veremos que opciones tenemos de configuración por cada petición. Si marcamos la primera por ejemplo, en la ventana de propiedades encontraremos algo parecido a esto:
 
-<a href="/uploads/2013/10/web-test-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-3" alt="web-test-3" src="/uploads/2013/10/web-test-3_thumb.png" width="311" height="380" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-3" alt="web-test-3" src="/public/uploads/2013/10/web-test-3_thumb.png" width="311" height="380" border="0" /></a>
 
 Aquí podremos modificar todos los datos de la request, como por ejemplo si vamos a usar Caché (nos puede interesar o no en este tipo de pruebas), si esperamos un código HTTP de respuesta concreto o el Think Time. Este último es importante ya que nos ayudará a imitar el comportamiento de un usuario de verdad. El Think Time es el tiempo que se añade después de esta request, en el que simulamos que un usuario puede tardar en leer, hacer clic o escribir algo en pantalla. Su valor equivale a la cantidad de segundos que se esperará para ejecutar la siguiente petición web.
 
 Si pulsamos con el segundo botón del ratón sobre una de las peticiones aparecerán ante nosotros un buen número de opciones:
 
-<a href="/uploads/2013/10/web-test-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-4" alt="web-test-4" src="/uploads/2013/10/web-test-4_thumb.png" width="364" height="385" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-4" alt="web-test-4" src="/public/uploads/2013/10/web-test-4_thumb.png" width="364" height="385" border="0" /></a>
 
 Las primeras opciones están relacionadas con la prueba y las demás con la petición seleccionada. A nivel de prueba podremos:
 <ul>
@@ -117,13 +117,13 @@ Como hemos dicho antes, un Web Performance Test posee un contexto de ejecución 
 
 Para cambiar los valores y sustituirlos por parámetros, tendremos que seleccionar uno de ellos y en la ventana de propiedades veremos esta serie de opciones:
 
-<a href="/uploads/2013/10/web-test-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-5" alt="web-test-5" src="/uploads/2013/10/web-test-5_thumb.png" width="352" height="304" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-5" alt="web-test-5" src="/public/uploads/2013/10/web-test-5_thumb.png" width="352" height="304" border="0" /></a>
 
 Como vemos en la captura, podremos cambiar el valor por uno de los parámetros contextuales, o incluso añadir una fuente de datos como podría ser un Excel o un XML, de donde podremos recogerlos. Si el parámetro que queremos usar no se encuentra en el listado, podremos escribir el literal con las llaves.
 
 Una vez que tenemos el test a nuestro gusto, podremos ejecutarlo y en los resultados observaremos todo lo que ha ido pasando.
 
-<a href="/uploads/2013/10/web-test-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-6" alt="web-test-6" src="/uploads/2013/10/web-test-6_thumb.png" width="583" height="195" border="0" /></a>
+<a href="/public/uploads/2013/10/web-test-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="web-test-6" alt="web-test-6" src="/public/uploads/2013/10/web-test-6_thumb.png" width="583" height="195" border="0" /></a>
 
 Si observamos detenidamente los detalles, veremos que no solo ha cargado las requests que le hemos definido, si no que se ha ido operando como un navegador de internet: descargando el contenido dependiente y respondiendo de la forma correcta cuando se encuentre escenarios que lo requieran.
 
@@ -168,7 +168,7 @@ Una vez hemos creado un buen juego de pruebas web, concretamente las que conside
 
 Para esto, añadiremos a la solución un nuevo Load Test. Al hacerlo aparecerá una ventana tipo Wizard, que nos guiará en el proceso de definición de la prueba.
 
-<a href="/uploads/2013/10/load-test-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-1" alt="load-test-1" src="/uploads/2013/10/load-test-1_thumb.png" width="556" height="340" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-1" alt="load-test-1" src="/public/uploads/2013/10/load-test-1_thumb.png" width="556" height="340" border="0" /></a>
 
 En la primera pestaña relevante tendremos que dar un nombre a un escenario. Un Load Test puede contener más de un escenario. Y un escenario no es más que un contexto de ejecución con sus normas y comportamientos correspondientes.
 
@@ -176,19 +176,19 @@ También tendremos que decidir el perfil para cálculos de Think Time. Esto es e
 
 Y por último podremos especificar el Think Time entre cada una de las iteraciones de la propia prueba de carga.
 
-<a href="/uploads/2013/10/load-test-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-2" alt="load-test-2" src="/uploads/2013/10/load-test-2_thumb.png" width="555" height="339" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-2" alt="load-test-2" src="/public/uploads/2013/10/load-test-2_thumb.png" width="555" height="339" border="0" /></a>
 
 En las siguientes páginas seguiremos definiendo las características de escenario. En la segunda tendremos que señalar la forma en la que queremos simular los diferentes usuarios del sistema y su número. Tendremos la opción de que un número constante de usuarios esté conectado o bien hacer una carga progresiva, esperando con un número inferior que se va incrementando hasta un punto determinado con el tiempo.
 
 Aunque la página que nos tocaría ahora sería la de Text Mix Model, personalmente prefiero antes visitar la de Text Mix, donde definiremos las pruebas que cada usuario va a lanzar:
 
-<a href="/uploads/2013/10/load-test-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-4" alt="load-test-4" src="/uploads/2013/10/load-test-4_thumb.png" width="559" height="341" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-4" alt="load-test-4" src="/public/uploads/2013/10/load-test-4_thumb.png" width="559" height="341" border="0" /></a>
 
 Básicamente tendremos que ir añadiendo o borrando Web Performance Test a la lista y distribuirlos de la forma que nos parezca más correcta. Por ejemplo, si un usuario realiza una búsqueda, podríamos pensar que lo normal sería que visitara los resultados de esa búsqueda, antes que realizar una nueva. Por lo que si hacemos dos pruebas web para estas actividades, la correspondiente a la búsqueda tendrá un porcentaje menor, para que se ejecute menos veces.
 
 Como nota, si queremos añadir una prueba y vemos que no está en el listado que se nos propone, quizá es que primero tengamos que compilar la solución. Entonces al intentarlo de nuevo veremos que ahora si aparece.
 
-<a href="/uploads/2013/10/load-test-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-3" alt="load-test-3" src="/uploads/2013/10/load-test-3_thumb.png" width="562" height="343" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-3" alt="load-test-3" src="/public/uploads/2013/10/load-test-3_thumb.png" width="562" height="343" border="0" /></a>
 
 Volviendo atrás a la página de Test Mix Model, lo que vamos a tener que decidir es cómo queremos que los usuarios simulados vayan ejecutando las pruebas definidas en el Test Mix:
 <ul>
@@ -199,23 +199,23 @@ Volviendo atrás a la página de Test Mix Model, lo que vamos a tener que decidi
 </ul>
 Aquí no hay ninguna recomendación, cada uno tendremos que decidir cual se ajusta mejor al escenario que queremos definir.
 
-<a href="/uploads/2013/10/load-test-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-5" alt="load-test-5" src="/uploads/2013/10/load-test-5_thumb.png" width="555" height="339" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-5" alt="load-test-5" src="/public/uploads/2013/10/load-test-5_thumb.png" width="555" height="339" border="0" /></a>
 
 En la siguiente pantalla se nos permitirá definir el Network Mix. Esto no es más que el porcentaje de conexiones que vendrán de los diferentes tipos de redes. Por defecto Visual Studio tiene definidos unos cuantos, pero si quisiéramos crear un tipo de red que sea diferente tenemos aquí un artículo que nos puede ayudar mucho:
 
 <a href="http://blogs.msdn.com/b/rubel/archive/2011/06/05/load-test-how-to-create-a-custom-network-profile-for-network-emulation.aspx">http://blogs.msdn.com/b/rubel/archive/2011/06/05/load-test-how-to-create-a-custom-network-profile-for-network-emulation.aspx</a>
 
-<a href="/uploads/2013/10/load-test-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-6" alt="load-test-6" src="/uploads/2013/10/load-test-6_thumb.png" width="554" height="339" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-6" alt="load-test-6" src="/public/uploads/2013/10/load-test-6_thumb.png" width="554" height="339" border="0" /></a>
 
 La última característica que vamos a definir del escenario es el Browser Mix. Porque podría ser que tuviéramos un comportamiento en la página web diferente en dependencia del navegador, como por ejemplo si te conectas desde un dispositivo móvil. Aquí lo más recomendable es ser consecuente con el escenario donde se va a distribuir nuestra aplicación. No es lo mismo ponerla en una zona pública, donde tendremos que dejarnos guiar por las estadísticas normales de internet; que en la intranet de la empresa donde solo dejan usar Internet Explorer 8.
 
-<a href="/uploads/2013/10/load-test-7.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-7" alt="load-test-7" src="/uploads/2013/10/load-test-7_thumb.png" width="558" height="341" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-7.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-7" alt="load-test-7" src="/public/uploads/2013/10/load-test-7_thumb.png" width="558" height="341" border="0" /></a>
 
 Cuando ya hemos terminado de definir el escenario tocará el turno de añadir los servidores que ejecutan la aplicación y los contadores de los mismos que queremos observar. Por ejemplo, si tenemos un servidor de base de datos, añadiremos su nombre host y solo marcaremos los contadores de SQL.
 
 Una nota aquí es que los servicios remotos de logs y alertas de performance tendrán que estar iniciados en la máquina servidora para poder recoger estos datos.
 
-<a href="/uploads/2013/10/load-test-8.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-8" alt="load-test-8" src="/uploads/2013/10/load-test-8_thumb.png" width="559" height="342" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-8.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-8" alt="load-test-8" src="/public/uploads/2013/10/load-test-8_thumb.png" width="559" height="342" border="0" /></a>
 
 La última página del Wizard será la que defina los datos correspondientes a la ejecución de la prueba de carga:
 <ul>
@@ -227,7 +227,7 @@ La última página del Wizard será la que defina los datos correspondientes a l
 </ul>
 Una vez hayamos finalizado el proceso se nos abrirá una ventana con los detalles de la prueba de carga:
 
-<a href="/uploads/2013/10/load-test-9.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-9" alt="load-test-9" src="/uploads/2013/10/load-test-9_thumb.png" width="279" height="427" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-9.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-9" alt="load-test-9" src="/public/uploads/2013/10/load-test-9_thumb.png" width="279" height="427" border="0" /></a>
 
 Seleccionando cada componente y mirando en la ventana de propiedades podremos cambiar toda la configuración que hemos creado en el Wizard. Además presionando con el segundo botón del ratón podremos entrar en ventanas similares a las que usamos durante la creación del Load Test.
 
@@ -239,7 +239,7 @@ Y por último si tuviéramos un escenario en el que el usuario realiza una activ
 
 Para ello tendremos que con el segundo botón del ratón pulsar sobre Text Mix. Allí seleccionaremos la opción de Edit Test Mix. En la nueva pantalla que aparecerá veremos en la parte inferior unas opciones de añadir una prueba que se inicia antes que el resto de pruebas sean ejecutadas, una vez para cada usuario y otra para la de después:
 
-<a href="/uploads/2013/10/load-test-10.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-10" alt="load-test-10" src="/uploads/2013/10/load-test-10_thumb.png" width="504" height="419" border="0" /></a>
+<a href="/public/uploads/2013/10/load-test-10.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="load-test-10" alt="load-test-10" src="/public/uploads/2013/10/load-test-10_thumb.png" width="504" height="419" border="0" /></a>
 
 Aquí podremos marcar la casilla y seleccionar la prueba que se dedica a esa actividad.
 
@@ -248,17 +248,17 @@ Aquí podremos marcar la casilla y seleccionar la prueba que se dedica a esa act
 <h2 id="executing">Ejecutando y explotando los resultados</h2>
 Antes de ejecutar nuestras pruebas de carga tendremos que configurar los Test Settings. En todo proyecto de pruebas de carga tiene que haber a nivel de solución un archivo de configuración de la prueba, podríamos crear uno nuevo si no existe o varios diferentes para poder ejecutar las pruebas en diferentes entornos.
 
-<a href="/uploads/2013/10/test-settings-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-1" alt="test-settings-1" src="/uploads/2013/10/test-settings-1_thumb.png" width="372" height="191" border="0" /></a>
+<a href="/public/uploads/2013/10/test-settings-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-1" alt="test-settings-1" src="/public/uploads/2013/10/test-settings-1_thumb.png" width="372" height="191" border="0" /></a>
 
 Al hacer doble clic en un archivo de Test Settings nos aparecerá una nueva ventana donde podemos configurar la ejecución de las pruebas:
 
-<a href="/uploads/2013/10/vs2013-tfs-controller1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="vs2013-tfs-controller" alt="vs2013-tfs-controller" src="/uploads/2013/10/vs2013-tfs-controller_thumb1.png" width="527" height="344" border="0" /></a>
+<a href="/public/uploads/2013/10/vs2013-tfs-controller1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="vs2013-tfs-controller" alt="vs2013-tfs-controller" src="/public/uploads/2013/10/vs2013-tfs-controller_thumb1.png" width="527" height="344" border="0" /></a>
 
 En la primera página encontraremos la descripción de la configuración y podremos decidir, solo si estamos en VS2013, si queremos ejecutarlos en un controlador local o usando el de Team Foundation.
 
 Si elegimos ejecutar las pruebas en una máquina local o un Test Controller, aparecerán nuevas opciones. Una de las más significativas es la de Roles:
 
-<a href="/uploads/2013/10/test-settings-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-2" alt="test-settings-2" src="/uploads/2013/10/test-settings-2_thumb.png" width="531" height="347" border="0" /></a>
+<a href="/public/uploads/2013/10/test-settings-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-2" alt="test-settings-2" src="/public/uploads/2013/10/test-settings-2_thumb.png" width="531" height="347" border="0" /></a>
 
 Aquí tendremos que especificar si queremos usar el propio Visual Studio local o una máquina remota que es el controlador. Si marcamos esta última, tendremos que indicar el host del controller.
 
@@ -267,27 +267,27 @@ Otra página en la que podríamos tener que configurar algo especial, es la de D
 El resto de opciones como los diagnósticos y demás, podemos dejarlos con los valores por defecto, en un principio.
 Para terminar con la configuración previa en el menú de Load Test de Visual Studio tendremos que activar la configuración que queramos usar:
 
-<a href="/uploads/2013/10/test-settings-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-3" alt="test-settings-3" src="/uploads/2013/10/test-settings-3_thumb.png" width="536" height="219" border="0" /></a>
+<a href="/public/uploads/2013/10/test-settings-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-settings-3" alt="test-settings-3" src="/public/uploads/2013/10/test-settings-3_thumb.png" width="536" height="219" border="0" /></a>
 
 Ahora bastará con abrir la prueba de carga y presionar el botón de ejecución de las pruebas de carga. Visual Studio se conectará con el controlador que hemos especificado y este orquestará esta ejecución enviándonos datos de diagnóstico en tiempo real, que podremos ver desde el propio Visual Studio.
 
-<a href="/uploads/2013/10/test-execution.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-execution" alt="test-execution" src="/uploads/2013/10/test-execution_thumb.png" width="648" height="390" border="0" /></a>
+<a href="/public/uploads/2013/10/test-execution.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-execution" alt="test-execution" src="/public/uploads/2013/10/test-execution_thumb.png" width="648" height="390" border="0" /></a>
 
 Aquí podremos ver gráficas estándar o crear las nuestras propias seleccionando contadores que vemos a mano izquierda. También tendremos unas tablas a modo resumen. Así que solo nos quedará esperar a que nuestra prueba de carga termine.
 
 Una vez terminen las pruebas podremos ver el resultado completo que el controlador almacenará en la base de datos que indicamos.
 
-<a href="/uploads/2013/10/test-results.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results" alt="test-results" src="/uploads/2013/10/test-results_thumb.png" width="647" height="360" border="0" /></a>
+<a href="/public/uploads/2013/10/test-results.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results" alt="test-results" src="/public/uploads/2013/10/test-results_thumb.png" width="647" height="360" border="0" /></a>
 
 Tanto en las gráficas como en las tablas podremos ver si hay algún contador extraño que ha ido demasiado arriba, si por ejemplo vemos que no se libera bien la memoria de la aplicación, o simplemente si los tiempos de respuesta son los que esperábamos.
 
 Otro detalle que nos puede ayudar a luego diferenciar las pruebas que hemos ido lanzando es añadir una descripción. Para ello tendremos que pulsar en el icono señalado y en el campo descripción añadir un comentario. Después al buscar resultados de la ejecución de esta prueba, encontraremos este campo de descripción que nos ayudará a identificarla:
 
-<a href="/uploads/2013/10/test-results-description.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results-description" alt="test-results-description" src="/uploads/2013/10/test-results-description_thumb.png" width="641" height="301" border="0" /></a>
+<a href="/public/uploads/2013/10/test-results-description.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results-description" alt="test-results-description" src="/public/uploads/2013/10/test-results-description_thumb.png" width="641" height="301" border="0" /></a>
 
 Por último, para acceder a estos resultados, tendremos que abrir el archivo del test de carga y en el menú contextual seleccionar la opción de abrir resultados de tests:
 
-<a href="/uploads/2013/10/test-results-open.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results-open" alt="test-results-open" src="/uploads/2013/10/test-results-open_thumb.png" width="390" height="314" border="0" /></a>
+<a href="/public/uploads/2013/10/test-results-open.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="test-results-open" alt="test-results-open" src="/public/uploads/2013/10/test-results-open_thumb.png" width="390" height="314" border="0" /></a>
 
 <a href="#index">Volver al índice</a>
 &nbsp;
@@ -300,41 +300,41 @@ Para usarlo solo tendremos que ir a la página web del proyecto, descargarlo e i
 
 Lo primero que haremos es generar los contadores, para eso abriremos PAL y en la página de Threshold File, encontraremos en un combobox varias plantillas ya creadas. Generalmente suelo usar la de SQL Server y la IIS. La idea es exportar estas plantillas para luego llevarlas a nuestros servidores y activar esos contadores:
 
-<a href="/uploads/2013/10/pal-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-1" alt="pal-1" src="/uploads/2013/10/pal-1_thumb.png" width="555" height="442" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-1.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-1" alt="pal-1" src="/public/uploads/2013/10/pal-1_thumb.png" width="555" height="442" border="0" /></a>
 
 Ahora recogeremos el archivo xml resultante y lo llevaremos a nuestro servidor. Dentro del servidor abriremos el Performance Monitor:
 
-<a href="/uploads/2013/10/pal-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-2" alt="pal-2" src="/uploads/2013/10/pal-2_thumb.png" width="566" height="365" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-2.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-2" alt="pal-2" src="/public/uploads/2013/10/pal-2_thumb.png" width="566" height="365" border="0" /></a>
 
 En Data Collector Sets tendremos que crear uno nuevo, al presionar en la opción se nos abrirá un nuevo dialogo, donde le daremos un nombre y le indicaremos que queremos basar el contador en una plantilla:
 
-<a href="/uploads/2013/10/pal-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-3" alt="pal-3" src="/uploads/2013/10/pal-3_thumb.png" width="483" height="371" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-3.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-3" alt="pal-3" src="/public/uploads/2013/10/pal-3_thumb.png" width="483" height="371" border="0" /></a>
 
 En la siguiente página tendremos que presionar sobre “browse” y buscar el archivo que exportamos del PAL.
 
-<a href="/uploads/2013/10/pal-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-4" alt="pal-4" src="/uploads/2013/10/pal-4_thumb.png" width="480" height="369" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-4.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-4" alt="pal-4" src="/public/uploads/2013/10/pal-4_thumb.png" width="480" height="369" border="0" /></a>
 
 Ahora ya podemos finalizar el Wizard.
 
 Cada vez que vayamos a ejecutar una prueba de carga, solo tendremos que ir al servidor, al Performance Monitor y activar el contador que hemos creado. Cuando la prueba termine lo pararemos e iremos a buscar los resultados a la ruta por defecto: “c:\PerfLogs\Admin\[Nombre del contador]”.
 
-<a href="/uploads/2013/10/pal-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-5" alt="pal-5" src="/uploads/2013/10/pal-5_thumb.png" width="465" height="208" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-5.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-5" alt="pal-5" src="/public/uploads/2013/10/pal-5_thumb.png" width="465" height="208" border="0" /></a>
 
 Una vez ha terminado deberíamos encontrarnos con una serie de archivos parecida a esta:
 
-<a href="/uploads/2013/10/pal-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-6" alt="pal-6" src="/uploads/2013/10/pal-6_thumb.png" width="618" height="152" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-6.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-6" alt="pal-6" src="/public/uploads/2013/10/pal-6_thumb.png" width="618" height="152" border="0" /></a>
 
 Para obtener nuestro informe tendremos que abrir PAL de nuevo e indicarle que este es nuestro documento de entrada:
 
-<a href="/uploads/2013/10/pal-7.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-7" alt="pal-7" src="/uploads/2013/10/pal-7_thumb.png" width="553" height="441" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-7.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-7" alt="pal-7" src="/public/uploads/2013/10/pal-7_thumb.png" width="553" height="441" border="0" /></a>
 
 En la página de Counter Log seleccionaremos el archivo.
 
-<a href="/uploads/2013/10/pal-11.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-1" alt="pal-1" src="/uploads/2013/10/pal-1_thumb1.png" width="555" height="442" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-11.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-1" alt="pal-1" src="/public/uploads/2013/10/pal-1_thumb1.png" width="555" height="442" border="0" /></a>
 
 En Thershold File tendremos que volver a seleccionar el perfil que hemos tratado.
 
-<a href="/uploads/2013/10/pal-8.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-8" alt="pal-8" src="/uploads/2013/10/pal-8_thumb.png" width="544" height="434" border="0" /></a>
+<a href="/public/uploads/2013/10/pal-8.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="pal-8" alt="pal-8" src="/public/uploads/2013/10/pal-8_thumb.png" width="544" height="434" border="0" /></a>
 
 Una vez termine se abrirá una nueva ventana del explorador de internet con un informe muy completo sobre nuestro sistema. Y es muy recomendable leerlo entero en busca de los posibles problemas que se han podido encontrar en el sistema.
 

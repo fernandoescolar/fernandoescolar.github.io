@@ -17,7 +17,7 @@ Durante poco más de una hora intenté que los asistentes entendieran el por qu�
 
 Si no pudisteis asistir, os diré que <strong>TDD </strong>son las siglas de<strong> Test Driven Development</strong> o en castellano: desarrollo guiado por las pruebas. Y es una técnica de desarrollo (de <em>eXtreme Programing</em>) que se basa en dos pasos: primero escribir la pruebas y después refactorizar.
 
-<img style="margin-right: 5px;" src="/uploads/2012/09/test-driven.jpg" alt="test driven" align="left" />
+<img style="margin-right: 5px;" src="/public/uploads/2012/09/test-driven.jpg" alt="test driven" align="left" />
 
 La <strong>programación extrema</strong> engloba una serie de metodologías de programación ágiles, basadas en que a lo largo de un desarrollo van a ocurrir cambios de especificaciones y en lugar de intentar prevenir esto con una gran cantidad de código, que en ocasiones sobra, se decide adaptarse a esos cambios en cualquier fase del ciclo de vida del proyecto.
 
@@ -52,13 +52,13 @@ Triple A como los videojuegos buenos…
 Pero vamos a volver al concepto inicial: desarrollo guiado por las pruebas.
 
 Generalmente expresado como <strong>Red </strong>-&gt; <strong>Green </strong>-&gt; <strong>Refactor</strong>, expone un diagrama de actividad simplificado de esta técnica.
-<div style="text-align: center;"><img src="/uploads/2012/09/tdd.gif" alt="" /></div>
+<div style="text-align: center;"><img src="/public/uploads/2012/09/tdd.gif" alt="" /></div>
 Quiere decir que primero vamos a hacer un test unitario, comprobaremos que falla (Red), se completa el código de la forma más simple solo para que este pase (Green), y una vez funciona se refactoriza el código para así limpiarlo de malos nombres, espacios de nombre confusos  o de código repetitivo…
 
 Pero hemos dicho que esta es la versión simple…
 
 En la versión real nosotros nos encontraríamos dentro de un proyecto. Como estaremos usando metodologías ágiles (algo como <strong>scrum</strong>), tendremos un <em>product backlog</em> para el <strong>sprint </strong>actual. Dentro de este encontraremos las <strong>historias de usuario</strong> que nos hablan de un requerimiento del software que estamos desarrollando. Y este requerimiento lo dividiremos en una o varias <strong>especificaciones</strong>.
-<div style="text-align: center;"><img src="/uploads/2012/09/tdd-process.gif" alt="" /></div>
+<div style="text-align: center;"><img src="/public/uploads/2012/09/tdd-process.gif" alt="" /></div>
 Una vez tenemos claro lo que tenemos que probar (la especificación) realizamos nuestro test unitario para acto seguido comprobar que este falla. Es muy importante comprobar esto, porque si no falla de buenas a primeras es porque nuestro test es posible que no compruebe nada en realidad.
 
 Una vez tenemos nuestro test fallando podemos ponernos a codificar la <strong>mínima cantidad de código necesaria</strong> para que se vea cumplido. O seguir el principio <strong>KISS </strong>(<em>Keep It Simple, Stupid!</em>).
@@ -71,7 +71,7 @@ Me gustaría poneros un ejemplo (en la <a href="https://twitter.com/#!/search/%2
 
 Para terminar con este enorme post comentar los <strong>beneficios de esta técnica</strong>:
 
-<img src="/uploads/2012/09/tdd-beneficios.png" alt="" align="right" />
+<img src="/public/uploads/2012/09/tdd-beneficios.png" alt="" align="right" />
 
 Esto que vemos es una<strong> curva de coste</strong>. Se suele utilizar para representar el coste de desarrollo de una aplicación en dependencia de la metodología utilizada. Muy común cuando la temática de la charla es sobre <strong>deuda técnica</strong>.
 
