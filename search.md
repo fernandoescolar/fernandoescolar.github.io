@@ -2,9 +2,6 @@
 layout: page
 title: Buscar
 ---
-<div id="search-form">
-	<input type="text" id="search-input" />
-</div>
 <div id="search-container">
 <input type="text" id="search-input" placeholder="search...">
 <ul id="results-container"></ul>
