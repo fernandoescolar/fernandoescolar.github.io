@@ -24,7 +24,7 @@ title: Buscar
   {{/entries}}
 </script>
 {% endraw %}
-<script src="/public/scripts/search.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/search.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
   $(function() {
     $('#search-query').lunrSearch({
