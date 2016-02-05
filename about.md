@@ -11,7 +11,7 @@ Mi nombre es Fernando y he decidido por primera vez en mi vida, abrir un blog pe
 
 Actualmente estoy trabajando en la empresa [Tokiota](http://www.tokiota.com) como consultor. Con una posición de más de 4 palabras.  Casi no cabe en la tarjeta de visita. Haciendo que me crea más importante de lo que soy. Llevo programando desde que conozco que se puede programar. No toda la vida, pero sí bastante. También soy coordinador de la comunidad de desarrolladores de .Net de Cataluña [CatDotNet](http://www.catdotnet.net). Además en 2015 me otorgaron el honor de ser nombrado [MVP de Microsoft](https://mvp.microsoft.com/). Esperemos que no sea la última vez... 
 
-La idea inicial de la creación de este sitio es poder escribir sobre cosas que me parecen interesantes. Y así de paso, tener un repositorio donde poder buscar después, aquello que hice que no recuerdo como se hacía. Un diario de a bordo.
+La idea inicial de la creación de este sitio es poder escribir sobre cosas que me parecen interesantes. Y así, de paso, tener un repositorio donde poder buscar después aquello que hice, que no recuerdo cómo se hacía. Un diario de abordo. 
 
 Desde el primer día hay muchas publicaciones, pero no te asustes. Simplemente recogí un backup antiguo, de una web que ya no existe, en la que escribía (quizá a alguno os suene: programando en .net). Y los he publicado en este nuevo blog. Para conocer que es lo nuevo, una pista: empieza en 2016 ;).
 
