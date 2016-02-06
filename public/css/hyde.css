@@ -59,11 +59,11 @@ html {
   background-color: #202020;
 }
 #nav-icon{
-  width: 60px;
+  width: 50px;
   height: 45px;
   position: relative;
   float: left;
-  margin: 50px auto;
+  margin: 12px 0px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -124,9 +124,9 @@ html {
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
-#sidebar-copy, #sidebar-nav {
+#sidebar-copy, #sidebar-nav, #sidebar-description {
 	  display: none;
-  }
+}
 @media (min-width: 48em) {
   .sidebar {
     position: fixed;
@@ -141,7 +141,7 @@ html {
 	display: none;
   }
   
-  #sidebar-copy, #sidebar-nav {
+  #sidebar-copy, #sidebar-nav, #sidebar-description {
 	  display: block;
   }
 }
