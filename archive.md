@@ -6,7 +6,7 @@ title: Archivo
 <p class="message">
 Aquí podrás encontrar todas las publicaciones en orden cronológico
 </p>
-
+<div id="archive">
 {% for post in site.posts %}
   {% assign currentdate = post.date | date: "%Y" %}
   {% if currentdate != date %}
@@ -18,3 +18,4 @@ Aquí podrás encontrar todas las publicaciones en orden cronológico
     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
   {% if forloop.last %}</ul>{% endif %}
 {% endfor %}
+</div>
