@@ -144,6 +144,10 @@ html {
   #sidebar-copy, #sidebar-nav, #sidebar-description {
 	  display: block;
   }
+  
+  .sidebar-about h1 {
+    font-size: 3.2rem;
+  }
 }
 
 /* Sidebar links */
