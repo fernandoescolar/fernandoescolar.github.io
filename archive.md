@@ -2,9 +2,11 @@
 layout: page
 title: Archivo
 ---
+
 <p class="message">
 Aquí podrás encontrar todas las publicaciones en orden cronológico
 </p>
+
 {% for post in site.posts %}
   {% assign currentdate = post.date | date: "%Y" %}
   {% if currentdate != date %}
