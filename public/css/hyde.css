@@ -59,7 +59,6 @@ html {
   background-color: #202020;
 }
 #nav-icon{
-  display: none;
   width: 60px;
   height: 45px;
   position: relative;
@@ -124,6 +123,9 @@ html {
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
+#sidebar-copy, #sidebar-nav {
+	  display: none;
+  }
 @media (min-width: 48em) {
   .sidebar {
     position: fixed;
@@ -133,12 +135,13 @@ html {
     width: 18rem;
     text-align: left;
   }
+  
   #nav-icon{
-	display: inline;
-	width: 60px;
+	display: none;
   }
+  
   #sidebar-copy, #sidebar-nav {
-	  display: none;
+	  display: block;
   }
 }
 
