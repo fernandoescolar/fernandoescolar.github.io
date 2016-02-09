@@ -1,7 +1,9 @@
 ---
+ID: 16020900
 title: Un vistazo a Roslyn
 author: fernandoescolar
 post_date: 2016-02-09T19:24:03.000Z
+post_excerpt: ""
 layout: post
 ---
 
