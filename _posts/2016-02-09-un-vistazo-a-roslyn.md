@@ -169,7 +169,7 @@ Otra de las opciones es elegir el template de "Code Refactoring (VSIX)". Esto es
 
 Cuando quieres proponer una modificación, pero no quieres que aparezca un aviso o que se marque aquel trozo de código que quieres modificar, tenemos que usar los objetos "CodeRefactoringProvider". 
 
-Para poderle tener la misma funcionalidad que en el ejemplo anterios, solo tendríamos que insertar este código en la clase que se nos ha generado:
+Para tener la misma funcionalidad que en el ejemplo anterios, solo tendríamos que insertar este código en la clase que se nos ha generado:
 
 ```csharp
 [ExportCodeRefactoringProvider(LanguageNames.CSharp, Name = nameof(BadWordsRefactorProvider)), Shared]
