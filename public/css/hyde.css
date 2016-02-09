@@ -336,8 +336,12 @@ a.sidebar-nav-item:focus {
 
 ul.share {
   list-style: none;
+  margin-left: -40px;
+  margin-bottom: -10px;
+  margin-top: -40px;
 }
 
 ul.share li {
   display: inline;
+  font-size: 64px;
 }
