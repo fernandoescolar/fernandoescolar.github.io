@@ -254,3 +254,4 @@ Roslyn me gusta. La idea que hay detrás también. Las herramientas que podemos 
 
 Si queréis ver algunos analyzers que ya está implementando la comunidad, solo tenéis que echar un vistazo a esta web: [https://github.com/DotNetAnalyzers](https://github.com/DotNetAnalyzers). Tiene muy buena pinta. Y aunque no está todo al completo, sí que tienen muchas normas ya escritas.
 
+Pd. Si queréis la demo final con todo, tendréis que venir a vernos a la [DotNet Spain Conference 2016](https://www.desarrollaconmicrosoft.com/Dotnetspain2016 "DotNet Spain Conference 2016") ;)
