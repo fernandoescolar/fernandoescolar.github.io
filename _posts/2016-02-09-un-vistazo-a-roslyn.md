@@ -1,13 +1,12 @@
 ---
 published: true
----
-
----
 title: Un vistazo a Roslyn
 author: fernandoescolar
-post_date: 2016-02-09 19:24:03
+post_date: 2016-02-09T19:24:03.000Z
 layout: post
 ---
+
+
 El número de resultados que encuentras al buscar "Roslyn" es de 9-13 millones. Está claro que está de moda. Pero ¿qué es Roslyn? ¿y por qué debería importarme?
 <!--break-->
 
