@@ -240,7 +240,7 @@ Esta aplicación, al ejecutarla con la ruta de una solución de Visual Studio, n
 
 ## Rompiéndose la cabeza
 
-La última de las andanzas con Roslyn ha sido mirar el código fuente. Es open source. Lo tenéis aquí https://github.com/dotnet/roslyn.
+La última de las andanzas con Roslyn ha sido mirar el código fuente. Es open source. Lo tenéis aquí [https://github.com/dotnet/roslyn](https://github.com/dotnet/roslyn).
 
 El código fuente de Roslyn es grande. Pero simple. Simplemente muy grande. Se puede entender. Pero hay que conocerlo. Simplemente lo conocen los que lo programan. Si quieres invertir horas y añadir una feature totalmente loca como cambiar la palabra clave "static" por "motherfucker", no será demasiado trabajo. Solo tienes que saber qué línea tocar.
 
@@ -252,5 +252,5 @@ Lo que sí que os recomiendo es que le echéis un vistazo. Es muy interesante. A
 
 Roslyn me gusta. La idea que hay detrás también. Las herramientas que podemos crear son muy flexibles. Solo hay que esperar a que otros hagan lo que necesitamos. O si somos valientes y queremos cacharrear un poco, hacerlo nosotros mismos.
 
-Si queréis ver algunos analyzers que ya está implementando la comunidad, solo tenéis que echar un vistazo a esta web: https://github.com/DotNetAnalyzers. Tiene muy buena pinta. Y aunque no está todo al completo, sí que tienen muchas normas ya escritas.
+Si queréis ver algunos analyzers que ya está implementando la comunidad, solo tenéis que echar un vistazo a esta web: [https://github.com/DotNetAnalyzers](https://github.com/DotNetAnalyzers). Tiene muy buena pinta. Y aunque no está todo al completo, sí que tienen muchas normas ya escritas.
 
