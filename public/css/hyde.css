@@ -333,3 +333,11 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
 }
+
+ul.share {
+  list-style: none;
+}
+
+ul.share li {
+  display: inline;
+}
