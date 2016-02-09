@@ -12,11 +12,14 @@ tagline:          'El blog de Fernando Escolar'
 description:      'cuando en mi máquina tampoco funciona...'
 url:              http://fernandoescolar.github.io
 baseurl:          http://fernandoescolar.github.io/
+icon:           your site icon path # /assets/img/icon.png [best 300px X 300px]
 
 author:
   name:           'Fernando Escolar'
   url:            https://twitter.com/fernandoescolar
-
+  twitter:        fernandoescolar
+  google_plus:    FernandoEscolar
+  
 paginate:         5
 
 # Custom vars
