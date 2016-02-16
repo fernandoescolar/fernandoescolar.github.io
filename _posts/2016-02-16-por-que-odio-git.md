@@ -66,7 +66,7 @@ Parece que a los programadores de Git no les gusta el café. No me fío de las p
 ## Encima tengo que hacer TDD
 Hace tiempo que dentro del Definition Of Done figura tener pruebas unitarias para todo el código que subamos. Unas cómodas pruebas. Una vez has terminado la funcionalidad, copias el código y cambias un par de detalles. Así consigues una prueba válida rápidamente. Sin esfuerzo. Y eso sin contar con el apoyo de grandes herramientas como Pex.
 
-Pues resulta que ahora como tenemos Git, no hace falta que un "commit" vaya directo al servidor. Como ese cambio puede residir en nuestro repositorio local. Ahora resulta que tenemos sincronizar el código con al menos tres cambios bien diferenciados: "red", "green" y "refactor".
+Pues resulta que ahora como tenemos Git, no hace falta que un "commit" vaya directo al servidor. Ese cambio puede residir en nuestro repositorio local. Ahora resulta que tenemos sincronizar el código con al menos tres cambios bien diferenciados: "red", "green" y "refactor".
 
 ```bash
 # creamos un conjunto de cambios con el comentario entrecomillado
@@ -129,6 +129,7 @@ Dentro del mundo de todos los comandos que tiene Git, encontramos que podemos re
 
 
 Mover a un commit en concreto de forma temporal:
+
 ```bash
 # Desatachamos el HEAD, que es lo mismo que no tener ninguna rama desprotegida:
 git checkout dd1d7ab32
@@ -137,6 +138,7 @@ git checkout -b old-state dd1d7ab32
 ```
 
 Si queremos borrar definitivamente un cambio que no hemos llegado a publicar en el servidor:
+
 ```bash
 # Primero no tendrás que tener nada modificado. Todo en commits.
 # Después borramos el cambio:
@@ -149,6 +151,7 @@ git stash pop
 ```
 
 Si queremos borrar un commit que ya esté publicado, tendremos que crear otro commit:
+
 ```bash
 # Esto crea 3 commits separados que desacen los commits indicados:
 git revert a867a4ad 25eff4ca a766c053
