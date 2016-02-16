@@ -12,11 +12,11 @@ El sistema de control de versión que más se ha extendido en los últimos años
 
 Como en muchas empresas, en la mía usamos para la gestión del ALM, Visual Studio Team Services. El antiguo Visual Studio Online. A su vez el antiguo TFServices. O también conocido como TFS Online. Y es que poner nombres es muy dificil. El caso es que a lo largo de 2013, tanto en esta herramienta como en el IDE Visual Studio, se añadió soporte para Git. Así que no tardaron los early-adopters en pedir una migración a este tipo de repositorios de código fuente. Y hace unos seis meses que todos estamos funcionando con este sistema.
 
-Estoy cansando de que todos hablen siempre bien de Git. Llevan así desde que apareció ahí por 2002. Concebido como open source por Linus Torvalds. Posiblemente porque se aburría. Cuentan las leyendas que lo hizo en un fin de semana y ahora ya no trabaja en ello. Quizá esto le debería hacer perder credibilidad a la herramienta. Pero por lo visto causa el efecto contrario. Según comenta el propio señor Torvalds, lo diseñó pensando en sus necesidades. Esas que no le aportaban otros SCM. Su idea era que fuera distribuido, fácil, rápido y poco pesado. Esto me recuerda a un paseo por el Gran Bazar de Estambul. Allí todo cumple con la norma de las 3 "B's": Bueno, Bonito y Barato. No me fie cuando estuve en Turquía, de la misma forma que no me fío de este producto. Y es que no me gustan los cambios. Pero no soy un tipo cerrado que solo esté disgustado porque la han sacado de su zona de confort. Hay más...
+Estoy cansando de que todos hablen siempre bien de Git. Llevan así desde que apareció ahí por 2002. Concebido como open source por Linus Torvalds. Posiblemente porque se aburría. Cuentan las leyendas que lo hizo en un fin de semana y ahora ya no trabaja en ello. Quizá esto le debería hacer perder credibilidad a la herramienta. Pero por lo visto causa el efecto contrario. Según comenta el propio señor Torvalds, lo diseñó pensando en sus necesidades. Esas que no le aportaban otros SCM. Su idea era que fuera distribuido, fácil, rápido y poco pesado. Esto me recuerda a un paseo por el Gran Bazar de Estambul. Allí todo cumple con la norma de las 3 "B's": Bueno, Bonito y Barato. No me fie cuando estuve en Turquía, de la misma forma que no me fío de este producto. Y es que no me gustan los cambios. Pero no soy un tipo cerrado que solo esté disgustado porque le han sacado de su zona de confort. Hay más...
 
 Voy a contaros mis experiencias:
 
-##Adiós a irse pronto a casa
+## Adiós a irse pronto a casa
 Antiguamente usábamos un sistema centralizado en el un servidor. Cuando no funcionaba internet, no podías trabajar. Visual Studio te daba problemas. Lo único que podías hacer era trabajar offline. Y las vueltas a online solían ser bastante dolorosas. La única solución razonable era irte a casa o tomar unas cervezas.
 
 Pero Git es distribuido. Esto se traduce a que cuando te "clonas" un repositorio en tu ordenador, automáticamente estás creando un repositorio como el del servidor. Pero de forma local. Así trabajas en tu máquina hasta que decides sincronizar con el servidor todas las modificaciones que has realizado. Las consecuencias de esto son nefastas: ya no te puedes ir a casa. Aunque no tengas conexión, puedes seguir trabajando. Ya sincronizarás más tarde.
@@ -28,7 +28,7 @@ $ git clone my-remote http://my-git.com/repository
 
 La única satisfacción que aún conservamos, es al menos poder quejarnos de la empresa que nos provee la conexión.
 
-##El código es mío
+## El código es mío
 En este punto, supongo que más de uno se estará preguntando: ¿Qué es eso de que los cambios los guardas en local? ¿Cómo que subes cuando quieres? ¿Un desarrollador puede tener un cambio y no subirlo hasta final de mes? ¿No tiene por qué guardar directamente los cambios en el servidor?. Es evidente que quien desarrolló Git no tiene claro el concepto de Continuous Integration...
 
 Dentro de estas funcionalidades absurdas, encontramos que un repo Git puede tener varios "remote". Un "remote" es un servidor con el que sincronizar el repositorio local. Y un mismo repositorio que tienes en local puede estar vinculado con varios servidores diferentes.
@@ -42,7 +42,7 @@ $ git remote -v
 
 Ahora me imagino a un proveedor diciendo que guardan en sus servidores el código que están escribiendo para nosotros. Y que nos digan que ya sincronizarán con nuestros servidores de vez en cuando... De eso nada. Les estamos pagando. Por lo que ese código es nuestro. No queremos que lo tengan en sus servidores.
 
-##¿Y mi café?
+## ¿Y mi café?
 Mi rutina diaria siempre ha sido muy normal. Me gusta llegar a trabajar por la mañana, encender el ordenador y le darle a descargar la última versión del código. Mientras, me acerco a la cafetera y me tomo un *ristretto*. Para cuando vuelvo a mi puesto, terminan de descargarse los últimos datos.
 
 Git me ha robado el momento *zen* del café matutino. Internamente maneja un tamaño de paquetes diferenciales (snapshots) que imagino que serán bastante pequeños. Espero que no pierda cambios por ello. El resultado es que las descargas no dan tiempo a ese café. Y me dejan sin excusa para tomarlo.
@@ -63,7 +63,7 @@ $ git checkout my-branch
 
 Parece que a los programadores de Git no les gusta el café. No me fío de las personas a las que no les gusta el café.
 
-##Encima tengo que hacer TDD
+## Encima tengo que hacer TDD
 Hace tiempo que dentro del Definition Of Done figura tener pruebas unitarias para todo el código que subamos. Unas cómodas pruebas. Una vez has terminado la funcionalidad, copias el código y cambias un par de detalles. Así consigues una prueba válida rápidamente. Sin esfuerzo. Y eso sin contar con el apoyo de grandes herramientas como Pex.
 
 Pues resulta que ahora como tenemos Git, no hace falta que un "commit" vaya directo al servidor. Como ese cambio puede residir en nuestro repositorio local. Ahora resulta que tenemos sincronizar el código con al menos tres cambios bien diferenciados: "red", "green" y "refactor".
@@ -82,7 +82,7 @@ $ git push my-remote
 Todos los desarrolladores tenemos que pensar primero en una prueba, escribirla y que no pase. Luego hacer el código necesario para que pase ese test. Para finalizar poner todo el código anterior bonito y que las pruebas sigan pasando. Lo que se conoce vulgarmente como Test Driven Development. Que te obliga a pensar más. Y en cualquier momento alguien puede revisar si lo has estado aplicando correctamente. Una verdadera caza de brujas.
 
 
-##Veo *commits* por todas partes
+## Veo *commits* por todas partes
 Los commit se pueden aplicar sueltos. Hay bifurcaciones. Puedes montar un puzzle de cambios sin problemas. Una branch puede tener unos commits totalmente diferentes a los de otra. Además la forma de identificarlos son GUID's. Que no sé si alguno os dice algo un GUID, pero a mi no me aporta ningún valor.
 
 ```bash
@@ -105,7 +105,7 @@ Un ejemplo gráfico, gracias a una herramienta que nos muestra un mapa de cambio
 
 Otro ejemplo es uno de twitter: [El GIT-ar Hero](https://twitter.com/HenryHoffman/status/694184106440200192). Si alguien entiende algo de esto, que venga y me lo explique por favor.
 
-##La culpa es mía
+## La culpa es mía
 La parte buena de tener semejante conjunto de cambios son los merges grandes. Creo que todos hemos vivido ese momento en el que se junta la rama de hotfix con la principal. La persona encargada suele perder algún código importante en la operación. Es la forma ideal de ocultar otros problemas y ganar tiempo en los desarrollos. Además, nadie te va a echar nada en cara porque la culpa ha sido de quien hizo el merge.
 
 En Git esta operación de merge se realiza en el momento que descargas el código del servidor. Lo hace cada uno en local:
@@ -120,7 +120,7 @@ $ git merge my-branch
 
 De esta forma, los administradores de VSTS tiran balones fuera. Que los merge los haga cada desarrollador. Que nos comamos nosotros el marrón. Y lo que es peor, al haber muchos commits, es muy fácil encontrar quien ha metido la pata en el código. Sigue la caza de brujas...
 
-##Es complicado
+## Es complicado
 No sé si os habéis percatado de que voy poniendo code-snippets a lo largo de todo este escrito. Está hecho a posta. Si hay una forma de manejar bien Git y sacarle todo el jugo es usar comandos de consola. Como si estuvieramos en el medievo. 
 
 Alguno me dirá que Visual Studio tiene soporte para Git. Pero realmente no tiene todos los comandos implementados. Sí la mayoría. Pero no todos. Para hacer ciertas operaciones al final tienes que abrir la consola. También hay gente que usa Source Tree. Una aplicación de Atlassian. Me niego en rotundo a instalarme más aplicaciones... Aunque la recomiende Martin Fowler.
@@ -162,7 +162,7 @@ git revert -m 1 <merge_commit_sha>
 
 Todos estos comandos hay que aprenderlos. Son demasiados. Demasiadas casuísticas. No es nada fácil gestionar Git.
 
-##No uses Git
+## No uses Git
 Da igual que no estés alineado con todo el mundo. Eso no es lo importante. No le digas a tus compañeros que Git es estupendo. No le propongas a la gente que migre. Deja de darle publicidad gratuita. En definitiva: No uses Git.
 
 Los desarrolladores de tu empresa lo agradecerán.
