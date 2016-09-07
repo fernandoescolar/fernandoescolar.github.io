@@ -1,12 +1,10 @@
 ---
 published: false
----
----
 ID: 08091600
 title: Quiero mi propio NuGet
 author: fernandoescolar
 post_date: 2016-09-08T09:12:11.000Z
-post_excerpt: ""
+post_excerpt: ''
 layout: post
 ---
 Algunos irónicamente pensarán: "¡Qué gran novedad!". Muchos se preguntarán si conozco servicios como MyGet. Unos pocos llegarán a la conclusión de que he perdido la cabeza. La inmensa mayoría ni siquiera llegará a leer este artículo. Y un par imaginarán que vivo en el pleistoceno del desarrollo. Pero nada más lejos...
