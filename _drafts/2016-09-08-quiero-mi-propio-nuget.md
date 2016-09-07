@@ -26,9 +26,47 @@ Intentando salvar los muebles encontré en internet la [web del proyecto](https:
 A partir de aquí dos caminos se abrian, pero debía elegir tan solo uno:
 
 ### El lado oscuro (o la forma fácil de conseguir las cosas)
+Aprovechando que conocemos la web con el código fuente: https://github.com/NuGet/NuGet.Server. Solo tendremos que seleccionar la rama estable de "release":
 
+![Nuget.Server "relase" branch]({{site.baseurl}}/public/uploads/2016/09/github-nuget-1.png)
+
+Después simplemente buscamos el enlace para descargar el código en forma de archivo zip:
+
+![GitHub download repository as zip]({{site.baseurl}}/public/uploads/2016/09/github-nuget-2.png)
+
+Una vez finalizada la descarga, descomprimimos el archivo.
 
 ### El sendero luminoso de la fuerza
+La forma compleja consiste en abrir un terminal, bash o consola. Ahí nos pelearemos con comandos Git:
+
+```bash
+# clonamos el repositorio en la carpeta nuget-server
+$ git clone https://github.com/NuGet/NuGet.Server.git nuget-server
+```
+
+Después elegir la branch de "release":
+
+```bash
+$ cd nuget-server
+$ git checkout release
+```
+
+### Configurando NuGet.Server
+Independientemente del camino elegido, llegaremos al punto de tener que buscar el archivo de la solución "NuGet.Server.sln" y abrirlo con Visual Studio.
+
+![Solution Explorer: NuGet.Server]({{site.baseurl}}/public/uploads/2016/09/vs-nuget-1.png)
+
+Allí nos dirigiremos al archivo "Web.config", dentro de la sección "appSettings", a una línea que añade la clave "apiKey":
+
+!["apiKey" in Web.config]({{site.baseurl}}/public/uploads/2016/09/vs-nuget-2.png)
+
+Aquí deberemos sustituir el valor por el que más rabia nos dé. En mi caso puse: "ton-to-el-que-lo-lea" :).
+
+Para terminar, publicaremos la solución en una WebApp de Azure. O si aun no tenemos una cuenta en la nube, la podremos publicar en forma de aplicación Web en cualquier IIS.
+
+Había conseguido reascirme de los errores pasados. Además con el bonus extra de elegir el sendero luminoso y tener que escribir en directo comandos en una ventana negra con texto blanquecino. ¡Brujería!
+
+![Logro desbloqueado: brujería]({{site.baseurl}}/public/uploads/2016/09/Fernando%2Bha%2Busado%2Bbrujer%C3%ADa.gif)
 
 
 
