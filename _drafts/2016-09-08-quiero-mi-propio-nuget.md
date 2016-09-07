@@ -68,7 +68,7 @@ Había conseguido reascirme de los errores pasados. Además con el bonus extra d
 
 ![Logro desbloqueado: brujería]({{site.baseurl}}/public/uploads/2016/09/Fernando+ha+usado+brujería.gif)
 
-## ¿Cómo me hago que Visual Studio use mi servidor NuGet?
+## ¿Cómo hago que Visual Studio use mi servidor NuGet?
 Está claro que de nada sirve un servidor si nadie consume los servicios de los que provee. Pero que no cunda el pánico. Simplemente tendremos que abrir Visual Studio y navegar por el menú "tools" > "NuGet Package Manager" > "Package Manager Settings":
 
 ![Package Manager Settings]({{site.baseurl}}/public/uploads/2016/09/vs-add-nuget-server-1.png)
@@ -109,4 +109,3 @@ Quien no tiene uno, es porque no quiere...
 
 
 ![Bricomanía - Briconsejo]({{site.baseurl}}/public/uploads/2016/09/CncpsOKXEAAZ7VC.jpg)
-
