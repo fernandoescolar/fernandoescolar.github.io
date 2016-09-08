@@ -16,8 +16,6 @@ Para poder migrar de TFVC a Git, actualmente conozco dos aplicaciones: Git-Tf y 
 
 >**Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master**
 
-
-
 ## Git-Tf
 
 ```bash
@@ -58,13 +56,19 @@ Cuando termine esta operación tendremos en nuestro repositorio de GIT todos los
 
 ## Git-Tfs
 
+```bash
 git tfs clone https://tfs.codeplex.com:443/tfs/Collection $/project/trunk . --branches=all --export --export-work-item-mapping="c:\workitems\mapping\file.txt"
+```
 
+```bash
 # Clean all the git-tfs metadatas from the commit messages
 git filter-branch -f --msg-filter "sed 's/^git-tfs-id:.*$//g'" -- --all
+```
 
 Then verify that all is ok and delete the folder .git/refs/original ( to delete old branches)
 
+```bash
 git remote add origin http://tfsserver:8080/tfs/defaultcollection/_git/MyGitProject
-
 git push --all origin
+```
+
