@@ -4,12 +4,13 @@ title: Quiero mi propio NuGet
 author: fernandoescolar
 post_date: {}
 layout: post
+published: true
 ---
 ¿Recuerdas la primera vez que viste a John McClane? Nada más llegar en avión, le llevaron a la torre Nakatomi. La idea era recoger a Holly y llevarla de vuelta a casa. En navidad. Todo era estupendo. Hasta Allen disfrutaba de un día tranquilo. Pero un maldito bastardo llamado Hans tuvo que venir a joder el cotarro.<!--break-->
 
 Esta misma situación nos la encontramos a diario en el mundo del desarrollo. Y generalmente terminamos llamando al John McClane de turno, para que nos solucione el fregao.
 
-La historia comienza con un cliente (Holly). Tiene una librería que se usa en muchos proyectos. Y esta librería o bien se copia a mano o bien se copia todo el código fuente de solución en solución (Hans). Nos encontramos en la tesitura de tener que añadir una funcionalidad nueva a esta librería (Proyecto Nakatomi). Y a la hora de actualizar todos los proyectos es cuando nos encontramos los problemas (Navidad). La única solución será usar un gestor de paquetes versionados que contengan esta librería. Pero no podemos usar el gestor de paquetes por defecto, ya que nos obligaría a publicar para todo el mundo este ensamblado. Así que decidimos montar un servidor de NuGet interno (John McClane).
+La historia comienza con un cliente (_Holly_). Tiene una librería que se usa en muchos proyectos. Y esta librería o bien se copia a mano o bien se copia todo el código fuente de solución en solución (_Hans_). Nos encontramos en la tesitura de tener que añadir una funcionalidad nueva a esta librería (_Proyecto Nakatomi_). Y a la hora de actualizar todos los proyectos es cuando nos encontramos los problemas (_Navidad_). La única solución será usar un gestor de paquetes versionados que contengan esta librería. Pero no podemos usar el gestor de paquetes por defecto, ya que nos obligaría a publicar para todo el mundo este ensamblado. Así que decidimos montar un servidor de NuGet interno (_John McClane_).
 
 Existen varias alternativas a esto, como servicios tipo MyGet. Pero entonces esto no sería una jungla de cristal...
 
@@ -34,7 +35,7 @@ Después buscamos el enlace para descargar el código en forma de archivo zip:
 Y una vez finalizada la descarga, descomprimimos el archivo.
 
 ### Usar el conducto de la ventilación
-El camino complejo pero seguro, consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git (Terroristas):
+El camino complejo pero seguro, consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git (_Terroristas_):
 
 ```bash
 # clonamos el repositorio en la carpeta nuget-server
