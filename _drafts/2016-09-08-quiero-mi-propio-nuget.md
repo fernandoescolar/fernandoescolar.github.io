@@ -58,15 +58,13 @@ Allí nos dirigiremos al archivo "Web.config", dentro de la sección "appSetting
 
 !["apiKey" in Web.config]({{site.baseurl}}/public/uploads/2016/09/vs-nuget-2.png)
 
-Aquí deberemos sustituir el valor por el que más rabia nos dé. En mi caso puse: "ton-to-el-que-lo-lea" :).
+Aquí deberemos sustituir el valor por el que más rabia nos dé. En mi caso puse: "yippee-ki-yay".
 
 Para terminar, publicaremos la solución en una WebApp de Azure. O si aun no tenemos una cuenta en la nube, la podremos publicar en forma de aplicación Web en cualquier IIS.
 
-Había conseguido reascirme de los errores pasados. Además con el bonus extra de elegir el sendero luminoso y tener que escribir en directo comandos en una ventana negra con texto blanquecino. ¡Brujería!
+Habíamos conseguido arreglar el día de navidad. Además con el bonus extra de tener que escribir en directo comandos en una ventana negra con texto blanquecino. ¡Brujería!
 
 ![Logro desbloqueado: brujería]({{site.baseurl}}/public/uploads/2016/09/Fernando+ha+usado+brujería.gif)
-
-("_¡yippee ki yay! Hijo de puta..._")
 
 ## ¿Cómo hago que Visual Studio use mi servidor NuGet?
 Está claro que de nada sirve un servidor si nadie consume los servicios de los que provee. Pero que no cunda el pánico. Simplemente tendremos que abrir Visual Studio y navegar por el menú "tools" > "NuGet Package Manager" > "Package Manager Settings":
@@ -81,8 +79,7 @@ Y pulsaremos el símbolo de "+" verde. Entonces nos aparecerá una línea nueva.
 
 ![Add package source]({{site.baseurl}}/public/uploads/2016/09/vs-add-nuget-server-3.png)
 
-En "Name" pondremos el nombre con el que queremos que aparezca nuestro servidor de NuGet. Y En "Source" pondremos la url de nuestro servidor de NuGet con un path a "/nuget".
-Entonces pulsaremos el botón de “Update” y después al botón de "OK".
+En "Name" pondremos el nombre con el que queremos que aparezca nuestro servidor de NuGet. Y En "Source" pondremos la url de nuestro servidor de NuGet con un path a "/nuget". Entonces pulsaremos el botón de “Update” y después al botón de "OK".
 
 ## ¿Cómo publico un paquete en mi servidor NuGet?
 Si configuramos nuestro servidor de NuGet en Visual Studio, pero no tenemos ningún paquete, pierde sentido todo este escrito. Pero podéis estar tranquilos. Publicar un paquete en nuestro servidor de NuGet es solo un comando:
@@ -95,9 +92,9 @@ Donde:
 
 -**My NuGet Package**: es la ruta a nuestro paquete de NuGet. Por ejemplo: “My.Package.nupkg”.
 
--**My NuGet Server**: es la url de nuestro servidor de NuGet. Por ejemplo: "http://nuget.mydomain.com".
+-**My NuGet Server**: es la url de nuestro servidor de NuGet. Por ejemplo: "http://nuget.yakatomi.com".
 
--**My NuGet API Key**: es el token que escribimos en las configuraciones del portal. En el archivo web.config. Por ejemplo: "ton-to-el-que-lo-lea". (os la he vuelto a colar :))
+-**My NuGet API Key**: es el token que escribimos en las configuraciones del portal. En el archivo web.config. Por ejemplo: "yippee-ki-yay".
 
 ## Bonus: almacenar los paquetes en una Storage Account de Azure
 No os voy a desvelar todas los detalles, pero yo me fijaría en dos archivos del código fuente que os habéis descargado: NuGet.Server.Infrastructure.IServerPackageStore y NuGet.Server.IServiceResolver.
