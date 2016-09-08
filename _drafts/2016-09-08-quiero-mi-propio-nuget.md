@@ -3,39 +3,39 @@ published: false
 ID: 08091600
 title: Quiero mi propio NuGet
 author: fernandoescolar
-post_date: 2016-09-08T09:12:11.000Z
-post_excerpt: ''
+post_date: {}
 layout: post
 ---
-Algunos irónicamente pensarán: "¡Qué gran novedad!". Muchos se preguntarán si conozco servicios como MyGet. Unos pocos llegarán a la conclusión de que he perdido la cabeza. La inmensa mayoría ni siquiera llegará a leer este artículo. Y un par imaginarán que vivo en el pleistoceno del desarrollo. Pero nada más lejos...
-<!--break-->
+¿Recuerdas la primera vez que viste a John McClane? Nada más llegar en avión, le llevaron a la torre Nakatomi. La idea era recoger a Holly y llevarla de vuelta a casa. En navidad. Todo era estupendo. Hasta Allen disfrutaba de un día tranquilo. Pero un maldito bastardo llamado Hans tuvo que venir a joder el cotarro.<!--break-->
 
-El asunto que hoy nos ocupa viene desencadenado por un problema en un cliente. Tenían una serie de librerías que comparten en varios proyectos. La forma de reutilizarlas es muy sencilla: Por una lado existen copias de los archivos dll en sus proyectos, y en ocasiones se ponía el código fuente de la librería. ¿Qué podría fallar? 
+Esta misma situación nos la encontramos a diario en el mundo del desarrollo. Y generalmente terminamos llamando al John McClane de turno, para que nos solucione el fregao.
 
-Las última semanas hemos estado realizando cambios en sus librerías "core". Esas que comparten con los proyectos. Imaginad la difícil tesitura. Estaba claro entonces. Lo que necesitaban era un servidor interno de NuGet. De esta forma podrían compartir esas librerías comunes, a la vez que mantendrían el control de versión de las mismas.
+La historia comienza con un cliente (Holly). Tiene una librería que se usa en muchos proyectos. Y esta librería o bien se copia a mano o bien se copia todo el código fuente de solución en solución (Hans). Nos encontramos en la tesitura de tener que añadir una funcionalidad nueva a esta librería (Proyecto Nakatomi). Y a la hora de actualizar todos los proyectos es cuando nos encontramos los problemas (Navidad). La única solución será usar un gestor de paquetes versionados que contengan esta librería. Pero no podemos usar el gestor de paquetes por defecto, ya que nos obligaría a publicar para todo el mundo este ensamblado. Así que decidimos montar un servidor de NuGet interno (John McClane).
+
+Existen varias alternativas a esto, como servicios tipo MyGet. Pero entonces este escrito no tendía sentido alguno.
 
 ## ¿Cómo me hago un NuGet.Server?
-En un tiempo remoto me vi en esta misma encrucijada. Recordaba los pasos. Era muy sencillo: Creas una aplicación Web vacía con Visual Studio. Buscas el paquete de NuGet llamado "NuGet.Server". Lo instalas. Cambias un par de parámetros de configuración. Y a publicar.
+No es la primera vez que me encuentro en disposición de ~~hacer un John McClane~~ instalar un servidor de NuGet. Recuerdo bien los pasos. Es muy sencillo: Creas una aplicación Web vacía con Visual Studio. Buscas el paquete de NuGet llamado "NuGet.Server". Lo instalas. Cambias un par de parámetros de configuración. Y a publicar.
 
-Conocedor de los pasos, envalentonado, me dispuse a ejecutarlos. Al terminar, la solución ni compilaba. Y para mayor de mis vergüenzas el cliente estaba presente cuanto mi sonrisa se esfumó en virtud de una expresión de perplejidad.
+Así que me pongo manos a la obra. Completo todos los pasos. Compilo. Falla (se rompen las ventanas dejando los trozos de cristal a mi lado, y yo descalzo).
 
-Intentando salvar los muebles encontré en internet la [web del proyecto](https://github.com/NuGet/NuGet.Server "NuGet.Server on GitHub"). Ahora hospedado en github y bajo el manto protector del equipo de Open Source de Microsoft.
+Buscando la solución no tardamos en encontrar la [web del proyecto](https://github.com/NuGet/NuGet.Server "NuGet.Server on GitHub"). Ahora hospedado en github y bajo el manto protector del equipo de Open Source de Microsoft ("_Ahora tengo una ametralladora, Jo Jo Jo_").
 
-A partir de aquí dos caminos se abrian. Pero debía elegir tan solo uno:
+A partir de aquí dos caminos se abren. Pero solo se puede elegir uno:
 
-### El lado oscuro (o la forma fácil de conseguir las cosas)
-Aprovechando que conocemos la web con el código fuente: https://github.com/NuGet/NuGet.Server. Solo tendremos que seleccionar la rama estable de "release":
+### Bajar por el hueco de los ascensores
+Aprovechando que conocemos la web con el código fuente: https://github.com/NuGet/NuGet.Server. Solo tenemos que seleccionar la rama estable de "release":
 
 ![Nuget.Server "relase" branch]({{site.baseurl}}/public/uploads/2016/09/github-nuget-1.png)
 
-Después simplemente buscamos el enlace para descargar el código en forma de archivo zip:
+Después buscamos el enlace para descargar el código en forma de archivo zip:
 
 ![GitHub download repository as zip]({{site.baseurl}}/public/uploads/2016/09/github-nuget-2.png)
 
-Una vez finalizada la descarga, descomprimimos el archivo.
+Y una vez finalizada la descarga, descomprimimos el archivo.
 
-### El sendero luminoso de la fuerza
-La forma compleja consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git:
+### Usar el conducto de la ventilación
+La forma compleja pero seguro consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git:
 
 ```bash
 # clonamos el repositorio en la carpeta nuget-server
@@ -50,7 +50,7 @@ $ git checkout release
 ```
 
 ### Configurando NuGet.Server
-Independientemente del camino elegido, llegaremos al punto de tener que buscar el archivo de la solución "NuGet.Server.sln" y abrirlo con Visual Studio.
+Independientemente del camino elegido, llegamos al punto de tener que buscar el archivo de la solución "NuGet.Server.sln" y abrirlo con Visual Studio.
 
 ![Solution Explorer: NuGet.Server]({{site.baseurl}}/public/uploads/2016/09/vs-nuget-1.png)
 
@@ -65,6 +65,8 @@ Para terminar, publicaremos la solución en una WebApp de Azure. O si aun no ten
 Había conseguido reascirme de los errores pasados. Además con el bonus extra de elegir el sendero luminoso y tener que escribir en directo comandos en una ventana negra con texto blanquecino. ¡Brujería!
 
 ![Logro desbloqueado: brujería]({{site.baseurl}}/public/uploads/2016/09/Fernando+ha+usado+brujería.gif)
+
+("_¡yippee ki yay! Hijo de puta..._")
 
 ## ¿Cómo hago que Visual Studio use mi servidor NuGet?
 Está claro que de nada sirve un servidor si nadie consume los servicios de los que provee. Pero que no cunda el pánico. Simplemente tendremos que abrir Visual Studio y navegar por el menú "tools" > "NuGet Package Manager" > "Package Manager Settings":
