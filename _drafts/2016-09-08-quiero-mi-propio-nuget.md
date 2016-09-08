@@ -92,7 +92,7 @@ Donde:
 
 -**My NuGet Package**: es la ruta a nuestro paquete de NuGet. Por ejemplo: “My.Package.nupkg”.
 
--**My NuGet Server**: es la url de nuestro servidor de NuGet. Por ejemplo: "http://nuget.yakatomi.com".
+-**My NuGet Server**: es la url de nuestro servidor de NuGet. Por ejemplo: "http://nuget.nakatomi.com".
 
 -**My NuGet API Key**: es el token que escribimos en las configuraciones del portal. En el archivo web.config. Por ejemplo: "yippee-ki-yay".
 
