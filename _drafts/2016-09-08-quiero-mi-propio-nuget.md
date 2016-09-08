@@ -12,7 +12,7 @@ Esta misma situación nos la encontramos a diario en el mundo del desarrollo. Y 
 
 La historia comienza con un cliente (Holly). Tiene una librería que se usa en muchos proyectos. Y esta librería o bien se copia a mano o bien se copia todo el código fuente de solución en solución (Hans). Nos encontramos en la tesitura de tener que añadir una funcionalidad nueva a esta librería (Proyecto Nakatomi). Y a la hora de actualizar todos los proyectos es cuando nos encontramos los problemas (Navidad). La única solución será usar un gestor de paquetes versionados que contengan esta librería. Pero no podemos usar el gestor de paquetes por defecto, ya que nos obligaría a publicar para todo el mundo este ensamblado. Así que decidimos montar un servidor de NuGet interno (John McClane).
 
-Existen varias alternativas a esto, como servicios tipo MyGet. Pero entonces este escrito no tendía sentido alguno.
+Existen varias alternativas a esto, como servicios tipo MyGet. Pero entonces esto no sería una jungla de cristal...
 
 ## ¿Cómo me hago un NuGet.Server?
 No es la primera vez que me encuentro en disposición de ~~hacer un John McClane~~ instalar un servidor de NuGet. Recuerdo bien los pasos. Es muy sencillo: Creas una aplicación Web vacía con Visual Studio. Buscas el paquete de NuGet llamado "NuGet.Server". Lo instalas. Cambias un par de parámetros de configuración. Y a publicar.
