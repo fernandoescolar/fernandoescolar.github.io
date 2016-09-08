@@ -1,9 +1,9 @@
 ---
 published: false
 ID: 15091600
-title: Por qué odio Git
+title: 'VSTS: Migrar TFVC a Git'
 author: fernandoescolar
-post_date: 2016-09-15T10:01:22.000Z
+post_date: {}
 layout: post
 ---
 El (bendito) problema del desarrollo hoy en día es que existen multitud de herramientas para hacer lo mismo. Cuando quiero migrar de TFVC a Git, nunca recuerdo cual era el bueno: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambos. Y ¿cómo eran los dichosos comandos?<!--break-->
