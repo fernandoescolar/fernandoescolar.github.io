@@ -1,5 +1,4 @@
 ---
-published: false
 ID: 08091600
 title: Quiero mi propio NuGet
 author: fernandoescolar
