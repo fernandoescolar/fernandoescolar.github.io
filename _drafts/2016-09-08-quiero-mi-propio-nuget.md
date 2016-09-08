@@ -79,7 +79,7 @@ Y pulsaremos el símbolo de "+" verde. Entonces nos aparecerá una línea nueva.
 
 ![Add package source]({{site.baseurl}}/public/uploads/2016/09/vs-add-nuget-server-3.png)
 
-En "Name" pondremos el nombre con el que queremos que aparezca nuestro servidor de NuGet. Y En "Source" pondremos la url de nuestro servidor de NuGet con un path a "/nuget". Entonces pulsaremos el botón de “Update” y después al botón de "OK".
+En "Name" pondremos el nombre con el que queremos que aparezca nuestro servidor de NuGet. Y En "Source" pondremos la url de nuestro servidor de NuGet con un path a "/nuget". Entonces pulsaremos el botón de "Update" y después al botón de "OK".
 
 ## ¿Cómo publico un paquete en mi servidor NuGet?
 Si configuramos nuestro servidor de NuGet en Visual Studio, pero no tenemos ningún paquete, pierde sentido todo este escrito. Pero podéis estar tranquilos. Publicar un paquete en nuestro servidor de NuGet es solo un comando:
