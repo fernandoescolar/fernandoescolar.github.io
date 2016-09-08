@@ -13,6 +13,7 @@ Hace no mucho, [El Bruno](https://twitter.com/elbruno "El Bruno") me invitó a p
 Para poder migrar de TFVC a Git, actualmente conozco dos aplicaciones: Git-Tf y Git-Tfs.
 
 > You Can't Write Perfect Software. Did that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software.
+
 >**Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master**
 
 
