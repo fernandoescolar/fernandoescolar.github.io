@@ -90,7 +90,7 @@ Si configuramos nuestro servidor de NuGet en Visual Studio, pero no tenemos ning
 
 Donde:
 
--**My NuGet Package**: es la ruta a nuestro paquete de NuGet. Por ejemplo: “My.Package.nupkg”.
+-**My NuGet Package**: es la ruta a nuestro paquete de NuGet. Por ejemplo: " AGoodDayToDieHard.nupkg".
 
 -**My NuGet Server**: es la url de nuestro servidor de NuGet. Por ejemplo: "http://nuget.nakatomi.com".
 
