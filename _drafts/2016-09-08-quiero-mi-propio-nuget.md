@@ -35,14 +35,14 @@ Después buscamos el enlace para descargar el código en forma de archivo zip:
 Y una vez finalizada la descarga, descomprimimos el archivo.
 
 ### Usar el conducto de la ventilación
-La forma compleja pero seguro consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git:
+El camino complejo pero seguro, consiste en abrir un terminal, bash o consola. Ahí nos _pelearemos_ con comandos Git (Terroristas):
 
 ```bash
 # clonamos el repositorio en la carpeta nuget-server
 $ git clone https://github.com/NuGet/NuGet.Server.git nuget-server
 ```
 
-Después elegir la branch de "release":
+Después elegimos la branch de "release":
 
 ```bash
 $ cd nuget-server
