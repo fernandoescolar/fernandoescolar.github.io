@@ -6,69 +6,127 @@ author: fernandoescolar
 post_date: {}
 layout: post
 ---
-El (bendito) problema de hoy en día es que existen multitud de opciones. Multitud de herramientas para hacer lo mismo. Nos encontramos en una permanente disyuntiva. Cerveza negra o rubia. Cristiano Ronaldo o Messi. [Allen o Johansson](http://www.fangazing.com/berto/algo_para_pensar_01__la_disyuntiva_allen__johansson/43&style=flat "Disyuntiva Allen-Johansson"). Cuando queremos migrar de TFVC a Git, es lo mismo. Nunca recuerdo cual era el bueno: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambos. Y ¿cómo eran los dichosos comandos?<!--break-->
+Hace no mucho, [El Bruno](https://twitter.com/elbruno "El Bruno") me invitó a participar en [uno de sus conocidos podcast](https://elbruno.com/2016/08/30/podcast-por-que-odio-git/ "Podcast: Por qué odio Git"). En este caso la temática trataba de un artículo que podréis leer en esta misma Web: [Por qué odio Git](http://fernandoescolar.github.io/2016/02/16/por-que-odio-git/ "Artículo: por qué odio Git"). Dejando de lado lo agradecido que estoy por esta oportunidad, dentro de la conversación, me preguntó si me habían pedido migrar a Git muchos clientes. La verdad es que no. Pero me dió una buena idea sobre la que escribir.<!--break-->
 
-Hace no mucho, [El Bruno](https://twitter.com/elbruno "El Bruno") me invitó a participar en [uno de sus conocidos podcast](https://elbruno.com/2016/08/30/podcast-por-que-odio-git/ "Podcast: Por qué odio Git"). En este caso la temática trataba de un artículo que podréis leer en esta misma Web: [Por qué odio Git](http://fernandoescolar.github.io/2016/02/16/por-que-odio-git/ "Artículo: por qué odio Git"). Dejando de lado lo agradecido que estoy por ello, dentro de la conversación, me preguntó si me habían pedido migrar a Git muchos clientes.
+![migrate to git meme]({{site.baseurl}}/public/uploads/2016/09/meme-migrate.jpg)
 
-Para poder migrar de TFVC a Git, actualmente conozco dos aplicaciones: Git-Tf y Git-Tfs.
+Y es que la mejor forma de migrar de TFVC a Git, es no migrar. Si usamos directamente Git nos quitamos todos los problemas. 
+
+Pero si para ti esto es imposible. Si ya tienes un proyecto en Visual Studio Team Services. Si tienes un histórico, una trazabilidad. Si ~~te confundiste~~ elegiste TFVC como repositorio. Si ya estás harto de TFVC. O si eres un fanboy de Git. Si quieres cambiar el repositorio, pero no quieres perder nada. Tengo una buena noticia para ti: ¡sí se puede!
+
+Lo primero que tenemos que hacer es crear un nuevo repositorio de código fuente dentro del proyecto. Una opción que encontraremos en la sección de código del portal de VSTS:
+
+![nuevo repositorio]({{site.baseurl}}/public/uploads/2016/09/migrate-git-1.png)
+
+Pero esta vez hay que elegir Git. Y ponerle un nombre bonito:
+
+![crear nuevo repositorio Git]({{site.baseurl}}/public/uploads/2016/09/migrate-git-2.png)
+
+Una opción de _hacker_ es activar el checkbox de crear el archivo "readme.md". Esto es un archivo con el leeme del proyecto. Muy útil si pensais pasarlo a GitHub en algún momento.
+
+Al terminar de crear el repositorio, os aparecerá una pantalla donde encontrareis la url del mismo. Además de una opción para crear unas credenciales para poder conectaros:
+
+![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png)
+
+Recordad guardaros tanto la url como las credenciales, que a continuación serán necesarias.
+
+El problema de hoy en día es que existen multitud de opciones. Multitud de herramientas para hacer lo mismo. Nos encontramos en una permanente disyuntiva. Cerveza negra o rubia. Cristiano Ronaldo o Messi. [Allen o Johansson](http://www.fangazing.com/berto/algo_para_pensar_01__la_disyuntiva_allen__johansson/43&style=flat "Disyuntiva Allen-Johansson"). Cuando queremos migrar de TFVC a Git, es lo mismo. Nunca recuerdo cual era la aplicación buena: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambas. Y ¿cómo eran los dichosos comandos?
+
+Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat". QUe será la ruta donde ejecutemos los comandos.
 
 > You Can't Write Perfect Software. Did that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software.
 
->**Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master**
+> **Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master**
 
 ## Git-Tf
+Git-Tf es una herramienta que podremos ejecutar con comandos de consola. Está escrita en java, por lo que es compatible con sistemas operativos windows, linux o macos. Es muy simple usarla. Si queremos instalarla tenemos la opción de usar chocolatey:
 
 ```bash
 choco install git-tf -y
 ```
 
-O bien descargándola de su web: https://gittf.codeplex.com/.
+O bien descargarla de su [web](https://gittf.codeplex.com/ "Git-Tf").
  
-Una vez instalado, abriremos una consola y crearemos un directorio de trabajo, por ejemplo "c:\migrations" y en esa ruta ejecutaremos el siguiente comando:
+Una vez lo hemos hecho, abriremos una consola. Y ejecutaremos un comando para descargarnos nuestro código fuente original. Git-Tf lo transformará a formato de repositorio Git:
  
 ```bash
-C:\migrations> git-tf clone "http://<TFSServerName>:<Port>/tfs/<CollectionName>" "$/<TeamProjectName>/<Path>" –deep
-```
- 
-Entonces nos descargará todo el código fuente con su historial desde el TFS.
- 
-Después tendremos que crear un nuevo repositorio de código fuente GIT en TFS. Copiaremos la URL del mismo que tendrá un formato del estilo:
-
-```bash
-http://<TFSServerName>:<Port>/tfs/<CollectionName>/_git/<Repository>
+C:\wat> git-tf clone "http://<YourName>.visualstudio.com/DefaultCollection/" "$/<TeamProjectName>/<Path>" –deep
 ```
 
-Abriremos otra consola (o el bash de las herramientas de "git for Windows"), nos situaremos en la carpeta "c:\migrations" y buscaremos una subcarpeta con el nombre del proyecto que no hemos descargado de TFS anteriormente. Situaremos la consola en esa carpeta y ejecutaremos el siguiente comando:
+Donde:
+- **YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
+- **TeamProjectName**: es el nombre de tu proyecto.
+- **Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
+
+Esto nos descargará todo el código fuente con su historial desde el TFS. Desde nuestro repositorio TFVC.
+ 
+Como anteriormente ya creamos el repositorio de Git, copiaremos la url del mismo que tendrá un formato del estilo:
 
 ```bash
-C:\migrations\<Project>> git remote add "http://<TFSServerName>:<Port>/tfs/<CollectionName>/_git/<Repository>"
+https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>
+```
+
+Abriremos otra consola, nos situaremos en la carpeta "c:\wat" y buscaremos una subcarpeta con el nombre del proyecto que no hemos descargado de TFS anteriormente. Situaremos la consola en esa carpeta y ejecutaremos el siguiente comando:
+
+```bash
+C:\wat> cd <Project>
+C:\wat\<Project>> git remote add origin "https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>"
 ```
  
 A continuación, para iniciar la subida al repositorio git escribiremos el siguiente comando:
 
 ```bash
-C:\migrations\<Project>> git push origin master
+C:\wat\<Project>> git push origin master
 ```
 
 Nos pedirá el usuario y la contraseña para realizar la subida. Los introducimos y esperamos a que suba todos los datos.
  
-Cuando termine esta operación tendremos en nuestro repositorio de GIT todos los changesets que teníamos en TFS y ya podremos trabajar con él.
+Cuando termine esta operación tendremos en nuestro repositorio de GIT todos los changesets que teníamos en TFVC y ya podremos trabajar con él.
 
 ## Git-Tfs
+Una alternativa a Git-Tf, es Git-TFS. Es una herramienta semejante. Aunque a mi me gusta más. Está escrita en c#. Luego si no la migran a core, solo se podrá usar en sistemas windows. Para instalarla podemos seguir la misma mecánica. Podemos usar chocolatey:
 
 ```bash
-git tfs clone https://tfs.codeplex.com:443/tfs/Collection $/project/trunk . --branches=all --export --export-work-item-mapping="c:\workitems\mapping\file.txt"
+choco install gittfs -y
 ```
+
+O dirigirnos a su [web](https://github.com/git-tfs/git-tfs "Git-Tfs"), a [la sección de releases](https://github.com/git-tfs/git-tfs/releases "Git-Tfs Releases").
+
+Los comandos que tendremos que utilizar son muy parecidos. Aunque en este caso usaremos algún parámetro más. Lo primero clonaremos el repositorio de TFVC original y cambiaremos su formato a Git:
 
 ```bash
-# Clean all the git-tfs metadatas from the commit messages
-git filter-branch -f --msg-filter "sed 's/^git-tfs-id:.*$//g'" -- --all
+c:\wat> git tfs clone "http://<YourName>.visualstudio.com/DefaultCollection/" "$/<TeamProjectName>/<Path>" . --branches=all --export --export-work-item-mapping="c:\wat\mapping\file.txt"
 ```
+Donde:
+- **YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
+- **TeamProjectName**: es el nombre de tu proyecto.
+- **Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
 
-Then verify that all is ok and delete the folder .git/refs/original ( to delete old branches)
+La parte buena de Git-Tfs es que es capaz de copiar también las branches. Además tiene un sistema de mapping de workitems. Muy útil si en lugar de migrar dentro de la misma cuenta de VSTS, lo estamos haciendo a otra. O incluso a un TFS on premises.
+
+La contra es que, al ser una herramienta más completa, también se toma ciertas libertades. Una de ellas es cambiar los mensajes de TFVC, con un extra de metadatos. Así que el segundo comando que ejecutaremos limpiará esos mensajes:
 
 ```bash
-git remote add origin http://tfsserver:8080/tfs/defaultcollection/_git/MyGitProject
-git push --all origin
+C:\wat> cd <Project>
+C:\wat\<Project>> git filter-branch -f --msg-filter "sed 's/^git-tfs-id:.*$//g'" -- --all
 ```
 
+Después verficaremos que todo está correcto y borraremos la siguiente carpeta: "C:\wat\<Project>\.git\refs\original". Esto borrará branches antiguas.
+
+Para terminar, terminaremos incluyendo el repositorio de Git que creamos al principio y enviando todas las modificaciones:
+
+```bash
+C:\wat\<Project>> git remote add origin https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>
+C:\wat\<Project>> git push --all origin
+```
+
+Al finalizar, ya tendremos nuestro repositorio Git en VSTS listo para usar. Además conservará todos los changesets que realizamos en el anterior repositorio.
+
+## Conclusiones
+El coste de migrar a Git es relativamente pequeño. Pero el coste de que todos los desarrolladores de un equipo aprendan Git, es algo mayor. A mi personalmente el uso de Git me ha ayudado.
+
+Si quieres realizar una migración rápida. Si no tienes/quieres migrar branches. Git-Tf es tu herramienta. Pero hay que tener en cuenta que no tiene versiones nuevas desde 2013.
+
+Si quieres realizar una migración con todas las ramas. Si quieres luego seguir gestionando esta compatibilidad entre un TFVC y un Git. Git-Tfs es lo que deberías usar. Es muy potente. Mucho más de lo que se expone en este artículo. Pero también más complicada.
+
+Y si os preguntais si estos comandos solo valen para una misma cuenta de Visual Studio Team Services, os puedo decir que no es así. Vale para TFS también. Además, no tiene por qué ser ni el mismo TFS ni VSTS el que recibe los cambios. Puedes recogerlos de una versión on-premises con TFVC y migrarlos a un repositorio Git de una cuenta de VSTS en la nube. Pero para esta última operación, os recomiendo que useis Git-Tfs.
