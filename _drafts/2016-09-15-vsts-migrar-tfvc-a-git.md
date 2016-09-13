@@ -66,7 +66,7 @@ Como anteriormente ya creamos el repositorio de Git, copiaremos la url del mismo
 https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>
 ```
 
-En la consola, nos situaremos en la carpeta "c:\wat". Dentro de esta buscaremos una subcarpeta con el nombre del proyecto que no hemos descargado de TFVC anteriormente. Situaremos la consola en esa carpeta y ejecutaremos añadiremos el repositorio de Git como un nuevo "remote":
+En la consola, nos situaremos en la carpeta "c:\wat". Dentro de esta buscaremos una subcarpeta con el nombre del proyecto que hemos descargado de TFVC anteriormente. Situaremos la consola en esa carpeta y ejecutaremos añadiremos el repositorio de Git como un nuevo "remote":
 
 ```bash
 C:\wat> cd <Project>
