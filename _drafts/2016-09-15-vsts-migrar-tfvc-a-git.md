@@ -113,7 +113,7 @@ C:\wat\<Project>> git filter-branch -f --msg-filter "sed 's/^git-tfs-id:.*$//g'"
 
 Después verficaremos que todo está correcto y borraremos la siguiente carpeta: "C:\wat\<Project>\.git\refs\original". Esto borrará branches antiguas.
 
-Para terminar, terminaremos incluyendo el repositorio de Git que creamos al principio y enviando todas las modificaciones:
+Para terminar, incluiremos el repositorio de Git que creamos al principio y enviaremos todas las modificaciones:
 
 ```bash
 C:\wat\<Project>> git remote add origin https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>
