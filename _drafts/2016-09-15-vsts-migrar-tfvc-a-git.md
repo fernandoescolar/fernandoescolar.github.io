@@ -81,7 +81,7 @@ C:\wat\<Project>> git push origin master
 
 Nos pedirá el usuario y la contraseña para realizar la subida. Los introducimos y esperamos a que suba todos los datos.
  
-Cuando termine esta operación tendremos en nuestro repositorio de GIT todos los changesets que teníamos en TFVC y ya podremos trabajar con él.
+Cuando termine esta operación tendremos en nuestro repositorio de Git todos los changesets que teníamos en TFVC y ya podremos trabajar con él.
 
 ## Git-Tfs
 Una alternativa a Git-Tf, es Git-Tfs. Es una herramienta semejante. Aunque a mi me gusta más. Está escrita en c#. Luego si no la migran a core, solo se podrá usar en sistemas windows. Para instalarla podemos seguir la misma mecánica. O usar chocolatey:
