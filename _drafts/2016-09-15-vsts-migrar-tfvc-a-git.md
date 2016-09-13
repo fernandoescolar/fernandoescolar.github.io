@@ -32,14 +32,14 @@ Recordad guardaros tanto la url como las credenciales, que a continuación será
 
 El problema de hoy en día es que existen multitud de opciones. Multitud de herramientas para hacer lo mismo. Nos encontramos en una permanente disyuntiva. Cerveza negra o rubia. Cristiano Ronaldo o Messi. [Allen o Johansson](http://www.fangazing.com/berto/algo_para_pensar_01__la_disyuntiva_allen__johansson/43&style=flat "Disyuntiva Allen-Johansson"). Cuando queremos migrar de TFVC a Git, es lo mismo. Nunca recuerdo cual era la aplicación buena: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambas. Y ¿cómo eran los dichosos comandos?
 
-Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat". QUe será la ruta donde ejecutemos los comandos.
+Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat". Que será la ruta desde donde lanzaremos las instrucciones.
 
 > You Can't Write Perfect Software. Did that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software.
 
 > **Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master**
 
 ## Git-Tf
-Git-Tf es una herramienta que podremos ejecutar con comandos de consola. Está escrita en java, por lo que es compatible con sistemas operativos windows, linux o macos. Es muy simple usarla. Si queremos instalarla tenemos la opción de usar chocolatey:
+Git-Tf es la primera herramienta que conocí. Por eso la menciono primero. Está escrita en java. Esto la hace compatible con sistemas operativos windows, linux o macos. Es muy simple usarla. Si queremos instalarla tenemos la opción de usar chocolatey:
 
 ```bash
 choco install git-tf -y
@@ -66,14 +66,14 @@ Como anteriormente ya creamos el repositorio de Git, copiaremos la url del mismo
 https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>
 ```
 
-Abriremos otra consola, nos situaremos en la carpeta "c:\wat" y buscaremos una subcarpeta con el nombre del proyecto que no hemos descargado de TFS anteriormente. Situaremos la consola en esa carpeta y ejecutaremos el siguiente comando:
+En la consola, nos situaremos en la carpeta "c:\wat". Dentro de esta buscaremos una subcarpeta con el nombre del proyecto que no hemos descargado de TFVC anteriormente. Situaremos la consola en esa carpeta y ejecutaremos añadiremos el repositorio de Git como un nuevo "remote":
 
 ```bash
 C:\wat> cd <Project>
 C:\wat\<Project>> git remote add origin "https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>"
 ```
  
-A continuación, para iniciar la subida al repositorio git escribiremos el siguiente comando:
+Lo que habremos hecho es relacionar nuestro repositorio local, el que acabamos de clonar desde TFVC, con el repositorio Git. A continuación, para iniciar la subida al repositorio Git realizaremos un "push":
 
 ```bash
 C:\wat\<Project>> git push origin master
@@ -84,7 +84,7 @@ Nos pedirá el usuario y la contraseña para realizar la subida. Los introducimo
 Cuando termine esta operación tendremos en nuestro repositorio de GIT todos los changesets que teníamos en TFVC y ya podremos trabajar con él.
 
 ## Git-Tfs
-Una alternativa a Git-Tf, es Git-TFS. Es una herramienta semejante. Aunque a mi me gusta más. Está escrita en c#. Luego si no la migran a core, solo se podrá usar en sistemas windows. Para instalarla podemos seguir la misma mecánica. Podemos usar chocolatey:
+Una alternativa a Git-Tf, es Git-Tfs. Es una herramienta semejante. Aunque a mi me gusta más. Está escrita en c#. Luego si no la migran a core, solo se podrá usar en sistemas windows. Para instalarla podemos seguir la misma mecánica. O usar chocolatey:
 
 ```bash
 choco install gittfs -y
