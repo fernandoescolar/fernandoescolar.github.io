@@ -73,7 +73,7 @@ C:\wat> cd <Project>
 C:\wat\<Project>> git remote add origin "https://<YourName>.visualstudio.com/DefaultCollection/<TeamProjectName>/_git/<GitName>"
 ```
  
-Lo que habremos hecho es relacionar nuestro repositorio local, el que acabamos de clonar desde TFVC, con el repositorio Git. A continuación, para iniciar la subida al repositorio Git realizaremos un "push":
+Lo que habremos hecho es relacionar nuestro repositorio local, el que acabamos de clonar desde TFVC, con el repositorio Git. A continuación, para iniciar la subida al repositorio Git, realizaremos un "push":
 
 ```bash
 C:\wat\<Project>> git push origin master
