@@ -32,7 +32,7 @@ Recordad guardaros tanto la url como las credenciales, que a continuación será
 
 El problema de hoy en día es que existen multitud de opciones. Multitud de herramientas para hacer lo mismo. Nos encontramos en una permanente disyuntiva. Cerveza negra o rubia. Cristiano Ronaldo o Messi. [Allen o Johansson](http://www.fangazing.com/berto/algo_para_pensar_01__la_disyuntiva_allen__johansson/43&style=flat "Disyuntiva Allen-Johansson"). Cuando queremos migrar de TFVC a Git, es lo mismo. Nunca recuerdo cual era la aplicación buena: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambas. Y ¿cómo eran los dichosos comandos?
 
-Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat". Que será la ruta desde donde lanzaremos las instrucciones.
+Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat", que será la ruta desde donde lanzaremos las instrucciones.
 
 > You Can't Write Perfect Software. Did that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software.
 
