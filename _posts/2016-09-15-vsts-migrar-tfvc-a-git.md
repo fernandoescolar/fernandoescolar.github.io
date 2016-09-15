@@ -25,7 +25,9 @@ Una opción de _hacker_ es activar el checkbox de crear el archivo "readme.md". 
 
 Al terminar de crear el repositorio, os aparecerá una pantalla donde encontrareis la url del mismo. Además de una opción para crear unas credenciales para poder conectaros:
 
-<div style="text-align:center"> ![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png) </div>
+<div style="text-align:center"> 
+![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png) 
+</div>
 
 Recordad guardaros tanto la url como las credenciales, que a continuación serán necesarias.
 
