@@ -53,9 +53,9 @@ C:\wat> git-tf clone "http://<YourName>.visualstudio.com/DefaultCollection/" "$/
 ```
 
 Donde:
-- **YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
-- **TeamProjectName**: es el nombre de tu proyecto.
-- **Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
+-**YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
+-**TeamProjectName**: es el nombre de tu proyecto.
+-**Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
 
 Esto nos descargará todo el código fuente con su historial desde el TFS. Desde nuestro repositorio TFVC.
  
@@ -97,9 +97,9 @@ Los comandos que tendremos que utilizar son muy parecidos. Aunque en este caso u
 c:\wat> git tfs clone "http://<YourName>.visualstudio.com/DefaultCollection/" "$/<TeamProjectName>/<Path>" . --branches=all --export --export-work-item-mapping="c:\wat\mapping\file.txt"
 ```
 Donde:
-- **YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
-- **TeamProjectName**: es el nombre de tu proyecto.
-- **Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
+-**YourName**: es el nombre de tu cuenta de Visual Studio Team Services.
+-**TeamProjectName**: es el nombre de tu proyecto.
+-**Path**: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
 
 La parte buena de Git-Tfs es que es capaz de copiar también las branches. Además tiene un sistema de mapping de workitems. Muy útil si en lugar de migrar dentro de la misma cuenta de VSTS, lo estamos haciendo a otra. O incluso a un TFS on premises.
 
