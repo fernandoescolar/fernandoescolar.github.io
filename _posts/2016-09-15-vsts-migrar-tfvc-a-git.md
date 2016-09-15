@@ -15,17 +15,17 @@ Pero si para ti esto es imposible. Si ya tienes un proyecto en Visual Studio Tea
 
 Lo primero que tenemos que hacer es crear un nuevo repositorio de código fuente dentro del proyecto. Una opción que encontraremos en la sección de código del portal de VSTS:
 
-<div style="text-align:center">![nuevo repositorio]({{site.baseurl}}/public/uploads/2016/09/migrate-git-1.png)</div>
+<div style="text-align:center"> ![nuevo repositorio]({{site.baseurl}}/public/uploads/2016/09/migrate-git-1.png) </div>
 
 Pero esta vez hay que elegir Git. Y ponerle un nombre bonito:
 
-<div style="text-align:center">![crear nuevo repositorio Git]({{site.baseurl}}/public/uploads/2016/09/migrate-git-2.png)</div>
+<div style="text-align:center"> ![crear nuevo repositorio Git]({{site.baseurl}}/public/uploads/2016/09/migrate-git-2.png) </div>
 
 Una opción de _hacker_ es activar el checkbox de crear el archivo "readme.md". Esto es un archivo con el leeme del proyecto. Muy útil si pensais pasarlo a GitHub en algún momento.
 
 Al terminar de crear el repositorio, os aparecerá una pantalla donde encontrareis la url del mismo. Además de una opción para crear unas credenciales para poder conectaros:
 
-<div style="text-align:center">![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png)</div>
+<div style="text-align:center"> ![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png) </div>
 
 Recordad guardaros tanto la url como las credenciales, que a continuación serán necesarias.
 
