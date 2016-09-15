@@ -1,5 +1,4 @@
 ---
-published: false
 ID: 15091600
 title: 'VSTS: Migrar TFVC a Git'
 author: fernandoescolar
