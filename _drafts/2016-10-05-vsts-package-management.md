@@ -6,7 +6,7 @@ published: false
 Han sido pocos los que me han pedido la segunda parte de [La Jungla de Cristal](http://fernandoescolar.github.io/2016/09/08/quiero-mi-propio-nuget/ "Quiero mi propio NuGet"). En realidad ninguno. No obstante aquí la tenéis. Una historia semejante. Tenemos un cliente (_Holly_). Con un nuevo problema (_Simon_). Pero se parece mucho al de los proyectos que tienen una librería compartida y diferentes versiones de la misma (_Hans_). Y esta vez queremos usar Visual Studio Team Services (_Samuel L. Jackson_). Es nuestra herramienta preferida. Por qué íbamos a necesitar instalar algo nuevo. Afortunadamente contamos con la extensión [Package Management](https://marketplace.visualstudio.com/items?itemName=ms.feed "Package Management in the Visual Studio MarketPlace") (_John McClane_).
 
 ## Un paseo por Harlem
-Package Management llegó sin hacer demasiado ruido. Al menos no tanto como debería. Como cuando la policía tiene que buscar a John McClane para cubrir los deseos de un psicopata que se hace llamar Simon. 
+Package Management llegó sin hacer demasiado ruido. Al menos no tanto como debería. Como cuando la policía tiene que buscar a _John McClane_ para cumplir los deseos de un psicopata que se hace llamar _Simon_. 
 
 La idea es poder integrar dentro de Visual Studio Team Services un servidor de paquetes. En un principio soportan NuGet. Porque es una versión "preview". Pero a futuro les gustaría integrar otros tipos de paquetes, como npm. También a futuro esperan tener la extensión disponible para TFS on-premises.
 
@@ -102,5 +102,3 @@ Personalmente me ha ido bien, pero hay gente que está experimentando diferentes
 De cualquier forma, es una muy buena solución. Integrada con una herramienta que mucha gente usamos para gestionar el ALM. Aunque será mejor, previsiblemente, a finales de este año. Así que aunque no sea nuestro repositorio principal de paquetes, merece la pena ir acostumbrandonos.
 
 > ¡yippee-ki-yay! hijo de puta...
-
-
