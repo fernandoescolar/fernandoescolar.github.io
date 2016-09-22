@@ -68,3 +68,29 @@ Con ello habremos conseguido sobrevivir a esta difícil prueba. Pero el final a�
 
 ## El problema de las garrafas y los galones de agua
 
+El problema es que tenmos una garrafa de 5 galones, otra de 3 galones, una fuente para llenar las garrafas de agua y una báscula con detonador. Si no pesamos en la báscula 4 galones exactos, estamos muertos.
+
+He pensado mucho en este problema y he llegado a alcanzar dos soluciones posibles:
+
+- Llenamos la de 3, la pasamos a la de 5. Volvemos a llenar la de 3 y volvemos a pasar el contenido a la de 5. Esta vez no cabe todo. Así que vacíamos la de 5. Volcamos en la de 5 lo que sobraba de la de 3. Volvemos a llenar la de 3 y lo pasamos a la de 5. Prácticamente 4 galones. Siempre que no se nos caiga nada por el camino.
+
+- Llenamos la garrafa de 5 y pasamos su contenido a la de 3. Vaciamos la de 3 y la rellenamos con los dos galones que quedaban en la de 5. Llenamos la de 5 de nuevo, rellenamos el galon que quedaba en la de 3 y ya tenemos 4 galones. Quizá con menos probabilidad de que se nos haya caído tanto por el camino.
+
+El problema con VSTS Package Management es que es preview y puede pasar que derramemos mucho líquido en el proceso sin darnos cuenta. Y si no que le pregunten a [Alex Casquete](https://twitter.com/acasquete "Alex Casquete"), que el otro día me comentaba que a algunos de su equipo les iba y a otros no...
+
+De cualquier forma, nos dirigiremos a Visual Studio. Allí abriremos la opción de "Manage NuGet Packages for solution". 
+
+![Manage NuGet Packages for solution]({{site.baseurl}}/public/uploads/2016/10/package-management-10.png)
+
+Seleccionaremos la "ruedita dentada" de la parte superior derecha. 
+
+![NuGet options]({{site.baseurl}}/public/uploads/2016/10/package-management-11.png)
+
+Allí añadiremos una nueva fuente de paquetes. Le pondremos un nombre. Copiaremos la URL de VSTS que utilizamos anteriormente. Pulsaremos "Update". Y la cerraremos dándole a "Ok".
+
+![Add new package source]({{site.baseurl}}/public/uploads/2016/10/package-management-12.png)
+
+Al terminar podremos seleccionar nuestro VSTS como fuente de paquetes. Entonces nos debería pedir las credenciales. Tendremos que utilizar las mismas que usamos en el portal. Si todo va bien, podremos instalar esos paquetes que acabamos de generar en la nube.
+
+
+
