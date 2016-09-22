@@ -92,5 +92,15 @@ Allí añadiremos una nueva fuente de paquetes. Le pondremos un nombre. Copiarem
 
 Al terminar podremos seleccionar nuestro VSTS como fuente de paquetes. Entonces nos debería pedir las credenciales. Tendremos que utilizar las mismas que usamos en el portal. Si todo va bien, podremos instalar esos paquetes que acabamos de generar en la nube.
 
+## Conclusiones
+_John McClane_ ha vuelto a salvar el día. ¡Muchas gracias _John McClane_!
+
+Una de las cosas que más se echaban en falta en VSTS era la gestión de paquetes. Muchas herramientas semejantes ya lo tienen desde hace tiempo (como Team City). Así que siempre es de agradecer que nos den acceso a esta versión preview.
+
+Personalmente me ha ido bien, pero hay gente que está experimentando diferentes errores. Bien por autentificación de los usuarios. Por temas de permisos. Y también por la versión de NuGet que usa. Esta versión aun no tiene compatibilidad con netcore. Esto puede causar diversos problemas a la hora de empaquetar ciertos paquetes con dependencias de la standard library...
+
+De cualquier forma, es una muy buena solución. Integrada con una herramienta que mucha gente usamos para gestionar el ALM. Aunque será mejor, previsiblemente, a finales de este año. Así que aunque no sea nuestro repositorio principal de paquetes, merece la pena ir acostumbrandonos.
+
+> ¡yippee-ki-yay! hijo de puta...
 
 
