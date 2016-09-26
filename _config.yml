@@ -30,6 +30,3 @@ version:          2.1.0
 github:
   repo:           https://github.com/fernandoescolar
   
- # gems
- gems:
-  - jekyll-feed
