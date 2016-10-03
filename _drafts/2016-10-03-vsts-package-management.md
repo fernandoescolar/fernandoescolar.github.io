@@ -1,5 +1,9 @@
 ---
 published: false
+ID: 820096
+author: fernandoescolar
+post_date: {}
+layout: post
 ---
 ¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece con ganas de bronca. Quiere robar el oro de los Estados Unidos de America. Pero esta vez John McClane cuenta con la ayuda de Samuel L. Jackson. ¿Podrán superar juntos el juego de "Simon dice"?<!--break-->
 
