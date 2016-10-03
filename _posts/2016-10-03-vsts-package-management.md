@@ -32,7 +32,7 @@ A partir de aquí la cosa se complica. Si queremos usar este servicio tendremos 
 
 ![Create new feed]({{site.baseurl}}/public/uploads/2016/10/package-management-3.png)
 
-Un dialogo nos dará la opción de poner un nombre, una descripción y de elegir los permisos. En un principio hemos selecciona que todos los usuarios de la cuenta puedan acceder. Además de decirle que solo el sistema de builds pueda subir paquetes.
+Un dialogo nos dará la opción de poner un nombre, una descripción y de elegir los permisos. En un principio hemos seleccionado que todos los usuarios de la cuenta puedan acceder. Además de decirle que solo el sistema de builds pueda subir paquetes.
 
 Después pulsaremos el botón de "Connect to feed":
 
