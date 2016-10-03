@@ -42,7 +42,7 @@ De la pantalla emergente copiaremos el valor de "Package source URL". Esto nos s
 
 En este punto VSTS (_Samuel L. Jackson_) ya es capaz de servirnos paquetes de NuGet (ha llegado al teléfono de la estación de metro). Pero aún no hemos publicado ningún paquete dentro del feed (_John McClane_ llega tarde).
 
-Así que vamos a intentar publicar unas librerías propias. Para ello crearemos un nueva build. Si es que no tenemos una ya.
+Así que vamos a intentar publicar unas librerías propias. Para ello crearemos una nueva build. Si es que no tenemos una ya.
 
 Iremos a la sección de "builds", pulsaremos sobre "+ New" y elegiremos la de tipo "Visual Studio".
 
