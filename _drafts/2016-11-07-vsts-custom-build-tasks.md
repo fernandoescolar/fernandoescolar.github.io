@@ -297,6 +297,28 @@ Y como este script usa más y diferentes parámetros de los que hemos definido e
 
 # Probando la nueva tarea
 
+```bash
+$ tfx login
+```
+
+http://roadtoalm.com/2015/07/22/using-personal-access-tokens-to-access-visual-studio-online
+
+```bash
+$ tfx login --auth-type basic
+```
+
+https://github.com/Microsoft/tfs-cli/blob/master/docs/configureBasicAuth.md
+
+
+```bash
+$ tfx build tasks upload --task-path ./Zip
+```
+
+
+```bash
+$ tfx build tasks delete --task-id f5d62250-a510-11e6-9d90-21c7a4a70529
+```
+
 
 # Creando una extensión
 
