@@ -76,12 +76,12 @@ Al abrir el archivo "task.json" encontraremos al principio los datos que inserta
 
 Donde:
 
-- id: es el identificador único de nuestra tarea.
-- name: el nombre que le hemos dado
-- friendlyName: es el nombre con el que se mostrará la nueva tarea
-- description: la descripción de sus funcionalidades
-- author: nuestro nombre válido para publicar la tarea
-- helpmarkDown: es el texto de ayuda en formato markdown
+- **id**: es el identificador único de nuestra tarea.
+- **name**: el nombre que le hemos dado
+- **friendlyName**: es el nombre con el que se mostrará la nueva tarea
+- **description**: la descripción de sus funcionalidades
+- **author**: nuestro nombre válido para publicar la tarea
+- **helpmarkDown**: es el texto de ayuda en formato markdown
 
 Si seguimos más adelante en el archivo encontraremos:
 
@@ -102,11 +102,11 @@ Si seguimos más adelante en el archivo encontraremos:
 
 Aqui encontramos:
 
-- category: será el menú de clasificación de tareas que la contendrá
-- visibility: sirve para determinar si se mostrará esta tarea en build, release o en ambas seciones
-- demands: es un lista de necesidades para que la tarea sea ejecutada. Por ejemplo, si llamamos a "curl", lo añadiremos a esta lista. Lo mismo si usamos "nodejs" o "dotNetCore"...
-- version: es la versión actual de nuestra tarea
-- minimumAgentVersion: es la versión mínima necesaria para que un agente pueda ejecutar esta tarea
+- **category**: será el menú de clasificación de tareas que la contendrá
+- **visibility**: sirve para determinar si se mostrará esta tarea en build, release o en ambas seciones
+- **demands**: es un lista de necesidades para que la tarea sea ejecutada. Por ejemplo, si llamamos a "curl", lo añadiremos a esta lista. Lo mismo si usamos "nodejs" o "dotNetCore"...
+- **version**: es la versión actual de nuestra tarea
+- **minimumAgentVersion**: es la versión mínima necesaria para que un agente pueda ejecutar esta tarea
 
 Seguimos avanzando en el archivo:
 
@@ -134,14 +134,14 @@ Seguimos avanzando en el archivo:
 
 Una vez hemos añadido la tarea a nuestro proceso, en el panel de edición esto es lo que veremos:
 
-- instanceNameFormat: el nombre de la tarea en el listado de pasos y al ejecutarse el proceso
-- inputs: esto son los parámetros de ejecución de nuestra tarea. Por cada uno rellenaremos:
-- - name: nombre del parámetro
-- - type: el tipo de parámetro. Por ahora conozco "string", "filePath", "boolean" y "multiLine"
-- - label: es el nombre que aparecerá en pantalla
-- - defaultValue: si queremos que tenga un valor por defecto
-- - required: para determinar si es obligatorio rellenar esta propiedad para ejecutar la tarea
-- - helpMarkDown: es el mensaje que aparece en el icono de ayuda al lado de input del parámetro
+- **instanceNameFormat**: el nombre de la tarea en el listado de pasos y al ejecutarse el proceso
+- **inputs**: esto son los parámetros de ejecución de nuestra tarea. Por cada uno rellenaremos:
+-- **name**: nombre del parámetro
+-- **type**: el tipo de parámetro. Por ahora conozco "string", "filePath", "boolean" y "multiLine"
+-- **label**: es el nombre que aparecerá en pantalla
+-- **defaultValue**: si queremos que tenga un valor por defecto
+-- **required**: para determinar si es obligatorio rellenar esta propiedad para ejecutar la tarea
+-- **helpMarkDown**: es el mensaje que aparece en el icono de ayuda al lado de input del parámetro
 
 Para terminar, al final de nuestro archivo encontraremos:
 
