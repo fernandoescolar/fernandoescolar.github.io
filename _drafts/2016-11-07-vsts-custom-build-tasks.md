@@ -33,4 +33,5 @@ name: Test
 A temporary task icon was created.  Replace with a 32x32 png with transparencies
 ```
 
-![New VSTS task]({{site.baseurl}}/public/uploads/2016/11/vsts-tasks-folder.png)
+![New VSTS Task]({{site.baseurl}}/public/uploads/2016/11/vsts-tasks-folder.png)
+
