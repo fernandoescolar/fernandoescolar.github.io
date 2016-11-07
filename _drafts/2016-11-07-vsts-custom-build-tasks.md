@@ -136,12 +136,12 @@ Una vez hemos añadido la tarea a nuestro proceso, en el panel de edición esto 
 
 - **instanceNameFormat**: el nombre de la tarea en el listado de pasos y al ejecutarse el proceso
 - **inputs**: esto son los parámetros de ejecución de nuestra tarea. Por cada uno rellenaremos:
--- **name**: nombre del parámetro
--- **type**: el tipo de parámetro. Por ahora conozco "string", "filePath", "boolean" y "multiLine"
--- **label**: es el nombre que aparecerá en pantalla
--- **defaultValue**: si queremos que tenga un valor por defecto
--- **required**: para determinar si es obligatorio rellenar esta propiedad para ejecutar la tarea
--- **helpMarkDown**: es el mensaje que aparece en el icono de ayuda al lado de input del parámetro
+	- **name**: nombre del parámetro
+	- **type**: el tipo de parámetro. Por ahora conozco "string", "filePath", "boolean" y "multiLine"
+	- **label**: es el nombre que aparecerá en pantalla
+	- **defaultValue**: si queremos que tenga un valor por defecto
+	- **required**: para determinar si es obligatorio rellenar esta propiedad para ejecutar la tarea
+	- **helpMarkDown**: es el mensaje que aparece en el icono de ayuda al lado de input del parámetro
 
 Para terminar, al final de nuestro archivo encontraremos:
 
