@@ -322,3 +322,42 @@ $ tfx build tasks delete --task-id f5d62250-a510-11e6-9d90-21c7a4a70529
 
 # Creando una extensión
 
+```json
+{
+    "manifestVersion": 1,
+    "id": "build-tasks",
+    "name": "Zip Build Tools",
+    "version": "1.0.0",
+    "publisher": "fernandoescolar",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "New build task for zip.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "icon.png"        
+    },
+    "files": [
+        {
+            "path": "Zip"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "f5d62250-a510-11e6-9d90-21c7a4a70529",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Zip"
+            }
+        }
+    ]
+}
+```
+
