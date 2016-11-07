@@ -60,7 +60,9 @@ Si echamos un vistazo veremos que nos ha creado una carpeta con el nombre de tar
 - "task.json" es el archivo de definición de nuestra tarea.
 
 
-# task.json
+# Definiendo: task.json
+
+Al abrir el archivo "task.json" encontraremos al principio los datos que insertamos al crearla con tfx:
 
 ```json
 {
