@@ -36,7 +36,7 @@ A temporary task icon was created.  Replace with a 32x32 png with transparencies
 ![New VSTS Task]({{site.baseurl}}/public/uploads/2016/11/vsts-tasks-folder.png)
 
 
-task.json
+# task.json
 
 ```json
 {
