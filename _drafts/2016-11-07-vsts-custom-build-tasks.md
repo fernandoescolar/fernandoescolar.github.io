@@ -72,6 +72,20 @@ Al abrir el archivo "task.json" encontraremos al principio los datos que inserta
   "description": "This is a test build/release vsts/tfs task",
   "author": "fernandoescolar",
   "helpMarkDown": "Replace with markdown to show in help",
+```
+
+Donde:
+
+- id: es el identificador único de nuestra tarea.
+- name: el nombre que le hemos dado
+- friendlyName: es el nombre con el que se mostrará la nueva tarea
+- description: la descripción de sus funcionalidades
+- author: nuestro nombre válido para publicar la tarea
+- helpmarkDown: es el texto de ayuda en formato markdown
+
+Si seguimos más adelante en el archivo encontraremos:
+
+```json
   "category": "Utility",
   "visibility": [
     "Build",
@@ -85,6 +99,16 @@ Al abrir el archivo "task.json" encontraremos al principio los datos que inserta
   },
   "minimumAgentVersion": "1.95.0",
 ````
+
+Aqui encontramos:
+
+- category: será el menú de clasificación de tareas que la contendrá
+- visibility: sirve para determinar si se mostrará esta tarea en build, release o en ambas seciones
+- demands: es un lista de necesidades para que la tarea sea ejecutada. Por ejemplo, si llamamos a "curl", lo añadiremos a esta lista. Lo mismo si usamos "nodejs" o "dotNetCore"...
+- version: es la versión actual de nuestra tarea
+- minimumAgentVersion: es la versión mínima necesaria para que un agente pueda ejecutar esta tarea
+
+Seguimos avanzando en el archivo:
 
 ```json
   "instanceNameFormat": "Test $(message)",
@@ -106,7 +130,20 @@ Al abrir el archivo "task.json" encontraremos al principio los datos que inserta
       "helpMarkDown": "Message to echo out"
     }
   ],
-````
+```
+
+Una vez hemos añadido la tarea a nuestro proceso, en el panel de edición esto es lo que veremos:
+
+- instanceNameFormat: el nombre de la tarea en el listado de pasos y al ejecutarse el proceso
+- inputs: esto son los parámetros de ejecución de nuestra tarea. Por cada uno rellenaremos:
+- - name: nombre del parámetro
+- - type: el tipo de parámetro. Por ahora conozco "string", "filePath", "boolean" y "multiLine"
+- - label: es el nombre que aparecerá en pantalla
+- - defaultValue: si queremos que tenga un valor por defecto
+- - required: para determinar si es obligatorio rellenar esta propiedad para ejecutar la tarea
+- - helpMarkDown: es el mensaje que aparece en el icono de ayuda al lado de input del parámetro
+
+Para terminar, al final de nuestro archivo encontraremos:
 
 ```json
   "execution": {
@@ -120,3 +157,18 @@ Al abrir el archivo "task.json" encontraremos al principio los datos que inserta
   }
 }
 ```
+
+El parámetro de "execution" es donde se define que sucede al ejecutar nuestra tarea. En el template vienen definidos dos comandos: uno de nodejs y otro de PowerShell 3. En mi experiencia personal, PowerShell 3 siempre da error al ejecutarse. Supongo que lo corregirán pronto. Y como soy más de .Net que de js, siempre lo cambio a un formato semejante a este:
+
+```json
+  "execution": {
+    "PowerShell": {
+      "target": "test.ps1"
+    }
+  }
+}
+```
+
+Esto lo que indica es que al ejecutar nuestra tarea se ejecutará el archivo "test.ps1" en una consola de PowerShell.
+
+# Creando el proceso: test.ps1
