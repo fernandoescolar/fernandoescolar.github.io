@@ -163,13 +163,13 @@ El parámetro de "execution" es donde se define que sucede al ejecutar nuestra t
 ```json
   "execution": {
     "PowerShell": {
-      "target": "test.ps1"
+      "target": "$(currentDirectory)\\test.ps1"
     }
   }
 }
 ```
 
-Esto lo que indica es que al ejecutar nuestra tarea se ejecutará el archivo "test.ps1" en una consola de PowerShell.
+Esto lo que indica es que al ejecutar nuestra tarea se ejecutará el archivo "test.ps1" en una consola de PowerShell. Como curiosidad he añadido el path "$(currentDirectory)\\" antes del nombre del script. Esto es porque si dejamos la ruta relativa, en un TFS on-premises no funciona correctamente. Aunque sí que lo hace en VSTS.
 
 # Creando el proceso: test.ps1
 
@@ -254,3 +254,45 @@ else { $recursive = $false }
 
 [Utilities.Zip]::Create($src, $filter, $zip, $recursive)
 ```
+
+Y como este script usa más y diferentes parámetros de los que hemos definido en el "task.json" lo que haré es modificar este archivo, la propiedad "input" con el siguiente valor:
+
+
+```json
+"inputs": [
+    {
+      "name": "src",
+      "type": "filePath",
+      "label": "Source Folder",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The root folder to compress into a zip file."
+    },
+    {
+      "name": "filter",
+      "type": "multiLine",
+      "label": "Contents",
+      "defaultValue": "*.*",
+      "required": false,
+      "helpMarkDown": "File or folder paths to include as part of the artifact.  Supports multiple lines or minimatch patterns."
+    },
+	{
+	  "name": "recursive",
+      "type": "boolean",
+      "label": "Recursive",
+      "defaultValue": "true",
+      "required": false,
+      "helpMarkDown": "Explore also subfolders."
+    },
+	{
+	  "name": "zip",
+      "type": "filePath",
+      "label": "Zip File",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Zip File will be created."
+    }
+  ],
+```
+
+Co
