@@ -360,3 +360,8 @@ $ tfx build tasks delete --task-id f5d62250-a510-11e6-9d90-21c7a4a70529
 }
 ```
 
+```bash
+$ tfx extension create --manifest-globs vss-extension.json
+```
+
+http://aka.ms/vsmarketplace-manage
