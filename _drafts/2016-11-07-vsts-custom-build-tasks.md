@@ -175,8 +175,7 @@ Esto lo que indica es que al ejecutar nuestra tarea se ejecutará el archivo "te
 
 Como ya hemos comentado antes, a mi lo que se me da bien es .Net. Así que he creado un proceso para crear un zip en c#. La parte buena es que este código se puede usar con un script de PowerShell sin demasiados problemas. Así que declararé al principio los parámetros que necesito para ejecutar y después llamaré a mi código en c#:
 
-```
-
+```bash
 [CmdletBinding(DefaultParameterSetName = 'None')]
 param
 (
