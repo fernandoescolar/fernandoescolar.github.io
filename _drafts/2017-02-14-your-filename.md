@@ -1,6 +1,5 @@
 ---
 published: false
 ---
-## A New Post
+Llevo meses con una idea rondandome la cabeza: un bot para insultar. Y menos mal que el señor [Alex Campos](https://twitter.com/alejacma "Alex Campos") me guió. Sacó a relucir el tema Monkey Island. Y además me comentó alguna tecnología que desconocía para poder llevar a buen puerto mi proyecto. Despues de una pequeña conversación ya estaba todo claro. Y dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.<!--break-->
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
