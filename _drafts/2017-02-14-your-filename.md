@@ -7,7 +7,8 @@ Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la 
 
 ##Día 1, 12:00 AM:
 
-Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por donde empezar. 
+Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por donde empezar.
+
 
 ##Día 1, 12:10 AM:
 
@@ -25,3 +26,9 @@ Frase <TAB> Respuesta <TAB> Juego
 ##Día 1, 12:50 AM:
 
 Ya he encontrado toda la informacion sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
+
+##Día 1, 12:52 AM:
+
+He creado un nuevo servicio con QnA Maker. Ahí he puesto el nombre de mi aplicación: "Duelo de Espadas".
+
+![QnA Maker - new service]({{site.baseurl}}/public/uploads/2017/02/qna-create.PNG)
