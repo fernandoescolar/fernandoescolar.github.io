@@ -55,3 +55,51 @@ He encontrado una funcionalidad genial. Desde la parte de test de QnA Maker, no 
 
 ###Día 1, 01:00 PM:
 
+Me he adentrado en un nuevo lugar: [el portal de azure](https://portal.azure.com "Azure Portal"). Dentro de sus laberínticos menús he hallado el recurso definitivo: Bot Services. Así que he decido crear uno nuevo. Estoy esperando a que termine el deploy.
+
+![Azure Bot Services - Create]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-2.PNG)
+
+###Día 1, 01:05 PM:
+
+Al abrir el recurso nuevo, he tenido que añadir un App ID y un password que la propia plataforma me ha ido generando a través de un wizard.
+
+![Bot Service - Add Id and Password]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-3.PNG)
+
+###Día 1, 01:06 PM:
+
+Derrepente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje de programación y un tipo de Bot nuevo a generar. Como buen pirata he seleccionado "NodeJS" y el último tipo de Bot, "Question And Answer".
+
+![Question and Answer]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-4.PNG)
+
+###Día 1, 01:07 PM:
+
+Entonces un popup salvage ha aparecido preguntandome si quería asociar el bot con un nuevo servicio o con el "Duelo de espadas" que cree unas anotaciones atrás. Me he decantado por esta última opción. Parecía la adecuada...
+
+![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)![azure-bot-service-5.PNG]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
+
+###Día 1, 01:30 PM:
+
+Tras un merecido descanso, al volver al portal de azure, he descubierto que mi bot ya estaba creado. He podido ver el código que me ha generado. Además me ha permitido retocarlo con el fin de que fuera más eficiente.
+
+![Bot Service - Code]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-code.PNG)
+
+###Día 1, 01:35 PM:
+
+Una vez todo estaba en orden, he navegado de la opcion de "Develop" a la de "Channels". Ahi he podido seleccionar las plaformas donde he querido que esté disponible mi querido nuevo bot.
+
+![Bot service - Channels]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-channels.PNG)
+
+###Día 1, 01:40 PM:
+
+Para terminar con mi expriencia, he añadido la información necesaria, un nombre, una descripción y un nuevo logo.
+
+![Bot Service - Settings]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-settings.PNG)
+
+###Día 1, 01:50 PM:
+
+He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas correctas para los duelos de insultos de mi partida de Monkey Island. 
+
+![Duelo de Espadas - Bot]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-bot.PNG)
+
+
+Mi viaje ha terminado.
