@@ -5,6 +5,7 @@ Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la 
 
 ![duelo de espadas - Mokey Island]({{site.baseurl}}/public/uploads/2017/02/monkey-island.png)
 
+
 ###Día 1, 12:00 AM:
 
 Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por donde empezar.
@@ -25,9 +26,11 @@ Frase <TAB> Respuesta <TAB> Juego
 
 Aquí está el resultado.
 
+
 ###Día 1, 12:50 AM:
 
 Ya he encontrado toda la informacion sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
+
 
 ###Día 1, 12:52 AM:
 
@@ -35,11 +38,13 @@ He creado un nuevo servicio con QnA Maker. Ahí he puesto el nombre de mi aplica
 
 ![QnA Maker - new service]({{site.baseurl}}/public/uploads/2017/02/qna-create.PNG)
 
+
 ###Día 1, 12:53 AM:
 
 En la sección donde me ha solicitado archivos FAQ, he insertado el archivo formateado resultado de mi recolección de frases de duelo de insultos.
 
 ![QnA Maker - add formated files]({{site.baseurl}}/public/uploads/2017/02/qna-create-files.PNG)
+
 
 ###Día 1, 12:55 AM:
 
@@ -47,11 +52,13 @@ Después de crear el nuevo servicio he comprobado que había importado los datos
 
 ![QnA Maker - knowledgebase]({{site.baseurl}}/public/uploads/2017/02/qna-create-knowledgebase.PNG)
 
+
 ###Día 1, 12:56 AM:
 
 He encontrado una funcionalidad genial. Desde la parte de test de QnA Maker, no solo puedes probar tu api. También puedes entrenarla, añadiendo diferentes formas de realizar la misma pregunta:
 
 ![QnA Maker - training]({{site.baseurl}}/public/uploads/2017/02/qna-create-training.PNG)
+
 
 ###Día 1, 01:00 PM:
 
@@ -59,11 +66,13 @@ Me he adentrado en un nuevo lugar: [el portal de azure](https://portal.azure.com
 
 ![Azure Bot Services - Create]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-2.PNG)
 
+
 ###Día 1, 01:05 PM:
 
 Al abrir el recurso nuevo, he tenido que añadir un App ID y un password que la propia plataforma me ha ido generando a través de un wizard.
 
 ![Bot Service - Add Id and Password]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-3.PNG)
+
 
 ###Día 1, 01:06 PM:
 
@@ -71,11 +80,13 @@ Derrepente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje d
 
 ![Question and Answer]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-4.PNG)
 
+
 ###Día 1, 01:07 PM:
 
 Entonces un popup salvage ha aparecido preguntandome si quería asociar el bot con un nuevo servicio o con el "Duelo de espadas" que cree unas anotaciones atrás. Me he decantado por esta última opción. Parecía la adecuada...
 
-![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)![azure-bot-service-5.PNG]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
+![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
+
 
 ###Día 1, 01:30 PM:
 
@@ -83,17 +94,20 @@ Tras un merecido descanso, al volver al portal de azure, he descubierto que mi b
 
 ![Bot Service - Code]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-code.PNG)
 
+
 ###Día 1, 01:35 PM:
 
 Una vez todo estaba en orden, he navegado de la opcion de "Develop" a la de "Channels". Ahi he podido seleccionar las plaformas donde he querido que esté disponible mi querido nuevo bot.
 
 ![Bot service - Channels]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-channels.PNG)
 
+
 ###Día 1, 01:40 PM:
 
 Para terminar con mi expriencia, he añadido la información necesaria, un nombre, una descripción y un nuevo logo.
 
 ![Bot Service - Settings]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-settings.PNG)
+
 
 ###Día 1, 01:50 PM:
 
