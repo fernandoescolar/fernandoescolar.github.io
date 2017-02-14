@@ -74,8 +74,6 @@ Al abrir el recurso nuevo, he tenido que añadir un App ID y un password que la 
 ![Bot Service - Add Id and Password]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-3.PNG)
 
 
-##03:06 PM, Día 1:
-
 De repente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje de programación y un tipo de Bot nuevo a generar. Como buen pirata he seleccionado "NodeJS" y el último tipo de Bot, "Question And Answer".
 
 ![Question and Answer]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-4.PNG)
