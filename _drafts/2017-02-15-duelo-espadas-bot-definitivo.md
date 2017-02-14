@@ -10,9 +10,6 @@ Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la 
 
 Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por dónde empezar.
 
-
-##02:10 PM, Día 1:
-
 He encontrado un bar llamado Scumm. Ahí he conocido a [Alex Campos](https://twitter.com/alejacma "Alex Campos"). Me ha dado mucha información. Me ha hablado de tres pruebas que tres piratas iban a proponerme. Y me ha dicho como superarlas. Necesitaré buscar todas las frases posibles de duelos de insultos, algo llamado Question And Answers, Azure Bot Services y un pollo con polea.
 
 
@@ -39,21 +36,15 @@ He creado un nuevo servicio con QnA Maker. Ahí he puesto el nombre de mi aplica
 ![QnA Maker - new service]({{site.baseurl}}/public/uploads/2017/02/qna-create.PNG)
 
 
-##02:53 PM, Día 1:
-
 En la sección donde me ha solicitado archivos FAQ, he insertado el archivo formateado resultado de mi recolección de frases de duelo de insultos.
 
 ![QnA Maker - add formated files]({{site.baseurl}}/public/uploads/2017/02/qna-create-files.PNG)
 
 
-##02:55 PM, Día 1:
-
 Después de crear el nuevo servicio he comprobado que había importado los datos que le he pasado. Los ha clasificado correctamente.
 
 ![QnA Maker - knowledgebase]({{site.baseurl}}/public/uploads/2017/02/qna-create-knowledgebase.PNG)
 
-
-##02:56 PM, Día 1:
 
 He encontrado una funcionalidad genial. Desde la parte de test de QnA Maker, no solo puedes probar tu api. También puedes entrenarla, añadiendo diferentes formas de realizar la misma pregunta:
 
