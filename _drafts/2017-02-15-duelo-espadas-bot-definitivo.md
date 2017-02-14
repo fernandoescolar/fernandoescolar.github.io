@@ -28,9 +28,6 @@ Frase <TAB> Respuesta <TAB> Juego
 
 Ya he encontrado toda la información sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
 
-
-##02:52 PM, Día 1:
-
 He creado un nuevo servicio con QnA Maker. Ahí he puesto el nombre de mi aplicación: "Duelo de Espadas".
 
 ![QnA Maker - new service]({{site.baseurl}}/public/uploads/2017/02/qna-create.PNG)
