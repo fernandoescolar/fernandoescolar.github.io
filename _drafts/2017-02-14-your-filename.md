@@ -1,14 +1,14 @@
 ---
 published: false
 ---
-Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la edad, pero creo que eran los mejores. Y aprobechando este momento melancólico decidí volver a jugar al MonKey Island. Una saga que como todos sabreis consta de dos partes. En el que teníamos duelos de espada/insultos delirantes. Pero algunas veces eran combates bastante complejos. Quizá la nueva tecnología me podría ayudar con esto. Dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.<!--break-->
+Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la edad, pero creo que eran los mejores. Y aprovechando este momento melancólico decidí volver a jugar al Monkey Island. Una saga que como todos sabréis consta de dos partes. En el que teníamos duelos de espada/insultos delirantes. Pero algunas veces eran combates bastante complejos. Quizá la nueva tecnología me podría ayudar con esto. Dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.<!--break-->
 
 ![duelo de espadas - Mokey Island]({{site.baseurl}}/public/uploads/2017/02/monkey-island.png)
 
 
 ###Día 1, 02:00 PM:
 
-Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por donde empezar.
+Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por dónde empezar.
 
 
 ###Día 1, 02:10 PM:
@@ -18,7 +18,7 @@ He encontrado un bar llamado Scumm. Ahí he conocido a [Alex Campos](https://twi
 
 ###Día 1, 02:30 PM:
 
-Una navegación rápida por la Deep Web me ha aporado todo el material que necesito. Unas 60 frases y sus respuestas. Solo he tenido que regerlas y formatearlas. Tarea sencilla. Una línea por cada una con el siguiente formato: 
+Una navegación rápida por la Deep Web me ha aportado todo el material que necesito. Unas 60 frases y sus respuestas. Solo he tenido que recogerlas y formatearlas. Tarea sencilla. Una línea por cada una con el siguiente formato: 
 
 ```
 Frase <TAB> Respuesta <TAB> Juego
@@ -29,7 +29,7 @@ Aquí está el resultado.
 
 ###Día 1, 02:50 PM:
 
-Ya he encontrado toda la informacion sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
+Ya he encontrado toda la información sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
 
 
 ###Día 1, 02:52 PM:
@@ -76,35 +76,35 @@ Al abrir el recurso nuevo, he tenido que añadir un App ID y un password que la 
 
 ###Día 1, 03:06 PM:
 
-Derrepente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje de programación y un tipo de Bot nuevo a generar. Como buen pirata he seleccionado "NodeJS" y el último tipo de Bot, "Question And Answer".
+De repente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje de programación y un tipo de Bot nuevo a generar. Como buen pirata he seleccionado "NodeJS" y el último tipo de Bot, "Question And Answer".
 
 ![Question and Answer]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-4.PNG)
 
 
 ###Día 1, 03:07 PM:
 
-Entonces un popup salvage ha aparecido preguntandome si quería asociar el bot con un nuevo servicio o con el "Duelo de espadas" que cree unas anotaciones atrás. Me he decantado por esta última opción. Parecía la adecuada...
+Entonces un popup salvaje ha aparecido preguntándome si quería asociar el bot con un nuevo servicio o con el "Duelo de espadas" que cree unas anotaciones atrás. Me he decantado por esta última opción. Parecía la adecuada...
 
 ![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
 
 
 ###Día 1, 03:30 PM:
 
-Tras un merecido descanso, al volver al portal de azure, he descubierto que mi bot ya estaba creado. He podido ver el código que me ha generado. Además me ha permitido retocarlo con el fin de que fuera más eficiente.
+Tras un merecido descanso, al volver al portal de azure, he descubierto que mi bot ya estaba creado. He podido ver el código que me ha generado. Además, me ha permitido retocarlo con el fin de que fuera más eficiente.
 
 ![Bot Service - Code]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-code.PNG)
 
 
 ###Día 1, 03:35 PM:
 
-Una vez todo estaba en orden, he navegado de la opcion de "Develop" a la de "Channels". Ahi he podido seleccionar las plaformas donde he querido que esté disponible mi querido nuevo bot.
+Una vez todo estaba en orden, he navegado de la opción de "Develop" a la de "Channels". Ahí he podido seleccionar las plataformas donde he querido que esté disponible mi querido nuevo bot.
 
 ![Bot service - Channels]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-channels.PNG)
 
 
 ###Día 1, 03:40 PM:
 
-Para terminar con mi expriencia, he añadido la información necesaria, un nombre, una descripción y un nuevo logo.
+Para terminar con mi experiencia, he añadido la información necesaria, un nombre, una descripción y un nuevo logo.
 
 ![Bot Service - Settings]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-settings.PNG)
 
@@ -121,6 +121,6 @@ Mi viaje ha terminado.
 
 ##Conclusiones
 
-Han sido dos horas muy productivas. Sin tener demasiada idea de cómo funcionaban las diferentes tecnologías, en muy poco tiempo he conseguido un resultado muy satisfactorio. Esto no significa que este bot esté terminado. Podríamos aportarle más intelegincia. Tenemos el código fuente para modificarlo a nuestro gusto. La parte buena es que con estos conocimientos podríamos hacer un bot de asistencia para una página web en menos de un día.
+Han sido dos horas muy productivas. Sin tener demasiada idea de cómo funcionaban las diferentes tecnologías, en muy poco tiempo he conseguido un resultado muy satisfactorio. Esto no significa que este bot esté terminado. Podríamos aportarle más inteligencia. Tenemos el código fuente para modificarlo a nuestro gusto. La parte buena es que con estos conocimientos podríamos hacer un bot de asistencia para una página web en menos de un día.
 
-Me gusta mucho la dirección que estan tomando los Cognitive Services de Microsoft y lo mucho que nos pueden ayudar.
+Me gusta mucho la dirección que están tomando los Cognitive Services de Microsoft y lo mucho que nos pueden ayudar.
