@@ -91,14 +91,10 @@ Tras un merecido descanso, al volver al portal de azure, he descubierto que mi b
 ![Bot Service - Code]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-code.PNG)
 
 
-##03:35 PM, Día 1:
-
 Una vez todo estaba en orden, he navegado de la opción de "Develop" a la de "Channels". Ahí he podido seleccionar las plataformas donde he querido que esté disponible mi querido nuevo bot.
 
 ![Bot service - Channels]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-channels.PNG)
 
-
-##03:40 PM, Día 1:
 
 Para terminar con mi experiencia, he añadido la información necesaria, un nombre, una descripción y un nuevo logo.
 
