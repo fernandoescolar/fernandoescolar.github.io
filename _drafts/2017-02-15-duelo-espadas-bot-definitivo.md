@@ -81,8 +81,6 @@ De repente un nuevo panel se ha mostrado. Ahí me proponía elegir un lenguaje d
 ![Question and Answer]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-4.PNG)
 
 
-##03:07 PM, Día 1:
-
 Entonces un popup salvaje ha aparecido preguntándome si quería asociar el bot con un nuevo servicio o con el "Duelo de espadas" que cree unas anotaciones atrás. Me he decantado por esta última opción. Parecía la adecuada...
 
 ![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
