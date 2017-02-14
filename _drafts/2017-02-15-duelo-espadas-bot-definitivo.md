@@ -43,14 +43,14 @@ Después de crear el nuevo servicio he comprobado que había importado los datos
 ![QnA Maker - knowledgebase]({{site.baseurl}}/public/uploads/2017/02/qna-create-knowledgebase.PNG)
 
 
-He encontrado una funcionalidad genial. Desde la parte de test de QnA Maker, no solo puedes probar tu api. También puedes entrenarla, añadiendo diferentes formas de realizar la misma pregunta:
+He encontrado una funcionalidad genial. Desde la parte de "Test" de QnA Maker, no solo puedes probar tu api. También puedes entrenarla, añadiendo diferentes formas de realizar la misma pregunta:
 
 ![QnA Maker - training]({{site.baseurl}}/public/uploads/2017/02/qna-create-training.PNG)
 
 
 ##03:00 PM, Día 1:
 
-Me he adentrado en un nuevo lugar: [el portal de azure](https://portal.azure.com "Azure Portal"). Dentro de sus laberínticos menús he hallado el recurso definitivo: Bot Services. Así que he decido crear uno nuevo. Estoy esperando a que termine el deploy.
+Me he adentrado en un nuevo lugar: [el portal de azure](https://portal.azure.com "Azure Portal"). Dentro de sus laberínticos menús he hallado el recurso definitivo: [Bot Services](https://azure.microsoft.com/en-us/services/bot-service/ "Bot Services"). Así que he decido crear uno nuevo. Estoy esperando a que termine el deploy.
 
 ![Azure Bot Services - Create]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-2.PNG)
 
@@ -103,4 +103,4 @@ Mi viaje ha terminado.
 
 Han sido dos horas muy productivas. Sin tener demasiada idea de cómo funcionaban las diferentes tecnologías, en muy poco tiempo he conseguido un resultado muy satisfactorio. Esto no significa que este bot esté terminado. Podríamos aportarle más inteligencia. Tenemos el código fuente para modificarlo a nuestro gusto. La parte buena es que con estos conocimientos podríamos hacer un bot de asistencia para una página web en menos de un día.
 
-Me gusta mucho la dirección que están tomando los Cognitive Services de Microsoft y lo mucho que nos pueden ayudar.
+Me gusta mucho la dirección que están tomando los [Cognitive Services de Microsoft](https://www.microsoft.com/cognitive-services/en-us/ "Cognitive Services") y lo mucho que nos pueden ayudar.
