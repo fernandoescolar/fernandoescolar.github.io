@@ -24,7 +24,7 @@ Una navegación rápida por la Deep Web me ha aportado todo el material que nece
 Frase <TAB> Respuesta <TAB> Juego
 ```
 
-Aquí está el resultado.
+[Aquí está el resultado]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas.txt "duelo-espadas.txt").
 
 
 ##02:50 PM, Día 1:
