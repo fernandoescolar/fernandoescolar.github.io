@@ -117,3 +117,10 @@ He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas
 
 
 Mi viaje ha terminado.
+
+
+##Conclusiones
+
+Han sido dos horas muy productivas. Sin tener demasiada idea de cómo funcionaban las diferentes tecnologías, en muy poco tiempo he conseguido un resultado muy satisfactorio. Esto no significa que este bot esté terminado. Podríamos aportarle más intelegincia. Tenemos el código fuente para modificarlo a nuestro gusto. La parte buena es que con estos conocimientos podríamos hacer un bot de asistencia para una página web en menos de un día.
+
+Me gusta mucho la dirección que estan tomando los Cognitive Services de Microsoft y lo mucho que nos pueden ayudar.
