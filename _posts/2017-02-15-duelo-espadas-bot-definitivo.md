@@ -1,6 +1,7 @@
 ---
-ID: 201702161
-title: Duelo de espadas: el bot definitivo
+published: true
+ID: 1702161
+title: 'Duelo de espadas: el bot definitivo'
 author: fernandoescolar
 post_date: 2017-02-16 09:08:03
 post_excerpt: ""
