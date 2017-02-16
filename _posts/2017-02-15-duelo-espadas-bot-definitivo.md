@@ -12,14 +12,14 @@ Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la 
 ![duelo de espadas - Mokey Island]({{site.baseurl}}/public/uploads/2017/02/monkey-island.png)
 
 
-##02:00 PM, Día 1:
+## 02:00 PM, Día 1:
 
 Me encuentro en la isla Mêlée. Un pequeño trozo de tierra en medio del caribe. Mi misión convertirme en pirata. Pero no sé por dónde empezar.
 
 He encontrado un bar llamado Scumm. Ahí he conocido a [Alex Campos](https://twitter.com/alejacma "Alex Campos"). Me ha dado mucha información. Me ha hablado de tres pruebas que tres piratas iban a proponerme. Y me ha dicho como superarlas. Necesitaré buscar todas las frases posibles de duelos de insultos, algo llamado Question And Answers, Azure Bot Services y un pollo con polea.
 
 
-##02:27 PM, Día 1:
+## 02:27 PM, Día 1:
 
 Una navegación rápida por la Deep Web me ha aportado todo el material que necesito. Unas 60 frases y sus respuestas. Solo he tenido que recogerlas y formatearlas. Tarea sencilla. Una línea por cada una con el siguiente formato: 
 
@@ -30,7 +30,7 @@ Frase <TAB> Respuesta <TAB> Juego
 [Aquí está el resultado]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas.txt "duelo-espadas.txt").
 
 
-##02:52 PM, Día 1:
+## 02:52 PM, Día 1:
 
 Ya he encontrado toda la información sobre esa magia oscura llamada QnA Maker de Microsoft. Todas las pistas me han dirigido a su [página web](https://qnamaker.ai/ "QnA Maker"). Parece ser que siguiendo unos pequeños pasos e importando la información que he recolectado anteriormente, conseguiré un sistema que responda adecuadamente a cada frase de un duelo de Monkey Island.
 
@@ -54,14 +54,14 @@ He encontrado una funcionalidad genial. Desde la parte de "Test" de QnA Maker, n
 ![QnA Maker - training]({{site.baseurl}}/public/uploads/2017/02/qna-create-training.PNG)
 
 
-##03:00 PM, Día 1:
+## 03:00 PM, Día 1:
 
 Me he adentrado en un nuevo lugar: [el portal de azure](https://portal.azure.com "Azure Portal"). Dentro de sus laberínticos menús he hallado el recurso definitivo: [Bot Services](https://azure.microsoft.com/en-us/services/bot-service/ "Bot Services"). Así que he decido crear uno nuevo. Estoy esperando a que termine el deploy.
 
 ![Azure Bot Services - Create]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-2.PNG)
 
 
-##03:04 PM, Día 1:
+## 03:04 PM, Día 1:
 
 Al abrir el recurso nuevo, he tenido que añadir un App ID y un password que la propia plataforma me ha ido generando a través de un wizard.
 
@@ -78,7 +78,7 @@ Entonces un popup salvaje ha aparecido preguntándome si quería asociar el bot 
 ![QnA Maker - selection]({{site.baseurl}}/public/uploads/2017/02/azure-bot-service-5.PNG)
 
 
-##03:31 PM, Día 1:
+## 03:31 PM, Día 1:
 
 Tras un merecido descanso, al volver al portal de azure, he descubierto que mi bot ya estaba creado. He podido ver el código que me ha generado. Además, me ha permitido retocarlo con el fin de que fuera más eficiente.
 
@@ -95,7 +95,7 @@ Para terminar con mi experiencia, he añadido la información necesaria, un nomb
 ![Bot Service - Settings]({{site.baseurl}}/public/uploads/2017/02/duelo-espadas-settings.PNG)
 
 
-##03:55 PM, Día 1:
+## 03:55 PM, Día 1:
 
 He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas correctas para los duelos de insultos de mi partida de Monkey Island. 
 
@@ -105,7 +105,7 @@ He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas
 Mi viaje ha terminado.
 
 
-##Conclusiones
+## Conclusiones
 
 Han sido dos horas muy productivas. Sin tener demasiada idea de cómo funcionaban las diferentes tecnologías, en muy poco tiempo he conseguido un resultado muy satisfactorio. Esto no significa que este bot esté terminado. Podríamos aportarle más inteligencia. Tenemos el código fuente para modificarlo a nuestro gusto. La parte buena es que con estos conocimientos podríamos hacer un bot de asistencia para una página web en menos de un día.
 
