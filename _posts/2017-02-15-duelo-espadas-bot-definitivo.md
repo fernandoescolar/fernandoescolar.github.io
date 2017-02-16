@@ -1,5 +1,10 @@
 ---
-published: true
+ID: 201702161
+title: Duelo de espadas: el bot definitivo
+author: fernandoescolar
+post_date: 2017-02-16 09:08:03
+post_excerpt: ""
+layout: post
 ---
 Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la edad, pero creo que eran los mejores. Y aprovechando este momento melancólico decidí volver a jugar al Monkey Island. Una saga que como todos sabréis consta de dos partes. En el que teníamos duelos de espada/insultos delirantes. Pero algunas veces eran combates bastante complejos. Quizá la nueva tecnología me podría ayudar con esto. Dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.<!--break-->
 
