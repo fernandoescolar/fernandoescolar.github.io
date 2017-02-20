@@ -1,5 +1,11 @@
 ---
 published: true
+ID: 2002171
+title: 'Zork (en Español) - Bot'
+author: fernandoescolar
+post_date: 2017-02-20 10:47:23
+post_excerpt: ""
+layout: post
 ---
 > Corriendo, rodeé la casa hasta su parte trasera, donde encontré una ventana mal cerrada. La abrí y me colé. Como esperaba, había entrado por la cocina. En el centro de aquel espacio había una mesa de madera y sobre ella reposaba un saco marrón, alargado, y una botella de agua. Aun lado había una chimenea y una escalera que conducía al desván. Un distribuidor, situado a la izquierda, conducíaalsalón. Igual que en eljuego.<!--break-->
 > Ernest Cline - Ready Player One
