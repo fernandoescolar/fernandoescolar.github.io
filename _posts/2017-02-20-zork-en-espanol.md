@@ -8,6 +8,7 @@ post_excerpt: ""
 layout: post
 ---
 > Corriendo, rodeé la casa hasta su parte trasera, donde encontré una ventana mal cerrada. La abrí y me colé. Como esperaba, había entrado por la cocina. En el centro de aquel espacio había una mesa de madera y sobre ella reposaba un saco marrón, alargado, y una botella de agua. Aun lado había una chimenea y una escalera que conducía al desván. Un distribuidor, situado a la izquierda, conducíaalsalón. Igual que en eljuego.<!--break-->
+
 > Ernest Cline - Ready Player One
 
 Si os habéis leido el libro "Ready Player One" (si no, ya estáis tardando) sabréis de qué estamos hablando. Quizá también si habéis visto un capitulo de la segunda temporada de "The Big Bang Theory".
