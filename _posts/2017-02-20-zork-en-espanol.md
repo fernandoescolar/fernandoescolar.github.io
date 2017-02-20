@@ -18,6 +18,8 @@ Si os habéis leido el libro "Ready Player One" (si no, ya estáis tardando) sab
 
 Como prueba de concepto, juntando un [emulador de Z-Machine](https://github.com/thiloplanz/glulx-typescript), añadiendo alguna implementación más, descargando [el juego de Zork](https://juegosdetexto.wordpress.com/al-oeste-de-la-casa/salon-de-juegos/) traducido y usando el [Bot Framework](https://dev.botframework.com/); puedo decir que ya está terminado. Al menos ha terminado [la prueba](https://github.com/fernandoescolar/zork-spanish-bot).
 
-<iframe src='https://webchat.botframework.com/embed/zork-spanish?s=hW9r9ekFv7w.cwA.5Ek.1UR7-opzpI3gcs4rLaObhZhcYcKiI2XLhTj4hPL3wQE'></iframe>
+<iframe src='https://webchat.botframework.com/embed/zork-spanish?s=hW9r9ekFv7w.cwA.5Ek.1UR7-opzpI3gcs4rLaObhZhcYcKiI2XLhTj4hPL3wQE' style="width: 100%;height: 400px;"></iframe>
 
-Espero que lo disfrutéis :).
+Además guarda las partidas en un Azure Storage. Si no has jugado, ya no tienes excusas :).
+
+Espero que lo disfrutéis...
