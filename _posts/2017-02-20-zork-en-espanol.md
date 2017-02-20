@@ -20,6 +20,6 @@ Como prueba de concepto, juntando un [emulador de Z-Machine](https://github.com/
 
 <iframe src='https://webchat.botframework.com/embed/zork-spanish?s=hW9r9ekFv7w.cwA.5Ek.1UR7-opzpI3gcs4rLaObhZhcYcKiI2XLhTj4hPL3wQE' style="width: 100%;height: 400px;"></iframe>
 
-Además guarda las partidas en un Azure Storage. Para ver el código fuente o más información, puedes visitar el repositorio de github: https://github.com/fernandoescolar/zork-spanish-bot.
+Además guarda las partidas en un Azure Storage. Para ver el código fuente o más información, puedes visitar [el repositorio](https://github.com/fernandoescolar/zork-spanish-bot) en github.
 
 Si no has jugado, ya no tienes excusas :). Espero que lo disfrutéis...
