@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 > Corriendo, rodeé la casa hasta su parte trasera, donde encontré una ventana mal cerrada. La abrí y me colé. Como esperaba, había entrado por la cocina. En el centro de aquel espacio había una mesa de madera y sobre ella reposaba un saco marrón, alargado, y una botella de agua. Aun lado había una chimenea y una escalera que conducía al desván. Un distribuidor, situado a la izquierda, conducíaalsalón. Igual que en eljuego.<!--break-->
 > Ernest Cline - Ready Player One
