@@ -254,7 +254,7 @@ else { $recursive = $false }
 [Utilities.Zip]::Create($src, $filter, $zip, $recursive)
 ```
 
-Y como este script usa más y diferentes parámetros de los que hemos definido en el "task.json" lo que haré es modificar este archivo, la propiedad "input" con el siguiente valor:
+Y como este script usa más y diferentes parámetros de los que hemos definido en el "task.json" lo que haré es modificar este archivo, la propiedad "inputs" añadiendo los parámetros de entrada que requiere el script. Como se muestra a continuación:
 
 
 ```json
@@ -296,23 +296,33 @@ Y como este script usa más y diferentes parámetros de los que hemos definido e
 
 # Probando la nueva tarea
 
+Podemos probar nuestra tarea subiendola a nuestro VSTS. Para ello primero tendremos que identificarnos en el servidor usando el comando 'login':
+
 ```bash
 $ tfx login
 ```
+Para este comando tendremos que usar tokens de acceso personales. Podemos leer la siguiente web para saber en cómo hacernos con uno:
 
 http://roadtoalm.com/2015/07/22/using-personal-access-tokens-to-access-visual-studio-online
+
+La otra variante es usar tipo de autentificación básica, usando usuario y contraseña:
 
 ```bash
 $ tfx login --auth-type basic
 ```
 
+Para usarlo con TFS 2017 tendremos que realizar unos pequeños cambios en el servidor de IIS que podemos leer en la siguiente página:
 https://github.com/Microsoft/tfs-cli/blob/master/docs/configureBasicAuth.md
 
+Una vez hemos hecho login podemos subir nuestra tarea con el siguiente comando, indicando la carpeta donde se encuentra nuestra extensión:
 
 ```bash
 $ tfx build tasks upload --task-path ./Zip
 ```
 
+Si ahora entramos en el TFS/VSTS veremos que aparece una nueva "cajita" con la tarea que hemos creado :)
+
+Por último, si queremos borrar la tarea del TFS/VSTS tendremos que llamar al comando "delete" e indicando el  id de la misma:
 
 ```bash
 $ tfx build tasks delete --task-id f5d62250-a510-11e6-9d90-21c7a4a70529
