@@ -11,7 +11,7 @@ layout: post
 Hoy he venido contaros mis experiencias ayudando a diferentes empresas en la subida de sus aplicaciones a azure, y concretamente a azure PaaS. Así que en realidad no son mis experiencias, son las de esas empresas. Y si soy totalmente sincero, no son sus experiencias, en realidad de lo que os voy a hablar es de sus quejas.<!--break-->
 
 <div style="background-color: #f4c24b;font-size: 12px;font-style: italic;padding: 5px;">
-Este documento corresponde con el guión realizado para dar la charla de "Por qué todo lo que subo a azure está mal" para la Global Azure Bootcamp de 2018. Si lo prefieres, puedes ver el vídeo de la charla en <a href="https://www.youtube.com/watch?v=cMwHQlmGnr0" alt=""Canal de YouTube de GAB 2018"">este enlace</a>.
+Este documento corresponde con el guión realizado para dar la charla de "Por qué todo lo que subo a azure está mal" para la Global Azure Bootcamp de 2018. Si lo prefieres, puedes ver el vídeo de la charla en <a href="https://www.youtube.com/watch?v=cMwHQlmGnr0" alt="Canal de YouTube de GAB 2018">este enlace</a>.
 </div>
 
 ## Un poco de historia
