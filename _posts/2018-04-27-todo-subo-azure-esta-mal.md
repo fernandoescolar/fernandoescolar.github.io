@@ -54,7 +54,7 @@ Nuestro camino a la nube se había visto muy eficaz en la migración de muchas c
 
 Nuestros desarrollos internos funcionaban genial. Es más, en Tokiota no tenemos servidores, usamos azure. Y estábamos muy contentos con la calidad del servicio.
 
-Pero para las empresas que ayudábamos, la cosa no estaba yendo bien. ¿Quizá nos habíamos confundido? ¿quizá azure no era tan bueno? ¿es posible que tubieramos que revisar todo nuestro proceso y prestar más atención a los detalles?
+Pero para las empresas que ayudábamos, la cosa no estaba yendo bien. ¿Quizá nos habíamos confundido? ¿quizá azure no era tan bueno? ¿es posible que tuviéramos que revisar todo nuestro proceso y prestar más atención a los detalles?
 
 Posiblemente sí. Y es aquí donde surge el enfado. El enfado lleva al odio. Y al final desemboca en una fase de apatía. (no en el lado oscuro ;P)
 
