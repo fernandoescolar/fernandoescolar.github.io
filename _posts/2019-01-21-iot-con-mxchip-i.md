@@ -24,11 +24,11 @@ Hoy empezamos una pequeña serie sobre IoT usando un dispositivo McChip y la pla
 
 Si queremos graduarnos en la "Universidad de las Cosas" necesitaremos una "Cosa" que utilizar. La "Thing" más recomendable, es una placa llamada "MxChip IoT DevKit". 
 
-Esta place ya viene certificada para trabajar con Azure IoT. Las suelen regalar en eventos de Microsoft con temáticas de IoT. Pero siempre podremos adquirir una comprándola online. 
+Esta placa ya viene certificada para trabajar con Azure IoT. Además tiene un montón de sensores incorporados: humedad, temperatura, presión, acelerómetro, giroscopio, micrófono... Las suelen regalar en eventos de Microsoft con temáticas de IoT. Pero siempre podremos adquirir una comprándola online. 
 
 No es obligatorio usarla. Pero simplificará toda la interacción con el hardware. De esta forma podremos centrarnos en lo interesante: el desarrollo.
 
-Una vez tengamos una placa MxChip, tendremos que empezar a trabajar con ella:
+Una vez tengamos una placa MxChip, tendremos que empezar a trabajar con él:
 
 ## Configurar la wifi
 
