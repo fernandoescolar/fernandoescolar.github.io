@@ -8,7 +8,7 @@ post_excerpt: ""
 layout: post
 ---
 
-Hoy empezamos una pequeña serie sobre IoT usando un dispositivo McChip y la plataforma Azure. Nada como empezar el año escribiendo un nuevo artículo sobre una tecnología de la que nunca antes lo había hecho.<!--break-->
+Hoy empezamos una pequeña serie sobre IoT usando un dispositivo MxChip y la plataforma Azure. Nada como empezar el año escribiendo un nuevo artículo sobre una tecnología de la que nunca antes lo había hecho.<!--break-->
 
 ¡Hola! Soy Troy McClure y tal vez me recuerden de otros artículos en internet como "Los decimales que el sistema robó a mi 'float'" o "Por qué 'Linq to Entities' apesta".
 
