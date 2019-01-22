@@ -28,11 +28,11 @@ Esta placa ya viene certificada para trabajar con Azure IoT. Además tiene un mo
 
 No es obligatorio usarla. Pero simplificará toda la interacción con el hardware. De esta forma podremos centrarnos en lo interesante: el desarrollo.
 
-Una vez tengamos una placa MxChip, tendremos que empezar a trabajar con él:
+Una vez tengamos una placa MxChip, tendremos que empezar a trabajar con ella:
 
 ## Configurar la wifi
 
-Enchufaremos el MxChip a una fuente de alimentación (por ejemplo un puerto USB de nuestro ordenador). Entonces mantendremos pulsado el botón "B". Pulsaremos el botón "reset" y o soltaremos. Después soltaremos el botón "B":
+Enchufaremos el MxChip a una fuente de alimentación (por ejemplo un puerto USB de nuestro ordenador). Entonces mantendremos pulsado el botón "B". Pulsaremos el botón "reset" y lo soltaremos. Después soltaremos el botón "B":
 
 ![configure wifi]({{site.baseurl}}/public/uploads/2019/01/iot-mxchip-wifi1.png)
 
@@ -50,7 +50,7 @@ Una vez en esa página solo debemos configurar la Wifi a la que deseamos que se 
 
 Actualizar el firmware es de las operaciones más simples que se pueden encontrar. Lo único que hay que hacer es descargar la última versión desde la página oficial:
 
-https://aka.ms/devkit/prod/firmware/latest
+[https://aka.ms/devkit/prod/firmware/latest](https://aka.ms/devkit/prod/firmware/latest)
 
 Después conectar el MxChip a nuestro ordenador usando el cable USB. De esta forma se montará una unidad de disco. Finalmente, copiaremos el archivo del firmware en la unidad de disco de la placa:
 
@@ -89,7 +89,7 @@ También instalaremos la extensión "Azure IoT Tools" para tener instegración c
 
 Y por último, instalaremos un driver de windows que nos servirá de interfaz USB para poder comunicarnos entre el MxChip y nuestra máquina: ST-Link/V2. Lo podréis descargar, después de introducir vuestro email desde la página oficial:
 
-http://www.st.com/en/development-tools/stsw-link009.html 
+[http://www.st.com/en/development-tools/stsw-link009.html](http://www.st.com/en/development-tools/stsw-link009.html)
 
 Una vez hemos completado todos estos pasos desconectamos de nuestro ordenador el MxChip y reiniciamos vscode (Ctrl+ Shift + P y "Reload Window"). Al conectar de nuevo el MxChip con nuestro ordenador y estando vscode abierto, veremos como se abre automáticamente una página con ejemplos de desarrollo:
 
