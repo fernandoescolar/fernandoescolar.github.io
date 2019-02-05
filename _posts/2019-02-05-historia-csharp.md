@@ -78,11 +78,11 @@ También de esta versión salió otra librería llamada Reactive Extensions. Hoy
 
 ### 2010
 
-Después de unos años tan interesantes en el mundo del desarrollo de Microsoft, **2010** nos supo un poco descafeinada. Como un año de transición. Era como que tenían que sacar algo y decidieron llamarlo C# **4.0**. Con unos pocos detalles que se habían quedado en el tintero en versiones anteriores. Destacaríamos la covarianza y contravarianza en _generics_, los _named-params_ o los parámetros opcionales.
+Después de unos años tan interesantes en el mundo del desarrollo de Microsoft, **2010** nos supo un poco descafeinado. Como un año de transición. Era como que tenían que sacar algo y decidieron llamarlo C# **4.0**. Con unos pocos detalles que se habían quedado en el tintero en versiones anteriores. Destacaríamos la covarianza y contravarianza en _generics_, los _named-params_ o los parámetros opcionales.
 
 ### 2012
 
-Dos años más tarde nos encontramos con una versión que básicamente solo añadía el _syntax-sugar_ más grande que ha visto un lenguaje de programación en la historia. De hecho, luego fue copiado por javascript. C# **5.0** introdujo _async_ y _await_, dos palabras clave tan útiles como peligrosas. Esta característica esconde una máquina de estado en IL (_Intermediate Language_0, el _bytecode_ de .Net) dentro de nuestros ensamblados. Y su funcionalidad es hacer que la programación asíncrona pueda realizarse de la misma forma que la secuencial, acercando un modelo de programación basado en eventos y callbacks, a los pobres programadores que solo saben programar de forma secuencial.
+Dos años más tarde nos encontramos con una versión que básicamente solo añadía el _syntax-sugar_ más grande que ha visto un lenguaje de programación en la historia. De hecho, luego fue copiado por javascript. C# **5.0** introdujo _async_ y _await_, dos palabras clave tan útiles como peligrosas. Esta característica esconde una máquina de estado en IL (_Intermediate Language_, el _bytecode_ de .Net) dentro de nuestros ensamblados. Y su funcionalidad es hacer que la programación asíncrona pueda realizarse de la misma forma que la secuencial, acercando un modelo de programación basado en eventos y callbacks, a los pobres programadores que solo saben programar de forma secuencial.
 
 ### 2015
 
@@ -90,7 +90,7 @@ Buscando la excelencia de su lenguaje bandera, Microsoft nos dio un montón de _
 
 ### 2017
 
-La última gran actualización de C#, la versión **7.0**. Lo más destacable de esta versión es que vino de la mano del nuevo _Runtime_ multi plataforma de .Net: dotnet core. Además de un montón de funcionalidades que venían inspiradas de un lenguaje funcional de .Net: F#. _Pattern maching_, tuplas, deconstrucción, _wildcards_... Ahora C# es un lenguaje orientado a objetos y funcional.
+La última gran actualización de C#, la versión **7.0**. Lo más destacable de esta versión es que vino de la mano del nuevo _Runtime_ multi plataforma y open source de .Net: dotnet core. Además de un montón de funcionalidades que venían inspiradas de un lenguaje funcional de .Net: F#. _Pattern maching_, tuplas, deconstrucción, _wildcards_... Ahora C# es un lenguaje orientado a objetos y funcional.
 
 ![dotNet logo]({{site.baseurl}}/public/uploads/2019/02/dotnet.png)
 
