@@ -3,7 +3,7 @@ published: true
 ID: 201902051
 title: 'Historia de C#'
 author: fernandoescolar
-post_date: 2019-02-05 07:32:11
+post_date: 2019-02-05 05:08:11
 post_excerpt: ""
 layout: post
 ---
