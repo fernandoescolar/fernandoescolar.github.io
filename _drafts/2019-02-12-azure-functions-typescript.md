@@ -8,36 +8,6 @@ post_excerpt: ""
 layout: post
 ---
 
-<style>
-.notes {
-  cursor: pointer;
-}
-
-.notes span {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: gray;
-}
-
-.notes .tip {
-  display: block;
-  position: absolute;
-  background-color: #1a1a1a;
-  color: #fff;
-  
-  opacity: 0;
-  height: 0px;
-  transform: translate3d(0,60px,0);
-  transition: transform .15s ease-in-out, opacity .2s;
-}
-
-.notes:active .tip {
-  /*height: auto;*/
-  opacity: 1;
-  transform: translate3d(0,0,0) rotate3d(1,1,1,0deg);
-}
-</style>
-
 No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos explicativos que su autor ha añadido, vais directamente al contenido de los _code snipets_ y vais copiando y pegando... No os ha pasado que ignoráis la prosa que tanto tiempo ha costado escribir y solo leéis el código, porque ya os resulta bastante auto explicativo... <!--break--> Pues hoy es el día en el que he entendido vuestras necesidades. Voy a poner código y reducir mis comentarios a la mínima expresión.
 
 <div class="notes">
@@ -335,7 +305,7 @@ http://localhost:7071/api/hello_world?name=Chiquitan%20Chiquititantantan
   <span>¡Hala! ¡A cascarla!</span>
   <div class="tip">
     <p>
-      Como dicen en mi pueblo... Solo queda despedirnos, no sin antes poneros <a href="https://github.com/fernandoescolar/azure-functions-typescript-boilerplate">el enlace al proyecto de GitHub donde hemos subido este boilerplate</a>. Sí, ya lo sé... os podíais haber ahorrado todo este artículo. Perdón.
+      Solo queda despedirnos, no sin antes poneros <a href="https://github.com/fernandoescolar/azure-functions-typescript-boilerplate">el enlace al proyecto de GitHub donde hemos subido este boilerplate</a>. Sí, ya lo sé... os podíais haber ahorrado todo este artículo. Perdón.
     </p>
   </div>
 </div>
@@ -343,3 +313,25 @@ http://localhost:7071/api/hello_world?name=Chiquitan%20Chiquititantantan
 ```
 https://github.com/fernandoescolar/azure-functions-typescript-boilerplate
 ```
+
+<div style="text-align: center; margin-top: 30px;">
+<button id="showAll" style="cursor: pointer; background-color: #ac4142; border-radius: 5px; border: none; padding: 10px; color: #fff;">
+clic aquí para mostrar el contenido completo
+</button>
+</div>
+
+<script>
+  function showAll() {
+    var elements = document.getElementsByClassName('notes');
+    while(elements.length > 0) {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].children[0].remove();
+        elements[i].classList.remove('notes');
+      }
+      elements = document.getElementsByClassName('notes');
+    }
+  }
+
+  document.getElementById('showAll').addEventListener('click', showAll);
+</script>
+

@@ -1,0 +1,28 @@
+.notes {
+    cursor: pointer;
+  }
+  
+  .notes span {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: gray;
+  }
+  
+  .notes .tip {
+      display: block;
+      position: absolute;
+      background-color: #41444F;
+      color: #fff;
+      opacity: 0;
+      transform: translate3d(calc(100%),60px,100px);
+      transition: transform .15s ease-in-out, opacity .2s;
+      width: 70%;
+      padding: 8px 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .notes:active .tip {
+    opacity: 1;
+    transform: translate3d(0,0,0) rotate3d(1,1,1,0deg);
+  }
