@@ -106,8 +106,8 @@ Después de una serie de comentarios que me han llegado vía Twitter, me veo en 
 
 En la sección de 2007 se menciona la creación de la _Task Parallel Library_ (TPL) y de las _Reactive Extensions_ (Rx). Si bien es verdad que existen implementaciones de ambas para la versión del _Framework_ 3.5, no fue hasta 2010 y 2011 respectivamente, cuando estuvieron disponibles públicamente. Originariamente aparecieron: TPL para versión del _Framework_ 4.0 y Rx para 3.5 y 4.0. Dentro de las Rx para la versión del _Framework_ 3.5 existe un _backport_ de TPL.
 
-<center><blockquote class="twitter-tweet" data-conversation="none" data-lang="es"><p lang="es" dir="ltr">La TPL no salió con .Net 4? Justo lo estuve mirando el otro día para un proyecto en 3.5 (que “no se puede” migrar) y si me dices que hay forma de usar la TPL en 3.5 me das una alegría gorda gorda</p>&mdash; Adri (@mancku) <a href="https://twitter.com/mancku/status/1093986889504313344?ref_src=twsrc%5Etfw">8 de febrero de 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="es"><p lang="es" dir="ltr">La TPL no salió con .Net 4? Justo lo estuve mirando el otro día para un proyecto en 3.5 (que “no se puede” migrar) y si me dices que hay forma de usar la TPL en 3.5 me das una alegría gorda gorda</p>&mdash; Adri (@mancku) <a href="https://twitter.com/mancku/status/1093986889504313344?ref_src=twsrc%5Etfw">8 de febrero de 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ¡Muchas gracias [Adri](https://twitter.com/mancku)!
 
@@ -115,12 +115,12 @@ En la sección de 2007 se menciona la creación de la _Task Parallel Library_ (T
 
 Como bien indica [José Manuel Alarcón](https://twitter.com/jm_alarcon) por si había alguna duda, el _bytecode_ no fue un invento de Sun Microsystem para la plataforma Java. Es un concepto que viene desde (no sé si incluso antes) tiempos de BASIC, y que de hecho Microsoft ya usó hasta en sus implementaciones modernas de Visual Basic.
 
-<center><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">Con la salvedad de que VB clásico ya usaba bytecode, un gran resumen de la historia de C# y .Network del amigo Fernando. <a href="https://t.co/oF1HzQZBwk">https://t.co/oF1HzQZBwk</a></p>&mdash; JM Alarcón Aguín 🌐 (@jm_alarcon) <a href="https://twitter.com/jm_alarcon/status/1092686977965715456?ref_src=twsrc%5Etfw">5 de febrero de 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">Con la salvedad de que VB clásico ya usaba bytecode, un gran resumen de la historia de C# y .Network del amigo Fernando. <a href="https://t.co/oF1HzQZBwk">https://t.co/oF1HzQZBwk</a></p>&mdash; JM Alarcón Aguín 🌐 (@jm_alarcon) <a href="https://twitter.com/jm_alarcon/status/1092686977965715456?ref_src=twsrc%5Etfw">5 de febrero de 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Y otro aporte excelente por parte de [Pablo Álvarez Doval](https://twitter.com/PabloDoval) trata sobre cómo Microsoft implementó .Net a partir de una plataforma desarrollada por Colusa Software Inc. Empresa fundada en 1994 y adquirida en 1996, que desarrollaba por aquel entonces una plataforma llamada Omniware, con el fin de ejecutar código en C/C++ en una máquina virtual multiplataforma llamada OmniVM.
 
-<center><blockquote class="twitter-tweet" data-conversation="none" data-lang="es"><p lang="es" dir="ltr">Muy buen artículo, pero yo le añadiría un detalle importantísimo para lo que fue .NET y C#, y muy poco conocido. .NET hereda directamente de OmniVM, que fue la plataforma de Colusa Omniware que Microsoft adquirió y desarrolló, evitando partir de cero :)</p>&mdash; Pablo Álvarez Doval (@PabloDoval) <a href="https://twitter.com/PabloDoval/status/1093976877780426752?ref_src=twsrc%5Etfw">8 de febrero de 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="es"><p lang="es" dir="ltr">Muy buen artículo, pero yo le añadiría un detalle importantísimo para lo que fue .NET y C#, y muy poco conocido. .NET hereda directamente de OmniVM, que fue la plataforma de Colusa Omniware que Microsoft adquirió y desarrolló, evitando partir de cero :)</p>&mdash; Pablo Álvarez Doval (@PabloDoval) <a href="https://twitter.com/PabloDoval/status/1093976877780426752?ref_src=twsrc%5Etfw">8 de febrero de 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ¡Muchas gracias a ambos!
