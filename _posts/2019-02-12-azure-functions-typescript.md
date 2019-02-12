@@ -316,7 +316,7 @@ https://github.com/fernandoescolar/azure-functions-typescript-boilerplate
 
 <div style="text-align: center; margin-top: 30px;">
 <button id="showAll" style="cursor: pointer; background-color: #ac4142; border-radius: 5px; border: none; padding: 10px; color: #fff;">
-clic aquí para mostrar el contenido completo
+clic aquí para disfrutar de la prosa
 </button>
 </div>
 
@@ -331,6 +331,7 @@ clic aquí para mostrar el contenido completo
       elements = document.getElementsByClassName('notes');
     }
     document.getElementById('showAll').style.display = 'none';
+    window.scroll(0, 0);
   }
 
   document.getElementById('showAll').addEventListener('click', showAll);
