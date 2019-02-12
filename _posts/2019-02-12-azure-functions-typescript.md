@@ -3,7 +3,7 @@ published: true
 ID: 201902051
 title: 'Azure Functions con TypeScript'
 author: fernandoescolar
-post_date: 2019-02-12 08:18:25
+post_date: 2019-02-12 07:18:25
 post_excerpt: ""
 layout: post
 ---
