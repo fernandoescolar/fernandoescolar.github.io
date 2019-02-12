@@ -14,7 +14,7 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
   <span>TypeScript con Azure Functions</span>
   <div class="tip">
     <p>
-      Cada día que pasa trabajando con TypeScript en equipos pienso en lo afortunados que somos de no haber elejido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho otros y poder interactuar con otros artefactos facilmente gracias al <i>intellisense</i>. 
+      Cada día que pasa trabajando con TypeScript en equipos pienso en lo afortunados que somos de no haber elegido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho otros y poder interactuar con otros artefactos fácilmente gracias al <i>intellisense</i>. 
     </p>
     <p>
       El problema es que cuando empezamos a trabajar con Azure Functions nos encontramos que podemos desarrollar con los lenguajes C#, Java, JavaScript o Python, pero no con TypeScript. Así que aprovechando que estoy un poco aburrido, he decidido invertir un poco de mi preciado tiempo, montando lo que llamaríamos un <i>boilerplate</i>.
@@ -56,7 +56,7 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
       Microsoft ha publicado una herramienta de consola para hacer que la creación de <i>Functions</i> sea más sencilla. Para ello tendremos que instalarla como dependencia de desarrollo de nuestro proyecto, o bien como herramienta global, cambiando el parámetro <i>--save-dev</i> por <i>-g</i>. 
     </p>
     <p>
-      Personalmente prefiero instalar todas las dependencias de un proyecto de forma local y no global, ya que no todo el mundo tiene por qué tener instalados los mismo paquetes <i>npm</i>, ni tampoco creo que desarrollar un proyecto deba implicar instalar paquetes globales. Pero esto es tan solo una opinión, cada uno es libre de instalar lo que considere de forma global.
+      Personalmente prefiero instalar todas las dependencias de un proyecto de forma local y no global, ya que no todo el mundo tiene por qué tener instalados los mismos paquetes <i>npm</i>, ni tampoco creo que desarrollar un proyecto deba implicar instalar paquetes globales. Pero esto es tan solo una opinión, cada uno es libre de instalar lo que considere de forma global.
     </p>
   </div>
 </div>
@@ -128,7 +128,7 @@ python (preview)
   <span>Ordenando el código.</span>
   <div class="tip">
     <p>
-      ¡Que no te engañen! Ser ordenado es una virtud, no un defecto. Si cada vez que abro un proyecto de TypeScript veo una carpeta llamada <i>src</i> donde sé a priori que voy a encontrar el código fuente, ¿por qué este proyecto no debería tenerlo?. ¡Vamos al  lío!
+      ¡Que no te engañen! Ser ordenado es una virtud, no un defecto. Si cada vez que abro un proyecto de TypeScript veo una carpeta llamada <i>src</i> donde sé a priori que voy a encontrar el código fuente, ¿por qué este proyecto no debería tenerlo? ¡Vamos al  lío!
     </p>
   </div>
 </div>
@@ -154,7 +154,7 @@ python (preview)
   <span>Creamos el archivo <i>tsconfig.json</i>.</span>
   <div class="tip">
     <p>
-      En la raiz de nuestra solución crearemos un nuevo archivo con la configuración necesaria para "transpilar" el código TypeScript en código JavaScript compatible con el <i>runtime</i> de las Azure Functions. Lo más importante es tener en cuenta que usaremos el sistema de módulos de "commonjs" (module.export...) y la versión de <b>ECMAScript de 2017</b> (con compatibilidad con <i>async</i> y <i>await</i>).
+      En la raíz de nuestra solución crearemos un nuevo archivo con la configuración necesaria para "transpilar" el código TypeScript en código JavaScript compatible con el <i>runtime</i> de las Azure Functions. Lo más importante es tener en cuenta que usaremos el sistema de módulos de "commonjs" (module.export...) y la versión de <b>ECMAScript de 2017</b> (con compatibilidad con <i>async</i> y <i>await</i>).
     </p>
   </div>
 </div>
@@ -189,7 +189,7 @@ python (preview)
     <p>
       Ahora vamos a añadir una serie de comandos que nos van a ayudar en el día a día con nuestro proyecto:
       <ul>
-        <li><b>new</b>: creará una nueva <i>Function</i> en JavaScript usando las plantilla de la herramienta de Microsoft.</li>
+        <li><b>new</b>: creará una nueva <i>Function</i> en JavaScript usando las plantillas de la herramienta de Microsoft.</li>
         <li><b>serve</b>: transpilará el código y lo ejecutará localmente.</li>
         <li><b>build</b>: creará una nueva carpeta llamada "dist" en la que encontraremos los archivos necesarios para su publicación en Azure.</li>
         <li><b>clean</b>: borrará los transpilados y la carpeta "dist".</li>
@@ -245,7 +245,7 @@ Function name: [HttpTrigger] hello_world
   <span>Renombrar <i>index.js</i> a <i>index.ts</i>.</span>
   <div class="tip">
     <p>
-      Nuestro script ha creado una <i>Function</i> básica en JavaScript. Para convertirla a TypeScript lo primero será cambiar la extensión de ".js" a ".ts", y despues tendremos que tipar el código. Si eres un poco vago (como yo) puedes copiar el código expuesto a continuación.
+      Nuestro script ha creado una <i>Function</i> básica en JavaScript. Para convertirla a TypeScript lo primero será cambiar la extensión de ".js" a ".ts", y después tendremos que tipar el código. Si eres un poco vago (como yo) puedes copiar el código expuesto a continuación.
     </p>
   </div>
 </div>
@@ -275,7 +275,7 @@ export default async function (context: Context, req: HttpRequest) {
   <span>Probando el proyecto.</span>
   <div class="tip">
     <p>
-      Para finalizar tendremos que probar que todo ha salido bien. Para ello lanzaremos en consola el comando "npm run serve" y veremos como se lanza un <i>Hosting</i> de Azure Functions y cerca del final de todos los logs nos parecerá la URL de nuestra <i>Function</i>.
+      Para finalizar tendremos que probar que todo ha salido bien. Para ello lanzaremos en consola el comando "npm run serve" y veremos cómo se lanza un <i>Hosting</i> de Azure Functions y cerca del final de todos los logs nos parecerá la URL de nuestra <i>Function</i>.
     </p>
   </div>
 </div>
@@ -330,6 +330,7 @@ clic aquí para mostrar el contenido completo
       }
       elements = document.getElementsByClassName('notes');
     }
+    document.getElementById('showAll').style.display = 'none';
   }
 
   document.getElementById('showAll').addEventListener('click', showAll);
