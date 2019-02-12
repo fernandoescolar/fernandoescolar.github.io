@@ -14,10 +14,10 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
   <span>TypeScript con Azure Functions</span>
   <div class="tip">
     <p>
-      Cada día que pasa trabajando con TypeScript en equipos pienso en lo afortunados que somos de no haber elegido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho otros y poder interactuar con otros artefactos fácilmente gracias al <i>intellisense</i>. 
+      Cada día que paso trabajando con TypeScript en un contexto de equipo, pienso en lo afortunados que somos de no haber elegido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho los demás y poder interactuar con otros artefactos fácilmente gracias al <i>intellisense</i>. 
     </p>
     <p>
-      El problema es que cuando empezamos a trabajar con Azure Functions nos encontramos que podemos desarrollar con los lenguajes C#, Java, JavaScript o Python, pero no con TypeScript. Así que aprovechando que estoy un poco aburrido, he decidido invertir un poco de mi preciado tiempo, montando lo que llamaríamos un <i>boilerplate</i>.
+      El problema es que cuando empezamos a trabajar con Azure Functions nos encontramos con que podemos desarrollar con los lenguajes C#, Java, JavaScript o Python, pero no con TypeScript. Así que aprovechando que estoy un poco aburrido, he decidido invertir un poco de mi preciado tiempo, montando lo que llamaríamos un <i>boilerplate</i>.
     </p>
   </div>
 </div>
@@ -26,7 +26,7 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
   <span>Nuevo proyecto usando la consola.</span>
   <div class="tip">
     <p>
-      Para empezar a trabajar, vamos a crear un nuevo proyecto. Para ello crearemos una carpeta nueva usando la consola (En mi caso uso <a href="http://cmder.net/" target="_blank">Cmder</a>, que usa el símbolo <i>lambda</i> antes de cada línea).
+      Para empezar a trabajar, vamos a crear un nuevo proyecto. Para ello crearemos una carpeta nueva usando la consola (en mi caso uso <a href="http://cmder.net/" target="_blank">Cmder</a>, que usa el símbolo <i>lambda</i> antes de cada línea).
     </p>
   </div>
 </div>
@@ -128,7 +128,7 @@ python (preview)
   <span>Ordenando el código.</span>
   <div class="tip">
     <p>
-      ¡Que no te engañen! Ser ordenado es una virtud, no un defecto. Si cada vez que abro un proyecto de TypeScript veo una carpeta llamada <i>src</i> donde sé a priori que voy a encontrar el código fuente, ¿por qué este proyecto no debería tenerlo? ¡Vamos al  lío!
+      ¡Que no te engañen! Ser ordenado es una virtud, no un defecto. Si cada vez que abro un proyecto de TypeScript veo una carpeta llamada <i>src</i> donde sé a priori que voy a encontrar el código fuente, ¿por qué este proyecto no debería tenerla? ¡Vamos al  lío!
     </p>
   </div>
 </div>
@@ -154,7 +154,7 @@ python (preview)
   <span>Creamos el archivo <i>tsconfig.json</i>.</span>
   <div class="tip">
     <p>
-      En la raíz de nuestra solución crearemos un nuevo archivo con la configuración necesaria para "transpilar" el código TypeScript en código JavaScript compatible con el <i>runtime</i> de las Azure Functions. Lo más importante es tener en cuenta que usaremos el sistema de módulos de "commonjs" (module.export...) y la versión de <b>ECMAScript de 2017</b> (con compatibilidad con <i>async</i> y <i>await</i>).
+      En la raíz de nuestra solución crearemos un nuevo archivo (<i>tsconfig.json</i>) con la configuración necesaria para "transpilar" el código TypeScript en código JavaScript compatible con el <i>runtime</i> de las Azure Functions. Lo más importante es tener en cuenta que usaremos el sistema de módulos de "commonjs" (module.export...) y la versión de <b>ECMAScript de 2017</b> (con compatibilidad con <i>async</i> y <i>await</i>).
     </p>
   </div>
 </div>
@@ -187,7 +187,7 @@ python (preview)
   <span>Editamos el <i>package.json</i>.</span>
   <div class="tip">
     <p>
-      Ahora vamos a añadir una serie de comandos que nos van a ayudar en el día a día con nuestro proyecto:
+      Ahora vamos a añadir una serie de scripts al archivo <i>package.json</i>, que nos van a ayudar en el día a día con nuestro proyecto:
       <ul>
         <li><b>new</b>: creará una nueva <i>Function</i> en JavaScript usando las plantillas de la herramienta de Microsoft.</li>
         <li><b>serve</b>: transpilará el código y lo ejecutará localmente.</li>
