@@ -115,13 +115,13 @@ python (preview)
   <span>Añadiendo paquetes de utilidades.</span>
   <div class="tip">
     <p>
-      Con el fin de tener unos comandos rápidos para borrar y copiar archivos en nuestros <i>scripts</i> de <i>npm</i>, vamos a añadir los paquetes <i>rimraf</i> y <i>copyfiles</i>.
+      Con el fin de tener unos comandos rápidos para borrar y copiar archivos en nuestros <i>scripts</i> de <i>npm</i>, vamos a añadir los paquetes <i>rimraf</i> y <i>copyfiles</i>. Además del paquete <i>azure-functions-pack</i>, que nos ayuda a crear paquetes de funciones optimizados para funcionar en la plataforma de Azure Functions.
     </p>
   </div>
 </div>
 
 ```bash
-λ npm install --save-dev copyfiles rimraf 
+λ npm install --save-dev copyfiles rimraf azure-functions-pack
 ```
 
 <div class="notes">
@@ -202,7 +202,7 @@ python (preview)
   "scripts": {
     "new": "cd src && func new",
     "serve": "tsc && cd src && func host start && rimraf **/*.js **/*.map",
-    "build": "rimraf dist && tsc --outDir dist --sourceMap false && copyfiles package.json dist && cd src && copyfiles host.json local.settings.json */function.json ../dist",
+    "build": "tsc && funcpack pack ./src --copyToOutput && cd src && copyfiles host.json local.settings.json *.csproj ../dist && cd .funcpack && copyfiles **/* ../../dist && cd .. && rimraf .funcpack",
     "clean": "rimraf dist src/**/*.js src/**/*.map"
   },
 ```
