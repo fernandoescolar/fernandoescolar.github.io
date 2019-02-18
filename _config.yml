@@ -11,8 +11,8 @@ name:             developerro
 title:            developerro
 tagline:          'El blog de Fernando Escolar'
 description:      'cuando en mi máquina tampoco funciona...'
-url:              http://fernandoescolar.github.io
-baseurl:          http://fernandoescolar.github.io/
+url:              https://fernandoescolar.github.io
+baseurl:          https://fernandoescolar.github.io/
 icon:             '/public/apple-touch-icon-144-precomposed.png'
 locale:           es_es
 
