@@ -84,7 +84,7 @@ Directamente, cuando elegimos el tipo de proceso ágil, Azure DevOps nos va a mo
 
 ### Limitar WIP
 
-El sistema al que vulgarmente que nos referimos como A Salto de Mata (ASM), es lo que denominamos una estrategia de producción _push_. La idea detrás de esto es realizar el trabajo cuando el cliente lo demanda. Esto provoca que muchas tareas se queden a medio hacer y que otras caduquen y se cancelen. Tener trabajo no finalizado o parcialmente completado es un desperdicio (_waste_) de tiempo y por tanto de dinero, y su consecuencia es dilatar los tiempos de entrega (_lead time_, tiempo desde que llega una petición hasta que se entrega). Al final, lo que conseguimos es que los clientes estén insatisfechos, los trabajadores también y que el proyecto no progrese como debiera.
+El sistema al que vulgarmente que nos referimos como A Salto de Mata (ASM), es lo que denominamos una estrategia de producción _push_. La idea detrás de esto es realizar el trabajo cuando el cliente lo demanda. Esto provoca que muchas trabajos se queden a medio hacer y que otras caduquen y se cancelen. Tener trabajo no finalizado o parcialmente completado es un desperdicio (_waste_) de tiempo y por tanto de dinero, y su consecuencia es dilatar los tiempos de entrega (_lead time_, tiempo desde que llega una petición hasta que se entrega). Al final, lo que conseguimos es que los clientes estén insatisfechos, los trabajadores también y que el proyecto no progrese como debiera.
 
 Si como consecuencia de la observación, ponemos límites al trabajo que se puede realizar al mismo tiempo (<abbr title="Work In Progress">WIP</abbr>), conseguiremos mejorar los tiempos de entrega y la calidad con la que se hace. A esto le llamaremos usar una estrategia _pull_, donde empezamos una actividad justo después de haber terminado (o cancelado) la que teníamos en marcha antes.
 
@@ -163,6 +163,4 @@ Eso sí, es importante saber que nunca se llegará a la perfección. Así que lo
 
 Hoy hemos comentado Kanban desde un punto de vista teórico y además hemos visto como Azure DevOps se perfila como una herramienta muy válida para el trabajo colaborativo, sin ensuciar las paredes y para equipos distribuidos.
 
-Un buen repaso de un método que llevo ya unos 5 años intentando implementar en mi trabajo diario de una forma correcta.
-
-Quizá en artículos sucesivos pueda tratar estos mismos asuntos, pero desde un punto de vista más práctico: ¿Qué os parecería?
+Un buen repaso de un método que llevo ya unos 5 años intentando implementar en mi trabajo diario de una forma correcta. La semana que viene os cuento como llevo...
