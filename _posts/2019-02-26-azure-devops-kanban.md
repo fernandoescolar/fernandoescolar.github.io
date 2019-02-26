@@ -65,7 +65,7 @@ Un tablero Kanban no es la única forma de implementar el sistema Kanban, aunque
 
 ![Nuevo proyecto de Azure DevOps]({{site.baseurl}}/public/uploads/2019/02/kanban-goto-board.png)
 
-Kanban no establece cómo debemos diseñar nuestro tablero, ni tampoco existe un diseño concreto para usar en el sistema. La herramienta de Microsoft nos propone por omisión una clasificación, que seguro que a la mayoría de los proyectos de desarrollo les viene bien, dividida en 4 columnas: _New_, _Active_, _Resolved_ y _Closed_. Eso no significa que no puedas añadir nuevas columnas según la necesidad. Para hacerlo, tendremos que pulsar en la rueda dentada de la parte superior derecha, dentro de los _Settings_ dirigirnos a la sección _Board_ y dentro de esta sección a _Columns_.
+Kanban no establece cómo debemos diseñar nuestro tablero, ni tampoco existe un diseño concreto para usar en el sistema. La herramienta de Microsoft nos propone por omisión una clasificación, que seguro que a la mayoría de los proyectos de desarrollo les viene bien, dividida en 4 columnas: _New_, _Active_, _Resolved_ y _Closed_. Pero puedes añadir o quitar columnas según la necesidad. Para hacerlo, tendremos que pulsar en la rueda dentada de la parte superior derecha, dentro de los _Settings_ dirigirnos a la sección _Board_ y dentro de esta sección a _Columns_.
 
 ![Nuevo proyecto de Azure DevOps]({{site.baseurl}}/public/uploads/2019/02/kanban-board-edit-columns.png)
 
@@ -75,7 +75,7 @@ El diseño de la tarjetas también es importante. Puedes elegir qué datos van a
 
 ![Configuración para ver en rojo una tarea con tag 'blocked']({{site.baseurl}}/public/uploads/2019/02/kanban-board-blocked-rule.png)
 
-No existe ninguna norma a seguir clara. La idea es configurar los tableros de la forma que más ayuden al equipo. Si de buenas a primeras no conseguimos una forma óptima de hacerlo, no nos tenemos que preocupar, dentro del las prácticas de Kanban, existe una para poder modificar lo que hemos configurado en un principio.
+No existe ninguna norma estricta al configurar un tablero. Lo ideal es hacerlo de la forma que más ayude al equipo. Si de buenas a primeras no conseguimos una forma óptima de hacerlo, no nos tenemos que preocupar, dentro del las prácticas de Kanban, existe una para poder modificar lo que hemos configurado en un principio.
 
 ![Vista de estilos de un board]({{site.baseurl}}/public/uploads/2019/02/kanban-board-styles.png)
 
@@ -102,7 +102,7 @@ _Kanban_ es una palabra japonesa (看板) que se traduce como "letrero o valla p
 
 ### Gestionar el flujo de trabajo
 
-La idea es que el flujo de trabajo maximice la entrega de valor, minimice el _lead time_ y que se lo más predecible posible. Todo esto se consigue realizando mediciones y ajustando el proceso y el límite del WIP en base a las conclusiones que saquemos. Para ello trabajaremos el límite del WIP para que nuestro sistema de flujo no se convierta en un sistema por lotes:
+La idea es que el flujo de trabajo maximice la entrega de valor, minimice el _lead time_ y que sea lo más predecible posible. Todo esto se consigue realizando mediciones y ajustando el proceso y el límite del WIP en base a las conclusiones que saquemos. Para ello trabajaremos el límite del WIP para que nuestro sistema de flujo no se convierta en un sistema por lotes:
 
 <iframe class="youtube" src="https://www.youtube.com/embed/JoLHKSE8sfU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
