@@ -6,7 +6,7 @@
       "title"    : "{{ post.title | strip_newlines }}",
       "category" : "{{ post.category }}",
       "tags"     : "{{ post.tags | join: ', ' }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
+      "url"      : "/{{ post.url }}",
       "date"     : "{{ post.date }}",
       "content"  : {{ post.content | strip_html | escape  | strip_newlines | remove_chars | jsonify  }}
     } {% unless forloop.last %},{% endunless %}

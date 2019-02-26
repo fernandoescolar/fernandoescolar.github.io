@@ -104,7 +104,7 @@ _Kanban_ es una palabra japonesa (看板) que se traduce como "letrero o valla p
 
 La idea es que el flujo de trabajo maximice la entrega de valor, minimice el _lead time_ y que se lo más predecible posible. Todo esto se consigue realizando mediciones y ajustando el proceso y el límite del WIP en base a las conclusiones que saquemos. Para ello trabajaremos el límite del WIP para que nuestro sistema de flujo no se convierta en un sistema por lotes:
 
-<iframe height="320" src="https://www.youtube.com/embed/JoLHKSE8sfU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube" src="https://www.youtube.com/embed/JoLHKSE8sfU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Azure DevOps nos aporta varias herramientas para ayudarnos. Por un lado el propio tablero, donde podremos ver si tenemos cuellos de botella, momentos ociosos o bloqueos.
 
