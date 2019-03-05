@@ -7,7 +7,7 @@ layout: post
 ---
 Hace no mucho, [El Bruno](https://twitter.com/elbruno "El Bruno") me invitó a participar en [uno de sus conocidos podcast](https://elbruno.com/2016/08/30/podcast-por-que-odio-git/ "Podcast: Por qué odio Git"). En este caso la temática trataba de un artículo que podréis leer en esta misma Web: [Por qué odio Git](http://fernandoescolar.github.io/2016/02/16/por-que-odio-git/ "Artículo: por qué odio Git"). Dejando de lado lo agradecido que estoy por esta oportunidad, dentro de la conversación, me preguntó si me habían pedido migrar a Git muchos clientes. La verdad es que no. Pero me dió una buena idea sobre la que escribir.<!--break-->
 
-![migrate to git meme]({{site.baseurl}}/public/uploads/2016/09/meme-migrate.jpg)
+![migrate to git meme](/public/uploads/2016/09/meme-migrate.jpg)
 
 Y es que la mejor forma de migrar de TFVC a Git, es no migrar. Si usamos directamente Git nos quitamos todos los problemas. 
 
@@ -15,17 +15,17 @@ Pero si para ti esto es imposible. Si ya tienes un proyecto en Visual Studio Tea
 
 Lo primero que tenemos que hacer es crear un nuevo repositorio de código fuente dentro del proyecto. Una opción que encontraremos en la sección de código del portal de VSTS:
 
-![nuevo repositorio]({{site.baseurl}}/public/uploads/2016/09/migrate-git-1.png)
+![nuevo repositorio](/public/uploads/2016/09/migrate-git-1.png)
 
 Pero esta vez hay que elegir Git. Y ponerle un nombre bonito:
 
-![crear nuevo repositorio Git]({{site.baseurl}}/public/uploads/2016/09/migrate-git-2.png) 
+![crear nuevo repositorio Git](/public/uploads/2016/09/migrate-git-2.png) 
 
 Una opción de _hacker_ es activar el checkbox de crear el archivo "readme.md". Esto es un archivo con el leeme del proyecto. Muy útil si pensais pasarlo a GitHub en algún momento.
 
 Al terminar de crear el repositorio, os aparecerá una pantalla donde encontrareis la url del mismo. Además de una opción para crear unas credenciales para poder conectaros:
 
-![repositorio creado]({{site.baseurl}}/public/uploads/2016/09/migrate-git-3.png) 
+![repositorio creado](/public/uploads/2016/09/migrate-git-3.png) 
 
 Recordad guardaros tanto la url como las credenciales, que a continuación serán necesarias.
 

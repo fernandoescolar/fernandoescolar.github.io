@@ -18,7 +18,7 @@ Este documento corresponde con el guión realizado para dar la charla de "Por qu
 
 Dejad que os cuente una pequeña historia:
 
-![una pequeña historia]({{site.baseurl}}/public/uploads/2018/04/Slide03.png)
+![una pequeña historia](/public/uploads/2018/04/Slide03.png)
 
 Todo empezó en 1981, cuando nací. Aquí en Madrid. Desde entonces he estado muy cerca de los ordenadores. La década de los 90 mi padre me estuvo enseñando C++. Ahí estaba yo con Visual Studio y las Microsoft Foundation Classes. Sin entender muy bien exactamente por qué se dibujaba un botón en la pantalla.
 
@@ -30,7 +30,7 @@ Por ahí por el 2015 Microsoft nos propuso a Tokiota colaborar con ellos en unas
 
 Supongo que todos los aquí presentes habrán hecho alguno de los tutoriales de la extensa y a la vez excelsa documentación que Microsoft tiene a nuestra disposición en internet. Todo funciona genial. Creo que la primera vez que escuche eso de "azure nos obliga a programar bien" fue a Gisela Torres. En una charla no muy diferente de esta. Y es verdad. Esto está genial. Pero no cuando ya tienes una aplicación desarrollada que no ha sido pensada para ser subida a la nube, la cosa cambia.
 
-![el camino a la nube]({{site.baseurl}}/public/uploads/2018/04/Slide04.png)
+![el camino a la nube](/public/uploads/2018/04/Slide04.png)
 
 Así que decidimos hacer un "ABC". Una especie de metodología, guía o industrialización de las migraciones que estábamos realizando. Y lo llamamos "el camino a la nube". Lo simplificamos de tal manera que lo resumimos en 4 sencillos pasos.
 
@@ -50,7 +50,7 @@ Si teníamos resueltos estos casos ya estábamos listos para poder subir a la nu
 
 Nuestro camino a la nube se había visto muy eficaz en la migración de muchas clases de WebApps, pero fue justo entonces cuando comenzaron los problemas. Las compañías a las que ayudábamos estaban poniendo sus aplicaciones en producción en la nube, estaban empezando a investigar por su cuenta y a tomarse licencias fuera de lo que nosotros considerábamos como una mera prueba de concepto. Un pequeño empujón que les ayudaría a usar los servicios PaaS de azure.
 
-![empieza los problemas]({{site.baseurl}}/public/uploads/2018/04/Slide05.png)
+![empieza los problemas](/public/uploads/2018/04/Slide05.png)
 
 Nuestros desarrollos internos funcionaban genial. Es más, en Tokiota no tenemos servidores, usamos azure. Y estábamos muy contentos con la calidad del servicio.
 
@@ -66,7 +66,7 @@ Y lo que hoy os traigo son lagunas de las notas más destacadas de "Mis Notas":
 
 Esta frase es la sustitución del mítico "Works in my machine" o "En mi máquina funciona". Y jamás he puesto en duda semejante afirmación. Pero claro, si mi portátil es un i7 con 16 Gb de RAM y 512 Gb de SSD y en azure me decanto por una máquina con 1 core y 1,75Gb de RAM y HDD virtual... Y eso sin contar con el tema de que en mi máquina estoy lanzando un servidor de desarrollo al que solo accedo yo (como podría ser IIS Express), mientras que en azure están entrando tropecientos usuarios a la vez.
 
-![recomendaciones generales]({{site.baseurl}}/public/uploads/2018/04/Slide07.png)
+![recomendaciones generales](/public/uploads/2018/04/Slide07.png)
 
 Aunque en realidad nosotros en nuestras aplicaciones con 100 usuario concurrentes y una instancia de las más pequeñas no hemos encontrado problemas...
 
@@ -80,7 +80,7 @@ Y el último consejo en general para usar cualquier servicio de azure es realiza
 
 No cometáis este grabe error. Os perseguirá el resto de vuestra vida laboral.
 
-![Recomendaciones para Azure Active Directory]({{site.baseurl}}/public/uploads/2018/04/Slide09.png)
+![Recomendaciones para Azure Active Directory](/public/uploads/2018/04/Slide09.png)
 
 Lo primero que tenemos que hacer es conocer que es lo que hace AAD cuando delegamos la autenticación y autorización de usuarios. Autenticación es ese proceso en el que validamos que un usuario es en realidad quien dice ser. Autorización es cuando decidimos si un usuario tiene permisos para ver un recurso en concreto (nuestra webapp).
 
@@ -102,7 +102,7 @@ Así que os recomiendo:
 
 Redis es de las bases de datos relacionales más rápidas que existen. Trabaja en memoria lo que la hace ideal para comportarse como un servicio de caché. Así que, si redis funciona lento, lo más razonable es que el problema no sea de redis.
 
-![Recomendaciones para redis]({{site.baseurl}}/public/uploads/2018/04/Slide11.png)
+![Recomendaciones para redis](/public/uploads/2018/04/Slide11.png)
 
 - Lo primero que debes hacer es activar desde el portal el "Redis cache advisor", un asistente/herramienta que detectará y avisará sobre los defectos típicos que podamos tener a la hora de gestionar redis.
 
@@ -118,7 +118,7 @@ Redis es de las bases de datos relacionales más rápidas que existen. Trabaja e
 
 ¿Qué entendemos como caro?
 
-![Recomendaciones Azure Cosmos Db]({{site.baseurl}}/public/uploads/2018/04/Slide13.png)
+![Recomendaciones Azure Cosmos Db](/public/uploads/2018/04/Slide13.png)
 
 Esta frase es muy frecuente y es porque dentro de Cosmos DB, una colección es tratada, por así decirlo, como una base de datos. Las colecciones se facturan por separado y la colección mínima que podemos contratar es de 400 RU. Teniendo en cuenta que el precio por RU es más o menos 5 € por cada 100, el precio mínimo de una colección es de unos 20 €.
 
@@ -138,7 +138,7 @@ Como bola extra os comentaré que cuando usamos el cliente de .net lo mejor es u
 
 Con el servicio de SQL database nos hemos encontrado un festival de problemas de "performance". Aunque generalmente se debe a que la gente está acostumbrada al cluster de su empresa de SQL Server que tiene 3 servidores con 64Gb de RAM, las cabinas de la leche que se conectan con fibra y bueno, la factura que da miedo.
 
-![Recomendaciones Azure Sql Database]({{site.baseurl}}/public/uploads/2018/04/Slide15.png)
+![Recomendaciones Azure Sql Database](/public/uploads/2018/04/Slide15.png)
 
 Estos servidores suelen ocultar las operaciones que tienen una performance fatal. Así que cuando vamos al servicio PaaS de azure de base de datos, como usamos instancias pequeñas, se hacen evidentes. Pero no os estoy diciendo que uséis tamaños más grandes de SQL Database. Creo que sale más rentable invertir en mejorar nuestra queries.
 
@@ -156,7 +156,7 @@ Estos servidores suelen ocultar las operaciones que tienen una performance fatal
 
 Ahora empezamos con la ronda de mentiras. Nodejs funciona en los application services genial. Pero si que es verdad que tenemos que tener en cuenta que si usamos instancias con windows, nodejs se usa mediante el módulo de IIS llamado IISNODE. Y este módulo tiene ciertas peculiaridades:
 
-![Recomendaciones App Services con nodejs]({{site.baseurl}}/public/uploads/2018/04/Slide17.png)
+![Recomendaciones App Services con nodejs](/public/uploads/2018/04/Slide17.png)
 
 - Los node cluster (haciendo master y slave) no funcionan a través del IISNODE. A cambio hay unos parámetros de configuración que se le pueden pasar en el web.config o en un fichero a parte llamado "iisnode.yml" donde además de muchas otras cosas podremos configurar cuantas instancias de node queremos que lance el IISNODE.
 
@@ -168,7 +168,7 @@ Ahora empezamos con la ronda de mentiras. Nodejs funciona en los application ser
 
 Si me conocéis sabréis que soy programador fundamentalmente de .net, no de PHP ni Java. Así que en estos puntos no os podré dar tantos consejos. Pero si que tengo algunos sobre las aplicaciones en PHP como por ejemplo wordpress:
 
-![Recomendaciones para App Services con PHP]({{site.baseurl}}/public/uploads/2018/04/Slide19.png)
+![Recomendaciones para App Services con PHP](/public/uploads/2018/04/Slide19.png)
 
 - El app services (windows) el archivo "php.ini" se sustituye por el ".user.ini". Jugad ahí con las diferentes configuraciones generales de PHP.
 
@@ -182,7 +182,7 @@ Si me conocéis sabréis que soy programador fundamentalmente de .net, no de PHP
 
 Aun recuerdo la primera vez que una empresa vino con su Tomcat customizado. Y las que les han seguido!. Tomcat funciona en App Services. Y puedes subir el tuyo customizado. Lo más recomendable es buscar en la galería una Web App con la última versión de Tomcat. Este template se descarga el tomcat desde los servidores oficiales a la WebApp. Una vez ahí, solo tienes que sustituirlo por el tuyo. Aunque es muy posible que le tengas que hacer retoques. No es lo mismo un tomcat en tu datacenter que en azure...
 
-![Recomendaciones para App Services con Java]({{site.baseurl}}/public/uploads/2018/04/Slide21.png)
+![Recomendaciones para App Services con Java](/public/uploads/2018/04/Slide21.png)
 
 A parte de las típicas recomendaciones de cuidado con el tamaño de la instancia y el usa cachés allí donde puedas, nos encontramos también una pequeña curiosidad:
 
@@ -192,7 +192,7 @@ A parte de las típicas recomendaciones de cuidado con el tamaño de la instanci
 
 Y hemos llegado a la penúltima frase que más hemos oído migrando aplicaciones a azure: es muy caro.
 
-![Sobre el precio de Azure]({{site.baseurl}}/public/uploads/2018/04/Slide23.png)
+![Sobre el precio de Azure](/public/uploads/2018/04/Slide23.png)
 
 - Azure no es válido para todo el mundo. Si una empresa tiene un pequeño aplicativo en un hosting de 100€ al año que es muy lento y no tiene SLAs, azure le va a resultar muy caro. Posiblemente la plataforma no sea para ellos.
 
@@ -202,7 +202,7 @@ Y hemos llegado a la penúltima frase que más hemos oído migrando aplicaciones
 
 Y por último el ganador. La persona que como no está contenta con su aplicación te suelta una amenaza. A mi ni me va ni me viene. Yo no trabajo en Microsoft. Pero la gente te lo dice igualmente. 
 
-![Me voy a amazon]({{site.baseurl}}/public/uploads/2018/04/Slide25.png)
+![Me voy a amazon](/public/uploads/2018/04/Slide25.png)
 
 Mi respuesta se divide en dos puntos:
 
