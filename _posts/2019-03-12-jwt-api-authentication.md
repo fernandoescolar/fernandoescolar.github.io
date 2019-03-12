@@ -3,7 +3,7 @@ published: true
 ID: 201903121
 title: 'Autenticando una API con JWT'
 author: fernandoescolar
-post_date: 2019-03-12 08:02:33
+post_date: 2019-03-12 05:26:33
 layout: post
 ---
 
