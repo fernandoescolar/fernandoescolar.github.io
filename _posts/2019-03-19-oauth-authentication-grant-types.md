@@ -13,7 +13,7 @@ Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy 
 - [Client Credentials](#client-credentials)
 - [Implicit](#implicit)
 - [Authorization Code](#authorization-code)
-- [Authorization Code con PKCE](#authorization-code-con-PKCE)
+- [Authorization Code con PKCE](#authorization-code-con-pkce)
 - [Refresh Token](#refresh-token)
 - JWT
 
@@ -27,7 +27,7 @@ Escuchemos a los super-tacañones:
 
 Si bien es verdad que el RFC de OAuth no habla explícitamente de [JWT](https://tools.ietf.org/html/rfc7519) como formato para los *access_token*, de facto, es la forma más común en la que lo podremos encontrar hoy en día.
 
-Dentro de este contexto, OAuth propone varias formas de autenticarse (_Grant Types_), e incluso una forma de crear nuestro propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: [Authorization Code](#authorization-code), [Authorization Code con PKCE](#authorization-code-con-PKCE), [Client Credentials](#client-credentials), [Implicit](#implicit), [Password](#password) y [Refresh Token](#refresh-token).
+Dentro de este contexto, OAuth propone varias formas de autenticarse (_Grant Types_), e incluso una forma de crear nuestro propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: [Authorization Code](#authorization-code), [Authorization Code con PKCE](#authorization-code-con-pkce), [Client Credentials](#client-credentials), [Implicit](#implicit), [Password](#password) y [Refresh Token](#refresh-token).
 
 ## Access Token
 
@@ -78,6 +78,7 @@ Host: authorizationserver.com
 Accept: application/json
 Authorization: Basic user_password_formula
 Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
 
 grant_type=authorization_code
 &redirect_uri=http%3A%2F%2Fexampledomain.com
@@ -96,13 +97,19 @@ Como peculiaridad, la petición vendrá autenticada usando el esquema "Basic" cu
 user_password_formula = base64(client_id + ":" + client_secret)
 ```
 
+Donde:
+
+- `client_id` es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth. El mismo que usamos en la primera petición.
+- `client_secret` es una contraseña o secreto que generaremos en el servidor de OAuth en relación con el cliente (la aplicación).
+
 Como respuesta tendremos el formato anteriormente descrito de [Access Token](#access-token):
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
 
 {
     "access_token": "a_lot_of_characters_in_base_64",
@@ -115,11 +122,11 @@ Pragma: no-cache
 
 ## Authorization Code con PKCE
 
-Se usa PKCE ([Proof Key for Code Exchange](https://tools.ietf.org/html/rfc7636)) con el fin de tener una comunicación segura sin tener que usar valores de `client_secret`. Es la solución recomendad para aplicaciones móviles y Single Page Application (SPA).
+Se usa PKCE ([Proof Key for Code Exchange](https://tools.ietf.org/html/rfc7636)) con el fin de tener una comunicación segura sin tener que usar valores de `client_secret`. Es la solución recomendada para aplicaciones móviles y Single Page Application (SPA).
 
 El flujo es exactamente igual al anterior, salvo porque vamos a añadir dos parámetros nuevos:
 
-- `code_verifier` es una cadena de texto aleatoria de al menos 43 caracteres, generalmente en base64.
+- `code_verifier` es una cadena de texto aleatoria de al menos 43 caracteres.
 - `code_challenge` es un hash sha256 en base64 de `code_verifier`.
 
 De esta forma la petición inicial sería:
@@ -161,6 +168,7 @@ POST /oauth/token HTTP/1.1
 Host: authorizationserver.com
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
 
 grant_type=authorization_code
 &redirect_uri=http%3A%2F%2Fexampledomain.com
@@ -181,9 +189,10 @@ Como respuesta tendremos el [Access Token](#access-token):
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
 
 {
     "access_token": "a_lot_of_characters_in_base_64",
@@ -203,6 +212,9 @@ Su funcionamiento consiste en realizar una petición al servidor en el _endpoint
 ```http
 POST /oauth/token HTTP/1.1
 Host: authorization-server.com
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
 
 grant_type=client_credentials
 &client_id=example_client_id
@@ -221,9 +233,10 @@ La respuesta directamente será el [Access Token](#access-token):
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
 
 {
   "access_token": "a_lot_of_characters_in_base_64",
@@ -236,7 +249,7 @@ Pragma: no-cache
 
 ## Implicit
 
-Cuando hablamos de un flujo de autenticación [Implicit](https://tools.ietf.org/html/rfc6749#section-4.2) lo más probable es que estemos trabajando con páginas web SPA (Single Page Application). Generalmente, NO se recomienda usar este flujo, e incluso algunos servidores, prohíben su uso. Hoy en día se recomienda usar en su lugar el flujo de [Authorization Code con PKCE](#authorization-code-con-PKCE).
+Cuando hablamos de un flujo de autenticación [Implicit](https://tools.ietf.org/html/rfc6749#section-4.2) lo más probable es que estemos trabajando con páginas web SPA (Single Page Application). Generalmente, NO se recomienda usar este flujo, e incluso algunos servidores, prohíben su uso. Hoy en día se recomienda usar en su lugar el flujo de [Authorization Code con PKCE](#authorization-code-con-pkce).
 
 De cualquier forma, podría ser que tengamos que usarlo, así que nunca sobra describirlo. Todo consiste en una petición simple al servidor:
 
@@ -279,7 +292,9 @@ Se parece mucho a [Client Credentials](#client-credentials), pero con la diferen
 ```http
 POST /oauth/token HTTP/1.1
 Host: authorizationserver.com
+Accept: application/json
 Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
 
 grant_type=password
 &username=exampleuser
@@ -300,10 +315,10 @@ Y la respuesta, será el [Access Token](#access-token):
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
-
+Content-Type: application/json
+Content-Length: ...
 
 {
   "access_token": "a_lot_of_characters_in_base_64",
@@ -315,7 +330,7 @@ Pragma: no-cache
 
 ## Refresh Token
 
-Con el fin de que no siempre se estén transmitiendo los mismos datos (algunos de ellos sensibles), otro de los flujos que se nos proponen es el de [Refresh Token](https://tools.ietf.org/html/rfc6749#section-1.5). Para ello necesitaremos haber obtenido precisamente un [Access Token](#access-token), y que este a parte de expiración tenga el campo `refresh_token` indicado.
+Con el fin de que no siempre se estén transmitiendo los mismos datos (algunos de ellos sensibles), otro de los flujos que se nos proponen es el de [Refresh Token](https://tools.ietf.org/html/rfc6749#section-1.5). Para ello necesitaremos haber obtenido un [Access Token](#access-token), y que este, a parte de expiración, tenga el campo `refresh_token` indicado.
 
 Así pues, usando este campo, después de que el _token_ anterior haya caducado, podremos obtener otro _token_ nuevo. Eso sí, un `refresh_token` también tiene una caducidad y a su vez es de un solo uso. De esta forma no podremos generar todos los _tokens_ nuevos que queramos, tan solo uno.
 
@@ -324,7 +339,9 @@ Este método es muy sencillo, realizaremos una petición simple al servidor OAut
 ```http
 POST /oauth/token HTTP/1.1
 Host: authorizationserver.com
+Accept: application/json
 Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
 
 grant_type=refresh_token
 &client_id=example_client_id
@@ -343,9 +360,10 @@ Y la respuesta vuelve a ser semejante a las demás:
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
 
 {
     "access_token": "a_lot_of_characters_in_base_64",
