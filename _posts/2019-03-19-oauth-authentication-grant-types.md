@@ -44,7 +44,7 @@ La respuesta de todos los métodos de autenticación al final tiene que ser un f
 
 El [Authorization Code](https://tools.ietf.org/html/rfc6749#section-4.1) es uno de los flujos de autenticación que más beneficios ofrece. Se utiliza por lo general en páginas web. La idea es que inicialmente se solicita una autenticación con el siguiente formato:
 
-```http
+```ini
 GET /oauth/authorize
    ?client_id=example_client_id
    &response_type=code
@@ -64,7 +64,7 @@ Donde:
 
 Entonces el servidor de autorización solicita un usuario y un password vía un formulario web. Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
 
-```http
+```text
 http://exampledomain.com/
     ?code=examplecode
     &state=string_as_status
@@ -124,7 +124,7 @@ El flujo es exactamente igual al anterior, salvo porque vamos a añadir dos par�
 
 De esta forma la petición inicial sería:
 
-```http
+```ini
 GET /oauth/authorize
    ?client_id=example_client_id
    &response_type=code
@@ -148,7 +148,7 @@ Donde:
 
 Entonces el servidor de autorización solicita un usuario y un password vía un formulario web. Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
 
-```http
+```text
 http://exampledomain.com/
     ?code=examplecode
     &state=string_as_status
@@ -240,7 +240,7 @@ Cuando hablamos de un flujo de autenticación [Implicit](https://tools.ietf.org/
 
 De cualquier forma, podría ser que tengamos que usarlo, así que nunca sobra describirlo. Todo consiste en una petición simple al servidor:
 
-```http
+```ini
 GET /oauth/authorize
     ?client_id=example_client_id
     &response_type=token
@@ -260,7 +260,7 @@ Donde:
 
 La respuesta de esta petición será una llamada a la URI que le pasamos en `redirect_uri`, con el siguiente formato:
 
-```http
+```text
 http://exampledomain.com/
     #access_token=a_lot_of_characters_in_base_64
     &token_type=Bearer
