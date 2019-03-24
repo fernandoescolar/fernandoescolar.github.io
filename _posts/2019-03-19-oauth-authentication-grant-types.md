@@ -23,9 +23,9 @@ Escuchemos a los super-tacañones:
 
 > Aunque un servicio OAuth es capaz de devolver JSON Web Tokens, JWT no es un tipo de concesión válido.
 
-[OAuth 2.0](https://tools.ietf.org/html/rfc6749) es una especificación que describe diferentes formas (_Grant Types_ o tipos de concesión) de solicitar un _token_ de acceso (*access_token*) para conseguir autenticar una petición a un servicio. Este servicio podría ser desde una API Rest, hasta una página web cualquiera.
+[OAuth 2.0](https://tools.ietf.org/html/rfc6749) es una especificación que describe diferentes formas (_Grant Types_ o tipos de concesión) de solicitar un _token_ de acceso (*access_token*) para un servicio HTTP. Se usa como base de la especificación [Open Id Connect](https://openid.net/wg/connect/) (OIDC) y también de los protocolos de autenticación implementados por las grandes empresas de internet (Twitter, Facebook, Microsoft... Google de hecho usa OIDC). De forma que, cuando hablemos de OAuth, nos referiremos a un protocolo de autenticación basado en OAuth 2.0.
 
-Si bien es verdad que el RFC de OAuth no habla explícitamente de [JWT](https://tools.ietf.org/html/rfc7519) como formato para los *access_token*, de facto, es la forma más común en la que lo podremos encontrar hoy en día.
+Si bien es verdad que el RFC de OAuth no habla explícitamente de [JWT](https://tools.ietf.org/html/rfc7519) como formato para los *access_token*, es la forma más común en la que lo podremos encontrar hoy en día.
 
 Dentro de este contexto, OAuth propone varias formas de autenticarse (_Grant Types_), e incluso una forma de crear nuestro propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: [Authorization Code](#authorization-code), [Authorization Code con PKCE](#authorization-code-con-pkce), [Client Credentials](#client-credentials), [Implicit](#implicit), [Password](#password) y [Refresh Token](#refresh-token).
 
