@@ -7,7 +7,7 @@ post_date: 2019-03-26 07:35:02
 layout: post
 ---
 
-Docker y los containers son a la programación, lo que el rebozado y empanado a la cocina tradicional. Si bien añade un paso extra que ensucia y a veces se hace un poco difícil, después te puedes transportar la comida con mucha facilidad, sin romperla, y además te resulta muy fácil de comer. Y no nos engañemos, está claro que a todo el mundo le gustan las croquetas<!--break-->.
+Docker y los containers son a la programación, lo que el rebozado y empanado a la cocina tradicional. Si bien añade un paso extra que ensucia y a veces se hace un poco difícil, después puedes transportar la comida con mucha facilidad, sin romperla, y además te resulta muy fácil de comer. Y no nos engañemos, está claro que a todo el mundo le gustan las croquetas<!--break-->.
 
 Si has llegado hasta aquí es posible que quieras hacer pechugas a la villaroy o una imagen de docker con tus Azure Functions dentro, nunca se sabe lo que puede pasar con las inteligencias artificiales hoy en día. De cualquier forma, estás en el lugar correcto: para lo primero necesitaremos pan rallado, huevo, bechamel y pechugas de pollo, y para lo segundo, docker, un proyecto de Azure Functions y 5 minutos de tu vida.
 
