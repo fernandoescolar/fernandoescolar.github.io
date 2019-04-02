@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 201904021
-title: ' Microsoft Graph'
+title: 'Microsoft Graph'
 author: fernandoescolar
 post_date: 2019-04-02 07:40:40
 layout: post
