@@ -11,7 +11,7 @@ Es el día en el que salen a la venta las entradas de la [Comic-Con](https://www
 
 ![Martillo neumático en tecla F5](/public/uploads/2019/04/jackhammerf5.gif)
 
-Así nacieron los [ataques DDoS](https://giphy.com/gifs/reaction-1zSz5MVw4zKg0/fullscreen).
+Así nacieron los [ataques DDoS](https://media.giphy.com/media/1zSz5MVw4zKg0/giphy.gif).
 
 Porque estamos en una sociedad que está acostumbrada a tener todo de forma inmediata. Internet nos ha abierto a un mundo de servicios creados para, en apariencia, hacernos más felices. Hemos olvidado los modales en un mundo cada vez más egocentrista, en el que "quiero" y "ahora", han sustituido palabras tan elegantes como "podrías" y "por favor".
 
