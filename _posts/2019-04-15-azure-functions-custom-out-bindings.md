@@ -7,7 +7,7 @@ post_date: 2019-04-15 07:59:45
 layout: post
 ---
 
-La gran ventaja en de Azure Functions frente a otra tecnología es que escribes muy poco código, ya que solo debes gestionar como fluyen los datos usando unos _bindings_ de entrada y salida. El propio SDK nos aporta un buen conjunto por defecto de _bindings_ que nos ayudarán a tratar con peticiones HTTP, Azure Storage Account (Blob, Queue y Table), Service Bus o Cosmos DB. Pero ¿y si quiero un integrarme con otro sistema no soportado?<!--break-->
+La gran ventaja en de Azure Functions frente a otra tecnología es que escribes muy poco código, ya que solo debes gestionar como fluyen los datos usando unos _bindings_ de entrada y salida. El propio SDK nos aporta un buen conjunto por defecto de _bindings_ que nos ayudarán a tratar con peticiones HTTP, Azure Storage Account (Blob, Queue y Table), Service Bus o Cosmos DB. Pero ¿y si quiero integrarme con otro sistema no soportado?<!--break-->
 
 Afortunadamente en la v2 de Azure Functions, basadas en dotnet core, podemos encontrar un sistema de extensión en el que podremos crearnos todo tipo de _bindings_ y _triggers_ personalizados.
 
@@ -29,7 +29,7 @@ message.Body = body;
 await smtp.SendMailAsync(message);
 ```
 
-Lo que vamos a hacer es crear un nuevo proyecto con un _binding_ que nos facilitará esta tarea. Para ello, crearemos una nueva solución de tipo librería de .net standard 2.0 y añadiremos una referencia al paquete de NuGet `Microsoft.Azure.WebJobs.Extensions`, que es donde encontramos todo lo necesario para realizar para crear nuestra extensión.
+Lo que vamos a hacer es crear un nuevo proyecto con un _binding_ que nos facilitará esta tarea. Para ello, crearemos una nueva solución de tipo librería de .net standard 2.0 y añadiremos una referencia al paquete de NuGet `Microsoft.Azure.WebJobs.Extensions`, que es donde encontramos todo lo necesario para crear nuestra extensión.
 
 Después definiremos nuestro atributo de _binding_. Ese que podemos ver en los parámetros de la _Azure Function_ entre corchetes. Así que buscaremos un nombre que defina correctamente lo que queremos hacer y le añadiremos "Attribute":
 
@@ -50,7 +50,7 @@ public class MailSendAttribute : Attribute
 }
 ```
 
-Le hemos añadido ciertas características para definir este atributo como de uso solo como valor devuelto por una función o como parámetro de esta. Y hemos añadido una serie de propiedades que nos ayudan a definir una conexión SMTP. 
+Le hemos añadido ciertas características para delimitar el uso de este atributo solo como valor devuelto por una función o como parámetro de esta. Y hemos añadido una serie de propiedades que nos ayudan a definir una conexión SMTP.
 
 Pero quizá encontremos demasiado tedioso ir definiendo propiedad por propiedad y nos puede resultar más sencillo usar un `AppSetting` que contenga una especie de cadena de conexión a nuestro servidor. Para ello vamos a añadir una propiedad llamada `Connection` y la vamos a decorar con el atributo `AppSetting` para que el sistema interprete que este valor lo debe leer de las variables de entorno o del archivo `local.settings.json`:
 
@@ -166,7 +166,7 @@ public async Task AddAsync(MailMessage item, CancellationToken cancellationToken
 
 public Task FlushAsync(CancellationToken cancellationToken = default)
 {
-    return Task.FromResult(true);
+    return Task.CompletedTask;
 }
 
 private static SmtpClient CreateSmtpClient(MailSendAttribute binding)
@@ -294,7 +294,7 @@ Ahora podemos ejecutar el proyecto, llamar a la función con nuestro browser pre
 
 ## Conclusiones
 
-Las _Azure Functions_ son una herramienta muy potente, que nos permite escribir muy poco código. Cada día que las utilizo me gustan más. Y sabiendo como crear _bindings_ personalizados, podemos conseguir centrarnos aun más tan solo en la parte más importante de nuestro código.
+Las _Azure Functions_ son una herramienta muy potente, que nos permite escribir muy poco código. Cada día que las utilizo me gustan más. Y sabiendo como crear _bindings_ personalizados, podemos conseguir centrarnos aun más, tan solo, en la parte más importante de nuestro código.
 
 Una excelente manera de convertir 10 líneas de código, que podrían ser una función compartida, en cinco clases. Pero, a la vez, molar que te cagas, por lo guapo que queda meter un atributo decorando una propiedad marcada con `out` y que automágicamente realice una acción más o menos compleja.
 
