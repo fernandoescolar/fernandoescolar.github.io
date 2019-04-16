@@ -280,7 +280,7 @@ public static IActionResult Run(
 }
 ```
 
-Para finalizar la dentro del archivo `local.settings.json` y en la propiedad `Values`, añadiremos la cadena de conexión con nuestro servidor SMTP:
+Para finalizar, dentro del archivo `local.settings.json` y en la propiedad `Values`, añadiremos la cadena de conexión con nuestro servidor SMTP:
 
 ```json
  "Values": {
