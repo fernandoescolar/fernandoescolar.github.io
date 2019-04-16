@@ -3,7 +3,7 @@ published: true
 ID: 201904151
 title: 'Azure Functions: custom out bindings'
 author: fernandoescolar
-post_date: 2019-04-15 08:02:45
+post_date: 2019-04-15 07:59:45
 layout: post
 ---
 
