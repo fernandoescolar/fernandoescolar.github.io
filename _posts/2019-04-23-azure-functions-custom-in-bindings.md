@@ -212,7 +212,7 @@ Ahora añadiremos un parámetro de tipo `string` y lo decoraremos con el atribut
 [FunctionName("TestKeyVaultSecret")]
 public static IActionResult TestKeyVaultSecret(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-    [KeyVaultSecret("https://my.vault.azure.net/secrets/MyKey/xx", Connection = "KeyVaultConnectionString")] string secret,
+    [KeyVaultSecret("https://my.vault.azure.net/secrets/MyKey", Connection = "KeyVaultConnectionString")] string secret,
     ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
@@ -234,6 +234,7 @@ Ahora podemos ejecutar el proyecto, llamar a la función con nuestro browser pre
 
 ## Conclusiones
 
+Pues lo mismo del otro día pero con _in_ en lugar de _out_.
 
 ![Deal with it](/public/uploads/2019/04/deal-with-it.jpg)
 
