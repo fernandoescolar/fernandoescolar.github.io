@@ -3,7 +3,7 @@ published: true
 ID: 201904231
 title: 'Azure Functions: custom in bindings'
 author: fernandoescolar
-post_date: 2019-04-23 08:03:11
+post_date: 2019-04-23 07:44:11
 layout: post
 ---
 
