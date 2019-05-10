@@ -3,7 +3,7 @@ published: true
 ID: 201905101
 title: 'Introducción a Quatum Development'
 author: fernandoescolar
-post_date: 2019-05-10 00:51:23
+post_date: 2019-05-10 07:51:23
 layout: post
 ---
 
@@ -93,7 +93,7 @@ Y al operar seria de la siguiente forma:
 X·|1> = [[0, 1], [1,  0]] · [[0], [1]] = [[0·0 + 1·1], [1·0 + 0·1]] = [[1], [0]] = |0>
 ```
 
-![fórmula X·|1>](/public/uploads/2019/05/quantum-x-2.png)
+![fórmula X](/public/uploads/2019/05/quantum-x-2.png)
 
 ### Z
 
@@ -103,7 +103,7 @@ Esta operación convierte `|0>` en `|0>` y `|1>` en `-|1>`. Se puede representar
 Z = [[1, 0], [0,  -1]]
 ```
 
-![fórmula Z](/public/uploads/2019/05/quantum-Z.png)
+![fórmula Z](/public/uploads/2019/05/quantum-z.png)
 
 ### H
 
