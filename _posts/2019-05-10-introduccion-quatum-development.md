@@ -55,7 +55,7 @@ Lejos quedan `AND`, `OR`, `XOR` y demás puertas lógicas, que tan buen resultad
 
 ### M
 
-La _Medida_ (o _Measure_) es la operación encarga de medir un _qubit_ y darnos su valor `0` o `1`.
+La _Medida_ (o _Measure_) es la operación que se encarga de medir un _qubit_ y darnos su valor `0` o `1`.
 
 Si por ejemplo tenemos un _qubit_ con una distribución al 50% del estado `0` o `1`:
 
@@ -67,7 +67,7 @@ Si por ejemplo tenemos un _qubit_ con una distribución al 50% del estado `0` o 
 
 > Como hemos visto antes, la probabilidad de que sea `0` o `1`, vendría determinada por el cuadrado de `1/sqrt(2)` que es `1/2` o `0.5`.
 
-Al realizar una medida, inmediatamente el _qubit_ colapsa su estado quedando fijado en `0` o `1` y no pudiendo deshacer esta operación para recuperar los factores de probabilidad. De esta forma quedaría como:
+Al realizar una medida, inmediatamente el _qubit_ colapsa su estado, quedando fijado en `0` o `1`. Además, no se puede deshacer esta operación para recuperar los factores de probabilidad. De esta forma quedaría como:
 
 ```math
 1·|0> + 0·|1>     ó       0·|0> + 1·|1>
@@ -97,7 +97,7 @@ X·|1> = [[0, 1], [1,  0]] · [[0], [1]] = [[0·0 + 1·1], [1·0 + 0·1]] = [[1]
 
 ### Z
 
-Esta operación convierte `|0>` en `|0>` y `|1>` en `-|1>`. Se puede representar como:
+Esta operación deja el valor `|0>` como `|0>`, pero convierte `|1>` en `-|1>`. Se puede representar como la siguiente matriz:
 
 ```math
 Z = [[1, 0], [0,  -1]]
