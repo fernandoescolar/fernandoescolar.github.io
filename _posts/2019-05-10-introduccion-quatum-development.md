@@ -198,7 +198,7 @@ namespace qsharp
 
 En este código vamos a hacer que nuestro `Qubit` cambie al valor de la variable `desired`, que puede ser `Zero` o `One`.
 
-Añadimos otra función para saber qué valor tenemos actualmente después de hacer el `Switch`:
+Añadimos otra operación para saber qué valor tenemos actualmente después de hacer el `Switch`:
 
 ```ts
 operation SwitchAndReturn(desired: Result, q1: Qubit): Result

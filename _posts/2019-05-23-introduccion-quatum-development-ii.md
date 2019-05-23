@@ -63,7 +63,7 @@ operation MeasureAll(): (Result, Result, Result)
 }
 ```
 
-Donde la operación de `H` se usa para que no siempre tenga el valor `Zero` en la `Z`. Y la función `Measure` es igual que la `M`, con la diferencia de que la operación `M` realiza la medida con la matriz `Z` y `Measure` nos deja seleccionar la matriz a utilizar. Recordad dejar a `Zero` el estado de todos los _qubits_ que usemos antes de dejar de utilizarlos. Para ello, si es una matriz, podemos usar la función `ResetAll`.
+Donde la operación de `H` se usa para que no siempre tenga el valor `Zero` en la `Z`. Y la operación `Measure` es igual que la `M`, con la diferencia de que la operación `M` realiza la medida con la matriz `Z` y `Measure` nos deja seleccionar la matriz a utilizar. Recordad dejar a `Zero` el estado de todos los _qubits_ que usemos antes de dejar de utilizarlos. Para ello, si es una matriz, podemos usar la operación `ResetAll`.
 
 De esta manera, el código de "driver.cs" quedaría como:
 
@@ -172,7 +172,7 @@ operation MakeCNOT(control: Result, target: Result): (Result, Result)
 }
 ```
 
-Aquí primero tenemos una función que nos ayuda a asignar un valor a un _qubit_ llamada `Set`. Después tenemos la función que realiza el `CNOT`. Primero reservamos dos _qubits_, después le asignamos los valores que hemos decidido para `control` y para `target`. Realizamos la operación `CNOT` y leemos los resultados.
+Aquí primero tenemos una operación que nos ayuda a asignar un valor a un _qubit_ llamada `Set`. Después tenemos la operación que realiza el `CNOT`. Primero reservamos dos _qubits_, después le asignamos los valores que hemos decidido para `control` y para `target`. Pasamos la puerta lógica `CNOT` y leemos los resultados.
 
 En C# tendríamos la llamada:
 
