@@ -31,7 +31,7 @@ Al usar números complejos esto nos aporta una nueva dimensión: la parte real y
 
 Donde:
 
-- En el eje `Z` tendríamos los valores `|0>` y `|1>`.
+- En el eje `Z` tendríamos los valores `|1>` y `|0>`.
 - En el eje `X` marcaríamos los estados positivo o negativo: `|+>` o `|->`.
 - En el eje `Y` encontraríamos la parte imaginaria: `|i>` o `|-i>`.
 
@@ -63,7 +63,7 @@ operation MeasureAll(): (Result, Result, Result)
 }
 ```
 
-Donde la operación de `H` se usa para que no siempre tenga el valor `Zero` en la `Z`. Y la función `Measure` es igual que la `M`, con la diferencia de que la operación `M` realiza la medida con la matriz `Z` y `Measure` nos deja seleccionar la matriz a utilizar. Recordad dejar a `Zero` el estado de todos los _qubits_ que usemos antes de dejar de utilizarlos. Si es una matriz, podemos usar la función `ResetAll`.
+Donde la operación de `H` se usa para que no siempre tenga el valor `Zero` en la `Z`. Y la función `Measure` es igual que la `M`, con la diferencia de que la operación `M` realiza la medida con la matriz `Z` y `Measure` nos deja seleccionar la matriz a utilizar. Recordad dejar a `Zero` el estado de todos los _qubits_ que usemos antes de dejar de utilizarlos. Para ello, si es una matriz, podemos usar la función `ResetAll`.
 
 De esta manera, el código de "driver.cs" quedaría como:
 
@@ -108,7 +108,7 @@ En la computación tradicional usamos más de un _bit_ para definir estados más
 
 `11 binario = 3 decimal`
 
-De la misma forma podemos actuar con los _qubits_. Podríamos tener dos _qubits_ que nos definieran un solo estado, de manera que esto formaría un nuevo sistema algo más complejo:
+De la misma forma podemos actuar con los _qubits_. Podríamos tener dos _qubits_ que nos definieran un solo estado, de manera que esto formaría un nuevo sistema más complejo:
 
 `a|00> + b|01> + c|10> + d|11>`
 
