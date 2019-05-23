@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 201905101
-title: 'Introducción a Quatum Development'
+title: 'Introducción a Quatum Development (i)'
 author: fernandoescolar
 post_date: 2019-05-10 07:51:23
 layout: post
