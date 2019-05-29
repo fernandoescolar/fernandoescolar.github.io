@@ -33,15 +33,15 @@ Como ya vimos en [otros artículos](/2019/05/10/introduccion-quatum-development/
 
 Entonces si midiéramos el valor del primer _qubit_ y este diera como resultado `0`, esto significaría que el segundo _qubit_ colapsaría también pasando a valer `0`.
 
-Podríamos decir que un estado de entrelazamiento es un estado en los que tener un valor en un _qubit_ implica otro valor en otro _qubit_ diferente.
+Podríamos decir que un estado de entrelazamiento es un estado en el que tener un valor en un _qubit_ implica otro valor en otro _qubit_ diferente.
 
 ![Me explota la cabeza (meme)](/public/uploads/2019/05/quantum3-meme2.gif)
 
-A estos estados de entrelazamiento completo se les conoce como [estados de Bell](https://en.wikipedia.org/wiki/Bell_state). Su fórmula se puede aplicar con las operaciones que hemos visto hasta ahora:
+A estos estados de entrelazamiento completo se les conoce como [estados de Bell](https://en.wikipedia.org/wiki/Bell_state). Y para este ejemplo en concréto, se puede conseguir aplicando una fórmula con operaciones que ya hemos visto:
 
-![Me explota la cabeza (meme)](/public/uploads/2019/05/quantum3-bell-state.png)
+![CNOT(H x 1)|0>](/public/uploads/2019/05/quantum3-bell-state.png)
 
-Y para conseguir un entrelazamiento cuántico usando Q#, podríamos aplicar esta misma fórmula en código:
+Esta misma formula escrita en Q# podría ser:
 
 ```ts
 operation Entanglement(q1: Qubit, q2: Qubit): Unit
@@ -51,7 +51,7 @@ operation Entanglement(q1: Qubit, q2: Qubit): Unit
 }
 ```
 
-Básicamente aplicamos una puerta `H` al primer _qubit_ y acto seguido una puerta `CNOT` usando como objetivo el segundo _qubit_. El resultado de estas dos operaciones es un estado de entrelazamiento semejante al usado en el ejemplo anterior: 50% `00` y 50% `11`.
+Donde aplicamos una puerta `H` al primer _qubit_ y acto seguido una puerta `CNOT` usando como objetivo el segundo _qubit_. El resultado de estas dos operaciones es un estado de entrelazamiento semejante al usado en el ejemplo anterior: 50% `00` y 50% `11`.
 
 Ahora podríamos escribir el código de ejemplo de ejecución de la operación de entrelazar:
 
