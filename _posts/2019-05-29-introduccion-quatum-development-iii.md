@@ -3,11 +3,11 @@ published: true
 ID: 201905291
 title: 'Introducción a Quatum Development (iii)'
 author: fernandoescolar
-post_date: 2019-05-29 07:51:23
+post_date: 2019-05-29 08:01:23
 layout: post
 ---
 
-Sé que tenéis miedo. Teméis los _qubits_. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido a deciros cómo va a comenzar. Voy a terminar de escribir este artículo. Voy a enseñarles a todos lo que vosotros no queréis que vean. Les enseñaré un mundo sin vosotros. Un mundo sin _bits_ y sin calor, sin limites ni fronteras. Un mundo donde todos los estados sean posibles. Lo que hagáis después, es una decisión que dejo en vuestras manos.<!--break-->
+Sé que tenéis miedo. Teméis los _qubits_. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido a deciros cómo va a comenzar. Voy a terminar de escribir este artículo. Voy a enseñarles a todos lo que vosotros no queréis que vean. Les enseñaré un mundo sin vosotros. Un mundo sin _bits_ y sin problemas de calor en los transistores, sin limites ni fronteras. Un mundo donde todos los estados sean posibles. Lo que hagáis después, es una decisión que dejo en vuestras manos.<!--break-->
 
 ![We need qubits, lots of qubits (meme)](/public/uploads/2019/05/quantum3-meme.jpg)
 
