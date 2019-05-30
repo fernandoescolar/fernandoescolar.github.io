@@ -39,7 +39,7 @@ Podríamos decir que un estado de entrelazamiento es un estado en el que tener u
 
 A estos estados de entrelazamiento completo se les conoce como [estados de Bell](https://en.wikipedia.org/wiki/Bell_state). Y para este ejemplo en concréto, se puede conseguir aplicando una fórmula con operaciones que ya hemos visto:
 
-![CNOT(H x 1)|0>](/public/uploads/2019/05/quantum3-bell-state.png)
+![CNOT H x 1 · |0>](/public/uploads/2019/05/quantum3-bell-state.png)
 
 Esta misma formula escrita en Q# podría ser:
 
