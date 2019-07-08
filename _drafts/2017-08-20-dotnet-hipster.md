@@ -34,10 +34,10 @@ resource "azurerm_resource_group" "terraform-waf" {
 
 ```yaml
 # config.dev.tfvars
-subscription_id = "b8297b52-e76b-4319-b90a-568e78a75945"
-client_id = "492686a5-d8d8-4e2f-a60c-e603ca494142"
-tenant_id = "438d8186-eafe-481d-92ed-9c34bde10e8d"
-client_secret = "17d738c1-352d-4f33-ae64-8809b4389923"
+subscription_id = ".."
+client_id = ".."
+tenant_id = ".."
+client_secret = ".."
 environment = "dev"
 location = "West Europe"
 ```
