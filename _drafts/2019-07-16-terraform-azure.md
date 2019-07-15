@@ -152,9 +152,13 @@ resource "azurerm_app_service" "app-services" {
 
 ![Terraform](/public/uploads/2019/07/terraform-apply.jpg)
 
-### Workspaces
+## Variables
 
-### Módulos
+## Bucles
+
+## Workspaces
+
+## Módulos
 
 ![Terraform](/public/uploads/2019/07/terraform-modules.jpg)
 
