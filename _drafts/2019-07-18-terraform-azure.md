@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 201907161
-title: 'Azure con Terraform'
+ID: 201907181
+title: 'Terraform con Azure'
 author: fernandoescolar
-post_date: 2019-07-16 07:51:23
+post_date: 2019-07-18 07:51:23
 layout: post
 ---
 
@@ -71,7 +71,7 @@ Donde:
 
 ### Inicializando Terraform
 
-Antes de inicializar Terraform, tendremos que crear un archivo .tf (pe. "main.tf"), en este archivo introduciremos el proveedor que queremos utilizar y las crecenciales de *service principal* necesarias para su uso:
+Antes de inicializar Terraform, tendremos que crear un archivo ".tf" (pe. "main.tf"), en este archivo introduciremos el proveedor que queremos utilizar y las crecenciales de *service principal* necesarias para su uso:
 
 ```yaml
 provider "azurerm" {
@@ -82,7 +82,7 @@ provider "azurerm" {
 }
 ```
 
-Ahora ejecutaremos el comando de inicialización:
+Ahora ejecutaremos en la consola o el terminal, el comando de inicialización:
 
 ```bash
 terraform init
@@ -105,7 +105,7 @@ resource "tipo_de_recurso" "nombre_interno_recurso" {
 }
 ```
 
-De esta forma, si quisiera crear un `Resource Group` de azure, podría añadir a mi archivo .tf algo como esto:
+De esta forma, si quisiera crear un `Resource Group` de azure, podría añadir a mi archivo ".tf" algo como esto:
 
 ```yaml
 resource "azurerm_resource_group" "mi_resource_group" {
@@ -148,23 +148,140 @@ resource "azurerm_app_service" "app-services" {
 }
 ```
 
+Todos estos bloques que código se pueden añadir a un mismo archivo con extensión ".tf" o se pueden almacenar en varios.
+
 ## Operando
+
+Terraform es una herramienta de consola, por lo que para realizar operaciones, es necesario usar los diferentes comandos que tiene, en un terminal. Los que más veces vamos a utilizar son:
+
+### plan
+
+Cuando consideremos que ya tenemos listo nuestro código, es el momento de probar que sintácticamente es correcto. Para ello ejecutaremos el comando `plan`:
+
+```bash
+terraform plan
+```
+
+La salida de este comando, si es correcto el contenido de los ".tf", será un `json` descriptivo con la infraestructura que se va a crear, modificar y/o borrar. Y en caso de errores, nos señalará donde se encuentran y nos informará de la causa.
+
+El comando `plan`, al igual que todos los demás comando de Terraform, buscará en el directorio donde lo ejecutemos todos los archivos con extensión ".tf" y los tratará como uno solo. Además, tampoco tenemos que preocuparnos por el orden en el que declaramos los recursos. Terraform buscará cual es el orden correcto, qué tareas puede paralelizar y cómo realizar la creación de la infraestructura lo más eficientemente que pueda.
+
+### apply
+
+Una vez que estamos satisfechos con la propuesta que hemos visto en el plan es el momento de llevar esos recursos a la nube. Para ello usaremos el comando `apply`. Este comando realiza un incremental de actualización sobre nuestra infraestrutura:
+
+- Si no existe, lo crea todo
+- Si ya existe, planifica la creación, modificación y borrado de los recursos ya existentes con respecto los propuestos en nuestro código.
+
+```bash
+terraform apply -auto-approve
+```
 
 ![Terraform](/public/uploads/2019/07/terraform-apply.jpg)
 
-## Variables
+Haber realizado un `plan` previamente, no nos garantiza que no pueda fallar el apply. El primero calcula que la sintaxis sea correcta, y `apply` se enfrenta directamente con Microsoft Azure. En esta plataforma existen más normas, como por ejemplo, que el nombre de nuestro *app service* no exista previamente. Si estas normas de la plataforma no se ven satisfechas, nos encontraremos ante errores en este punto.
 
-## Bucles
+Hay que tener en cuenta que el comando `apply` se basa en la existencia de un estado almacenado. Si en un momento determinado, el estado de nuestros recursos en Azure ha evolucionado de forma diferente a la última vez que ejecutamos el comando `apply`, lo más recomendable es sincronizar el estado usando el comando `import`.
 
-## Workspaces
+### destroy
 
-## Módulos
+Si en un momento determinado queremos borrar todos los recursos que creamos anteriormente, el comando que tendremos que utilizar es `destroy`. Este comando realizará la operación contraria al `apply`, dejando nuestra cuenta de Azure limpia de infraestructura. Es un comando muy util para crear y borrar entornode de desarrollo o prueba. La sintaxis es semejante a los anteriores comandos:
+
+```bash
+terraform destroy
+```
+
+## Uso algo más avanzado
+
+Hasta aquí hemos visto un *quick start* del uso de Terraform con Microsoft Azure. Pero los archívos de código ".tf" tienen mucha más miga de lo que puede parecer en un principio:
+
+### Variables de entrada
+
+Las variables que más vamos a utilizar son las de entrada (*Input Variables*). Estas funciones se declaran como:
+
+```yaml
+variable "nombre_variable" {
+  description = "una descripción de para qué es esta variable"
+  default = "un valor por defecto"
+}
+```
+
+> Podemos prescindir de escribir un valor por defecto si es que no es necesario. Pero por favor, no prescindas de poner una descripción.
+
+Para usar este tipo de variables en código es tan fácil como escribir `var.nombre_variable`:
+
+```yaml
+variable "resource_group_name" {
+  description = "The resource group name"
+  default = "test-terraform"
+}
+
+resource "azurerm_resource_group" "my_resource_group" {
+  name     = var.resource_group_name
+  location = "West Europe"
+}
+```
+
+Si queremos modificar el valor de una variable, podemos hacerlo utilizando:
+
+- El argumento `-var="nombre_variable=valor"` en nuestro comando:
+
+```bash
+terraform apply -var="nombre_variable=valor"
+```
+
+- Usando un archivo ".tfvars" que podremos referenciar con el argumento `-var-file="mi_archivo.tfvars"`:
+
+```bash
+terraform apply -var-file="mi_archivo.tfvars"
+```
+
+También podemos hacer que nuestro archivo sea cargado automanticamente nombrandolo "terraform.tfvars" o termiando en "auto.tfvars".
+
+Este archivo de tipo ".tfvars", contendrá claves y valores en este formato:
+
+```yaml
+nombre_variable_texto   = "valor variable"
+nombre_variable_bool    = false
+nombre_variable_numero  = 1
+nombre_variable_lista   = ["uno", "dos"]
+nombre_variable_objeto  = { parametro = "valor" }
+```
+
+### Variables locales
+
+Las variables locales se declaran dentro de un bloque llamado `locals`:
+
+```yaml
+locals {
+  nombre_variable1 = "valor 1"
+  nombre_variable2 = "valor 2"
+}
+```
+
+Y para su uso se referencian con el formato `local.nombre_variable1`.
+
+Estas variables se pueden usar junto con las [funciones de terraform](https://www.terraform.io/docs/configuration/functions.html) para realizar composiciones más completas. Un ejemplo sería concater
+
+### Variables salida
+
+### Funciones
+
+
+
+### Bucles
+
+### Módulos
 
 ![Terraform](/public/uploads/2019/07/terraform-modules.jpg)
 
-## Terraform vs ARM vs Azure CLI
+### Workspaces
 
 ## Conclusiones
+
+### Terraform vs ARM vs Azure CLI
+
+### Opinión
 
 Terraform es una herramienta muy potente, que sirve para diferentes entornos, con una sintaxis más o menos sencilla y que funciona muy bien. Aunque no es la herramienta perfecta, en mi opnión es hoy por hoy, de lo mejorcito que tenemos disponible.
 
