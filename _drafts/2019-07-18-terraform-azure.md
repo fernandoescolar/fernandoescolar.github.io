@@ -261,19 +261,54 @@ locals {
 
 Y para su uso se referencian con el formato `local.nombre_variable1`.
 
-Estas variables se pueden usar junto con las [funciones de terraform](https://www.terraform.io/docs/configuration/functions.html) para realizar composiciones más completas. Un ejemplo sería concater
+Estas variables se pueden usar junto con las  para realizar composiciones más completas. 
 
-### Variables salida
+Estas variables se pueden usar para componer otros valores diferentes a partir de variables de entrada o de salida. El ejemplo más común sería el de concatenar cadenas de texto:
+
+```yaml
+variable "environment" {}
+
+variable "application" {}
+
+locals {
+    name = "${var.environment}-{var.application}-resource-group"
+}
+```
 
 ### Funciones
 
+También tenemos [funciones de Terraform](https://www.terraform.io/docs/configuration/functions.html) que nos permiten hacer operaciones más complejas:
 
+Desde buscar máscaras de un rango de *IPs* en formato *CIDR*:
+
+```yaml
+variable "cidr" { default = "10.12.127.0/20" }
+
+locals {
+    ip   = cidrhost(var.cidr, 16) # 10.12.112.16
+    mask = cidrnetmask(var.cidr)  # 255.255.240.0
+}
+```
+
+Hasta abrir archivos como base64:
+
+```yaml
+variable "filepath" { default = "./certificate.pfx" }
+
+locals {
+    certificate_base64 = filebase64(var.filepath)
+}
+```
 
 ### Bucles
 
 ### Módulos
 
 ![Terraform](/public/uploads/2019/07/terraform-modules.jpg)
+
+### Variables salida
+
+Cuando 
 
 ### Workspaces
 
@@ -283,6 +318,6 @@ Estas variables se pueden usar junto con las [funciones de terraform](https://ww
 
 ### Opinión
 
-Terraform es una herramienta muy potente, que sirve para diferentes entornos, con una sintaxis más o menos sencilla y que funciona muy bien. Aunque no es la herramienta perfecta, en mi opnión es hoy por hoy, de lo mejorcito que tenemos disponible.
+Terraform es una herramienta muy potente, que sirve para diferentes entornos, con una sintaxis más o menos sencilla y que funciona muy bien. Aunque no es la herramienta perfecta, en mi opnión es, hoy por hoy, de lo mejorcito que tenemos disponible.
 
 Si no consideras que te pueda ser útil, es mejor que no uses esta herramienta. Pero si, por el contrario, crees que te puede ayudar, preparate para enfrentarte a algunos retos que te pondrán a prueba. Eso sí, al final te asuguro que no te arrepentirás.
