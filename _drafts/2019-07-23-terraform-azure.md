@@ -539,19 +539,20 @@ Terraform como plataforma de infraestructura como código es una herramienta muy
 
 Pero también hereda sus retos y añade otra serie de problemas:
 
-- Los límites de la plataforma los sigues teniendo, pero no se avisa de los mismos hasta la ejecución de `apply`.
+- Los límites de la plataforma los sigues teniendo. Y no se avisa de los mismos hasta la ejecución de `apply`.
 - Una desincronización de la infraestructura o un error en la ejecución de un `apply` puede resultar en un estado de Terraform erróneo e irrecuperable.
-- Las dependencias circulares: un límite que hoy por hoy no tiene una solución ni simple ni elegante.
+- Las dependencias circulares: un límite que hoy en día que no tiene una solución ni simple y, ni mucho menos, elegante.
 - No tiene soporte para todas las características y tipos de recursos de Azure.
-- Es un verdadero reto crear infraestructuras un complejas que se creen y actualicen a partir de la misma versión de archivos de Terraform.
+- Es un verdadero reto mantener infraestructuras complejas que se creen y actualicen a partir de la misma versión de archivos de Terraform.
 
 ### Terraform vs ARM vs Azure CLI
 
-Pero vamos a lo que a todos interesa: la pelea.
+Pero vamos a lo que a todos interesa: la pelea de gallos.
+
+**Terraform vs ARM**
 
 ```diff
-Terraform vs ARM
-+ El "hcl" de Terraform es más legible, sencillo y por tanto mantenible que el "json" de ARM
++ El "hcl" de Terraform es más legible, sencillo y por tanto mantenible, que el "json" de ARM
 + Los módulos de Terraform y sus diferentes fuentes dan mucha más versatilidad que los "nested templates" de ARM
 + La validación sintáctica previa con el comando "plan" de Terraform
 + Soporta ejecución de ciertas partes de infraestructura vía plantillas ARM
@@ -563,13 +564,14 @@ Terraform vs ARM
 - Con ARM tienes todos los recursos que existen en Azure
 ```
 
-ARM y Terraform son herramientas semejantes. Vienen a solucionar el problema de IaC. Uno de forma general y otro solo para Azure. Pero las ventajas de Terraform las encontramos en que todo es mucho más sencillo y mantenible que en ARM. Y a una mala, siempre puedes encapsular una plantilla "json" en un recurso de Terraform.
+ARM y Terraform son herramientas semejantes. Vienen a solucionar el problema de IaC. Uno de forma general y otro solo para Azure. Pero las ventajas de Terraform las encontramos en que todo es mucho más sencillo y mantenible que en ARM. Y a una mala, siempre puedes encapsular una plantilla ARM en un recurso de Terraform.
+
+**Terraform vs Azure CLI**
 
 ```diff
-Terraform vs Azure CLI
-+ El "hcl" de Terraform está muy bien preparado para los problemas de IaC, los shellscript o batch no tanto.
++ El "hcl" de Terraform está muy bien preparado para los problemas de IaC, mientras que los ShellScript o Batch no tienen ese objetivo en un principio
 + Cuando se crea o se está modificando infraestructura con Terraform, podemos verlo en el portal de Azure
-+ Los módulos de Terraform no tienen nada que ver con un apaño a base de archivos ".sh" o ".bat"
++ Los módulos de Terraform no tienen nada que ver en comparación con el uso de archivos ".sh" o ".bat"
 + La validación sintáctica previa con el comando "plan" de Terraform
 + El "hcl" es multi plataforma, pero un ".sh" o un ".bat" no
 + Terraform vale para otras nubes diferentes a Azure
@@ -578,14 +580,14 @@ Terraform vs Azure CLI
 = Herramientas multi plataforma 
 = Ninguna de las dos plataformas soporta todos los recursos de Azure
 = En ambos se pueden usar plantillas de ARM
-- A base de usar "Makefiles" Azure CLI se puede convertir en una herramienta super potente
+- A base de usar "Makefiles", Azure CLI se puede convertir en una herramienta super potente
 - Se pude usar un modo "Complete" en el deploy de Azure CLI de forma que volveríamos a replicar un mismo entorno
 ```
 
-Azure CLI no es una herramienta de IaC, aunque se puede usar de esta forma. En contra de lo que se pueda pensar por la sintaxis, los comandos "create" que usa son idempotentes (por lo tanto incrementales). Pero no deja de ser una herramienta de consola para la gestión general de Azure. Terraform es una herramienta pensada solo para gestionar infraestructura como código.
+Azure CLI no es una herramienta de IaC, aunque se puede usar de esta forma. En contra de lo que se pueda pensar por la sintaxis, los comandos "create" que usa, son idempotentes (por lo tanto se comportan de una forma semejante a la incremental). Pero no deja de ser una herramienta de consola para la gestión general de Azure. Terraform es una herramienta pensada solo para gestionar infraestructura como código.
 
 ### Opinión
 
 Terraform es una herramienta muy potente, que sirve para diferentes entornos, con una sintaxis más o menos sencilla y que funciona muy bien. Aunque no es la herramienta perfecta, en mi opinión es, hoy por hoy, de lo mejorcito que tenemos disponible.
 
-Si no consideras que te pueda ser útil, es mejor que no uses esta herramienta. Pero si, por el contrario, crees que te puede ayudar, prepárate para enfrentarte a algunos retos que te pondrán a prueba. Eso sí, al final te aseguro que no te arrepentirás.
+Si no consideras que te pueda ser útil, es mejor que no uses esta herramienta. Pero si, por el contrario, crees que te puede ayudar, prepárate para enfrentarte a algunos retos que te pondrán a prueba. Eso sí, al final, te aseguro que no te arrepentirás.
