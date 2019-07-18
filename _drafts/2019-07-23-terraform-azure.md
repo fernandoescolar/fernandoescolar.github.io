@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 201907181
+ID: 201907231
 title: 'Terraform con Azure'
 author: fernandoescolar
-post_date: 2019-07-18 07:51:23
+post_date: 2019-07-23 07:51:23
 layout: post
 ---
 
@@ -301,6 +301,58 @@ locals {
 ```
 
 ### Bucles
+
+Terraform nos permite realizar la creación de el mismo recurso varias veces usando el parámetro `count`:
+
+```yaml
+resource "azurerm_resource_group" "mi_resource_group" {
+  count    = 2
+  name     = "prueba-terraform-${count.index}"
+  location = "West Europe"
+}
+```
+
+Este código crearía dos grupos de recursos en mi cuenta de azure: uno con el nombre de "prueba-terraform-0" y otro "prueba-terraform-1".
+
+Si quisiera referenciar el nombre de los recursos que acabo de crear, tengo varias formas diferentes:
+
+```yaml
+azurerm_resource_group.mi_resource_group[0].name            # prueba-terraform-0
+element(azurerm_resource_group.mi_resource_group, 1).name   # prueba-terraform-1
+element(azurerm_resource_group.mi_resource_group.*.name, 0) # prueba-terraform-0
+azurerm_resource_group.mi_resource_group.*.name[1]          # prueba-terraform-1
+```
+
+El parámetro `count` también se puede utilizar como condicional asignandole los valores `1` o `0` en dependencia de un ternario:
+
+```yaml
+variable "create_resource_group" {
+  default = false
+}
+
+resource "azurerm_resource_group" "mi_resource_group" {
+  count    = var.create_resource_group ? 1 : 0
+  name     = "prueba-terraform"
+  location = "West Europe"
+}
+```
+
+Y también tenemos bucles `for` para la creación de variables. Su comportamiento es semejante a un `for each` y nos da mucha versatilidad:
+
+```yaml
+variable "ip_cidr" {
+  default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ]
+}
+
+locals {
+  subnets = [for x in var.ip_cidr: {
+    ip   = element(split("/", x), 0)
+    mask = cidrnetmask(x)
+  }]
+}
+```
+
+En este código convertiríamos una lista de rangos de IP en formato CIDR, en un listado de objetos con las propiedades "ip" y "mask".
 
 ### Módulos
 
