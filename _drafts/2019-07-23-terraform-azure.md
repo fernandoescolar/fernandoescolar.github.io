@@ -33,7 +33,7 @@ $ brew install terraform
 
 ### Creando un *service principal*
 
-Para emepezar a usar Terraform con Microsoft Azure lo primero que tendremos que hacer es tener unas credenciales de una cuenta de *service principal* para nuestra suscripción de Azure. Para obtenerlas podemos usar la herramienta [Azure CLI](https://docs.microsoft.com/es-es/cli/azure/install-azure-cli?view=azure-cli-latest):
+Para empezar a usar Terraform con Microsoft Azure lo primero que tendremos que hacer es tener unas credenciales de una cuenta de *service principal* para nuestra suscripción de Azure. Para obtenerlas podemos usar la herramienta [Azure CLI](https://docs.microsoft.com/es-es/cli/azure/install-azure-cli?view=azure-cli-latest):
 
 ```bash
 $ az login
@@ -71,7 +71,7 @@ Donde:
 
 ### Inicializando Terraform
 
-Antes de inicializar Terraform, tendremos que crear un archivo ".tf" (pe. "main.tf"), en este archivo introduciremos el proveedor que queremos utilizar y las credenciales de *service principal* necesarias para su uso:
+Antes de inicializar Terraform, tendremos que crear un archivo ".tf" (pe. "main.tf"). En este archivo introduciremos el proveedor que queremos utilizar y las credenciales de *service principal* necesarias para su uso:
 
 ```hcl
 provider "azurerm" {
@@ -168,7 +168,7 @@ El comando `plan`, al igual que todos los demás comando de Terraform, buscará 
 
 ### apply
 
-Una vez que estamos satisfechos con la propuesta que hemos visto en el plan es el momento de llevar esos recursos a la nube. Para ello usaremos el comando `apply`. Este comando realiza un incremental de actualización sobre nuestra infraestructura:
+Una vez que estamos satisfechos con la propuesta que hemos visto en el plan, es el momento de llevar esos recursos a la nube. Para ello usaremos el comando `apply`. Este comando realiza un incremental de actualización sobre nuestra infraestructura:
 
 - Si no existe, lo crea todo
 - Si ya existe, planifica la creación, modificación y borrado de los recursos ya existentes con respecto los propuestos en nuestro código.
@@ -261,8 +261,6 @@ locals {
 
 Y para su uso se referencian con el formato `local.nombre_variable1`.
 
-Estas variables se pueden usar junto con las  para realizar composiciones más completas. 
-
 Estas variables se pueden usar para componer otros valores diferentes a partir de variables de entrada o de salida. El ejemplo más común sería el de concatenar cadenas de texto:
 
 ```hcl
@@ -312,7 +310,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 }
 ```
 
-Este código crearía dos grupos de recursos en mi cuenta de Azure: uno con el nombre de "prueba-terraform-0" y otro "prueba-terraform-1".
+Este código crearía dos grupos de recursos en mi cuenta de Azure: uno con el nombre de "prueba-terraform-0" y otro "prueba-terraform-1". Recordad generar diferentes nombres para los recursos que se generan con el `count` si queréis evitar errores.
 
 Si quisiera referenciar el nombre de los recursos que acabo de crear, tengo varias formas diferentes:
 
@@ -372,7 +370,7 @@ Tampoco creo que fuera descabellado pensar que, si tengo ya archivos ".tf" espec
 
 Los módulos de terraform vienen a solucionar las problemáticas derivadas de este uso tan impío.
 
-Un módulo de terraform se define con una serie de: variables de entrada, definición de recursos y variables de salida. Por lo que es muy común encontrarnos (y recomendable usar) una estructura de ficheros como la siguiente:
+Un módulo de terraform se define con una serie compuesta por: variables de entrada, definición de recursos y variables de salida. Por lo que es muy común encontrarnos (y recomendable usar) una estructura de ficheros como la siguiente:
 
 ```bash
 mi_modulo/vars.tf
@@ -418,7 +416,9 @@ output "name" {
 }
 ```
 
-Aquí podemos observar una novedad: las variables de salida. Como se puede ver, es muy simple declararlas: basta con poner `output` el nombre de la variable y una propiedad donde encontraremos el valor.
+Aquí podemos observar una novedad: las variables de salida. 
+
+Como se puede ver, es muy simple declararlas: basta con poner `output`, el nombre de la variable y una propiedad donde encontraremos el valor.
 
 Si ahora queremos utilizar nuestro módulo, lo haremos usando el bloque `module`. Este bloque tiene una propiedad llamada `source` en la que indicamos el *path* de la carpeta que contiene nuestro módulo. Y después podemos añadir como parámetros el resto de variables de entrada que creamos en el propio módulo:
 
@@ -515,6 +515,15 @@ Y por último, si queremos borrar un *workspace* ejecutaremos:
 
 ```bash
 $ terraform workspace delete dev
+```
+
+Si quisieramos saber dentro del código de un ".tf" cual es el *workspace* actual usaríamos la variable `terraform.workspace`:
+
+```hcl
+resource "azurerm_resource_group" "mi_resource_group" {
+  name     = "prueba-terraform-${terraform.workspace}"
+  location = "West Europe"
+}
 ```
 
 ## Conclusiones
