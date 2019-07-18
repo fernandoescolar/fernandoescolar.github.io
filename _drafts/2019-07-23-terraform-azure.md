@@ -73,7 +73,7 @@ Donde:
 
 Antes de inicializar Terraform, tendremos que crear un archivo ".tf" (pe. "main.tf"), en este archivo introduciremos el proveedor que queremos utilizar y las credenciales de *service principal* necesarias para su uso:
 
-```yaml
+```hcl
 provider "azurerm" {
   subscription_id = "..."
   client_id       = "..."
@@ -92,9 +92,9 @@ Esto descargará todo lo necesario para poder conectar con Azure e interactuar. 
 
 ## Codificando
 
-Como habremos podido observar ya, el formato para crear infraestructura en Terraform es el `yaml`. La idea es utilizar la siguiente estructura:
+Como habremos podido observar ya, el formato para crear infraestructura en Terraform es el `HCL` ([HashiCorp configuration language](https://github.com/hashicorp/hcl)). La idea es utilizar la siguiente estructura:
 
-```yaml
+```hcl
 resource "tipo_de_recurso" "nombre_interno_recurso" {
     propiedad1  = valor1
     propiedad2  = valor2
@@ -107,7 +107,7 @@ resource "tipo_de_recurso" "nombre_interno_recurso" {
 
 De esta forma, si quisiera crear un `Resource Group` de Azure, podría añadir a mi archivo ".tf" algo como esto:
 
-```yaml
+```hcl
 resource "azurerm_resource_group" "mi_resource_group" {
   name     = "prueba-terraform"
   location = "West Europe"
@@ -116,7 +116,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 
 Si ahora quisiera añadir a este grupo, un `App Service Plan` donde alojar mi página web, añadiría:
 
-```yaml
+```hcl
 resource "azurerm_app_service_plan" "mi_app_service_plan" {
   name                = "prueba-terraform-service-plan"
   location            = azurerm_resource_group.mi_resource_group.location
@@ -134,7 +134,7 @@ Como podemos observar en este caso, para definir los parámetros `location` y `r
 
 Finalmente, para este ejemplo, crearíamos una `Web App` de `App Services`:
 
-```yaml
+```hcl
 resource "azurerm_app_service" "mi_app_service" {
   name                = "prueba-terraform-web"
   location            = azurerm_resource_group.mi_resource_group.location
@@ -199,7 +199,7 @@ Hasta aquí hemos visto un *quick start* del uso de Terraform con Microsoft Azur
 
 Las variables que más vamos a utilizar son las de entrada (*Input Variables*). Estas funciones se declaran como:
 
-```yaml
+```hcl
 variable "nombre_variable" {
   description = "una descripción de para qué es esta variable"
   default = "un valor por defecto"
@@ -210,7 +210,7 @@ variable "nombre_variable" {
 
 Para usar este tipo de variables en código es tan fácil como escribir `var.nombre_variable`:
 
-```yaml
+```hcl
 variable "resource_group_name" {
   description = "The resource group name"
   default = "test-terraform"
@@ -240,7 +240,7 @@ También podemos hacer que nuestro archivo sea cargado automáticamente nombrán
 
 Este archivo de tipo ".tfvars", contendrá claves y valores en este formato:
 
-```yaml
+```hcl
 nombre_variable_texto   = "valor variable"
 nombre_variable_bool    = false
 nombre_variable_numero  = 1
@@ -252,7 +252,7 @@ nombre_variable_objeto  = { parametro = "valor" }
 
 Las variables locales se declaran dentro de un bloque llamado `locals`:
 
-```yaml
+```hcl
 locals {
   nombre_variable1 = "valor 1"
   nombre_variable2 = "valor 2"
@@ -265,7 +265,7 @@ Estas variables se pueden usar junto con las  para realizar composiciones más c
 
 Estas variables se pueden usar para componer otros valores diferentes a partir de variables de entrada o de salida. El ejemplo más común sería el de concatenar cadenas de texto:
 
-```yaml
+```hcl
 variable "environment" {}
 
 variable "application" {}
@@ -281,7 +281,7 @@ También tenemos [funciones de Terraform](https://www.terraform.io/docs/configur
 
 Desde buscar máscaras de un rango de *IPs* en formato *CIDR*:
 
-```yaml
+```hcl
 variable "cidr" { default = "10.12.127.0/20" }
 
 locals {
@@ -292,7 +292,7 @@ locals {
 
 Hasta abrir archivos como base64:
 
-```yaml
+```hcl
 variable "filepath" { default = "./certificate.pfx" }
 
 locals {
@@ -304,7 +304,7 @@ locals {
 
 Terraform nos permite realizar la creación de el mismo recurso varias veces usando el parámetro `count`:
 
-```yaml
+```hcl
 resource "azurerm_resource_group" "mi_resource_group" {
   count    = 2
   name     = "prueba-terraform-${count.index}"
@@ -316,7 +316,7 @@ Este código crearía dos grupos de recursos en mi cuenta de Azure: uno con el n
 
 Si quisiera referenciar el nombre de los recursos que acabo de crear, tengo varias formas diferentes:
 
-```yaml
+```hcl
 azurerm_resource_group.mi_resource_group[0].name            # prueba-terraform-0
 element(azurerm_resource_group.mi_resource_group, 1).name   # prueba-terraform-1
 element(azurerm_resource_group.mi_resource_group.*.name, 0) # prueba-terraform-0
@@ -325,7 +325,7 @@ azurerm_resource_group.mi_resource_group.*.name[1]          # prueba-terraform-1
 
 El parámetro `count` también se puede utilizar como condicional asignándole los valores `1` o `0` en dependencia de un ternario:
 
-```yaml
+```hcl
 variable "create_resource_group" {
   default = false
 }
@@ -339,7 +339,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 
 Y también tenemos bucles `for` para la creación de variables. Su comportamiento es semejante a un `for each` y nos da mucha versatilidad:
 
-```yaml
+```hcl
 variable "ip_cidr" {
   default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ]
 }
@@ -382,7 +382,7 @@ mi_modulo/output.tf
 
 Si quisiéramos crear un módulo para la creación de una Web App, crearíamos una nueva carpeta llamada "webapp" dentro de la carpeta "modules":
 
-```yaml
+```hcl
 # modules/webapp/vars.tf
 variable "resource_group_name" {}
 variable "location" {}
@@ -422,7 +422,7 @@ Aquí podemos observar una novedad: las variables de salida. Como se puede ver, 
 
 Si ahora queremos utilizar nuestro módulo, lo haremos usando el bloque `module`. Este bloque tiene una propiedad llamada `source` en la que indicamos el *path* de la carpeta que contiene nuestro módulo. Y después podemos añadir como parámetros el resto de variables de entrada que creamos en el propio módulo:
 
-```yaml
+```hcl
 resource "azurerm_resource_group" "mi_resource_group" {
   name     = "prueba-terraform"
   location = "West Europe"
@@ -440,7 +440,7 @@ module "webapp" {
 
 Si quisiéramos ahora utilizar los valores de salida de este módulo, los tendremos disponibles en:
 
-```yaml
+```hcl
 module.nombre_modulo.nombre_variable_salida
 module.webapp.name # prueba-terraform-web
 ```
@@ -451,7 +451,7 @@ Como bola extra, un módulo de Terraform no tiene por qué encontrarse en el sis
 
 - El registro público de Terraform:
 
-```yaml
+```hcl
 module "un_modulo" {
   source  = "hashicorp/mi_modulo/azurerm"
   version = "1.0.0"
@@ -460,7 +460,7 @@ module "un_modulo" {
 
 - Una URL:
 
-```yaml
+```hcl
 module "un_modulo" {
   source = "https://www.ejemplo.com/mi-modulo.zip"
 }
@@ -468,7 +468,7 @@ module "un_modulo" {
 
 - O incluso un repositorio de *git*:
 
-```yaml
+```hcl
 module "un_modulo" {
   source = "git::https://www.ejemplo.com/repositorio.git//modules/mi-modulo"
 }
@@ -526,7 +526,7 @@ Terraform como plataforma de infraestructura como código es una herramienta muy
 - La capacidad de replicar entornos de una forma sencilla: si por ejemplo, tenemos entornos de *DEV*, *PRE* y *PRO*, podemos generarlos como replicas y mantener las mismas características en unos y otros.
 - Versionar la infraestructura a la vez que se versiona el código: cuando se añade una nueva característica como por ejemplo una caché distribuida, tendremos el código fuente asociado a la modificación de la infraestructura necesaria.
 - Independencia de un desarrollador para generar sus propios entornos de prueba.
-- Descripción clara de la infraestructura: el formato *yaml* de Terraform hace sencillo leer y hacerse a la idea de qué hay montado.
+- Descripción clara de la infraestructura: el formato *hcl* de Terraform hace sencillo leer y hacerse a la idea de qué hay montado.
 
 Pero también hereda sus retos y añade otra serie de problemas:
 
@@ -542,7 +542,7 @@ Pero vamos a lo que a todos interesa: la pelea.
 
 ```diff
 Terraform vs ARM
-+ El "yaml" de Terraform es más legible, sencillo y por tanto mantenible que el "json" de ARM
++ El "hcl" de Terraform es más legible, sencillo y por tanto mantenible que el "json" de ARM
 + Los módulos de Terraform y sus diferentes fuentes dan mucha más versatilidad que los "nested templates" de ARM
 + La validación sintáctica previa con el comando "plan" de Terraform
 + Soporta ejecución de ciertas partes de infraestructura vía plantillas ARM
@@ -558,14 +558,14 @@ ARM y Terraform son herramientas semejantes. Vienen a solucionar el problema de 
 
 ```diff
 Terraform vs Azure CLI
-+ El "yaml" de Terraform está muy bien preparado para los problemas de IaC, los shellscript o batch no tanto.
++ El "hcl" de Terraform está muy bien preparado para los problemas de IaC, los shellscript o batch no tanto.
 + Cuando se crea o se está modificando infraestructura con Terraform, podemos verlo en el portal de Azure
 + Los módulos de Terraform no tienen nada que ver con un apaño a base de archivos ".sh" o ".bat"
 + La validación sintáctica previa con el comando "plan" de Terraform
-+ El "yaml" es multi plataforma, pero un ".sh" o un ".bat" no
++ El "hcl" es multi plataforma, pero un ".sh" o un ".bat" no
 + Terraform vale para otras nubes diferentes a Azure
 + Si usas "Makefiles" para Azure CLI, necesitas instalar otra herramienta más
-= La sintaxis es sencilla de entender, tanto en comandos como en "yaml"
+= La sintaxis es sencilla de entender, tanto en comandos como en "hcl"
 = Herramientas multi plataforma 
 = Ninguna de las dos plataformas soporta todos los recursos de Azure
 = En ambos se pueden usar plantillas de ARM
