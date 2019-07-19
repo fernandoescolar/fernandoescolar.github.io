@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 201907231
+ID: 201907191
 title: 'Terraform con Azure'
 author: fernandoescolar
-post_date: 2019-07-23 07:51:23
+post_date: 2019-07-19 07:51:23
 layout: post
 ---
 
@@ -580,6 +580,7 @@ ARM y Terraform son herramientas semejantes. Vienen a solucionar el problema de 
 = Herramientas multi plataforma 
 = Ninguna de las dos plataformas soporta todos los recursos de Azure
 = En ambos se pueden usar plantillas de ARM
+- Las dependencias circulares son un verdadero problema de Terraform y muy sencillo de solventar usando Azure CLI
 - A base de usar "Makefiles", Azure CLI se puede convertir en una herramienta super potente
 - Se pude usar un modo "Complete" en el deploy de Azure CLI de forma que volveríamos a replicar un mismo entorno
 ```
