@@ -73,7 +73,7 @@ Donde:
 
 Antes de inicializar Terraform, tendremos que crear un archivo ".tf" (pe. "main.tf"). En este archivo introduciremos el proveedor que queremos utilizar y las credenciales de *service principal* necesarias para su uso:
 
-```yaml
+```ini
 provider "azurerm" {
   subscription_id = "..."
   client_id       = "..."
@@ -94,7 +94,7 @@ Esto descargará todo lo necesario para poder conectar con Azure e interactuar. 
 
 Como habremos podido observar ya, el formato para crear infraestructura en Terraform es el `HCL` ([HashiCorp configuration language](https://github.com/hashicorp/hcl)). La idea es utilizar la siguiente estructura:
 
-```yaml
+```ini
 resource "tipo_de_recurso" "nombre_interno_recurso" {
     propiedad1  = valor1
     propiedad2  = valor2
@@ -107,7 +107,7 @@ resource "tipo_de_recurso" "nombre_interno_recurso" {
 
 De esta forma, si quisiera crear un `Resource Group` de Azure, podría añadir a mi archivo ".tf" algo como esto:
 
-```yaml
+```ini
 resource "azurerm_resource_group" "mi_resource_group" {
   name     = "prueba-terraform"
   location = "West Europe"
@@ -116,7 +116,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 
 Si ahora quisiera añadir a este grupo, un `App Service Plan` donde alojar mi página web, añadiría:
 
-```yaml
+```ini
 resource "azurerm_app_service_plan" "mi_app_service_plan" {
   name                = "prueba-terraform-service-plan"
   location            = azurerm_resource_group.mi_resource_group.location
@@ -134,7 +134,7 @@ Como podemos observar en este caso, para definir los parámetros `location` y `r
 
 Finalmente, para este ejemplo, crearíamos una `Web App` de `App Services`:
 
-```yaml
+```ini
 resource "azurerm_app_service" "mi_app_service" {
   name                = "prueba-terraform-web"
   location            = azurerm_resource_group.mi_resource_group.location
@@ -199,7 +199,7 @@ Hasta aquí hemos visto un *quick start* del uso de Terraform con Microsoft Azur
 
 Las variables que más vamos a utilizar son las de entrada (*Input Variables*). Estas funciones se declaran como:
 
-```yaml
+```ini
 variable "nombre_variable" {
   description = "una descripción de para qué es esta variable"
   default = "un valor por defecto"
@@ -210,7 +210,7 @@ variable "nombre_variable" {
 
 Para usar este tipo de variables en código es tan fácil como escribir `var.nombre_variable`:
 
-```yaml
+```ini
 variable "resource_group_name" {
   description = "The resource group name"
   default = "test-terraform"
@@ -240,7 +240,7 @@ También podemos hacer que nuestro archivo sea cargado automáticamente nombrán
 
 Este archivo de tipo ".tfvars", contendrá claves y valores en este formato:
 
-```yaml
+```ini
 nombre_variable_texto   = "valor variable"
 nombre_variable_bool    = false
 nombre_variable_numero  = 1
@@ -252,7 +252,7 @@ nombre_variable_objeto  = { parametro = "valor" }
 
 Las variables locales se declaran dentro de un bloque llamado `locals`:
 
-```yaml
+```ini
 locals {
   nombre_variable1 = "valor 1"
   nombre_variable2 = "valor 2"
@@ -263,7 +263,7 @@ Y para su uso se referencian con el formato `local.nombre_variable1`.
 
 Estas variables se pueden usar para componer otros valores diferentes a partir de variables de entrada o de salida. El ejemplo más común sería el de concatenar cadenas de texto:
 
-```yaml
+```ini
 variable "environment" {}
 
 variable "application" {}
@@ -279,7 +279,7 @@ También tenemos [funciones de Terraform](https://www.terraform.io/docs/configur
 
 Desde buscar máscaras de un rango de *IPs* en formato *CIDR*:
 
-```yaml
+```ini
 variable "cidr" { default = "10.12.127.0/20" }
 
 locals {
@@ -290,7 +290,7 @@ locals {
 
 Hasta abrir archivos como base64:
 
-```yaml
+```ini
 variable "filepath" { default = "./certificate.pfx" }
 
 locals {
@@ -302,7 +302,7 @@ locals {
 
 Terraform nos permite realizar la creación de el mismo recurso varias veces usando el parámetro `count`:
 
-```yaml
+```ini
 resource "azurerm_resource_group" "mi_resource_group" {
   count    = 2
   name     = "prueba-terraform-${count.index}"
@@ -314,7 +314,7 @@ Este código crearía dos grupos de recursos en mi cuenta de Azure: uno con el n
 
 Si quisiera referenciar el nombre de los recursos que acabo de crear, tengo varias formas diferentes:
 
-```yaml
+```ini
 azurerm_resource_group.mi_resource_group[0].name            # prueba-terraform-0
 element(azurerm_resource_group.mi_resource_group, 1).name   # prueba-terraform-1
 element(azurerm_resource_group.mi_resource_group.*.name, 0) # prueba-terraform-0
@@ -323,7 +323,7 @@ azurerm_resource_group.mi_resource_group.*.name[1]          # prueba-terraform-1
 
 El parámetro `count` también se puede utilizar como condicional asignándole los valores `1` o `0` en dependencia de un ternario:
 
-```yaml
+```ini
 variable "create_resource_group" {
   default = false
 }
@@ -337,7 +337,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 
 Y también tenemos bucles `for` para la creación de variables. Su comportamiento es semejante a un `for each` y nos da mucha versatilidad:
 
-```yaml
+```ini
 variable "ip_cidr" {
   default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ]
 }
@@ -380,7 +380,7 @@ mi_modulo/output.tf
 
 Si quisiéramos crear un módulo para la creación de una Web App, crearíamos una nueva carpeta llamada "webapp" dentro de la carpeta "modules":
 
-```yaml
+```ini
 # modules/webapp/vars.tf
 variable "resource_group_name" {}
 variable "location" {}
@@ -422,7 +422,7 @@ Como se puede ver, es muy simple declararlas: basta con poner `output`, el nombr
 
 Si ahora queremos utilizar nuestro módulo, lo haremos usando el bloque `module`. Este bloque tiene una propiedad llamada `source` en la que indicamos el *path* de la carpeta que contiene nuestro módulo. Y después podemos añadir como parámetros el resto de variables de entrada que creamos en el propio módulo:
 
-```yaml
+```ini
 resource "azurerm_resource_group" "mi_resource_group" {
   name     = "prueba-terraform"
   location = "West Europe"
@@ -440,7 +440,7 @@ module "webapp" {
 
 Si quisiéramos ahora utilizar los valores de salida de este módulo, los tendremos disponibles en:
 
-```yaml
+```ini
 module.nombre_modulo.nombre_variable_salida
 module.webapp.name # prueba-terraform-web
 ```
@@ -451,7 +451,7 @@ Como bola extra, un módulo de Terraform no tiene por qué encontrarse en el sis
 
 - El registro público de Terraform:
 
-```yaml
+```ini
 module "un_modulo" {
   source  = "hashicorp/mi_modulo/azurerm"
   version = "1.0.0"
@@ -460,7 +460,7 @@ module "un_modulo" {
 
 - Una URL:
 
-```yaml
+```ini
 module "un_modulo" {
   source = "https://www.ejemplo.com/mi-modulo.zip"
 }
@@ -468,7 +468,7 @@ module "un_modulo" {
 
 - O incluso un repositorio de *git*:
 
-```yaml
+```ini
 module "un_modulo" {
   source = "git::https://www.ejemplo.com/repositorio.git//modules/mi-modulo"
 }
@@ -519,7 +519,7 @@ $ terraform workspace delete dev
 
 Si quisieramos saber dentro del código de un ".tf" cual es el *workspace* actual usaríamos la variable `terraform.workspace`:
 
-```yaml
+```ini
 resource "azurerm_resource_group" "mi_resource_group" {
   name     = "prueba-terraform-${terraform.workspace}"
   location = "West Europe"
