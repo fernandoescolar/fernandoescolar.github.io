@@ -7,7 +7,7 @@ post_date: 2019-07-19 07:51:23
 layout: post
 ---
 
-La terraformación es una serie de técnicas que, aplicadas en conjunto, conseguirían dotar a un planeta o asteroide inerte, de una serie de características semejantes a las de la tierra. De esta forma se conseguiría un planeta habitable. Y aunque pueda parecer pomposo (que lo es), `terraform` va de eso mismo, pero con el *cloud*.<!--break--> No es que queramos que la nube sea habitable para un ser humano, pero sí para nuestras aplicaciones.
+La terraformación es una serie de técnicas que, aplicadas en conjunto, conseguirían dotar a un planeta o asteroide inerte, de una serie de características semejantes a las de la tierra. De esta forma se conseguiría un planeta habitable. Y aunque pueda parecer pomposo (que lo es), Terraform va de eso mismo, pero con el *cloud*.<!--break--> No es que queramos que la nube sea habitable para un ser humano, pero sí para nuestras aplicaciones.
 
 Terraform es una herramienta que nos ayuda a gestionar infraestructura como código. Hereda las características de esta práctica: la capacidad de versionar, construir, actualizar o borrar infraestructura, sin tener que interactuar físicamente con el hardware o con herramientas interactivas. Así conseguimos una forma de administración de sistemas informáticos más potente y sencilla. Al menos para un programador.
 
