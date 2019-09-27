@@ -100,7 +100,7 @@ Una vez termine la actualización si entramos de nuevo en nuestra aplicación we
 
 Donde en la primera línea de la respuesta, podremos ver el tamaño de la cadena de texto que hemos enviado en hexadecimal.
 
-Ya tenemos nuestra aplicación funcionando en un entorno escalable y puesta al servicio de todos.
+Ya tenemos nuestra aplicación funcionando en un entorno escalable, y al servicio de todos.
 
 
 ![Ronaldinho sonrie](/public/uploads/2019/09/ronaldinho.jpg)
