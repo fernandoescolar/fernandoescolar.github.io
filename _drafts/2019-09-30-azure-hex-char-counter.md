@@ -7,11 +7,13 @@ post_date: 2019-09-30 07:51:23
 layout: post
 ---
 
-El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución del problema de realizar la cuenta de la longitud en caracteres de una cadena de texto en hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?<!--break--> 
+El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El objetivo era conseguir el tamaño de una cadena de texto en formato hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?<!--break--> 
 
-La respuesta a esta pregunta es que sí. Si no, no hubiéramos escrito este artículo... Y el code-name del proyecto *HCC*. 
+La respuesta a esta pregunta es que de una forma muy eficiente. Si no, no hubiéramos escrito este artículo... Ya teníamos proyecto. Y su code-name: *HCC* (**H**exadecimal-**C**haracters-**C**ounter). Y he aquí como lo ejecutamos:
 
-Como siempre, lo primero que hacemos en Microsoft Azure es crear un servicio *PaaS* donde hospedar nuestra aplicación. Así que iremos al portal y buscaremos en el *marketplace* el recurso de tipo "Web App":
+## Implementando HCC
+
+Lo primero que tenemos que hacer es ir al portal de Microsoft Azure y crear un servicio *PaaS* donde hospedar nuestra aplicación. Así que buscaremos en el *marketplace* el recurso de tipo "Web App":
 
 ![Crear azure web app](/public/uploads/2019/09/hex-counter-1.png)
 
@@ -100,7 +102,15 @@ Una vez termine la actualización si entramos de nuevo en nuestra aplicación we
 
 Donde en la primera línea de la respuesta, podremos ver el tamaño de la cadena de texto que hemos enviado en hexadecimal.
 
-Ya tenemos nuestra aplicación funcionando en un entorno escalable, y al servicio de todos.
-
+*HCC* ya está funcionando, en un entorno escalable y al servicio de todos. ¡Misión cumplida!
 
 ![Ronaldinho sonrie](/public/uploads/2019/09/ronaldinho.jpg)
+
+## Conclusiones
+
+Son solo dos:
+
+1. Azure no deja de sorprendernos añadiendo día a día nuevas funcionalidades que hacen que tengamos que escribir menos código.
+2. Nadie debe estar usando *nodejs* en Azure. O nadie lo usa con "App Insigths". O nadie usa las opciones recomendadas. O no entendemos nada.
+
+De cualquier forma, que bien que lo hemos pasado desarrollando :).
