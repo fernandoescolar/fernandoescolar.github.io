@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 201907191
+ID: 201910011
 title: 'Azure hex-char-counter tutorial'
 author: fernandoescolar
-post_date: 2019-09-30 07:51:23
+post_date: 2019-10-01 07:51:23
 layout: post
 ---
 
@@ -29,7 +29,7 @@ Una vez hemos revisado todo, creamos el servicio dentro de Azure y tras unos poc
 
 ![Notificación de creada](/public/uploads/2019/09/hex-counter-4.png)
 
-Por cuestiones de facilidad hemos decidido utilizar *nodejs* como lenguaje de programación de servidor. Así no tendremos que crear complejos procesos de compilación. Para ello tendremos que añadir un en la configuración del "App Service" un ">AppSettting" con el nombre "WEBSITE_NODE_DEFAULT_VERSION" y con el valor de una versión estable, como por ejemplo la "6.2.2":
+Por cuestiones de facilidad hemos decidido utilizar *nodejs* como lenguaje de programación de servidor. Así no tendremos que crear complejos procesos de compilación. Para ello tendremos que añadir un en la configuración del "App Service" un "AppSettting" con el nombre "WEBSITE_NODE_DEFAULT_VERSION" y con el valor de una versión estable, como por ejemplo la "6.2.2":
 
 ![Configurando node](/public/uploads/2019/09/hex-counter-5.png)
 
@@ -86,7 +86,7 @@ El contenido de este archivo debería ser parecido a este:
 
 Con esto ya podemos probar nuestra aplicación. Pero entonces os daréis cuenta de que solo devuelve texto y que en ningún momento estamos contando los caracteres de la cadena:
 
-![Funcionando](/public/uploads/2019/09/hex-counter-bad.png)
+![No funciona exactamente como queremos](/public/uploads/2019/09/hex-counter-bad.png)
 
 Aquí es donde una de las mejores *features* de Microsoft Azure nos pueden ayudar. Con 3 sencillos pasos vamos a conseguir aplicar la magia:
 
@@ -110,7 +110,5 @@ Donde en la primera línea de la respuesta, podremos ver el tamaño de la cadena
 
 Son solo dos:
 
-1. Azure no deja de sorprendernos añadiendo día a día nuevas funcionalidades que hacen que tengamos que escribir menos código.
-2. Nadie debe estar usando *nodejs* en Azure. O nadie lo usa con "App Insigths". O nadie usa las opciones recomendadas. O no entendemos nada.
-
-De cualquier forma, que bien que lo hemos pasado desarrollando :).
+1. Qué fácil es hacer cosas con Azure. Los chicos de Microsoft están haciendo un gran trabajo.
+2. Me parece genial lo de estas *features* ocultas que meten sin avisar. Aportan muchísimo valor. Aunque vendría muy bien que estuvieran documentadas.
