@@ -3,7 +3,7 @@ published: true
 ID: 201910011
 title: 'Azure hex-char-counter tutorial'
 author: fernandoescolar
-post_date: 2019-10-01 07:51:23
+post_date: 2019-10-01 13:51:23
 layout: post
 ---
 
