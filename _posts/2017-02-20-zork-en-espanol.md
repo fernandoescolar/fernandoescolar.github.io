@@ -13,7 +13,7 @@ layout: post
 
 Si os habéis leido el libro "Ready Player One" (si no, ya estáis tardando) sabréis de qué estamos hablando. Quizá también si habéis visto un capitulo de la segunda temporada de "The Big Bang Theory".
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Z-YFHHG4cvg" frameborder="0" allowfullscreen></iframe>
+<iframe class="youtube" src="https://www.youtube.com/embed/Z-YFHHG4cvg" frameborder="0" allowfullscreen></iframe>
 
 [Zork](https://es.wikipedia.org/wiki/Zork) fue uno de los primeros videojuegos de ficción interactiva en modo texto. Por lo que tenía muchos números para ser portado a Bot Framework de Microsoft. Y este post trata de eso exactamente.
 
