@@ -7,12 +7,19 @@ post_date: 2020-05-11 11:02:29
 layout: post
 ---
 
-Muchas gracias a todos los que alguna vez habéis comentado alguna entrada del blog. He decidido desactivar los comentarios. Os explico por qué:<!--break-->
+Muchas gracias a todos por los comentarios que habéis ido dejando en este blog. Siempre me habéis animado a seguir escribiendo y de alguna manera, le habéis dado sentido a todo esto. Hoy admito mi derrota. Las redes sociales han ganado. Hoy comienza la era de sin comentarios<!--break-->.
 
-Actualmente no tenemos demasiados comentarios en este blog. Quizá 2 al año. Tampoco me ha parecido, por lo general, que aporten mucho más valor a los artículos donde los encontramos. Y encima están generando varios errores en el HTML y javascript de la página.
+No me gustan los cambios. Hasta que no veo abofeteado por la cruda realidad no me doy cuenta. Lo disimulo diciendo que es *vintage*, pero ya me conocéis. Hoy en día, el lugar donde todo el mundo comenta todo, son las redes sociales. Basta de resistirnos. Critiquemos duramente este blog en general, y más concretamente a mí, en las plataformas mejor habilitadas para ello.
 
-Así que he decidido quitarlos de la página. Pero no borrarlos. Siempre podréis consultarlos en [disqus](https://disqus.com/home/forum/fernandoescolar/).
+Me rindo.
 
-Creo sinceramente que todos los temas que se han tratado en estos comentarios podrían ser debatidos de una forma más accesible, dinámica y cercana a través de las redes sociales.
+Tan solo queda retirarse dignamente y dar las gracias de nuevo a aquellos que alguna vez comentasteis.
 
-Así que no me queda más que dar las gracias de nuevo a aquellos que alguna vez comentasteis. Siempre me habéis animado a seguir escribiendo.
+Nos leemos en [Twitter](https://twitter.com/fernandoescolar).
+
+<br/>
+Atentamente,
+
+Fernando Escolar aka el Developerro.
+
+>Pd. Los comentarios seguiram en [disqus](https://disqus.com/home/forum/fernandoescolar/).
