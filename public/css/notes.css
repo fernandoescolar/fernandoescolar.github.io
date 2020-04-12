@@ -56,7 +56,10 @@ ul.share li {
   text-decoration: none;
   min-width: 64px;
   text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 ul.share li a {
   color: white !important;
+  text-decoration: none;
 }

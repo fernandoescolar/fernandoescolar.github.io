@@ -360,6 +360,7 @@ tbody tr:nth-child(odd) th {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 1px solid #eee;
+  margin-top: 10px;
 }
 .related-posts {
   padding-left: 0;
