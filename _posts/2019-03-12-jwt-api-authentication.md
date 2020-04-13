@@ -7,9 +7,9 @@ post_date: 2019-03-12 05:26:33
 layout: post
 ---
 
-Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo<!--break--> [guiño][guiño].
+Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación+autorización de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo<!--break--> [guiño][guiño].
 
-Lo más común dentro de una API moderna, es exponerla públicamente siguiendo (o intentando seguir) las premisas de [REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) y el [modelo de madurez de Richardson](https://martinfowler.com/articles/richardsonMaturityModel.html). Así pues, usaremos el [protocolo HTTP](https://tools.ietf.org/html/rfc2616) para realizar la comunicación. Y la forma más común de autenticarse con este protocolo es utilizar las cabeceras de las peticiones. Concretamente se suele usar una llamada "[Authorization](https://tools.ietf.org/html/rfc7235#section-4.2)" y como valor solemos encontrar dos textos: uno que dice "Bearer" y otro indescifrable que suele coincidir con el _token_ que hemos solicitado a otro servicio.
+Lo más común dentro de una API moderna, es exponerla públicamente siguiendo (o intentando seguir) las premisas de [REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) y el [modelo de madurez de Richardson](https://martinfowler.com/articles/richardsonMaturityModel.html). Así pues, usaremos el [protocolo HTTP](https://tools.ietf.org/html/rfc2616) para realizar la comunicación. Y la forma más común de solicitar autorización y autenticarse con este protocolo es utilizar las cabeceras de las peticiones. Concretamente se suele usar una llamada "[Authorization](https://tools.ietf.org/html/rfc7235#section-4.2)" y como valor solemos encontrar dos textos: uno que dice "Bearer" y otro indescifrable que suele coincidir con el _token_ que hemos solicitado a otro servicio.
 
 ## Bearer
 
@@ -25,7 +25,7 @@ Dentro del RFC del protocolo HTTP existen dos esquemas de autenticación:
 
 - Y segundo tenemos el "[Digest](https://tools.ietf.org/html/rfc7616)" que para no liarnos es como una especie de _token_ con varias propiedades, firmas e incluso alguna cosilla medio encriptada; pero que se envía en formato de texto plano. No está mal, pero con un man-in-the-middle podemos comprometer información sensible de un usuario y del sistema fácilmente.
 
-Luego ya hay otro tipo de modelos, pero nosotros nos centraremos en el estándar de oAuth 2.0, que es "[Bearer](https://tools.ietf.org/html/rfc6750)". Este es el esquema que está más de moda hoy en día. Viene a avisar de que detrás le acompaña un _token_ de tipo _JSON Web Token_.
+Luego ya hay otro tipo de modelos, pero nosotros nos centraremos en el uso del *estándar* de autorización OAuth 2.0, que es "[Bearer](https://tools.ietf.org/html/rfc6750)". Un formato que nos permite la autorización en conjunto con la autenticación de usuarios. Este es el esquema que está más de moda hoy en día. Viene a avisar de que detrás le acompaña un _token_ de tipo _JSON Web Token_.
 
 ## JWT
 
@@ -40,6 +40,7 @@ El formato de un JWT se basa en tres partes:
 ### Header
 
 Generalmente consiste en dos valores:
+
 - El algoritmo que se ha usado para firmar el token.
 - El tipo de token. Que es "JWT".
 
@@ -107,12 +108,12 @@ JWT = content + "." + encodeURI(signature)
 
 ## Validando JWT
 
-A la hora de validar vamos a usar como ejemplo un _JWT_ emitido por un Azure Active Directory. Para ello lo primero que tendremos que hacer es validar la cabecera de la petición HTTP. Comprobaremos que tiene una cabecera llamada "Authorization" y un valor que puede ser dividido en dos, separándolo por un espacio vacío. El primero de esos valores deberá ser "Bearer" y el segundo nuestro _token_. 
+A la hora de validar vamos a usar como ejemplo un _JWT_ emitido por un Azure Active Directory. Para ello lo primero que tendremos que hacer es validar la cabecera de la petición HTTP. Comprobaremos que tiene una cabecera llamada "Authorization" y un valor que puede ser dividido en dos, separándolo por un espacio vacío. El primero de esos valores deberá ser "Bearer" y el segundo nuestro _token_.
 
 Después deberemos saber de dónde recuperar las claves públicas para comprobar la firma. Esto se puede hacer preguntando a la configuración de openid connect, que encontraremos en:
 
 ```
-https://login.windows.net/[nuestro_tenant_id]//.well-known/openid-configuration
+https://login.windows.net/[nuestro_tenant_id]/.well-known/openid-configuration
 ```
 
 Si desconocemos cual es el tenantId que estamos usando, lo podemos leer (en el caso de Azure Active Directory) del propio _token_. Se guarda en una propiedad llamada "tid". Por lo que, si cogemos el cuerpo del token, lo convertimos a un formato JSON y buscamos esta propiedad ya tenemos el tenantId. Ahora solo tenemos que realizar esa petición y de entre los diferentes datos que nos envía buscar un campo llamado "jwks_uri". En esa dirección web encontraremos las claves públicas para comprobar la firma de nuestro token.
@@ -317,7 +318,7 @@ Este es el escenario más simple, ya que existe un _middleware_ que podemos util
 public class Startup
 {
     private const key = "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING";
-    
+
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
@@ -350,7 +351,7 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        app.UseAuthentication();            
+        app.UseAuthentication();
         app.UseMvc();
     }
 }
@@ -358,6 +359,6 @@ public class Startup
 
 ## Conclusiones
 
-Evidentemente, los ejemplos están incompletos: no se usan cachés, no se validan campos importantes como la audiencia y en general no tratamos identidades, solo el _token_. Pero hemos visto a fondo cómo funciona el mundo de la autenticación oAuth 2.0 para nuestras APIs. Además, hemos demostrado los principios de cómo realizar estas autenticaciones nosotros mismos o cómo funcionan internamente otros sistemas que la realizan por nosotros.
+Evidentemente, los ejemplos están incompletos: no se usan cachés, no se validan campos importantes como la audiencia y en general no tratamos identidades, solo el _token_. Pero hemos visto a fondo cómo funciona el mundo de la autenticación y autoriazción con OAuth 2.0 para nuestras APIs. Además, hemos demostrado los principios de cómo realizar estas autenticación+autorización nosotros mismos o cómo funcionan internamente otros sistemas que la realizan por nosotros.
 
 Y aunque ningún sistema es completamente seguro, siempre está bien conocer su funcionamiento interno para ser capaces de prevenir ataques y fallos de seguridad.
