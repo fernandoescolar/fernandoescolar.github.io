@@ -23,26 +23,26 @@ Escuchemos a los super-tacañones:
 
 > Aunque un servicio OAuth es capaz de devolver JSON Web Tokens, JWT no es un tipo de concesión válido.
 
-[OAuth 2.0](https://tools.ietf.org/html/rfc6749) es una especificación que describe diferentes formas (_Grant Types_ o tipos de concesión) de solicitar un _token_ de acceso (*access_token*) para un servicio HTTP. Se usa como base de la especificación [Open Id Connect](https://openid.net/wg/connect/) (OIDC) y también de los protocolos de autenticación implementados por las grandes empresas de internet (Twitter, Facebook, Microsoft... Google de hecho usa OIDC). De forma que, cuando hablemos de OAuth, nos referiremos a un protocolo de autenticación basado en OAuth 2.0.
+[OAuth 2.0](https://tools.ietf.org/html/rfc6749) es una especificación que describe diferentes formas (_Grant Types_ o tipos de concesión) de solicitar un _token_ de acceso (*access_token*) para un servicio HTTP. Se usa como base de la especificación [Open Id Connect](https://openid.net/wg/connect/) (OIDC) y también de los protocolos de autenticación+autorización implementados por las grandes empresas de internet: Twitter, Facebook, Microsoft... Google de hecho usa OIDC.
 
 Si bien es verdad que el RFC de OAuth no habla explícitamente de [JWT](https://tools.ietf.org/html/rfc7519) como formato para los *access_token*, es la forma más común en la que lo podremos encontrar hoy en día.
 
-Dentro de este contexto, OAuth propone varias formas de autenticarse (_Grant Types_), e incluso una forma de crear nuestro propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: [Authorization Code](#authorization-code), [Authorization Code con PKCE](#authorization-code-con-pkce), [Client Credentials](#client-credentials), [Implicit](#implicit), [Password](#password) y [Refresh Token](#refresh-token).
+Dentro de este contexto, OAuth propone varias formas de solicitar un *access_token* (_Grant Types_), e incluso una forma de crear nuestros propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: [Authorization Code](#authorization-code), [Authorization Code con PKCE](#authorization-code-con-pkce), [Client Credentials](#client-credentials), [Implicit](#implicit), [Password](#password) y [Refresh Token](#refresh-token).
 
 ## Access Token
 
-La respuesta de todos los métodos de autenticación al final tiene que ser un formato semejante: un JSON con los siguientes valores:
+La respuesta de todos los métodos de autorización (con o sin autenticación) al final tiene que ser un formato semejante: un JSON con los siguientes valores:
 
-- `access_token` (requerido) Suele ser un JWT que después usaremos para autenticar las peticiones a una API.
+- `access_token` (requerido) Suele ser un JWT que después usaremos para autorizar las peticiones a una API.
 - `token_type` (requerido) El tipo de _token_ que vamos a usar. Generalmente, al usar JWT, se usa el valor “Bearer”.
 - `expires_in` (recomendado) Indica la duración en segundos del `access_token`. Una vez caduca puede ser renovado usando el _Grant Type_ de [Refresh Token](#refresh-token).
 - `refresh_token` (opcional) Si el `access_token` va a expirar y nos permiten volver a generar el _token_, necesitaremos este valor en el proceso de [Refresh Token](#refresh-token).
 - `scope` (opcional) Es un parámetro que se utiliza para autorizar un _token_ en un contexto concreto. Generalmente, nuestra API buscará un `scope` concreto para el que se ha autorizado el _token_ que le envían.
-- `id_token` (opcional) Si se utiliza un `scope` con valor "openid", puede significar que queremos utilizar OpenId Connect (OIDC) para autenticarnos. En ese supuesto, puede aparecer un JWT extra donde encontraremos la información sobre el perfil del usuario.
+- `id_token` (opcional) Si se utiliza un `scope` con valor "openid", puede significar que queremos utilizar OpenId Connect (OIDC) para solicitar una autorización a partir de una autenticación. En ese supuesto, puede aparecer un JWT extra donde encontraremos la información sobre el perfil del usuario.
 
 ## Authorization Code
 
-El [Authorization Code](https://tools.ietf.org/html/rfc6749#section-4.1) es uno de los flujos de autenticación que más beneficios ofrece. Se utiliza por lo general en páginas web. La idea es que inicialmente se solicita una autenticación con el siguiente formato:
+El [Authorization Code](https://tools.ietf.org/html/rfc6749#section-4.1) es uno de los flujos de autorización que más beneficios ofrece. Se utiliza por lo general en páginas web. La idea es que inicialmente se solicita una autorización con el siguiente formato:
 
 ```ini
 GET /oauth/authorize
@@ -62,7 +62,7 @@ Donde:
 - `state` es un valor que se usa para evitar ataques CSRF (Cross Site Request Forgery). Una cadena única aleatoria que debe ser devuelta por el servidor para poderlos comparar y ver que son iguales.
 - `scope` podría ser "openid" para OIDC o cualquier otro para autorizar diferentes aplicaciones.
 
-Entonces el servidor de autorización solicita un usuario y un password vía un formulario web. Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
+Entonces el servidor de autorización solicita un usuario y un password vía un formulario web (autenticación). Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
 
 ```text
 http://exampledomain.com/
@@ -91,7 +91,7 @@ Donde:
 - `redirect_uri` debe ser la URI que se usó para solicitar el `code`.
 - `code` es el código que nos permitirá recoger el _token_.
 
-Como peculiaridad, la petición vendrá autenticada usando el esquema "Basic" cuyo contenido responde a la siguiente fórmula:
+Como peculiaridad, la petición vendrá autorizada usando el esquema "Basic" cuyo contenido responde a la siguiente fórmula:
 
 ```js
 user_password_formula = base64(client_id + ":" + client_secret)
@@ -205,7 +205,7 @@ Content-Length: ...
 
 ## Client Credentials
 
-El modelo más sencillo de autenticarse de OAuth 2.0 es [Client Credentials](https://tools.ietf.org/html/rfc6749#section-4.4). Se usa para la autenticación de máquina a máquina, donde no se requiere el permiso de un usuario específico para acceder a los datos.
+El modelo más sencillo de solicitar una autorización de OAuth 2.0 es [Client Credentials](https://tools.ietf.org/html/rfc6749#section-4.4). Se usa para la comunicaciones de máquina a máquina, donde no se requiere el permiso de un usuario específico para acceder a los datos.
 
 Su funcionamiento consiste en realizar una petición al servidor en el _endpoint_ del generador de _tokens_:
 
@@ -249,7 +249,7 @@ Content-Length: ...
 
 ## Implicit
 
-Cuando hablamos de un flujo de autenticación [Implicit](https://tools.ietf.org/html/rfc6749#section-4.2) lo más probable es que estemos trabajando con páginas web SPA (Single Page Application). Generalmente, NO se recomienda usar este flujo, e incluso algunos servidores, prohíben su uso. Hoy en día se recomienda usar en su lugar el flujo de [Authorization Code con PKCE](#authorization-code-con-pkce).
+Cuando hablamos de un flujo de autorización [Implicit](https://tools.ietf.org/html/rfc6749#section-4.2) lo más probable es que estemos trabajando con páginas web SPA (Single Page Application). Generalmente, NO se recomienda usar este flujo, e incluso algunos servidores, prohíben su uso. Hoy en día se recomienda usar en su lugar el flujo de [Authorization Code con PKCE](#authorization-code-con-pkce).
 
 De cualquier forma, podría ser que tengamos que usarlo, así que nunca sobra describirlo. Todo consiste en una petición simple al servidor:
 
@@ -285,9 +285,9 @@ De tal forma que podremos comparar el valor de `state` y sacar la información d
 
 ## Password
 
-También conocido como [Resource Owner Password Credentials](https://tools.ietf.org/html/rfc6749#section-4.3), este flujo de autenticación es solo recomendable en entornos seguros, donde existe una relación de confianza entre el cliente y el servidor. Algo así como un servicio del sistema operativo o una aplicación que requiera permisos elevados. En resumen, este debería ser el último flujo que deberíamos usar, tan solo reservado para cuando no tenemos otra posibilidad.
+También conocido como [Resource Owner Password Credentials](https://tools.ietf.org/html/rfc6749#section-4.3), este flujo de autorización es solo recomendable en entornos seguros, donde existe una relación de confianza entre el cliente y el servidor. Algo así como un servicio del sistema operativo o una aplicación que requiera permisos elevados. En resumen, este debería ser el último flujo que deberíamos usar, tan solo reservado para cuando no tenemos otra posibilidad.
 
-Se parece mucho a [Client Credentials](#client-credentials), pero con la diferencia de que aquí vamos a autenticar a un usuario del sistema. De esta manera, crearemos una petición muy parecida al de ese modelo, pero añadiendo ciertos campos adicionales:
+Se parece mucho a [Client Credentials](#client-credentials), pero con la diferencia de que aquí vamos a solicitar la autorizacion, autenticándonos como un usuario del sistema. De esta manera, crearemos una petición muy parecida al de ese modelo, pero añadiendo ciertos campos adicionales:
 
 ```http
 POST /oauth/token HTTP/1.1
@@ -375,7 +375,7 @@ Content-Length: ...
 
 ## Conclusiones
 
-Si en [otro artículo os explicábamos el tema de JWT](/2019/03/12/jwt-api-authentication/) y cómo validarlo para poder proteger nuestras APIs, hoy nos hemos centrado en diferentes formas de autenticarnos en un servicio que soporte OAuth 2.0, y por supuesto, recibir ese JWT.
+Si en [otro artículo os explicábamos el tema de JWT](/2019/03/12/jwt-api-authentication/) y cómo validarlo para poder proteger nuestras APIs, hoy nos hemos centrado en diferentes formas de autorizar+autenticar un servicio basado en OAuth 2.0, y por supuesto, recibir ese JWT.
 
 Estos no son todos los métodos, concesiones o _Grant Types_ que existen, aunque sí los más usados.
 
