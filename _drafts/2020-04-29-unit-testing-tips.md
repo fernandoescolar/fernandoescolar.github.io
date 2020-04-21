@@ -13,7 +13,7 @@ Lo que está claro es que no todos hacemos todos los tests que deberíamos. Y la
 
 Si me dices que diseñe una arquitectura distribuida de trecientas capas, voy a perder el culo haciendo diagramas de todas las movidas que se me ocurran. Voy a empezar un proyecto de prueba de concepto de esta nueva arquitectura. Voy a hacer una charla sobre las chorradas que me pasan por la cabeza. Le voy a poner un nombre molón, como [N-texture chocolate cake architecture](/video/2020/04/09/n-texture-chocolate-cake-architecture/). Igual hasta monto un twitch para monetizar las locuras que salen a borbotones de mis pensamientos.
 
-Pero si me dices que consiga un 80% de covertura de unit tests, me voy a meter en LinkedIn a ver si hay un curro chulo de hacer arquitecturas nuevas. Porque no nos engañemos, probar código es un peñazo. Aunque, por otro lado, si hay que hacerlo, ¿por qué no vamos a dar lo mejor de nosotros mismos y programar los mejores tests que podamos?
+Pero si me dices que consiga un 80% de cobertura de unit tests, me voy a meter en LinkedIn a ver si hay un curro chulo de hacer arquitecturas nuevas. Porque no nos engañemos, probar código es un peñazo. Aunque, por otro lado, si hay que hacerlo, ¿por qué no vamos a dar lo mejor de nosotros mismos y programar los mejores tests que podamos?
 
 Con esta premisa en mente, me he propuesto escribir unos pocos consejos sobre cómo intento escribir unit tests (cuando puedo hacerlo):
 
@@ -91,7 +91,7 @@ public void MyTestMethod()
 
 ## Test FIRST
 
-Como en cualquier otra técnica del desarrollo, los unit tests tienen un acrónimo para definir los principios por los que se rije la excelencia en la materia. En este caso es FIRST:
+Como en cualquier otra técnica del desarrollo, los unit tests tienen un acrónimo para definir los principios por los que se rige la excelencia en la materia. En este caso es FIRST:
 
 - **F**ast: una prueba unitaria tiene que ser muy muy rápida. La unidad para medirlo debe ser milisegundos. Y mejor 1ms que 200ms. Vamos a hacer muchas pruebas, no querrás estar 2 horas mirando la pantalla, ¿no?
 
@@ -119,7 +119,7 @@ El término genérico de *Test Double*, acuñado por [Gerard Meszaros](https://t
 
 Los Test Doubles son fundamentales en nuestros unit tests para poder desencapsular procesos complejos y así poder probar un solo caso unitario.
 
-En las librerías de Test Doubles de .net lo más comun es encontrar objetos *Mock* que tienen implementados *Spies* y *Stubs* (p.e. [Moq](https://github.com/moq/moq)):
+En las librerías de Test Doubles de .net lo más común es encontrar objetos *Mock* que tienen implementados *Spies* y *Stubs* (p.e. [Moq](https://github.com/moq/moq)):
 
 ```csharp
 [Theory]
@@ -212,7 +212,7 @@ private static readonly User some_user = new User { Id = 1, DisplayName = "Test"
 ```
 
 ## Usar TraitAttribute
-Lo mejor a la hora de tratar nuestros unit tests es pensar en hace código legible, que nos ayude a formar parte de la documentación del código. Para ellos hay varias ténicas:
+Lo mejor a la hora de tratar nuestros unit tests es pensar en hace código legible, que nos ayude a formar parte de la documentación del código. Para ellos hay varias técnicas:
 
 Existe un atributo en `xunit` que nos ayudará a clasificar los tests: `Trait`.
 
@@ -309,7 +309,7 @@ public void Return_succeded_When_length_is_equal_than_expected()
 
 Para ayudar con la documentación del código usando unit tests, tenemos el paquete de [`xunit.Assume`](https://github.com/fernandoescolar/Xunit.Assume).
 
-El uso de la cuarta A, deja implicito en nuestro test cuando y por qué lo estamos saltando:
+El uso de la cuarta A, deja implícito en nuestro test cuando y por qué lo estamos saltando:
 
 ```csharp
 [AssumeFact]
@@ -331,7 +331,7 @@ private static bool IsWindows()
 }
 ```
 
-Aquí dejaríamos patente que este test solo corre en sistemas Windows. Pero no generarímos un error. Solo un aviso y *skip* cuando se ejecute en otro tipo de máquina.
+Aquí dejaríamos patente que este test solo corre en sistemas Windows. Pero no generaríamos un error. Solo un aviso y *skip* cuando se ejecute en otro tipo de máquina.
 
 ## Prueba un Bug, luego lo corriges
 
