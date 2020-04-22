@@ -7,11 +7,11 @@ post_date: 2020-04-29 11:02:29
 layout: post
 ---
 
-Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo no encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden<!--break-->. 
+Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo nos encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden<!--break-->. 
 
 Lo que está claro es que no todos hacemos todos los tests que deberíamos. Y la culpa es de nuestra naturaleza developer...
 
-Si me dices que diseñe una arquitectura distribuida de trecientas capas, voy a perder el culo haciendo diagramas de todas las movidas que se me ocurran. Voy a empezar un proyecto de prueba de concepto de esta nueva arquitectura. Voy a hacer una charla sobre las chorradas que me pasan por la cabeza. Le voy a poner un nombre molón, como [N-texture chocolate cake architecture](/video/2020/04/09/n-texture-chocolate-cake-architecture/). Igual hasta monto un twitch para monetizar las locuras que salen a borbotones de mis pensamientos.
+Si me dices que diseñe una arquitectura distribuida de trescientas capas, voy a perder el culo haciendo diagramas de todas las movidas que se me ocurran. Voy a empezar un proyecto de prueba de concepto de esta nueva arquitectura. Voy a hacer una charla sobre las chorradas que me pasan por la cabeza. Le voy a poner un nombre molón, como [N-texture chocolate cake architecture](/video/2020/04/09/n-texture-chocolate-cake-architecture/). Igual hasta monto un twitch para monetizar las locuras que brotan a borbotones de mi mente.
 
 Pero si me dices que consiga un 80% de cobertura de unit tests, me voy a meter en LinkedIn a ver si hay un curro chulo de hacer arquitecturas nuevas. Porque no nos engañemos, probar código es un peñazo. Aunque, por otro lado, si hay que hacerlo, ¿por qué no vamos a dar lo mejor de nosotros mismos y programar los mejores tests que podamos?
 
@@ -22,7 +22,7 @@ Con esta premisa en mente, me he propuesto escribir unos pocos consejos sobre c�
 - [Test FIRST](#test-first)
 - [Test doubles](#test-doubles)
 - [Usa nombres descriptivos](#usa-nombres-descriptivos)
-- [Usar TraitAttribute](#usar-traitAttribute)
+- [Usar TraitAttribute](#usar-traitattribute)
 - [No usar expected como param](#no-usar-expected-como-param)
 - [Describe el contexto](#describe-el-contexto)
 - [Assume](#assume)
@@ -212,7 +212,7 @@ private static readonly User some_user = new User { Id = 1, DisplayName = "Test"
 ```
 
 ## Usar TraitAttribute
-Lo mejor a la hora de tratar nuestros unit tests es pensar en hace código legible, que nos ayude a formar parte de la documentación del código. Para ellos hay varias técnicas:
+Lo mejor a la hora de tratar nuestros unit tests es pensar en hacer código legible, que nos ayude a formar parte de la documentación.
 
 Existe un atributo en `xunit` que nos ayudará a clasificar los tests: `Trait`.
 
@@ -233,7 +233,7 @@ dotnet test --filter "Category=Unit&Class=UserService"
 
 ## No usar expected como param
 
-En ocasiones podemos encontrarnos un caso en el que podamos usar parámetros para realizar todas las pruebas que deseamos con un solo método de test. Esto es un buena práctica desde el punto de vista de la programación, ya que evitamos repetir código:
+En ocasiones podemos encontrarnos un caso en el que podamos usar parámetros para realizar todas las pruebas que deseamos con un solo método de test. Esto es una buena práctica desde el punto de vista de la programación, ya que evitamos repetir código:
 
 ```csharp
 [Theory]
@@ -279,7 +279,7 @@ De esta manera dejamos explícito que estamos probando password válidos que se 
 
 ## Describe el contexto
 
-La técnica de *refactoring* en los unit tests nos va a llevar a generar funciones que realizan casi todo el trabajo en nuestros tests:
+La técnica de *refactoring* en los unit tests nos va a llevar a generar funciones que realizan casi todo el trabajo:
 
 ```csharp
 [Fact]
@@ -291,7 +291,7 @@ public void Return_succeded_When_length_is_equal_than_expected()
 }
 ```
 
-Y a veces escribir más y detallar parámetros que quizá no eran necesarios nos puede dejar más claro que hace nuestro test:
+Pero a veces escribir más y detallar parámetros que, quizá no eran necesarios, nos puede dejar más claro qué hace nuestro test:
 
 ```csharp
 [Fact]
@@ -331,13 +331,13 @@ private static bool IsWindows()
 }
 ```
 
-Aquí dejaríamos patente que este test solo corre en sistemas Windows. Pero no generaríamos un error. Solo un aviso y *skip* cuando se ejecute en otro tipo de máquina.
+Aquí dejaríamos patente que este test solo corre en sistemas Windows. Pero no generaríamos un error. Solo un aviso y *skip*, cuando se ejecute en otro tipo de máquina.
 
 ## Prueba un Bug, luego lo corriges
 
 Cuando te encuentres un *bug* nuevo en el sistema, es evidente que no tenías un test que cubriera ese caso previamente. Si no, no hubiera sido un bug. Así que antes de nada, crea un unit test que haga evidente este error.
 
-Si por ejemplo, nuestro servicio lanza una excepción cuando el password es nulo y nos gustaría que es su lugar devuelva un estado de error:
+Si por ejemplo, nuestro servicio lanza una excepción cuando el password es nulo y nos gustaría que en su lugar devuelva un estado de error:
 
 ```csharp
 [Fact]
@@ -353,5 +353,5 @@ Al pasar nuestro test fallará, así que ahora ya podemos corregirlo y ver como 
 
 ## Conclusiones
 
-Escribir buenos unit test requiere cierta práctica, aunque en realidad, esto es cierto para cualquier cosa de la vida. Al seguir algunas de las reglas de la lista anterior, podemos mantener las pruebas limpias, fáciles de mantener y comprender, y con el potencial de generar... blah, blah, blah... ¡que programes bien, coño ya!
+Escribir buenos unit test requiere práctica, aunque en realidad, esto es cierto para casi cualquier actividad en la vida. Al seguir algunas de las reglas de esta lista podemos mantener las pruebas limpias, fáciles de mantener y comprender, y con el potencial de generar... blah, blah, blah... ¡que programes bien, coño ya!
 
