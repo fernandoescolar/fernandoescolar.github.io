@@ -8,7 +8,7 @@ layout: post
 categories: video
 ---
 
-La arquitectura de "la tarta de chocolate de n-texturas", también conocida como "arquitectura tarta sacher" o, por su nombre más informal, "Vertical Slice"; es un modelo de desarrollo que ha venido a revolucionar el mundo de la arquitectura de software tal y como lo conocemos.<!--break-->
+La arquitectura de "la tarta de chocolate de n-texturas", también conocida como "arquitectura tarta sacher" o, por su nombre más informal, "Vertical Slice"; es un modelo de desarrollo que ha venido a revolucionar el mundo de la arquitectura de software tal y como lo conocemos<!--break-->.
 
 Aquí podrás encontrar el vídeo grabado de la sesión de la **NetCoreConf** Valencia 2020 sobre Vertical Slice Architecture:
 

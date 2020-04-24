@@ -8,7 +8,7 @@ layout: post
 categories: video
 ---
 
-Analizaremos a fondo Github Actions y Azure Pipelines en busca de sus ventajas y sus puntos débiles. Será un combate a muerte entre estas dos tecnologías mellizas para gestionar nuestro CI/CD.<!--break-->
+Analizaremos a fondo Github Actions y Azure Pipelines en busca de sus ventajas y sus puntos débiles. Será un combate a muerte entre estas dos tecnologías mellizas para gestionar nuestro CI/CD<!--break-->.
 
 Aquí podrás encontrar el vídeo grabado de la corta, pero intensa sesión de la **NetCoreConf** Barcelona 2020 scon una comparativa entre *Github Actions* y *Azure Pipelines*:
 
