@@ -46,15 +46,15 @@
 ul.share li {
   background-color: #ac4142;
   color: white !important;
-  font-size: 40px;
-  height: 64px;
+  font-size: 30px;
+  height: 48px;
   border: 0;
   border-radius: 10px !important;
   padding: 0px 12px 0px 12px;
   display: inline-block;
-  line-height: 74px;
+  line-height: 49px;
   text-decoration: none;
-  min-width: 64px;
+  min-width: 48px;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 10px;
