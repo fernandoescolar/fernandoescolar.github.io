@@ -212,7 +212,7 @@ public void CanNotUnprotectExpiredInformation()
 
 ## Key ring
 
-A la hora de la verdad toda esta movida es muy segura. Para proteger el libro de hechizos de Dumbledore, no solo estamos usando un movimiento de varita específico (*name*) en el método `CreateProtector`. Además, esta librería usa internamente un juego de varitas (*keys* de cifrado). Cada varita está habilitada para diferentes ocasiones y se gestionan internamente en un almacén al que llamamos *key ring*. Una suerte de tienda de variatas de Ollivander, donde ir almacenando las varitas antiguas y las nuevas, en local o de forma distribuida y de una forma segura.
+A la hora de la verdad toda esta movida es muy segura. Para proteger el libro de hechizos de Dumbledore, no solo estamos usando un movimiento de varita específico (*name*) en el método `CreateProtector`. Además, esta librería usa internamente un juego de varitas (*keys* de cifrado). Cada varita está habilitada para diferentes ocasiones y se gestionan internamente en un almacén al que llamamos *key ring*. Una suerte de tienda de Ollivander, donde ir almacenando las varitas antiguas y las nuevas, en local o de forma distribuida y de una forma segura.
 
 Este *key ring* nos proporciona un lugar donde a pesar de que pase el tiempo, podremos ir a buscar las claves criptográficas. Nos protegerá en caso de que se generen nuevas. Y hará que todo el sistema se comporte perfectamente, incluso cuando usemos diferentes instancias o aplicaciones.
 
