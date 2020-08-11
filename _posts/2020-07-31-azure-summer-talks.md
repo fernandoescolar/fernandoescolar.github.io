@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202007311
-title: 'Introducción a la programación cuántica v2'
+title: 'Azure Summer Talks Community'
 author: fernandoescolar
 post_date: 2020-07-31 00:00:00
 layout: post
