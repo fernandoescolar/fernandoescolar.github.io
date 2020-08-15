@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202008191
+ID: 202008261
 title: 'Azure WebApps Tips & Tricks'
 author: fernandoescolar
-post_date: 2020-08-19 07:51:24
+post_date: 2020-08-26 07:51:24
 layout: post
 ---
 
