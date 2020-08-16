@@ -3,7 +3,9 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Gems
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
 
 # Permalinks
 permalink:        pretty
@@ -24,7 +26,7 @@ author:
   url:            https://twitter.com/fernandoescolar
   twitter:        fernandoescolar
   google_plus:    FernandoEscolar
-  
+
 paginate:         5
 
 # Custom vars
@@ -32,4 +34,5 @@ version:          2.1.0
 
 github:
   repo:           https://github.com/fernandoescolar
-  
+
+future:           false
