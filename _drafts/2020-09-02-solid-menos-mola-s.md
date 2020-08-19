@@ -35,7 +35,7 @@ public class Order
 }
 ```
 
-Si pensáramos en responsabilidades podríamos decir que nuestra clase tiene las siguientes:
+Si pensáramos en responsabilidades podríamos decir que la clase `Order` tiene las siguientes:
 - Almacenar los datos de un pedido en las propiedades `Customer`, `Lines`, `TotalAmount` y `Taxes`.
 - Añadir líneas del pedido con el método `AddLine`.
 - Borrar líneas del pedido con el método `RemoveLine`.
@@ -59,7 +59,7 @@ Aplicando el principio de responsabilidad única, no sería una locura decir que
 
 Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo *façade* para poder orquestarlo todo: `OrderFacade`.
 
-Aunque seguro que más de uno está pensando que se nos ha ido de las manos. Que las responsabilidades en realidad no son con tanta granularidad. Todo este código quedaría mucho mejor agrupando ciertas características anteriormente descritas y agrupandolas por responsabilidades más a alto nivel:
+Aunque seguro que más de uno está pensando que se nos ha ido de las manos. Que las responsabilidades en realidad no son con tanta granularidad. Todo este código quedaría mucho mejor agrupando ciertas características anteriormente descritas por responsabilidades más a alto nivel:
 - `Order`: clase que almacena los datos de un pedido. Tendrá además los métodos que la modifican: `AddLine` y `RemoveLine`.
 - `OrderService`: aquí montaremos una clase de tipo servicio que nos ayudará a operar con nuestro pedido. Tendrá los métodos para calcular el importe, los impuestos y para generar las facturas.
 - `OrderValidator`: esta clase la dejaremos como está, ya que valida nuestro objeto `Order`.
@@ -105,7 +105,7 @@ Es muy dificil determinar qué es una responsabilidad. [Uncle Bob](https://twitt
 
 Es una definición muy vaga que lleva a confusión, que genera diferentes puntos de vista y diferences verdades encontradas. Es muy difícil llegar a un acuerdo cuando, sobre un mismo tema, hay dos interpretaciones que son válidas al mismo tiempo.
 
-A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo ejemplo algunos pensarán que es código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplo son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
+A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
 
 ## Ejemplo en el mundo real
 
@@ -162,7 +162,7 @@ public class Handler: IRequestHandler<Request, CommandResult<Response>>
 }
 ```
 
-Este código, desde un punto de vista de **SRP** es muy bueno. Pero quizá hemos complicado demasiado ciertas partes y hace que tengamos que recorrer mucho camino para hacer lo mismo:
+Este código, desde un punto de vista de **SRP** es muy bueno. Pero quizá hemos complicado demasiado ciertas partes que hacen que tengamos que recorrer más camino del necesario para terminar haciendo lo mismo:
 
 ### Si una función es una línea de código tal vez no haga falta una función
 
@@ -173,7 +173,7 @@ public Task<Product> GetProduct(Request request)
       => _repository.GetProduct(request.ProductId);
 ```
 
-Un método que llama a otro con el mismo nombre y que tan solo nos aporta realizar una llamada más pequeña. Esto nos llama la atención y pensamos que no es muy diferente poner:
+Nos referimos a esos métodos que llaman a otro método con el mismo nombre dentro de otro artefacto y que su gran valor es envolver una llamada algo más larga. Esto nos llamó la atención y pensamos que no era muy diferente poner:
 
 ```csharp
 var product = await GetProduct(request);
@@ -210,18 +210,18 @@ return CommandResult<Response>.Success(new Response(product));
 
 No nos dejaba tan claro qué es lo que hacía.
 
-Analizando más profundamente nos dimos cuenta de que aquí entraban en juego 3 artefactos y que para darle claridad, antes tendríamos que refactorizar esta parte.
+Analizando más profundamente nos dimos cuenta de que aquí entraban en juego 3 artefactos y que para darle claridad, antes de realizar el cambio, tendríamos que refactorizar esta parte.
 
 ### Si necesitamos 3 artefactos para montar una respuesta, tal vez podamos simplificar a uno
 
 Los artefactos a los que nos referimos son:
-- `CommandResult<T>`: una clase genérica que se usa para recubrir respuestas estándares de nuestro sistema. Básicamente tiene un listado de errores, un flag para ver si tiene errores o no y un payload.
-- `Response`: es el objeto de respuesta de nuestra arquitectura. Cada *feature* tiene el suyo. Y aquí contiene un DTO (**D**ata **T**ransfer **O**bject) de tipo `Product`.
+- `CommandResult<T>`: una clase genérica que usamos para recubrir respuestas estándares del sistema. Básicamente tiene un listado de errores y un *payload*.
+- `Response`: es el objeto de respuesta de la *feature*. Cada una tiene el suyo. Y aquí contiene un DTO (**D**ata **T**ransfer **O**bject) de tipo `ProductDto`.
 - `ProductDto`: es el DTO que se encapsula dentro del objeto `Response`.
 
-Pero en este caso no estamos gestionando errores, por lo que o devolvemos un `CommandResult<Response>` exitoso o lanzaremos una excepción que no hemos gestiona en este código. Por lo que en realidad no nos sirve este objeto ahora mismo. Así que lo desechamos.
+Lo primero que nos llama la atención es que en este caso no estamos gestionando errores. Solo hay dos posibilidades: devolvemos un `CommandResult<Response>` exitoso o lanzamos una excepción que no hemos gestionado. Por lo que en realidad, no estamos usando las características de este objeto. Así que lo desechamos.
 
-Por otro lado, que un objeto `Response` contenga otro de tipo `ProductDto`, tampoco nos aportaba valor. Así que decidimos crear un objeto `Response` con las propiedades que necesitábamos del `ProductDto`. De esta forma nos quedamos solo con un objeto y pudimos cambiar nuestro código a:
+Por otro lado, que un objeto `Response` contenga otro de tipo `ProductDto`, tampoco nos aportaba valor. Así que decidimos crear un objeto `Response` con las propiedades que necesitábamos del `ProductDto`. De esta forma nos quedamos con un solo objeto y pudimos cambiar nuestro código:
 
 ```csharp
 var product = await _repository.GetProduct(request.ProductId);;
@@ -229,12 +229,9 @@ var response = Map.MapToResponse(product);
 return response;
 ```
 
-De forma que solucionábamos el problema anterior y de la línea de código que no quedaba del todo clara.
+Así solucionábamos dos problemas de un tiro.
 
 ### Si necesitamos una clase con un solo método que se usa en un solo lugar tal vez esa clase no haga falta
-### Si estamos usando un ORM o una capa de acceso a datos, tal vez no necesitemos crear repositorios
-
-Esta sección es doble, porque son dos características diferentes que nos llevan a solucionar un problema común.
 
 Resulta que los objetos `IRepository` y `Repository`, solo se usaban dentro de esta *feature*. Y además, solo tenían un método: `GetProduct`. Al analizarlo por dentro, todo parecía ser una llamada simple a un método de búsqueda de un artefacto de Mongo.Driver: `IMongoCollection<Product>`.
 
@@ -254,7 +251,7 @@ internal class Repository : IRepository
 }
 ```
 
-Y si, como el código parecía muy simple, cogíamos esto y lo sustituíamos en la clase `Handler` ¿Complicaría mucho el código?
+Como el código parecía muy simple, pensamos en cogerlo y aplicarlo directamente al `Handler`, pero ¿esto complicaría mucho el código?
 
 ```csharp
 public class Handler : IRequestHandler<Request, Response>
@@ -276,11 +273,11 @@ public class Handler : IRequestHandler<Request, Response>
 }
 ```
 
-La verdad es que visto en perspectiva es bastante parecido a lo que teníamos al inicio, pero nos hemos quitado de en medio dos dependencias: la de la abstracción `IRepsository` y la concreción `Repository`.
+La verdad es que visto con perspectiva es bastante parecido a lo que teníamos al inicio, pero nos hemos quitado de en medio dos dependencias: la de la abstracción `IRepsository` y la concreción `Repository`.
 
 ### Si estamos usando un Mapper para convertir un objeto de base de datos a otra cosa, tal vez podríamos usar una proyección
 
-Como ahora mismo, no teníamos un repositorio que nos ocultara lo que se estaba usando en realidad, nos encontramos con que el método `Find` de una `IMongoCollection<T>` acepta proyecciones. Así que quizá podríamos quitarnos también el objeto `Mapper`:
+Como ahora mismo, no teníamos un repositorio que nos ocultara el comportamiento con respecto la base de datos, nos encontramos con que el método `Find` de una `IMongoCollection<T>` acepta proyecciones. Así que quizá podríamos quitarnos también el objeto `Mapper`:
 
 ```csharp
 _mongoCollection.Find(x => x.ProductId == request.ProductId)
@@ -299,7 +296,7 @@ El resultado final de esta sesión fue la simplificación del código tanto en n
   - *Response.cs*
   - *Validator.cs*
 
-Como en número de líneas en el `Handler`. Además de, en nuestra opición, ser un código muy legible:
+Como en número de líneas en el `Handler`. Además de, en nuestra opición, ser un código más legible:
 
 ```csharp
 public class Handler : IRequestHandler<Request, Response>
@@ -320,20 +317,20 @@ public class Handler : IRequestHandler<Request, Response>
 }
 ```
 
-Todo este code review te hace pensar. Porque todo lo que estaba hecho al principio era correcto... ¿Significa que este código está más acoplado?
+Todo este *code review* te hace pensar. Si todo lo que estaba hecho al principio era correcto... ¿significa que este código está más acoplado?
 
-Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos que quiero devolver en mi API, antiguamente hubiera implicado cambiar: `Product`, `ProductDto` y `Mapper`. Con el código que hemos desarrollado solo tendríamos que cambiar `Product` y `Response` ¿Es esto mejor? Pero si tenemos un cambio en un futuro más grande, quizá tenga que pasar por todas mis *features* y cambiarlas una a una. Entonces esto podría ser un mal cambio.
+Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos, antiguamente hubiera implicado cambiar: `Product`, `ProductDto` y `Mapper`. Con el código que hemos desarrollado solo tendríamos que cambiar `Product` y `Response` ¿Es esto mejor? Pero si tenemos un cambio en un futuro más grande, quizá tenga que pasar por todas mis *features* y cambiarlas una a una. Entonces esto podría ser un mal cambio.
 
 ¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio, o tener un código como el resultado final?
 
-El equipo finalmente prefirió este resultado. Las razón principal era porque resultaba más fácil de leer. Añadia menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
+El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadia menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
 
 ## Conclusiones
 
 He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID** no son una excepción.
 
 Los principios **SOLID** aportan mucho a un programador y el **SRP** no es una excepción. Mi consejo es que:
-- Si considerás que este principio es una mierda, acostumbrate a seguirlo siempre.
+- Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
 - Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
 - Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
 
