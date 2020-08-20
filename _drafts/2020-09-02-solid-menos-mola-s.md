@@ -107,6 +107,32 @@ Es una definición muy vaga que lleva a confusión, que genera diferentes puntos
 
 A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
 
+## El problema
+
+He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID** no son una excepción.
+
+Los principios **SOLID** aportan mucho a un programador y el **SRP** no es una excepción. Mi consejo es que:
+- Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
+- Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
+- Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
+
+Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
+
+- ¿Qué es una responsabilidad única exactamente?​
+- Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va ha cambiar?​
+- ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande?
+- ¿Desencapsular puede ir en contra de la cohesión?
+
+Quizá el principio de responsabilidad única pueda ser interpretado como una respuesta a uno de [los valores en los que se basa XP](http://www.extremeprogramming.org/values.html) (e**X**treme **P**rogramming):
+
+- *simplicity*: Es mejor hacer una cosa simple hoy y pagar un poco más mañana para cambiarlo que hacer una cosa más complicada hoy que jamás vaya a ser utilizada.
+
+O quizá es que me he vuelto más *fanboy* de las [*four rules of simple design*](https://martinfowler.com/bliki/BeckDesignRules.html) de [Kent Beck](), y el **SRP** puede llevarnos a contradecir dos de ellas: *Reveals intention* y *Fewest elements*.
+
+El caso es que hoy en día me parece más importante aplicar otros valores y reglas, que el principio de responsabilidad única. Pero eso no quiere decir que no tenga en cuenta este último.
+
+Y mañana, ya veremos...
+
 ## Ejemplo en el mundo real
 
 Hace poco hicimos un *code review* en un proyecto en el que usamos [Vertical Slice](/video/2020/04/09/n-texture-chocolate-cake-architecture/) como arquitetuctura. Cuando trabajamos con este tipo de arquitectura y creamos una API, cada feature al menos debe implementar cuatro artefactos:
@@ -324,29 +350,3 @@ Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir un
 ¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio, o tener un código como el resultado final?
 
 El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadia menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
-
-## Conclusiones
-
-He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID** no son una excepción.
-
-Los principios **SOLID** aportan mucho a un programador y el **SRP** no es una excepción. Mi consejo es que:
-- Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
-- Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
-- Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
-
-Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
-
-- ¿Qué es una responsabilidad única exactamente?​
-- Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va ha cambiar?​
-- ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande?
-- ¿Desencapsular puede ir en contra de la cohesión?
-
-Quizá el principio de responsabilidad única pueda ser interpretado como una respuesta a uno de [los valores en los que se basa XP](http://www.extremeprogramming.org/values.html) (e**X**treme **P**rogramming):
-
-- *simplicity*: Es mejor hacer una cosa simple hoy y pagar un poco más mañana para cambiarlo que hacer una cosa más complicada hoy que jamás vaya a ser utilizada.
-
-O quizá es que me he vuelto más *fanboy* de las [*four rules of simple design*](https://martinfowler.com/bliki/BeckDesignRules.html) de [Kent Beck](), y el **SRP** puede llevarnos a contradecir dos de ellas: *Reveals intention* y *Fewest elements*.
-
-El caso es que hoy en día me parece más importante aplicar otros valores y reglas, que el principio de responsabilidad única. Pero eso no quiere decir que no tenga en cuenta este último.
-
-Y mañana, ya veremos...
