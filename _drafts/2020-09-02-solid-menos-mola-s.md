@@ -107,7 +107,7 @@ Es una definición muy vaga que lleva a confusión, que genera diferentes puntos
 
 A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
 
-## El problema
+## Hay vida después de SRP
 
 He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID** no son una excepción.
 
