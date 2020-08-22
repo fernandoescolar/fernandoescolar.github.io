@@ -109,9 +109,8 @@ A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-
 
 ## Hay vida después de SRP
 
-He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID** no son una excepción.
+He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin) (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios **SOLID**, y en concreto el **SRP**, no son una excepción. Mi consejo es que:
 
-Los principios **SOLID** aportan mucho a un programador y el **SRP** no es una excepción. Mi consejo es que:
 - Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
 - Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
 - Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
@@ -350,6 +349,6 @@ Todo este *code review* te hace pensar. Si todo lo que estaba hecho al principio
 
 Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos, antiguamente hubiera implicado cambiar: `Product`, `ProductDto` y `Mapper`. Con el código que hemos desarrollado solo tendríamos que cambiar `Product` y `Response` ¿Es esto mejor? Pero si tenemos un cambio en un futuro más grande, quizá tenga que pasar por todas mis *features* y cambiarlas una a una. Entonces esto podría ser un mal cambio.
 
-¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio, o tener un código como el resultado final?
+¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio? ¿O es mejor tener un código como el resultado final?
 
-El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadia menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
+El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadía menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
