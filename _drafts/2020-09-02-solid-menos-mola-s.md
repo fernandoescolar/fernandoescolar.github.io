@@ -46,7 +46,7 @@ Si pensáramos en responsabilidades podríamos decir que la clase `Order` tiene 
 - Guardado de un pedido en la base de datos con el método `Save`.
 - Creación de una factura para el pedido con el método `CreateInvoice`.
 
-Aplicando el principio de responsabilidad única, no sería una locura decir que cada una de estas responsabilidades las podríamos separar en un objecto cada una. Porque son responsabilidades únicas todas ellas. Así que dividiríamos nuestro código en:
+Aplicando el principio de responsabilidad única, no sería una locura decir que cada una de estas responsabilidades las podríamos separar en un objecto diferente. Porque son responsabilidades únicas todas ellas. Así que dividiríamos nuestro código en:
 - `Order`: clase de tipo *POCO* que almacena los datos de un pedido.
 - `OrderAddLineService`: clase de tipo servicio que añade una línea a un pedido.
 - `OrderRemoveLineService`: clase de tipo servicio que borra una línea a un pedido.
@@ -59,7 +59,7 @@ Aplicando el principio de responsabilidad única, no sería una locura decir que
 
 Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo *façade* para poder orquestarlo todo: `OrderFacade`.
 
-Aunque seguro que más de uno está pensando que se nos ha ido de las manos. Que las responsabilidades en realidad no son con tanta granularidad. Todo este código quedaría mucho mejor agrupando ciertas características anteriormente descritas por responsabilidades más a alto nivel:
+Aunque seguro que más de uno está pensando que se nos ha ido de las manos. Que las responsabilidades en realidad no están pensadas para tener tanta granularidad. Todo este código quedaría mucho mejor agrupando ciertas características anteriormente descritas por responsabilidades a más alto nivel:
 - `Order`: clase que almacena los datos de un pedido. Tendrá además los métodos que la modifican: `AddLine` y `RemoveLine`.
 - `OrderService`: aquí montaremos una clase de tipo servicio que nos ayudará a operar con nuestro pedido. Tendrá los métodos para calcular el importe, los impuestos y para generar las facturas.
 - `OrderValidator`: esta clase la dejaremos como está, ya que valida nuestro objeto `Order`.
@@ -97,7 +97,7 @@ public class OrderStore
 }
 ```
 
-Si pensamos en el concepto de responsabilidad única, quizá la primera propuesta sería la más correcta. Aunque, supongo, que esta última implementación será con la que la mayoría estará de más acuerdo. Es una forma de crear artefactos muy común, que divide muy bien los conceptos, que genera poco acoplamiento y que hace nuestro código más mantenible. No hay duda de que seguir el Single Responsibility Principle nos ha ayudado a crear un mejor código.
+Si pensamos en el concepto de responsabilidad única, quizá la primera propuesta sería la más correcta. Aunque, supongo, que esta última implementación será con la que la mayoría estará más de acuerdo. Es una forma de crear artefactos muy común, que divide muy bien los conceptos, que genera poco acoplamiento y que hace nuestro código más mantenible. No hay duda de que seguir el Single Responsibility Principle nos ha ayudado a crear un mejor código.
 
 Pero tal vez tengáis en mente una separación de responsabilidades mucho mejor de las que hemos propuesto aquí...
 
@@ -117,7 +117,7 @@ He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin
 
 Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
 
-- ¿Qué es exactamente una responsabilidad única exactamente? Resulta un concepto demasiado abierto a todo tipo de interpretaciones.
+- ¿Qué es exactamente una responsabilidad única? Resulta un concepto demasiado abierto a todo tipo de interpretaciones.
 - Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va ha cambiar?
 - Si intento prever todos los cambios que se pueden dar en un sistema ¿Qué pasa con eso de "adaptarse al cambio" que promueve el desarrollo *agile*?
 - ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande? 
@@ -201,7 +201,7 @@ public Task<Product> GetProduct(Request request)
       => _repository.GetProduct(request.ProductId);
 ```
 
-Nos referimos a esos métodos que llaman a otro método con el mismo nombre dentro de otro artefacto y que su gran valor es envolver una llamada algo más larga. Esto nos llamó la atención y pensamos que no era muy diferente poner:
+Nos referimos a ese tipo de funciones que llaman a otro método con el mismo nombre dentro de otro artefacto y que su gran valor es envolver una llamada algo más larga. Esto nos llamó la atención y pensamos que no era muy diferente poner:
 
 ```csharp
 var product = await GetProduct(request);
@@ -347,7 +347,7 @@ public class Handler : IRequestHandler<Request, Response>
 
 Todo este *code review* te hace pensar. Si todo lo que estaba hecho al principio era correcto... ¿significa que este código está más acoplado?
 
-Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos, antiguamente hubiera implicado cambiar: `Product`, `ProductDto` y `Mapper`. Con el código que hemos desarrollado solo tendríamos que cambiar `Product` y `Response` ¿Es esto mejor? Pero si tenemos un cambio en un futuro más grande, quizá tenga que pasar por todas mis *features* y cambiarlas una a una. Entonces esto podría ser un mal cambio.
+Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos, antiguamente hubiera implicado cambiar: `Product`, `ProductDto` y `Mapper`. Con el código que hemos desarrollado solo tendríamos que cambiar `Product` y `Response` ¿Es esto mejor? Pero si tenemos un cambio más grande en el futuro, quizá tenga que pasar por todas mis *features* y cambiarlas una a una. Entonces esto podría ser un mal cambio.
 
 ¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio? ¿O es mejor tener un código como el resultado final?
 
