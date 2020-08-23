@@ -101,7 +101,7 @@ Si pensamos en el concepto de responsabilidad única, quizá la primera propuest
 
 Pero tal vez tengáis en mente una separación de responsabilidades mucho mejor de las que hemos propuesto aquí...
 
-Es muy dificil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la define como "una razón para cambiar". Se me ocurren tres razones para cambiar código en un proyecto: *bug fixing*, *change request* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
+Es muy dificil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la define como "una razón para cambiar". Se me ocurren dos razones para cambiar código en un proyecto: *bug fixing* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
 
 Es una definición muy vaga que lleva a confusión, que genera diferentes puntos de vista y diferences verdades encontradas. Es muy difícil llegar a un acuerdo cuando, sobre un mismo tema, hay dos interpretaciones que son válidas al mismo tiempo.
 
