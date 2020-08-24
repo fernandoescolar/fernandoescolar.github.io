@@ -8,11 +8,11 @@ layout: post
 ---
  La *S* de *SOLID* se refiere al principio de responsabilidad única o **SRP** por sus siglas en inglés (**S**ingle **R**esponsibility **P**rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "una clase debe tener solo una razón para cambiar".<!--break-->
 
-Es un concepto muy simple. Algo que todo el mundo entiende. Y por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método dentro de una clase con una única responsabilidad, con una sola responsabilidad también.
+Es un concepto muy simple. Algo que todo el mundo entiende. Y por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método, una sola responsabilidad también. Pero siempre dentro de una clase con una responsabilidad.
 
-Si definimos una responsabilidad como un eje de un cambio, podemos determinar que si una clase asume más de una responsabilidad será más suceptible al cambio y por tanto podríamos decir que nuestro código está acoplado.
+Si definimos una responsabilidad como un eje de un cambio, podemos determinar que cuantas más responsabilidades asuma una clase, esta será más suceptible al cambio. Y cuando las clases de nuestra aplicación son muy suceptibles al cambio, decimos que nuestro código está acoplado.
 
-Desacoplar el código implica separar las responsabilidades y crear un objeto para cada una de ellas. Así nuestro código será más legible y por tanto más sencillo de mantener.
+Así que desacoplar el código implica separar las responsabilidades y crear un objeto para cada una de ellas. De esta forma nuestro código será más legible y en consecuencia, más sencillo de mantener.
 
 Pero vamos a ver todo esto en código:
 
@@ -120,10 +120,10 @@ Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles e
 - ¿Qué es exactamente una responsabilidad única? Resulta un concepto demasiado abierto a todo tipo de interpretaciones.
 - Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va ha cambiar?
 - Si intento prever todos los cambios que se pueden dar en un sistema ¿Qué pasa con eso de "adaptarse al cambio" que promueve el desarrollo *agile*?
-- ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande? 
+- ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande?
 - Y si nos ponemos a dividir mucho una clase para desencapsular ¿Podríamos estar ignorando activamente una de las propiedades de la orientación a objetos como es la cohesión?
 
-El principio de responsabilidad única creo que es una forma de intentar simplificar el código. Aunque seguirlo sin sentido puede llevarnos a conseguir todo lo contrario. 
+El principio de responsabilidad única creo que es una forma de intentar simplificar el código. Aunque seguirlo sin sentido puede llevarnos a conseguir todo lo contrario.
 
 Afortunadamente no todo en este mundo es **SOLID**. Existen multitud de principios y reglas de programación que son muy válidas también. Antes que seguir el **SRP** creo que sería interesante pensar en uno de [los valores en los que se basa XP](http://www.extremeprogramming.org/values.html) (e**X**treme **P**rogramming):
 
@@ -131,7 +131,7 @@ Afortunadamente no todo en este mundo es **SOLID**. Existen multitud de principi
 
 Y después tendría en cuenta seguir el principio de responsabilidad única procurando no contradecir dos de las [*four rules of simple design*](https://martinfowler.com/bliki/BeckDesignRules.html) de [Kent Beck](https://twitter.com/kentbeck): *Reveals intention* y *Fewest elements*. Las cuatro me parecen muy importantes, pero una aplicación agresiva de **SRP** podría llevarnos a ocultar la intención y comportamiento de nuestro código por encontrarse demasiado dividida en muchos artefactos.
 
-El caso es que hoy en día me parece más importante aplicar estos valores y reglas, que el principio de responsabilidad única. Pero eso no quiere decir que no tenga en cuenta este principio.
+El caso es que hoy en día me parece más importante aplicar estos valores y reglas, que el principio de responsabilidad única. Pero eso no quiere decir que no tenga en cuenta este último.
 
 Y lo que me pueda parecer mañana, ya lo veremos...
 
