@@ -8,11 +8,11 @@ layout: post
 ---
  La *S* de *SOLID* se refiere al principio de responsabilidad única o **SRP** por sus siglas en inglés (**S**ingle **R**esponsibility **P**rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "una clase debe tener solo una razón para cambiar".<!--break-->
 
-Es un concepto muy simple. Algo que todo el mundo entiende. Y por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método, una sola responsabilidad también. Pero siempre dentro de una clase con una responsabilidad.
+Es un concepto muy simple. Algo que todo el mundo entiende. Y, por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método, una sola responsabilidad también. Pero siempre dentro de una clase con una responsabilidad.
 
-Si definimos una responsabilidad como un eje de un cambio, podemos determinar que cuantas más responsabilidades asuma una clase, esta será más suceptible al cambio. Y cuando las clases de nuestra aplicación son muy suceptibles al cambio, decimos que nuestro código está acoplado.
+Si definimos una responsabilidad como un eje de un cambio, podemos determinar que cuantas más responsabilidades asuma una clase, esta será más susceptible al cambio. Y cuando las clases de nuestra aplicación son muy susceptibles al cambio, decimos que nuestro código está acoplado.
 
-Así que desacoplar el código implica separar las responsabilidades y crear un objeto para cada una de ellas. De esta forma nuestro código será más legible y en consecuencia, más sencillo de mantener.
+Así que desacoplar el código implica separar las responsabilidades y crear un objeto para cada una de ellas. De esta forma nuestro código será más legible y, en consecuencia, más sencillo de mantener.
 
 Pero vamos a ver todo esto en código:
 
@@ -57,9 +57,14 @@ Aplicando el principio de responsabilidad única, no sería una locura decir que
 - `OrderStoreWriter`: clase para el guardado de un pedido en la base de datos.
 - `InvoiceFactory`: clase de tipo *factory* para la creación de una factura.
 
-Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo *façade* para poder orquestarlo todo: `OrderFacade`.
+Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo *façade* para poder orquestarlo todo: `OrderFacade`. Aunque seguro que más de uno está pensando que se nos ha ido de las manos...
 
-Aunque seguro que más de uno está pensando que se nos ha ido de las manos. Que las responsabilidades en realidad no están pensadas para tener tanta granularidad. Todo este código quedaría mucho mejor agrupando ciertas características anteriormente descritas por responsabilidades a más alto nivel:
+Es muy difícil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la define como "una razón para cambiar". Se me ocurren dos razones para cambiar código en un proyecto: *bug fixing* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
+
+Es por eso que en 2014 escribió [un nuevo artículo](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) sobre el tema. Aquí menciona que "Este principio es sobre las personas". Donde habla de que hay que preguntarse por quién es el responsable de ese código en cuestión. Si es un tema del director de finanzas, del director de tecnología, del de operaciones... Y en mi caso personal puedo afirmar, sin miedo a equivocarme, que el responsable siempre es el desarrollador. Y a poder ser el que ya no está en la empresa.
+
+Comentarios jocosos aparte, otra lección que podemos extraer de este último artículo es que las responsabilidades en realidad no están pensadas para tener tanta granularidad como representamos anteriormente. Todo este código quedaría mucho mejor agrupando ciertas características por responsabilidades a más alto nivel:
+
 - `Order`: clase que almacena los datos de un pedido. Tendrá además los métodos que la modifican: `AddLine` y `RemoveLine`.
 - `OrderService`: aquí montaremos una clase de tipo servicio que nos ayudará a operar con nuestro pedido. Tendrá los métodos para calcular el importe, los impuestos y para generar las facturas.
 - `OrderValidator`: esta clase la dejaremos como está, ya que valida nuestro objeto `Order`.
@@ -97,15 +102,13 @@ public class OrderStore
 }
 ```
 
-Si pensamos en el concepto de responsabilidad única, quizá la primera propuesta sería la más correcta. Aunque, supongo, que esta última implementación será con la que la mayoría estará más de acuerdo. Es una forma de crear artefactos muy común, que divide muy bien los conceptos, que genera poco acoplamiento y que hace nuestro código más mantenible. No hay duda de que seguir el Single Responsibility Principle nos ha ayudado a crear un mejor código.
+Supongo, que esta última implementación será con la que la mayoría estará más de acuerdo. Es una forma de crear artefactos muy común, que divide muy bien los conceptos, que genera poco acoplamiento y que hace nuestro código más mantenible. No hay duda de que seguir el *Single Responsibility Principle* nos ha ayudado a crear un mejor código.
 
 Pero tal vez tengáis en mente una separación de responsabilidades mucho mejor de las que hemos propuesto aquí...
 
-Es muy dificil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la define como "una razón para cambiar". Se me ocurren dos razones para cambiar código en un proyecto: *bug fixing* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
+Es muy difícil determinar qué es una responsabilidad. Y creo que aún más, después del tema este de lo de las personas. Son definiciones muy vagas que llevan a confusión, que generan diferentes puntos de vista y diferentes verdades encontradas. Y es muy difícil llegar a un acuerdo cuando, sobre un mismo tema, hay dos interpretaciones que son válidas al mismo tiempo.
 
-Es una definición muy vaga que lleva a confusión, que genera diferentes puntos de vista y diferences verdades encontradas. Es muy difícil llegar a un acuerdo cuando, sobre un mismo tema, hay dos interpretaciones que son válidas al mismo tiempo.
-
-A lo que hace el primer ejemplo algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
+A lo que hace el primer enfoque algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
 
 ## Hay vida después de SRP
 
@@ -118,8 +121,8 @@ He de reconocer que el trabajo de [Uncle Bob](https://twitter.com/unclebobmartin
 Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
 
 - ¿Qué es exactamente una responsabilidad única? Resulta un concepto demasiado abierto a todo tipo de interpretaciones.
-- Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va ha cambiar?
-- Si intento prever todos los cambios que se pueden dar en un sistema ¿Qué pasa con eso de "adaptarse al cambio" que promueve el desarrollo *agile*?
+- Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va a cambiar?
+- Si una responsabilidad es sobre las personas ¿Cómo puedo determinar quién es el responsable de esa porción de código si me informo por un *backlog*?
 - ¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande?
 - Y si nos ponemos a dividir mucho una clase para desencapsular ¿Podríamos estar ignorando activamente una de las propiedades de la orientación a objetos como es la cohesión?
 
@@ -137,7 +140,7 @@ Y lo que me pueda parecer mañana, ya lo veremos...
 
 ## Ejemplo en el mundo real
 
-Hace poco hicimos un *code review* en un proyecto en el que usamos [Vertical Slice](/video/2020/04/09/n-texture-chocolate-cake-architecture/) como arquitetuctura. Cuando trabajamos con este tipo de arquitectura y creamos una API, cada feature al menos debe implementar cuatro artefactos:
+Hace poco hicimos un *code review* en un proyecto en el que usamos [Vertical Slice](/video/2020/04/09/n-texture-chocolate-cake-architecture/) como arquitectura. Cuando trabajamos con este tipo de arquitectura y creamos una API, cada feature al menos debe implementar cuatro artefactos:
 
 - `Request`: una petición a nuestro sistema.
 - `Handler`: el artefacto que gestiona una petición y responde correctamente.
@@ -247,7 +250,7 @@ Los artefactos a los que nos referimos son:
 - `Response`: es el objeto de respuesta de la *feature*. Cada una tiene el suyo. Y aquí contiene un DTO (**D**ata **T**ransfer **O**bject) de tipo `ProductDto`.
 - `ProductDto`: es el DTO que se encapsula dentro del objeto `Response`.
 
-Lo primero que nos llama la atención es que en este caso no estamos gestionando errores. Solo hay dos posibilidades: devolvemos un `CommandResult<Response>` exitoso o lanzamos una excepción que no hemos gestionado. Por lo que en realidad, no estamos usando las características de este objeto. Así que lo desechamos.
+Lo primero que nos llama la atención es que en este caso no estamos gestionando errores. Solo hay dos posibilidades: devolvemos un `CommandResult<Response>` exitoso o lanzamos una excepción que no hemos gestionado. Por lo que, en realidad, no estamos usando las características de este objeto. Así que lo desechamos.
 
 Por otro lado, que un objeto `Response` contenga otro de tipo `ProductDto`, tampoco nos aportaba valor. Así que decidimos crear un objeto `Response` con las propiedades que necesitábamos del `ProductDto`. De esta forma nos quedamos con un solo objeto y pudimos cambiar nuestro código:
 
@@ -261,7 +264,7 @@ Así solucionábamos dos problemas de un tiro.
 
 ### Si necesitamos una clase con un solo método que se usa en un solo lugar tal vez esa clase no haga falta
 
-Resulta que los objetos `IRepository` y `Repository`, solo se usaban dentro de esta *feature*. Y además, solo tenían un método: `GetProduct`. Al analizarlo por dentro, todo parecía ser una llamada simple a un método de búsqueda de un artefacto de Mongo.Driver: `IMongoCollection<Product>`.
+Resulta que los objetos `IRepository` y `Repository`, solo se usaban dentro de esta *feature*. Además, solo tenían un método: `GetProduct`. Al analizarlo por dentro, todo parecía ser una llamada simple a un método de búsqueda de un artefacto de Mongo.Driver: `IMongoCollection<Product>`.
 
 ```csharp
 internal class Repository : IRepository
@@ -324,7 +327,7 @@ El resultado final de esta sesión fue la simplificación del código tanto en n
   - *Response.cs*
   - *Validator.cs*
 
-Como en número de líneas en el `Handler`. Además de, en nuestra opición, ser un código más legible:
+Como en número de líneas en el `Handler`. Además de, en nuestra opinión, ser un código más legible:
 
 ```csharp
 public class Handler : IRequestHandler<Request, Response>
@@ -351,4 +354,4 @@ Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir un
 
 ¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio? ¿O es mejor tener un código como el resultado final?
 
-El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadía menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. Y en definitiva, se sentían más comodos con esta implementación.
+El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadía menos pasos para encontrar una línea de código concreta. Cumplía con que una *feature* encapsule una sola acción completa con el mínimo código imprescindible. En definitiva, se sentían más cómodos con esta implementación.
