@@ -59,7 +59,7 @@ Aplicando el principio de responsabilidad única, no sería una locura decir que
 
 Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo *façade* para poder orquestarlo todo: `OrderFacade`. Aunque seguro que más de uno está pensando que se nos ha ido de las manos...
 
-Es muy difícil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la define como "una razón para cambiar". Se me ocurren dos razones para cambiar código en un proyecto: *bug fixing* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
+Es muy difícil determinar qué es una responsabilidad. [Uncle Bob](https://twitter.com/unclebobmartin) la [define como "una razón para cambiar"](https://web.archive.org/web/20110912055122/http://www.objectmentor.com/resources/articles/srp.pdf). Se me ocurren dos razones para cambiar código en un proyecto: *bug fixing* o *new feature*. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
 
 Es por eso que en 2014 escribió [un nuevo artículo](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html) sobre el tema. Aquí menciona que "Este principio es sobre las personas". Donde habla de que hay que preguntarse por quién es el responsable de ese código en cuestión. Si es un tema del director de finanzas, del director de tecnología, del de operaciones... Y en mi caso personal puedo afirmar, sin miedo a equivocarme, que el responsable siempre es el desarrollador. Y a poder ser el que ya no está en la empresa.
 
