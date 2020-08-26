@@ -14,7 +14,7 @@ Siguiendo [la definición de Uncle Bob](https://web.archive.org/web/200608220333
 - *Open For Extension*: esto significa que el comportamiento de un módulo puede ser extendido. Y expone que esto se consigue gracias a una de las propiedades de la programación orientada a objetos: el polimorfismo.
 - *Closed for Modification*: que dice que el código fuente de un módulo es inviolable. Que nadie debería poder realizar cambios en él.
 
-El truco es más simple de lo que parece: consiste en que todo objeto tenga una clase abstracta base que podemos sobrescribir y aplicar patrones conocidos.
+El truco es más simple de lo que parece: consiste en que todo objeto tenga una clase abstracta base que podamos sobrescribir y aplicar patrones conocidos.
 
 Si tuviéramos un sistema que dibuja figuras:
 
@@ -347,9 +347,9 @@ El caso es que en un desarrollo normal terminaremos o bien haciendo *Copy & Past
 
 Y es que, hemos caído en nuestra propia trampa: no podemos modificar, solo extender. Esto implica que tenemos que programar haciendo que nuestro código sea extensible en todos aquellos puntos en los que podría tener que ser modificado en el futuro. Pero hasta donde sé, nunca he conocido un programador adivino que vea cómo va a evolucionar un producto en el futuro. Al menos no en su totalidad.
 
-Por esta razón, [Uncle Bob](https://twitter.com/unclebobmartin) decidió [reformular en 2014 su propuesta de OCP](https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html). En este nuevo documento nos habla del uso de sistemas de *plugins*, como los que usan nuestro IDEs preferidos, para llevar poner en práctica este principio. Y aunque creo que es muy interesante esta propuesta, también creo que no todas las aplicaciones que he programado necesiten un sistema de complementos para funcionar bien y que su código sea "bueno".
+Por esta razón, [Uncle Bob](https://twitter.com/unclebobmartin) decidió [reformular en 2014 su propuesta de OCP](https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html). En este nuevo documento nos habla del uso de sistemas de *plugins*, como los que usan nuestros IDEs preferidos, para poner en práctica este principio. Y aunque creo que es muy interesante esta propuesta, también creo que son pocas las aplicaciones que he programado en las que añadir un sistema de complementos vaya a impactar directamente en la mejora de la calidad de su código fuente.
 
-El ejemplo que hemos expuesto es un buen código. Sigue a rajatabla **OCP**. Pero llega un momento en el que, en dependencia de la *feature* que tengamos que implementar, creo que mejoraría más modificando ciertos objetos que añadiendo extensiones, derivaciones o *plugins*.
+El ejemplo que hemos expuesto es un buen código. Sigue a rajatabla **OCP**. Pero llega un momento en el que, en dependencia de la nueva *feature* que tengamos que implementar, creo que mejoraría más modificando ciertos objetos que añadiendo extensiones, derivaciones o *plugins*.
 
 Porque el desarrollo de software, la gestión del ciclo de vida de una aplicación, las metodologías ágiles, las prácticas XP (e**X**treme **P**rogramming) y todo lo que lo rodea, va en dirección de adaptarse al cambio, no a preverlo. Y cuando un requisito del sistema cambia, significa que tu código no es válido y tienes que reemplazarlo.
 
@@ -370,7 +370,7 @@ Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles e
 - ¿Es mejor tener un sistema abierto a la extensión o una aplicación que se ciña a hacer lo que dice que debe hacer?
 - Si quiero aplicar OCP en un código que nunca lo ha tenido en cuenta ¿podría entonces modificar las clases existentes?
 
-El principio de abierto/cerrado creo que busca reducir el uso de bloques condicionales (como `switch` e `if`) aplicando patrones y usando las capacidades de un lenguaje orientado a objetos. Esto es importante porque los bloques condicionales hacen que nuestro código sea más difícil de entender y, por lo tanto, de mantener. Aunque seguirlo sin sentido nos llevará a conseguir todo lo contrario, un código en el que todo está tan desperdigado y hay tantas herencias que resulta muy difícil de comprender.
+El principio de abierto/cerrado creo que busca reducir el uso de bloques condicionales (como `switch` e `if`) aplicando patrones y usando las capacidades de un lenguaje orientado a objetos. Esto es importante porque los bloques condicionales hacen que nuestro código sea más difícil de entender y, por lo tanto, de mantener. Aunque seguirlo sin sentido nos llevará a conseguir todo lo contrario, un código en el que todo está tan desperdigado y hay tantas herencias, que resulta muy difícil de comprender.
 
 Afortunadamente no todo en este mundo es **SOLID**. Existen multitud de principios y reglas de programación que son muy válidas también. Antes que seguir el **OCP** creo que sería interesante pensar en uno de [los valores en los que se basa XP](http://www.extremeprogramming.org/values.html) (e**X**treme **P**rogramming):
 
