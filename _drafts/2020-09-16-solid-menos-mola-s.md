@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202009021
+ID: 202009161
 title: 'SOLID menos mola (S)'
 author: fernandoescolar
-post_date: 2020-09-02 02:16:54
+post_date: 2020-09-16 02:16:54
 layout: post
 ---
  La *S* de *SOLID* se refiere al principio de responsabilidad única o **SRP** por sus siglas en inglés (**S**ingle **R**esponsibility **P**rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "una clase debe tener solo una razón para cambiar"<!--break-->.

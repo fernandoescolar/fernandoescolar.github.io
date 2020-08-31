@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202009091
+ID: 202009231
 title: 'SOLID menos mola (O)'
 author: fernandoescolar
-post_date: 2020-09-09 02:16:54
+post_date: 2020-09-23 02:16:54
 layout: post
 ---
 
