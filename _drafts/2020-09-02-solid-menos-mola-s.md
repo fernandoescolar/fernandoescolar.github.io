@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2020-09-02 02:16:54
 layout: post
 ---
- La *S* de *SOLID* se refiere al principio de responsabilidad única o **SRP** por sus siglas en inglés (**S**ingle **R**esponsibility **P**rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "una clase debe tener solo una razón para cambiar".<!--break-->
+ La *S* de *SOLID* se refiere al principio de responsabilidad única o **SRP** por sus siglas en inglés (**S**ingle **R**esponsibility **P**rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "una clase debe tener solo una razón para cambiar"<!--break-->.
 
 Es un concepto muy simple. Algo que todo el mundo entiende. Y, por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método, una sola responsabilidad también. Pero siempre dentro de una clase con una responsabilidad.
 

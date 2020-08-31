@@ -7,7 +7,7 @@ post_date: 2020-09-09 02:16:54
 layout: post
 ---
 
-La *O* de *SOLID* se refiere al principio de abierto/cerrado, **OCP** por sus siglas en inglés (**O**pen/**C**losed **P**rinciple). Se puede definir como que una clase debe estar abierta a la extensión y cerrada a la modificación. Fue acuñado por primera vez por [Bertrand Meyer](https://twitter.com/Bertrand_Meyer). Pero no fue hasta que [Robert C. Martin](https://twitter.com/unclebobmartin) lo reformuló e introdujo dentro del acrónimo *SOLID*, que se popularizó.<!--break-->
+La *O* de *SOLID* se refiere al principio de abierto/cerrado, **OCP** por sus siglas en inglés (**O**pen/**C**losed **P**rinciple). Se puede definir como que una clase debe estar abierta a la extensión y cerrada a la modificación. Fue acuñado por primera vez por [Bertrand Meyer](https://twitter.com/Bertrand_Meyer). Pero no fue hasta que [Robert C. Martin](https://twitter.com/unclebobmartin) lo reformuló e introdujo dentro del acrónimo *SOLID*, que se popularizó<!--break-->.
 
 Siguiendo [la definición de Uncle Bob](https://web.archive.org/web/20060822033314/http://www.objectmentor.com/resources/articles/ocp.pdf) el **OCP** se rige por dos propiedades:
 
