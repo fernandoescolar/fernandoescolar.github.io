@@ -391,17 +391,7 @@ services.AddScoped<ICountryExistsChecker>(s => s.GetService<ICountryStore>());
 
 Ahora ya tendría finalizado el *refactoring* de este artefacto, pero el resultado final, ¿es mejor resultado o en realidad añade una capa de abstracción que no necesitamos?
 
-Si, por ejemplo, ahora no quiero que sean instancias `Scoped` si no que las quiero `Transient`, tendría que volver a modificar todas estas líneas:
-
-```csharp
-services.AddTransient<ICountryStore, CountryStore>();
-services.AddTransient<IAllCountriesLoader>(s => s.GetService<ICountryStore>());
-services.AddTransient<IByIsoCodeCountryLoader>(s => s.GetService<ICountryStore>());
-services.AddTransient<IByPhonePrefixCountryLoader>(s => s.GetService<ICountryStore>());
-services.AddTransient<ICountryExistsChecker>(s => s.GetService<ICountryStore>());
-```
-
-Con el código anterior era solo una...
+Si, por ejemplo, ahora no quiero que sean instancias `Scoped` si no que las quiero `Transient`, tendría que volver a modificar todas estas líneas. Mientras que con el código anterior era solo una.
 
 También es verdad que desgranar en interfaces me da más capacidad para ser eficiente al realizar una sola operación:
 
