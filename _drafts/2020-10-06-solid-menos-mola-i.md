@@ -243,7 +243,7 @@ interface IUserInterface : IDepositUI, ITransferUI, IWithdrawlUI
 }
 ```
 
-Pero imaginemos que una `Transfer` no espera un resultado de la operación porque se realiza en asíncrono y se le envía un email al usuario para comentar el resultado. Esto nos llevaría tener diferentes interfaces comunes:
+Pero imaginemos que una `Transfer` no espera un resultado de la operación porque se realiza en segundo plano y se le envía un email al usuario para comunicar el resultado. Esto nos llevaría tener diferentes interfaces comunes:
 
 ```csharp
 interface IOperationUI : IWelcomeUI,
@@ -280,7 +280,7 @@ Si seguimos esta tendencia en nuestro desarrollo, estaríamos generando muchas h
 
 No sé si merecería la pena dejar alguna interfaz con algún método que pueda o no ser usado, siempre y cuando mantenga coherencia. Por ejemplo, en *.Net* encontramos el objeto `System.Console`. Puede que no sea la mejor implementación del mundo, y que sea una clase estática. Puede que no cumpla con los principios *SOLID* en absoluto. Pero todos sabemos que ahí vamos a encontrar todo lo necesario para interactuar con el terminal: *write*, *read*, colores, limpieza... y lo tenemos todo a pesar de que una aplicación simple de consola no lea nada del terminal. Y tampoco es que me genere demasiados problemas tenerlo.
 
-Solo opino que, aunque hay implementaciones mejores y mucho más completas para acceder al terminal, `System.Console` te aporta un comportamiento básico muy útil. Y que es suficiente, fácil de usar e intuitiva. A pesar de haberse saltado el **ISP** (y otros tantos principios).
+Solo opino que, aunque hay implementaciones mejores y mucho más completas para acceder al terminal, `System.Console` te aporta un comportamiento básico muy útil. Y que es suficiente, fácil de usar e intuitivo, a pesar de haberse saltado el **ISP** (y otros tantos principios).
 
 ## Hay vida después de ISP
 
