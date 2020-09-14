@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202009101
-title: 'The Hitchhiker's Guide to Azure WebApps'
+title: The Hitchhiker's Guide to Azure WebApps
 author: fernandoescolar
 post_date: 2020-09-10 00:00:00
 layout: post
@@ -16,4 +16,4 @@ Descripción:
 
 Aquí podrás encontrar el vídeo grabado de la sesión online:
 
-<iframe class="youtube" src="https://www.youtube.com/watch?v=0TSsGhZk4EA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube" src="https://www.youtube.com/embed/0TSsGhZk4EA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
