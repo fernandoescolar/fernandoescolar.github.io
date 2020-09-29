@@ -37,13 +37,13 @@ class Deposit : ITransaction
 
 class Transfer : ITransaction
 {
-  public Deposit(IUserInterface ui) { ... }
+  public Transfer(IUserInterface ui) { ... }
   ...
 }
 
 class Withdraw : ITransaction
 {
-  public Deposit(IUserInterface ui) { ... }
+  public Withdraw(IUserInterface ui) { ... }
   ...
 }
 ```
