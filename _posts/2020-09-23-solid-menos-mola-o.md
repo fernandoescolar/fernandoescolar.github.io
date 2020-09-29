@@ -317,25 +317,25 @@ abstract class ColoredDecorator : Decorator
 class ColoredBorderedDecorator : ColoredDecorator
 {
   public ColoredBorderedDecorator(Color color): base(color) { }
-  public virtual void Decorate(Shape shape) { /*Draw red border*/ }
+  public override void Decorate(Shape shape) { /*Draw red border*/ }
 }
 
 class ColoredLineDecorator : ColoredDecorator
 {
   public ColoredLineDecorator(Color color): base(color) { }
-  public virtual void Decorate(Shape shape) { /*Draw line stuff*/ }
+  public override void Decorate(Shape shape) { /*Draw line stuff*/ }
 }
 
 class ColoredCircleDecorator : ColoredDecorator
 {
-  public ColoredLineDecorator(Color color): base(color) { }
-  public virtual void Decorate(Shape shape) { /*Draw circle stuff*/ }
+  public ColoredCircleDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw circle stuff*/ }
 }
 
 class ColoredRectangleDecorator : ColoredDecorator
 {
-  public ColoredLineDecorator(Color color): base(color) { }
-  public virtual void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
+  public ColoredRectangleDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
 }
 ```
 
