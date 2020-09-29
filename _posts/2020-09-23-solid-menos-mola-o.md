@@ -44,17 +44,17 @@ abstract class Shape
 
 class Line : Shape
 {
-  public void Draw() { /*Draw line stuff*/ }
+  public override void Draw() { /*Draw line stuff*/ }
 }
 
 class Circle : Shape
 {
-  public void Draw() { /*Draw circle stuff*/ }
+  public override void Draw() { /*Draw circle stuff*/ }
 }
 
 class Rectangle : Shape
 {
-  public void Draw() { /*Draw rectangle stuff*/ }
+  public override void Draw() { /*Draw rectangle stuff*/ }
 }
 
 class Drawer
@@ -71,17 +71,17 @@ Pero en un futuro podríamos querer añadir por ejemplo un recuadro rojo cuando 
 ```csharp
 class Line : Shape
 {
-  public virtual void Draw() { /*Draw line stuff*/ }
+  public override void Draw() { /*Draw line stuff*/ }
 }
 
 class Circle : Shape
 {
-  public virtual void Draw() { /*Draw circle stuff*/ }
+  public override void Draw() { /*Draw circle stuff*/ }
 }
 
 class Rectangle : Shape
 {
-  public virtual void Draw() { /*Draw rectangle stuff*/ }
+  public override void Draw() { /*Draw rectangle stuff*/ }
 }
 
 class RedBorderedLine : Line
@@ -124,22 +124,22 @@ abstract class Decorator
 
 class RedBorderedDecorator : Decorator
 {
-  public virtual void Decorate(Shape shape) { /*Draw red border*/ }
+  public override void Decorate(Shape shape) { /*Draw red border*/ }
 }
 
 class LineDecorator : Decorator
 {
-  public virtual void Decorate(Shape shape) { /*Draw line stuff*/ }
+  public override void Decorate(Shape shape) { /*Draw line stuff*/ }
 }
 
 class CircleDecorator : Decorator
 {
-  public virtual void Decorate(Shape shape) { /*Draw circle stuff*/ }
+  public override void Decorate(Shape shape) { /*Draw circle stuff*/ }
 }
 
 class RectangleDecorator : Decorator
 {
-  public virtual void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
+  public override void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
 }
 ```
 
@@ -192,17 +192,17 @@ abstract class Visitor
   public abstract void Visit(Shape shape);
 }
 
-abstract class SelectVisitor
+class SelectVisitor : Visitor
 {
-  public abstract void Visit(Shape shape)
+  public override void Visit(Shape shape)
   {
       shape.AddDecorator(new RedBorderedDecorator());
   }
 }
 
-abstract class UnselectVisitor
+class UnselectVisitor : Visitor
 {
-  public abstract void Visit(Shape shape)
+  public override void Visit(Shape shape)
   {
       shape.RemoveDecorator(typeof(RedBorderedDecorator));
   }
@@ -238,10 +238,10 @@ abstract class Command
 
 class SelectCommand : Command
 {
-  private readonly _selectVisitor = new SelectVisitor();
-  private readonly _unselectVisitor = new UnselectVisitor();
+  private readonly Visitor _selectVisitor = new SelectVisitor();
+  private readonly Visitor _unselectVisitor = new UnselectVisitor();
 
-  public virtual void Execute(Manager manager, Shape shape)
+  public override void Execute(Manager manager, Shape shape)
   {
     manager.Shapes.ToList().ForEach(x => _unselectVisitor.Visit(x));
     _selectVisitor.Visit(shape);
@@ -278,9 +278,9 @@ class Manager
 
   public void DoCommand(string commandKey, Shape s)
   {
-      if (_commnads.ContainsKey(commandKey))
+      if (_commands.ContainsKey(commandKey))
       {
-          _commnads[commandKey].Execure(this, s);
+          _commands[commandKey].Execute(this, s);
       }
   }
 }
