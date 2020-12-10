@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202010191
-title: '.Net 5 '
+title: '.Net 5 Just Talking'
 author: fernandoescolar
 post_date: 2020-12-09 21:02:25
 layout: post
