@@ -7,7 +7,7 @@ post_date: 2020-11-18 01:06:54
 layout: post
 ---
 
-Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece *3|173*, es que eres *3|173*. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante<!--break-->.
+Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece *3\|173*, es que eres *3\|173*. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante<!--break-->.
 
 Sí, estoy hablando de **Windows Terminal**. Una herramienta digna de Neo (aka señor Anderson) cuando aún no tenía ni idea de qué era Matrix: fondos de pantalla molones, colores tipo *hacker* e incluso la línea de *prompt* personalizada.
 
@@ -187,7 +187,7 @@ Y como bonus, una característica que podrían borrar en el futuro (espero que n
 
 ### Schemes
 
-Por defecto, Windows Terminal viene con una serie de [esquemas de color por defecto](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes#included-color-schemes). Pero eso no es para los *|337* de verdad. Nosotros nos configuramos nuestros propios colores.
+Por defecto, Windows Terminal viene con una serie de [esquemas de color por defecto](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes#included-color-schemes). Pero eso no es para los *\|337* de verdad. Nosotros nos configuramos nuestros propios colores.
 
 Para definir un color en un terminal estándard podemos definir 8 colores y sus variantes oscuras tanto para el color del texto como el de fondo. Los esquemas de color nos dejarán definir estos 16 más el color de fondo por y del texto por defecto.
 
@@ -564,6 +564,6 @@ Si por alguna razón, los necesitas y no aparecen en el listado, este código te
 
 Aquí no están, ni mucho menos, todas las opciones de configuración y personalización que nos permite Windows Terminal. Solo las que te van a resultar más importantes para poder fardar.
 
-Sigue estos consejos y la próxima vez que compartas escritorio, abre un Windows Terminal. Deja que tus compañeros admiren lo chulo que es. Hazles saber que tú eres *|337* y que ellos son unos p**** *n00bs*.
+Sigue estos consejos y la próxima vez que compartas escritorio, abre un Windows Terminal. Deja que tus compañeros admiren lo chulo que es. Hazles saber que tú eres *\|337* y que ellos son unos p**** *n00bs*.
 
 O si no, cópiate mi `settings.json`, que es más rápido, desde [este enlace](https://gist.github.com/fernandoescolar/84bf7b749da8ce5c52d1f55848b33bb9).
