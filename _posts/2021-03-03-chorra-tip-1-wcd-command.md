@@ -10,8 +10,8 @@ layout: post
 
 Así pues, en el #chorraTip del día de hoy, vamos a crear el comando `wcd` para el **bash** de *Git for Windows*. Solo tienes que seguir estos pasos:
 
-1. Crea un archivo en "C:\Program Files\Git\usr\bin\" llamado "wincd".
-2. Añade este contenido:
+- Crea un archivo en "C:\Program Files\Git\usr\bin\" llamado "wincd".
+- Añade este contenido:
 
 ```bash
 #!/usr/bin/env bash
@@ -19,21 +19,21 @@ dir=$(echo "/$1" | sed -e 's/\\/\//g' -e 's/://' -e 's/\/C\//\/c\//')
 cd "$dir"
 ```
 
-3. Abre tu terminal de **bash**.
+- Abre tu terminal de **bash**.
 
-4. Situate en tu carpeta *HOME*:
+- Situate en tu carpeta *HOME*:
 
 ```bash
 $ cd ~
 ```
 
-5. Crea un alias para hacer que el comando `wincd` se ejecute en el mismo proceso que el **bash**:
+- Crea un alias para hacer que el comando `wincd` se ejecute en el mismo proceso que el **bash**:
 
 ```bash
 $ echo alias wcd='. wincd' >> .bashrc
 ```
 
-6. Ya puedes copiar la ruta del explorador de windows y llamar a `wcd` para situarte ahí directamente:
+- Ya puedes copiar la ruta del explorador de windows y llamar a `wcd` para situarte ahí directamente:
 
 ```bash
 $ wcd "C:\projects\ConsoleApp1\bin"
