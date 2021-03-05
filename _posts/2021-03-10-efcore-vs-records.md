@@ -8,9 +8,9 @@ layout: post
 ---
 No cabe duda de que los *tipos registro* son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo *.Net*<!--break-->. Es una oda de rima libre, que une `record` con `with`, y allí donde no llega aparece `init`, a la forma en la que nos gustaría programar.
 
-Todo son palabras bonitas a la hora de hablar de `record`. Porque ha venido para quedarse y ultilizarse en todos los lugares posibles de nuestros desarrollos. Y te preguntarás:s ¿en todos?
+Todo son palabras bonitas a la hora de hablar de `record`. Porque ha venido para quedarse y utilizarse en todos los lugares posibles de nuestros desarrollos. Y te preguntarás: ¿en todos?
 
-Bueno, existe una pequeña aldea poblada de irreductibles ensamblados que aun no hemos probado. Nos referimos a **Entity Framework Core** (EF). Y en este artículo lo vamos a poner a prueba.
+Bueno, existe una pequeña aldea poblada de irreductibles ensamblados que aún no hemos probado. Nos referimos a **Entity Framework Core** (EF). Y en este artículo lo vamos a poner a prueba.
 
 > **TL;DR** todo funciona bien, pero el `ChangeTracker` no es fiable del todo debido a la inmutabilidad.
 
@@ -89,7 +89,7 @@ private async Task CreateItemAsync(Guid id)
 }
 ```
 
-Para comprobar que hemos creado la instancia en la base de datos, vamos a realizar una comprobación de lectura, comprobando que el estado en la base de datos es el mismo que creamos en el método anterior:
+Para comprobar que, hemos creado la instancia en la base de datos, vamos a realizar una comprobación de lectura, comprobando que el estado en la base de datos es el mismo que creamos en el método anterior:
 
 ```csharp
 private async Task AssertItemAsync(Guid id, bool isDone)
@@ -115,7 +115,7 @@ public async Task IntegrationTest()
 }
 ```
 
-Y al ejecutar: ¡Sorpresa! ¡Todo funciona correctamente si ningún problema! Igual que si hubieramos usado `class` en lugar de `record`.
+Y al ejecutar: ¡Sorpresa! ¡Todo funciona correctamente si ningún problema! Igual que si hubiéramos usado `class` en lugar de `record`.
 
 ![Wow](/public/uploads/2021/03/wow-will-smith.gif)
 
@@ -205,9 +205,9 @@ public async Task IntegrationTest()
 
 Al ejecutar veremos que esta comprobación falla. La prueba esperaba que después de llamar a `MarkItemAsDoneAsync` el valor de la propiedad `IsDone` fuera `true`, pero se ha encontrado con que no se han realizado cambios.
 
-**Entity Framework Core** usa un artefacto llamado `ChangeTracker` que se dedica a observar las entidades que estamos usando y a detectar los cambios que realizamos en ellas. Cuando llamamos a `SaveChangesAsync` sondea estos cambios y actua en consecuencia.
+**Entity Framework Core** usa un artefacto llamado `ChangeTracker` que se dedica a observar las entidades que estamos usando y a detectar los cambios que realizamos en ellas. Cuando llamamos a `SaveChangesAsync` sondea estos cambios y actúa en consecuencia.
 
-¡Claro! ¿Cómo vamos a realizar la operación de modificación creando una nueva instancia de nuestro `Item` si no informamos devidamente a **EF** de que hemos cambiado la instancia?
+¡Claro! ¿Cómo vamos a realizar la operación de modificación creando una nueva instancia de nuestro `Item` si no informamos debidamente a **EF** de que hemos cambiado la instancia?
 
 Para ello añadiremos la llamada al método `Attach` que nos ayudará a indicarle al `ChangeTracker` que hemos modificado esta entidad:
 
@@ -254,9 +254,28 @@ private async Task MarkItemAsDoneAsync(Guid id)
 
 ## Ejemplo complejo
 
-Muy bonito el ejemplo simple de una sola entidad. ¿Pero qué pasaría si tuvieramos un grafo un poco más complejo?
+Muy bonito el ejemplo simple de una sola entidad. ¿Pero qué pasaría si tuviéramos un grafo un poco más complejo?
 
 Para enfrentarnos con un escenario más complejo vamos a añadir a un `Item` un listado de `ItemTask` con una relación de *Many To One*:
+
+```csharp
+public record ItemTask(Guid Id, string Name);
+
+public record Item(Guid Id, string Name, bool IsDone, ReadOnlyCollection<ItemTask> Tasks);
+```
+
+Si somos consecuentes con el comportamiento de un `record`, deberíamos crear una `ReadOnlyCollection<>` para almacenar *child items*. Pero añadir una propiedad de navegación en el constructor no le va a gustar demasiado a **EF**. Afortunadamente es casi lo mismo separarlo:
+
+```csharp
+public record ItemTask(Guid Id, string Name);
+
+public record Item(Guid Id, string Name, bool IsDone)
+{
+  public ReadOnlyCollection<ItemTask> Tasks { get; init; }
+}
+```
+
+El problema ahora lo tendremos con la `ReadOnlyCollection<>`. A **EF** no le gusta este tipo de objetos para hacer propiedades de navegación. Lo que sí que nos permitirá es usar `List<>` o `Collection<>`. Para poder seguir siendo inmutables, se nos ha ocurrido esta implementación:
 
 ```csharp
 public record ItemTask(Guid Id, string Name);
@@ -266,17 +285,14 @@ public record Item(Guid Id, string Name, bool IsDone)
   private List<ItemTask> _tasks = new List<ItemTask>();
 
   public IEnumerable<ItemTask> Tasks
-    => new ReadOnlyCollection<ItemTask>(_tasks);
-
-  public void Add(ItemTask t)
-    => _tasks.Add(t);
-
-  public void Remove(ItemTask t)
-    => _tasks.Remove(t);
+  {
+    get => new ReadOnlyCollection<ItemTask>(_tasks);
+    init => _tasks = value.ToList();
+  }
 }
 ```
 
-Para añadir una `ItemTask` a un `Item` existente podemos hacerlo de la misma manera de siempre, ya que usamos una `List<>`, que es mutable, para almacenar este tipo de entidades hijas:
+Para añadir una `ItemTask` a un `Item` existente se nos ha complicado un poco. Tendremos que crear una nueva lista de `ItemTask` a partir de la lista de solo lectura que ya existe, añadirle nuestro nuevo objeto y crear una copia del objeto `Item` que tenga este listado y no el anterior. Evidentemente, como todo son objetos inmutables, el `ChangeTracker` no se va a enterar de nada, así que tendremos que ignorarlo y adjuntar finalmente tanto el objeto padre como el objeto hijo que estamos creando:
 
 ```csharp
 private async Task AddItemTaskAsync(Guid id)
@@ -284,16 +300,22 @@ private async Task AddItemTaskAsync(Guid id)
   using var context = CreateContext();
 
   var item = await context.Items
+                          .AsNoTracking()
                           .Include(nameof(Item.Tasks))
                           .SingleOrDefaultAsync(x => x.Id == id);
+  var task = new ItemTask(Guid.NewGuid(), TodoItemTaskName);
+  var list = item.Tasks.ToList();
+  list.Add(task);
 
-  item.Add(new ItemTask(Guid.NewGuid(), TodoItemTaskName));
+  item = item with { Tasks = list };
 
+  context.Items.Attach(item).State = EntityState.Modified;
+  context.Set<ItemTask>().Attach(task).State = EntityState.Added;
   await context.SaveChangesAsync();
 }
 ```
 
-Y para modificar alguna de las propiedades de una `ItemTask` existente, tendremos que volver a ignorar el `ChangeTracker` y realizar la notificación de modificaciones manualmente:
+Y para modificar alguna de las propiedades de una `ItemTask` existente, tendremos que volver a ignorar el `ChangeTracker` y actuar de la misma manera que en el ejemplo más simple:
 
 ```csharp
 private async Task ModifyItemTaskAsync(Guid id)
@@ -313,7 +335,7 @@ private async Task ModifyItemTaskAsync(Guid id)
 }
 ```
 
-Si os interesa el ejemplo completo podéis echarle un vistado aquí:
+Si os interesa el ejemplo completo podéis echarle un vistazo aquí:
 
 [Código fuente completo en *gist*](https://gist.github.com/fernandoescolar/53df9ac1bf71ff032c1b9284f6890530)
 
