@@ -5,6 +5,7 @@ title: 'Método Kanban con Azure DevOps'
 author: fernandoescolar
 post_date: 2019-02-26 06:35:21
 layout: post
+tags: azure devops kanban "best practices"
 ---
 
 Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la idea de este artículo es que aprendas a guarrear Azure DevOps y así puedas dejar las paredes limpias. Todos te lo agradecerán.<!--break-->
@@ -13,7 +14,7 @@ Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle p
 
 > Open IEBS - Cómo desarrollar proyectos de forma ágil [en YouTube](https://youtu.be/IJFBt_2_3IY?t=46)
 
-No podríamos empezar a hablar de cómo aplicar el Método Kanban sin antes realizar un breve resumen de en qué consiste. 
+No podríamos empezar a hablar de cómo aplicar el Método Kanban sin antes realizar un breve resumen de en qué consiste.
 
 ## Método Kanban
 
@@ -33,7 +34,7 @@ Al más puro estilo [manifiesto ágil](http://agilemanifesto.org/iso/es/manifest
 - Para la gestión del cambio:
     - Empezar con lo que estés haciendo ahora. Entender y respetar los procesos y roles tal cual se desempeñan en este momento.
     - Acordar buscar la mejora a través del cambio evolutivo. Una vez entendemos como funcionamos podemos proponer pequeños cambios que ayuden a mejorar y comprobar si realmente lo hacen.
-    - Fomentar el liderazgo en todos los niveles. 
+    - Fomentar el liderazgo en todos los niveles.
 - Para el despliegue del servicio
     - Entender y focalizarse en las necesidades y expectativas de tus clientes.
     - Gestionar el trabajo: dejar que la gente se autoorganice alrededor de las tareas.

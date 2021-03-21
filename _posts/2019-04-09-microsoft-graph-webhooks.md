@@ -5,6 +5,7 @@ title: ' Microsoft Graph: Webhooks'
 author: fernandoescolar
 post_date: 2019-04-09 07:58:12
 layout: post
+tags: azure microsoft graph webhooks
 ---
 
 Es el día en el que salen a la venta las entradas de la [Comic-Con](https://www.comic-con.org/), o cualquier evento grande, de semejante calado, como el Global Azure Bootcamp (en [Madrid](https://azurebootcamp.es/), [Barcelona](https://catazurebootcamp.azurewebsites.net/) o incluso en Seattle). Cuando publicas un nuevo _post_ en tu blog y todavía no se ha actualizado. Si estás usando autenticación de doble factor y aun no ha llegado el email de verificación. El caso es que toda situación semejante, acaba igual: aporreando la tecla F5<!--break-->.

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2017-02-16 09:08:03
 post_excerpt: ""
 layout: post
+tags: bot azure
 ---
 Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la edad, pero creo que eran los mejores. Y aprovechando este momento melancólico decidí volver a jugar al Monkey Island. Una saga que como todos sabréis consta de dos partes. En el que teníamos duelos de espada/insultos delirantes. Pero algunas veces eran combates bastante complejos. Quizá la nueva tecnología me podría ayudar con esto. Dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.<!--break-->
 
@@ -21,7 +22,7 @@ He encontrado un bar llamado Scumm. Ahí he conocido a [Alex Campos](https://twi
 
 ## 02:27 PM, Día 1:
 
-Una navegación rápida por la Deep Web me ha aportado todo el material que necesito. Unas 60 frases y sus respuestas. Solo he tenido que recogerlas y formatearlas. Tarea sencilla. Una línea por cada una con el siguiente formato: 
+Una navegación rápida por la Deep Web me ha aportado todo el material que necesito. Unas 60 frases y sus respuestas. Solo he tenido que recogerlas y formatearlas. Tarea sencilla. Una línea por cada una con el siguiente formato:
 
 ```
 Frase <TAB> Respuesta <TAB> Juego
@@ -97,7 +98,7 @@ Para terminar con mi experiencia, he añadido la información necesaria, un nomb
 
 ## 03:55 PM, Día 1:
 
-He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas correctas para los duelos de insultos de mi partida de Monkey Island. 
+He abierto el bot Duelo de Espadas en Skype. Me ha aportado todas las respuestas correctas para los duelos de insultos de mi partida de Monkey Island.
 
 ![Duelo de Espadas - Bot](/public/uploads/2017/02/duelo-espadas-bot.png)
 

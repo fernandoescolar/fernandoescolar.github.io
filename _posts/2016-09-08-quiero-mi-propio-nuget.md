@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: {}
 layout: post
 published: true
+tags: nuget dotnet
 ---
 ¿Recuerdas la primera vez que viste a John McClane? Nada más llegar en avión, le llevaron a la torre Nakatomi. La idea era recoger a Holly y llevarla de vuelta a casa. En navidad. Todo era estupendo. Hasta Allen disfrutaba de un día tranquilo. Pero un maldito bastardo llamado Hans tuvo que venir a joder el cotarro.<!--break-->
 

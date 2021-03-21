@@ -5,6 +5,7 @@ title: 'Azure Functions con docker'
 author: fernandoescolar
 post_date: 2019-03-26 07:35:02
 layout: post
+tags: azure functions docker node
 ---
 
 Docker y los containers son a la programación, lo que el rebozado y empanado a la cocina tradicional. Si bien añade un paso extra que ensucia y a veces se hace un poco difícil, después puedes transportar la comida con mucha facilidad, sin romperla, y además te resulta muy fácil de comer. Y no nos engañemos, está claro que a todo el mundo le gustan las croquetas<!--break-->.

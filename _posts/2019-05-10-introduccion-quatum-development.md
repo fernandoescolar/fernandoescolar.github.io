@@ -5,6 +5,7 @@ title: 'Introducción a Quatum Development (i)'
 author: fernandoescolar
 post_date: 2019-05-10 07:51:23
 layout: post
+tags: quantum programming
 ---
 
 El mundo de la programación tal y cómo lo conocemos tiene fecha de caducidad. Por muchos materiales nuevos, aleaciones especiales o mejoras tecnológicas que tengamos, un microprocesador tiene un límite de tamaño a partir del cual deja de ser eficiente. Cada día estamos más cerca de ese límite y es aquí donde aparece la computación cuántica. Prepárate para cambiar de paradigma, para cambiar _bits_ por _qubits_<!--break-->.
@@ -262,7 +263,7 @@ static void Main(string[] args)
 }
 ```
 
-Que escribirá en consola el número total de `Zero`'s y `One`'s encontrados para cada valor inicial que le pasemos. 
+Que escribirá en consola el número total de `Zero`'s y `One`'s encontrados para cada valor inicial que le pasemos.
 
 Al hacer un `run` deberíamos obtener la siguiente salida:
 

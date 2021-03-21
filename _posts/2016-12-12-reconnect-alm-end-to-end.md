@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2016-12-12 00:00:00
 layout: post
 categories: video
+tags: azure devops
 ---
 
 Veremos cómo hacer una una pull request con modificaciones, lanzar compilaciones con sonar para comprobar la calidad, reléase y deployment automático en varios entornos y finalmente cómo controlar el ciclo de vida completo con VSTS/TFS.<!--break-->

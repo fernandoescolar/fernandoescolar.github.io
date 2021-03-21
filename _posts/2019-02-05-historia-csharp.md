@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2019-02-05 05:08:11
 post_excerpt: ""
 layout: post
+tags: csharp history
 ---
 
 Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta afirmación puede demostrarse hoy en día echando un vistazo a un medio al que todo el mundo tiene acceso: internet. Una plataforma donde todos podemos escribir _nuestra propia historia_. Así pues, al igual que cualquier otro ignorante de la red, os voy a dar mi versión de la historia de C#. Y además os aseguro que esta sí cuenta lo que sucedió de verdad de la buena.<!--break-->
@@ -24,7 +25,7 @@ El lenguaje de programación Java empezó a tener éxito. Y como la JVM y el JRE
 
 Entre tanto, también se estaba desarrollando una dura batalla por implementar el _Integrated Development Environment_ (IDE) preferido por los desarrolladores. Sun Microsystems decidió comprar a unos estudiantes universitarios el IDE Netbeans. Aunque esto en realidad fue una débil respuesta contra una serie de IDEs que eran muy superiores y ya estaban asentados en el mercado. JBuilder, producto de Borland, escrito en el propio lenguaje de Java, era un producto muy avanzado y extendido. Mientras que Eclipse empezaba a mostrarse como la plataforma dominante open source, de la mano de IBM.
 
-Todo este lío de máquinas virtuales, versiones de _Runtimes_ e IDEs creaba bastante confusión en los desarrolladores. Potenciados por el acceso a internet, comenzó a ser más sencillo compartir código fuente. Pero cada porción del mismo necesitaba tener instalada una máquina virtual diferente. 
+Todo este lío de máquinas virtuales, versiones de _Runtimes_ e IDEs creaba bastante confusión en los desarrolladores. Potenciados por el acceso a internet, comenzó a ser más sencillo compartir código fuente. Pero cada porción del mismo necesitaba tener instalada una máquina virtual diferente.
 
 De cualquier forma, a Sun Microsystems no pareció importarle esto. A menos no le importó hasta que Microsoft publicó Visual J++.
 
@@ -42,7 +43,7 @@ En 2001 hubo sentencia en contra de Microsoft y lo que pasó a partir de 2002 ya
 
 Hay varias fuentes que comentan diferentes versiones del origen del nombre de C#. Así que hemos elegido la que más nos gusta.
 
-En un principio existía C. Cuando este lenguaje fue extendido para soportar el paradigma de la programación orientada a objetos, pasó a llamarse C++. 
+En un principio existía C. Cuando este lenguaje fue extendido para soportar el paradigma de la programación orientada a objetos, pasó a llamarse C++.
 
 Para C# se cogió como base C++ intentando hacer un lenguaje totalmente orientado a objetos. Quizá suene muy atrevido denominarlo como una especie de C++ ++. El caso es que al superponer las parejas de "+", se crea una especie de cuadrado. Si le echamos un poco de imaginación, este cuadrado se puede asemejar a una almohadilla "#". C#.
 

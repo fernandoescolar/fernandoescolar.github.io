@@ -5,6 +5,7 @@ title: 'Azure WebApps Tips & Tricks'
 author: fernandoescolar
 post_date: 2020-08-26 01:03:24
 layout: post
+tags: azure webapp appservice
 ---
 
 *Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y de cualquier cosa que no pueda ser programada, etiquetada o clasificada*.<!--break-->

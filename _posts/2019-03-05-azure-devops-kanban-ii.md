@@ -5,6 +5,7 @@ title: 'Método Kanban con Azure DevOps (y 2)'
 author: fernandoescolar
 post_date: 2019-03-05 07:58:14
 layout: post
+tags: azure devops kanban "best practices"
 ---
 
 Si ya tienes claro qué es el Método Kanban, pero no tienes del todo claro cómo aplicarlo en una metodología; si ya aplicas este método, pero te interesan las experiencias de otros equipos; o si por el contrario, tu objetivo en la vida es demostrarle a todo el mundo lo equivocado que está: te va a encantar lo que viene a continuación.<!--break-->
@@ -15,7 +16,7 @@ La mejora continua consiste en aceptar que cometemos errores e intentar ponerles
 
 ## Inicio del proyecto
 
-El principio de todo es la idea: el concepto de un nuevo proyecto. 
+El principio de todo es la idea: el concepto de un nuevo proyecto.
 
 Los proyectos en los que suelo colaborar por lo general carecen de una figura de _Product Owner_ involucrado en el proyecto más allá de, como mucho, una reunión semanal. Así que el facilitador tiene que realizar tareas de _proxy_ con el _Owner_. Por eso, podréis notar que el tono general de la explicación del proceso es desde el punto de vista del facilitador.
 
@@ -37,7 +38,7 @@ Es posible que algunas características no se lleguen a desarrollar nunca de la 
 
 Tener un listado de características generales nos va a ayudar a mantener el foco en las necesidades del cliente y en el objetivo del proyecto, pero no es demasiado genérico como para empezar a desarrollar. Por esta razón, añadiremos unos nuevos _WorkItems_ hijos de las _features_, que en Azure DevOps son de tipo _user story_.
 
-Una _user story_, en nuestro modelo, pertenece a una _feature_ y tiene una plantilla que a los no neófitos en el tema seguro que os suena: 
+Una _user story_, en nuestro modelo, pertenece a una _feature_ y tiene una plantilla que a los no neófitos en el tema seguro que os suena:
 
 _As a **[type of user]**, I want **[some goal]** so that **[some reason]**_.
 
@@ -65,7 +66,7 @@ La parte buena de priorizar es que nos hace pensar en detalles que quizá se nos
 
 Por último, pero no por ello menos importante, pasamos al tema de las estimaciones. La idea es no perder mucho tiempo con esto. Nosotros usamos los _Story Points_ de una forma poco ortodoxa. La idea es llegar rápidamente a un acuerdo teniendo en cuenta que 1 es más o menos medio día de trabajo y 2 es un día completo. Sin cartas ni nada. Todo muy a pelo. Uno dice una cifra y si nadie dice nada se queda así.
 
-Solo he comentado dos cifras 1 y 2, pero en realidad puedes poner cualquiera. En nuestro caso intentamos que todo esté en esas cifras. Si se pasa de 5 (lo que sería aproximadamente más de media semana de trabajo) entonces la consideramos épica y la intentamos dividir en dos. De hecho, puedes crear una norma que ponga el estilo de las tarjetas con más puntos de historia de 5 y así marcar visualmente las que hay que dividir. También es verdad que, si tienes una compleja, que no sabes cómo dividirla, no pasa nada por dejarla. Pero que no todas las historias sean así. 
+Solo he comentado dos cifras 1 y 2, pero en realidad puedes poner cualquiera. En nuestro caso intentamos que todo esté en esas cifras. Si se pasa de 5 (lo que sería aproximadamente más de media semana de trabajo) entonces la consideramos épica y la intentamos dividir en dos. De hecho, puedes crear una norma que ponga el estilo de las tarjetas con más puntos de historia de 5 y así marcar visualmente las que hay que dividir. También es verdad que, si tienes una compleja, que no sabes cómo dividirla, no pasa nada por dejarla. Pero que no todas las historias sean así.
 
 Puedes cambiar los puntos de historia pulsando abajo a la derecha de la tarjeta:
 
@@ -81,14 +82,14 @@ Para poder seguir el flujo correctamente es muy importante configurar las column
 
 El proceso diario podríamos decir que empieza con la Reunión Kanban por las mañanas (eso que vulgarmente llamamos _daily_, como abreviación de _daily meeting_). Esta reunión, como consecuencia de que los miembros del equipo se encuentran en diferentes ubicaciones, la realizamos vía _Teams_. Y para darle mayor visibilidad, una persona se encarga de compartir su escritorio, donde tiene abierto el _board_. De esta forma, si encontramos algo en el tablero que no está actualizado, se modifica durante el transcurso de la reunión.
 
-Cada integrante del equipo deberá responder a tres sencillas cuestiones: 
-- ¿Qué hizo desde la última reunión? 
-- ¿Qué bloqueos se ha encontrado? 
+Cada integrante del equipo deberá responder a tres sencillas cuestiones:
+- ¿Qué hizo desde la última reunión?
+- ¿Qué bloqueos se ha encontrado?
 - ¿Qué tenía pensado hacer hoy?
 
 Al finalizar la _daily_ suelen surgir otras pequeñas reuniones o incluso nuevas historias de usuario para añadir al tablero. Y como siempre que se añade algo al tablero, hay que volver a priorizarlo.
 
-Después de estas reuniones empieza el desarrollo y aquí la idea es muy simple: el miembro del equipo se autoasigna la primera tarjeta del backlog (o la que haya acordado durante la _daily_), la mueve a la columna "Active" o "In progress" y entonces crea una rama de código fuente a partir de la rama raíz. 
+Después de estas reuniones empieza el desarrollo y aquí la idea es muy simple: el miembro del equipo se autoasigna la primera tarjeta del backlog (o la que haya acordado durante la _daily_), la mueve a la columna "Active" o "In progress" y entonces crea una rama de código fuente a partir de la rama raíz.
 
 Para poner nombre a las ramas utilizaremos los siguientes formatos:
 - Si es una historia de usuario: `feature/[short_description]`
@@ -118,7 +119,7 @@ El caso más común que suelo encontrar en los proyectos que participo es que, c
 
 Semanalmente programamos una reunión de realimentación junto con el _Product Owner_ y los _stakeholders_. Para esa reunión preparamos una "Release" del proyecto. Para ello solemos usar una rama llamada "production", un _Pipeline_ para realizar una _Build_ y una _Release_ que despliega el proyecto en un entorno de desarrollo en Azure.
 
-Durante la reunión semanal, realizamos una demo de la aplicación en el entorno de desarrollo y vamos recorriendo todas las tarjetas marcadas como "Resolved". De esta revisión sacamos nuevas historias y seguro que algún bug. Para la redacción de un bug usamos un formato fijo: 
+Durante la reunión semanal, realizamos una demo de la aplicación en el entorno de desarrollo y vamos recorriendo todas las tarjetas marcadas como "Resolved". De esta revisión sacamos nuevas historias y seguro que algún bug. Para la redacción de un bug usamos un formato fijo:
 
 _When **[steps to reproduce]**  It **[actual behavior]** And it should **[expected behavior]**_
 

@@ -5,19 +5,20 @@ title: 'Asp.Net core data protection'
 author: fernandoescolar
 post_date: 2020-05-13 07:00:41
 layout: post
+tags: aspnetcore "data protection" csharp
 ---
 
 Cuando encontré en [stackoverflow](https://stackoverflow.com/search?q=c%23+encrypt+data) mi primer algoritmo para encriptar datos, fue como entrar por primera vez en Hogwarts, la escuela de magia y hechicería. No entendía muy bien que era eso, pero podía copiar el código y hacer lo mismo en mis aplicaciones<!--break-->.
 
 ![Hogwarts](/public/uploads/2020/05/hogwarts.jpg)
 
-La criptografía, a pesar de ser una ciencia que resulta muy divertida, es también muy complicada. Cada algoritmo, las claves públicas, las privadas, los saltos, base64, los certificados y sus movidas. 
+La criptografía, a pesar de ser una ciencia que resulta muy divertida, es también muy complicada. Cada algoritmo, las claves públicas, las privadas, los saltos, base64, los certificados y sus movidas.
 
 Menos mal que Microsoft ha sacado una librería para hacer toda esta mierda sin tener que copiar código y entiendo más o menos lo mismo acerca de qué es lo que pasa por dentro.
 
 ## Quick start
 
-Cuentan las leyendas que existe un paquete de *nuget* llamado `Microsoft.AspNetCore.DataProtection` que puedes instalar en tus aplicaciones. 
+Cuentan las leyendas que existe un paquete de *nuget* llamado `Microsoft.AspNetCore.DataProtection` que puedes instalar en tus aplicaciones.
 
 Ese paquete contiene el conjuro necesario para evitar que los mortífagos se hagan con el libro de hechizos de Dumbledore. Esto es importante, si no, la batalla del bien contra el mal se decantaría del lado de *El-Que-No-Debe-Ser-Nombrado*.
 
@@ -56,7 +57,7 @@ public IEnumerable<UserListItem> LoadUsers()
       user.Id = _protector.Protect(user.Id);
       user.Email = _protector.Protect(user.Email);
       user.Phone = _protector.Protect(user.Phone);
-      
+
       yield return user;
   }
 }
@@ -102,10 +103,10 @@ public void ProtectsString()
 
   var protector = _provider.CreateProtector(nameof(ProtectsString));
   var unreadable = protector.Protect(expected);
-  
+
   var unprotector = _provider.CreateProtector(nameof(ProtectsString));
   var readable = unprotector.Unprotect(unreadable);
-  
+
   Assert.NotEqual(expected, unreadable);
   Assert.Equal(expected, readable);
 }
@@ -118,7 +119,7 @@ Y también podemos proteger `arrays` de `bytes`:
 public void ProtectsByte()
 {
   const string expected = "this is a random string";
-  
+
   var byteArray = Encoding.UTF8.GetBytes(expected);
   var protector = _provider.CreateProtector(nameof(ProtectsByte));
   var protectedBytes = protector.Protect(byteArray);
@@ -201,7 +202,7 @@ public void CanNotUnprotectExpiredInformation()
 
   var unprotector = _provider.CreateProtector(nameof(CanNotUnprotectExpiredInformation));
   var timeLimitedUnprotector = unprotector.ToTimeLimitedDataProtector();
-  
+
   Assert.Throws<CryptographicException>(() => timeLimitedUnprotector.Unprotect(unreadable));
 }
 ```
@@ -218,7 +219,7 @@ Este *key ring* nos proporciona un lugar donde a pesar de que pase el tiempo, po
 
 Para ello se nos permitirá definir:
 
-### Aplicación 
+### Aplicación
 
 Por defecto, el sistema buscará el nombre de la aplicación según las dll's y el contenido que estamos ejecutando. Pero para estar seguros de que usamos el mismo *key ring* (incluso entre diferentes aplicaciones), lo mejor es poner un nombre en la configuración para nuestra aplicación:
 
@@ -285,7 +286,7 @@ Básicamente, nos encontraremos con un poder absoluto sobre el comportamiento de
 
 - Azure Storage como almacenamiento
 
-- Azure Key Vault como protección 
+- Azure Key Vault como protección
 
 Con estas 3 configuraciones, tendríamos un sistema de protección escalable, seguro y distribuido.
 

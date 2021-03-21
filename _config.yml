@@ -6,6 +6,7 @@ highlighter:      rouge
 plugins:
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-tagging-related_posts
 
 # Permalinks
 permalink:        pretty

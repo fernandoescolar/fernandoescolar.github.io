@@ -5,6 +5,7 @@ title: 'SOLID menos mola (O)'
 author: fernandoescolar
 post_date: 2020-09-23 02:16:54
 layout: post
+tags: solid "best practices"
 ---
 
 La *O* de *SOLID* se refiere al principio de abierto/cerrado, **OCP** por sus siglas en inglés (**O**pen/**C**losed **P**rinciple). Se puede definir como que una clase debe estar abierta a la extensión y cerrada a la modificación. Fue acuñado por primera vez por [Bertrand Meyer](https://twitter.com/Bertrand_Meyer). Pero no fue hasta que [Robert C. Martin](https://twitter.com/unclebobmartin) lo reformuló e introdujo dentro del acrónimo *SOLID*, que se popularizó<!--break-->.

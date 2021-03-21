@@ -5,6 +5,7 @@ title: 'Azure Functions: custom triggers'
 author: fernandoescolar
 post_date: 2019-05-02 07:59:43
 layout: post
+tags: azure functions csharp triggers
 ---
 
 Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear _triggers_ personalizados de _Azure Functions_. Y antes ya tuvimos los de los bindings de [_out_](/2019/04/15/azure-functions-custom-out-bindings/) y de [_in_](/2019/04/23/azure-functions-custom-in-bindings/). Tenéis que entender que tengo otra vida más allá de este blog. Además, creo que al final queda mucho mejor separado<!--break-->. De cualquier forma, si no os gusta así, hago un cuarto artículo juntando el contenido de todos ;).

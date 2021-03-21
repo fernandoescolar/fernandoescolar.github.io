@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2019-01-29 08:59:42
 post_excerpt: ""
 layout: post
+tags: azure functions dotnet
 ---
 
 Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de ejecución rápida y que responde a eventos. Literalmente, se traduce como "sin servidor". Y aquí es donde empieza el conflicto. <!--break-->
@@ -18,8 +19,8 @@ La forma más conocida de programar serverless es usar las plataformas de "Funct
 
 - Serán independientes, pequeñas y basadas en una unidad lógica.
 - Podrán recibir y devolver parámetros.
-- No tendrán estado. 
-- Estarán diseñadas para ser rápidas y efímeras: con cada llamada, se instancia todo lo necesario, se ejecuta la función y libera todos los recursos de la memoria. 
+- No tendrán estado.
+- Estarán diseñadas para ser rápidas y efímeras: con cada llamada, se instancia todo lo necesario, se ejecuta la función y libera todos los recursos de la memoria.
 - Deberán ser escalables. Pudiendo tener tantas instancias como sean necesarias, ejecutándose en el mismo momento. Incluso en paralelo.
 - Sus desencadenadores serán eventos: bien sea una petición HTTP, un evento en una base de datos, la respuesta a un mensaje en una cola...
 
@@ -68,7 +69,7 @@ public static class TodoApi
     [FunctionName("Todo_Get")]
     public static async Task<IActionResult> SelectAsync(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos")]
-        HttpRequest req, 
+        HttpRequest req,
         ILogger log)
     {
         var cnnString = "my_connection_string";
@@ -118,8 +119,8 @@ public static class TodoApi
     [FunctionName("Todo_Get")]
     public static async Task<IActionResult> SelectAsync(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos")]
-        HttpRequest req, 
-        ILogger log, 
+        HttpRequest req,
+        ILogger log,
         ExecutionContext context /*Added ExecutionContext parameter*/)
     {
         var cnnString = GetConnectionString(log, context); // call GetConnectionString(..) method
@@ -129,7 +130,7 @@ public static class TodoApi
             var todos = await connection.QueryAsync<Todo>("select Id, Created, Text, Done from dbo.Todos");
 
             if (todos.Count() == 0) return new EmptyResult();
-            return new OkObjectResult(todos); 
+            return new OkObjectResult(todos);
         }
     }
 }
@@ -152,9 +153,9 @@ Y para recogerlo, simplemente añadimos el parámetro a la función:
 [FunctionName("Todo_GetById")]
 public static async Task<IActionResult> SelectByIdAsync(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos/{id}")] /* the 'id' parameter in the Route*/
-    HttpRequest req, 
-    ILogger log, 
-    ExecutionContext context, 
+    HttpRequest req,
+    ILogger log,
+    ExecutionContext context,
     string id /*the 'id' parameter as a function parameter*/)
 {
     // ...
@@ -250,7 +251,7 @@ public static class TodoApi
         [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todos/{id}")]
         HttpRequest req,
         ILogger log,
-        ExecutionContext context, 
+        ExecutionContext context,
         string id)
     {
         var requestBody = await new StreamReader(req.Body).ReadToEndAsync();

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-04-24 17:10:00
 layout: post
 categories: video
+tags: azure devops alm github git iac monitoring cac
 ---
 
 En esta sesión del Global Azure Bootcamp 2020 nuestros expertos van a repasar la actualidad del universo Azure DevOps y su ecosistema. Se abordan temas tales como Github, Ephimeral Agents, IaC, monitorización, MLOps y otras muchas cosas más<!--break-->.

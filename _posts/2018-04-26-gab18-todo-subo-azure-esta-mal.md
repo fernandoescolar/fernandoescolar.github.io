@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2018-04-26 00:00:00
 layout: post
 categories: video
+tags: azure webapp appservice cosmos
 ---
 
 "Azure es muy lento" o "Me voy a amazon" son solo un par de las frases que puedes oir cuando ayudas a alguien con las migración de su aplicación on-premises (que en la mayoría de los casos es del tipo on-my-laptop) a Microsoft Azure. Pero ¿Que hay detrás de este tipo de comentarios?<!--break-->

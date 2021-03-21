@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-10-19 02:16:54
 layout: post
 categories: video
+tags: azure webapp appservice
 ---
 Tengo una aplicación Web que podría calificarse en todo sentido como una web normal. Una WebApp que vive en un pacífico hosting en un data center empresarial, donde se ha desarrollado al igual que otras tantas aplicaciones. Pero ese día no fue para nada normal: nuestra aplicación debería subir a la nube y aguantar 100 millones de usuarios<!--break-->.
 

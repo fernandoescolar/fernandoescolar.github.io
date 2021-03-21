@@ -16,6 +16,7 @@ layout: default
   <li><a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a coffee"><i class="fa fa-beer"></i> Buy me a beer</a></li>
 </ul>
 
+{% if site.related_posts.size >= 1 %}
 <div class="related">
   <h2>Relacionado (o no)</h2>
   <ul class="related-posts">
@@ -31,14 +32,15 @@ layout: default
     {% endfor %}
   </ul>
 </div>
+{% endif %}
 
 <div>
   ¿No encuentras los comentarios? <a href="/2020/04/11/no-comments/">más información</a>.
 </div>
 
 <script type="text/javascript">
-var links = document.querySelectorAll('.post a');  
-for (var i = 0, length = links.length; i < length; i++) {  
+var links = document.querySelectorAll('.post a');
+for (var i = 0, length = links.length; i < length; i++) {
     if (links[i].hostname != window.location.hostname) {
         links[i].target = '_blank';
     }

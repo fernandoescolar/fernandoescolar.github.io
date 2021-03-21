@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2016-02-16T09:52:03.000Z
 post_excerpt: ""
 layout: post
+tags: git "best practices"
 ---
 
 El sistema de control de versión que más se ha extendido en los últimos años posiblemente sea Git. Algo que no ha pasado desapercibido para los desarrolladores de Microsoft. Así que han decidido integrarlo en todas sus herramientas. Y este hecho... Me ha destrozado la vida.
@@ -121,7 +122,7 @@ $ git merge my-branch
 De esta forma, los administradores de VSTS tiran balones fuera. Que los merge los haga cada desarrollador. Que nos comamos nosotros el marrón. Y lo que es peor, al haber muchos commits, es muy fácil encontrar quien ha metido la pata en el código. Sigue la caza de brujas...
 
 ## Es complicado
-No sé si os habéis percatado de que voy poniendo code-snippets a lo largo de todo este escrito. Está hecho a posta. Si hay una forma de manejar bien Git y sacarle todo el jugo es usar comandos de consola. Como si estuvieramos en el medievo. 
+No sé si os habéis percatado de que voy poniendo code-snippets a lo largo de todo este escrito. Está hecho a posta. Si hay una forma de manejar bien Git y sacarle todo el jugo es usar comandos de consola. Como si estuvieramos en el medievo.
 
 Alguno me dirá que Visual Studio tiene soporte para Git. Pero realmente no tiene todos los comandos implementados. Sí la mayoría. Pero no todos. Para hacer ciertas operaciones al final tienes que abrir la consola. También hay gente que usa Source Tree. Una aplicación de Atlassian. Me niego en rotundo a instalarme más aplicaciones... Aunque la recomiende Martin Fowler.
 

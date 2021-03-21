@@ -5,6 +5,7 @@ title: 'SOLID menos mola (L)'
 author: fernandoescolar
 post_date: 2020-09-30 02:16:54
 layout: post
+tags: solid "best practices"
 ---
 
 La *L* de *SOLID* se refiere al principio de sustitución de Liskov o **LSP** por sus siglas en inglés (**L**iskov **S**ubstitution  **P**rinciple). Se puede definir como que cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas. Una definición muy compleja para un concepto mucho más simple. Pero con una historia algo truculenta detrás<!--break-->.

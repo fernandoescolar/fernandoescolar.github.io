@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-12-09 21:02:25
 layout: post
 categories: video
+tags: net5 dotnet csharp
 ---
 Al fin ha llegó el día de la publicación de **.Net 5 - *A unified platform***. Y todo el mundo tiene dudas: ¿Es tán unificada como decían? ¿Es fácil actualizar a esta nueva versión? ¿Cuando sacan la 5.1? ¿Al final mola tanto C# 9 como parecía? ¿Qué novedades trae todo esto? ¿Estamos ante un cambio de ciclo?<!--break-->.
 

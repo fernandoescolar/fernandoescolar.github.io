@@ -5,6 +5,7 @@ title: 'Microsoft Graph'
 author: fernandoescolar
 post_date: 2019-04-02 07:40:40
 layout: post
+tags: azure microsoft graph
 ---
 
 Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al principio, solo se notan pequeños y casuales atisbos. Después de una gran aventura de autoconocimiento y superación personal, el protagonista consigue dominar este poder oculto y convertirse en un verdadero héroe<!--break-->. Esto es lo que le pasa a ~~Naruto~~ Microsoft Graph, que es como Daniel Larusso.

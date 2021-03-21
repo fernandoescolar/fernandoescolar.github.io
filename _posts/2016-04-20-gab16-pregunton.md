@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2016-04-20 00:00:00
 layout: post
 categories: video
+tags: azure bootcamp
 ---
 
 Cierre del Global Azure Bootcamp 2016 con el concurso "El Preguntón".<!--break-->

@@ -5,9 +5,10 @@ title: 'Unit testing tips'
 author: fernandoescolar
 post_date: 2020-04-22 09:15:41
 layout: post
+tags: "best practices" unit test csharp
 ---
 
-Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo nos encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden<!--break-->. 
+Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo nos encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden<!--break-->.
 
 Lo que está claro es que no todos hacemos todos los tests que deberíamos. Y la culpa es de nuestra naturaleza developer...
 
@@ -127,7 +128,7 @@ En las librerías de Test Doubles de .net lo más común es encontrar objetos *M
 public void Password_is_valid_When_value_is(string password)
 {
     // Arrange
-    var dummy = new PasswordOptions() 
+    var dummy = new PasswordOptions()
     {
         RequireDigit = true,
         RequireLetter = true,
@@ -140,7 +141,7 @@ public void Password_is_valid_When_value_is(string password)
 
     // Act
     var actual = target.Validate(password);
-    
+
     // Assert
     Assert.True(actual.Succeded);
 }
@@ -171,7 +172,7 @@ public class PasswordService_Validate_Should
 
 public class PasswordService_Hash_Should
 {
-  public void Throw_argument_exception_When_password_is_null(); 
+  public void Throw_argument_exception_When_password_is_null();
   public void Throw_argument_exception_When_password_is_empty();
   public void Return_unreadable_hash_When_password_is_valid();
   public void Return_the_same_unreadable_hash_When_password_is_the_same();
@@ -220,7 +221,7 @@ Existe un atributo en `xunit` que nos ayudará a clasificar los tests: `Trait`.
 [Trait("Category", "Unit")]
 [Trait("Class", nameof(UserService))]
 [Trait("Method", nameof(UserService.DeleteUser))]
-public class DeleteUserService_DeleteUser_Should 
+public class DeleteUserService_DeleteUser_Should
 {
 }
 ```

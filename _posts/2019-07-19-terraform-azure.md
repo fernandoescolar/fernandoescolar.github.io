@@ -5,6 +5,7 @@ title: 'Terraform con Azure'
 author: fernandoescolar
 post_date: 2019-07-19 07:51:23
 layout: post
+tags: azure terraform
 ---
 
 La terraformación es una serie de técnicas que, aplicadas en conjunto, conseguirían dotar a un planeta o asteroide inerte, de una serie de características semejantes a las de la tierra. De esta forma se conseguiría un planeta habitable. Y aunque pueda parecer pomposo (que lo es), Terraform va de eso mismo, pero con el *cloud*.<!--break--> No es que queramos que la nube sea habitable para un ser humano, pero sí para nuestras aplicaciones.
@@ -101,7 +102,7 @@ resource "tipo_de_recurso" "nombre_interno_recurso" {
     propiedad3 {
         sub_propiedad1 = sub_valor1
         sub_propiedad2 = sub_valor2
-    }  
+    }
 }
 ```
 
@@ -416,7 +417,7 @@ output "name" {
 }
 ```
 
-Aquí podemos observar una novedad: las variables de salida. 
+Aquí podemos observar una novedad: las variables de salida.
 
 Como se puede ver, es muy simple declararlas: basta con poner `output`, el nombre de la variable y una propiedad donde encontraremos el valor.
 
@@ -430,7 +431,7 @@ resource "azurerm_resource_group" "mi_resource_group" {
 
 module "webapp" {
   source              = "./modules/webapp"
-  
+
   resource_group_name = azurerm_resource_group.mi_resource_group.name
   location            = azurerm_resource_group.mi_resource_group.location
   tier                = "Standard"
@@ -557,7 +558,7 @@ Pero vamos a lo que a todos interesa: la pelea de gallos.
 + La validación sintáctica previa con el comando "plan" de Terraform
 + Soporta ejecución de ciertas partes de infraestructura vía plantillas ARM
 + Terraform vale para otras nubes diferentes a Azure
-= Herramienta de comandos multi plataforma 
+= Herramienta de comandos multi plataforma
 - Mejores herramientas para edición de ARM (hoy en día)
 - Puedes sacar plantillas ARM de recursos ya creados en Azure
 - ARM da más detalles en los mensajes de error de Azure
@@ -577,7 +578,7 @@ ARM y Terraform son herramientas semejantes. Vienen a solucionar el problema de 
 + Terraform vale para otras nubes diferentes a Azure
 + Si usas "Makefiles" para Azure CLI, necesitas instalar otra herramienta más
 = La sintaxis es sencilla de entender, tanto en comandos como en "hcl"
-= Herramientas multi plataforma 
+= Herramientas multi plataforma
 = Ninguna de las dos plataformas soporta todos los recursos de Azure
 = En ambos se pueden usar plantillas de ARM
 - Las dependencias circulares son un verdadero problema de Terraform y muy sencillo de solventar usando Azure CLI

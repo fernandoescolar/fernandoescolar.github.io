@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2019-02-12 07:18:25
 post_excerpt: ""
 layout: post
+tags: azure functions typescript
 ---
 
 No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos explicativos que su autor ha añadido, vais directamente al contenido de los _code snipets_ y vais copiando y pegando... No os ha pasado que ignoráis la prosa que tanto tiempo ha costado escribir y solo leéis el código, porque ya os resulta bastante auto explicativo... <!--break--> Pues hoy es el día en el que he entendido vuestras necesidades. Voy a poner código y reducir mis comentarios a la mínima expresión.
@@ -14,7 +15,7 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
   <span>TypeScript con Azure Functions</span>
   <div class="tip">
     <p>
-      Cada día que paso trabajando con TypeScript en un contexto de equipo, pienso en lo afortunados que somos de no haber elegido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho los demás y poder interactuar con otros artefactos fácilmente gracias al <i>intellisense</i>. 
+      Cada día que paso trabajando con TypeScript en un contexto de equipo, pienso en lo afortunados que somos de no haber elegido JavaScript. Tener un lenguaje tipado no solo te sirve de red de seguridad, también te ayuda a entender el código que han hecho los demás y poder interactuar con otros artefactos fácilmente gracias al <i>intellisense</i>.
     </p>
     <p>
       El problema es que cuando empezamos a trabajar con Azure Functions nos encontramos con que podemos desarrollar con los lenguajes C#, Java, JavaScript o Python, pero no con TypeScript. Así que aprovechando que estoy un poco aburrido, he decidido invertir un poco de mi preciado tiempo, montando lo que llamaríamos un <i>boilerplate</i>.
@@ -53,7 +54,7 @@ No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos 
   <span>Instalamos las Azure Functions Tools.</span>
   <div class="tip">
     <p>
-      Microsoft ha publicado una herramienta de consola para hacer que la creación de <i>Functions</i> sea más sencilla. Para ello tendremos que instalarla como dependencia de desarrollo de nuestro proyecto, o bien como herramienta global, cambiando el parámetro <i>--save-dev</i> por <i>-g</i>. 
+      Microsoft ha publicado una herramienta de consola para hacer que la creación de <i>Functions</i> sea más sencilla. Para ello tendremos que instalarla como dependencia de desarrollo de nuestro proyecto, o bien como herramienta global, cambiando el parámetro <i>--save-dev</i> por <i>-g</i>.
     </p>
     <p>
       Personalmente prefiero instalar todas las dependencias de un proyecto de forma local y no global, ya que no todo el mundo tiene por qué tener instalados los mismos paquetes <i>npm</i>, ni tampoco creo que desarrollar un proyecto deba implicar instalar paquetes globales. Pero esto es tan solo una opinión, cada uno es libre de instalar lo que considere de forma global.
@@ -218,7 +219,7 @@ python (preview)
 
 ```bash
 λ npm run new
-  
+
 Select a template:
 Azure Blob Storage trigger
 Azure Cosmos DB trigger

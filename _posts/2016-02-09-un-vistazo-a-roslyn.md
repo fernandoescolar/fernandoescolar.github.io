@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2016-02-09T19:24:03.000Z
 post_excerpt: ""
 layout: post
+tags: dotnet roslyn
 ---
 
 El número de resultados que encuentras al buscar "Roslyn" es de 9-13 millones. Está claro que está de moda. Pero ¿qué es Roslyn? ¿y por qué debería importarme?
@@ -73,7 +74,7 @@ public class BadWordsRulesAnalyzer : DiagnosticAnalyzer
         var name = namedTypeSymbol.Name;
         AnalyzeName(context, name, namedTypeSymbol.Locations[0]);
     }
-    
+
     private static void AnalyzeName(SymbolAnalysisContext context, string name, Location location)
     {
         if (!name.ContainsBadWords())
@@ -85,7 +86,7 @@ public class BadWordsRulesAnalyzer : DiagnosticAnalyzer
 }
 ```
 
-Al ejecutar se nos abrirá una nueva instancia de Visual Studio. Si abrimos un proyecto, veremos que nos marcará los nombres de las clases que no contengan palabras mal sonantes. 
+Al ejecutar se nos abrirá una nueva instancia de Visual Studio. Si abrimos un proyecto, veremos que nos marcará los nombres de las clases que no contengan palabras mal sonantes.
 
 Y a partir de aquí es donde viene lo bueno. Podemos hacer que el sistema nos proponga cómo corregir estos errores. Esto lo podríamos hacer modificando el archivo "CodeFix":
 
@@ -167,7 +168,7 @@ A día de hoy, imagino que este árbol solo lo conocen los programadores de Rosl
 
 Otra de las opciones es elegir el template de "Code Refactoring (VSIX)". Esto es un template semejante al anterior. Pero haciendo solo la mitad del trabajo. Y lo mejor de todo es que más de la mitad del código que ya hemos escrito, nos sirve aquí.
 
-Cuando quieres proponer una modificación, pero no quieres que aparezca un aviso o que se marque aquel trozo de código que quieres modificar, tenemos que usar los objetos "CodeRefactoringProvider". 
+Cuando quieres proponer una modificación, pero no quieres que aparezca un aviso o que se marque aquel trozo de código que quieres modificar, tenemos que usar los objetos "CodeRefactoringProvider".
 
 Para tener la misma funcionalidad que en el ejemplo anterior, solo tendríamos que insertar este código en la clase que se nos ha generado:
 
@@ -185,7 +186,7 @@ internal class BadWordsRefactorProvider : CodeRefactoringProvider
 
         var token = classDeclaration.Identifier;
         if (token.Text.ContainsBadWords()) return;
-            
+
         var action = CodeAction.Create("Add a Bad Word", c => AddBadWord(context.Document, token, c));
         context.RegisterRefactoring(action);
     }

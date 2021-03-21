@@ -5,6 +5,7 @@ title: 'Personalización de Windows Terminal'
 author: fernandoescolar
 post_date: 2020-11-18 01:06:54
 layout: post
+tags: terminal bash powershell windows git cmd cmder
 ---
 
 Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece *3\|173*, es que eres *3\|173*. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante<!--break-->.

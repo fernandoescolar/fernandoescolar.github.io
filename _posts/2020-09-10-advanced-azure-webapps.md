@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-09-10 00:00:00
 layout: post
 categories: video
+tags: azure webapp appservice
 ---
 
 La grabación del evento de Twitch de [Catzure](https://twitter.com/CAT_zure) junto con [Robert Bermejo](https://twitter.com/robertbemejo). En esta sesión os enseñamos algunos de esos truquillos que solemos utilizar para mantener nuestras aplicaciones con vida a pesar de que el mundo las quiera matar<!--break-->.

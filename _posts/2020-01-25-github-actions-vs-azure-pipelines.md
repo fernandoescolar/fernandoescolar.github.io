@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-01-25 00:00:00
 layout: post
 categories: video
+tags: azure devops github pipelines actions
 ---
 
 Analizaremos a fondo Github Actions y Azure Pipelines en busca de sus ventajas y sus puntos débiles. Será un combate a muerte entre estas dos tecnologías mellizas para gestionar nuestro CI/CD<!--break-->.

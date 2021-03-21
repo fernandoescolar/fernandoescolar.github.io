@@ -5,6 +5,7 @@ title: 'Autenticando una API con JWT'
 author: fernandoescolar
 post_date: 2019-03-12 05:26:33
 layout: post
+tags: oauth csharp jwt
 ---
 
 Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación+autorización de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo<!--break--> [guiño][guiño].

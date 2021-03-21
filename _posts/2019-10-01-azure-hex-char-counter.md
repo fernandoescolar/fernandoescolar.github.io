@@ -5,9 +5,10 @@ title: 'Azure hex-char-counter tutorial'
 author: fernandoescolar
 post_date: 2019-10-01 13:51:23
 layout: post
+tags: azure webapp appservice node
 ---
 
-El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El objetivo era conseguir el tamaño de una cadena de texto en formato hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?<!--break--> 
+El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El objetivo era conseguir el tamaño de una cadena de texto en formato hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?<!--break-->
 
 La respuesta a esta pregunta es que de una forma muy eficiente. Si no, no hubiéramos escrito este artículo... Ya teníamos proyecto. Y su code-name: *HCC* (**H**exadecimal-**C**haracters-**C**ounter). Y he aquí como lo ejecutamos:
 
@@ -65,7 +66,7 @@ El contenido de este archivo debería ser parecido a este:
 ```xml
 <configuration>
   <system.webServer>
-    <webSocket enabled="false" />    
+    <webSocket enabled="false" />
     <handlers>
       <add name="iisnode" path="index.js" verb="*" modules="iisnode"/>
     </handlers>
@@ -79,8 +80,8 @@ El contenido de este archivo debería ser parecido a este:
         </rule>
       </rules>
     </rewrite>
-	  <httpErrors existingResponse="PassThrough" />      
-  </system.webServer> 
+	  <httpErrors existingResponse="PassThrough" />
+  </system.webServer>
 </configuration>
 ```
 

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-04-04 00:00:00
 layout: post
 categories: video
+tags: quantum programming
 ---
 
 Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?<!--break-->

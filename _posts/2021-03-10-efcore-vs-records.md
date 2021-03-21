@@ -5,6 +5,7 @@ title: 'EF Core vs. Records'
 author: fernandoescolar
 post_date: 2021-03-10 03:21:02
 layout: post
+tags: csharp ef efcore entity framework core record net5 dotnet
 ---
 No cabe duda de que los *tipos registro* son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo *.Net*<!--break-->. Es una oda de rima libre, que une `record` con `with`, y allí donde no llega aparece `init`, a la forma en la que nos gustaría programar.
 
@@ -14,12 +15,8 @@ Bueno, existe una pequeña aldea poblada de irreductibles ensamblados que aún n
 
 > **TL;DR** todo funciona bien, pero el `ChangeTracker` no es fiable del todo debido a la inmutabilidad.
 
-- [Primeros pasos](#primeros-pasos)
-- [Insert](#insert)
-- [Delete](#delete)
-- [Update](#update)
-- [Ejemplo más complejo](#ejemplo-complejo)
-- [Conclusiones](#conclusiones)
+* TOC
+{:toc}
 
 ## Primeros pasos
 

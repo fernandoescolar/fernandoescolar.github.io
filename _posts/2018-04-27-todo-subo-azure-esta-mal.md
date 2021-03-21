@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2017-04-27 09:06:12
 post_excerpt: ""
 layout: post
+tags: azure webapp appservice cosmos
 ---
 
 Hoy he venido contaros mis experiencias ayudando a diferentes empresas en la subida de sus aplicaciones a azure, y concretamente a azure PaaS. Así que en realidad no son mis experiencias, son las de esas empresas. Y si soy totalmente sincero, no son sus experiencias, en realidad de lo que os voy a hablar es de sus quejas.<!--break-->
@@ -146,7 +147,7 @@ Estos servidores suelen ocultar las operaciones que tienen una performance fatal
 
 - Lo segundo que debemos hacer es activar el SQL Database Advisor, que al igual que el de redis, nos va a avisar de aquellos defectos típicos que encuentre. E incluso nos propondrá realizar modificaciones en el esquema de la base de datos. Como por ejemplo, proponiéndonos índices nuevos.
 
-- Supongo que no soy el primero en decirlo, pero no almacenéis la lógica de negocio embebida en la base de datos en forma de stored procedures con transacciones. Si estos procesos son muy largos, al final lo que vais a conseguir es bloquear muchas tablas y como consecuencia a todos los demás usuarios que acceden a la web. 
+- Supongo que no soy el primero en decirlo, pero no almacenéis la lógica de negocio embebida en la base de datos en forma de stored procedures con transacciones. Si estos procesos son muy largos, al final lo que vais a conseguir es bloquear muchas tablas y como consecuencia a todos los demás usuarios que acceden a la web.
 
 - Usad la herramienta que nos proporciona el portal de azure "query performance insight" para poder medir la eficiencia de vuestras queries.
 
@@ -196,11 +197,11 @@ Y hemos llegado a la penúltima frase que más hemos oído migrando aplicaciones
 
 - Azure no es válido para todo el mundo. Si una empresa tiene un pequeño aplicativo en un hosting de 100€ al año que es muy lento y no tiene SLAs, azure le va a resultar muy caro. Posiblemente la plataforma no sea para ellos.
 
-- Pero si tenemos en cuenta que 24x7, los SLAs de 99,9[5|9] de disponibilidad, que por ejemplo 1Tb con sus 3 replicas solo cuestan 16 € al mes... Creo que ya lo hemos dicho todo... 
+- Pero si tenemos en cuenta que 24x7, los SLAs de 99,9[5|9] de disponibilidad, que por ejemplo 1Tb con sus 3 replicas solo cuestan 16 € al mes... Creo que ya lo hemos dicho todo...
 
 ### SI no me lo arregla Microsoft, ME VOY A IR A AMAZON
 
-Y por último el ganador. La persona que como no está contenta con su aplicación te suelta una amenaza. A mi ni me va ni me viene. Yo no trabajo en Microsoft. Pero la gente te lo dice igualmente. 
+Y por último el ganador. La persona que como no está contenta con su aplicación te suelta una amenaza. A mi ni me va ni me viene. Yo no trabajo en Microsoft. Pero la gente te lo dice igualmente.
 
 ![Me voy a amazon](/public/uploads/2018/04/Slide25.png)
 
