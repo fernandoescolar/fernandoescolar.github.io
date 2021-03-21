@@ -44,6 +44,7 @@ layout: default
                 <a href="{{ post.url }}">
                   {{ post.title }}
                   <small>{{ post.date | date_to_string }}</small>
+                  <small>{{ matchingTags | join: ", " }}</small>
                 </a>
               </h3>
             </li>
