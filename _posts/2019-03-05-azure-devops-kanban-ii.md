@@ -5,7 +5,7 @@ title: 'Método Kanban con Azure DevOps (y 2)'
 author: fernandoescolar
 post_date: 2019-03-05 07:58:14
 layout: post
-tags: azure devops kanban "best practices"
+tags: azure devops kanban best-practices
 ---
 
 Si ya tienes claro qué es el Método Kanban, pero no tienes del todo claro cómo aplicarlo en una metodología; si ya aplicas este método, pero te interesan las experiencias de otros equipos; o si por el contrario, tu objetivo en la vida es demostrarle a todo el mundo lo equivocado que está: te va a encantar lo que viene a continuación.<!--break-->

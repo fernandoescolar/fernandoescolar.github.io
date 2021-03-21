@@ -5,7 +5,7 @@ title: 'Unit testing tips'
 author: fernandoescolar
 post_date: 2020-04-22 09:15:41
 layout: post
-tags: "best practices" unit test csharp
+tags: best-practices unit test csharp
 ---
 
 Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo nos encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden<!--break-->.

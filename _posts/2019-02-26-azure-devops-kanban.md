@@ -5,7 +5,7 @@ title: 'Método Kanban con Azure DevOps'
 author: fernandoescolar
 post_date: 2019-02-26 06:35:21
 layout: post
-tags: azure devops kanban "best practices"
+tags: azure devops kanban best-practices
 ---
 
 Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la idea de este artículo es que aprendas a guarrear Azure DevOps y así puedas dejar las paredes limpias. Todos te lo agradecerán.<!--break-->

@@ -5,7 +5,7 @@ author: fernandoescolar
 post_date: 2016-02-16T09:52:03.000Z
 post_excerpt: ""
 layout: post
-tags: git "best practices"
+tags: git best-practices
 ---
 
 El sistema de control de versión que más se ha extendido en los últimos años posiblemente sea Git. Algo que no ha pasado desapercibido para los desarrolladores de Microsoft. Así que han decidido integrarlo en todas sus herramientas. Y este hecho... Me ha destrozado la vida.
