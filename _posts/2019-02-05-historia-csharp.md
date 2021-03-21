@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2019-02-05 05:08:11
 post_excerpt: ""
 layout: post
-tags: csharp history
+tags: csharp dotnet history
 ---
 
 Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta afirmación puede demostrarse hoy en día echando un vistazo a un medio al que todo el mundo tiene acceso: internet. Una plataforma donde todos podemos escribir _nuestra propia historia_. Así pues, al igual que cualquier otro ignorante de la red, os voy a dar mi versión de la historia de C#. Y además os aseguro que esta sí cuenta lo que sucedió de verdad de la buena.<!--break-->

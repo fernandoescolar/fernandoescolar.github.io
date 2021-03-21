@@ -5,7 +5,7 @@ title: 'Azure Functions con .NET 5'
 author: fernandoescolar
 post_date: 2021-03-24 02:21:02
 layout: post
-tags: csharp azure functions net5 dotnet
+tags: azure functions net5 dotnet
 ---
 
 Ha tardado más de lo que esperábamos pero ya está aquí. Después de meses de espera y escondiendo el [anuncio](https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916) dentro de un roadmap de las próximas versiones de *.Net*, las *dotNet Isolated Functions* pasan a RTM<!--break-->. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
