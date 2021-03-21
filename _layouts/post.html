@@ -23,9 +23,9 @@ layout: default
         {% if post.url != page.url %}
             {% assign matchingTags = "" | split: ","  %}
     
-            {% for tag in post.tags %}
+            {% for tag in post.tags | split: " " %}
                 {% assign currentPostTag = tag | downcase %}
-                {% assign tagsPage = page.tags | downcase %}
+                {% assign tagsPage = page.tags | split: " " | downcase %}
                 {% if tagsPage contains currentPostTag %}
                     {% assign matchingTags = matchingTags | push: currentPostTag %}    
                 {% endif %}
