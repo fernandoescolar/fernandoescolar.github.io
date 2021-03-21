@@ -5,7 +5,7 @@ title: 'Asp.Net core data protection'
 author: fernandoescolar
 post_date: 2020-05-13 07:00:41
 layout: post
-tags: aspnetcore "data protection" csharp
+tags: aspnetcore data protection dotnet
 ---
 
 Cuando encontré en [stackoverflow](https://stackoverflow.com/search?q=c%23+encrypt+data) mi primer algoritmo para encriptar datos, fue como entrar por primera vez en Hogwarts, la escuela de magia y hechicería. No entendía muy bien que era eso, pero podía copiar el código y hacer lo mismo en mis aplicaciones<!--break-->.
