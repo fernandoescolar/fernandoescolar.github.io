@@ -10,20 +10,26 @@ tags: azure functions net5 dotnet
 
 Ha tardado más de lo que esperábamos pero ya está aquí. Después de meses de espera y escondiendo el [anuncio](https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916) dentro de un roadmap de las próximas versiones de *.Net*, las *dotNet Isolated Functions* pasan a RTM<!--break-->. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
 
-Para conseguir compatibilidad con *.Net 5* se ha cambiado la estrategia. En lugar de actualizar todos los paquetes y crear una nueva versión de *Azure Functions*, se ha creado un nuevo *worker* llamado *dotnet-isolated*. Esto es una suerte de *host* que lanza nuestro ensamblado de funciones como un proceso aislado. Para la comunicación entre el proceso del *host* y el de las funciones se ha utilizado un canal *gRPC*. La idea es que, con este modelo podremos incluir todo lenguaje y framework para trabajar con *Azure Functions*. Aunque la realidad es que, hoy en día solo se soporta *.Net 5*.
+Para conseguir compatibilidad con *.Net 5* se ha cambiado la estrategia. En lugar de actualizar todos los paquetes y crear una nueva versión de *Azure Functions*, se ha creado un nuevo *worker* llamado *dotnet-isolated*. Esto es una suerte de *host* que lanza nuestro ensamblado de funciones como un proceso aislado. Para la comunicación entre el proceso del *host* y el de las funciones se ha utilizado un canal *gRPC*. La idea es que, con este modelo podremos incluir todo lenguaje y framework para trabajar con *Azure Functions*. Aunque la realidad es que, hoy en día solo soporta *.Net 5*.
+
+Este nuevo modelo de desarrollo nos va a suponer unos cuantos cambios en nuestros desarrollos. Vamos a echar un vistazo:
 
 * TOC
 {:toc}
 
 ## Quick Start
 
+Para empezar a trabajar con *Azure Functions* para *.Net 5* tendremos que crear o adaptar un proyecto ya existente. 
 
+Necesitaremos un archivo `host.json`:
 
 ```json
 {
     "version": "2.0"
 }
 ```
+
+Si ya tenemos el archivo `local.settings.json` tendremos que reemplazar el tipode *worker* a `dotnet-isolated`: 
 
 ```diff
 {
@@ -36,6 +42,10 @@ Para conseguir compatibilidad con *.Net 5* se ha cambiado la estrategia. En luga
     "disabled": false
 }
 ```
+
+O bien crear un archivo nuevo.
+
+Sobre el tipo de proyecto nos servirá uno de tipo consola de *.Net 5* añadiendo las referencias necesarias:
 
 ```diff
  <Project Sdk="Microsoft.NET.Sdk">
@@ -61,6 +71,12 @@ Para conseguir compatibilidad con *.Net 5* se ha cambiado la estrategia. En luga
   </ItemGroup>
  </Project>
 ```
+
+Aquí definiremos la versión 3 de *Azure Functions* y una serie de paquetes de *nuget* que nos proveerán del entorno necesario para ejecutar nuestro proyecto al amparo de el *host* de las funciones:
+- `Microsoft.Azure.Functions.Worker`
+- `Microsoft.Azure.Functions.Worker.Sdk`
+
+Finalmente, tendremos que añadir o bien editar el archivo `Program.cs` para crear el host de las *Isolated Functions* y ejecutarlo:
 
 ```csharp
 static async Task Main(string[] args)
