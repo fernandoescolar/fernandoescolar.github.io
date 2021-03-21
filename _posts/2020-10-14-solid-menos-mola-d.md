@@ -10,7 +10,7 @@ tags: solid best-practices
 
 La *D* de *SOLID* se refiere al principio de inversión de dependencia o **DIP** por sus siglas en inglés (**D**ependency **I**nversion **P**rinciple). Se puede resumir con que una clase debe depender de las abstracciones, no de las concreciones. Aunque [Robert C. Martin](https://twitter.com/unclebobmartin) es mucho más específico y realiza una definición dividida en dos partes<!--break-->:
 
-> A. *Los módulos de alto nivel no deben depender de bajo módulos de nivel. Ambos deben depender de las abstracciones.*
+> A. *Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de las abstracciones.*
 
 > B. *Las abstracciones no deben depender de los detalles. Los detalles deben depender de las abstracciones.*
 
