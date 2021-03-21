@@ -191,7 +191,7 @@ public class Rectangle
 
 public class Square : Rectangle
 {
-  public Rectangle(int size) : base(size, size)
+  public Square(int size) : base(size, size)
   {
   }
 }
