@@ -38,7 +38,7 @@ layout: default
             {% else %}
                 {% assign tagsTotal = tagsTotal  %}
             {% endif %}
-
+            |
             <li>
               <h3>
                 <a href="{{ post.url }}">
@@ -54,7 +54,6 @@ layout: default
 
 {% assign relatedPosts = posts | split: '|' | sort | reverse %}
 
-{% if showRelatedPosts.size >= 1 %}
 <div class="related">
   <h2>Relacionado (o no)</h2>
   <ul class="related-posts">
@@ -63,7 +62,6 @@ layout: default
     {% endfor %}
   </ul>
 </div>
-{% endif %}
 
 <div>
   ¿No encuentras los comentarios? <a href="/2020/04/11/no-comments/">más información</a>.
