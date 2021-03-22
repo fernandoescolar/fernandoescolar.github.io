@@ -8,7 +8,7 @@ layout: post
 tags: azure functions net5 dotnet
 ---
 
-Ha tardado más de lo que esperábamos pero ya está aquí. Después de meses de espera y escondiendo el [anuncio](https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916) dentro de un roadmap de las próximas versiones de *.Net*, las *dotNet Isolated Functions* pasan a RTM<!--break-->. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
+Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el [anuncio](https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916) dentro de un roadmap de las próximas versiones de *.Net*, las *dotnet Isolated Functions* pasan a RTM<!--break-->. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
 
 Para conseguir compatibilidad con *.Net 5* se ha cambiado la estrategia. En lugar de actualizar todos los paquetes y crear una nueva versión de *Azure Functions*, se ha creado un nuevo *worker* llamado *dotnet-isolated*. Esto es una suerte de *host* que lanza nuestro ensamblado de funciones como un proceso aislado. Para la comunicación entre el proceso del *host* y el de las funciones se ha utilizado un canal *gRPC*. La idea es que, con este modelo podremos incluir todo lenguaje y framework para trabajar con *Azure Functions*. Aunque la realidad es que, hoy en día solo soporta *.Net 5*.
 
@@ -19,7 +19,7 @@ Este nuevo modelo de desarrollo nos va a suponer unos cuantos cambios en nuestro
 
 ## Quick Start
 
-Para empezar a trabajar con *Azure Functions* para *.Net 5* tendremos que crear o adaptar un proyecto ya existente. 
+Para empezar a trabajar con *Azure Functions* para *.Net 5* tendremos que crear o adaptar un proyecto ya existente.
 
 Necesitaremos un archivo `host.json`:
 
@@ -29,7 +29,7 @@ Necesitaremos un archivo `host.json`:
 }
 ```
 
-Si ya tenemos el archivo `local.settings.json` tendremos que reemplazar el tipode *worker* a `dotnet-isolated`: 
+Si ya tenemos el archivo `local.settings.json` tendremos que reemplazar el tipo de *worker* a `dotnet-isolated`:
 
 ```diff
 {
@@ -72,11 +72,11 @@ Sobre el tipo de proyecto nos servirá uno de tipo consola de *.Net 5* añadiend
  </Project>
 ```
 
-Aquí definiremos la versión 3 de *Azure Functions* y una serie de paquetes de *nuget* que nos proveerán del entorno necesario para ejecutar nuestro proyecto al amparo de el *host* de las funciones:
+Aquí definiremos la versión 3 de *Azure Functions* y una serie de paquetes de *nuget* que nos proveerán del entorno necesario para ejecutar nuestro proyecto al amparo del proceso anfitrión de las funciones:
 - `Microsoft.Azure.Functions.Worker`
 - `Microsoft.Azure.Functions.Worker.Sdk`
 
-Finalmente, tendremos que añadir o bien editar el archivo `Program.cs` para crear el host de las *Isolated Functions* y ejecutarlo:
+Finalmente, tendremos que añadir o bien editar el archivo `Program.cs` para crear el *host* de las *Isolated Functions* y ejecutarlo:
 
 ```csharp
 static async Task Main(string[] args)
@@ -89,11 +89,11 @@ static async Task Main(string[] args)
 }
 ```
 
-https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions
+Para añadir funciones, lo primero que tenemos que saber es que los paquetes de atributos han cambiado. Ahora lo que se usa es `Microsoft.Azure.Functions.Worker.Extensions.xxxxx` don la *xxxxx* es el nombre o tipo de servicio queremos usar: Http, Timer, ServiceBus, EventHubs, Storages...
 
-Microsoft.Azure.Functions.Worker.Extensions. Http Timer ServiceBus EventHubs Storages ....
+Puedes encontrar un listado completo [aquí](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions).
 
-`Microsoft.Azure.Functions.Worker.Extensions.Http`
+Para nuestro ejemplo vamos a añadir una referencia al paquete `Microsoft.Azure.Functions.Worker.Extensions.Http`. De esta forma tendremos disponibles los *bindings* para el protocolo *HTTP* y podremos crear nuestra primera función:
 
 ```csharp
 public static class HttpFunction
@@ -109,14 +109,19 @@ public static class HttpFunction
 
       var response = req.CreateResponse(HttpStatusCode.OK);
       response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-      response.WriteString("Welcome to .NET 5!!");
+      response.WriteString("Mis jugadores han corrido hoy por el campo como pollos sin cabeza. (John Toshack)");
 
       return response;
   }
 }
 ```
 
-`Microsoft.Azure.Functions.Worker.Extensions.Storage`
+A primera vista encontraremos nuevos tipos para definir un desencadenador *HTTP*:
+- El tipo de resultado de la función ya no es `IActionResult`. Ahora es un objeto de tipo `HttpResponseData`.
+- El tipo de objeto que recibe el *trigger* ya no es `HttpRequest`. Ahora es un nuevo objeto acorde con el tipo de respuesta: `HttpRequestData`.
+- El parámetro de tipo `FunctionContext`. Desde este parámetro vamos a tener acceso al contexto de ejecución de la función. De esta manera, si por ejemplo necesitamos el `ILogger` para escribir unas trazas, podemos recogerlo de ahí.
+
+Para ver cómo podemos definir *bindings* de salida vamos a usar el paquete `Microsoft.Azure.Functions.Worker.Extensions.Storage` que, entre otras cosas, nos permitirá acceder a colas de *Azure Storage Account*:
 
 ```csharp
 public static class QueueFunction
@@ -124,16 +129,22 @@ public static class QueueFunction
   [Function(nameof(QueueFunction))]
   [QueueOutput("outqueue", Connection = "StorageConnectionString")]
   public static string Run(
-    [QueueTrigger("inqueue")]
+    [QueueTrigger("inqueue", Connection = "StorageConnectionString")]
     string message,
     FunctionContext context)
   {
-    return $"input queue message: {message}";
+    return "Estoy tan feliz como uno puede estar. Pero he estado más feliz. (Ugo Ehiogu)";
   }
 }
 ```
 
-Para obtener más de un *binding* de salida, tendremos que crear una clase nueva donde definiremos los diferentes tipos de *outputs* usando los mismos atributos:
+Como podemos ver en el código anterior:
+- El parámetro de salida de la función irá redirigido a una cola llamada *"outqueue"*.
+- El desencadenador es un mensaje que viene de una cola llamada *"inqueue"*.
+
+Por lo tanto, basta con añadir el *out* *binding* a la función para que el valor que se devuelve sea redirigido a un lugar concreto. Pero ¿qué hago para tener más de un parámetro de salida?
+
+Para obtener más de un *out* *binding* tendremos que crear una clase nueva donde definiremos los diferentes tipos de *outputs* usando los mismos atributos:
 
 ```csharp
 public class FunctionResult
@@ -148,9 +159,9 @@ public class FunctionResult
 Después solo tendremos que devolver una nueva instancia de este objeto que hemos creado:
 
 ```csharp
-public static class HttpOutFunction
+public static class HttpMultiOutputFunction
 {
-  [Function(nameof(HttpOutFunction))]
+  [Function(nameof(HttpMultiOutputFunction))]
   public static FunctionResult Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
     HttpRequestData req,
@@ -158,25 +169,36 @@ public static class HttpOutFunction
   {
       var response = req.CreateResponse(HttpStatusCode.OK);
       response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-      response.WriteString("Welcome to .NET 5!!");
+      response.WriteString("Sólo hay una posibilidad: victoria, derrota o empate. (Franz Beckenbauer)");
 
       return new FunctionResult
       {
-        Message = "Welcome to .NET 5!!",
+        Message = "Si llega a entrar el balón es gol. (Míchel González)",
         HttpReponse = response
       };
   }
 }
 ```
 
-https://github.com/Azure/azure-functions-core-tools
+## Debugging
+
+Una vez tenemos nuestras funciones creadas, nos interesará probarlas. Para ejecutar este nuevo tipo de aplicación no vamos a poder usar los típicos comandos de ejecución de *Visual Studio* o el *dotnet run* de siempre. Necesitaremos descargar, si no la tenemos ya, una *tool* llamada [Azure Funcions Core Tools](https://github.com/Azure/azure-functions-core-tools). Una vez instalada, nos tendremos que dirigir a la ruta de nuestro proyecto y ejecutar el siguiente comando:
 
 ```bash
 func start
 ```
+
+Al usar nuestro navegador para dirigirnos a una de nuestras funciones *HTTP* encontraremos:
+
 ![Vista en el navegador](/public/uploads/2021/03/functions-net5.png)
 
 ## Dependency Injection
+
+Una de las cosas más engorrosas relacionadas con *Azure Functions* es la de añadir la inyección de dependencias de *dotnet core*. Hay que añadir un paquete especial y forzar una clase de arranque de la aplicación donde entonces creas todo lo necesario...
+
+La buena noticia es que en este nuevo modelo de aplicación ya tenemos la capacidad de usar el `IServiceProvider` de serie.
+
+Para probarlo vamos a crear la interfaz de un servicio:
 
 ```csharp
 public interface IQuotesService
@@ -185,6 +207,7 @@ public interface IQuotesService
 }
 ```
 
+La idea es que nos devuelva la frase del día, así que vamos a crear una implementación con varias frases y que nos devuelva una aleatoria:
 
 ```csharp
 public class QuotesService : IQuotesService
@@ -211,6 +234,8 @@ public class QuotesService : IQuotesService
   }
 }
 ```
+
+Si quisiéramos inyectar este servicio a una función haríamos algo parecido a esto:
 
 ```csharp
 public class QuoteOfTheDayFunction
@@ -241,13 +266,16 @@ public class QuoteOfTheDayFunction
 }
 ```
 
+Pasamos las dependencias como parámetros de entrada de la función. Como detalle especial, hemos quitado las referencias al `FunctionContext` y hemos añadido el `ILogger` en el constructor.
+
+Para añadir los servicios al `IServiceCollection` usaremos el método extensor `ConfigureServices` en la creación del *host* en el archivo `Program.cs`:
 
 ```csharp
 static async Task Main(string[] args)
 {
   var host = new HostBuilder()
                   .ConfigureFunctionsWorkerDefaults()
-                  .ConfigureServices((context, services) =>
+                  .ConfigureServices(services =>
                   {
                       services.AddScoped<IQuotesService, QuotesService>();
                   })
@@ -257,14 +285,21 @@ static async Task Main(string[] args)
 }
 ```
 
-`context` `context.Configuration.GetSection("Quotes")`
+Ahora podremos volver a lanzar nuestra aplicación:
 
 ```bash
 func start
 ```
+
+Y comprobaremos que hemos llamado correctamente al servicio de frases del día:
+
 ![Vista en el navegador](/public/uploads/2021/03/functions-net5-2.png)
 
 ## Middlewares
+
+Otra de las sorpresas que traen consigo las *dotnet-isolated* es la posibilidad de usar *middlewares* de una forma semejante a como los usamos en una aplicación de *aspnet core*.
+
+Para ello crearemos un simple *middleware* implementando la interfaz `IFunctionsWorkerMiddleware`:
 
 ```csharp
 public class DummyMiddleware : IFunctionsWorkerMiddleware
@@ -278,6 +313,10 @@ public class DummyMiddleware : IFunctionsWorkerMiddleware
   }
 }
 ```
+
+Desde el `Invoke` de un *middleware* tendremos acceso a `FunctionContext` y al delegado de la próxima ejecución.
+
+Para usar este middleware nos dirigiremos al método `ConfigureFunctionsWorkerDefaults` del `Main` y lo añadiremos al *pipeline* de ejecución con el método `UseMiddleware`:
 
 ```csharp
 static async Task Main(string[] args)
@@ -295,11 +334,27 @@ static async Task Main(string[] args)
 
 ## Tips & Tricks
 
+Como presentación todo esto está muy bien, pero seguro que en cuanto empecéis a enredar os entrarán dudas. Entonces, seguro que os vienen bien estos "truquillos":
+
+### Mejorando el debugging
+
+Hemos visto que podemos lanzar la ejecución de nuestras funciones con el comando `func start`. Y si queremos realizar un *debug*, tendremos que *"attachar"* *Visual Studio* al proceso `dotnet` que lanzamos mediante ese comando.
+
+El caso es que nos puede interesar que el proceso se espere a que haya un *debugger* en marcha, para que así no se nos cuele una ejecución fuera de este contexto. Para ello usaremos el parámetro `--dotnet-isolated-debug`.
+
+Y si también tenemos interés en tener más trazas sobre las ejecuciones de nuestras funciones usaremos el parámetro `--verbose`.
+
+Así que la llamada que posiblemente cubra nuestras expectativas a la hora de probar, sería más bien:
+
 ```bash
 func start --dotnet-isolated-debug --verbose
 ```
 
-`AddEnvironmentVariables`
+### Añadir variables de entorno
+
+Existe un problema cuando nos llevamos nuestras funciones a Azure y es que no se cargan por defecto las variables de entorno. Este tipo de variables son importantes porque es la forma que usa Azure para cargar la famosa configuración que ponemos desde el portal.
+
+Es de suponer que esto lo cambiarán en un futuro próximo, pero mientras tanto, puedes usar el método `ConfigureAppConfiguration` y dentro de este `AddEnvironmentVariables`, para poder añadirlas:
 
 ```csharp
 static async Task Main(string[] args)
@@ -316,22 +371,52 @@ static async Task Main(string[] args)
 }
 ```
 
-```bash
-az functionapp config set --net-framework-version v5.0 --name <my_function_app> --resource-group <my_resource_group>
+### Usar la configuración
+
+Muchas veces, cuando estamos configurando el inyector de dependencias de nuestra aplicación queremos que ciertos parámetros los cargue de la configuración. A ese fin, usaremos una de las sobre escrituras del método `ConfigureServices` que vimos anteriormente. Si en lugar de pasarle un solo parámetro, usamos dos, en el primero tendremos el contexto de configuración. Desde ahí no nos costará buscar una sección concreta y usarla como en cualquier otro desarrollo:
+
+```csharp
+static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults()
+                  .ConfigureServices((context, services) =>
+                  {
+                      services.AddQuotes(op => context.Configuration
+                                                      .GetSection("Quotes")
+                                                      .Bind(op));
+                  })
+                  .Build();
+
+  await host.RunAsync();
+}
 ```
+
+### Publicar en Azure
+
+Se pueden publicar las *Azure Functions* en *.Net 5* usando la *tool* que usamos para lanzarla. La forma de llamarla sería:
 
 ```bash
 func azure functionapp publish <my_function_app>
 ```
 
+También podemos usar métodos tradicionales como el *web deploy*, subir un archivo *zip* o vincular un repositorio.
+
+Pero todo esto no nos garantiza que la función que estamos *deployando* tenga instalado *.Net 5*. Para conseguirlo, podemos ejecutar el siguiente comando de *az-cli*:
+
+```bash
+az functionapp config set --net-framework-version v5.0 --name <my_function_app> --resource-group <my_resource_group>
+```
+
 ## Conclusiones
 
-### Ventajas
+Creo que más que las *Azure Functions* para *.Net 5*, que es una mejora totalmente esperada, lógica y obvia, la gran noticia es el uso de un proceso aislado para su ejecución.
 
-Anteriormente, Azure Functions solo admitía un modo estrechamente integrado para funciones .NET, que se ejecutan como una biblioteca de clases en el mismo proceso que el host. Este modo proporciona una integración profunda entre el proceso del host y las funciones. Por ejemplo, las funciones de biblioteca de clases .NET pueden compartir tipos y API vinculantes. Sin embargo, esta integración también requiere un acoplamiento más estrecho entre el proceso del host y la función .NET. Por ejemplo, las funciones .NET que se ejecutan en proceso deben ejecutarse en la misma versión de .NET que el tiempo de ejecución de Funciones. Para permitirle ejecutar fuera de estas restricciones, ahora puede optar por ejecutar en un proceso aislado. Este aislamiento de proceso también le permite desarrollar funciones que utilizan las versiones actuales de .NET (como .NET 5.0), que no son compatibles de forma nativa con el tiempo de ejecución de Functions.
+Tal cual lo veo, en cuanto a las *dotnet-isolated* todo son ventajas:
 
-- Menos conflictos: debido a que las funciones se ejecutan en un proceso separado, los ensamblados usados en su aplicación no entrarán en conflicto con versiones diferentes de los mismos ensamblados usados por el proceso anfitrión.
-- Control total del proceso: usted controla el inicio de la aplicación y puede controlar las configuraciones utilizadas y el middleware iniciado.
-- Inyección de dependencias sin malavarismos: debido a que tiene el control total del proceso, puede usar los comportamientos actuales de .NET para la inyección de dependencias e incorporar middleware en su aplicación de funciones.
+- Menos conflictos: un proceso aislado te permite tener dependencias diferentes a las del proceso anfitrión.
+- Control total del proceso: poder gestionar el inicio, el final y lo que sucede en medio (*middlewares*) de la ejecución de nuestras funciones.
+- Inyección de dependencias sin malabarismos.
+- Posible compatibilidad futura con cualquier plataforma sin necesidad de cambiar la versión del *host*. Como por ejemplo .Net 6 o lo que esté por venir.
 
-### Inconvenientes
+Bienvenidas sean.
