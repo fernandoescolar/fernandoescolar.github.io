@@ -8,7 +8,7 @@ plugins:
   - jekyll-feed
 
 # Permalinks
-permalink:        pretty
+permalink:           pretty
 relative_permalinks: false
 
 # Setup
@@ -18,18 +18,22 @@ tagline:          'El blog de Fernando Escolar'
 description:      'cuando en mi máquina tampoco funciona...'
 url:              https://www.developerro.com
 baseurl:          /
-icon:             '/public/apple-touch-icon-144-precomposed.png'
+icon:             '/assets/apple-touch-icon-144-precomposed.png'
 locale:           es_es
 
 author:
   name:           'Fernando Escolar'
   url:            https://twitter.com/fernandoescolar
+  email:          fer.escolar@gmail.com
   twitter:        fernandoescolar
-  google_plus:    FernandoEscolar
+  github:         fernandoescolar
+  linkedin:       fernandoescolar
+# youtube:        escolarf
+  buymeacoffee:   fernandoescolar
 
 paginate:         5
+paginate_path:    'posts/page:num'
 
-# Custom vars
 version:          2.1.0
 
 github:

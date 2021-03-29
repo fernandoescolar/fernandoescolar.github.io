@@ -6,11 +6,12 @@ author: fernandoescolar
 post_date: 2020-05-13 07:00:41
 layout: post
 tags: aspnetcore data protection dotnet
+background: '/assets/uploads/2020/05/hogwarts.jpg'
 ---
 
 Cuando encontré en [stackoverflow](https://stackoverflow.com/search?q=c%23+encrypt+data) mi primer algoritmo para encriptar datos, fue como entrar por primera vez en Hogwarts, la escuela de magia y hechicería. No entendía muy bien que era eso, pero podía copiar el código y hacer lo mismo en mis aplicaciones<!--break-->.
 
-![Hogwarts](/public/uploads/2020/05/hogwarts.jpg)
+![Hogwarts](/assets/uploads/2020/05/hogwarts.jpg)
 
 La criptografía, a pesar de ser una ciencia que resulta muy divertida, es también muy complicada. Cada algoritmo, las claves públicas, las privadas, los saltos, base64, los certificados y sus movidas.
 
@@ -73,7 +74,7 @@ public UserDetails LoadUser(string encryptedId)
 
 > Wingardium Leviosa
 
-![Wingardium Leviosa](/public/uploads/2020/05/wingardium-leviosa.gif)
+![Wingardium Leviosa](/assets/uploads/2020/05/wingardium-leviosa.gif)
 
 ## More in depth
 
@@ -152,7 +153,7 @@ public void CanNotUnprotectWithDiferentProtectors()
 
 > Expecto Patronum
 
-![Expecto Patronum](/public/uploads/2020/05/expecto-patronum.gif)
+![Expecto Patronum](/assets/uploads/2020/05/expecto-patronum.gif)
 
 ## Time limited
 
@@ -209,7 +210,7 @@ public void CanNotUnprotectExpiredInformation()
 
 > Expelliarmus
 
-![Expelliarmus](/public/uploads/2020/05/expelliarmus.gif)
+![Expelliarmus](/assets/uploads/2020/05/expelliarmus.gif)
 
 ## Key ring
 
@@ -292,7 +293,7 @@ Con estas 3 configuraciones, tendríamos un sistema de protección escalable, se
 
 > Avada Kedavra
 
-![Avada Kedavra](/public/uploads/2020/05/avada-kedavra.gif)
+![Avada Kedavra](/assets/uploads/2020/05/avada-kedavra.gif)
 
 ## Otras configuraciones
 
@@ -317,7 +318,7 @@ services.AddDataProtection()
 
 > Alohomora
 
-![Alohomora](/public/uploads/2020/05/alohomora.gif)
+![Alohomora](/assets/uploads/2020/05/alohomora.gif)
 
 ## Conclusiones
 
@@ -327,4 +328,4 @@ En mis proyectos lo estamos usando ya, así que...
 
 > Obliviate
 
-![Obliviate](/public/uploads/2020/05/obliviate.gif)
+![Obliviate](/assets/uploads/2020/05/obliviate.gif)

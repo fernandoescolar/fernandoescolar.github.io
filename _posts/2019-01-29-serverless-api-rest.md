@@ -6,12 +6,12 @@ author: fernandoescolar
 post_date: 2019-01-29 08:59:42
 post_excerpt: ""
 layout: post
-tags: azure functions dotnet
+tags: azure-functions azure functions dotnet
 ---
 
 Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de ejecución rápida y que responde a eventos. Literalmente, se traduce como "sin servidor". Y aquí es donde empieza el conflicto. <!--break-->
 
-![Wat if I told you wat?](/public/uploads/2019/01/serverless-wat.jpg)
+![Wat if I told you wat?](/assets/uploads/2019/01/serverless-wat.jpg)
 
 Y es que serverless es de las tecnologías con nombre más traicionero que existen. Se traduce como "sin servidor". Pero en realidad se refiere a un tipo de arquitectura en la que el servidor no es importante para el desarrollador. Se ejecutan en entornos aislados, como en contenedores específicos. Pero evidentemente, estos entornos y/o contenedores, se ejecutan en uno o varios servidores.
 
@@ -30,15 +30,15 @@ Hoy en día tenemos muchísimas variantes de estos servicios, aunque los más im
 
 La forma más fácil de programar para Azure Functions es usar un Visual Studio Enterprise o Community. Desde ahí crearemos un nuevo proyecto, seleccionaremos como tipo "Cloud", y dentro de las diferentes propuestas de plantilla, la denominada como "Azure Functions".
 
-![New Visual Studio Enterprise Project](/public/uploads/2019/01/serverless-newproject-1.png)
+![New Visual Studio Enterprise Project](/assets/uploads/2019/01/serverless-newproject-1.png)
 
 Entonces nos pedirá cierta configuración adicional para el proyecto. La primera será seleccionar el Framework, que en este caso nos hemos decantado por "Azure Functions v2 (.Net Core)". Después, como vamos a implementar una API Rest, hemos escogido "Http trigger" como desencadenador por defecto. Y finalmente, en el nivel de acceso le hemos puesto "Anonymous", para que sea pública y no haga falta autenticarse.
 
-![New Visual Studio Enterprise Azure Functions Project settings](/public/uploads/2019/01/serverless-newproject-2.png)
+![New Visual Studio Enterprise Azure Functions Project settings](/assets/uploads/2019/01/serverless-newproject-2.png)
 
 Si ahora ejecutamos el proyecto, nos aparecerá una consola donde se indica una URL donde se ha montado nuestra Function en la máquina local. Para lanzarla, abriremos el navegador e introduciremos esa URL con el parámetro "name" y un valor. En mi caso ha sido: "http://localhost:7071/api/Function1?name=MaxPower".
 
-![Azure Functions primera ejecución](/public/uploads/2019/01/serverless-first-function.png)
+![Azure Functions primera ejecución](/assets/uploads/2019/01/serverless-first-function.png)
 
 Está muy bien tener resultados con solo 30'' de clics en la pantalla :). Os prometo que no os robaré mucho más tiempo implementando una API Rest.
 

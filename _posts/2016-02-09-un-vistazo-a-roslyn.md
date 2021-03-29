@@ -19,7 +19,7 @@ Cuando escucho la palabra "Roslyn" me viene a la mente La Hora Chanante. Pienso 
 
 Una vez nos hemos instalado [Roslyn en Visual Studio](https://github.com/dotnet/roslyn/wiki/Getting-Started-on-Visual-Studio-2015 "Instalar Roslyn en Visual Studio"), las [plantillas y el SDK](https://visualstudiogallery.msdn.microsoft.com/2ddb7240-5249-4c8c-969e-5d05823bcb89 "Instalar plantillas y el SDK de Roslyn"); es muy fácil empezar a trabajar. Tan solo tenemos que elegir una de esas plantillas y ya tendremos un ejemplo de lo que podemos hacer:
 
-![Roslyn templates](/public/uploads/2016/02/templates.png)
+![Roslyn templates](/assets/uploads/2016/02/templates.png)
 
 
 ## Como hacer tu IDE más lento
@@ -143,7 +143,7 @@ public class BadWordsRulesCodeFixProvider : CodeFixProvider
 
 Si ejecutamos este último código nos propondrá poner una palabrota al final de cada nombre de clase. Y al hacerlo, buscará una aleatoría y la añadira. Haciendo el correspondiente refactor en todo el proyecto.
 
-![Ejemplo Analyzer y Code Fix](/public/uploads/2016/02/badwords-analyzer.png)
+![Ejemplo Analyzer y Code Fix](/assets/uploads/2016/02/badwords-analyzer.png)
 
 Si al ejecutar no aparece esto instantaneamente, dadle algo de tiempo. Como rezaba el título, es una forma de hacer que Visual Studio vaya un poco más lento.
 

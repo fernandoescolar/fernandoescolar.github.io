@@ -6,11 +6,43 @@ author: fernandoescolar
 post_date: 2019-02-12 07:18:25
 post_excerpt: ""
 layout: post
-tags: azure functions typescript
+tags: azure-functions azure functions typescript
+background: '/assets/uploads/bg/thunder5.jpg'
 ---
 
 No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos explicativos que su autor ha añadido, vais directamente al contenido de los _code snipets_ y vais copiando y pegando... No os ha pasado que ignoráis la prosa que tanto tiempo ha costado escribir y solo leéis el código, porque ya os resulta bastante auto explicativo... <!--break--> Pues hoy es el día en el que he entendido vuestras necesidades. Voy a poner código y reducir mis comentarios a la mínima expresión.
 
+<style>
+  .notes {
+    cursor: pointer;
+    padding: 10px 0;
+  }
+
+  .notes span {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: gray;
+  }
+
+  .notes .tip {
+      display: block;
+      position: absolute;
+      background-color: #41444F;
+      color: #fff;
+      opacity: 0;
+      transform: translate3d(calc(100%),60px,100px);
+      transition: transform .15s ease-in-out, opacity .2s;
+      width: 70%;
+      padding: 8px 15px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .notes:active .tip {
+    opacity: 1;
+    transform: translate3d(0,0,0) rotate3d(1,1,1,0deg);
+  }
+</style>
 <div class="notes">
   <span>TypeScript con Azure Functions</span>
   <div class="tip">

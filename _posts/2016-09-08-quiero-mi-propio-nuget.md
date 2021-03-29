@@ -5,7 +5,8 @@ author: fernandoescolar
 post_date: {}
 layout: post
 published: true
-tags: nuget dotnet
+tags: nuget-server nuget dotnet
+background: '/assets/uploads/bg/diehard1.jpg'
 ---
 ¿Recuerdas la primera vez que viste a John McClane? Nada más llegar en avión, le llevaron a la torre Nakatomi. La idea era recoger a Holly y llevarla de vuelta a casa. En navidad. Todo era estupendo. Hasta Allen disfrutaba de un día tranquilo. Pero un maldito bastardo llamado Hans tuvo que venir a joder el cotarro.<!--break-->
 
@@ -27,11 +28,11 @@ A partir de aquí dos caminos se abren. Pero solo se puede elegir uno:
 ### Bajar por el hueco de los ascensores
 Aprovechando que conocemos la web con el código fuente: https://github.com/NuGet/NuGet.Server. Solo tenemos que seleccionar la rama estable de "release":
 
-![Nuget.Server "relase" branch](/public/uploads/2016/09/github-nuget-1.png)
+![Nuget.Server "relase" branch](/assets/uploads/2016/09/github-nuget-1.png)
 
 Después buscamos el enlace para descargar el código en forma de archivo zip:
 
-![GitHub download repository as zip](/public/uploads/2016/09/github-nuget-2.png)
+![GitHub download repository as zip](/assets/uploads/2016/09/github-nuget-2.png)
 
 Y una vez finalizada la descarga, descomprimimos el archivo.
 
@@ -53,11 +54,11 @@ $ git checkout release
 ### Configurando NuGet.Server
 Independientemente del camino elegido, llegamos al punto de tener que buscar el archivo de la solución "NuGet.Server.sln" y abrirlo con Visual Studio.
 
-![Solution Explorer: NuGet.Server](/public/uploads/2016/09/vs-nuget-1.png)
+![Solution Explorer: NuGet.Server](/assets/uploads/2016/09/vs-nuget-1.png)
 
 Allí nos dirigiremos al archivo "Web.config", dentro de la sección "appSettings", a una línea que añade la clave "apiKey":
 
-!["apiKey" in Web.config](/public/uploads/2016/09/vs-nuget-2.png)
+!["apiKey" in Web.config](/assets/uploads/2016/09/vs-nuget-2.png)
 
 Aquí deberemos sustituir el valor por el que más rabia nos dé. En mi caso puse: "yippee-ki-yay".
 
@@ -65,20 +66,20 @@ Para terminar, publicaremos la solución en una WebApp de Azure. O si aun no ten
 
 Habíamos conseguido arreglar el día de navidad. Además con el bonus extra de tener que escribir en directo comandos en una ventana negra con texto blanquecino. ¡Brujería!
 
-![Logro desbloqueado: brujería](/public/uploads/2016/09/Fernando+ha+usado+brujería.gif)
+![Logro desbloqueado: brujería](/assets/uploads/2016/09/Fernando+ha+usado+brujería.gif)
 
 ## ¿Cómo hago que Visual Studio use mi servidor NuGet?
 Está claro que de nada sirve un servidor si nadie consume los servicios de los que provee. Pero que no cunda el pánico. Simplemente tendremos que abrir Visual Studio y navegar por el menú "tools" > "NuGet Package Manager" > "Package Manager Settings":
 
-![Package Manager Settings](/public/uploads/2016/09/vs-add-nuget-server-1.png)
+![Package Manager Settings](/assets/uploads/2016/09/vs-add-nuget-server-1.png)
 
 En la ventana que nos aparece elegiremos "Package Sources":
 
-![Package Sources](/public/uploads/2016/09/vs-add-nuget-server-2.png)
+![Package Sources](/assets/uploads/2016/09/vs-add-nuget-server-2.png)
 
 Y pulsaremos el símbolo de "+" verde. Entonces nos aparecerá una línea nueva. En la parte inferior podremos cambiar su configuración:
 
-![Add package source](/public/uploads/2016/09/vs-add-nuget-server-3.png)
+![Add package source](/assets/uploads/2016/09/vs-add-nuget-server-3.png)
 
 En "Name" pondremos el nombre con el que queremos que aparezca nuestro servidor de NuGet. Y En "Source" pondremos la url de nuestro servidor de NuGet con un path a "/nuget". Entonces pulsaremos el botón de "Update" y después al botón de "OK".
 
@@ -106,4 +107,4 @@ No hay mucho más que añadir. NuGet es fácil. No es el mejor. Pero tampoco mal
 Quien no tiene uno, es porque no quiere...
 
 
-![Bricomanía - Briconsejo](/public/uploads/2016/09/CncpsOKXEAAZ7VC.jpg)
+![Bricomanía - Briconsejo](/assets/uploads/2016/09/CncpsOKXEAAZ7VC.jpg)

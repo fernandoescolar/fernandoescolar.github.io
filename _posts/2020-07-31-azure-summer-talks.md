@@ -7,6 +7,7 @@ post_date: 2020-07-31 00:00:00
 layout: post
 categories: video
 tags: azure webapp appservice cosmos functions
+background: '/assets/uploads/bg/talk.jpg'
 ---
 
 Como cada año para estas fechas desde [Catzure](https://twitter.com/CAT_zure) organizan una mesa redonda con los mejores expertos de Azure de España para conversar sobre el cloud, desarrollo y todo aquello que les aptezca. Y este año he tenido la suerte de ser uno de los invitados.<!--break-->

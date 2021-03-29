@@ -7,6 +7,7 @@ post_date: 2020-10-15 02:16:54
 layout: post
 categories: video
 tags: solid best-practices
+background: '/assets/uploads/bg/solid3.jpg'
 ---
 He de reconocer que el trabajo de Uncle Bob (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios S.O.L.I.D. no son una excepción<!--break-->.
 
@@ -16,11 +17,11 @@ No obstante, después de varios años obsesionado con aplicar cada uno de esos p
 
 Aquí podrás encontrar los artículos originales que escribió [Uncle Bob](https://twitter.com/unclebobmartin). Me he permitido copiarlos de *web archive*:
 
-- [**S**RP](/public/uploads/solid/srp.pdf)
-- [**O**CP](/public/uploads/solid/ocp.pdf)
-- [**L**SP](/public/uploads/solid/lsp.pdf)
-- [**I**SP](/public/uploads/solid/isp.pdf)
-- [**D**IP](/public/uploads/solid/dip.pdf)
+- [**S**RP](/assets/uploads/solid/srp.pdf)
+- [**O**CP](/assets/uploads/solid/ocp.pdf)
+- [**L**SP](/assets/uploads/solid/lsp.pdf)
+- [**I**SP](/assets/uploads/solid/isp.pdf)
+- [**D**IP](/assets/uploads/solid/dip.pdf)
 
 Y aquí los artículos que escribí en este mismo sitio sobre cada uno de ellos:
 

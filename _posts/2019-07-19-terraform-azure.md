@@ -12,7 +12,7 @@ La terraformación es una serie de técnicas que, aplicadas en conjunto, consegu
 
 Terraform es una herramienta que nos ayuda a gestionar infraestructura como código. Hereda las características de esta práctica: la capacidad de versionar, construir, actualizar o borrar infraestructura, sin tener que interactuar físicamente con el hardware o con herramientas interactivas. Así conseguimos una forma de administración de sistemas informáticos más potente y sencilla. Al menos para un programador.
 
-![Terraform](/public/uploads/2019/07/hashicorp-terraform.png)
+![Terraform](/assets/uploads/2019/07/hashicorp-terraform.png)
 
 Y ¿cómo se usa esto con Azure?
 
@@ -178,7 +178,7 @@ Una vez que estamos satisfechos con la propuesta que hemos visto en el plan, es 
 $ terraform apply -auto-approve
 ```
 
-![Terraform](/public/uploads/2019/07/terraform-apply.jpg)
+![Terraform](/assets/uploads/2019/07/terraform-apply.jpg)
 
 Haber realizado un `plan` previamente, no nos garantiza que no pueda fallar el apply. El primero calcula que la sintaxis sea correcta, y `apply` se enfrenta directamente con Microsoft Azure. En esta plataforma existen más normas, como por ejemplo, que el nombre de nuestro *app service* no exista previamente. Si estas normas de la plataforma no se ven satisfechas, nos encontraremos ante errores en este punto.
 
@@ -446,7 +446,7 @@ module.nombre_modulo.nombre_variable_salida
 module.webapp.name # prueba-terraform-web
 ```
 
-![Terraform](/public/uploads/2019/07/terraform-modules.jpg)
+![Terraform](/assets/uploads/2019/07/terraform-modules.jpg)
 
 Como bola extra, un módulo de Terraform no tiene por qué encontrarse en el sistema de ficheros de la máquina. En dependencia de cómo formemos el *path* de la propiedad `source` podremos ir a:
 

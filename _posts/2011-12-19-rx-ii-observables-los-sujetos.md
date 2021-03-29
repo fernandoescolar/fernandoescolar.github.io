@@ -8,17 +8,17 @@ layout: post
 ---
 <p>Hace <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - &iquest;Qu&eacute; son las Reactive eXtensions?">unos d&iacute;as empezamos a hablar de las <strong>Reactive eXtensions</strong></a>. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacute;s expusimos la&nbsp;f&oacute;rmula&nbsp;creada por los <strong>Microsoft Live Labs</strong> para definirla. Y terminamos el art&iacute;culo comentando que resolver&iacute;amos esta f&oacute;rmula en futuras publicaciones. Hoy es el d&iacute;a de resolver el primer par&aacute;metro: <strong>Observables</strong>.&nbsp;</p>
 <!--break-->
-<center><img src="/public/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" /></center>
+<center><img src="/assets/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" /></center>
 <p>Pero antes, vamos a ver c&oacute;mo podemos instalar y referenciar las <strong>Rx</strong> en nuestro proyecto.</p>
 <h2>Instalando Rx</h2>
 <p>Existen dos formas b&aacute;sicas de distribuci&oacute;n de las extensiones reactivas. La primera es desde la propia web de microsoft, mediante&nbsp;<a href="http://msdn.microsoft.com/en-us/data/gg577610">este enlace</a>. Aqu&iacute; te podr&aacute;s descargar un paquete con los ensamblados principales, adem&aacute;s de los espec&iacute;ficos para cada distribuci&oacute;n.</p>
 <p>La segunda opci&oacute;n es utilizar nuget, desde donde podr&aacute;s descargarte los diferentes ensamblados (en su versi&oacute;n estable o en la experimental) haciendo una b&uacute;squeda de "rx" en su interfaz de gesti&oacute;n de paquetes:</p>
-<center><img src="/public/uploads/2012/09/rx-II-1.gif" alt="" width="437" height="250" /></center>
+<center><img src="/assets/uploads/2012/09/rx-II-1.gif" alt="" width="437" height="250" /></center>
 <p>Dentro del &aacute;mbito de este art&iacute;culo, bastar&aacute; con crear un proyecto nuevo de consola e instalar desde nuget el paquete "<em>Rx-Main</em>". O si ya descargamos todos los ensamblados, deber&iacute;amos a&ntilde;adir la referencia a "<em>System.Reactive</em>".</p>
 <p>Una vez tenemos esto, ya podemos remangarnos y empezar a trabajar:</p>
 <h2>Observables</h2>
 <p>Cuando decimos "<em>observables</em>" en la f&oacute;rmula que define las reactive extensions, nos referimos a los objetos del patr&oacute;n observable: <strong>Observador</strong> y <strong>Observable</strong>. Y dentro de la framework 4.0, en el namespace <em>System</em>, podremos encontrar los <em>contratos</em> que nos exponen su comportamiento:</p>
-<center><img src="/public/uploads/2012/09/rx5.gif" alt="" width="483" height="179" /></center>
+<center><img src="/assets/uploads/2012/09/rx5.gif" alt="" width="483" height="179" /></center>
 <p>Por lo tanto ya tenemos las "normas" para empezar a trabajar. Como prueba, vamos a crear una clase base gen&eacute;rica que implemente la interfaz IObservable:</p>
 <pre class="brush: c#">public class Observable&lt;T&gt; : IObservable&lt;T&gt;
 {
@@ -87,14 +87,14 @@ public interface ISubject&lt;T, S&gt; : IObservable&lt;T&gt;, IObserver&lt;S&gt;
 <p>Dentro de todas las traducciones que tiene&nbsp;<em>Subjects</em>&nbsp;en nuestro idioma, es probable que la que se nos haga m&aacute;s simple sea <em>sujetos</em>. Como dec&iacute;amos un sujeto ser&aacute; un objeto observable, que con el fin de poder notificar de una forma simple a los observadores, implementara tambi&eacute;n la interfaz de <em>IObserver</em>.</p>
 <p>La funcionalidad de un sujeto se puede resumir como que puede notificar a sus observadores, una serie de acontecimientos en forma de iteraci&oacute;n:</p>
 <pre class="brush: c#">ISubject&lt;int&gt; subject;
-IObserver&lt;int&gt; observer; 
+IObserver&lt;int&gt; observer;
 
-subject.Subscribe(observer); // se suscribe un observador 
+subject.Subscribe(observer); // se suscribe un observador
 
-subject.OnNext(1); // notificamos la iteraci&oacute;n 1 
-subject.OnNext(2); // notificamos la iteraci&oacute;n 2 
-// subject.OnError(new Exception()); // podemos interrumpir la iteraci&oacute;n con una excepci&oacute;n 
-subject.OnNext(3); // notificamos la iteraci&oacute;n 3 
+subject.OnNext(1); // notificamos la iteraci&oacute;n 1
+subject.OnNext(2); // notificamos la iteraci&oacute;n 2
+// subject.OnError(new Exception()); // podemos interrumpir la iteraci&oacute;n con una excepci&oacute;n
+subject.OnNext(3); // notificamos la iteraci&oacute;n 3
 subject.OnCompleted(); // notificamos que ya no hay m&aacute;s iteraciones</pre>
 <p>Pero adem&aacute;s Rx nos va a proveer de una serie de extensiones para facilitarnos la suscripci&oacute;n, que nos van a ayudar a crear din&aacute;micamente observadores:</p>
 <pre class="brush: c#">// Type: System.ObservableExtensions
@@ -143,13 +143,13 @@ Loaded -= onNotified; // nos des-adjuntamos del evento</pre>
 <p>Una vez hemos aclarado su funcionamiento, podemos ver el comportamiento de esos sujetos que encontramos en las <strong>reactive extensions</strong>.</p>
 <h3>Subject</h3>
 <p>Como dec&iacute;amos anteriormente un objeto <i>Suject&lt;T&gt;</i> es la implementaci&oacute;n base de un sujeto de Rx. Su funcionamiento es simple, notifica de todas las iteraciones una vez nos hemos suscrito. Por ejemplo, si hacemos esto:</p>
-<pre class="brush: c#">var subject = new Subject&lt;int&gt;(); 
+<pre class="brush: c#">var subject = new Subject&lt;int&gt;();
 
-subject.OnNext(1); 
+subject.OnNext(1);
 
-subject.Subscribe(iterator =&gt; Console.WriteLine("Iterator: " + iterator)); 
+subject.Subscribe(iterator =&gt; Console.WriteLine("Iterator: " + iterator));
 
-subject.OnNext(2); 
+subject.OnNext(2);
 subject.OnNext(3);</pre>
 <p>Esperaremos que la salida sea:</p>
 <pre class="brush: plain">Iterator: 2

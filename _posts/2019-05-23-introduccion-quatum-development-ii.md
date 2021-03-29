@@ -6,11 +6,12 @@ author: fernandoescolar
 post_date: 2019-05-23 07:37:32
 layout: post
 tags: quantum programming
+background: '/assets/uploads/bg/engineering2.jpg'
 ---
 
 Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?<!--break-->
 
-![What if I told you using the word "Quantum" in your sentence doesn't make you a physicist (meme)](/public/uploads/2019/05/quantum2-meme.jpg)
+![What if I told you using the word "Quantum" in your sentence doesn't make you a physicist (meme)](/assets/uploads/2019/05/quantum2-meme.jpg)
 
 ¿Qué me dirías si todo lo que estuvimos comentando en el [anterior artículo](/2019/05/10/introduccion-quatum-development/) fuera tan solo la superficie? ¿Y si fuera el equivalente a la tabla de multiplicar del 1 en el mundo de la resolución de derivadas?
 
@@ -28,7 +29,7 @@ Pero lo que no dijimos es que tanto `α` como `β` podrían ser [números comple
 
 Al usar números complejos esto nos aporta una nueva dimensión: la parte real y otra imaginaria. Esto unido con la superposición de `|0>` y `|1>`, nos llevaría a poder representar un _qubit_ en forma de una [esfera de Bloch](https://es.wikipedia.org/wiki/Esfera_de_Bloch):
 
-![Esfera de Bloch](/public/uploads/2019/05/quantum2-bloch-sphere.png)
+![Esfera de Bloch](/assets/uploads/2019/05/quantum2-bloch-sphere.png)
 
 Donde:
 
@@ -36,13 +37,13 @@ Donde:
 - En el eje `X` marcaríamos los estados positivo o negativo: `|+>` o `|->`.
 - En el eje `Y` encontraríamos la parte imaginaria: `|i>` o `|-i>`.
 
-![Va y me dice que es una esfera de Bloch (meme)](/public/uploads/2019/05/quantum2-meme2.jpg)
+![Va y me dice que es una esfera de Bloch (meme)](/assets/uploads/2019/05/quantum2-meme2.jpg)
 
 ### Operación _Measure_
 
 Si quisiéramos realizar una medida en cualquiera de estos ejes, deberíamos recurrir a las [matrices de Pauli](https://es.wikipedia.org/wiki/Matrices_de_Pauli):
 
-![Matrices de Pauli](/public/uploads/2019/05/quantum2-pauli.svg)
+![Matrices de Pauli](/assets/uploads/2019/05/quantum2-pauli.svg)
 
 Que en Q# sería algo como esto:
 
@@ -121,7 +122,7 @@ Si por ejemplo tuviéramos 3 _qubits_, entonces tendríamos definidos los estado
 
 Cuantos más _qubits_ usemos en nuestro sistema, más estados contemplamos. Si por ejemplo tuviéramos un sistema de 10 _qubits_ estaríamos hablando de 1024 estados, con 100 _qubits_ nos encontraríamos en un orden de 10<sup>30</sup> de combinaciones. Y se opera con todas ellas a la vez. Esto nos da una idea de la gran potencia que tiene la computación cuántica.
 
-![We don't have games, but we got TERAFLOPS (meme)](/public/uploads/2019/05/quantum2-meme3.jpg)
+![We don't have games, but we got TERAFLOPS (meme)](/assets/uploads/2019/05/quantum2-meme3.jpg)
 
 ## Más Operaciones Cuánticas
 
@@ -267,6 +268,6 @@ Hasta aquí hemos tratado dos puntos claves de la programación cuántica:
 
 Para el próximo _post_ prometo algo mucho más divertido como el entrelazado cuántico y su relación con la teleportación...
 
-![When you hear someone say they understand quantum mechanics... (meme)](/public/uploads/2019/05/quantum2-meme4.jpg)
+![When you hear someone say they understand quantum mechanics... (meme)](/assets/uploads/2019/05/quantum2-meme4.jpg)
 
 No te digo nada y te lo digo todo. Así a la vez.

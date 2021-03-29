@@ -71,7 +71,7 @@ En este otro ejemplo podemos ver como aplicamos algoritmos de ordenación, de fi
 
 Y así vamos llegando hasta el contexto actual de aplicación:
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/public/uploads/2012/10/app-context.png" alt="contexto de aplicación actual" width="650" height="349" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/app-context.png" alt="contexto de aplicación actual" width="650" height="349" />
 
 Lo que nos podemos encontrar actualmente son aplicaciones distribuidas. Pongamos el ejemplo de twitter, donde encontramos unos servicios que están alojados en la nube y una serie de clientes diferentes según sean plataformas móviles, páginas web o aplicaciones de escritorio.
 
@@ -83,7 +83,7 @@ Para conseguir esta compleja tarea se recurre a la <strong>programación reactiv
 
 Y es aquí cuando llegamos a una nueva problemática, la de programar de forma reactiva usando un lenguaje secuencial. La solución nos la aporta esta función que definen las reactive extensions y que nos brindan desde los <strong>Microsoft Live Labs</strong>:
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/public/uploads/2012/09/rx3.gif" alt="Formula de las reactive extensions" width="400" height="162" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/09/rx3.gif" alt="Formula de las reactive extensions" width="400" height="162" />
 
 Para poder explicar esta formula de una forma cercana a la programación hemos creado una aplicación: <strong>BeerToBeer</strong>, que ya mostramos en la <strong>codemotion</strong>. Una red social (tipo twitter) en la que puedes enviar mensajes a propósito de la cerveza que estás bebiendo en ese momento.
 

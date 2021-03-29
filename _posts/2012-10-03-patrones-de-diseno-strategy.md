@@ -6,7 +6,7 @@ post_date: 2012-10-03 14:10:06
 post_excerpt: ""
 layout: post
 ---
-La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos. 
+La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos.
 <!--break-->
 Caemos en la trampa de, al intentar escribir código mejor, generar deuda técnica, ya que el patrón aplicado no resolvía el problema que teníamos en realidad. Es por eso que la pregunta más importante que tenemos que responder cuando empezamos a estudiar un patrón de diseño es: ¿para qué sirve?.
 
@@ -98,11 +98,11 @@ Y si por un casual, ahora necesitáramos añadir un nuevo formato a nuestro prog
 
 Dando un repaso a los objetos que hemos ido desarrollando hasta este momento, podríamos extraer un diagrama de clases como este:
 
-<a href="/public/uploads/2012/10/styler-strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="styler-strategy-pattern" src="/public/uploads/2012/10/styler-strategy-pattern_thumb.png" alt="styler-strategy-pattern" width="546" height="171" border="0" /></a>
+<a href="/assets/uploads/2012/10/styler-strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="styler-strategy-pattern" src="/assets/uploads/2012/10/styler-strategy-pattern_thumb.png" alt="styler-strategy-pattern" width="546" height="171" border="0" /></a>
 
 Donde vemos que nuestro objeto “Styler” consume objetos que implementan “IStyler” como son “BoldStyler”, “ItalicStyler”, … . Un diagrama semejante al que define el patrón Strategy:
 
-<a href="/public/uploads/2012/10/strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="strategy-pattern" src="/public/uploads/2012/10/strategy-pattern_thumb.png" alt="strategy-pattern" width="545" height="171" border="0" /></a>
+<a href="/assets/uploads/2012/10/strategy-pattern.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="strategy-pattern" src="/assets/uploads/2012/10/strategy-pattern_thumb.png" alt="strategy-pattern" width="545" height="171" border="0" /></a>
 
 Donde los artefactos son:
 <ul>
@@ -119,7 +119,7 @@ En este primer ejemplo hemos creado un contexto que acepta recibir una estrategi
                                                 new BoldStyler(),
                                                 new ItalicStyler(),
                                                 new UnderlineStyler()
-                                            }; 
+                                            };
     public string SetStyle(string input)
     {
         var result = input;

@@ -52,7 +52,7 @@ A temporary task icon was created.  Replace with a 32x32 png with transparencies
 
 Si echamos un vistazo veremos que nos ha creado una carpeta con el nombre de tarea que indicamos. Si miramos el contenido de esa carpeta debería ser semejante al siguiente:
 
-![New VSTS Task](/public/uploads/2016/11/vsts-tasks-folder.png)
+![New VSTS Task](/assets/uploads/2016/11/vsts-tasks-folder.png)
 
 - **icon.png**: será el logo de nuestro step en la web de Team Services. Es una imagen de 32x32 pixels.
 - **sample.js**: es un script de nodejs que se ejecutará. Es la tarea en sí.
@@ -190,9 +190,9 @@ param
 )
 
 
-$Assem = ( 
+$Assem = (
     "System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-) 
+)
 
 $Source = @"
 using System.Collections.Generic;
@@ -207,7 +207,7 @@ namespace Utilities
         {
             if (!Directory.Exists(folder))
                 throw new DirectoryNotFoundException("Folder '" + folder + "' not found");
-            
+
             var searchPatterns = new List<string>();
             if (!string.IsNullOrEmpty(filter))
             {
@@ -243,9 +243,9 @@ namespace Utilities
         }
     }
 }
-"@ 
+"@
 
-Add-Type -ReferencedAssemblies $Assem -TypeDefinition $Source -Language CSharp  
+Add-Type -ReferencedAssemblies $Assem -TypeDefinition $Source -Language CSharp
 
 if ($recursive -eq "true" -or $recursive -eq "True" -or $recursive -eq "TRUE" -or $recursive -eq 1) { $recursive = $true }
 else { $recursive = $false }
@@ -342,13 +342,13 @@ $ tfx build tasks delete --task-id f5d62250-a510-11e6-9d90-21c7a4a70529
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
     "description": "New build task for zip.",
     "categories": [
         "Build and release"
     ],
     "icons": {
-        "default": "icon.png"        
+        "default": "icon.png"
     },
     "files": [
         {

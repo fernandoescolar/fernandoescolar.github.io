@@ -5,6 +5,7 @@ title: 'No comments...'
 author: fernandoescolar
 post_date: 2020-04-11 11:02:29
 layout: post
+background: '/assets/uploads/bg/silence.jpg'
 ---
 
 Muchas gracias a todos por los comentarios que habéis ido dejando en este blog. Siempre me habéis animado a seguir escribiendo y de alguna manera, le habéis dado sentido a todo esto. Hoy admito mi derrota. Las redes sociales han ganado. Hoy comienza la era de sin comentarios<!--break-->.

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="es-es">
   {% include head.html %}
+  <body>
+    {% include navbar.html %}
 
-  <body class="theme-base-08 layout-reverse">
-    {% include sidebar.html %}
+    {{ content }}
 
-    <div class="content container">
-      {{ content }}
-    </div>
-  
+    {% include footer.html %}
+
     {% include cookie-consent.html %}
+
+    {% include scripts.html %}
   </body>
 </html>

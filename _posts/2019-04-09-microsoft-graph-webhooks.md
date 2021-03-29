@@ -10,7 +10,7 @@ tags: azure microsoft graph webhooks
 
 Es el día en el que salen a la venta las entradas de la [Comic-Con](https://www.comic-con.org/), o cualquier evento grande, de semejante calado, como el Global Azure Bootcamp (en [Madrid](https://azurebootcamp.es/), [Barcelona](https://catazurebootcamp.azurewebsites.net/) o incluso en Seattle). Cuando publicas un nuevo _post_ en tu blog y todavía no se ha actualizado. Si estás usando autenticación de doble factor y aun no ha llegado el email de verificación. El caso es que toda situación semejante, acaba igual: aporreando la tecla F5<!--break-->.
 
-![Martillo neumático en tecla F5](/public/uploads/2019/04/jackhammerf5.gif)
+![Martillo neumático en tecla F5](/assets/uploads/2019/04/jackhammerf5.gif)
 
 Así nacieron los [ataques DDoS](https://media.giphy.com/media/1zSz5MVw4zKg0/giphy.gif).
 
@@ -35,7 +35,7 @@ De esta forma surgieron las implementaciones que podemos encontrar hoy en día d
 - Cuando suceden eventos, el sistema original envía peticiones POST a la URL indicada con los detalles de estos.
 - A esa petición, se le añade la contraseña que se especificó en la creación de la suscripción. De esta forma, podemos validar que es una llamada válida.
 
-![Your Webhool is going to be legen... wait fo it to be approved... dary!](/public/uploads/2019/04/webhook-legendary.jpg)
+![Your Webhool is going to be legen... wait fo it to be approved... dary!](/assets/uploads/2019/04/webhook-legendary.jpg)
 
 ## Webhooks en Microsoft Graph
 
@@ -358,4 +358,4 @@ Y en el contexto de Microsoft Graph nos aporta la funcionalidad necesaria para p
 
 Una solución simple, elegante y fácil de implementar, que nació para cubrir un problema bastante más complejo.
 
-![Yo dawg, I heard you like Webhooks... So I added a Webhook to your Webhook](/public/uploads/2019/04/webhook-meme.jpg)
+![Yo dawg, I heard you like Webhooks... So I added a Webhook to your Webhook](/assets/uploads/2019/04/webhook-meme.jpg)

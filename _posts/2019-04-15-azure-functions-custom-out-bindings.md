@@ -5,7 +5,8 @@ title: 'Azure Functions: custom out bindings'
 author: fernandoescolar
 post_date: 2019-04-15 07:59:45
 layout: post
-tags: azure functions csharp out bindings
+tags: azure-functions azure functions csharp bindings
+background: '/assets/uploads/bg/thunder2.jpg'
 ---
 
 La gran ventaja en de Azure Functions frente a otra tecnología es que escribes muy poco código, ya que solo debes gestionar como fluyen los datos usando unos _bindings_ de entrada y salida. El propio SDK nos aporta un buen conjunto por defecto de _bindings_ que nos ayudarán a tratar con peticiones HTTP, Azure Storage Account (Blob, Queue y Table), Service Bus o Cosmos DB. Pero ¿y si quiero integrarme con otro sistema no soportado?<!--break-->
@@ -299,6 +300,6 @@ Las _Azure Functions_ son una herramienta muy potente, que nos permite escribir 
 
 Una excelente manera de convertir 10 líneas de código, que podrían ser una función compartida, en cinco clases. Pero, a la vez, molar que te cagas, por lo guapo que queda meter un atributo decorando una propiedad marcada con `out` y que automágicamente realice una acción más o menos compleja.
 
-![Deal with it](/public/uploads/2019/04/deal-with-it.jpg)
+![Deal with it](/assets/uploads/2019/04/deal-with-it.jpg)
 
 Puedes ver el proyecto completo que hemos utilizado en este artículo en [este repositorio de Github](https://github.com/fernandoescolar/Developerro.AzureFunctions.CustomBindings).

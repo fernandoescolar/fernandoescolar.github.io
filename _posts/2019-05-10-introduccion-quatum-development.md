@@ -6,13 +6,14 @@ author: fernandoescolar
 post_date: 2019-05-10 07:51:23
 layout: post
 tags: quantum programming
+background: '/assets/uploads/bg/engineering1.jpg'
 ---
 
 El mundo de la programación tal y cómo lo conocemos tiene fecha de caducidad. Por muchos materiales nuevos, aleaciones especiales o mejoras tecnológicas que tengamos, un microprocesador tiene un límite de tamaño a partir del cual deja de ser eficiente. Cada día estamos más cerca de ese límite y es aquí donde aparece la computación cuántica. Prepárate para cambiar de paradigma, para cambiar _bits_ por _qubits_<!--break-->.
 
 O en realidad no: solo quería ponerme apocalíptico y algo dramático para hacer más llamativa la entradilla...
 
-![Joder, Quantum Sol Hace](/public/uploads/2019/05/quantum-sol-hace.jpg)
+![Joder, Quantum Sol Hace](/assets/uploads/2019/05/quantum-sol-hace.jpg)
 
 Lo que sí que es cierto es que, en un microprocesador muy muy pequeño (ínfimo), los electrones que transporta, al ser partículas cuánticas, podrían saltarse la "barrera física" que supone un transistor y pasar a otro (por eso del [efecto túnel](https://es.wikipedia.org/wiki/Efecto_t%C3%BAnel)). Acontecimiento que desencadenaría un mal-funcionamiento del micro.
 
@@ -22,7 +23,7 @@ La primera premisa de este paradigma es que en lugar de usar como unidad de proc
 
 ¿No os suena un poco a lo del [gato de Schrödinger](https://es.wikipedia.org/wiki/Gato_de_Schr%C3%B6dinger)?
 
-![El gato de Schrödinger: Wanted Dead & Alive](/public/uploads/2019/05/quantum-cat.jpg)
+![El gato de Schrödinger: Wanted Dead & Alive](/assets/uploads/2019/05/quantum-cat.jpg)
 
 A la hora de la verdad, lo que significa es que, en una sola ejecución de un programa, tendríamos ambos estados.
 
@@ -48,7 +49,7 @@ Además, un _ket_ puede representarse como una matriz de dos filas y una columna
 α·|0> = [[α], [0]]  ;  β·|1> = [[0], [β]]
 ```
 
-![fórmula de ket como matriz](/public/uploads/2019/05/quantum-01.png)
+![fórmula de ket como matriz](/assets/uploads/2019/05/quantum-01.png)
 
 ## Operaciones Cuánticas
 
@@ -64,7 +65,7 @@ Si por ejemplo tenemos un _qubit_ con una distribución al 50% del estado `0` o 
 1/sqrt(2) · |0> + 1/sqrt(2) · |1>
 ```
 
-![fórmula M](/public/uploads/2019/05/quantum-m.png)
+![fórmula M](/assets/uploads/2019/05/quantum-m.png)
 
 > Como hemos visto antes, la probabilidad de que sea `0` o `1`, vendría determinada por el cuadrado de `1/sqrt(2)` que es `1/2` o `0.5`.
 
@@ -86,7 +87,7 @@ Se representa como la matriz:
 X = [[0, 1], [1,  0]]
 ```
 
-![fórmula X](/public/uploads/2019/05/quantum-x.png)
+![fórmula X](/assets/uploads/2019/05/quantum-x.png)
 
 Y al operar seria de la siguiente forma:
 
@@ -94,7 +95,7 @@ Y al operar seria de la siguiente forma:
 X·|1> = [[0, 1], [1,  0]] · [[0], [1]] = [[0·0 + 1·1], [1·0 + 0·1]] = [[1], [0]] = |0>
 ```
 
-![fórmula X](/public/uploads/2019/05/quantum-x-2.png)
+![fórmula X](/assets/uploads/2019/05/quantum-x-2.png)
 
 ### Z
 
@@ -104,7 +105,7 @@ Esta operación deja el valor `|0>` como `|0>`, pero convierte `|1>` en `-|1>`. 
 Z = [[1, 0], [0,  -1]]
 ```
 
-![fórmula Z](/public/uploads/2019/05/quantum-z.png)
+![fórmula Z](/assets/uploads/2019/05/quantum-z.png)
 
 ### H
 
@@ -114,7 +115,7 @@ La puerta _Hadamard_ o puerta H, superpone los valores `1` y `0`. Se representa 
 H = 1/sqrt(2) · [[1, 1], [1,  -1]]
 ```
 
-![fórmula H](/public/uploads/2019/05/quantum-h.png)
+![fórmula H](/assets/uploads/2019/05/quantum-h.png)
 
 Que al operar daría como resultado:
 
@@ -122,7 +123,7 @@ Que al operar daría como resultado:
 |0> = (|0> + |1>)/sqrt(2);  |1> = (|0> - |1>)/sqrt(2)
 ```
 
-![fórmula H](/public/uploads/2019/05/quantum-h-2.png)
+![fórmula H](/assets/uploads/2019/05/quantum-h-2.png)
 
 ## Microsoft Quantum Development Kit
 
@@ -325,6 +326,6 @@ No está llamada a sustituir la computación actual, pero sí a extenderla. Hoy 
 
 Lo que sí que podemos intuir es que será importante en el futuro, y aunque no le veas sentido, creo que es divertido e interesante el irnos acostumbrando a este nuevo paradigma.
 
-![One does not simply understand quantum development](/public/uploads/2019/05/quantum-meme.jpg)
+![One does not simply understand quantum development](/assets/uploads/2019/05/quantum-meme.jpg)
 
 No te digo nada y te lo digo todo. Así a la vez.

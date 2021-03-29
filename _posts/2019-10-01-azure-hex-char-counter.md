@@ -16,27 +16,27 @@ La respuesta a esta pregunta es que de una forma muy eficiente. Si no, no hubié
 
 Lo primero que tenemos que hacer es ir al portal de Microsoft Azure y crear un servicio *PaaS* donde hospedar nuestra aplicación. Así que buscaremos en el *marketplace* el recurso de tipo "Web App":
 
-![Crear azure web app](/public/uploads/2019/09/hex-counter-1.png)
+![Crear azure web app](/assets/uploads/2019/09/hex-counter-1.png)
 
 Entonces tendremos que configurar los datos sobre la suscripción, el grupo de recursos, el tipo de aplicación (usaremos la de por defecto: .Net 4.7 en una máquina Windows), la región y el tamaño del servicio:
 
-![Configurar la web app](/public/uploads/2019/09/hex-counter-2.png)
+![Configurar la web app](/assets/uploads/2019/09/hex-counter-2.png)
 
 El tema de monitoring lo dejaremos configurado por defecto. Esto implica que creará un servicio de App Insights con el mismo nombre que nuestra aplicación.
 
-![Confirmar y crear la web app](/public/uploads/2019/09/hex-counter-3.png)
+![Confirmar y crear la web app](/assets/uploads/2019/09/hex-counter-3.png)
 
 Una vez hemos revisado todo, creamos el servicio dentro de Azure y tras unos pocos segundos, se notificará de que ya está disponible:
 
-![Notificación de creada](/public/uploads/2019/09/hex-counter-4.png)
+![Notificación de creada](/assets/uploads/2019/09/hex-counter-4.png)
 
 Por cuestiones de facilidad hemos decidido utilizar *nodejs* como lenguaje de programación de servidor. Así no tendremos que crear complejos procesos de compilación. Para ello tendremos que añadir un en la configuración del "App Service" un "AppSettting" con el nombre "WEBSITE_NODE_DEFAULT_VERSION" y con el valor de una versión estable, como por ejemplo la "6.2.2":
 
-![Configurando node](/public/uploads/2019/09/hex-counter-5.png)
+![Configurando node](/assets/uploads/2019/09/hex-counter-5.png)
 
 Después de guardar todos los cambios, tendremos que subir la aplicación en cuestión que ayudará a los servicios de Azure a realizar la cuenta de la longitud de una cadena de texto en hexadecimal. Así que podemos abrir el editor de código online, seleccionando la opción de "App Service Editor (Preview)" del menú:
 
-![Desarrollando la aplicación](/public/uploads/2019/09/hex-counter-6.png)
+![Desarrollando la aplicación](/assets/uploads/2019/09/hex-counter-6.png)
 
 Una vez en este editor tendremos que crear un nuevo archivo llamado "index.js" con el siguiente contenido:
 
@@ -59,7 +59,7 @@ Como podemos observar, nuestro servicio va a devolver en forma de texto, el valo
 
 Después tendremos que crear otro archivo llamado "Web.config" donde le diremos al servicio de Azure cómo puede ejecutar nuestra aplicación:
 
-![Monaco editor](/public/uploads/2019/09/hex-counter-7.png)
+![Monaco editor](/assets/uploads/2019/09/hex-counter-7.png)
 
 El contenido de este archivo debería ser parecido a este:
 
@@ -87,7 +87,7 @@ El contenido de este archivo debería ser parecido a este:
 
 Con esto ya podemos probar nuestra aplicación. Pero entonces os daréis cuenta de que solo devuelve texto y que en ningún momento estamos contando los caracteres de la cadena:
 
-![No funciona exactamente como queremos](/public/uploads/2019/09/hex-counter-bad.png)
+![No funciona exactamente como queremos](/assets/uploads/2019/09/hex-counter-bad.png)
 
 Aquí es donde una de las mejores *features* de Microsoft Azure nos pueden ayudar. Con 3 sencillos pasos vamos a conseguir aplicar la magia:
 
@@ -95,17 +95,17 @@ Aquí es donde una de las mejores *features* de Microsoft Azure nos pueden ayuda
 2. Cambiar el valor de "Collection level" a "Recommended"
 3. Pulsar el botón de "Apply"
 
-![Do magic tricks](/public/uploads/2019/09/hex-counter-8.png)
+![Do magic tricks](/assets/uploads/2019/09/hex-counter-8.png)
 
 Una vez termine la actualización si entramos de nuevo en nuestra aplicación web, podremos ver que tendremos una respuesta diferente:
 
-![El resultado](/public/uploads/2019/09/hex-counter-9.png)
+![El resultado](/assets/uploads/2019/09/hex-counter-9.png)
 
 Donde en la primera línea de la respuesta, podremos ver el tamaño de la cadena de texto que hemos enviado en hexadecimal.
 
 *HCC* ya está funcionando, en un entorno escalable y al servicio de todos. ¡Misión cumplida!
 
-![Ronaldinho sonrie](/public/uploads/2019/09/ronaldinho.jpg)
+![Ronaldinho sonrie](/assets/uploads/2019/09/ronaldinho.jpg)
 
 ## Conclusiones
 

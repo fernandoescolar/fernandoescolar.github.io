@@ -9,7 +9,7 @@ layout: post
 <p>A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework</strong>. Hasta ahora hemos visto <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)</a> e incluso introdujimos el uso de una clase llamada <em><strong>Observable</strong></em> que contiene m&eacute;todos y extensiones para que todo esto sea m&aacute;s sencillo.</p>
 <!--break-->
 <p>Si mediante el navegador de objetos o cualquier otra herramienta de estudio de ensamblados, abrimos el archivo "<em>System.Reactive.dll</em>", en el namespace "<em>System.Reactive.Linq</em>" encontramos una clase est&aacute;tica cargada de m&eacute;todos y extensiones llamada <em><strong>Observable</strong></em>. Dentro de este objeto se encuentra definido el segundo par&aacute;metro de la f&oacute;rmula que define las <strong>reactive extensions</strong>: <strong>Linq</strong>.</p>
-<p><img src="/public/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p><img src="/assets/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" /></p>
 <p>Para empezar Observable contiene extensiones con, si no todos, la mayor&iacute;a de los operadores que ya conocemos de Linq. Pero, en este caso los encontraremos aplicados a objetos tipo&nbsp;<em>IObservable&lt;T&gt;</em>.&nbsp;</p>
 <pre class="brush: csharp">var observable = new ReplaySubject&lt;int&gt;();
 observable .OnNext(1);
@@ -29,28 +29,28 @@ var observable = enumerable.ToObservable();</pre>
 <p>A estos operadores que podr&iacute;amos definir como est&aacute;ndares de Linq se les a&ntilde;aden muchos otros propios de Rx. Para poder echar un vistazo a los m&aacute;s importantes vamos a intentar dividirlos entre creadores y operadores. En este art&iacute;culo trataremos los primeros, ya que es un tema suficientemente extenso. Y los categorizaremos en:&nbsp;<em>create</em>, rango, tiempo, as&iacute;ncrono y eventos.</p>
 <h2>Creadores</h2>
 <p>Como m&eacute;todos para crear objetos observables podemos encontrar las cuatro funciones que mencionamos en el art&iacute;culo anterior:</p>
-<pre class="brush: csharp">var neverObservable = Observable.Never&lt;int&gt;(); 
+<pre class="brush: csharp">var neverObservable = Observable.Never&lt;int&gt;();
 
 // igual que
 var s = new Subject&lt;int&gt;();</pre>
 <p>La funci&oacute;n "<em>Never</em>" genera un observable en el que nunca hay una iteraci&oacute;n ni termina y se diferencia de "<em>Empty</em>" en que este &uacute;ltimo si que termina la tarea:</p>
-<pre class="brush: csharp">var emptyObservable = Observable.Empty&lt;int&gt;(); 
+<pre class="brush: csharp">var emptyObservable = Observable.Empty&lt;int&gt;();
 
 // igual que
-var s = new Subject&lt;int&gt;(); 
+var s = new Subject&lt;int&gt;();
 s.OnComplete();</pre>
 <p>Cuando usemos "<em>Return</em>" tendr&aacute; lugar la iteraci&oacute;n que digamos y se terminar&aacute; el proceso:</p>
-<pre class="brush: csharp">var returnObservable = Observable.Return(1); 
+<pre class="brush: csharp">var returnObservable = Observable.Return(1);
 
 // igual que
-var s = new ReplaySubject&lt;int&gt;(); 
-s.OnNext(1); 
+var s = new ReplaySubject&lt;int&gt;();
+s.OnNext(1);
 s.OnComplete();</pre>
 <p>Y dentro de estos cuatro m&eacute;todos simples el &uacute;ltimo es "<em>Throw</em>" que lanzar&aacute; un error que le especificamos:</p>
-<pre class="brush: csharp">var throwObservable = Observable.Throw&lt;int&gt;(new Exception()); 
+<pre class="brush: csharp">var throwObservable = Observable.Throw&lt;int&gt;(new Exception());
 
 // igual que
-var s = new ReplaySubject&lt;int&gt;(); 
+var s = new ReplaySubject&lt;int&gt;();
 s.OnError(new Exception());</pre>
 <h3>Create</h3>
 <p>La funci&oacute;n por excelencia para crear cualquier tipo de objeto observable es "Create". Tiene tanta versatilidad que el resto de creadores se pueden implementar (con mayor o menor dificultad) usando esto. Un ejemplo claro ser&iacute;a el de la enumeraci&oacute;n que se convierte en observable:</p>
@@ -125,7 +125,7 @@ for(var i = 0; i &lt; 10, i = i + 1)
 clicks.Take(10).Subscribe(e =&gt;
                 {
                     counter++;
-                    MyButton.Content = counter.ToString(); 
+                    MyButton.Content = counter.ToString();
                 });</pre>
 <p>&nbsp;</p>
 <p>La mayor parte de estas funciones para crear observables tienen sobrecargas que nos aportar&aacute;n mayor funcionalidad. Adem&aacute;s no son las &uacute;nicas herramientas de las que disponemos, aunque si probablemente las m&aacute;s significativas. Como siempre a partir de aqu&iacute; os invitamos a que explor&eacute;is que otros m&eacute;todos de creaci&oacute;n existen o incluso a ensayar con la funci&oacute;n "<em>Create</em>" para encontrar diferentes resultados.</p>

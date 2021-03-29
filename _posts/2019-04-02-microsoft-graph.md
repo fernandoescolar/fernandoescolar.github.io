@@ -25,40 +25,40 @@ Lo primero que tenemos que saber para explotar Microsoft Graph es cómo consegui
 
 Para configurar estos permisos tendremos que dirigirnos al [portal de Azure](https://portal.azure.com/) con una cuenta de administrador de nuestro _tenant_. Ahí nos dirigiremos a la opción de menú "Azure Active Directory" dentro de esta opción a "App registrations (Preview)" y al botón de "New registration":
 
-![New app registration](/public/uploads/2019/04/microsoft-graph-app-registration-1.png)
+![New app registration](/assets/uploads/2019/04/microsoft-graph-app-registration-1.png)
 
 Después le daremos un nombre al "App registration" comprobaremos que está marcada la opción de permitir solo accesos con cuentas de nuestro directorio y presionaremos el botón "Register":
 
-![New app registration](/public/uploads/2019/04/microsoft-graph-app-registration-2.png)
+![New app registration](/assets/uploads/2019/04/microsoft-graph-app-registration-2.png)
 
 Al crearla, podremos observar en el panel de "Overview":
 
 - Application (client) ID: que corresponde con el `client_id`
 - Directory (tenant) ID: que se corresponde con el valor de `tenant_id`
 
-![client_id y tenant_id](/public/uploads/2019/04/microsoft-graph-app-registration-ids.png)
+![client_id y tenant_id](/assets/uploads/2019/04/microsoft-graph-app-registration-ids.png)
 
 Una vez hemos creado el nuevo registro, podremos generar un nuevo secreto navegando a "Certificates & secrets" y presionando el botón de "New client secret":
 
-![New secret](/public/uploads/2019/04/microsoft-graph-app-registration-secret.png)
+![New secret](/assets/uploads/2019/04/microsoft-graph-app-registration-secret.png)
 
 No olvides guardar en un lugar seguro el secreto que se acaba de generar, ya que coincidirá con el valor de `client_secret`.
 
 Ahora vamos a asignar los permisos del registro. Para ello iremos a "API permissions" y dentro de esta opción, pulsaremos "Add a permission":
 
-![Add permissions](/public/uploads/2019/04/microsoft-graph-app-registration-3.png)
+![Add permissions](/assets/uploads/2019/04/microsoft-graph-app-registration-3.png)
 
 En el nuevo modal que se abrirá lo primero que tendremos que elegir es "Microsoft Graph", para poder elegir los permisos para esta API:
 
-![Select Microsoft Graph](/public/uploads/2019/04/microsoft-graph-app-registration-4.png)
+![Select Microsoft Graph](/assets/uploads/2019/04/microsoft-graph-app-registration-4.png)
 
 Después nos dará a elegir entre "Delegated permissions" o "Application permissions". Deberemos elegir una en dependencia de cómo tenemos pensado obtener el _token_. Después tendremos un listado de recursos y al desplegar alguno de ellos encontraremos los permisos específicos que podemos asignar:
 
-![Search your permissions](/public/uploads/2019/04/microsoft-graph-app-registration-5.png)
+![Search your permissions](/assets/uploads/2019/04/microsoft-graph-app-registration-5.png)
 
 Si queremos saber qué permisos deberíamos añadir, todo depende de la operación dentro de Microsoft Graph que queremos realizar. Afortunadamente, en la documentación, en [la referencia a la API](https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0), podremos encontrar antes de cada acción, qué permisos son necesarios para ejecutarla:
 
-![Microsoft Graph Reference: Action Permissions](/public/uploads/2019/04/microsoft-graph-permissions.png)
+![Microsoft Graph Reference: Action Permissions](/assets/uploads/2019/04/microsoft-graph-permissions.png)
 
 Una vez hayamos añadido los que necesitemos, en el portal de Azure, podemos presionar en "Add Permissions". Y si queremos que ya cuenten con la validación del administrador, en la pantalla de "API permissions", presionaremos el botón de "Grant admin consent for [your directory]".
 
@@ -308,4 +308,4 @@ Es un funcionamiento de petición/respuesta de HTTP, pero si abrimos unas cuanta
 
 Hoy hemos mostrado como utilizar Microsoft Graph, a partir de aquí, si seguís profundizando en el tema, ya no es mi culpa.
 
-![Homer se esconde entre los matorrales](/public/uploads/2019/04/homer-fadeoff.gif)
+![Homer se esconde entre los matorrales](/assets/uploads/2019/04/homer-fadeoff.gif)

@@ -5,7 +5,8 @@ title: 'EF Core vs. Records'
 author: fernandoescolar
 post_date: 2021-03-10 03:21:02
 layout: post
-tags: ef efcore entity framework core record net5 dotnet
+tags: ef efcore entity-framework record net5 dotnet
+background: '/assets/uploads/bg/storage.jpg'
 ---
 No cabe duda de que los *tipos registro* son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo *.Net*<!--break-->. Es una oda de rima libre, que une `record` con `with`, y allí donde no llega aparece `init`, a la forma en la que nos gustaría programar.
 
@@ -114,7 +115,7 @@ public async Task IntegrationTest()
 
 Y al ejecutar: ¡Sorpresa! ¡Todo funciona correctamente si ningún problema! Igual que si hubiéramos usado `class` en lugar de `record`.
 
-![Wow](/public/uploads/2021/03/wow-will-smith.gif)
+![Wow](/assets/uploads/2021/03/wow-will-smith.gif)
 
 ## Delete
 
@@ -162,7 +163,7 @@ public async Task IntegrationTest()
 
 Y al ejecutar: ¡Sorpresa de nuevo! ¡Todo funciona correctamente si ningún problema! Podemos crear y borrar entidades de la misma forma que hacíamos antes.
 
-![Wow](/public/uploads/2021/03/wow.gif)
+![Wow](/assets/uploads/2021/03/wow.gif)
 
 ## Update
 
@@ -227,7 +228,7 @@ Al ejecutar:
 
 Resulta que como hemos cargado una instancia de nuestra entidad desde el contexto de **EF** y luego hemos añadido otra instancia que representa el mismo objeto, el `ChangeTracker` ha decidido que esto no puede ser.
 
-![Bofetada inesperada](/public/uploads/2021/03/slapping.gif)
+![Bofetada inesperada](/assets/uploads/2021/03/slapping.gif)
 
 La solución está en no usar el `ChangeTracker` cuando vamos a realizar modificaciones en una entidad de tipo `record`. Esto lo conseguiremos con el método `AsNoTracking` cuando recogemos valores desde la base de datos:
 
@@ -336,7 +337,7 @@ Si os interesa el ejemplo completo podéis echarle un vistazo aquí:
 
 [Código fuente completo en *gist*](https://gist.github.com/fernandoescolar/53df9ac1bf71ff032c1b9284f6890530)
 
-![Deal with it](/public/uploads/2021/03/deal-with-it.gif)
+![Deal with it](/assets/uploads/2021/03/deal-with-it.gif)
 
 ## Conclusiones
 

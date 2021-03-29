@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2019-03-12 05:26:33
 layout: post
 tags: oauth csharp jwt
+background: '/assets/uploads/bg/security1.jpg'
 ---
 
 Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación+autorización de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo<!--break--> [guiño][guiño].
@@ -249,7 +250,7 @@ namespace Security
             var validationParameter = new TokenValidationParameters()
             {
                 RequireSignedTokens = true,
-                ValidateAudience = false,
+                ValidateAudience = false, //¡ojo! para ser seguro se debe validar la audiencia
                 ValidIssuer = $"https://sts.windows.net/{TenantId}/",
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true,
@@ -344,8 +345,8 @@ public class Startup
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = false,
-                ValidateAudience = false
+                ValidateIssuer = false,  //¡ojo! para ser seguro se debe validar el issuew
+                ValidateAudience = false //¡ojo! para ser seguro se debe validar la audiencia
             };
         });
     }
@@ -360,6 +361,6 @@ public class Startup
 
 ## Conclusiones
 
-Evidentemente, los ejemplos están incompletos: no se usan cachés, no se validan campos importantes como la audiencia y en general no tratamos identidades, solo el _token_. Pero hemos visto a fondo cómo funciona el mundo de la autenticación y autoriazción con OAuth 2.0 para nuestras APIs. Además, hemos demostrado los principios de cómo realizar estas autenticación+autorización nosotros mismos o cómo funcionan internamente otros sistemas que la realizan por nosotros.
+Evidentemente, los ejemplos están incompletos: no se usan cachés, no se validan campos importantes como la audiencia y en general no tratamos identidades, solo el _token_. Pero hemos visto a fondo cómo funciona el mundo de la autenticación y autorización con OAuth 2.0 para nuestras APIs. Además, hemos demostrado los principios de cómo realizar estas autenticación+autorización nosotros mismos o cómo funcionan internamente otros sistemas que la realizan por nosotros.
 
 Y aunque ningún sistema es completamente seguro, siempre está bien conocer su funcionamiento interno para ser capaces de prevenir ataques y fallos de seguridad.

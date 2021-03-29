@@ -1,0 +1,18 @@
+article {
+    h2 {
+        margin: 0.83em 0;
+    }
+
+    &.list-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 1em;
+
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+
+    &#error {
+        margin-top: 100px;;
+    }
+}

@@ -6,13 +6,13 @@ post_date: 2013-01-07 11:13:39
 post_excerpt: ""
 layout: post
 ---
-<em>En todos los asuntos de opinión, nuestros adversarios están locos</em> (Oscar Wilde). Por suerte los locos con los que puedes compartir opiniones en la lista de correo de la fundación <a href="http://www.techdencias.net" target="_blank">[T]echdencias</a>, son magníficos profesionales como <a href="https://twitter.com/Marc_Rubino" target="_blank">@Marc_Rubino</a> o <a href="https://twitter.com/mserrate" target="_blank">@mserrate</a>. Hace unos días tuvimos la oportunidad de discutir sobre el patrón "Repository". 
+<em>En todos los asuntos de opinión, nuestros adversarios están locos</em> (Oscar Wilde). Por suerte los locos con los que puedes compartir opiniones en la lista de correo de la fundación <a href="http://www.techdencias.net" target="_blank">[T]echdencias</a>, son magníficos profesionales como <a href="https://twitter.com/Marc_Rubino" target="_blank">@Marc_Rubino</a> o <a href="https://twitter.com/mserrate" target="_blank">@mserrate</a>. Hace unos días tuvimos la oportunidad de discutir sobre el patrón "Repository".
 <!--break-->
 Y aunque nuestras opiniones pueden diferir, me gustaría compartir algunas conclusiones personales:
 <h3>Un poco de historia</h3>
 La primera vez que oímos hablar del patrón "Repository" fue en el famoso libro de <a href="http://www.martinfowler.com" target="_blank">Martin Fowler</a>, <a href="http://www.martinfowler.com/books/eaa.html" target="_blank">Patterns of Enterprise Application Architecture</a>, y la autoría se le atribuye a Edward Hieatt y Rob Mee.
 
-Para el que no se haya leído este libro (ya está tardando <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style: none;" src="/public/uploads/2012/12/wlEmoticon-winkingsmile.png" alt="Guiño" />) lo resumiremos diciendo que se nos plantean varios patrones de diseño que ayudarán a mejorar nuestras aplicaciones. Entre tantos conceptos, se nos introduce una forma de gestionar las interacciones con la capa de almacenamiento de la aplicación: la capa “Data Mapper”.
+Para el que no se haya leído este libro (ya está tardando <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style: none;" src="/assets/uploads/2012/12/wlEmoticon-winkingsmile.png" alt="Guiño" />) lo resumiremos diciendo que se nos plantean varios patrones de diseño que ayudarán a mejorar nuestras aplicaciones. Entre tantos conceptos, se nos introduce una forma de gestionar las interacciones con la capa de almacenamiento de la aplicación: la capa “Data Mapper”.
 <h4>Data Mapper</h4>
 Imaginemos que tenemos un sistema de almacenamiento de datos complejo, algo así como una base de datos. La gestión mediante nuestro lenguaje de programación preferido de esta información, puede resultar compleja y para nada relacionada con la forma de gestionar la información dentro de nuestra aplicación.
 
@@ -29,7 +29,7 @@ Una consulta sencilla, que devuelva el número de usuarios de nuestro sistema, p
          return count;
       }
    }
-}       
+}
 catch (Exception ex)
 {
    // manage exception
@@ -118,12 +118,12 @@ Y si estudiamos la implementación propuesta, encontraremos varios detalles. Ent
 Otro detalle es el objeto "ICriteria" que se le pasa como parámetro al método "FilterBy". Este objeto no es más que la representación del anteriormente mencionado patrón "Specification".
 <h4>Specification</h4>
 El patrón "Specification" viene a resolver un problema de crear diferentes reglas de negocio que puedan ser combinadas. Esto quiere decir que nos ayudará a crear diferentes normas que resolverán un problema concreto de formas diferentes. Pero para orientarnos más rápido, vamos a ver un ejemplo de implementación:
-<pre class="brush: csharp">public interface ISpecification 
+<pre class="brush: csharp">public interface ISpecification
 {
    bool IsSatisfiedBy(object candidate);
 }
 
-public interface ICompositeSpecification : ISpecification 
+public interface ICompositeSpecification : ISpecification
 {
    ISpecification And(ISpecification other);
    ISpecification Or(ISpecification other);
@@ -132,22 +132,22 @@ public interface ICompositeSpecification : ISpecification
 Implementando de la forma correcta este patrón, el resultado que tendríamos es que si tuviéramos diferentes especificaciones, podríamos combinarlas para conseguir algo más concreto.
 
 Imaginemos que tenemos estas implementaciones:
-<pre class="brush: csharp">public class NameSpecification : ICompositeSpecification 
+<pre class="brush: csharp">public class NameSpecification : ICompositeSpecification
 {
-   public NameSpecification(string nameToCompare) { /* ... */ } 
+   public NameSpecification(string nameToCompare) { /* ... */ }
    public bool IsSatisfiedBy(object candidate) { /* candidate.Name == this.nameToCompare ... */ }
-   public ISpecification And(ISpecification other) { /* ... */ } 
-   public ISpecification Or(ISpecification other) { /* ... */ } 
-   public ISpecification Not() { /* ... */ } 
+   public ISpecification And(ISpecification other) { /* ... */ }
+   public ISpecification Or(ISpecification other) { /* ... */ }
+   public ISpecification Not() { /* ... */ }
 }
 
-public class PageIndexSpecification : ICompositeSpecification 
+public class PageIndexSpecification : ICompositeSpecification
 {
-   public NameSpecification(int pageIndex, int pageSize) { /* ... */ } 
+   public NameSpecification(int pageIndex, int pageSize) { /* ... */ }
    public bool IsSatisfiedBy(object candidate) { /* candidate is un pageIndex using pageSize */ }
-   public ISpecification And(ISpecification other) { /* ... */ } 
-   public ISpecification Or(ISpecification other) { /* ... */ } 
-   public ISpecification Not() { /* ... */ } 
+   public ISpecification And(ISpecification other) { /* ... */ }
+   public ISpecification Or(ISpecification other) { /* ... */ }
+   public ISpecification Not() { /* ... */ }
 }</pre>
 Ahora podríamos llamar a nuestro repositorio con un código parecido a este:
 <pre class="brush: csharp">var repository = new UserRepository();
@@ -156,27 +156,27 @@ criteria = criteria.And(new PageIndexCriteria(1, 10)); // cogemos la primera pá
 
 var result = repositori.FilterBy(criteria);</pre>
 La ventaja de este patrón es que podemos crear especificaciones muy genéricas o muy concretas, según las necesidades de cada momento:
-<pre class="brush: csharp">public class PropertyEqualsSpecification : ICompositeSpecification 
+<pre class="brush: csharp">public class PropertyEqualsSpecification : ICompositeSpecification
 {
-   public NameSpecification(string propertyName, object value) { /* ... */ } 
+   public NameSpecification(string propertyName, object value) { /* ... */ }
    public bool IsSatisfiedBy(object candidate) { /* candidate.propertyName == value ... */ }
-   public ISpecification And(ISpecification other) { /* ... */ } 
-   public ISpecification Or(ISpecification other) { /* ... */ } 
-   public ISpecification Not() { /* ... */ } 
+   public ISpecification And(ISpecification other) { /* ... */ }
+   public ISpecification Or(ISpecification other) { /* ... */ }
+   public ISpecification Not() { /* ... */ }
 }</pre>
 Dentro de este patrón, existe una implementación muy conocida para ayudarnos a realizar sentencias SQL para bases de datos, y recibe el nombre de <strong>Query Object</strong>, también expuesto en el libro de <a href="http://www.martinfowler.com/books/eaa.html" target="_blank">Patterns of Enterprise Application Architecture</a>.
 
 Lo que se propone en el patrón "Repository" es que las especificaciones sean resueltas usando un <a href="/2012/10/03/patrones-de-diseno-strategy/" target="_blank">patrón Strategy</a> para poder determinar en última instancia una sentencia correcta que podamos enviar a nuestro objeto "Data Mapper".
 
 Y como corolario a esta definición, aquellas especificaciones que sean muy comunes y se repitan muchas veces a lo largo del código, pueden pasar a formar parte de la definición del propio repositorio. Imaginemos que la búsqueda por nombre se realiza en 10 sitios diferentes. La solución más óptima será crear un método específico dentro del repositorio:
-<pre class="brush: csharp">public class UserRepository : IRepository&lt;User&gt; 
+<pre class="brush: csharp">public class UserRepository : IRepository&lt;User&gt;
 {
    /* ... */
-   public IEnumerable&lt;User&gt; FilterByName(string name) 
+   public IEnumerable&lt;User&gt; FilterByName(string name)
    {
       var criteria = new NameSpecification(name);
-      return this.FilterBy(criteria); 
-   } 
+      return this.FilterBy(criteria);
+   }
 }</pre>
 &nbsp;
 <h3>La actualidad</h3>
@@ -184,7 +184,7 @@ Hasta este momento hemos hablado de la teoría del patrón "Repository" y como l
 
 Vamos a poner el ejemplo de un blog simple, en el que queremos almacenar las entradas que escribimos "Post" y los comentarios que dejan los visitantes dentro de esas entradas "Comment":
 
-<a href="/public/uploads/2012/12/simple-blog-class-digram.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="simple-blog-class-digram" src="/public/uploads/2012/12/simple-blog-class-digram_thumb.png" alt="simple-blog-class-digram" width="515" height="89" border="0" /></a>
+<a href="/assets/uploads/2012/12/simple-blog-class-digram.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="simple-blog-class-digram" src="/assets/uploads/2012/12/simple-blog-class-digram_thumb.png" alt="simple-blog-class-digram" width="515" height="89" border="0" /></a>
 
 Si seguimos a rajatabla la primera implementación que encontremos en los buscadores más conocidos, el resultado será algo parecido a esto:
 <pre class="brush: csharp">public interface IRepository&lt;TEntity&gt; where TEntity : class
@@ -227,10 +227,10 @@ Además uniendo estos ORM con LINQ, se ha cerrado el círculo. Por ejemplo, un c
 var myEntity = new MyEntity { Name = "Test" };
 
 // añade la entidad a la base de datos
-context.MyEntities.Add(myEntity); 
+context.MyEntities.Add(myEntity);
 
 // borra la entidad de la base de datos
-context.MyEntities.Delete(myEntity); 
+context.MyEntities.Delete(myEntity);
 
 // seleccionamos valores de la base de datos con condiciones
 var results = context.MyEntities.Where( e =&gt; e.Name.StartsWith("T") );</pre>
@@ -269,7 +269,7 @@ La última razón por la que no termina de convencerme esta implementación es e
 Aplicando estas premisas, personalmente y simplificando mucho el problema de la gestión de un blog, propondría un repositorio que aportara valor y no expusiera objetos "IQueryable" e implementara su propio sistema de especificaciones. Algo más parecido a esto:
 <pre class="brush: csharp">public abstract class BaseRepository
 {
-    protected virtual IQueryable&lt;TEntity&gt; GetAll&lt;TEntity&gt;() 
+    protected virtual IQueryable&lt;TEntity&gt; GetAll&lt;TEntity&gt;()
           where TEntity : class
     {
         /* ... */

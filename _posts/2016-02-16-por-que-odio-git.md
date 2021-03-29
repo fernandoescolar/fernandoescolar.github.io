@@ -6,6 +6,7 @@ post_date: 2016-02-16T09:52:03.000Z
 post_excerpt: ""
 layout: post
 tags: git best-practices
+background: '/assets/uploads/bg/hate.jpg'
 ---
 
 El sistema de control de versión que más se ha extendido en los últimos años posiblemente sea Git. Algo que no ha pasado desapercibido para los desarrolladores de Microsoft. Así que han decidido integrarlo en todas sus herramientas. Y este hecho... Me ha destrozado la vida.
@@ -102,7 +103,7 @@ Date:   ...
 
 Un ejemplo gráfico, gracias a una herramienta que nos muestra un mapa de cambios:
 
-![Git Branches Map](/public/uploads/2016/02/git-branches.png)
+![Git Branches Map](/assets/uploads/2016/02/git-branches.png)
 
 Otro ejemplo es uno de twitter: [El GIT-ar Hero](https://twitter.com/HenryHoffman/status/694184106440200192). Si alguien entiende algo de esto, que venga y me lo explique por favor.
 
