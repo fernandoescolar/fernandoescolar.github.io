@@ -75,6 +75,7 @@ nav {
     }
 
     &.active {
+        opacity: 1;
         ul {
             visibility: visible;
             opacity: 1;

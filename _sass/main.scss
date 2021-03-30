@@ -14,7 +14,6 @@ main {
                 width: 100%;
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 transition: 0.3s;
-                border-radius: 5px; /* 5px rounded corners */
                 margin: 20px 20px;
                 display: flex;
                 flex-direction: column;
@@ -29,7 +28,6 @@ main {
                 }
 
                 img {
-                    border-radius: 5px 5px 0 0;
                     display: inline-block;
 
                     &.avatar {
@@ -95,6 +93,8 @@ main {
                 }
 
                 &.subscribe {
+                    cursor: default;
+
                     fieldset {
                         border: 0;
                         padding: 0 12px;
@@ -133,14 +133,12 @@ main {
                             img {
                                 width: 50%;
                                 margin: 0;
-                                border-radius: 5px 0 0 5px;
                                 object-fit: cover;
                             }
 
                             article {
                                 width: 50%;
                                 margin: 0;
-                                border-radius: 5px 0 0 5px;
                             }
                         }
                     }
@@ -173,14 +171,12 @@ main {
                             img {
                                 width: 50%;
                                 margin: 0;
-                                border-radius: 5px 0 0 5px;
                                 object-fit: cover;
                             }
 
                             article {
                                 width: 50%;
                                 margin: 0;
-                                border-radius: 5px 0 0 5px;
 
                                 h2 {
                                     width: 100%;
