@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Azure WebApps Tips & Tricks · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podr&#237;amos hallarnos a merced de cualquiera y ..." />
+		<meta property="og:title" content="Azure WebApps Tips & Tricks" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/cloud3.jpg" />
+		<meta property="og:description" content="Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y ..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-08-26 01:03:24Z" />
+		<meta property="article:published_time" content="2020-08-26 01:03:24Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Azure WebApps Tips & Tricks" />
+		<meta name="twitter:description" content="Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y ..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/cloud3.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" />
+		<meta name="description" content="Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y ..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/cloud3.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Azure WebApps Tips & Tricks
+			</h1><small>26 ago. 2020 · 16 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				<em>
+					Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y de cualquier cosa que no pueda ser programada, etiquetada o clasificada
+				</em>.
+				<!--break-->
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/x-files.jpg" alt="X-Files" />
+			</p>
+			<p>
+				<em>
+					A fin de cuentas, todos los servicios de Azure son parte de un todo mucho más grande que los integra, todos llevan dentro el caos y el orden, la creación y la destrucción. Todos son al mismo tiempo víctimas y responsables de su propia vida
+				</em><abbr title="parafraseando de nuevo a la serie Expediente X">*
+				</abbr>.
+			</p>
+			<p>
+				El problema es que no podemos ni sabemos cómo anticiparnos a todo. A veces los errores ocurren. Y a veces necesitamos lanzar un comando <code>kill
+				</code> (para matar un proceso) o un <code>reboot
+				</code> (para reiniciar una máquina) en una instancia de una Azure Web App.
+			</p>
+			<p>
+				Este es el caso que nos ocurrió hace unos días. En una de nuestras Web Apps de producción, una instancia empezó a dar errores 500 (<em>Server Error
+				</em>). Eso significaba que una serie de usuarios estaban recibiendo páginas de error en lugar de respuestas correctas a sus peticiones. No todos, pero sí algunos.
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/monitoring-errors.png" alt="Monitoring Web App Errors" />
+			</p>
+			<p>
+				Antes de ponernos a analizar e intentar identificar el problema, teníamos la obligación de dar servicio a nuestros clientes. Y como algunas instancias sí funcionaban y otras no, decidimos que lo mejor era reiniciar el proceso de dotnet core de esa instancia.
+			</p>
+			<p>
+				Pero a veces eso no es suficiente. Así que hoy os mostraremos diferentes trucos operacionales relacionados con las Azure Web Apps:
+			</p>
+			<ul>
+				<li>
+					<a href="#advanced-application-restart">
+						Advanced Application Restart
+					</a>
+				</li>
+				<li>
+					<a href="#azure-rest-api">
+						Azure REST API
+					</a>
+					<ul>
+						<li>
+							Reiniciar los procesos específicos de una instancia de una Web App
+							<ul>
+								<li>
+									<a href="#get-web-apps-instances">
+										Get Web Apps instances
+									</a>
+								</li>
+								<li>
+									<a href="#get-web-apps-instance-processes">
+										Get Web Apps instance Processes
+									</a>
+								</li>
+								<li>
+									<a href="#restart-web-app-instance-process">
+										Restart Web App Instance Process
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							Cambiar la instancia de una Web App por otra
+							<ul>
+								<li>
+									<a href="#get-web-app-instance-process-details">
+										Get Web App Instance Process Details
+									</a>
+								</li>
+								<li>
+									<a href="#replace-worker">
+										Replace Worker
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#auto-healing">
+						Auto-Healing
+					</a>
+				</li>
+			</ul>
+			<h2 id="advanced-application-restart">
+				Advanced Application Restart
+			</h2>
+			<p>
+				La forma más sencilla de reiniciar los procesos que sirven nuestra página web en una Web App de Azure es ir al portal y seleccionar la opción de "Diagnose and solve problems" dentro de la propia Web App:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/diagnose-and-solve-problems.png" alt="Diagnose and solve problems" />
+			</p>
+			<p>
+				Una vez ahí, se nos mostrará un buscador y varias opciones. Si en el buscador escribimos "Advanced Application Restart", nos aparecerá la opción que estamos buscando. Al hacer clic sobre ella navegaremos a un panel de control:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/advanced-application-restart.png" alt="Advanced Application Restart" />
+			</p>
+			<p>
+				Aquí se nos mostrarán 3 secciones y la forma de fijarnos en ellas es a la inversa:
+			</p>
+			<ol>
+				<li>
+					<p>
+						Primero marcaremos la instancia que está generando errores. En este caso, como podemos comprobar en las gráficas anteriores es <code>RD2818783C1B19
+						</code>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Si vamos a reiniciar más de una instancia podemos decidir el <code>Restart Sleep timer
+						</code> que es el tiempo que pasa entre que se reinicia una y otra.
+					</p>
+				</li>
+				<li>
+					<p>
+						Cuando tenemos todo listo, le damos al botón de <code>Restart
+						</code>.
+					</p>
+				</li>
+			</ol>
+			<p>
+				Al cabo de un poco tiempo, se nos mostrará un aviso de que las instancias han sido reiniciadas correctamente y podremos comprobar si está dando o no errores.
+			</p>
+			<h2 id="azure-rest-api">
+				Azure REST API
+			</h2>
+			<p>
+				Todo el proceso anteriormente descrito (<a href="#advanced-application-restart">Advanced Application Restart
+				</a>) se puede realizar usando las <a href="https://docs.microsoft.com/en-us/rest/api/azure/">Azure REST APIs
+				</a>. Además, estas APIs nos proveen de otro tipo de acciones más complejas, para cuando el problema parezca un poco más difícil de resolver.
+			</p>
+			<p>
+				Para consumir estos servicios tenemos que conseguir un <em>access token
+				</em> mediante <em>oauth
+				</em> en nuestro Azure AD (<a href="https://docs.microsoft.com/en-us/rest/api/azure/">https://docs.microsoft.com/en-us/rest/api/azure/
+				</a>) o, como mostraremos a continuación, podremos usar el portal de documentación:
+			</p>
+			<h3 id="get-web-apps-instances">
+				Get Web Apps instances
+			</h3>
+			<p>
+				La jerarquía de recursos necesarios para tener disponible una Web App en Azure se podría definir de la siguiente forma:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						App Service Plan
+					</strong>: Hosting de Web Apps
+					<ul>
+						<li>
+							<strong>
+								Web App
+							</strong>: Aplicación Web que se aloja en un App Service Plan. Pueden ser varias, en dependencia del tamaño y tipo de plan.
+							<ul>
+								<li>
+									<strong>
+										Worker
+									</strong>: Cada App Service Plan tiene un conjunto de Workers, donde se ejecutan los procesos de las Web Apps.
+									<ul>
+										<li>
+											<strong>
+												Web App Instance
+											</strong>: cada Web App contiene una instancia por Worker. Esta instancia representa uno de los procesos en ejecución.
+											<ul>
+												<li>
+													<strong>
+														Processes
+													</strong>: cada instancia tiene una serie de procesos en ejecución, como por ejemplo el portal de SCM o el proceso de IIS que hospeda nuestra Web App.
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				Por lo tanto, antes de poder llegar a reiniciar un proceso, tendremos que saber qué procesos existen en las diferentes instancias de nuestra Web App. Y antes de poder conocer esos procesos, tendremos primero que saber qué instancias tenemos.
+			</p>
+			<p>
+				Para eso sirve el primer método de la API. Para listar las instancias de nuestra Web App.
+			</p>
+			<p>
+				Si navegamos <a href="https://docs.microsoft.com/en-us/rest/api/appservice/webapps/listinstanceidentifiers">aquí
+				</a>, nos encontraremos una definición del servicio:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instances.png" alt="Get Web Apps instances" />
+			</p>
+			<p>
+				Al pulsar en el botón verde de <code>Try It
+				</code> podremos hacer identificarnos en Azure y conseguir autorización para usar este servicio desde el propio navegador:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instances-try.png" alt="Get Web Apps instances - try" />
+			</p>
+			<p>
+				Para poder ejecutarlo tendremos que introducir:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						name
+					</strong>: el nombre de nuestra Web App (lo que viene antes del <code>.azurewebsites.net
+					</code>).
+				</li>
+				<li>
+					<strong>
+						resourceGroupName
+					</strong>: el nombre de grupo de recursos al que pertenece la Web App.
+				</li>
+				<li>
+					<strong>
+						subscriptionId
+					</strong>: es un selector donde si tenemos más de una suscripción de Azure, tendremos que elegir la que contiene la Web App.
+				</li>
+			</ul>
+			<p>
+				Al ejecutar el comando veremos que en la parte inferior de la pantalla nos aparece el resultado en formato <code>json
+				</code>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instances-try-result.png" alt="Get Web Apps instances - result" />
+			</p>
+			<p>
+				Aquí lo más importante es conocer el nombre de cada una de las instancias, en el campo <code>name
+				</code>.
+			</p>
+			<h3 id="get-web-apps-instance-processes">
+				Get Web Apps instance Processes
+			</h3>
+			<p>
+				Cada una de las instancias de una Web App tiene varios procesos en funcionamiento. La idea es coger un listado de los mismos.
+			</p>
+			<p>
+				A tal fin navegaremos <a href="https://docs.microsoft.com/en-us/rest/api/appservice/webapps/listinstanceprocesses">aquí
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-processes.png" alt="Get Web Apps instances Processes" />
+			</p>
+			<p>
+				Repetiremos la acción de darle al botón de <code>Try It
+				</code> e identificarnos, si hiciera falta:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-processes-try.png" alt="Get Web Apps instances Processes - try" />
+			</p>
+			<p>
+				En este caso tendremos que indicar:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						instanceId
+					</strong>: es la propiedad <code>name
+					</code> que recogimos del listado de instancias como resultado del paso anterior.
+				</li>
+				<li>
+					<strong>
+						name
+					</strong>: el nombre de nuestra Web App (el mismo que introdujimos en el paso anterior).
+				</li>
+				<li>
+					<strong>
+						resourceGroupName
+					</strong>: el nombre de grupo de recursos al que pertenece la Web App (el mismo que introdujimos en el paso anterior).
+				</li>
+				<li>
+					<strong>
+						subscriptionId
+					</strong>: la suscripción que tiene nuestra Web App (la misma que introdujimos en el paso anterior).
+				</li>
+			</ul>
+			<p>
+				Al ejecutar obtendremos un listado de procesos:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-processes-try-result.png" alt="Get Web Apps instances Processes - result" />
+			</p>
+			<p>
+				Cuando estamos hablando de IIS los procesos se llaman <code>w3wp
+				</code>. Tendremos que buscar los procesos con ese nombre y guardar su <code>id
+				</code> para poder realizar operaciones con él.
+			</p>
+			<p>
+				Es posible que existan dos procesos con el <code>"name": "w3wp"
+				</code>. Esto se debe a que <em>Kudu
+				</em> (el portal SCM de nuestra Web App) es un proceso a parte de nuestra aplicación dentro de IIS. Para poder diferenciarlos correctamente tendremos que llamar al servicio de <a href="#get-web-app-instance-process-details">Get Web App Instance Process Details
+				</a> y buscar el valor de la propiedad <code>is_scm_site
+				</code>.
+			</p>
+			<h3 id="restart-web-app-instance-process">
+				Restart Web App Instance Process
+			</h3>
+			<p>
+				Una vez hemos llegado a este paso, ya podemos <em>matar
+				</em> el proceso que nos causa problemas. Después de eliminarlo, el propio IIS lo volverá a lanzar automáticamente (en la próxima petición o directamente, en dependencia del estado del parámetro <code>AlwaysOn
+				</code> de la Web App). Por lo tanto, aunque esta operación sea borrar un proceso, el efecto que se obtiene es que se reinicia.
+			</p>
+			<p>
+				Nos dirigiremos a <a href="https://docs.microsoft.com/en-us/rest/api/appservice/webapps/deleteinstanceprocess">esta página
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-process-delete.png" alt="Restart Web App Instance Processes" />
+			</p>
+			<p>
+				Haremos clic en el botón de <code>Try It
+				</code>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-process-delete-try.png" alt="Restart Web App Instance Processes - try" />
+			</p>
+			<p>
+				Rellenaremos los siguientes parámetros:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						instanceId
+					</strong>: el nombre de la instancia de la Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						name
+					</strong>: el nombre de nuestra Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						processId
+					</strong>: es el campo <code>id
+					</code> del proceso que recuperamos en el paso anterior.
+				</li>
+				<li>
+					<strong>
+						resourceGroupName
+					</strong>: el nombre de grupo de recursos al que pertenece la Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						subscriptionId
+					</strong>: la suscripción que tiene nuestra Web App (la misma que introdujimos en los pasos anteriores).
+				</li>
+			</ul>
+			<p>
+				Después de ejecutar esperaremos dos tipos de resultado:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						200
+					</strong>: cuando se ha borrado el proceso correctamente.
+				</li>
+				<li>
+					<strong>
+						404
+					</strong>: cuando ese proceso no existe o ya se ha borrado.
+				</li>
+			</ul>
+			<h3 id="get-web-app-instance-process-details">
+				Get Web App Instance Process Details
+			</h3>
+			<p>
+				Si queremos conocer más detalles sobre los procesos, como por ejemplo, su relación con los App Service Workers (las máquinas virtuales donde se ejecutan nuestras instancias, por así decirlo), tendremos que visitar <a href="https://docs.microsoft.com/en-us/rest/api/appservice/webapps/getinstanceprocess">esta página
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-process-details.png" alt="Get Web App Instance Process Details" />
+			</p>
+			<p>
+				Aquí encontraremos un servicio que nos devuelve los detalles de un proceso dentro de una instancia de una Web App de Azure.
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-process-details-try.png" alt="Get Web App Instance Process Details - try" />
+			</p>
+			<p>
+				Para ejecutarla, introduciremos:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						instanceId
+					</strong>: el nombre de la instancia de la Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						name
+					</strong>: el nombre de nuestra Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						processId
+					</strong>: es el campo <code>id
+					</code> del proceso (el mismo que introdujimos en el paso anterior).
+				</li>
+				<li>
+					<strong>
+						resourceGroupName
+					</strong>: el nombre de grupo de recursos al que pertenece la Web App (el mismo que introdujimos en los pasos anteriores).
+				</li>
+				<li>
+					<strong>
+						subscriptionId
+					</strong>: la suscripción que tiene nuestra Web App (la misma que introdujimos en los pasos anteriores).
+				</li>
+			</ul>
+			<p>
+				<img src="/assets/uploads/2020/08/api-webapp-list-instance-process-details-try-result.png" alt="Get Web App Instance Process Details - result" />
+			</p>
+			<p>
+				Y en el resultado, entre muchos parámetros, dentro de las variables de entorno, encontraremos <code>COMPUTERNAME
+				</code> que coincide con el nombre del App Service Worker y a su vez es el nombre que encontramos en la herramienta de <em>monitoring
+				</em> cuando realizamos el <em>split
+				</em> por instancia.
+			</p>
+			<h3 id="replace-worker">
+				Replace Worker
+			</h3>
+			<p>
+				Cuando los problemas parecen no solucionarse dentro de una instancia, quizá es que se ha quedado corrupta por alguna razón. Así que podríamos necesitar cambiarla.
+			</p>
+			<p>
+				Si ya tenemos el nombre del Worker, podemos realizar un cambio. Para ello usaremos el servicio de <a href="https://docs.microsoft.com/en-us/rest/api/appservice/appserviceplans/rebootworker">reboot worker
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-appserviceplan-worker-reboot.png" alt="Reboot app service plan worker" />
+			</p>
+			<p>
+				Este servicio reinicia un App Service Plan Worker, que es donde se hospedan nuestras instancias de Web App. Al reiniciarlo, el sistema no espera a que vuelva a estar disponible, lo sustituye automáticamente por otro Worker que sí que está funcionando. Así que podríamos interpretar esta acción como un reemplazo de una instancia:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/api-appserviceplan-worker-reboot-try.png" alt="Reboot app service plan worker - try" />
+			</p>
+			<p>
+				Introduciremos:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						name
+					</strong>: el nombre del App Service Plan que hospeda nuestra Web App.
+				</li>
+				<li>
+					<strong>
+						resourceGroupName
+					</strong>: el nombre de grupo de recursos al que pertenece el App Service Plan.
+				</li>
+				<li>
+					<strong>
+						subscriptionId
+					</strong>: un selector donde tendremos que elegir la suscripción que contiene nuestro App Service Plan.
+				</li>
+				<li>
+					<strong>
+						workerName
+					</strong>: el nombre del Worker que recogimos en el paso anterior.
+				</li>
+			</ul>
+			<p>
+				Después de ejecutar, podremos comprobar en la herramienta de <em>monitoring
+				</em> cómo el worker que hemos reiniciado para de recibir peticiones y estas pasan a un Worker nuevo que entra en juego (líneas rosa y morada respectivamente):
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/monitoring-change-instance.png" alt="App service plan requests/worker" />
+			</p>
+			<p>
+				Y también podríamos apreciar cómo han dejado de suceder errores al cambiar de Worker.
+			</p>
+			<h2 id="auto-healing">
+				Auto-Healing
+			</h2>
+			<p>
+				Si estamos experimentando problemas de forma periódica, lo más recomendable, mientras se estudian y solucionan, es usar una de las <em>features
+				</em> ocultas que más valor aportan a una Web App: el Auto-Healing.
+			</p>
+			<p>
+				Esta herramienta nace sabiendo que algunos comportamientos inesperados pueden resolverse temporalmente con algunos simples pasos de mitigación (reiniciar el proceso, iniciar otro ejecutable o requerir la recopilación de datos adicionales). Esto es lo que nos va a permitir esta utilidad.
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/diagnose-and-solve-problems.png" alt="Diagnose and solve problems" />
+			</p>
+			<p>
+				Para acceder a ella tan solo tendremos que ir a la opción de "Diagnose and solve problems" dentro de nuestra Web App en el portal de Azure y en el buscador introducir "Auto-Healing". Al hacer clic en la opción que aparece encontraremos un nuevo panel:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/08/auto-healing.png" alt="Auto Healing" />
+			</p>
+			<p>
+				Aquí podremos configurar diferentes acciones (reciclar procesos, añadir trazas de log o acciones customizadas), para diferentes eventos (duración de una <em>request
+				</em>, límite de memoria, <em>response status codes
+				</em> ...).
+			</p>
+			<p>
+				Dentro de esta configuración, hay ciertos detalles que los podemos especificar a nivel de código en el archivo <code>web.config
+				</code> de nuestra Web App. Si bien es muy completa la configuración, hay algún caso que no termina de funcionar bien, pero puedes leer más sobre el tema <a href="https://azure.microsoft.com/es-es/blog/auto-healing-windows-azure-web-sites/">aquí
+				</a>.
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Está claro que, como seres humanos, no somos perfectos. Y por lo tanto nuestro software tampoco lo es. Nunca sabemos cuándo vamos a tener un problema en producción. Pero estos apuntes es posible que puedan salvarte en un momento de aprieto, convirtiendo una larga caída en unos minutos de respuestas erróneas parciales.
+			</p>
+			<p>
+				No obstante, si estos trucos se convierten en una práctica habitual, es posible que estemos escondiendo otro tipo de problemas en nuestro software que deberíamos analizar más a fondo.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Azure WebApps Tips & Tricks&url=https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/19/workshop-azure">
+						Workshop Azure 100M
+					</a> <small>19 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/09/10/advanced-azure-webapps">
+						The Hitchhiker's Guide to Azure WebApps
+					</a> <small>10 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/07/31/azure-summer-talks">
+						Azure Summer Talks Community
+					</a> <small>31 jul. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/10/01/azure-hex-char-counter">
+						Azure hex-char-counter tutorial
+					</a> <small>01 oct. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2018/04/26/gab18-todo-subo-azure-esta-mal">
+						GAB18 - Por qué todo lo que subo a azure está mal
+					</a> <small>26 abr. 2018
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

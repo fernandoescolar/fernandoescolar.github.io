@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Rx III – Linq: crear objetos observables · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="A&amp;ntilde;o nuevo art&amp;iacute;culo nuevo. Despu&amp;eacute;s de dos art&amp;iacute;culos cargados de conceptos te&amp;oacute;ricos y pruebas, ha llegado el momento de empe..." />
+		<meta property="og:title" content="Rx III &#8211; Linq: crear objetos observables" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empe..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-01-02 12:30:10Z" />
+		<meta property="article:published_time" content="2012-01-02 12:30:10Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Rx III &#8211; Linq: crear objetos observables" />
+		<meta name="twitter:description" content="A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empe..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" />
+		<meta name="description" content="A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empe..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Rx III – Linq: crear objetos observables
+			</h1><small>02 ene. 2012 · 11 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Año nuevo artículo nuevo. Después de dos artículos cargados de conceptos teóricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework
+				</strong>. Hasta ahora hemos visto <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx
+				</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)
+				</a> e incluso introdujimos el uso de una clase llamada <em>
+					<strong>
+						Observable</strong>
+				</em> que contiene métodos y extensiones para que todo esto sea más sencillo.
+			</p>
+			<!--break-->
+			<p>
+				Si mediante el navegador de objetos o cualquier otra herramienta de estudio de ensamblados, abrimos el archivo "<em>System.Reactive.dll
+				</em>", en el namespace "<em>System.Reactive.Linq
+				</em>" encontramos una clase estática cargada de métodos y extensiones llamada <em>
+					<strong>
+						Observable</strong>
+				</em>. Dentro de este objeto se encuentra definido el segundo parámetro de la fórmula que define las <strong>reactive extensions
+				</strong>: <strong>Linq
+				</strong>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2012/09/rx-III-0.gif" alt="" width="370" height="150" style="display: block; margin-left: auto; margin-right: auto;" />
+			</p>
+			<p>
+				Para empezar Observable contiene extensiones con, si no todos, la mayoría de los operadores que ya conocemos de Linq. Pero, en este caso los encontraremos aplicados a objetos tipo <em>IObservable&lt;T>
+				</em>. 
+			</p>
+			<pre class="brush: csharp">var observable = new ReplaySubject&lt;int>();
+observable .OnNext(1);
+observable .OnNext(2);
+observable .OnNext(3);
+observable .OnCompleted();</pre>
+			<p>
+				Como pudimos ver en el anterior artículo también encontraremos métodos para crear estos objetos <em>IObservable&lt;T>
+				</em>. Podríamos poner un ejemplo rápido con la extensión "<em>ToObservable()
+				</em>", método que sirve para crear un observable a partir de un <em>IEnumerable
+				</em> (como listas o colecciones). Para generar un código semejante al anterior deberíamos hacer algo así:
+			</p>
+			<pre class="brush: csharp">var enumerable = new List&lt;int> { 1, 2, 3 };
+var observable = enumerable.ToObservable();</pre>
+			<p>
+				Usando cualquiera de los dos objetos que hemos creado podríamos aplicar funciones de Linq como "Where" o "Sum":
+			</p>
+			<pre class="brush: csharp">observable
+    .Where(i => i &lt; 3)
+    .Sum()
+    .Subscribe(Console.WriteLine);</pre>
+			<p>
+				Con este código estaríamos filtrando las iteraciones menores de '<em>3
+				</em>'. Y además sumaríamos sus valores (<em>1+2 = 3
+				</em>). Para terminar escribimos en la consola el valor final.
+			</p>
+			<p>
+				 
+			</p>
+			<p>
+				A estos operadores que podríamos definir como estándares de Linq se les añaden muchos otros propios de Rx. Para poder echar un vistazo a los más importantes vamos a intentar dividirlos entre creadores y operadores. En este artículo trataremos los primeros, ya que es un tema suficientemente extenso. Y los categorizaremos en: <em>create
+				</em>, rango, tiempo, asíncrono y eventos.
+			</p>
+			<h2>
+				Creadores
+			</h2>
+			<p>
+				Como métodos para crear objetos observables podemos encontrar las cuatro funciones que mencionamos en el artículo anterior:
+			</p>
+			<pre class="brush: csharp">var neverObservable = Observable.Never&lt;int>();
+
+				<p>
+					// igual que
+var s = new Subject&lt;int>();
+				</p></pre>
+			<p>
+				La función "<em>Never
+				</em>" genera un observable en el que nunca hay una iteración ni termina y se diferencia de "<em>Empty
+				</em>" en que este último si que termina la tarea:
+			</p>
+			<pre class="brush: csharp">var emptyObservable = Observable.Empty&lt;int>();
+
+				<p>
+					// igual que
+var s = new Subject&lt;int>();
+s.OnComplete();
+				</p></pre>
+			<p>
+				Cuando usemos "<em>Return
+				</em>" tendrá lugar la iteración que digamos y se terminará el proceso:
+			</p>
+			<pre class="brush: csharp">var returnObservable = Observable.Return(1);
+
+				<p>
+					// igual que
+var s = new ReplaySubject&lt;int>();
+s.OnNext(1);
+s.OnComplete();
+				</p></pre>
+			<p>
+				Y dentro de estos cuatro métodos simples el último es "<em>Throw
+				</em>" que lanzará un error que le especificamos:
+			</p>
+			<pre class="brush: csharp">var throwObservable = Observable.Throw&lt;int>(new Exception());
+
+				<p>
+					// igual que
+var s = new ReplaySubject&lt;int>();
+s.OnError(new Exception());
+				</p></pre>
+			<h3>
+				Create
+			</h3>
+			<p>
+				La función por excelencia para crear cualquier tipo de objeto observable es "Create". Tiene tanta versatilidad que el resto de creadores se pueden implementar (con mayor o menor dificultad) usando esto. Un ejemplo claro sería el de la enumeración que se convierte en observable:
+			</p>
+			<pre class="brush: csharp">// un sujeto
+var subject = new ReplaySubject&lt;int>();
+subject.OnNext(1);
+subject.OnNext(2);
+subject.OnCompleted();
+
+				<p>
+					// lo mismo que una enumeración a observable
+var enumerable = new List&lt;int> { 1, 2 };
+var observableEnumeration = enumerable.ToObservable();
+				</p>
+
+				<p>
+					// y también podemos hacerlo con 'Create'
+var created = Observable.Create&lt;int>(observable =>
+{
+observable.OnNext(1);
+observable.OnNext(2);
+observable.OnCompleted();
+				</p>
+
+				<pre>
+					<code>
+						return () =&amp;gt; { };
+});&lt;/pre>
+
+					</code></pre>
+
+				<p>
+					Como podemos ver, cuando utilizamos "<em>Create
+					</em>" se nos solicita una función que como parámetro de entrada usa un <em>IObserver&lt;T>
+					</em> (que no es más que la parte observadora de un sujeto) y tiene que devolver una acción. En este caso devolvemos una acción vacía, pero lo ideal sería devolver una acción que realizara la tarea de desuscripción. Para ello se nos provee del objeto <em>Disposable
+					</em>.
+				</p>
+
+				<h3>
+					Rango
+				</h3>
+
+				<p>
+					Otra forma de crear este tipo de objetos observables es especificando un rango. Para esta tarea la función más simple que encontraremos es "<em>Range
+					</em>". En este ejemplo crearemos iteraciones del 0 al 9:
+				</p>
+
+				<pre class="brush: csharp">var rangeObservable = Observable.Range(0, 10);</pre>
+
+				<p>
+					Como decíamos anteriormente, podríamos crear este mismo objeto usando el método "Create":
+				</p>
+
+				<pre class="brush: csharp">var createObservable = Observable.Create&lt;int>(observable =>
+										{
+											for (var i = 0; i &lt; 10; i++)
+											{
+												observable.OnNext(i);
+											}
+
+					<pre>
+						<code>
+							observable.OnCompleted();
+										return () =&amp;gt; { };
+									});
+
+						</code></pre>
+</pre>
+
+				<p>
+					O también podríamos usar otra función como "<em>Generate
+					</em>":
+				</p>
+
+				<pre class="brush: csharp">var forObservable = Observable.Generate(0, i => i &lt; 10, i => i + 1, i => i);</pre>
+
+				<p>
+					"<em>Generate
+					</em>" es una función muy parecida a un bucle "<em>for
+					</em>". El primer parámetro es el valor inicial, el segundo una expresión que siempre que ocurra se irá al siguiente paso. La tercera es el método que se realiza en cada uno de los pasos y por último usaremos una expresión para devolver el objeto que itera. Lo podríamos traducir así:
+				</p>
+
+				<pre class="brush: csharp">// Generate(0 , i => i &lt; 10, i => i + 1, i => i)
+for(var i = 0; i &lt; 10, i = i + 1)
+{
+   yield return i;
+}</pre>
+
+				<h3>
+					Tiempo
+				</h3>
+
+				<p>
+					También podemos crear observables dependiendo del tiempo. Una forma básica, que nos crearía un observable con iteraciones cada una unidad específica de tiempo es "<em>Interval
+					</em>":
+				</p>
+
+				<pre class="brush: csharp">var timeObserver = Observable.Interval(TimeSpan.FromSeconds(1));</pre>
+
+				<p>
+					Con este código crearemos una iteración cada un segundo. Además esta iteración será incremental: empezando desde 0, cada vez que ocurra se le sumará uno.
+				</p>
+
+				<p>
+					Otra posibilidad es usar "<em>Timer
+					</em>", que a las personas que hayan trabajado con el "<em>Timer
+					</em>" de "<em>System.Threading
+					</em>" se les hará familiar. Aquí podremos asignar el momento en el que queremos que empiece además de su intervalo:
+				</p>
+
+				<pre class="brush: csharp">var timerObserver = Observable.Timer(TimeSpan.FromMinutes(1), TimeSpan.FromSeconds(1));</pre>
+
+				<p>
+					Aquí crearíamos un observable que empezará a iterar dentro de un minuto. Y a partir de entonces, cada segundo tendrá lugar una nueva iteración.
+				</p>
+
+				<h3>
+					Asíncrono
+				</h3>
+
+				<p>
+					Las reactive extensions traen una gran variedad de creadores de observables asíncronos. Por ejemplo "<em>ToAsync
+					</em>" es una función que convertirá cualquier código en asíncrono y observable:
+				</p>
+
+				<pre class="brush: csharp">var asyncObservable = Observable.ToAsync&lt;string, int>(this.FuncionQueTardaMucho)("parametro de entrada");</pre>
+
+				<p>
+					Como vemos podremos podemos incluso llamar a funciones con parámetros.
+				</p>
+
+				<p>
+					Otra forma de crear observables asíncronos será llamando a funciones que ya son asíncronas. Un ejemplo podría ser recogiendo la respuesta de una petición web:
+				</p>
+
+				<pre class="brush: csharp"> var asyncObservable = Observable.FromAsyncPattern&lt;WebResponse>(request.BeginGetResponse, request.EndGetResponse)();</pre>
+
+				<p>
+					En este código llamaremos a la función de "<em>GetResponse
+					</em>" asíncrona y recibiremos un observable de "<em>WebResponse
+					</em>", que será la respuesta de la petición de la web.
+				</p>
+
+				<p>
+					La forma más simple de crear observables asíncronos es el uso de la función "Start":
+				</p>
+
+				<pre class="brush: csharp">var startObservable = Observable.Start(() => ProcedimientoQueTardaMucho());</pre>
+
+				<p>
+					Y para terminar con este apartado, podríamos recoger tareas del TPL (Task Parallel Library) y convertirlas en observables asíncronos. Siempre y cuando usemos el namespace "<em>System.Reactive.Threading.Tasks
+					</em>": 
+				</p>
+
+				<pre class="brush: csharp">var parallelObservable = Task.Factory.StartNew(() => ProcedimientoQueTardaMucho()).ToObservable();</pre>
+
+				<h3>
+					Eventos
+				</h3>
+
+				<p>
+					Como última subcategoría dentro de los creadores de observables, encontraríamos crearlos a partir de eventos. Es decir se adjuntan/attachan a un evento y devuelven sus publicaciones en forma de observables. Para esta tarea tendremos la función "<em>FromEventPattern
+					</em>":
+				</p>
+
+				<pre class="brush: csharp">var clicks = Observable.FromEventPattern&lt;RoutedEventHandler, RoutedEventArgs>(
+                        routedHandler => MyButton.Click += routedHandler,
+                        routedHandler => MyButton.Click -= routedHandler);</pre>
+
+				<p>
+					El código anterior nos mostraría como recoger las pulsaciones de un botón en WPF (o Silverlight) mediante <strong>Rx
+					</strong>. La versatilidad de estas sería poder operar con los clicks. Por ejemplo podríamos hacer que en cada pulsación de las 10 primeras se incremente en uno el contenido:
+				</p>
+
+				<pre class="brush: csharp">int counter = 0;
+clicks.Take(10).Subscribe(e =>
+                {
+                    counter++;
+                    MyButton.Content = counter.ToString();
+                });</pre>
+
+				<p>
+					 
+				</p>
+
+				<p>
+					La mayor parte de estas funciones para crear observables tienen sobrecargas que nos aportarán mayor funcionalidad. Además no son las únicas herramientas de las que disponemos, aunque si probablemente las más significativas. Como siempre a partir de aquí os invitamos a que exploréis que otros métodos de creación existen o incluso a ensayar con la función "<em>Create
+					</em>" para encontrar diferentes resultados.
+				</p>
+
+				<p>
+					En el siguiente artículo seguiremos explicando los temas referentes a <em>Linq
+					</em> y trataremos los operadores propios de <strong>reactive extensions
+					</strong>. Además conoceremos los <em>Marble diagrams,
+					</em> así que esperamos que no os lo perdáis.
+				</p>
+
+</pre>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Rx III &#8211; Linq: crear objetos observables&url=https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

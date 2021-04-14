@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Rx II – Observables: los sujetos · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Hace unos d&amp;iacute;as empezamos a hablar de las Reactive eXtensions. Estudiamos su contexto y las bases te&amp;oacute;ricas en las que se fundamentan. Adem&amp;aacut..." />
+		<meta property="og:title" content="Rx II &#8211; Observables: los sujetos" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Hace unos d&iacute;as empezamos a hablar de las Reactive eXtensions. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacut..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2011-12-19 10:00:06Z" />
+		<meta property="article:published_time" content="2011-12-19 10:00:06Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Rx II &#8211; Observables: los sujetos" />
+		<meta name="twitter:description" content="Hace unos d&iacute;as empezamos a hablar de las Reactive eXtensions. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacut..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" />
+		<meta name="description" content="Hace unos d&iacute;as empezamos a hablar de las Reactive eXtensions. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacut..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Rx II – Observables: los sujetos
+			</h1><small>19 dic. 2011 · 13 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Hace <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - &iquest;Qu&eacute; son las Reactive eXtensions?">unos días empezamos a hablar de las <strong>Reactive eXtensions</strong>
+				</a>. Estudiamos su contexto y las bases teóricas en las que se fundamentan. Además expusimos la fórmula creada por los <strong>Microsoft Live Labs
+				</strong> para definirla. Y terminamos el artículo comentando que resolveríamos esta fórmula en futuras publicaciones. Hoy es el día de resolver el primer parámetro: <strong>Observables
+				</strong>. 
+			</p>
+			<!--break-->
+			<center>
+				<img src="/assets/uploads/2012/09/rx-II-0.gif" alt="" width="380" height="150" />
+			</center>
+			<p>
+				Pero antes, vamos a ver cómo podemos instalar y referenciar las <strong>Rx
+				</strong> en nuestro proyecto.
+			</p>
+			<h2>
+				Instalando Rx
+			</h2>
+			<p>
+				Existen dos formas básicas de distribución de las extensiones reactivas. La primera es desde la propia web de microsoft, mediante <a href="http://msdn.microsoft.com/en-us/data/gg577610">este enlace
+				</a>. Aquí te podrás descargar un paquete con los ensamblados principales, además de los específicos para cada distribución.
+			</p>
+			<p>
+				La segunda opción es utilizar nuget, desde donde podrás descargarte los diferentes ensamblados (en su versión estable o en la experimental) haciendo una búsqueda de "rx" en su interfaz de gestión de paquetes:
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx-II-1.gif" alt="" width="437" height="250" />
+			</center>
+			<p>
+				Dentro del ámbito de este artículo, bastará con crear un proyecto nuevo de consola e instalar desde nuget el paquete "<em>Rx-Main
+				</em>". O si ya descargamos todos los ensamblados, deberíamos añadir la referencia a "<em>System.Reactive
+				</em>".
+			</p>
+			<p>
+				Una vez tenemos esto, ya podemos remangarnos y empezar a trabajar:
+			</p>
+			<h2>
+				Observables
+			</h2>
+			<p>
+				Cuando decimos "<em>observables
+				</em>" en la fórmula que define las reactive extensions, nos referimos a los objetos del patrón observable: <strong>Observador
+				</strong> y <strong>Observable
+				</strong>. Y dentro de la framework 4.0, en el namespace <em>System
+				</em>, podremos encontrar los <em>contratos
+				</em> que nos exponen su comportamiento:
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx5.gif" alt="" width="483" height="179" />
+			</center>
+			<p>
+				Por lo tanto ya tenemos las "normas" para empezar a trabajar. Como prueba, vamos a crear una clase base genérica que implemente la interfaz IObservable:
+			</p>
+			<pre class="brush: c#">public class Observable&lt;T> : IObservable&lt;T>
+{
+   private readonly IList&lt;IObserver&lt;T>> observers;
+
+				<p>
+					protected Observable()
+{
+this.observers = new List&lt;IObserver&lt;T>>();
+}
+				</p>
+
+				<p>
+					public IDisposable Subscribe(IObserver&lt;T> observer)
+{
+if (!observers.Contains(observer))
+{
+observers.Add(observer);
+}
+}
+}
+				</p></pre>
+			<p>
+				Con el fin de implementar la interfaz <em>IObservable
+				</em>, hemos creado el método de suscripción del contrato. Ahí almacenaremos en una lista privada de observadores, a todos los que se han suscrito a nuestro objeto observable. Pero para poder completar esta clase, deberíamos ser capaces de enviar notificaciones a nuestros observadores. Y ¿qué notificaciones esperará un observador? Si nos detenemos a estudiar la interfaz de <em>IObserver
+				</em>, veremos que un observador estará atento a 3 tipos de sucesos:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						OnComplete
+					</strong>: que se lanzará cuando se termine de observar
+				</li>
+				<li>
+					<strong>
+						OnError
+					</strong>: que se lanzará cuando ocurra un error mientras se observa
+				</li>
+				<li>
+					<strong>
+						OnNext
+					</strong>: que nos avisa de que haya ocurrido algún/otro acontecimiento dentro de la tarea de observación
+				</li>
+			</ul>
+			<p>
+				Por lo que sabiendo esto podemos añadir una serie de métodos en nuestra clase Observable para que ya tenga implementada la notificación/llamada a todos los observadores suscritos:
+			</p>
+			<pre class="brush: c#">public void OnNext(T value)
+{
+   foreach(var observer in observers)
+   {
+      observer.OnNext(value);
+   }
+}
+
+				<p>
+					public void OnError(Exception error)
+{
+foreach(var observer in observers)
+{
+observer.OnError(error);
+}
+}
+				</p>
+
+				<p>
+					public void OnCompleted()
+{
+foreach(var observer in observers)
+{
+observer.OnCompleted();
+}
+}
+				</p></pre>
+			<p>
+				Una vez la hemos completado, nos damos cuenta de que los métodos que hemos creado satisfacen el contrato de la interfaz <em>IObserver
+				</em>. Por lo que podríamos estar hablando de que para poder implementar estas interfaces necesitaremos un objeto que indirectamente sea a la vez <em>IObservable
+				</em> e <em>IObserver
+				</em>.
+			</p>
+			<p>
+				Dentro de <strong>reactive extensions
+				</strong> se ha creado una interfaz que nos define este nuevo contrato: <strong>
+					<em>
+						ISubject</em>
+				</strong>. 
+			</p>
+			<pre class="brush: c#">public interface ISubject&lt;T> : ISubject&lt;T, T>
+{
+}
+
+				<p>
+					public interface ISubject&lt;T, S> : IObservable&lt;T>, IObserver&lt;S>
+
+				</p></pre>
+			<p>
+				Y además encontraremos, de serie, cuatro implementaciones base de esta interfaz:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						Subject
+					</strong>&lt;T>: la implementación base
+				</li>
+				<li>
+					<strong>
+						ReplaySubject
+					</strong>&lt;T>: recuerda todas las publicaciones para cualquier subscriptor
+				</li>
+				<li>
+					<strong>
+						BehaviorSubject
+					</strong>&lt;T>: recuerda solo la última publicación para los subscriptores
+				</li>
+				<li>
+					<strong>
+						AsyncSubject
+					</strong>&lt;T>: es asíncrono que publica solo el último valor una vez se ha completado
+				</li>
+			</ul>
+			<h2>
+				Sujetos
+			</h2>
+			<p>
+				Dentro de todas las traducciones que tiene <em>Subjects
+				</em> en nuestro idioma, es probable que la que se nos haga más simple sea <em>sujetos
+				</em>. Como decíamos un sujeto será un objeto observable, que con el fin de poder notificar de una forma simple a los observadores, implementara también la interfaz de <em>IObserver
+				</em>.
+			</p>
+			<p>
+				La funcionalidad de un sujeto se puede resumir como que puede notificar a sus observadores, una serie de acontecimientos en forma de iteración:
+			</p>
+			<pre class="brush: c#">ISubject&lt;int> subject;
+IObserver&lt;int> observer;
+
+				<p>
+					subject.Subscribe(observer); // se suscribe un observador
+				</p>
+
+				<p>
+					subject.OnNext(1); // notificamos la iteración 1
+subject.OnNext(2); // notificamos la iteración 2
+// subject.OnError(new Exception()); // podemos interrumpir la iteración con una excepción
+subject.OnNext(3); // notificamos la iteración 3
+subject.OnCompleted(); // notificamos que ya no hay más iteraciones
+				</p></pre>
+			<p>
+				Pero además Rx nos va a proveer de una serie de extensiones para facilitarnos la suscripción, que nos van a ayudar a crear dinámicamente observadores:
+			</p>
+			<pre class="brush: c#">// Type: System.ObservableExtensions
+// Assembly: System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+// Assembly location: System.Reactive.dll
+public static class ObservableExtensions
+{
+	public static IDisposable Subscribe&lt;TSource>(this IObservable&lt;TSource> source);
+
+				<pre>
+					<code>
+						public static IDisposable Subscribe&amp;lt;TSource&amp;gt;(this IObservable&amp;lt;TSource&amp;gt; source, Action&amp;lt;TSource&amp;gt; onNext);
+
+public static IDisposable Subscribe&amp;lt;TSource&amp;gt;(this IObservable&amp;lt;TSource&amp;gt; source, Action&amp;lt;TSource&amp;gt; onNext, Action&amp;lt;Exception&amp;gt; onError);
+
+public static IDisposable Subscribe&amp;lt;TSource&amp;gt;(this IObservable&amp;lt;TSource&amp;gt; source, Action&amp;lt;TSource&amp;gt; onNext, Action onCompleted);
+
+public static IDisposable Subscribe&amp;lt;TSource&amp;gt;(this IObservable&amp;lt;TSource&amp;gt; source, Action&amp;lt;TSource&amp;gt; onNext, Action&amp;lt;Exception&amp;gt; onError, Action onCompleted);
+
+					</code></pre>
+
+				<p>
+					}
+				</p></pre>
+			<p>
+				Que se podrán explotar mediante expresiones lambda:
+			</p>
+			<pre class="brush: c#">subject.Subscribe(
+	iterator => Console.WriteLine("Iterator: " + iterator));
+
+				<p>
+					subject.Subscribe(
+iterator => Console.WriteLine("Iterator: " + iterator),
+() => Console.WriteLine("Complete"));
+				</p>
+
+				<p>
+					subject.Subscribe(
+iterator => Console.WriteLine("Iterator: " + iterator),
+exception => Console.WriteLine("Exception: " + exception.Message),
+() => Console.WriteLine("Complete"));
+				</p></pre>
+			<p>
+			</p>
+			<p>
+				Como vemos, el comportamiento final de un sujeto observable, resulta semejante en funcionalidad a lo que podría ser un evento. Partiendo de este código:
+			</p>
+			<pre class="brush: c#">ISubject&lt;string> Changed= new Subject&lt;string>(); // un sujeto
+event Action&lt;string> Loaded; // un evento
+
+				<p>
+					Action&lt;string> onNotified = s => Console.WriteLine(s); // creamos nuestro handler
+				</p></pre>
+			<p>
+				Por un lado podemos suscribirnos a un sujeto o adjuntarnos a un evento:
+			</p>
+			<pre class="brush: c#">var disposable = Changed.Subscribe(onNotified); // nos suscribimos al sujeto
+Loaded += onNotified; // nos atachamos al evento</pre>
+			<p>
+				También podemos lanzar un evento o publicar en un sujeto:
+			</p>
+			<pre class="brush: c#">Changed.OnNext("hello"); // publicamos
+Loaded("hello"); // lanzamos el evento</pre>
+			<p>
+				Y para terminar, podemos desuscribirnos para no volver a tener notificaciones:
+			</p>
+			<pre class="brush: c#">disposable.Dispose(); // "eliminamos" el resultado de la suscripción
+Loaded -= onNotified; // nos des-adjuntamos del evento</pre>
+			<p>
+				 
+			</p>
+			<p>
+				Una vez hemos aclarado su funcionamiento, podemos ver el comportamiento de esos sujetos que encontramos en las <strong>reactive extensions
+				</strong>.
+			</p>
+			<h3>
+				Subject
+			</h3>
+			<p>
+				Como decíamos anteriormente un objeto <i>Suject&lt;T>
+				</i> es la implementación base de un sujeto de Rx. Su funcionamiento es simple, notifica de todas las iteraciones una vez nos hemos suscrito. Por ejemplo, si hacemos esto:
+			</p>
+			<pre class="brush: c#">var subject = new Subject&lt;int>();
+
+				<p>
+					subject.OnNext(1);
+				</p>
+
+				<p>
+					subject.Subscribe(iterator => Console.WriteLine("Iterator: " + iterator));
+				</p>
+
+				<p>
+					subject.OnNext(2);
+subject.OnNext(3);
+				</p></pre>
+			<p>
+				Esperaremos que la salida sea:
+			</p>
+			<pre class="brush: plain">Iterator: 2
+Iterator: 3
+</pre>
+			<p>
+				Es decir, que no tiene ningún tipo de memoria, simplemente se dedica a notificar a los suscriptores actuales las iteraciones que ocurren en ese momento.
+			</p>
+			<h3>
+				ReplaySubject
+			</h3>
+			<p>
+				El tipo <i>ReplaySubject&lt;T>
+				</i> es un sujeto que recuerda las iteraciones para todos los suscriptores:
+			</p>
+			<pre class="brush: c#">var replaySubject = new ReplaySubject&lt;int>();
+replaySubject.OnNext(1);
+replaySubject.OnNext(2);
+
+				<p>
+					replaySubject.Subscribe(iterator => Console.WriteLine("Iterator: " + iterator));
+				</p>
+
+				<p>
+					replaySubject.OnNext(3);
+				</p></pre>
+			<p>
+				En este código, a pesar de suscribirnos una vez se han ejecutado dos iteraciones, la salida por consola será esta:
+			</p>
+			<pre class="brush: plain">Iterator: 1
+Iterator: 2
+Iterator: 3
+</pre>
+			<h3>
+				BehaviorSubject
+			</h3>
+			<p>
+				Un tipo de sujeto muy especial es el <i>BehaviorSubject&lt;T>
+				</i>, que tiene la propiedad de recordar solo la última iteración acontecida, por lo que si realizamos un ejemplo semejante al anterior:
+			</p>
+			<pre class="brush: c#">var behaviorSubject = new BehaviorSubject&lt;int>(0);
+behaviorSubject.OnNext(1);
+behaviorSubject.OnNext(2);
+
+				<p>
+					behaviorSubject.Subscribe(iterator => Console.WriteLine("Iterator: " + iterator));
+				</p>
+
+				<p>
+					behaviorSubject.OnNext(3);
+				</p></pre>
+			<p>
+				La salida será esta:
+			</p>
+			<pre class="brush: plain">Iterator: 2
+Iterator: 3
+</pre>
+			<p>
+				Un detalle a tener en cuenta en este sujeto es que requiere de inicio un valor que será la primera iteración que recuerde. En el código anterior lo en el constructor le hemos pasado como parámetro le valor '0', por lo que si nos llegamos a suscribir al principio, hubiéramos recibido la línea "<em>Iterator: 0
+				</em>".
+			</p>
+			<h3>
+				AsyncSubject
+			</h3>
+			<p>
+				El último de los sujetos que vienen con Rx es el <i>AsyncSubject&lt;T>
+				</i>. Como su nombre indica, este es un sujeto asíncrono. Esto implica que no notifica nada hasta que no se ha completado (OnComplete). Y una vez esto ocurre, solo notifica del último iterador. Si lanzamos este código:
+			</p>
+			<pre class="brush: c#">var asyncSubject = new AsyncSubject&lt;int>();
+
+				<p>
+					asyncSubject.Subscribe(iterator => Console.WriteLine("Iterator: " + iterator));
+				</p>
+
+				<p>
+					asyncSubject.OnNext(1);
+asyncSubject.OnNext(2);
+asyncSubject.OnNext(3);
+				</p></pre>
+			<p>
+				No obtendremos ninguna información en la consola de salida. Pero en el momento que añadamos a este código la llamada:
+			</p>
+			<pre class="brush: c#">asyncSubject.OnCompleted();</pre>
+			<p>
+				Obtendremos en la consola la notificación de la última iteración dentro del proceso total:
+			</p>
+			<pre class="brush: plain">Iterator: 3</pre>
+			<p>
+				 
+			</p>
+			<p>
+				Podemos ver que es muy interesante el uso que se le puede dar a estos objetos, y como algunos nos dan pistas sobre los diferentes escenarios donde aplicarlos. Pero lo que es verdaderamente útil, es utilizar las extensiones que nos ofrece Rx para crear estos sujetos:
+			</p>
+			<h2>
+				Creando sujetos
+			</h2>
+			<p>
+				La forma más rápida de crear un sujeto es convertirlo desde un enumerable.
+			</p>
+			<pre class="brush: c#">public static IObservable&lt;TSource> ToObservable&lt;TSource>(this IEnumerable&lt;TSource> source);</pre>
+			<p>
+				Usando la extensión "<i>ToObservable
+				</i>" podremos convertir cualquier iteración en un sujeto observable de reactive extensions, y al suscribirnos, podremos recibir la publicación de cada una de las iteraciones.
+			</p>
+			<pre class="brush: c#">var subject = new ReplaySubject&lt;int>();
+subject.OnNext(1);
+subject.OnNext(2);
+subject.OnCompleted();
+
+				<p>
+					// esto es lo mismo que el anterior sujeto
+var enumerable = new List&lt;int> { 1, 2 };
+var observableEnumeration = enumerable.ToObservable();
+				</p></pre>
+			<p>
+				Esta extensión es tan solo la punta del iceberg de Rx. Existe un objeto llamado <b>
+					<i>
+						Observable</i>
+				</b> que contiene extensiones y métodos que nos ayudarán a crear y operar con sujetos. Por ejemplo:
+			</p>
+			<pre class="brush: c#">var neverObservable = Observable.Never&lt;int>(); // var s = new Subject&lt;int>();
+var emptyObservable = Observable.Empty&lt;int>(); // var s = new Subject&lt;int>(); s.OnComplete();
+var returnObservable = Observable.Return(1); // var s = new ReplaySubject&lt;int>(); s.OnNext(1); s.OnComplete();
+var throwObservable = Observable.Throw&lt;int>(new Exception()); // var s = new ReplaySubject&lt;int>(); s.OnError(new Exception());</pre>
+			<p>
+				Pero comentar todo lo que nos ofrece este objeto pertenece al siguiente artículo sobre reactive extensions, que esperamos que leáis dentro de unos días.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Rx II &#8211; Observables: los sujetos&url=https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Azure Functions: custom triggers · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Si ya s&#233; que soy un vago. Es el tercer art&#237;culo m&#225;s o menos igual que escribo. Este es sobre c&#243;mo crear triggers personalizados de Azure Functions. Y antes y..." />
+		<meta property="og:title" content="Azure Functions: custom triggers" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/thunder4.jpg" />
+		<meta property="og:description" content="Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear triggers personalizados de Azure Functions. Y antes y..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-05-02 07:59:43Z" />
+		<meta property="article:published_time" content="2019-05-02 07:59:43Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Azure Functions: custom triggers" />
+		<meta name="twitter:description" content="Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear triggers personalizados de Azure Functions. Y antes y..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/thunder4.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" />
+		<meta name="description" content="Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear triggers personalizados de Azure Functions. Y antes y..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/thunder4.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Azure Functions: custom triggers
+			</h1><small>02 may. 2019 · 10 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear <em>triggers
+				</em> personalizados de <em>Azure Functions
+				</em>. Y antes ya tuvimos los de los bindings de <a href="/2019/04/15/azure-functions-custom-out-bindings/">
+					<em>
+						out</em>
+				</a> y de <a href="/2019/04/23/azure-functions-custom-in-bindings/">
+					<em>
+						in</em>
+				</a>. Tenéis que entender que tengo otra vida más allá de este blog. Además, creo que al final queda mucho mejor separado
+				<!--break-->
+				. De cualquier forma, si no os gusta así, hago un cuarto artículo juntando el contenido de todos 😉.
+			</p>
+			<p>
+				Hoy vamos a tratar los <em>custom triggers
+				</em> para <em>Azure Functions
+				</em>. Y como ejemplo tomaremos el sistema Pub/Sub que viene incluido en <em>redis
+				</em>. Este sistema nos permite crear suscripciones a un canal donde recibiremos los mensajes que sean publicados en él.
+			</p>
+			<p>
+				El funcionamiento es bastante simple, si tenemos dos consolas de <em>redis
+				</em> abiertas, bastará con que en la primera nos suscribamos al canal "test" y quedemos a espera:
+			</p>
+			<pre class="language-bash highlight">
+<code>> SUBSCRIBE test
+Reading messages... (press ENTER to quit)
+				</code>
+</pre>
+			<p>
+				Y en la otra tendremos que publicar un mensaje:
+			</p>
+			<pre class="language-bash highlight">
+<code>> PUBLISH test "ola k ase"
+(integer) 1
+				</code>
+</pre>
+			<p>
+				Entonces veremos que en la primera consola escribe la información que le ha llegado sobre dicho mensaje:
+			</p>
+			<pre class="language-bash highlight">
+<code>1) "subscribe"
+2) "test"
+3) (integer) 1
+1) "message"
+2) "test"
+3) "ola k ase"
+				</code>
+</pre>
+			<p>
+				Para programar esto en dotnet core podríamos recurrir a una librería llamada <code>StackExchange.Redis
+				</code> y tener un código semejante a este:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var connection = ConnectionMultiplexer.Connect(redisConnectionString);
+var subscriber = connection.GetSubscriber();
+await subscriber.SubscribeAsync(channel, (channel, value) => { Console.WriteLine($"Message arrive: {value}"); });
+				</code>
+</pre>
+			<p>
+				A partir de ahora, y para variar, vamos a convertir esto en un <em>custom trigger
+				</em> que desencadene la ejecución de una <em>Azure Function
+				</em>:
+			</p>
+			<h2 id="proyecto-del-trigger">
+				Proyecto del <em>trigger
+				</em>
+			</h2>
+			<p>
+				Con el fin de desarrollar nuestro <em>custom trigger
+				</em>, vamos a crear un nuevo proyecto de tipo librería de .net standard 2.0. A este proyecto le añadiremos referencias a los siguientes paquetes de NuGet:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Microsoft.Azure.WebJobs.Extensions
+					</code> es donde encontramos los artefactos necesarios para crear nuestra extensión.
+				</li>
+				<li>
+					<code>
+						StackExchange.Redis
+					</code> este paquete contiene una implementación cliente de <em>redis
+					</em>.
+				</li>
+			</ul>
+			<p>
+				Después definiremos nuestro atributo de <em>trigger
+				</em>. Ese que podemos ver en los parámetros de la <em>Azure Function
+				</em> entre corchetes. Así que buscaremos un nombre que defina correctamente lo que queremos hacer y le añadiremos "Attribute":
+			</p>
+			<pre class="language-csharp highlight">
+<code>[AttributeUsage(AttributeTargets.Parameter)]
+[Binding]
+public class RedisSubTriggerAttribute : Attribute
+{
+    public string Connection { get; set; }
+
+    public string Channel { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Los parámetros que pediremos serán:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Connection
+					</code>: donde almacenaremos la cadena de conexión a <em>redis
+					</em>.
+				</li>
+				<li>
+					<code>
+						Channel
+					</code>: el nombre del canal al que nos vamos a suscribir.
+				</li>
+			</ul>
+			<p>
+				Para facilitar la captura del valor de la cadena de conexión desde los AppSettings o las variables de entorno añadiremos una función que nos ayude con la tarea:
+			</p>
+			<pre class="language-csharp highlight">
+<code>internal string GetConnectionString()
+{
+    return Environment.GetEnvironmentVariable(Connection);
+}
+				</code>
+</pre>
+			<p>
+				Ahora que tenemos definido nuestro <em>trigger
+				</em>, si queremos que desencadene una <em>Azure Function
+				</em>, deberíamos definir un artefacto que implemente la interfaz genérica <code>IListener
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubListener : IListener
+{
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+    }
+
+    public void Cancel()
+    {
+    }
+
+    public void Dispose()
+    {
+    }
+}
+				</code>
+</pre>
+			<p>
+				Esta implementación nos permitirá definir la operación para empezar a escuchar mensajes, la de parar de escuchar mensajes, la de cancelar la escucha de mensajes y por último <code>Dispose
+				</code> donde limpiaremos los recursos que hemos usado. Para escuchar mensajes de <em>redis
+				</em> podríamos tener algo parecido a esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubListener : IListener
+{
+    private readonly ITriggeredFunctionExecutor _executor;
+    private readonly RedisSubTriggerAttribute _attribute;
+    private readonly ConnectionMultiplexer _connection;
+    private ISubscriber _subscriber = null;
+
+    public RedisSubListener(ITriggeredFunctionExecutor executor, RedisSubTriggerAttribute attribute)
+    {
+        _executor = executor;
+        _attribute = attribute;
+        _connection = ConnectionMultiplexer.Connect(attribute.GetConnectionString());
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        if (_subscriber != null) throw new InvalidOperationException("Redis Pub/Sub listener has alread been started");
+
+        _subscriber = _connection.GetSubscriber();
+        return _subscriber.SubscribeAsync(_attribute.Channel, OnMessageArrived);
+    }
+
+    public async Task StopAsync(CancellationToken cancellationToken)
+    {
+        if (_subscriber == null) throw new InvalidOperationException("Redis Pub/Sub listener has already been stopped");
+
+        await _subscriber.UnsubscribeAllAsync();
+        _subscriber = null;
+    }
+
+    public void Cancel()
+    {
+        if (_subscriber == null) return;
+
+        _subscriber.UnsubscribeAll();
+        _subscriber = null;
+    }
+
+    public void Dispose()
+    {
+        _connection.Dispose();
+    }
+
+    private void OnMessageArrived(RedisChannel channel, RedisValue value)
+    {
+        var triggerData = new TriggeredFunctionData
+        {
+            TriggerValue = value.ToString()
+        };
+        var task = _executor.TryExecuteAsync(triggerData, CancellationToken.None);
+        task.Wait();
+    }
+}
+				</code>
+</pre>
+			<p>
+				Si observamos el código lo que hacemos es crear y gestionar una suscripción a un canal de <em>redis
+				</em> y cada vez que llegue un mensaje a esta suscripción, le indicamos a un objeto <code>ITriggeredFunctionExecutor
+				</code> que ejecute el mensaje.
+			</p>
+			<p>
+				Con el objetivo de crear nuestro <code>IListener
+				</code> y a la vez tratar la información que hemos lanzado, tendremos que crear un artefacto que implemente la interfaz <code>ITriggerBinding
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubTriggerBinding : ITriggerBinding
+{
+    public Type TriggerValueType => throw new NotImplementedException();
+
+    public IReadOnlyDictionary
+					<string , type>
+						BindingDataContract => throw new NotImplementedException();
+
+    public Task
+						<itriggerdata>
+							BindAsync(object value, ValueBindingContext context)
+    {
+    }
+
+    public Task
+							<ilistener>
+								CreateListenerAsync(ListenerFactoryContext context)
+    {
+    }
+
+    public ParameterDescriptor ToParameterDescriptor()
+    {
+    }
+}
+							</ilistener>
+						</itriggerdata></string>
+				</code>
+</pre>
+			<p>
+				Lo primero que haremos será definir la creación del "escuchador" de eventos, para lo que necesitaremos el atributo del parámetro de la función y el objeto <code>ITriggeredFunctionExecutor
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private readonly ParameterInfo _parameter;
+
+public RedisSubTriggerBinding(ParameterInfo parameter)
+{
+    _parameter = parameter;
+}
+
+public Task
+					<ilistener>
+						CreateListenerAsync(ListenerFactoryContext context)
+{
+    var executor = context.Executor;
+    var attribute = _parameter.GetCustomAttribute
+						<redissubtriggerattribute>
+							();
+    var listener = new RedisSubListener(executor, attribute);
+
+    return Task.FromResult
+							<ilistener>
+								(listener);
+}
+							</ilistener>
+						</redissubtriggerattribute></ilistener>
+				</code>
+</pre>
+			<p>
+				Y con el fin de "bindar" el <em>trigger
+				</em> al parámetro que le pasamos, implementaremos el resto de propiedades y métodos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public Type TriggerValueType => typeof(string);
+
+public IReadOnlyDictionary
+					<string , type>
+						BindingDataContract => new Dictionary
+						<string , type>
+							();
+
+public ParameterDescriptor ToParameterDescriptor()
+{
+    return new TriggerParameterDescriptor
+    {
+        Name = _parameter.Name,
+        DisplayHints = new ParameterDisplayHints
+        {
+            Prompt = "RedisSub",
+            Description = "RedisSub message trigger"
+        }
+    };
+}
+
+public Task
+							<itriggerdata>
+								BindAsync(object value, ValueBindingContext context)
+{
+    var valueProvider = new RedisSubValueBinder(value);
+    var bindingData = new Dictionary
+								<string , object>
+									();
+    var triggerData = new TriggerData(valueProvider, bindingData);
+
+    return Task.FromResult
+									<itriggerdata>
+										(triggerData);
+}
+									</itriggerdata>
+								</string>
+							</itriggerdata>
+						</string></string>
+				</code>
+</pre>
+			<p>
+				Como podemos observar, hemos creado un nuevo artefacto llamado <code>RedisSubValueBinder
+				</code>. Este objeto implementa la interfaz <code>IValueBinder
+				</code>, que es necesaria para definir el <code>TriggerData
+				</code> que se usará para bindar los datos al parámetro. En nuestro caso estamos gestionando mensajes como cadenas de texto por lo que una implementación simple nos bastará:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubValueBinder : IValueBinder
+{
+    private object _value;
+
+    public RedisSubValueBinder(object value)
+    {
+        _value = value;
+    }
+
+    public Type Type => typeof(string);
+
+    public Task
+					<object>
+						GetValueAsync()
+    {
+        return Task.FromResult(_value);
+    }
+
+    public Task SetValueAsync(object value, CancellationToken cancellationToken)
+    {
+        _value = value;
+        return Task.CompletedTask;
+    }
+
+    public string ToInvokeString()
+    {
+        return _value?.ToString();
+    }
+}</object>
+				</code>
+</pre>
+			<p>
+				Con estos dos artefactos ya tendríamos definido todo el comportamiento de nuestro <em>custom trigger
+				</em> que ejecutará una <em>Azure Function
+				</em> al recibir mensajes de un canal de Pub/Sub de <em>redis
+				</em>. Lo que nos falta es hacerle saber al sistema que vamos a extender el comportamiento de las <em>Azure Functions
+				</em>.
+			</p>
+			<p>
+				A este fin vamos a crear un nuevo artefacto que implemente <code>ITriggerBindingProvider
+				</code>. Este objeto buscará los parámetros de nuestras <em>Azure Functions
+				</em> que tienen el atributo de tipo <em>trigger
+				</em> que creamos al principio. Y cuando lo encuentre instanciará un nuevo <code>RedisSubTriggerBinding
+				</code> para ese parámetro:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubTriggerBindingProvider : ITriggerBindingProvider
+{
+    public Task
+					<itriggerbinding>
+						TryCreateAsync(TriggerBindingProviderContext context)
+    {
+        var parameter = context.Parameter;
+        var attribute = parameter.GetCustomAttribute
+						<redissubtriggerattribute>
+							(false);
+
+        if (attribute == null) return Task.FromResult
+							<itriggerbinding>
+								(null);
+        if (parameter.ParameterType != typeof(string)) throw new InvalidOperationException("Invalid parameter type");
+
+        var triggerBinding = new RedisSubTriggerBinding(parameter);
+
+        return Task.FromResult
+								<itriggerbinding>
+									(triggerBinding);
+    }
+}
+								</itriggerbinding>
+							</itriggerbinding>
+						</redissubtriggerattribute></itriggerbinding>
+				</code>
+</pre>
+			<p>
+				Y por último implementaremos la interfaz <code>IExtensionConfigProvider
+				</code> para crear una nueva regla que utilice el objeto <code>RedisSubTriggerBindingProvider
+				</code> para resolver los atributos de tipo <code>RedisSubTriggerAttribute
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class RedisSubExtensionConfigProvider : IExtensionConfigProvider
+{
+    public void Initialize(ExtensionConfigContext context)
+    {
+        var rule = context.AddBindingRule
+					<redissubtriggerattribute>
+						();
+        rule.BindToTrigger(new RedisSubTriggerBindingProvider());
+    }
+}</redissubtriggerattribute>
+				</code>
+</pre>
+			<p>
+				Para terminar y que nuestro ensamblado registre por defecto el proveedor de configuración que hemos creado, tendremos que declarar una clase tipo <code>Startup
+				</code> donde al arrancar el <em>host
+				</em> de <em>Azure Functions
+				</em> añadiremos nuestra extensión:
+			</p>
+			<pre class="language-csharp highlight">
+<code>using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Hosting;
+
+[assembly: WebJobsStartup(typeof(CustomBindings.Startup))]
+
+namespace CustomBindings
+{
+    public class Startup : IWebJobsStartup
+    {
+        public void Configure(IWebJobsBuilder builder)
+        {
+            builder.AddExtension
+					<redissubextensionconfigprovider>
+						();
+        }
+    }
+}</redissubextensionconfigprovider>
+				</code>
+</pre>
+			<h2 id="probando-nuestro-trigger">
+				Probando nuestro <em>trigger
+				</em>
+			</h2>
+			<p>
+				Si queremos ver que todo ha funcionado correctamente, podemos crear un nuevo proyecto de <em>Azure Functions
+				</em>. Allí crearemos una nueva función que no devuelva nada, pero que sea lanzada por el <em>trigger
+				</em> que hemos creado:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[FunctionName("TestRedisSub")]
+public static void TestRedisSub(
+    [RedisSubTrigger(Connection = "RedisConnectionString", Channel = "test")] string message,
+    ILogger log)
+{
+    log.LogInformation("C# Redis pub/sub trigger function processed a request.");
+    log.LogInformation($"Message arrived: {message}");
+}
+				</code>
+</pre>
+			<p>
+				Para finalizar, dentro del archivo <code>local.settings.json
+				</code> y en la propiedad <code>Values
+				</code>, añadiremos la cadena de conexión del servidor de <em>redis
+				</em>:
+			</p>
+			<pre class="language-json highlight">
+<code>"Values": {
+    "AzureWebJobsStorage": "",
+    "RedisConnectionString": "xxxxx.redis.cache.windows.net:6380,password=xxxxx,ssl=True",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  }
+				</code>
+</pre>
+			<p>
+				Ahora podemos ejecutar el proyecto. Después abrimos una consola de <em>redis
+				</em> y publicamos un mensaje:
+			</p>
+			<pre class="language-bash highlight">
+<code>> PUBLISH test "ola k ase"
+(integer) 1
+				</code>
+</pre>
+			<p>
+				En el terminal donde se ven los logs de las <em>Azure Functions
+				</em> encontraremos que el mensaje ha sido procesado correctamente:
+			</p>
+			<pre class="language-bash highlight">
+<code>C# Redis pub/sub trigger function processed a request.
+Message arrived: ola k ase
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Cuidado con los ciclos de vida de los <em>triggers
+				</em>.
+			</p>
+			<p>
+				Y lo demás, pues lo mismo de los otros días con los bindings <a href="/2019/04/23/azure-functions-custom-in-bindings/">
+					<em>
+						in</em>
+				</a> y <a href="/2019/04/15/azure-functions-custom-out-bindings/">
+					<em>
+						out</em>
+				</a>. Pero en este caso es un poco más complejo.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/deal-with-it.jpg" alt="Deal with it" />
+			</p>
+			<p>
+				Puedes ver el proyecto completo que hemos utilizado en este artículo en <a href="https://github.com/fernandoescolar/Developerro.AzureFunctions.CustomBindings">este repositorio de Github
+				</a>.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Azure Functions: custom triggers&url=https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/05/02/azure-functions-custom-triggers" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/04/23/azure-functions-custom-in-bindings">
+						Azure Functions: custom in bindings
+					</a> <small>23 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/04/15/azure-functions-custom-out-bindings">
+						Azure Functions: custom out bindings
+					</a> <small>15 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2019/03/26/azure-functions-docker">
+						Azure Functions con docker
+					</a> <small>26 mar. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/12/azure-functions-typescript">
+						Azure Functions con TypeScript
+					</a> <small>12 feb. 2019
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

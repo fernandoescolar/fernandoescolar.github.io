@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			OAuth 2.0 Grant Types · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Muy buenos d&#237;as y gracias por acompa&#241;arnos un martes m&#225;s. La pregunta de hoy y por 25 pesetas la respuesta acertada: d&#237;ganos tipos de concesi&#243;n (Grant Types)..." />
+		<meta property="og:title" content="OAuth 2.0 Grant Types" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/security2.jpg" />
+		<meta property="og:description" content="Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types)..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-03-19 08:26:33Z" />
+		<meta property="article:published_time" content="2019-03-19 08:26:33Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="OAuth 2.0 Grant Types" />
+		<meta name="twitter:description" content="Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types)..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/security2.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" />
+		<meta name="description" content="Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types)..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/security2.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				OAuth 2.0 Grant Types
+			</h1><small>19 mar. 2019 · 17 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types) permitidos por OAuth 2.0, como por ejemplo "password". Un, dos, tres, responda otra vez
+				<!--break-->
+				.
+			</p>
+			<ul>
+				<li>
+					<a href="#password">
+						Password
+					</a>
+				</li>
+				<li>
+					<a href="#client-credentials">
+						Client Credentials
+					</a>
+				</li>
+				<li>
+					<a href="#implicit">
+						Implicit
+					</a>
+				</li>
+				<li>
+					<a href="#authorization-code">
+						Authorization Code
+					</a>
+				</li>
+				<li>
+					<a href="#authorization-code-con-pkce">
+						Authorization Code con PKCE
+					</a>
+				</li>
+				<li>
+					<a href="#refresh-token">
+						Refresh Token
+					</a>
+				</li>
+				<li>
+					JWT
+				</li>
+			</ul>
+			<p>
+				[sonido ensordecedor de bocina]
+			</p>
+			<p>
+				Escuchemos a los super-tacañones:
+			</p>
+			<blockquote>
+				<p>
+					Aunque un servicio OAuth es capaz de devolver JSON Web Tokens, JWT no es un tipo de concesión válido.
+				</p>
+			</blockquote>
+			<p>
+				<a href="https://tools.ietf.org/html/rfc6749">
+					OAuth 2.0
+				</a> es una especificación que describe diferentes formas (<em>Grant Types
+				</em> o tipos de concesión) de solicitar un <em>token
+				</em> de acceso (<em>access_token
+				</em>) para un servicio HTTP. Se usa como base de la especificación <a href="https://openid.net/wg/connect/">Open Id Connect
+				</a> (OIDC) y también de los protocolos de autenticación+autorización implementados por las grandes empresas de internet: Twitter, Facebook, Microsoft... Google de hecho usa OIDC.
+			</p>
+			<p>
+				Si bien es verdad que el RFC de OAuth no habla explícitamente de <a href="https://tools.ietf.org/html/rfc7519">JWT
+				</a> como formato para los <em>access_token
+				</em>, es la forma más común en la que lo podremos encontrar hoy en día.
+			</p>
+			<p>
+				Dentro de este contexto, OAuth propone varias formas de solicitar un <em>access_token
+				</em> (<em>Grant Types
+				</em>), e incluso una forma de crear nuestros propios formatos, pero los más utilizados hoy por hoy son los que exponíamos anteriormente: <a href="#authorization-code">Authorization Code
+				</a>, <a href="#authorization-code-con-pkce">Authorization Code con PKCE
+				</a>, <a href="#client-credentials">Client Credentials
+				</a>, <a href="#implicit">Implicit
+				</a>, <a href="#password">Password
+				</a> y <a href="#refresh-token">Refresh Token
+				</a>.
+			</p>
+			<h2 id="access-token">
+				Access Token
+			</h2>
+			<p>
+				La respuesta de todos los métodos de autorización (con o sin autenticación) al final tiene que ser un formato semejante: un JSON con los siguientes valores:
+			</p>
+			<ul>
+				<li>
+					<code>
+						access_token
+					</code> (requerido) Suele ser un JWT que después usaremos para autorizar las peticiones a una API.
+				</li>
+				<li>
+					<code>
+						token_type
+					</code> (requerido) El tipo de <em>token
+					</em> que vamos a usar. Generalmente, al usar JWT, se usa el valor “Bearer”.
+				</li>
+				<li>
+					<code>
+						expires_in
+					</code> (recomendado) Indica la duración en segundos del <code>access_token
+					</code>. Una vez caduca puede ser renovado usando el <em>Grant Type
+					</em> de <a href="#refresh-token">Refresh Token
+					</a>.
+				</li>
+				<li>
+					<code>
+						refresh_token
+					</code> (opcional) Si el <code>access_token
+					</code> va a expirar y nos permiten volver a generar el <em>token
+					</em>, necesitaremos este valor en el proceso de <a href="#refresh-token">Refresh Token
+					</a>.
+				</li>
+				<li>
+					<code>
+						scope
+					</code> (opcional) Es un parámetro que se utiliza para autorizar un <em>token
+					</em> en un contexto concreto. Generalmente, nuestra API buscará un <code>scope
+					</code> concreto para el que se ha autorizado el <em>token
+					</em> que le envían.
+				</li>
+				<li>
+					<code>
+						id_token
+					</code> (opcional) Si se utiliza un <code>scope
+					</code> con valor "openid", puede significar que queremos utilizar OpenId Connect (OIDC) para solicitar una autorización a partir de una autenticación. En ese supuesto, puede aparecer un JWT extra donde encontraremos la información sobre el perfil del usuario.
+				</li>
+			</ul>
+			<h2 id="authorization-code">
+				Authorization Code
+			</h2>
+			<p>
+				El <a href="https://tools.ietf.org/html/rfc6749#section-4.1">Authorization Code
+				</a> es uno de los flujos de autorización que más beneficios ofrece. Se utiliza por lo general en páginas web. La idea es que inicialmente se solicita una autorización con el siguiente formato:
+			</p>
+			<pre class="language-ini highlight">
+<code>GET /oauth/authorize
+   ?client_id=example_client_id
+   &response_type=code
+   &redirect_uri=http%3A%2F%2Fexampledomain.com
+   &state=string_as_status
+   &scope=openid HTTP/1.1
+Host: authorizationserver.com
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth.
+				</li>
+				<li>
+					<code>
+						response_type
+					</code> debe ser "code".
+				</li>
+				<li>
+					<code>
+						redirect_uri
+					</code> es la URI que está preparada para recoger la respuesta de esta petición.
+				</li>
+				<li>
+					<code>
+						state
+					</code> es un valor que se usa para evitar ataques CSRF (Cross Site Request Forgery). Una cadena única aleatoria que debe ser devuelta por el servidor para poderlos comparar y ver que son iguales.
+				</li>
+				<li>
+					<code>
+						scope
+					</code> podría ser "openid" para OIDC o cualquier otro para autorizar diferentes aplicaciones.
+				</li>
+			</ul>
+			<p>
+				Entonces el servidor de autorización solicita un usuario y un password vía un formulario web (autenticación). Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro <code>redirect_uri
+				</code>:
+			</p>
+			<pre>
+				<code>
+					http://exampledomain.com/
+    ?code=examplecode
+    &amp;state=string_as_status
+
+				</code></pre>
+			<p>
+				En esta respuesta el valor de <code>state
+				</code> debe ser el mismo que pasamos en la petición. Y como parámetro <code>code
+				</code> encontraremos un código, que normalmente es válido durante unos 60 segundos, a partir del que podremos realizar la petición del <em>token
+				</em>:
+			</p>
+			<pre class="language-http highlight">
+<code>POST /oauth/token HTTP/1.1
+Host: authorizationserver.com
+Accept: application/json
+Authorization: Basic user_password_formula
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
+
+grant_type=authorization_code
+&redirect_uri=http%3A%2F%2Fexampledomain.com
+&code=example_code
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						grant_type
+					</code> es "authorization_code".
+				</li>
+				<li>
+					<code>
+						redirect_uri
+					</code> debe ser la URI que se usó para solicitar el <code>code
+					</code>.
+				</li>
+				<li>
+					<code>
+						code
+					</code> es el código que nos permitirá recoger el <em>token
+					</em>.
+				</li>
+			</ul>
+			<p>
+				Como peculiaridad, la petición vendrá autorizada usando el esquema "Basic" cuyo contenido responde a la siguiente fórmula:
+			</p>
+			<pre class="language-js highlight">
+<code>user_password_formula = base64(client_id + ":" + client_secret)
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth. El mismo que usamos en la primera petición.
+				</li>
+				<li>
+					<code>
+						client_secret
+					</code> es una contraseña o secreto que generaremos en el servidor de OAuth en relación con el cliente (la aplicación).
+				</li>
+			</ul>
+			<p>
+				Como respuesta tendremos el formato anteriormente descrito de <a href="#access-token">Access Token
+				</a>:
+			</p>
+			<pre class="language-http highlight">
+<code>HTTP/1.1 200 OK
+Cache-Control: no-store
+Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
+
+{
+    "access_token": "a_lot_of_characters_in_base_64",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "openid",
+    "id_token": "a_lot_of_characters_in_base_64"
+}
+				</code>
+</pre>
+			<h2 id="authorization-code-con-pkce">
+				Authorization Code con PKCE
+			</h2>
+			<p>
+				Se usa PKCE (<a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange
+				</a>) con el fin de tener una comunicación segura sin tener que usar valores de <code>client_secret
+				</code>. Es la solución recomendada para aplicaciones móviles y Single Page Application (SPA).
+			</p>
+			<p>
+				El flujo es exactamente igual al anterior, salvo porque vamos a añadir dos parámetros nuevos:
+			</p>
+			<ul>
+				<li>
+					<code>
+						code_verifier
+					</code> es una cadena de texto aleatoria de al menos 43 caracteres.
+				</li>
+				<li>
+					<code>
+						code_challenge
+					</code> es un hash sha256 en base64 de <code>code_verifier
+					</code>.
+				</li>
+			</ul>
+			<p>
+				De esta forma la petición inicial sería:
+			</p>
+			<pre class="language-ini highlight">
+<code>GET /oauth/authorize
+   ?client_id=example_client_id
+   &response_type=code
+   &redirect_uri=http%3A%2F%2Fexampledomain.com
+   &state=string_as_status
+   &scope=openid
+   &code_challenge_method=S256
+   &code_challenge=example_code_challenge HTTP/1.1
+Host: authorizationserver.com
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth.
+				</li>
+				<li>
+					<code>
+						response_type
+					</code> debe ser "code".
+				</li>
+				<li>
+					<code>
+						redirect_uri
+					</code> es la URI que está preparada para recoger la respuesta de esta petición.
+				</li>
+				<li>
+					<code>
+						state
+					</code> es un valor que se usa para evitar ataques CSRF (Cross Site Request Forgery). Una cadena única aleatoria que debe ser devuelta por el servidor para poderlos comparar y ver que son iguales.
+				</li>
+				<li>
+					<code>
+						scope
+					</code> podría ser "openid" para OIDC o cualquier otro para autorizar diferentes aplicaciones.
+				</li>
+				<li>
+					<code>
+						code_challenge_method
+					</code> como usamos SHA256 para crear el hash, será "S256".
+				</li>
+				<li>
+					<code>
+						code_challenge
+					</code> es el hash sha256 en base64 del <code>code_verifier
+					</code> que creamos anteriormente.
+				</li>
+			</ul>
+			<p>
+				Entonces el servidor de autorización solicita un usuario y un password vía un formulario web. Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro <code>redirect_uri
+				</code>:
+			</p>
+			<pre>
+				<code>
+					http://exampledomain.com/
+    ?code=examplecode
+    &amp;state=string_as_status
+
+				</code></pre>
+			<p>
+				En esta respuesta el valor de <code>state
+				</code> debe ser el mismo que pasamos en la petición. Y como parámetro <code>code
+				</code> encontraremos un código, que normalmente es válido durante unos 60 segundos, a partir del que podremos realizar la petición del <em>token
+				</em>:
+			</p>
+			<pre class="language-http highlight">
+<code>POST /oauth/token HTTP/1.1
+Host: authorizationserver.com
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
+
+grant_type=authorization_code
+&redirect_uri=http%3A%2F%2Fexampledomain.com
+&code=example_code
+&code_verifier=example_code_verifier
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						grant_type
+					</code> es "authorization_code".
+				</li>
+				<li>
+					<code>
+						redirect_uri
+					</code> debe ser la URI que se usó para solicitar el <code>code
+					</code>.
+				</li>
+				<li>
+					<code>
+						code
+					</code> es el código que nos permitirá recoger el <em>token
+					</em>.
+				</li>
+				<li>
+					<code>
+						code_verifier
+					</code> es la cadena de texto que generamos al principio. En este paso se validará con el valor de <code>code_challenge
+					</code> que enviamos en la anterior petición.
+				</li>
+			</ul>
+			<p>
+				Al contrario que el <a href="#authorization-code">Authorization Code
+				</a> simple, en este caso no se requiere la cabera de "Authorization".
+			</p>
+			<p>
+				Como respuesta tendremos el <a href="#access-token">Access Token
+				</a>:
+			</p>
+			<pre class="language-http highlight">
+<code>HTTP/1.1 200 OK
+Cache-Control: no-store
+Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
+
+{
+    "access_token": "a_lot_of_characters_in_base_64",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "openid",
+    "id_token": "a_lot_of_characters_in_base_64"
+}
+				</code>
+</pre>
+			<h2 id="client-credentials">
+				Client Credentials
+			</h2>
+			<p>
+				El modelo más sencillo de solicitar una autorización de OAuth 2.0 es <a href="https://tools.ietf.org/html/rfc6749#section-4.4">Client Credentials
+				</a>. Se usa para la comunicaciones de máquina a máquina, donde no se requiere el permiso de un usuario específico para acceder a los datos.
+			</p>
+			<p>
+				Su funcionamiento consiste en realizar una petición al servidor en el <em>endpoint
+				</em> del generador de <em>tokens
+				</em>:
+			</p>
+			<pre class="language-http highlight">
+<code>POST /oauth/token HTTP/1.1
+Host: authorization-server.com
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
+
+grant_type=client_credentials
+&client_id=example_client_id
+&client_secret=example_client_secret
+&scope=user.read
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						grant_type
+					</code> es "client_credentials".
+				</li>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth.
+				</li>
+				<li>
+					<code>
+						client_secret
+					</code> es una contraseña o secreto que generaremos en el servidor de OAuth en relación con el cliente (la aplicación).
+				</li>
+				<li>
+					<code>
+						scope
+					</code> podría ser cualquier valor que ayude a autorizar el uso de nuestras aplicaciones.
+				</li>
+			</ul>
+			<p>
+				La respuesta directamente será el <a href="#access-token">Access Token
+				</a>:
+			</p>
+			<pre class="language-http highlight">
+<code>HTTP/1.1 200 OK
+Cache-Control: no-store
+Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
+
+{
+  "access_token": "a_lot_of_characters_in_base_64",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "a_lot_of_characters_in_base_64",
+  "scope": "user.read"
+}
+				</code>
+</pre>
+			<h2 id="implicit">
+				Implicit
+			</h2>
+			<p>
+				Cuando hablamos de un flujo de autorización <a href="https://tools.ietf.org/html/rfc6749#section-4.2">Implicit
+				</a> lo más probable es que estemos trabajando con páginas web SPA (Single Page Application). Generalmente, NO se recomienda usar este flujo, e incluso algunos servidores, prohíben su uso. Hoy en día se recomienda usar en su lugar el flujo de <a href="#authorization-code-con-pkce">Authorization Code con PKCE
+				</a>.
+			</p>
+			<p>
+				De cualquier forma, podría ser que tengamos que usarlo, así que nunca sobra describirlo. Todo consiste en una petición simple al servidor:
+			</p>
+			<pre class="language-ini highlight">
+<code>GET /oauth/authorize
+    ?client_id=example_client_id
+    &response_type=token
+    &redirect_uri=http%3A%2F%2Fexampledomain.com
+    &state=string_as_status&scope=openid
+    &scope=openid HTTP/1.1
+Host: authorizationserver.com
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						response_type
+					</code> es "token".
+				</li>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth.
+				</li>
+				<li>
+					<code>
+						redirect_uri
+					</code> es la URI que está preparada para recoger la respuesta de esta petición.
+				</li>
+				<li>
+					<code>
+						state
+					</code> es un valor que se usa para evitar ataques CSRF (Cross Site Request Forgery). Una cadena única aleatoria que debe ser devuelta por el servidor para poderlos comparar y ver que son iguales.
+				</li>
+				<li>
+					<code>
+						scope
+					</code> podría ser "openid" para OIDC o cualquier otro para autorizar diferentes aplicaciones.
+				</li>
+			</ul>
+			<p>
+				La respuesta de esta petición será una llamada a la URI que le pasamos en <code>redirect_uri
+				</code>, con el siguiente formato:
+			</p>
+			<pre>
+				<code>
+					http://exampledomain.com/
+    #access_token=a_lot_of_characters_in_base_64
+    &amp;token_type=Bearer
+    &amp;expires_in=3600
+    &amp;state=string_as_status
+
+				</code></pre>
+			<p>
+				De tal forma que podremos comparar el valor de <code>state
+				</code> y sacar la información del <a href="#access-token">Access Token
+				</a> del resto de parámetros.
+			</p>
+			<h2 id="password">
+				Password
+			</h2>
+			<p>
+				También conocido como <a href="https://tools.ietf.org/html/rfc6749#section-4.3">Resource Owner Password Credentials
+				</a>, este flujo de autorización es solo recomendable en entornos seguros, donde existe una relación de confianza entre el cliente y el servidor. Algo así como un servicio del sistema operativo o una aplicación que requiera permisos elevados. En resumen, este debería ser el último flujo que deberíamos usar, tan solo reservado para cuando no tenemos otra posibilidad.
+			</p>
+			<p>
+				Se parece mucho a <a href="#client-credentials">Client Credentials
+				</a>, pero con la diferencia de que aquí vamos a solicitar la autorizacion, autenticándonos como un usuario del sistema. De esta manera, crearemos una petición muy parecida al de ese modelo, pero añadiendo ciertos campos adicionales:
+			</p>
+			<pre class="language-http highlight">
+<code>POST /oauth/token HTTP/1.1
+Host: authorizationserver.com
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
+
+grant_type=password
+&username=exampleuser
+&password=examplepassword
+&client_id=example_client_id
+&client_secret=example_client_secret
+&scope=user.read
+				</code>
+</pre>
+			<ul>
+				<li>
+					<code>
+						grant_type
+					</code> es "password".
+				</li>
+				<li>
+					<code>
+						username
+					</code> es el nombre del usuario que usaríamos para identificarnos en el servidor.
+				</li>
+				<li>
+					<code>
+						password
+					</code> es la contraseña del usuario que usaríamos para identificarnos en el servidor.
+				</li>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth.
+				</li>
+				<li>
+					<code>
+						client_secret
+					</code> es una contraseña o secreto que generaremos en el servidor de OAuth en relación con el cliente (la aplicación).
+				</li>
+				<li>
+					<code>
+						scope
+					</code> podría ser cualquier valor que ayude a autorizar el uso de nuestras aplicaciones.
+				</li>
+			</ul>
+			<p>
+				Y la respuesta, será el <a href="#access-token">Access Token
+				</a>:
+			</p>
+			<pre class="language-http highlight">
+<code>HTTP/1.1 200 OK
+Cache-Control: no-store
+Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
+
+{
+  "access_token": "a_lot_of_characters_in_base_64",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "user.read"
+}
+				</code>
+</pre>
+			<h2 id="refresh-token">
+				Refresh Token
+			</h2>
+			<p>
+				Con el fin de que no siempre se estén transmitiendo los mismos datos (algunos de ellos sensibles), otro de los flujos que se nos proponen es el de <a href="https://tools.ietf.org/html/rfc6749#section-1.5">Refresh Token
+				</a>. Para ello necesitaremos haber obtenido un <a href="#access-token">Access Token
+				</a>, y que este, a parte de expiración, tenga el campo <code>refresh_token
+				</code> indicado.
+			</p>
+			<p>
+				Así pues, usando este campo, después de que el <em>token
+				</em> anterior haya caducado, podremos obtener otro <em>token
+				</em> nuevo. Eso sí, un <code>refresh_token
+				</code> también tiene una caducidad y a su vez es de un solo uso. De esta forma no podremos generar todos los <em>tokens
+				</em> nuevos que queramos, tan solo uno.
+			</p>
+			<p>
+				Este método es muy sencillo, realizaremos una petición simple al servidor OAuth como la siguiente:
+			</p>
+			<pre class="language-http highlight">
+<code>POST /oauth/token HTTP/1.1
+Host: authorizationserver.com
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ...
+
+grant_type=refresh_token
+&client_id=example_client_id
+&client_secret=example_client_secret
+&refresh_token=a_lot_of_characters_in_base_64
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<code>
+						grant_type
+					</code> es "refresh_token".
+				</li>
+				<li>
+					<code>
+						client_id
+					</code> es el identificador público de la aplicación. Una aplicación es el resultado de registrar un nuevo cliente en nuestro servidor OAuth. El mismo que usamos para obtener el anterior <em>token
+					</em>.
+				</li>
+				<li>
+					<code>
+						client_secret
+					</code> es una contraseña o secreto que generaremos en el servidor de OAuth en relación con el cliente (la aplicación). El mismo que usamos para obtener el anterior <em>token
+					</em>.
+				</li>
+				<li>
+					<code>
+						refresh_token
+					</code> el <em>token
+					</em> que recibimos en el <a href="#access-token">Access Token
+					</a> anterior.
+				</li>
+			</ul>
+			<p>
+				Y la respuesta vuelve a ser semejante a las demás:
+			</p>
+			<pre class="language-http highlight">
+<code>HTTP/1.1 200 OK
+Cache-Control: no-store
+Pragma: no-cache
+Content-Type: application/json
+Content-Length: ...
+
+{
+    "access_token": "a_lot_of_characters_in_base_64",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "refresh_token": "a_lot_of_characters_in_base_64"
+}
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Si en <a href="/2019/03/12/jwt-api-authentication/">otro artículo os explicábamos el tema de JWT
+				</a> y cómo validarlo para poder proteger nuestras APIs, hoy nos hemos centrado en diferentes formas de autorizar+autenticar un servicio basado en OAuth 2.0, y por supuesto, recibir ese JWT.
+			</p>
+			<p>
+				Estos no son todos los métodos, concesiones o <em>Grant Types
+				</em> que existen, aunque sí los más usados.
+			</p>
+			<p>
+				Cuando escribo sobre temas de seguridad es muy posible que me pierda en repeticiones y referencia a RFCs. Me resulta difícil dar razones de peso o resultar útil sin usar ese formato. Quizá os resulte pesado. Pero lo cierto es que, no sé vosotros, pero dentro de varios meses, seguro que vuelvo a este artículo a buscar algún detalle que no recuerdo del todo...
+			</p>
+			<p>
+				... y hasta aquí puedo leer.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=OAuth 2.0 Grant Types&url=https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/03/19/oauth-authentication-grant-types" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/03/12/jwt-api-authentication">
+						Autenticando una API con JWT
+					</a> <small>12 mar. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/04/22/unit-testing-tips">
+						Unit testing tips
+					</a> <small>22 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/09/n-texture-chocolate-cake-architecture">
+						N-Texture Chocolate Cake Architecture
+					</a> <small>09 abr. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

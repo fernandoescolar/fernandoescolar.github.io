@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Historia de C# · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Dicen que la historia la escriben siempre los vencedores. Aunque en mi opini&#243;n, la historia la ha escrito siempre el que ten&#237;a un medio para hacerlo. Esta af..." />
+		<meta property="og:title" content="Historia de C#" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/02/05/historia-csharp" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/programming4.jpg" />
+		<meta property="og:description" content="Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta af..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-02-05 05:08:11Z" />
+		<meta property="article:published_time" content="2019-02-05 05:08:11Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Historia de C#" />
+		<meta name="twitter:description" content="Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta af..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/programming4.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/02/05/historia-csharp" />
+		<meta name="description" content="Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta af..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/02/05/historia-csharp" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/programming4.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Historia de C#
+			</h1><small>05 feb. 2019 · 13 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta afirmación puede demostrarse hoy en día echando un vistazo a un medio al que todo el mundo tiene acceso: internet. Una plataforma donde todos podemos escribir <em>nuestra propia historia
+				</em>. Así pues, al igual que cualquier otro ignorante de la red, os voy a dar mi versión de la historia de C#. Y además os aseguro que esta sí cuenta lo que sucedió de verdad de la buena.
+				<!--break-->
+			</p>
+			<p>
+				La historia prohibida que nunca nadie se atrevió a contar comienza en una tierra muy lejana, al otro lado del charco. Con una empresa llamada Sun Microsystems.
+			</p>
+			<h2 id="los-origenes">
+				Los orígenes
+			</h2>
+			<p>
+				Nuestra protagonista desarrolló una plataforma de desarrollo basada en virtualizar el lenguaje máquina. La máquina virtual, conocida como Java Virtual Machine (aka JVM), era capaz de interpretar unos archivos llamados <em>bytecode
+				</em>. Estos archivos eran el resultado de compilar programas realizados en un nuevo lenguaje de programación de alto nivel llamado Java. Y para conseguir que esta máquina virtual interactuara con el hardware existente se diseñaron un conjunto de librerías que recibieron el nombre de Java Runtime Environment (aka JRE).
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/sun-microsystems.png" alt="Sun Microsystems logo" />
+			</p>
+			<p>
+				El lenguaje de programación Java empezó a tener éxito. Y como la JVM y el JRE eran open source, no tardaron en unirse <em>3rd parties
+				</em> a la carrera por desarrollar su propia máquina virtual privada. Con muchas más funcionalidades que la original, pero partiendo de las implementaciones open source. La más conocida y extendida de estas era la implementación propia de IBM (la versión de hoy en día se conoce como J9). Pero otras empresas como Hewlett-Packard, SAP, Novell o Microsoft, también implementaron las suyas.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/old-java-logos.png" alt="Java logo" />
+			</p>
+			<p>
+				Entre tanto, también se estaba desarrollando una dura batalla por implementar el <em>Integrated Development Environment
+				</em> (IDE) preferido por los desarrolladores. Sun Microsystems decidió comprar a unos estudiantes universitarios el IDE Netbeans. Aunque esto en realidad fue una débil respuesta contra una serie de IDEs que eran muy superiores y ya estaban asentados en el mercado. JBuilder, producto de Borland, escrito en el propio lenguaje de Java, era un producto muy avanzado y extendido. Mientras que Eclipse empezaba a mostrarse como la plataforma dominante open source, de la mano de IBM.
+			</p>
+			<p>
+				Todo este lío de máquinas virtuales, versiones de <em>Runtimes
+				</em> e IDEs creaba bastante confusión en los desarrolladores. Potenciados por el acceso a internet, comenzó a ser más sencillo compartir código fuente. Pero cada porción del mismo necesitaba tener instalada una máquina virtual diferente.
+			</p>
+			<p>
+				De cualquier forma, a Sun Microsystems no pareció importarle esto. A menos no le importó hasta que Microsoft publicó Visual J++.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/visual-j.gif" alt="Visual J++ case" />
+			</p>
+			<p>
+				Una herramienta basada en Visual Studio de Microsoft junto con una máquina virtual de Java totalmente integrada con las librerías win32 de Windows. Añadiendo creación de formularios nativos mediante un editor gráfico semejante al que existía para Visual Basic, que más tarde nos encontraríamos con el nombre de Windows.Forms. Pero Microsoft se olvidó de un pequeño detalle: dejó de lado un tema explicitó de la licencia de Java, la compatibilidad entre las diferentes versiones.
+			</p>
+			<blockquote>
+				<p>
+					Porque es evidente que la máquina virtual de IBM sí que era compatible con todo lo anterior… clarooo… pero bueno, no vamos a entrar mucho más en esta disputa...
+				</p>
+			</blockquote>
+			<p>
+				El caso es que a Sun Microsystems no le gustó la maniobra de Microsoft y decidió denunciar a la compañía en 1997. En vista del largo proceso judicial que comenzaba, en 1998 Microsoft empezó a desarrollar su propio lenguaje basado en premisas de Java. Este lenguaje era mucho más cercano a otro con el que mucha gente se sentía cómoda en esa época: C++. Además, correría sobre una nueva plataforma llamada .Net Framework.
+			</p>
+			<p>
+				En 2001 hubo sentencia en contra de Microsoft y lo que pasó a partir de 2002 ya es historia.
+			</p>
+			<h2 id="el-nombre">
+				El nombre
+			</h2>
+			<p>
+				Hay varias fuentes que comentan diferentes versiones del origen del nombre de C#. Así que hemos elegido la que más nos gusta.
+			</p>
+			<p>
+				En un principio existía C. Cuando este lenguaje fue extendido para soportar el paradigma de la programación orientada a objetos, pasó a llamarse C++.
+			</p>
+			<p>
+				Para C# se cogió como base C++ intentando hacer un lenguaje totalmente orientado a objetos. Quizá suene muy atrevido denominarlo como una especie de C++ ++. El caso es que al superponer las parejas de "+", se crea una especie de cuadrado. Si le echamos un poco de imaginación, este cuadrado se puede asemejar a una almohadilla "#". C#.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/c-sharp-name.gif" alt="C# name animation" />
+			</p>
+			<h2 id="la-evolucion">
+				La evolución
+			</h2>
+			<h3 id="section">
+				2002
+			</h3>
+			<p>
+				Como decíamos antes, 2002 fue el año en el que pudimos ver la primera versión de C#, la <strong>1.0
+				</strong>. Aquí se establecieron las bases del lenguaje: el uso de clases, structs, interfaces, modelo de herencia, ciclo de vida, etc. También asistimos al nacimiento de Microsoft .Net Framework.
+			</p>
+			<p>
+				Un año más tarde y con el fin de solucionar varios problemas, tuvimos la versión 1.2 del lenguaje C#. No obstante, lo más importante de este año fue la versión 1.1 del .Net Framework que la acompañaba. Este <em>Runtime
+				</em> por fin solucionaba los problemas de liberación de memoria del Garbage Collector.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/visual-studio-net.png" alt="Visual Studio .Net logo" />
+			</p>
+			<p>
+				Hasta aquí todo era muy parecido a Java. Básicamente, si cambiabas los "import" por "using", "java." por "System." y las llamadas en <em>pascal Case
+				</em> por <em>Camel Case
+				</em>, todo funcionaba prácticamente igual. Exceptuando esa cosa llamada <em>region
+				</em>. Un trucazo, una chama, un pragma del IDE que servía para ocultar cierto código que se autogeneraba al usar los diseñadores visuales de formularios.
+			</p>
+			<h3 id="section-1">
+				2005
+			</h3>
+			<p>
+				Con la versión <strong>2.0
+				</strong> se empezó a vislumbrar lo que es hoy en día el lenguaje gracias a los <em>generics
+				</em>, iteradores, los métodos anónimos, la covarianza y la contravarianza... Y no nos olvidemos de las clases parciales. Era demasiado evidente que eso de <em>region
+				</em> era un poco horrible. Así que para dar solución al código generado por los diseñadores de formularios de Windows.Forms y WebForms, en esta versión se añadieron clases que podían ser definidas en varios archivos añadiendo la palabra clave "partial".
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/microsoft-net.png" alt="Microsoft .Net logo" />
+			</p>
+			<h3 id="section-2">
+				2007
+			</h3>
+			<p>
+				Este año nos encontramos con el que sin duda fue el mayor avance del lenguaje. La versión <strong>3.0
+				</strong> es con la que se consiguió adelantar a Java. De hecho, lo hizo por la derecha y le soltó las chapitas. A partir de aquí desde Java se dieron cuenta de que tenían que empezar a copiar las nuevas características de C#. Los tipos anónimos, junto con las <em>Lambdas
+				</em> y el <em>ExpresionTree
+				</em>, nos trajeron <em>Linq
+				</em>, posiblemente la mejor utilidad que se ha diseñado para tratar con iteraciones. También se incluyeron algunos detalles estéticos (o <em>syntax-sugar
+				</em>), como las <em>auto-properties
+				</em> o la palabra clave <em>var
+				</em>, que intentaban dar mayor limpieza al código.
+			</p>
+			<p>
+				Además, por estas fechas, como habíamos llegado al límite de calor con respecto al precio en los materiales de los procesadores, se empezaron a poner de moda los multi-core. Quedando obsoleto cualquier programa que simplemente utilizara un solo núcleo de nuestro procesador y dejando los demás en <em>Idle
+				</em>. De cara a que esto no sucediera, en el .Net Framework 3.5 se introdujo la Task Parallel Library, que nos ayudaría a sacar provecho de estos nuevos procesadores.
+			</p>
+			<p>
+				También de esta versión salió otra librería llamada Reactive Extensions. Hoy por hoy se utiliza más su port para javascript (en React o Angular), pero la librería original era para C#. Las <em>Rx
+				</em> sacaban el mayor partido de la mezcla de eventos, observables e iteraciones.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/microsoft-net-new.png" alt="New Microsoft .Net logo" />
+			</p>
+			<h3 id="section-3">
+				2010
+			</h3>
+			<p>
+				Después de unos años tan interesantes en el mundo del desarrollo de Microsoft, <strong>2010
+				</strong> nos supo un poco descafeinado. Como un año de transición. Era como que tenían que sacar algo y decidieron llamarlo C# <strong>4.0
+				</strong>. Con unos pocos detalles que se habían quedado en el tintero en versiones anteriores. Destacaríamos la covarianza y contravarianza en <em>generics
+				</em>, los <em>named-params
+				</em> o los parámetros opcionales.
+			</p>
+			<h3 id="section-4">
+				2012
+			</h3>
+			<p>
+				Dos años más tarde nos encontramos con una versión que básicamente solo añadía el <em>syntax-sugar
+				</em> más grande que ha visto un lenguaje de programación en la historia. De hecho, luego fue copiado por javascript. C# <strong>5.0
+				</strong> introdujo <em>async
+				</em> y <em>await
+				</em>, dos palabras clave tan útiles como peligrosas. Esta característica esconde una máquina de estado en IL (<em>Intermediate Language
+				</em>, el <em>bytecode
+				</em> de .Net) dentro de nuestros ensamblados. Y su funcionalidad es hacer que la programación asíncrona pueda realizarse de la misma forma que la secuencial, acercando un modelo de programación basado en eventos y callbacks, a los pobres programadores que solo saben programar de forma secuencial.
+			</p>
+			<h3 id="section-5">
+				2015
+			</h3>
+			<p>
+				Buscando la excelencia de su lenguaje bandera, Microsoft nos dio un montón de <em>syntax-sugar
+				</em> nuevos. La <strong>6.0
+				</strong> era una versión tan dulce que casi nos dio diabetes. <em>Lambdas
+				</em> para hacer métodos, inicializadores de <em>auto-properties
+				</em>, "nameof"...
+			</p>
+			<h3 id="section-6">
+				2017
+			</h3>
+			<p>
+				La última gran actualización de C#, la versión <strong>7.0
+				</strong>. Lo más destacable de esta versión es que vino de la mano del nuevo <em>Runtime
+				</em> multi plataforma y open source de .Net: dotnet core. Además de un montón de funcionalidades que venían inspiradas de un lenguaje funcional de .Net: F#. <em>Pattern maching
+				</em>, tuplas, deconstrucción, <em>wildcards
+				</em>... Ahora C# es un lenguaje orientado a objetos y funcional.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/dotnet.png" alt="dotNet logo" />
+			</p>
+			<h3 id="section-7">
+				2019
+			</h3>
+			<p>
+				Y para este año lo que todo el mundo espera es la versión <strong>8.0
+				</strong>. Pero eso ya es otra historia...
+			</p>
+			<h2 id="actualizacion-09-02-2019">
+				ACTUALIZACIÓN 09-02-2019
+			</h2>
+			<p>
+				Después de una serie de comentarios que me han llegado vía Twitter, me veo en la obligación de realizar una actualización al artículo:
+			</p>
+			<h3 id="fe-de-errores">
+				Fe de errores
+			</h3>
+			<p>
+				En la sección de 2007 se menciona la creación de la <em>Task Parallel Library
+				</em> (TPL) y de las <em>Reactive Extensions
+				</em> (Rx). Si bien es verdad que existen implementaciones de ambas para la versión del <em>Framework
+				</em> 3.5, no fue hasta 2010 y 2011 respectivamente, cuando estuvieron disponibles públicamente. Originariamente aparecieron: TPL para versión del <em>Framework
+				</em> 4.0 y Rx para 3.5 y 4.0. Dentro de las Rx para la versión del <em>Framework
+				</em> 3.5 existe un <em>backport
+				</em> de TPL.
+			</p>
+			<blockquote class="twitter-tweet" data-conversation="none" data-lang="es">
+				<p lang="es" dir="ltr">
+					La TPL no salió con .Net 4? Justo lo estuve mirando el otro día para un proyecto en 3.5 (que “no se puede” migrar) y si me dices que hay forma de usar la TPL en 3.5 me das una alegría gorda gorda
+				</p>
+				— Adri (@mancku) <a href="https://twitter.com/mancku/status/1093986889504313344?ref_src=twsrc%5Etfw">8 de febrero de 2019
+				</a>
+			</blockquote>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+			</script>
+			<p>
+				¡Muchas gracias <a href="https://twitter.com/mancku">Adri
+				</a>!
+			</p>
+			<h3 id="notas-adicionales">
+				Notas adicionales
+			</h3>
+			<p>
+				Como bien indica <a href="https://twitter.com/jm_alarcon">José Manuel Alarcón
+				</a> por si había alguna duda, el <em>bytecode
+				</em> no fue un invento de Sun Microsystem para la plataforma Java. Es un concepto que viene desde (no sé si incluso antes) tiempos de BASIC, y que de hecho Microsoft ya usó hasta en sus implementaciones modernas de Visual Basic.
+			</p>
+			<blockquote class="twitter-tweet" data-lang="es">
+				<p lang="es" dir="ltr">
+					Con la salvedad de que VB clásico ya usaba bytecode, un gran resumen de la historia de C# y .Network del amigo Fernando. <a href="https://t.co/oF1HzQZBwk">https://t.co/oF1HzQZBwk
+					</a>
+				</p>
+				— JM Alarcón Aguín 🌐 (@jm_alarcon) <a href="https://twitter.com/jm_alarcon/status/1092686977965715456?ref_src=twsrc%5Etfw">5 de febrero de 2019
+				</a>
+			</blockquote>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+			</script>
+			<p>
+				Y otro aporte excelente por parte de <a href="https://twitter.com/PabloDoval">Pablo Álvarez Doval
+				</a> trata sobre cómo Microsoft implementó .Net a partir de una plataforma desarrollada por Colusa Software Inc. Empresa fundada en 1994 y adquirida en 1996, que desarrollaba por aquel entonces una plataforma llamada Omniware, con el fin de ejecutar código en C/C++ en una máquina virtual multiplataforma llamada OmniVM.
+			</p>
+			<blockquote class="twitter-tweet" data-conversation="none" data-lang="es">
+				<p lang="es" dir="ltr">
+					Muy buen artículo, pero yo le añadiría un detalle importantísimo para lo que fue .NET y C#, y muy poco conocido. .NET hereda directamente de OmniVM, que fue la plataforma de Colusa Omniware que Microsoft adquirió y desarrolló, evitando partir de cero :)
+				</p>
+				— Pablo Álvarez Doval (@PabloDoval) <a href="https://twitter.com/PabloDoval/status/1093976877780426752?ref_src=twsrc%5Etfw">8 de febrero de 2019
+				</a>
+			</blockquote>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+			</script>
+			<p>
+				¡Muchas gracias a ambos!
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Historia de C#&url=https://www.developerro.com/2019/02/05/historia-csharp" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/02/05/historia-csharp" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/02/05/historia-csharp" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/02/05/historia-csharp" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/19/csharp-8">
+						Novedades de c# 8
+					</a> <small>19 feb. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2016/11/16/csharp-7">
+						Novedades de c# 7
+					</a> <small>16 nov. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

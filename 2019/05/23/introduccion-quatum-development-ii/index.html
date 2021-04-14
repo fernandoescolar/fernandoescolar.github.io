@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Introducción a Quatum Development (ii) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Te explicar&#233; por qu&#233; est&#225;s aqu&#237;. Est&#225;s aqu&#237; porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido as&#237; durante toda tu vida...." />
+		<meta property="og:title" content="Introducción a Quatum Development (ii)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/engineering2.jpg" />
+		<meta property="og:description" content="Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida...." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-05-23 07:37:32Z" />
+		<meta property="article:published_time" content="2019-05-23 07:37:32Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Introducción a Quatum Development (ii)" />
+		<meta name="twitter:description" content="Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida...." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/engineering2.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" />
+		<meta name="description" content="Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida...." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/engineering2.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Introducción a Quatum Development (ii)
+			</h1><small>23 may. 2019 · 11 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?
+				<!--break-->
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-meme.jpg" alt="What if I told you using the word " quantum in your sentence doesn t make you a physicist (meme) />
+			</p>
+			<p>
+				¿Qué me dirías si todo lo que estuvimos comentando en el <a href="/2019/05/10/introduccion-quatum-development/">anterior artículo
+				</a> fuera tan solo la superficie? ¿Y si fuera el equivalente a la tabla de multiplicar del 1 en el mundo de la resolución de derivadas?
+			</p>
+			<p>
+				Hoy vamos a profundizar más en el tema de la programación cuántica, y para ello, realizaremos ejemplos usando el <a href="https://www.microsoft.com/en-us/quantum/development-kit">Microsoft Quantum Development Kit
+				</a>. Así que te recomendamos que <a href="/2019/05/10/introduccion-quatum-development/#microsoft-quantum-development-kit">lo instales
+				</a>, si no lo has hecho ya.
+			</p>
+			<h2 id="qubit">
+				Qubit
+			</h2>
+			<p>
+				El <a href="/2019/05/10/introduccion-quatum-development/#qubit">otro día vimos
+				</a> que un <em>qubit
+				</em> puede ser representado como una superposición de <code>|0>
+				</code> y <code>|1>
+				</code>:
+			</p>
+			<p>
+				<code>
+					(α|0> + β|1>)
+				</code>
+			</p>
+			<p>
+				Pero lo que no dijimos es que tanto <code>α
+				</code> como <code>β
+				</code> podrían ser <a href="https://es.wikipedia.org/wiki/N%C3%BAmero_complejo">números complejos
+				</a> que en su forma exponencial estarían representados por:
+			</p>
+			<p>
+				<code class="highlighter-rouge">
+					r<sub>α
+					</sub>e<sup>iΦ<sub>α</sub>
+					</sup>|0> + r<sub>β
+					</sub>e<sup>iΦ<sub>β</sub>
+					</sup>|1>
+				</code>
+			</p>
+			<p>
+				Al usar números complejos esto nos aporta una nueva dimensión: la parte real y otra imaginaria. Esto unido con la superposición de <code>|0>
+				</code> y <code>|1>
+				</code>, nos llevaría a poder representar un <em>qubit
+				</em> en forma de una <a href="https://es.wikipedia.org/wiki/Esfera_de_Bloch">esfera de Bloch
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-bloch-sphere.png" alt="Esfera de Bloch" />
+			</p>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					En el eje <code>Z
+					</code> tendríamos los valores <code>|1>
+					</code> y <code>|0>
+					</code>.
+				</li>
+				<li>
+					En el eje <code>X
+					</code> marcaríamos los estados positivo o negativo: <code>|+>
+					</code> o <code>|->
+					</code>.
+				</li>
+				<li>
+					En el eje <code>Y
+					</code> encontraríamos la parte imaginaria: <code>|i>
+					</code> o <code>|-i>
+					</code>.
+				</li>
+			</ul>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-meme2.jpg" alt="Va y me dice que es una esfera de Bloch (meme)" />
+			</p>
+			<h3 id="operacion-measure">
+				Operación <em>Measure
+				</em>
+			</h3>
+			<p>
+				Si quisiéramos realizar una medida en cualquiera de estos ejes, deberíamos recurrir a las <a href="https://es.wikipedia.org/wiki/Matrices_de_Pauli">matrices de Pauli
+				</a>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-pauli.svg" alt="Matrices de Pauli" />
+			</p>
+			<p>
+				Que en Q# sería algo como esto:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation MeasureAll(): (Result, Result, Result)
+{
+    using (qubits = Qubit[1])
+    {
+        H(qubits[0]);
+
+        let resZ = Measure([PauliZ], qubits);
+        let resY = Measure([PauliY], qubits);
+        let resX = Measure([PauliX], qubits);
+
+        ResetAll(qubits);
+
+        return (resZ, resY, resX);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Donde la operación de <code>H
+				</code> se usa para que no siempre tenga el valor <code>Zero
+				</code> en la <code>Z
+				</code>. Y la operación <code>Measure
+				</code> es igual que la <code>M
+				</code>, con la diferencia de que la operación <code>M
+				</code> realiza la medida con la matriz <code>Z
+				</code> y <code>Measure
+				</code> nos deja seleccionar la matriz a utilizar. Recordad dejar a <code>Zero
+				</code> el estado de todos los <em>qubits
+				</em> que usemos antes de dejar de utilizarlos. Para ello, si es una matriz, podemos usar la operación <code>ResetAll
+				</code>.
+			</p>
+			<p>
+				De esta manera, el código de "driver.cs" quedaría como:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static void Main(string[] args)
+{
+    using (var qsim = new QuantumSimulator())
+    {
+        for(var i = 0; i < 10; i++)
+        {
+            var res = MeasureAll.Run(qsim).Result;
+            var (resZ, resY, resX, resI) = res;
+            var z = resZ == Result.Zero ? "|0>" : "|1>";
+            var y = resY == Result.Zero ? "|-i>" : "|i>";
+            var x = resX == Result.Zero ? "|->" : "|+>";
+
+            Console.WriteLine($"Z: {z, -4}, Y: {y, -4}, X: {x, -4}");
+        }
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y al ejecutar este código nos debería dar como resultado algo parecido a esto:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet run
+Z: |0> , Y: |i> , X: |+>
+Z: |1> , Y: |i> , X: |+>
+Z: |1> , Y: |i> , X: |->
+Z: |1> , Y: |i> , X: |+>
+Z: |1> , Y: |-i>, X: |->
+Z: |0> , Y: |i> , X: |+>
+Z: |0> , Y: |i> , X: |->
+Z: |0> , Y: |-i>, X: |->
+Z: |0> , Y: |i> , X: |->
+Z: |0> , Y: |i> , X: |+>
+				</code>
+</pre>
+			<h2 id="sistema-de-varios-qubits">
+				Sistema de varios Qubits
+			</h2>
+			<p>
+				En la computación tradicional usamos más de un <em>bit
+				</em> para definir estados más complejos que <code>0
+				</code> y <code>1
+				</code>. Por ejemplo, si queremos definir el número 3 usaríamos dos <em>bits
+				</em> con valor <code>1
+				</code>:
+			</p>
+			<p>
+				<code>
+					11 binario = 3 decimal
+				</code>
+			</p>
+			<p>
+				De la misma forma podemos actuar con los <em>qubits
+				</em>. Podríamos tener dos <em>qubits
+				</em> que nos definieran un solo estado, de manera que esto formaría un nuevo sistema más complejo:
+			</p>
+			<p>
+				<code>
+					a|00> + b|01> + c|10> + d|11>
+				</code>
+			</p>
+			<p>
+				Donde:
+			</p>
+			<p>
+				<code>
+					|a|² + |b|² +|c|² + |d|² = 1
+				</code>
+			</p>
+			<p>
+				Si por ejemplo tuviéramos 3 <em>qubits
+				</em>, entonces tendríamos definidos los estados <code>000
+				</code>, <code>001
+				</code>, <code>010
+				</code>, <code>011
+				</code>, <code>100
+				</code>, <code>101
+				</code>, <code>110
+				</code> y <code>111
+				</code>. Y así sucesivamente.
+			</p>
+			<p>
+				Cuantos más <em>qubits
+				</em> usemos en nuestro sistema, más estados contemplamos. Si por ejemplo tuviéramos un sistema de 10 <em>qubits
+				</em> estaríamos hablando de 1024 estados, con 100 <em>qubits
+				</em> nos encontraríamos en un orden de 10<sup>30
+				</sup> de combinaciones. Y se opera con todas ellas a la vez. Esto nos da una idea de la gran potencia que tiene la computación cuántica.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-meme3.jpg" alt="We don't have games, but we got TERAFLOPS (meme)" />
+			</p>
+			<h2 id="mas-operaciones-cuanticas">
+				Más Operaciones Cuánticas
+			</h2>
+			<p>
+				En el <a href="/2019/05/10/introduccion-quatum-development/#operaciones-cu%C3%A1nticas">artículo anterior
+				</a> pudimos estudiar algunas operaciones o puertas lógicas. En este vamos a extender ese listado con dos operaciones que solemos usar usando dos <em>qubits
+				</em> en lugar de solo uno:
+			</p>
+			<h3 id="puerta-cnot">
+				Puerta CNOT
+			</h3>
+			<p>
+				Cuando hablamos de un sistema de dos <em>qubits
+				</em> la operación más utilizada es un <em>CNOT
+				</em> o <em>Controlled NOT
+				</em>. Tiene dos <em>qubits
+				</em> por parámetro: uno de control y otro el objetivo de la operación <em>NOT
+				</em>. Cuando el control es <code>|1>
+				</code> realiza un <em>NOT
+				</em> en el objetivo. Se representa con el símbolo <code>⊕
+				</code>:
+			</p>
+			<p>
+				<code>
+					CNOT |c>|t> = |c>|c⊕t>
+				</code>
+			</p>
+			<p>
+				Y los posibles resultados serían:
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							Origen
+						</th>
+						<th>
+							Control
+						</th>
+						<th>
+							Objetivo
+						</th>
+						<th>
+							Resultado CNOT
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							00
+						</td>
+						<td>
+							0
+						</td>
+						<td>
+							0
+						</td>
+						<td>
+							<strong>
+								00
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							01
+						</td>
+						<td>
+							0
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							<strong>
+								01
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							10
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							0
+						</td>
+						<td>
+							<strong>
+								11
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							11
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							<strong>
+								10
+							</strong>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				Si quisiéramos poner en práctica la operación con Q#, tendríamos el siguiente código:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation Set(q: Qubit, value: Result): Unit
+{
+    let current = M(q);
+    if (current != value)
+    {
+        X(q);
+    }
+}
+
+operation MakeCNOT(control: Result, target: Result): (Result, Result)
+{
+    using (qubits = Qubit[2])
+    {
+        Set(qubits[0], control);
+        Set(qubits[1], target);
+
+        CNOT(qubits[0], qubits[1]);
+
+        let resControl = M(qubits[0]);
+        let resTarget = M(qubits[1]);
+
+        ResetAll(qubits);
+
+        return (resControl, resTarget);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Aquí primero tenemos una operación que nos ayuda a asignar un valor a un <em>qubit
+				</em> llamada <code>Set
+				</code>. Después tenemos la operación que realiza el <code>CNOT
+				</code>. Primero reservamos dos <em>qubits
+				</em>, después le asignamos los valores que hemos decidido para <code>control
+				</code> y para <code>target
+				</code>. Pasamos la puerta lógica <code>CNOT
+				</code> y leemos los resultados.
+			</p>
+			<p>
+				En C# tendríamos la llamada:
+			</p>
+			<pre class="language-csharp highlight">
+<code>using (var qsim = new QuantumSimulator())
+{
+    var initials = new Result[] { Result.Zero, Result.One };
+    foreach(var control in initials)
+    {
+        foreach(var target in initials)
+        {
+            var res = MakeCNOT.Run(qsim, control, target).Result;
+            var (resControl, resTarget) = res;
+            var source = $"|{(int)control}{(int)target}>";
+            var result = $"|{(int)resControl}{(int)resTarget}>";
+            Console.WriteLine($"{source} -> {result}");
+        }
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y la salida de la ejecución sería como la tabla que hemos descrito antes:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet run
+|00> -> |00>
+|01> -> |01>
+|10> -> |11>
+|11> -> |10>
+				</code>
+</pre>
+			<h3 id="puerta-swap">
+				Puerta SWAP
+			</h3>
+			<p>
+				Esta puerta intercambia los valores de dos <em>qubits
+				</em>. Su funcionamiento es semejante a la realización de:
+			</p>
+			<pre class="language-csharp highlight">
+<code>CNOT(qubit1, qubit2);
+CNOT(qubit2, qubit1);
+CNOT(qubit1, qubit2);
+				</code>
+</pre>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							Origen
+						</th>
+						<th>
+							Fin
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							00
+						</td>
+						<td>
+							<strong>
+								00
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							01
+						</td>
+						<td>
+							<strong>
+								10
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							10
+						</td>
+						<td>
+							<strong>
+								01
+							</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							11
+						</td>
+						<td>
+							<strong>
+								11
+							</strong>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				Si en el código anterior sustituyéramos el <code>CNOT
+				</code> por <code>SWAP
+				</code>:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation MakeSWAP(control: Result, target: Result): (Result, Result)
+{
+    using (qubits = Qubit[2])
+    {
+        Set(qubits[0], control);
+        Set(qubits[1], target);
+
+        SWAP(qubits[0], qubits[1]);
+
+        let resControl = M(qubits[0]);
+        let resTarget = M(qubits[1]);
+
+        ResetAll(qubits);
+
+        return (resControl, resTarget);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Entonces la salida sería:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet run
+|00> -> |00>
+|01> -> |10>
+|10> -> |01>
+|11> -> |11>
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Las segundas partes nunca fueron buenas. Es verdad que este artículo puede parecer un poco de relleno. Es que lo es. Pero si no quería alargarlo demasiado, tenía que parar de escribir en algún momento.
+			</p>
+			<p>
+				Hemos profundizado mucho más en qué es un <em>qubit
+				</em> y como operar con uno o varios de ellos. También nos hemos empezado a dar cuenta de la potencia que tendría un ordenador de propósito general que manejara muchos <em>qubits
+				</em>.
+			</p>
+			<p>
+				Hasta aquí hemos tratado dos puntos claves de la programación cuántica:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						El principio de incertidumbre (de Heisenberg)
+					</strong>: es imposible realizar una medida sin que el sistema se vea afectado.
+				</li>
+				<li>
+					<strong>
+						La superposición cuántica (o de estados)
+					</strong>: un sistema existe en todos sus posibles estados a la vez.
+				</li>
+			</ul>
+			<p>
+				Para el próximo <em>post
+				</em> prometo algo mucho más divertido como el entrelazado cuántico y su relación con la teleportación...
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum2-meme4.jpg" alt="When you hear someone say they understand quantum mechanics... (meme)" />
+			</p>
+			<p>
+				No te digo nada y te lo digo todo. Así a la vez.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Introducción a Quatum Development (ii)&url=https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/07/09/introduccion-programacion-cuantica">
+						Introducción a la programación cuántica v2
+					</a> <small>09 jul. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/04/introduccion-programacion-cuantica">
+						Introducción a la programación cuántica
+					</a> <small>04 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/29/introduccion-quatum-development-iii">
+						Introducción a Quatum Development (iii)
+					</a> <small>29 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/10/introduccion-quatum-development">
+						Introducción a Quatum Development (i)
+					</a> <small>10 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Método Kanban con Azure DevOps · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la..." />
+		<meta property="og:title" content="Método Kanban con Azure DevOps" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/02/26/azure-devops-kanban" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/agile.jpg" />
+		<meta property="og:description" content="Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-02-26 06:35:21Z" />
+		<meta property="article:published_time" content="2019-02-26 06:35:21Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Método Kanban con Azure DevOps" />
+		<meta name="twitter:description" content="Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/agile.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/02/26/azure-devops-kanban" />
+		<meta name="description" content="Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/02/26/azure-devops-kanban" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/agile.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Método Kanban con Azure DevOps
+			</h1><small>26 feb. 2019 · 17 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la idea de este artículo es que aprendas a guarrear Azure DevOps y así puedas dejar las paredes limpias. Todos te lo agradecerán.
+				<!--break-->
+			</p>
+			<blockquote>
+				<p>
+					Vosotros diréis "y entonces scrum, scrum, scrum...". Tanto que se escucha a día de hoy, se puede implantar en muchos proyectos, pero no siempre es el mejor proceso para implantar en un proyecto.
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Open IEBS - Cómo desarrollar proyectos de forma ágil <a href="https://youtu.be/IJFBt_2_3IY?t=46">en YouTube
+					</a>
+				</p>
+			</blockquote>
+			<p>
+				No podríamos empezar a hablar de cómo aplicar el Método Kanban sin antes realizar un breve resumen de en qué consiste.
+			</p>
+			<h2 id="metodo-kanban">
+				Método Kanban
+			</h2>
+			<p>
+				En contra de los que muchos puedan creer, Kanban no es una metodología<abbr title="[RAE]metodología: f. Conjunto de métodos que se siguen en una investigación científica o en una exposición doctrinal.">*
+				</abbr>, es solo una fracción de una: un método.
+			</p>
+			<p>
+				El origen del Método Kanban está en una visita que hizo <a href="https://edu.leanKanban.com/users/david-anderson">David J. Anderson
+				</a> a los Jardines del Palacio Imperial de Tokio. Resulta que al entrar cada visitante recibe una tarjeta de plástico que debe entregar a la salida. De esta forma limitan el aforo y evitan aglomeraciones, haciendo la experiencia mucho más satisfactoria para todos.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-tickets.jpg" alt="tarjeta de entrada" />
+			</p>
+			<p>
+				El Método Kanban (a partir de ahora cuando escribamos <em>Kanban
+				</em> nos referiremos al <em>método Kanban
+				</em>) tiene como objetivo ayudar a los equipos y empresas a adoptar una cultura de mejora continua. Inicialmente fue diseñado para contextos de desarrollo de software, pero hoy en día ha evolucionado hasta hacerlo aplicable a cualquier ámbito.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-summary.png" alt="Principios y prácticas de Kanban" />
+			</p>
+			<p>
+				Kanban se basa en el <strong>respeto
+				</strong> entre los miembros de los equipos. Para conseguirlo nos propone trabajar juntos, compartiendo la información abiertamente, entendiendo todas las opiniones y llegando a acuerdos. Todo ello supeditado a la consecución del objetivo del proyecto y manteniendo un flujo de entrega de valor continuo <abbr title="Es decir: trabajar juntos, no pelearnos y buscar hacer bien, lo que hay que hacer. Muy fácil de decir y difícil de hacer.">*
+				</abbr>.
+			</p>
+			<p>
+				Al más puro estilo <a href="http://agilemanifesto.org/iso/es/manifesto.html">manifiesto ágil
+				</a> se nos proponen unos principios a tener en cuenta:
+			</p>
+			<ul>
+				<li>
+					Para la gestión del cambio:
+					<ul>
+						<li>
+							Empezar con lo que estés haciendo ahora. Entender y respetar los procesos y roles tal cual se desempeñan en este momento.
+						</li>
+						<li>
+							Acordar buscar la mejora a través del cambio evolutivo. Una vez entendemos como funcionamos podemos proponer pequeños cambios que ayuden a mejorar y comprobar si realmente lo hacen.
+						</li>
+						<li>
+							Fomentar el liderazgo en todos los niveles.
+						</li>
+					</ul>
+				</li>
+				<li>
+					Para el despliegue del servicio
+					<ul>
+						<li>
+							Entender y focalizarse en las necesidades y expectativas de tus clientes.
+						</li>
+						<li>
+							Gestionar el trabajo: dejar que la gente se autoorganice alrededor de las tareas.
+						</li>
+						<li>
+							Evolucionar las políticas para mejorar los resultados hacia el cliente y del negocio.
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<blockquote>
+				<p>
+					Creí que me habían decorado la oficina con post its pero ya vi que es el Backlog de un proyecto #Agile
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Itza Reyes <a href="https://twitter.com/itzareyesMX/status/1096140433451827200">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<p>
+				El Método Kanban, nos propone el uso del <a href="https://es.wikipedia.org/wiki/Kanban">Sistema Kanban
+				</a> para gestionar el trabajo y la visibilidad del mismo. Este sistema tiene varias aplicaciones, pero en el mundo del desarrollo de software lo solemos encontrar en su forma de tablero con post-its.
+			</p>
+			<h2 id="practicando-kanban">
+				Practicando Kanban
+			</h2>
+			<p>
+				Azure DevOps, la herramienta de ALM de Microsoft en la nube (producto con el dudoso honor de haber sido nombrado de 5 formas diferentes; a saber <em>TFS Online
+				</em>, <em>Team Foundation Services
+				</em>, <em>Visual Studio Online
+				</em>, <em>Visual Studio Team Services
+				</em> y hoy en día <em>Azure DevOps
+				</em>), nos resulta una aplicación muy adecuada y totalmente integrada con los flujos, valores y practicas de Kanban.
+			</p>
+			<blockquote>
+				<p>
+					#Jira es una mierda, #Agile no funciona, y sí, hicimos eso de los postits de #Kanban pero daba mucho trabajo.
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Manu <a href="https://twitter.com/ManuCervello/status/1004858688664932355">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<p>
+				Todo comienza a la hora de crear un proyecto nuevo. En el formulario elegimos como plantilla la que se llama "Agile" <abbr title="Y GIT ¡¡elige GIT como repositorio de código fuente!!">*
+				</abbr>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-new-project.png" alt="Nuevo proyecto de Azure DevOps" />
+			</p>
+			<p>
+				Después de esto ya estaremos preparados para aplicar Kanban siguiendo sus prácticas:
+			</p>
+			<h3 id="visualizar">
+				Visualizar
+			</h3>
+			<p>
+				Un tablero Kanban no es la única forma de implementar el sistema Kanban, aunque sí que es una de las más utilizadas. Azure DevOps nos provee de tantos tableros como necesitemos dentro de nuestro proyecto. Para ver el panel por defecto tan solo tendremos que navegar hasta él:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-goto-board.png" alt="Ir al board" />
+			</p>
+			<p>
+				Kanban no establece cómo debemos diseñar nuestro tablero, ni tampoco existe un diseño concreto para usar en el sistema. La herramienta de Microsoft nos propone por omisión una clasificación, que seguro que a la mayoría de los proyectos de desarrollo les viene bien, dividida en 4 columnas: <em>New
+				</em>, <em>Active
+				</em>, <em>Resolved
+				</em> y <em>Closed
+				</em>. Pero puedes añadir o quitar columnas según la necesidad. Para hacerlo, tendremos que pulsar en la rueda dentada de la parte superior derecha, dentro de los <em>Settings
+				</em> dirigirnos a la sección <em>Board
+				</em> y dentro de esta sección a <em>Columns
+				</em>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-board-edit-columns.png" alt="Editar columnas del board" />
+			</p>
+			<p>
+				Aquí se nos mostrará una herramienta que nos permite modificar el nombre de las columnas, añadir nuevas o borrar las que no necesitemos.
+			</p>
+			<p>
+				El diseño de la tarjetas también es importante. Puedes elegir qué datos van a aparecer en cada tarjeta para que de un vistazo tengas la información importante. También se les pueden dar colores en dependencia de normas que podremos configurar. Por ejemplo, podríamos destacar una historia que estuviera bloqueada con una pequeña configuración:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-board-blocked-rule.png" alt="Configuración para ver en rojo una tarea con tag 'blocked'" />
+			</p>
+			<p>
+				No existe ninguna norma estricta al configurar un tablero. Lo ideal es hacerlo de la forma que más ayude al equipo. Si de buenas a primeras no conseguimos una forma óptima de hacerlo, no nos tenemos que preocupar, dentro del las prácticas de Kanban, existe una para poder modificar lo que hemos configurado en un principio.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-board-styles.png" alt="Vista de estilos de un board" />
+			</p>
+			<p>
+				Directamente, cuando elegimos el tipo de proceso ágil, Azure DevOps nos va a mostrar el panel a nivel de <em>User Stories
+				</em> y quedará en nuestra mano si deseamos usar otros paneles a otros niveles. Los niveles que nos va a permitir usar ordenados jerárquicamente son: <em>Epics
+				</em>, <em>Features
+				</em> y <em>Stories
+				</em>. Las <em>Tasks
+				</em>, a diferencia de otro tipo de tableros, quedan relegadas a ser pequeñas anotaciones a nivel de una historia. Lo que tenemos que saber es que podemos configurar todos los niveles independientemente. El objetivo es tener una visibilidad clara y sencilla.
+			</p>
+			<h3 id="limitar-wip">
+				Limitar WIP
+			</h3>
+			<p>
+				El sistema al que vulgarmente que nos referimos como A Salto de Mata (ASM), es lo que denominamos una estrategia de producción <em>push
+				</em>. La idea detrás de esto es realizar el trabajo cuando el cliente lo demanda. Esto provoca que muchas trabajos se queden a medio hacer y que otras caduquen y se cancelen. Tener trabajo no finalizado o parcialmente completado es un desperdicio (<em>waste
+				</em>) de tiempo y por tanto de dinero, y su consecuencia es dilatar los tiempos de entrega (<em>lead time
+				</em>, tiempo desde que llega una petición hasta que se entrega). Al final, lo que conseguimos es que los clientes estén insatisfechos, los trabajadores también y que el proyecto no progrese como debiera.
+			</p>
+			<p>
+				Si como consecuencia de la observación, ponemos límites al trabajo que se puede realizar al mismo tiempo (<abbr title="Work In Progress">WIP
+				</abbr>), conseguiremos mejorar los tiempos de entrega y la calidad con la que se hace. A esto le llamaremos usar una estrategia <em>pull
+				</em>, donde empezamos una actividad justo después de haber terminado (o cancelado) la que teníamos en marcha antes.
+			</p>
+			<blockquote>
+				<p>
+					#GoKanban explicando el #wip caras rarunas, pero creo que lo han entendido. Empezamos sin limitar y vamos madurando #improvement
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Pepe Vazquez Sanchez <a href="https://twitter.com/PepeVazquezS/status/538081775072063488">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<p>
+				Este concepto se basa en la <a href="https://berriprocess.com/es/2016/01/03/la-ley-de-little/">Ley de Little
+				</a>, donde veremos que la forma de entregar lo más rápido posible es tener un número de peticiones en curso (<em>WIP
+				</em>) que sea igual a la capacidad del equipo (<em>throughput
+				</em>, rendimiento, por ejemplo las personas que trabajan en un proyecto). Por lo que podríamos decir que si hay 3 personas desarrollando, tener más de 3 actividades al mismo tiempo aumenta el tiempo de entrega, y tener menos de 3 actividades, tiene como consecuencia que algunas personas del equipo estén ociosas.
+			</p>
+			<p>
+				Limitar el WIP en Azure DevOps es muy sencillo, podremos hacerlo en el tablero, en las columnas de trabajo (quedan excluidas la inicial y la final), en las opciones de <em>Settings
+				</em> que vimos anteriormente. De esta forma en a la derecha del nombre de la columna nos aparecerán dos números: el primero indica el número de tarjetas que hay en esa columna, y el segundo el límite que hemos puesto. Si superamos ese límite, el número de tarjetas activas se pondrá en rojo, indicando visualmente que ahí existe un problema.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-board-wip.png" alt="Vista del límite del WIP en el tablero" />
+			</p>
+			<p>
+				<em>
+					Kanban
+				</em> es una palabra japonesa (看板) que se traduce como "letrero o valla publicitaria". Esto hace que algunas personas relacionen esta palabra con las tarjetas (o post-its) que usamos en un tablero. En el caso del Método Kanban, una traducción que correspondería más con su uso, sería "señal". Las señales <em>pull
+				</em> que veremos en nuestro tablero son los slots vacíos: esas posiciones de tarjeta que no están ocupadas y que me señalan que ahí falta algo.
+			</p>
+			<h3 id="gestionar-el-flujo-de-trabajo">
+				Gestionar el flujo de trabajo
+			</h3>
+			<p>
+				La idea es que el flujo de trabajo maximice la entrega de valor, minimice el <em>lead time
+				</em> y que sea lo más predecible posible. Todo esto se consigue realizando mediciones y ajustando el proceso y el límite del WIP en base a las conclusiones que saquemos. Para ello trabajaremos el límite del WIP para que nuestro sistema de flujo no se convierta en un sistema por lotes:
+			</p>
+			<iframe class="youtube" src="https://www.youtube.com/embed/JoLHKSE8sfU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe>
+			<p>
+				Azure DevOps nos aporta varias herramientas para ayudarnos. Por un lado el propio tablero, donde podremos ver si tenemos cuellos de botella, momentos ociosos o bloqueos.
+			</p>
+			<p>
+				Arriba a la izquierda de nuestro tablero y a la vista de todos encontraremos una gráfica llamada <em>Cumulative Flow
+				</em>. El objetivo es que en esta gráfica quede representado un crecimiento y WIP constante. Si vemos que el WIP es muy pequeño, es que no estamos trabajando tanto como podríamos. Si es muy grande, es que estamos bloqueando tareas (quizá una solución sea limitar a un número menor el WIP). Si dos áreas se juntan es posible que indique bloqueo. Y si en lugar de ir hacia arriba, las áreas se quedan horizontales, significa que estamos parados.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-cumulative-flow.png" alt="Gráfica de Cumulative Flow" />
+			</p>
+			<p>
+				Y para el cálculo de la velocidad, a parte de esta gráfica, podemos configurar otra llamada <em>Velocity
+				</em> en la que nos dirá los puntos de historia que hemos ido solucionando por iteración. Muy útil para poder predecir el tiempo de entrega y a su vez una métrica que nos ayudará a seguir el movimiento #NoEstimates<abbr title="en contra de lo que pueda parecer, #noestimates propone que estimemos, pero que, por así decirlo, no perdamos demasiado el tiempo en ello...">*
+				</abbr>.
+			</p>
+			<blockquote>
+				<p>
+					Hasta el momento lo que he leído y oído de la idea de #noestimates va de la mano de #NoPlanear... y pues ya saben lo que opino de Cero Planeaciones. Así que se va a la pila de todo el bullshit que se está colando en el submundo del agilismo flácido.
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Ramiro González <a href="https://twitter.com/ramgs/status/1051117568713461765">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<h3 id="hacer-explicitas-las-politicas">
+				Hacer explícitas las políticas
+			</h3>
+			<p>
+				Dentro de Kanban se propone un proceso de flujo de trabajo con unas políticas (o restricciones). Si bien es verdad que se propone que estas políticas sean escasas, simples, bien definidas, que se deban cumplir siempre y se puedan modificar; lo cierto es que por el mero hecho de empezar a trabajar ya tenemos unas políticas de serie. Por ejemplo, el límite del WIP es una. Afortunadamente, en el tablero de Azure DevOps estará visible para todo el equipo.
+			</p>
+			<p>
+				Otra política que podríamos tener es el <em>Definition of Done
+				</em> (DoD). Que determina cuándo consideramos que una historia está terminada. Este detalle se puede añadir en la edición de columnas y en el tablero se mostrará como un icono de información en el título de la columna. Al pulsarlo aparecerá el detalle de lo que configuramos.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-board-dod.png" alt="DoD en el tablero" />
+			</p>
+			<p>
+				Otras políticas podemos representarlas en tarjetas que dejaremos fijas en el tablero, usando esta funcionalidad de DoD, podríamos usar la Wiki que viene asociada a nuestro proyecto o como un <em>widget
+				</em> en el <em>dashboard
+				</em>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/kanban-dashboard.png" alt="Dashboard, Wiki y Board" />
+			</p>
+			<h3 id="feedback-loops">
+				Feedback Loops
+			</h3>
+			<p>
+				Un método para la mejora continua sin retroalimentación periódica a través del <em>feedback
+				</em> quedaría un poco extraño. Kanban nos propone siete cadencias (u oportunidades de reunión para recoger feedback y alimentar el flujo de trabajo).
+			</p>
+			<ul>
+				<li>
+					Revisión de la estrategia: donde se definen y seleccionan los servicios a prestar y su dirección. (<abbr title="periodicidad recomendada">p.r
+					</abbr>: trimestralmente).
+				</li>
+				<li>
+					Revisión de las operaciones: para maximizar la entrega de valor en consonancia con las necesidades de los clientes (<abbr title="periodicidad recomendada">p.r
+					</abbr>: mensualmente).
+				</li>
+				<li>
+					Revisión de los riesgos: evaluar riesgos y tratar asuntos bloqueantes (<abbr title="periodicidad recomendada">p.r
+					</abbr>: mensualmente).
+				</li>
+				<li>
+					Revisión de la prestación de servicio (<abbr title="periodicidad recomendada">p.r
+					</abbr>: quincenalmente).
+				</li>
+				<li>
+					Reunión de realimentación: para tratar lo que ya se ha hecho y preparar qué se va a hacer (<abbr title="periodicidad recomendada">p.r
+					</abbr>: semanalmente).
+				</li>
+				<li>
+					La reunión de Kanban: el equipo de desarrollo se reúne de pie, delante del tablero, donde se intentan desbloquear asuntos y planificación del trabajo (<abbr title="periodicidad recomendada">p.r
+					</abbr>: diaria).
+				</li>
+				<li>
+					Reunión de planificación de la entrega (<abbr title="periodicidad recomendada">p.r
+					</abbr>: según periodicidad de la entrega).
+				</li>
+			</ul>
+			<blockquote>
+				<p>
+					Si un proceso iterativo no converge a una raiz real es porq el problema sta mal, el comando sta mal o simplemente la entropia disminuye xD
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Fatima Ro <a href="https://twitter.com/07Vannero/status/230334083681632257">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<h3 id="mejorar-y-evolucionar">
+				Mejorar y evolucionar
+			</h3>
+			<p>
+				Kanban es un método enfocado a la mejora continua e incremental. Hay que aprovechar las cadencias para mejorar constantemente la metodología, las formas de trabajar, de comunicarse, de enfrentarse al cambio, ... todo el equipo a la vez.
+			</p>
+			<p>
+				No hay que dar nada por establecido y hay que cuestionarse todo. De esta forma conseguiremos buen feedback. Y si conseguimos un buen feedback, es más fácil ir adaptándose y mejorando.
+			</p>
+			<p>
+				Eso sí, es importante saber que nunca se llegará a la perfección. Así que lo mejor es focalizarse en la mejora.
+			</p>
+			<blockquote>
+				<p>
+					Como informático en estos 20 años he peleado mucho contra los procesos en papel, la mejora continua y esas cosas, pero sin saberlo . Ahora resulta que soy un experto en transformación digital? A dar charlas de “cosas” para ganar dinero? Cuanta tontería!!!!!
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					kinomakino <a href="https://twitter.com/kinomakino/status/1004370842455863303">en Twitter
+					</a>
+				</p>
+			</blockquote>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Hoy hemos comentado Kanban desde un punto de vista teórico y además hemos visto como Azure DevOps se perfila como una herramienta muy válida para el trabajo colaborativo, sin ensuciar las paredes y para equipos distribuidos.
+			</p>
+			<p>
+				Un buen repaso de un método que llevo ya unos 5 años intentando implementar en mi trabajo diario de una forma correcta. La semana que viene os cuento como llevo...
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Método Kanban con Azure DevOps&url=https://www.developerro.com/2019/02/26/azure-devops-kanban" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/02/26/azure-devops-kanban" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/02/26/azure-devops-kanban" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/02/26/azure-devops-kanban" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/03/05/azure-devops-kanban-ii">
+						Método Kanban con Azure DevOps (y 2)
+					</a> <small>05 mar. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/24/gab-azure-devops">
+						Azure DevOps: El panel de expertos
+					</a> <small>24 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/01/25/github-actions-vs-azure-pipelines">
+						Github Actions vs. Azure Pipelines
+					</a> <small>25 ene. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2016/12/12/reconnect-alm-end-to-end">
+						ReConnect(); //2016 - Microsoft ALM End to End
+					</a> <small>12 dic. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2016/10/03/vsts-package-management">
+						VSTS: Package Management
+					</a> <small>03 oct. 2016
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

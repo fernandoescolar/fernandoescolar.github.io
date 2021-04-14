@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			VSTS: Package Management · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="&#191;Os acordais de John McClane? Lo dejamos salvando la navidad en Los &#193;ngeles. Ahora est&#225; en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece co..." />
+		<meta property="og:title" content="VSTS: Package Management" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2016/10/03/vsts-package-management" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/diehard3.jpg" />
+		<meta property="og:description" content="¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece co..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2016-10-03 00:00:00Z" />
+		<meta property="article:published_time" content="2016-10-03 00:00:00Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="VSTS: Package Management" />
+		<meta name="twitter:description" content="¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece co..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/diehard3.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2016/10/03/vsts-package-management" />
+		<meta name="description" content="¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece co..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2016/10/03/vsts-package-management" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/diehard3.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				VSTS: Package Management
+			</h1><small>03 oct. 2016 · 9 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece con ganas de bronca. Quiere robar el oro de los Estados Unidos de America. Pero esta vez John McClane cuenta con la ayuda de Samuel L. Jackson. ¿Podrán superar juntos el juego de "Simon dice"?
+				<!--break-->
+			</p>
+			<p>
+				Han sido pocos los que me han pedido la segunda parte de <a href="http://fernandoescolar.github.io/2016/09/08/quiero-mi-propio-nuget/" title="Quiero mi propio NuGet">La Jungla de Cristal
+				</a>. En realidad ninguno. No obstante aquí la tenéis. Una historia semejante. Tenemos un cliente (<em>Holly
+				</em>). Con un nuevo problema (<em>Simon
+				</em>). Pero se parece mucho al de los proyectos que tienen una librería compartida y diferentes versiones de la misma (<em>Hans
+				</em>). Y esta vez queremos usar Visual Studio Team Services (<em>Samuel L. Jackson
+				</em>). Es nuestra herramienta preferida. Por qué íbamos a necesitar instalar algo nuevo. Afortunadamente contamos con la extensión <a href="https://marketplace.visualstudio.com/items?itemName=ms.feed" title="Package Management in the Visual Studio MarketPlace">Package Management
+				</a> (<em>John McClane
+				</em>).
+			</p>
+			<h2 id="un-paseo-por-harlem">
+				Un paseo por Harlem
+			</h2>
+			<p>
+				Package Management llegó sin hacer demasiado ruido. Al menos no tanto como debería. Como cuando la policía tiene que buscar a <em>John McClane
+				</em> para cumplir los deseos de un psicopata que se hace llamar <em>Simon
+				</em>.
+			</p>
+			<p>
+				La idea es poder integrar dentro de Visual Studio Team Services un servidor de paquetes. En un principio soportan NuGet. Porque es una versión "preview". Pero a futuro les gustaría integrar otros tipos de paquetes, como npm. También a futuro esperan tener la extensión disponible para TFS on-premises.
+			</p>
+			<p>
+				La forma de organizar que se ha diseñado consiste en Feeds. Cada Feed podría contener sus propios paquetes, su propia seguridad y por su puesto, su propio endpoint.
+			</p>
+			<p>
+				Instalar esta extensión en nuestra cuenta de VSTS es relativamente sencillo. Tendremos que ir a la <a href="https://marketplace.visualstudio.com/" title="Visual Studio Marketplace">Marketplace de Visual Studio Team Services
+				</a>. Allí buscar "Package Management". Y nos encontraremos con <a href="https://marketplace.visualstudio.com/items?itemName=ms.feed" title="Package Management">este resultado
+				</a>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-1.png" alt="Package Management in Visual Studio Marketplace" />
+			</p>
+			<p>
+				Entonces presionamos instalar y listo. Al dirigirnos a nuestro site veremos que ha aparecido una nueva opción en la toolbar: "Packages".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-2.png" alt="Packages option" />
+			</p>
+			<p>
+				Esto significará que todo ha ido correctamente.
+			</p>
+			<h2 id="el-metro-descarrila">
+				El metro descarrila
+			</h2>
+			<p>
+				A partir de aquí la cosa se complica. Si queremos usar este servicio tendremos que crear un nuevo Feed:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-3.png" alt="Create new feed" />
+			</p>
+			<p>
+				Un dialogo nos dará la opción de poner un nombre, una descripción y de elegir los permisos. En un principio hemos seleccionado que todos los usuarios de la cuenta puedan acceder. Además de decirle que solo el sistema de builds pueda subir paquetes.
+			</p>
+			<p>
+				Después pulsaremos el botón de "Connect to feed":
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-4.png" alt="Connect to feed" />
+			</p>
+			<p>
+				De la pantalla emergente copiaremos el valor de "Package source URL". Esto nos servirá para dos cosas: subir los paquetes a nuestro feed y para poderlos descargar después con Visual Studio.
+			</p>
+			<p>
+				En este punto VSTS (<em>Samuel L. Jackson
+				</em>) ya es capaz de servirnos paquetes de NuGet (ha llegado al teléfono de la estación de metro). Pero aún no hemos publicado ningún paquete dentro del feed (<em>John McClane
+				</em> llega tarde).
+			</p>
+			<p>
+				Así que vamos a intentar publicar unas librerías propias. Para ello crearemos una nueva build. Si es que no tenemos una ya.
+			</p>
+			<p>
+				Iremos a la sección de "builds", pulsaremos sobre "+ New" y elegiremos la de tipo "Visual Studio".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-5.png" alt="New Build Definition" />
+			</p>
+			<p>
+				Cuando nos aparezca el panel de edición, añadiremos dos nuevos build steps: "NuGet Packager" y "NuGet Publisher".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-6.png" alt="Add NuGet Packager and NuGet Publisher steps" />
+			</p>
+			<p>
+				El "Packager" lo colocaremos detrás de los tests y el "Publisher" al final del todo.
+			</p>
+			<p>
+				Entonces editaremos las opciones del "NuGet Packager" y marcaremos el checkbox de "Include referenced projects".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-7.png" alt="NuGet Packager step configuration" />
+			</p>
+			<p>
+				Después editaremos las opciones del "NuGet Publisher". Marcaremos la opción de "Internal NuGet Feed". Y añadiremos la URL de nuestro feed.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-8.png" alt="NuGet Publisher step configuration" />
+			</p>
+			<p>
+				Para finalizar, guardaremos y encolaremos una nueva build.
+			</p>
+			<p>
+				Al terminar el proceso y si todo ha ido bien, si volvemos a la pestaña de "Packages", encontraremos nuestros nuevos paquetes de NuGet. Además podremos ver los detalles de los mismos:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-9.png" alt="Published Packages in feed" />
+			</p>
+			<p>
+				Con ello habremos conseguido sobrevivir a esta difícil prueba. Pero el final aún no está cerca...
+			</p>
+			<h2 id="el-problema-de-las-garrafas-y-los-galones-de-agua">
+				El problema de las garrafas y los galones de agua
+			</h2>
+			<p>
+				El problema es que tenmos una garrafa de 5 galones, otra de 3 galones, una fuente para llenar las garrafas de agua y una báscula con detonador. Si no pesamos en la báscula 4 galones exactos, estamos muertos.
+			</p>
+			<p>
+				He pensado mucho en este problema y he llegado a alcanzar dos soluciones posibles:
+			</p>
+			<ul>
+				<li>
+					<p>
+						Llenamos la de 3, la pasamos a la de 5. Volvemos a llenar la de 3 y volvemos a pasar el contenido a la de 5. Esta vez no cabe todo. Así que vacíamos la de 5. Volcamos en la de 5 lo que sobraba de la de 3. Volvemos a llenar la de 3 y lo pasamos a la de 5. Prácticamente 4 galones. Siempre que no se nos caiga nada por el camino.
+					</p>
+				</li>
+				<li>
+					<p>
+						Llenamos la garrafa de 5 y pasamos su contenido a la de 3. Vaciamos la de 3 y la rellenamos con los dos galones que quedaban en la de 5. Llenamos la de 5 de nuevo, rellenamos el galon que quedaba en la de 3 y ya tenemos 4 galones. Quizá con menos probabilidad de que se nos haya caído tanto por el camino.
+					</p>
+				</li>
+			</ul>
+			<p>
+				El problema con VSTS Package Management es que es preview y puede pasar que derramemos mucho líquido en el proceso sin darnos cuenta. Y si no que le pregunten a <a href="https://twitter.com/acasquete" title="Alex Casquete">Alex Casquete
+				</a>, que el otro día me comentaba que a algunos de su equipo les iba y a otros no...
+			</p>
+			<p>
+				De cualquier forma, nos dirigiremos a Visual Studio. Allí abriremos la opción de "Manage NuGet Packages for solution".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-10.png" alt="Manage NuGet Packages for solution" />
+			</p>
+			<p>
+				Seleccionaremos la "ruedita dentada" de la parte superior derecha.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-11.png" alt="NuGet options" />
+			</p>
+			<p>
+				Allí añadiremos una nueva fuente de paquetes. Le pondremos un nombre. Copiaremos la URL de VSTS que utilizamos anteriormente. Pulsaremos "Update". Y la cerraremos dándole a "Ok".
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/10/package-management-12.png" alt="Add new package source" />
+			</p>
+			<p>
+				Al terminar podremos seleccionar nuestro VSTS como fuente de paquetes. Entonces nos debería pedir las credenciales. Tendremos que utilizar las mismas que usamos en el portal. Si todo va bien, podremos instalar esos paquetes que acabamos de generar en la nube.
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				<em>
+					John McClane
+				</em> ha vuelto a salvar el día. ¡Muchas gracias <em>John McClane
+				</em>!
+			</p>
+			<p>
+				Una de las cosas que más se echaban en falta en VSTS era la gestión de paquetes. Muchas herramientas semejantes ya lo tienen desde hace tiempo (como Team City). Así que siempre es de agradecer que nos den acceso a esta versión preview.
+			</p>
+			<p>
+				Personalmente me ha ido bien, pero hay gente que está experimentando diferentes errores. Bien por autentificación de los usuarios. Por temas de permisos. Y también por la versión de NuGet que usa. Esta versión aun no tiene compatibilidad con netcore. Esto puede causar diversos problemas a la hora de empaquetar ciertos paquetes con dependencias de la standard library...
+			</p>
+			<p>
+				De cualquier forma, es una muy buena solución. Integrada con una herramienta que mucha gente usamos para gestionar el ALM. Aunque será mejor, previsiblemente, a finales de este año. Así que aunque no sea nuestro repositorio principal de paquetes, merece la pena ir acostumbrandonos.
+			</p>
+			<blockquote>
+				<p>
+					¡yippee-ki-yay! hijo de puta...
+				</p>
+			</blockquote>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=VSTS: Package Management&url=https://www.developerro.com/2016/10/03/vsts-package-management" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2016/10/03/vsts-package-management" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2016/10/03/vsts-package-management" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2016/10/03/vsts-package-management" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2016/09/08/quiero-mi-propio-nuget">
+						Quiero mi propio NuGet
+					</a> <small>08 sept. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/24/gab-azure-devops">
+						Azure DevOps: El panel de expertos
+					</a> <small>24 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/01/25/github-actions-vs-azure-pipelines">
+						Github Actions vs. Azure Pipelines
+					</a> <small>25 ene. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/03/05/azure-devops-kanban-ii">
+						Método Kanban con Azure DevOps (y 2)
+					</a> <small>05 mar. 2019
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

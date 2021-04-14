@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Personalización de Windows Terminal · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Todos sabemos que, para conseguir el respeto de tus compa&#241;eros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo lo..." />
+		<meta property="og:title" content="Personalización de Windows Terminal" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/11/18/custom-windows-terminal" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/terminal.jpg" />
+		<meta property="og:description" content="Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo lo..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-11-18 01:06:54Z" />
+		<meta property="article:published_time" content="2020-11-18 01:06:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Personalización de Windows Terminal" />
+		<meta name="twitter:description" content="Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo lo..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/terminal.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/11/18/custom-windows-terminal" />
+		<meta name="description" content="Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo lo..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/11/18/custom-windows-terminal" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/terminal.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Personalización de Windows Terminal
+			</h1><small>18 nov. 2020 · 20 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece <em>3|173
+				</em>, es que eres <em>3|173
+				</em>. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante
+				<!--break-->
+				.
+			</p>
+			<p>
+				Sí, estoy hablando de <strong>Windows Terminal
+				</strong>. Una herramienta digna de Neo (aka señor Anderson) cuando aún no tenía ni idea de qué era Matrix: fondos de pantalla molones, colores tipo <em>hacker
+				</em> e incluso la línea de <em>prompt
+				</em> personalizada.
+			</p>
+			<p>
+				Y hoy estás de suerte. En este artículo le vamos a dar un repaso desde la instalación, hasta la configuración, pasando por su integración con otros terminales como <strong>bash
+				</strong> o <strong>Cmder
+				</strong>:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/dotnet-version.gif" alt="windows terminal with git bash" />
+			</p>
+			<p>
+				Os presentamos la guía definitiva de cómo molar con <strong>Windows Terminal
+				</strong>:
+			</p>
+			<ul>
+				<li>
+					<a href="#instalar-windows-terminal">
+						Instalar Windows Terminal
+					</a>
+				</li>
+				<li>
+					<a href="#settings">
+						Settings
+					</a>
+					<ul>
+						<li>
+							<a href="#profiles">
+								Profiles
+							</a>
+						</li>
+						<li>
+							<a href="#schemes">
+								Schemes
+							</a>
+						</li>
+						<li>
+							<a href="#key-bindings">
+								Key bindings
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#integraciones">
+						Integraciones
+					</a>
+					<ul>
+						<li>
+							<a href="#powershell">
+								PowerShell
+							</a>
+						</li>
+						<li>
+							<a href="#command-prompt">
+								Command Prompt
+							</a>
+						</li>
+						<li>
+							<a href="#git-bash">
+								Git Bash
+							</a>
+						</li>
+						<li>
+							<a href="#cmder">
+								Cmder
+							</a>
+						</li>
+						<li>
+							<a href="#developer-command-prompt-for-vs-2019">
+								Developer Command Prompt for VS 2019
+							</a>
+						</li>
+						<li>
+							<a href="#wsl--azure-cloud-shell">
+								WSL & Azure Cloud Shell
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#conclusiones">
+						Conclusiones
+					</a>
+					<ul>
+						<li>
+							<a href="https://gist.github.com/fernandoescolar/84bf7b749da8ce5c52d1f55848b33bb9">
+								settings.json
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<h2 id="instalar-windows-terminal">
+				Instalar Windows Terminal
+			</h2>
+			<p>
+				La forma más fácil de conseguir Windows Terminal es tener un Windows 10, ir a la Microsoft Store e <a href="https://aka.ms/terminal">instalarlo desde ahí
+				</a>. Aunque, para los más atrevidos, también podemos descargar el código fuente desde <a href="https://github.com/microsoft/terminal">su página de github
+				</a>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/wt-00.png" alt="windows terminal with git bash" />
+			</p>
+			<p>
+				Aunque seguro, que tú, que has llegado hasta este artículo oculto en la <em>deep web
+				</em>, preferirás instalarlo usando alguna <em>tool
+				</em> de consola como:
+			</p>
+			<pre class="language-bash highlight">
+<code># winget
+winget install --id=Microsoft.WindowsTerminal -e
+
+# chocolatey:
+choco install microsoft-windows-terminal
+
+# scoop:
+scoop install windows-terminal
+				</code>
+</pre>
+			<p>
+				Una vez instalado, tendremos que dirigirnos, en la barra superior, al menú emergente que aparece al pulsar sobre el símbolo de flechita hacía abajo al lado del símbolo de suma:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/wt-settings.png" alt="windows terminal settings" />
+			</p>
+			<p>
+				Así encontraremos la opción de "Settings". Al presionar sobre ella se nos abrirá un editor de texto (o código, depende de lo que tengas instalado en tu máquina) donde podremos editar un archivo llamado <code>settings.json
+				</code>.
+			</p>
+			<h2 id="settings">
+				Settings
+			</h2>
+			<p>
+				El archivo de configuración es bastante sencillo. En un principio, lo que nos debería interesar son las siguientes propiedades:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+
+  "theme": "dark",
+
+  "defaultProfile": "{75de88dc-a61a-4f9d-8f17-b820620e7163}",
+
+  "profiles": [ /*...*/ ],
+
+  "schemes": [ /*...*/ ],
+
+  "keybindings": [ /*...*/ ]
+}
+				</code>
+</pre>
+			<p>
+				El <code>$schema
+				</code> es estático y tiene que tener ese valor. Si navegamos a esa URL veremos más detalles sobre las propiedades que vamos a comentar aquí y muchas otras que obviaremos.
+			</p>
+			<p>
+				En cuanto al <code>theme
+				</code>, se puede elegir entre <code>dark
+				</code> o <code>light
+				</code>. Si eres un buen <em>hacker
+				</em>, la opción correcta es <code>dark
+				</code>.
+			</p>
+			<p>
+				Y la propiedad <code>defaultProfile
+				</code> la usaremos para escribir el <code>guid
+				</code> del profile que se abrirá por defecto.
+			</p>
+			<h3 id="profiles">
+				Profiles
+			</h3>
+			<p>
+				En <code>profiles
+				</code> encontraremos un listado de los perfiles que estamos usando. Es decir, los tipos de terminales que podemos abrir. Esos que aparecen encima de la opción de "Settings" en el menú emergente.
+			</p>
+			<p>
+				Cada uno de estos perfiles tendrá más o menos estos campos:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  /* datos generales */
+  "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+  "commandline": "%SystemRoot%\\System32\\cmd.exe",
+  "startingDirectory": "C:\\workspace",
+  "name": "Command Prompt",
+  "icon": "C:\\pictures\\cmd.ico",
+  "hidden": false,
+
+  /* transparencia de ventana */
+  "useAcrylic": true,
+  "acrylicOpacity": 0.75,
+
+  /* imagen de fondo */
+  "backgroundImage": "C:\\pictures\\sf2.gif",
+  "backgroundImageOpacity": 0.2,
+  "backgroundImageStretchMode": "uniformToFill",
+
+  /* colores */
+  "colorScheme": "Campbell",
+
+  /* cursor */
+  "cursorShape": "bar",
+  "cursorColor": "#FFFFFF",
+
+  /* fuente */
+  "fontFace": "Cascadia Mono",
+  "fontSize": 12,
+
+  /* márgenes */
+  "padding": "8, 8, 8, 8",
+
+  /* retro effect */
+  "experimental.retroTerminalEffect": true
+}
+				</code>
+</pre>
+			<p>
+				Evidentemente hay más, pero aquí exponemos los que hacen que tu terminal mole. Los demás no te van a aportar tanto efecto <em>Wow
+				</em>.
+			</p>
+			<p>
+				Lo primero que definiremos serán los datos generales del perfil:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<code>
+							guid
+						</code>: el código con el que vamos a identificar este perfil. Este es el valor que usaremos en <code>defaultProfile
+						</code> para marcar el perfil que se abre por defecto en nuestro terminal.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							commandline
+						</code>: el comando que ejecuta nuestro terminal.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							startingDirectory
+						</code>: el directorio de inicio.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							name
+						</code>: el nombre que aparece en el menú para definir este perfil.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							icon
+						</code>: el icono que aparece en el menú para representar este perfil.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							hidden
+						</code>: si queremos ocultar este perfil en el menú. Esta opción será útil para una serie de perfiles que se crean automáticamente.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Para definir si la ventana del terminal es medio transparente usaremos:
+			</p>
+			<ul>
+				<li>
+					<code>
+						useAcrylic
+					</code>: <code>true
+					</code>.
+				</li>
+			</ul>
+			<p>
+				Y para definir el grado de transparencia:
+			</p>
+			<ul>
+				<li>
+					<code>
+						acrylicOpacity
+					</code>: con un número decimal menor de 1.
+				</li>
+			</ul>
+			<p>
+				Si nuestra intención es poner una imagen de fondo para el perfil:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<code>
+							backgroundImage
+						</code>: la ruta a la imagen de fondo que queremos usar. Y sí, puede ser un <em>gif
+						</em> animado.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							backgroundImageOpacity
+						</code>: un número decimal menor de 1 que marca la opacidad.
+					</p>
+				</li>
+				<li>
+					<p>
+						<code>
+							backgroundImageStretchMode
+						</code>: puede tener los valores <code>none
+						</code>, <code>fill
+						</code>, <code>uniform
+						</code> o <code>uniformToFill
+						</code>.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Los terminales pueden modificar los colores por defecto del sistema por unos que nos parezcan más agradables o con una temática semejante a la que esperamos, para ello usaremos el campo:
+			</p>
+			<ul>
+				<li>
+					<code>
+						colorScheme
+					</code>: el nombre de alguno de los esquemas por defecto o de uno personalizado que hayamos definido en la sección de <code>schemes
+					</code>.
+				</li>
+			</ul>
+			<p>
+				El cursor que se muestra parpadeando en pantalla, donde se indica que vamos a escribir es una parte fundamental de nuestro terminal. Aquí podremos elegir entre un puñado de formas que son las más comunes que podemos encontrar:
+			</p>
+			<ul>
+				<li>
+					<code>
+						cursorShape
+					</code>: puede tener los valores <code>bar
+					</code>, <code>underscore
+					</code>, <code>vintage
+					</code>, <code>filledBox
+					</code> o <code>emptyBox
+					</code>.
+				</li>
+			</ul>
+			<p>
+				<img src="/assets/uploads/2020/11/wt-cursor-shapes.png" alt="windows terminal cursor shapes" />
+			</p>
+			<ul>
+				<li>
+					<code>
+						cursorColor
+					</code>: especifica un color para el cursor.
+				</li>
+			</ul>
+			<p>
+				Y cómo no, la fuente. Es un detalle muy importante de nuestro terminal poder determinar la fuente que vamos a usar:
+			</p>
+			<ul>
+				<li>
+					<code>
+						fontFace
+					</code>: el nombre de la fuente a usar
+				</li>
+				<li>
+					<code>
+						fontSize
+					</code>: el tamaño en <em>pixels
+					</em> de la fuente.
+				</li>
+			</ul>
+			<p>
+				Para terminar un punto importante. A veces, nuestra consola puede aparecer demasiado cerca del borde de la ventana. Para ello contaremos con el siguiente campo:
+			</p>
+			<ul>
+				<li>
+					<code>
+						padding
+					</code>: aquí definiremos 4 números que representan la distancia con el borde de arriba, derecho, abajo e izquierdo.
+				</li>
+			</ul>
+			<p>
+				Y como bonus, una característica que podrían borrar en el futuro (espero que no): el efecto <em>retro
+				</em>. Crea un efecto tipo televisor CRT con scanlines y brillos:
+			</p>
+			<ul>
+				<li>
+					<code>
+						experimental.retroTerminalEffect
+					</code>: <code>true
+					</code> o <code>false
+					</code>.
+				</li>
+			</ul>
+			<p>
+				<img src="/assets/uploads/2020/11/wt-retro.png" alt="windows terminal efecto retro" />
+			</p>
+			<h3 id="schemes">
+				Schemes
+			</h3>
+			<p>
+				Por defecto, Windows Terminal viene con una serie de <a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes#included-color-schemes">esquemas de color por defecto
+				</a>. Pero eso no es para los <em>|337
+				</em> de verdad. Nosotros nos configuramos nuestros propios colores.
+			</p>
+			<p>
+				Para definir un color en un terminal estándard podemos definir 8 colores y sus variantes oscuras tanto para el color del texto como el de fondo. Los esquemas de color nos dejarán definir estos 16 más el color de fondo por y del texto por defecto.
+			</p>
+			<p>
+				Unos ejemplos de esos esquemas de colores molones serían:
+			</p>
+			<ul>
+				<li>
+					Ubuntu Legit:
+				</li>
+			</ul>
+			<pre class="language-json highlight">
+<code>{
+  "name": "UbuntuLegit",
+
+  "foreground": "#EEEEEE",
+  "background": "#2C001E",
+
+  "black": "#4E9A06",
+  "blue": "#3465A4",
+  "cyan": "#06989A",
+  "green": "#300A24",
+  "purple": "#75507B",
+  "red": "#CC0000",
+  "white": "#D3D7CF",
+  "yellow": "#C4A000",
+
+  "brightBlack": "#555753",
+  "brightBlue": "#729FCF",
+  "brightCyan": "#34E2E2",
+  "brightGreen": "#8AE234",
+  "brightPurple": "#AD7FA8",
+  "brightRed": "#EF2929",
+  "brightWhite": "#EEEEEE",
+  "brightYellow": "#FCE94F"
+}
+				</code>
+</pre>
+			<ul>
+				<li>
+					Dracula:
+				</li>
+			</ul>
+			<pre class="language-json highlight">
+<code>{
+  "name": "Dracula",
+
+  "foreground": "#F8F8F2",
+  "background": "#282A36",
+
+  "black": "#21222C",
+  "blue": "#BD93F9",
+  "cyan": "#8BE9FD",
+  "green": "#50FA7B",
+  "purple": "#FF79C6",
+  "red": "#FF5555",
+  "white": "#F8F8F2",
+  "yellow": "#F1FA8C",
+
+  "brightBlack": "#6272A4",
+  "brightBlue": "#D6ACFF",
+  "brightCyan": "#A4FFFF",
+  "brightGreen": "#69FF94",
+  "brightPurple": "#FF92DF",
+  "brightRed": "#FF6E6E",
+  "brightWhite": "#FFFFFF",
+  "brightYellow": "#FFFFA5"
+}
+				</code>
+</pre>
+			<p>
+				Pero seguro que tienes en mente alguno mejor.
+			</p>
+			<p>
+				Como se puede observar, el valor de <code>name
+				</code> es el que usaremos en el campo <code>colorScheme
+				</code> de nuestro terminal para referenciarlo.
+			</p>
+			<h3 id="key-bindings">
+				Key bindings
+			</h3>
+			<p>
+				Esta parte es muy interesante. Aquí podemos definir combinaciones de teclas para realizar acciones de nuestro terminal.
+			</p>
+			<p>
+				El listado completo de las acciones las podrás encontrar en <a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/actions">esta página
+				</a>.
+			</p>
+			<p>
+				Esta sección personalmente la uso para simular <a href="https://en.wikipedia.org/wiki/Tmux">tmux
+				</a>, con la salvedad de que mejor no usar el shortcut <code>ctrl+b
+				</code> porque hace que escribas la letra "B" varias veces antes de que se ejecute el comando que esperas. En mi caso me he decido por algo extraño como <code>alt+shift+[letra]
+				</code>.
+			</p>
+			<p>
+				Aquí podréis encontrar los comandos relacionados con duplicar y dividir en dos (tanto horizontal como verticalmente) los terminales:
+			</p>
+			<pre class="language-json highlight">
+<code>"keybindings": [
+  {
+    "command": {
+      "action": "splitPane",
+      "split": "auto",
+      "splitMode": "duplicate"
+    },
+    "keys": "alt+shift+d"
+  },
+  {
+    "command": {
+      "action": "splitPane",
+      "split": "horizontal"
+    },
+    "keys": "alt+shift+h"
+  },
+  {
+    "command": {
+      "action": "splitPane",
+      "split": "vertical"
+    },
+    "keys": "alt+shift+v"
+  },
+  {
+    "command": "closePane",
+    "keys": "alt+shift+q"
+  }
+]
+				</code>
+</pre>
+			<p>
+				El resultado final puede ser algo tan llamativo como esto:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/wt-split.png" alt="windows terminal split panels" />
+			</p>
+			<h2 id="integraciones">
+				Integraciones
+			</h2>
+			<p>
+				Lo mejor de ser un super <em>hacker
+				</em> es usar un terminal que mole. Y el que más mola es linux. Pero como estamos en una plataforma Windows vamos a listar unos cuantos que conozco, a ver si alguno de ellos te sirve:
+			</p>
+			<h3 id="powershell">
+				PowerShell
+			</h3>
+			<p>
+				Este perfil viene por defecto, así que tanto el <code>guid
+				</code> como el resto de sus propiedades las he sacado de ahí:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+  "name": "Windows PowerShell",
+  "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "startingDirectory": "%USERPROFILE%",
+  "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png"
+}
+				</code>
+</pre>
+			<p>
+				Pero el <em>prompt
+				</em> por defecto de PowerShell digamos que no es lo más molón del mundo. Si quieres parecer un tipo que sabe lo que está haciendo lo mejor es cambiarlo.
+			</p>
+			<p>
+				Para ello existen un par de módulos que tienes que instalar desde el propio PowerShell:
+			</p>
+			<pre class="language-bash highlight">
+<code>Install-Module posh-git -Scope CurrentUser
+Install-Module oh-my-posh -Scope CurrentUser
+				</code>
+</pre>
+			<p>
+				Luego podrás activar estos módulos:
+			</p>
+			<pre class="language-bash highlight">
+<code>Set-Prompt
+				</code>
+</pre>
+			<p>
+				Y finalmente elegir el tema que más te guste:
+			</p>
+			<pre class="language-bash highlight">
+<code>Set-Theme Paradox
+				</code>
+</pre>
+			<p>
+				En la <a href="https://github.com/JanDeDobbeleer/oh-my-posh#themes">página web del módulo
+				</a> encontrarás un listado completo de temas, además de más detalles sobre cómo crear uno propio personalizado.
+			</p>
+			<p>
+				Para automatizar este <em>setup
+				</em> puedes crearte un archivo de "PROFILE":
+			</p>
+			<pre class="language-bash highlight">
+<code>if (!(Test-Path -Path $PROFILE )) { New-Item -Type File -Path $PROFILE -Force }
+notepad $PROFILE
+				</code>
+</pre>
+			<p>
+				y en el editor de archivo que se abre, añade:
+			</p>
+			<pre class="language-bash highlight">
+<code>Import-Module posh-git
+Import-Module oh-my-posh
+Set-Theme Paradox
+				</code>
+</pre>
+			<h3 id="command-prompt">
+				Command Prompt
+			</h3>
+			<p>
+				Otro de los perfiles que vienen por defecto es el <code>cmd
+				</code> de toda la vida:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+  "name": "Command Prompt",
+  "commandline": "cmd.exe",
+  "startingDirectory": "%USERPROFILE%",
+  "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png"
+}
+				</code>
+</pre>
+			<p>
+				Lo que más te interesa al respecto de este perfil es añadir la propiedad <code>hidden
+				</code>, la ponemos a <code>true
+				</code> y listo.
+			</p>
+			<p>
+				Pero si aun así quieres seguir adelante te comentaremos como intentar hacer todo esto un poco más bonito. Básicamente vamos a cambiar el <em>prompt
+				</em>.
+			</p>
+			<p>
+				Si escribes esto en el <em>command prompt
+				</em> te encontrarás con una respuesta con símbolos raros:
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\> echo %PROMPT%
+$P$G
+				</code>
+</pre>
+			<p>
+				Para descifrar estos símbolos podemos usar esta tabla:
+			</p>
+			<pre>
+				<code>
+					$A   &amp; (Ampersand)
+  $B   | (pipe o tubería)
+  $C   ( (paréntesis izquierdo)
+  $D   Fecha actual
+  $E   Escape code (ASCII code 27)
+  $F   ) (paréntesis derecho)
+  $G   > (el símbolo de mayor que)
+  $H   Backspace (borra el carácter anterior)
+  $L   &lt; (el símbolo de menor que)
+  $N   La unidad actual
+  $P   La unidad y la ruta actual
+  $Q   = (símbolo de igual)
+  $S     (espacio)
+  $T   Hora actual
+  $V   Versión de Windows
+  $_   Salto de línea
+  $$   $ (el símbolo del dólar)
+
+				</code></pre>
+			<p>
+				Así que deducimos que lo que estamos mostrando es la unidad y la ruta actual seguido de un símbolo mayor que:
+			</p>
+			<pre>
+				<code>
+					C:\Folder>
+
+				</code></pre>
+			<p>
+				En este punto podríamos cambiar esta variable para que pusiera otra cosa:
+			</p>
+			<pre>
+				<code>
+					C:\> set PROMPT=$E[31mfer $E[33msays $E[32m$P$E[37m$_$$$S
+
+				</code></pre>
+			<p>
+				<img src="/assets/uploads/2020/11/cool-cmd.png" alt="Un 'prompt' molón para 'cmd'" />
+			</p>
+			<p>
+				Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los <a href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape codes
+				</a>.
+			</p>
+			<p>
+				Para cambiarlo de forma global, tienes que ir a las propiedades de "My Pc", de ahí ir a "Advanced system settings", en la ventana que aparece seleccionar la pestaña "Advanced" y dentro de esta buscar el botón "Environment Variables".
+			</p>
+			<p>
+				Ahora se abrirá una ventana donde podemos añadir o editar variables del sistema. Si no existe, tendrás que crear una nueva con nombre "PROMPT" y el valor que más te guste:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/cmd-prompt.png" alt="Cambiando el 'prompt' de 'cmd'" />
+			</p>
+			<p>
+				La próxima vez que arranques un <code>cmd
+				</code> verás los resultados.
+			</p>
+			<h3 id="git-bash">
+				Git Bash
+			</h3>
+			<p>
+				Aquí es donde empieza lo bueno. Si no tienes <em>Git for Windows
+				</em> para de leer y cierra la ventana del navegador.
+			</p>
+			<p>
+				Existe una forma de tener nuestro <em>shell
+				</em> favorito dentro de Windows Terminal:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{75de88dc-a61a-4f9d-8f17-b820620e7163}",
+  "name": "Bash",
+  "commandline": "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+  "startingDirectory": "%USERPROFILE%",
+  "icon": "C:/Program Files/Git/mingw64/share/git/git-for-windows.ico"
+}
+				</code>
+</pre>
+			<p>
+				El <code>guid
+				</code> me lo he inventado, pero ya lo estás poniendo en la propiedad <code>defaultProfile
+				</code> de la raíz del <em>settings.json
+				</em>.
+			</p>
+			<p>
+				Los demás parámetros encajaran si tienes todo instalado en las carpetas por defecto, si no tendrás que modificar las rutas.
+			</p>
+			<p>
+				Para cambiar el <em>prompt
+				</em> tendremos que abrir un <em>bash
+				</em> y ejecutar estos comandos:
+			</p>
+			<pre class="language-bash highlight">
+<code>cd /etc/profile.d/
+notepad git-prompt.sh
+				</code>
+</pre>
+			<p>
+				Ahora se abrirá la aplicación de <code>notepad
+				</code> con el <em>shell script
+				</em> de arranque por defecto. Lo importante es modificar el valor de la variable <code>PS1
+				</code> que es la que contiene el <em>prompt
+				</em>:
+			</p>
+			<pre class="language-bash highlight">
+<code>...
+PS1="$PS1"'\[\033[32m\]'       # change to green
+PS1="$PS1"'fer '               # fer
+PS1="$PS1"'\[\033[35m\]'       # change to purple
+PS1="$PS1"'says '              # show "says"
+PS1="$PS1"'\[\033[33m\]'       # change to brownish yellow
+PS1="$PS1"'\w'                 # current working directory
+...
+				</code>
+</pre>
+			<p>
+				Este código a mitad del archivo creará el <em>prompt
+				</em> tan guay que veis en la introducción de este artículo:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/cool-bash.png" alt="Un 'bash' molón" />
+			</p>
+			<p>
+				Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los <a href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape codes
+				</a>.
+			</p>
+			<h3 id="cmder">
+				Cmder
+			</h3>
+			<p>
+				Muchos aficionados a Windows ya usan terminales alternativos como <em>Cmder
+				</em>. La buena noticia es que también puedes usar estas <em>shells
+				</em> en Windows Terminal. En mi caso, tengo instalado <em>Cmder
+				</em> en la carpeta "C:\Cmder" y la configuración del perfil queda así:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{32b1ecb1-3e15-4606-9683-e0d644adb2ea}",
+  "name": "Cmder",
+  "commandline": "cmd.exe /k call C:\\Cmder\\vendor\\init.bat",
+  "startingDirectory": "%USERPROFILE%",
+  "icon": "C:\\Cmder\\icons\\cmder.ico"
+}
+				</code>
+</pre>
+			<p>
+				Para personalizar el <em>prompt
+				</em> nos tendremos que dirigir al directorio donde tenemos instalado <em>Cmder
+				</em>, entrar en la carpeta "vendor" y editar el archivo "clink.lua".
+			</p>
+			<p>
+				Ahí encontraremos una función llamada <code>set_prompt_filter
+				</code>, donde viene la creación del <em>prompt
+				</em> de <em>Cmder
+				</em>. Hay que tener en cuenta que viene en LUA. Si dejamos esta función con este código:
+			</p>
+			<pre class="language-lua highlight">
+<code>local function set_prompt_filter()
+  local old_prompt = clink.prompt.value
+  local cwd = old_prompt:match('.*(.:[^>]*)>')
+  if cwd == nil then cwd = clink.get_cwd() end
+
+  local env = old_prompt:match('.*%(([^%)]+)%).+:')
+  if env == nil then env = old_prompt:match('.*%[([^%]]+)%].+:') end
+
+  local blackbg="\x1b[1;40m"
+  local green = "\x1b[1;32m"
+  local yellow = "\x1b[1;33m"
+  local magenta = "\x1b[1;35m"
+  local cyan = "\x1b[1;36m"
+  local default = "\x1b[1;39m"
+  local reset = "\x1b[0m"
+  local cmder_prompt = blackbg..green.."fer "..magenta.."in "..yellow.."{cwd} "..cyan.."{git}{hg}{svn} \n"..default.."{lamb} "..reset
+  local lambda = "λ"
+  cmder_prompt = string.gsub(cmder_prompt, "{cwd}", verbatim(cwd))
+
+  if env ~= nil then
+    lambda = "("..env..") "..lambda
+  end
+
+  clink.prompt.value = string.gsub(cmder_prompt, "{lamb}", verbatim(lambda))
+end
+				</code>
+</pre>
+			<p>
+				Obtendremos un terminal semejante a este:
+			</p>
+			<p>
+				<img src="/assets/uploads/2020/11/cool-cmder.png" alt="Un 'Cmder' molón" />
+			</p>
+			<p>
+				Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los <a href="https://en.wikipedia.org/wiki/ANSI_escape_code">ANSI escape codes
+				</a>.
+			</p>
+			<h3 id="developer-command-prompt-for-vs-2019">
+				Developer Command Prompt for VS 2019
+			</h3>
+			<p>
+				Si eres desarrollador y usas <em>Visual Studio
+				</em>, seguro que quieres tener dentro del terminal el famoso "Developer Command Prompt for VS 2019". Pues es muy fácil:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{d192740d-3258-445c-800f-5258a0a4bb81}",
+  "name": "Developer Command Prompt for VS 2019",
+  "commandline": "cmd.exe /k \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\Tools\\VsDevCmd.bat\"",
+  "startingDirectory": "%USERPROFILE%",
+  "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png"
+}
+				</code>
+</pre>
+			<p>
+				El <code>guid
+				</code> es de mi propia cosecha, y la forma de gestionar el prompt es la misma que para el <a href="#command-prompt">Command Prompt
+				</a>.
+			</p>
+			<h3 id="wsl-azure-cloud-shell">
+				WSL & Azure Cloud Shell
+			</h3>
+			<p>
+				Hay una serie de perfiles que aparecerán Windows Terminal si tienes instalados los componentes necesarios. Estos son el WSL (Windows Subsystem for Linux) y el Azure Cloud Shell.
+			</p>
+			<p>
+				Si por alguna razón, los necesitas y no aparecen en el listado, este código te ayudará a tenerlos:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+  "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+  "name": "Ubuntu-18.04",
+  "source": "Windows.Terminal.Wsl"
+},
+{
+  "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+  "name": "Azure Cloud Shell",
+  "source": "Windows.Terminal.Azure"
+}
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Aquí no están, ni mucho menos, todas las opciones de configuración y personalización que nos permite Windows Terminal. Solo las que te van a resultar más importantes para poder fardar.
+			</p>
+			<p>
+				Sigue estos consejos y la próxima vez que compartas escritorio, abre un Windows Terminal. Deja que tus compañeros admiren lo chulo que es. Hazles saber que tú eres <em>|337
+				</em> y que ellos son unos p**** <em>n00bs
+				</em>.
+			</p>
+			<p>
+				O si no, cópiate mi <code>settings.json
+				</code>, que es más rápido, desde <a href="https://gist.github.com/fernandoescolar/84bf7b749da8ce5c52d1f55848b33bb9">este enlace
+				</a>.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Personalización de Windows Terminal&url=https://www.developerro.com/2020/11/18/custom-windows-terminal" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/11/18/custom-windows-terminal" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/11/18/custom-windows-terminal" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/11/18/custom-windows-terminal" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/24/gab-azure-devops">
+						Azure DevOps: El panel de expertos
+					</a> <small>24 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2016/09/15/vsts-migrar-tfvc-a-git">
+						VSTS: Migrar TFVC a Git
+					</a> <small>15 sept. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2016/02/16/por-que-odio-git">
+						Por qué odio Git
+					</a> <small>16 feb. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

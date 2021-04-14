@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Novedades de c# 8 · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="&#161;Qu&#233; fuerte! &#161;Qu&#233; fuerte! &#161;Qu&#233; fuerte! &#161;Qu&#233; Visual Studio 2019 ya est&#225; aqu&#237;! Bueno, casi. Ahora mismo tenemos disponible la versi&#243;n Preview 2.2. Promete ser ..." />
+		<meta property="og:title" content="Novedades de c# 8" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/02/19/csharp-8" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/programming3.jpg" />
+		<meta property="og:description" content="¡Qué fuerte! ¡Qué fuerte! ¡Qué fuerte! ¡Qué Visual Studio 2019 ya está aquí! Bueno, casi. Ahora mismo tenemos disponible la versión Preview 2.2. Promete ser ..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-02-19 07:52:43Z" />
+		<meta property="article:published_time" content="2019-02-19 07:52:43Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Novedades de c# 8" />
+		<meta name="twitter:description" content="¡Qué fuerte! ¡Qué fuerte! ¡Qué fuerte! ¡Qué Visual Studio 2019 ya está aquí! Bueno, casi. Ahora mismo tenemos disponible la versión Preview 2.2. Promete ser ..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/programming3.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/02/19/csharp-8" />
+		<meta name="description" content="¡Qué fuerte! ¡Qué fuerte! ¡Qué fuerte! ¡Qué Visual Studio 2019 ya está aquí! Bueno, casi. Ahora mismo tenemos disponible la versión Preview 2.2. Promete ser ..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/02/19/csharp-8" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/programming3.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Novedades de c# 8
+			</h1><small>19 feb. 2019 · 15 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				¡Qué fuerte! ¡Qué fuerte! ¡Qué fuerte! ¡Qué Visual Studio 2019 ya está aquí! Bueno, casi. Ahora mismo tenemos disponible la versión <em>Preview
+				</em> 2.2. Promete ser la ostia de rápido. Tiene un montón de novedades para programar en <em>python
+				</em>. Una nueva experiencia para tratar con <em>WorkItems
+				</em> de <em>Azure DevOps
+				</em>. Realmente tiene innumerables nuevas <em>features
+				</em> a la medida del desarrollador moderno. Pero hoy, solo hay una de ellas que nos interese: C# 8.0.
+				<!--break-->
+			</p>
+			<p>
+				Algunos lo estabais esperando, a otros os la pela al viento: vamos a poner nota a las nuevas características (algunas ya implementadas, otras meras ideas desarrolladas durante las más crueles resacas). Y de la misma forma que <a href="http://fernandoescolar.github.io/2016/11/16/csharp-7/">ya sucedió con la versión anterior
+				</a>, vamos a usar para ello la <em>escala sexi-loca
+				</em>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/11/hot_crazy.jpg" alt="escala sexy loca" />
+			</p>
+			<p>
+				Las normas son las de siempre: eje vertical es lo útil que nos resulta y el eje horizontal la locura de su implementación. El objetivo de cada característica es estar por encima de <em>la diagonal Vicky Mendoza
+				</em> (x=y) para poder considerarse una buena característica.
+			</p>
+			<p>
+				Y esta vez las votaciones no serán producto de mi diarrea mental. Esta vez, son estadísticas bien analizadas de una muestra de desarrolladores válida y contrastada. Durante la pasada <a href="https://netcoreconf.com/">&lt;NetCoreConf/>
+				</a> de Barcelona, mi estimado amigo <a href="https://twitter.com/dagope">David Gonzalo
+				</a> y un servidor, tuvimos el placer de realizar una encuesta durante la charla "Hot Crazy C#" que tuvimos el placer de presentar (<a href="https://dagope.github.io/2019/02/19/novedades-csharp8/">aquí podéis encontrar su artículo relacionado
+				</a>).
+			</p>
+			<p>
+				No me enrollo más: ¡Al lío!
+			</p>
+			<blockquote>
+				<p>
+					Huelga decir que algunas de estas funcionalidades no llegarán y otras podrían llegar a publicarse de una forma diferente a la que aquí exponemos.
+				</p>
+			</blockquote>
+			<h2 id="nullable-reference-types">
+				Nullable reference types
+			</h2>
+			<p>
+				Es por todos conocida la funcionalidad para conseguir que un objeto que no puede ser nulo (como por ejemplo un <code>int
+				</code>), acepte valores nulos. Si añadimos un símbolo de interrogación después de declarar el tipo, este será <em>nullable
+				</em>.
+			</p>
+			<pre class="language-csharp highlight">
+<code>int entero = null; // error
+int? entero = null; // ok
+				</code>
+</pre>
+			<p>
+				Esta nueva funcionalidad trata de identificar valores nulos en tipos que sí que son nativamente <em>nullables
+				</em> (por ejemplo, un <code>string
+				</code> o cualquier otra clase que desarrollemos). La idea es que, si vamos a asignarle valores nulos, lo marquemos con el símbolo interrogante. De esta manera el compilador podrá darnos <em>warnings
+				</em> cuando gestionemos de una forma incorrecta el valor nulo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>string a = null; // Warning: Assignment of null to non-nullable reference type
+string? s = null;
+WriteLine($"The string is {s}"); // Warning: Possible null reference exception
+WriteLine($"The string is {s ?? "null" }");
+				</code>
+</pre>
+			<p>
+				Es un poco locura tener que marcar como <em>nullable
+				</em> un <em>reference type
+				</em>, pero no obstante añade bastante consistencia al lenguaje, haciendo semejante la gestión de valores <em>null
+				</em> tanto en el <em>heap
+				</em> como en el <em>stack
+				</em>.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>6.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>3.5
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="async-streams">
+				Async streams
+			</h2>
+			<p>
+				Las palabras clave <code>async
+				</code> y <code>await
+				</code> aparecieron en la versión 5.0. y desde entonces existe un problema para iterar con objetos <code>IEnumerable
+				</code> de forma asíncrona.
+			</p>
+			<pre class="language-csharp highlight">
+<code>async Task
+					<ienumerable <int>
+						> GetManyResultsAsync()
+{
+    var list = new List
+						<int>
+							();
+    int result = -1;
+    do {
+        result = await GetOneAsync();
+        list.Add(result);
+    } while (result > 0);
+
+    return list;
+}
+						</int></ienumerable>
+				</code>
+</pre>
+			<p>
+				Al final todo pasaba por materializar completamente todas las llamadas. La propuesta de añadir un tipo <code>IEnumerable
+				</code> que sea asíncrono al iterar es algo que viene fenomenal al lenguaje. La idea es que se pueda parar de <em>materializar
+				</em> resultados en cualquier momento, incluidas las llamadas asíncronas.
+			</p>
+			<pre class="language-csharp highlight">
+<code>async IAsyncEnumerable
+					<int>
+						GetManyResultsAsync()
+{
+    int result = -1;
+    do {
+        result = await GetOneAsync();
+        yield return result;
+    } while (result > 0);
+}</int>
+				</code>
+</pre>
+			<p>
+				En mi opinión es una funcionalidad muy útil, aunque posiblemente el día del evento en el que los asistentes votaron, no supe expresarlo de la forma correcta.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>7.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>4.0
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="range-and-index">
+				Range and Index
+			</h2>
+			<p>
+				La idea detrás de los rangos y los índices es copiar ciertas funcionalidades de otros lenguajes de programación. Se centran en interactuar con listas o <em>arrays
+				</em> de una forma más sencilla.
+			</p>
+			<pre class="language-csharp highlight">
+<code>var people = new string[] {
+    "ola", "k", "ase", "c#",
+    "ocho", "o", "ke", "hase"
+};
+				</code>
+</pre>
+			<p>
+				Sin usar <em>Linq
+				</em> recogeremos una porción de este array usando los índices y rangos:
+			</p>
+			<ul>
+				<li>
+					<p>
+						Un índice es un número que indica la posición dentro de un conjunto de objetos. Si por ejemplo indicamos el índice <code>0
+						</code> de <code>people
+						</code> este será "Elena". Si indicamos <code>^1
+						</code> será el último elemento de nuestra colección: "Skywalker". De lo que deducimos que un índice con el acento circunflejo se resta al valor de <code>Length
+						</code> de nuestro objeto.
+					</p>
+				</li>
+				<li>
+					<p>
+						Un rango es la tupla de un índice de inicio y un índice de fin separados por dos puntos: <code>0..^1
+						</code>. Este ejemplo recogería los elementos desde el "ola" hasta "hase".
+					</p>
+				</li>
+			</ul>
+			<p>
+				Veamos la funcionalidad en acción:
+			</p>
+			<pre class="language-csharp highlight">
+<code>foreach (var p in people[0..3]) Console.Write($"{p} "); // ola k ase c#
+foreach (var p in people[0..^5]) Console.Write($"{p} "); // ola k ase c#
+foreach (var p in people[^4]) Console.Write($"{p} "); // ocho o ke hase
+foreach (var p in people[6..]) Console.Write($"{p} "); // ke hase
+foreach (var p in people[..]) Console.Write($"{p} "); // ola k ase c# ocho o ke hase
+				</code>
+</pre>
+			<p>
+				Otra funcionalidad que parece que va a ser muy interesante a la hora de ahorrarnos dependencias con <em>Linq
+				</em>, aunque lo de que un rango sin índices sea la propia colección de objetos al completo no deja de ser gracioso.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>5.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>6.5
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="recursive-patterns">
+				Recursive patterns
+			</h2>
+			<p>
+				El nombre de esta característica puede resultar un poco confuso. En realidad, hace referencia a <em>Pattern Matching
+				</em>. La idea es que si partimos de una colección de objetos <code>Team
+				</code> donde podemos encontrar objetos de tipo <code>Developer
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>IEnumerable
+					<object>
+						Team = ...;
+
+class Developer
+{
+    public string Name { get; set; }
+    public bool IsCrazy { get; set; }
+}</object>
+				</code>
+</pre>
+			<p>
+				Podemos iterar sobre la colección (<code>Team
+				</code>) y en una sentencia <code>if
+				</code> mapear y filtrar las propiedades de cada uno de los elementos. De tal forma que este código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>IEnumerable
+					<string>
+						GetCrazyDevelopers()
+{
+    foreach (var p in Team)
+    {
+        if (p is Developer && !p.IsCrazy)
+        {
+            string name = p.Name;
+            yield return name;
+        }
+
+    }
+}</string>
+				</code>
+</pre>
+			<p>
+				Lo podríamos transformar en este otro código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>IEnumerable
+					<string>
+						GetCrazyDevelopers()
+{
+    foreach (var p in Team)
+    {
+        if (p is Developer { IsCrazy: false, Name: string name })
+            yield return name;
+    }
+}</string>
+				</code>
+</pre>
+			<p>
+				A pesar de ser algo más complejo de primeras, también resulta más compacto. Si te ha costado más de medio minuto entenderlo, es que tu también deberías votar el factor "Crazy" con un valor elevado.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>5.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>7.5
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="switch-expressions">
+				Switch expressions
+			</h2>
+			<p>
+				Esta característica es semejante a la anterior, con la diferencia de que en este caso vamos a realizar los patrones en sentencias <code>switch
+				</code> y de diferentes formas.
+			</p>
+			<p>
+				Inicialmente partiremos de la clase <code>Point
+				</code> que simplemente tendrá dos propiedades <code>X
+				</code> e <code>Y
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Y declaramos una variable de tipo <code>object
+				</code> como una instancia de <code>Point
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>object o = new Point(X: "10", Y: "5");
+				</code>
+</pre>
+			<p>
+				El nuevo bloque <code>switch
+				</code> nos va a permitir prescindir de las palabras clave <code>case
+				</code> y <code>default
+				</code>, de tal forma que resumiremos cada opción como una condición y el cuerpo de una función <em>inline
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return o switch
+{
+    Point p when p.X == 0 && p.Y == 0  => "origin",
+    Point p                            => $"{p.X}, {p.Y}",
+    _                                  => "unknown"
+};
+				</code>
+</pre>
+			<p>
+				Los más avispados habréis notado que el símbolo "_" sustituye a la palabra clave <code>default
+				</code>. Otros estaréis alucinando con la palabra clave <code>when
+				</code>, pero os tengo que decir que eso es de C# 7.0. Lo que todos habremos entendido es que se realiza un <em>save casting
+				</em> del objeto <code>o
+				</code> a <code>Point
+				</code> y si se cumple, en la primera línea se evalúan unas condiciones, si estas condiciones no se cumplen vamos a la segunda línea y en cualquier otro caso, devolverá "unknown".
+			</p>
+			<p>
+				Ahora vamos a complicarlo un poco más y a prescindir de la palabra clave <code>when
+				</code> y a usar un <em>matching
+				</em> semejante al de la característica anterior:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return o switch
+{
+    Point { X: 0, Y: 0 }         => "origin",
+    Point { X: var x, Y: var y } => $"{x}, {y}",
+    _                            => "unknown"
+};
+				</code>
+</pre>
+			<p>
+				Pero, ¿y si te dijera que también podemos hacer <em>Pattern Matching
+				</em> con la deconstrucción de un objeto? Aquí pensarás que alguien se ha fumado hierba buena, que es un puto genio o ambas cosas. Vamos a verlo:
+			</p>
+			<p>
+				Primero tendremos que tener un objeto deconstruible (característica de la versión de C# 7.0.):
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public void Deconstruct(out int x, out int y)
+    {
+        x = X;
+        y = Y;
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y ahora vamos a sustituir el código anterior por otro tipo de <em>matching
+				</em> sin cambiar el comportamiento:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return o switch
+{
+    Point(0, 0)         => "origin",
+    Point(var x, var y) => $"{x}, {y}",
+    _                   => "unknown"
+};
+				</code>
+</pre>
+			<p>
+				Espectacular ¿no?
+			</p>
+			<p>
+				Quien no le ve utilidad es que está ciego...
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>4.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>8.0
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="implicit-constructors">
+				Implicit constructors
+			</h2>
+			<p>
+				Qué sería de una nueva versión de C# en la que no hubiera algún <em>syntax sugar
+				</em>. Esta característica es el primero de ellos. Es muy simple y todos lo entenderemos y usaremos siempre. La idea es inferir el tipo del constructor y así ahorrarnos tener que escribirlo veintisiete veces cuando estemos programando:
+			</p>
+			<pre class="language-csharp highlight">
+<code>Person[] people =
+{
+    new ("Elena", "Nito", "del Bosque"),
+    new ("Armando", "Bronca", "Segura"),
+    new ("Dolores", "Cabeza", "Baja"),
+    new ("Aitor", "Tilla", "del Bosque"),
+};
+				</code>
+</pre>
+			<p>
+				Si no ves realmente la mejora, piensa que antes, después de cada <code>new
+				</code> pondríamos <code>Person
+				</code>.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>7.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>2.0
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="using-declaration">
+				Using declaration
+			</h2>
+			<p>
+				El otro <em>syntax sugar
+				</em> que se está preparando para esta versión de C# es el de los bloques using. Actualmente, si tenemos un objeto que queremos liberar de memoria después de usarlo, lo más recomendable es que implemente la interfaz <code>IDisposable
+				</code> y usarlo dentro de un bloque <code>using
+				</code>. De forma que, al terminar el bloque, el objeto se prepara para ser recogido por el <em>Garbage Collector
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void Patata()
+{
+    using (var disposable = CreateDisposable(args))
+    {
+          ...
+    } // disposable is disposed here
+}
+				</code>
+</pre>
+			<p>
+				Para los más vagos, a partir de C# 8.0, ya no tendrán que hacer bloques. Al poner un using, cuando se acabe el ámbito (al finalizar una función o cualquier bloque de código) de "disposeará":
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void Patata()
+{
+    using var disposable = CreateDisposable(args);
+    ...
+} // disposable is disposed here
+				</code>
+</pre>
+			<p>
+				Una funcionalidad que en dependencia de lo espagueti que sea el código, puede dar muchos quebraderos de cabeza. No obstante, que seamos malos programadores, no hace mala una característica del lenguaje.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>6.0
+					</b>
+				</p>
+				<p>
+					Crazy = <b>2.5
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="default-interfaces">
+				Default interfaces
+			</h2>
+			<p>
+				Llevamos años hablando de esta funcionalidad. A mi juicio una aberración programática que podría ser sustituida por una solución elegante y conocida como es la multiherencia de C++. No obstante Microsoft sigue en sus trece y quiere añadir implementación en las interfaces:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface ILogger
+{
+    void Log(LogLevel level, string message);
+    void Log(Exception ex) => Log(LogLevel.Error, ex.ToString()); // New overload
+}
+
+class ConsoleLogger : ILogger
+{
+    public void Log(LogLevel level, string message) { ... }
+    // Log(Exception) gets default implementation
+}
+				</code>
+</pre>
+			<p>
+				En mi libro de programación orientada a objetos, un artefacto con una implementación por defecto y otra que se debe implementar al heredar se llama clase abstracta, no interfaz.
+			</p>
+			<p>
+				Por otro lado, otros lenguajes como <em>Java
+				</em> ya traen esta funcionalidad, y <em>Objective-C
+				</em> tiene multiherencia; por lo que podría ser muy interesante de cara a que <em>Xamarin
+				</em> fuera todavía mejor de lo que es:
+			</p>
+			<blockquote class="twitter-tweet" data-lang="es">
+				<p lang="es" dir="ltr">
+					<a href="https://twitter.com/_unaizc_?ref_src=twsrc%5Etfw">
+						@_unaizc_
+					</a> <a href="https://twitter.com/fernandoescolar?ref_src=twsrc%5Etfw">@fernandoescolar
+					</a> <a href="https://twitter.com/jjane90?ref_src=twsrc%5Etfw">@jjane90
+					</a> muy importante para el interop de C# con Java, Swift y Obejctive-C
+				</p>
+				— Miguel de Icaza (@migueldeicaza) <a href="https://twitter.com/migueldeicaza/status/811566314431115264?ref_src=twsrc%5Etfw">21 de diciembre de 2016
+				</a>
+			</blockquote>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+			</script>
+			<p>
+				Por esta razón creo que las votaciones con respecto esta característica fueron más moderadas:
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>4.5
+					</b>
+				</p>
+				<p>
+					Crazy = <b>5.5
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Después del evento publicamos una <a href="https://netcoreapp.azurewebsites.net/">página web con las estadísticas de las votaciones
+				</a>, pero como no creo que la tengamos para siempre online, vamos a hacer unas capturas a continuación:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/csharp-8-chart-1.png" alt="resultados escala sexy-loca" />
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/02/csharp-8-chart-2.png" alt="valor según Diagonal Vicky Mendoza" />
+			</p>
+			<p>
+				Las conclusiones son simples, a la gente no le gusta el <em>Pattern Matching
+				</em>: El mundo se va a la mierda.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Novedades de c# 8&url=https://www.developerro.com/2019/02/19/csharp-8" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/02/19/csharp-8" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/02/19/csharp-8" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/02/19/csharp-8" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2016/11/16/csharp-7">
+						Novedades de c# 7
+					</a> <small>16 nov. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/05/historia-csharp">
+						Historia de C#
+					</a> <small>05 feb. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Reactive Extensions (#codemotion) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="El pasado fin de semana @quiqu3 y @fernandoescolar estuvieron en Madrid, en la codemotion, en representaci&#243;n de programando en .net. Adem&#225;s tuvieron el place..." />
+		<meta property="og:title" content="Reactive Extensions (#codemotion)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/03/27/reactive-extensions" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="El pasado fin de semana @quiqu3 y @fernandoescolar estuvieron en Madrid, en la codemotion, en representación de programando en .net. Además tuvieron el place..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-03-27 09:30:32Z" />
+		<meta property="article:published_time" content="2012-03-27 09:30:32Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Reactive Extensions (#codemotion)" />
+		<meta name="twitter:description" content="El pasado fin de semana @quiqu3 y @fernandoescolar estuvieron en Madrid, en la codemotion, en representación de programando en .net. Además tuvieron el place..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/03/27/reactive-extensions" />
+		<meta name="description" content="El pasado fin de semana @quiqu3 y @fernandoescolar estuvieron en Madrid, en la codemotion, en representación de programando en .net. Además tuvieron el place..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/03/27/reactive-extensions" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Reactive Extensions (#codemotion)
+			</h1><small>27 mar. 2012 · 7 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				El pasado fin de semana <a title="@Quiqu3" href="https://twitter.com/quiqu3" target="_blank">@quiqu3
+				</a> y <a title="@fernandoescolar" href="https://twitter.com/fernandoescolar" target="_blank">@fernandoescolar
+				</a> estuvieron en Madrid, en la <strong>codemotion
+				</strong>, en representación de <strong>programando en .net
+				</strong>. Además tuvieron el placer de impartir una pequeña charla de 45 minutos acerca de las reactive extensions. Aprovechando este hecho, nos gustaría cerrar de una forma más o menos elegante la serie de artículos sobre rx, aportando un índice de los artículos, un breve resumen basado en la charla y varios programas de ejemplo (incluida la red social de moda: <strong>BeerToBeer
+				</strong>).
+			</p>
+			<!--break-->
+			<h2>
+				Reactive extensions
+			</h2>
+			Las reactive extensions es el nombre que recibe <strong>una framework
+			</strong> que nos ayudará a desarrollar de una forma novedosa y cercana al lenguaje natural. Fueron creadas por<strong> Eric Meijer
+			</strong>, el <strong>padre de Linq
+			</strong>. Y basa su forma de trabajar en esta herramienta. 
+			<p>
+				Cuando hablamos de <strong>Linq
+				</strong> (<strong>L
+				</strong>anguage <strong>I
+				</strong>ntegrated <strong>Q
+				</strong>uery) nos referimos a una librería de la<strong> framework .net de Microsoft
+				</strong> que nos ayuda a operar con colecciones, listas, diccionarios,... en resumen: <strong>enumeraciones 
+				</strong>mediante un lenguaje de interfaces <em>fluent
+				</em>.
+			</p>
+			<p>
+				Cuando hablamos de<strong> interfaces fluent
+				</strong> (nombre acuñado por el propio Eric Evans y Martin Fowler), es hablar de un tipo de implementación de la programación orientada a objetos que nos ayuda a crear código fuente más legible. Se basa en crear métodos dentro de objetos que nos devuelven al propio objeto que las usa. De esta forma podemos encadenar varias llamadas encadenadas por puntos. Pero mejor vamos a ver un ejemplo:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">public class FluentClass
+{
+    private int value;
+
+					<pre>
+						<code>
+							public FluentClass WithValue(int value) { this.value = value; return this; }
+
+public FluentClass AddOne() { this.value += 1; return this; }
+
+public FluentClass SubstractTwo() { this.value -= 2; return this; }
+
+public FluentClass MultiplyThree() { this.value *= 3; return this; }
+
+public FluentClass DrawValue() { Console.WriteLine(this.value); return this; }
+
+						</code></pre>
+
+					<p>
+						}
+					</p>
+
+					<p>
+						static void Main(string[] args)
+{
+var fluent = new FluentClass()
+.WithValue(9)
+.DrawValue()
+.AddOne()
+.DrawValue()
+.SubstractTwo()
+.DrawValue()
+.MultiplyThree()
+.DrawValue();
+					</p>
+
+					<pre>
+						<code>
+							Console.ReadLine();
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			Como se puede observar en este ejemplo, cada función del objeto fluent, después de operar devuelve el propio objeto. Esto unido con nombre de función muy descriptivos, hacen que podamos crear una serie de llamadas encadenadas, cuyo significado es muy legible. 
+			<p>
+				Una vez hemos visto esto, podemos entonces acercarnos a cómo Linq, usando esta forma de programar, nos ayuda a realizar búsquedas, filtrados, ordenaciones y demás operaciones; con conjuntos de valores en .net:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">static void Main()
+{
+    var lista = new List&lt;int> {3, 4, 5, 78, 89, 98, 123, 2, 3};
+
+					<pre>
+						<code>
+							var listaFiltrada = lista
+                        .OrderByDescending(x =&amp;gt; x) // ordena de forma inversa
+                        .Where(x =&amp;gt; x &amp;lt; 50) // filtra los valores menores de 50
+                        .Take(2); // coge los dos primeros
+
+// este código dibujará en pantalla un 5 y un 4
+foreach (var item in listaFiltrada)
+{
+    Console.WriteLine(item);
+}
+
+Console.ReadLine();
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			En este otro ejemplo podemos ver como aplicamos algoritmos de ordenación, de filtrado y selección usando este Linq. 
+			<p>
+				Y así vamos llegando hasta el contexto actual de aplicación:
+			</p><img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/app-context.png" alt="contexto de aplicación actual" width="650" height="349" /> 
+			<p>
+				Lo que nos podemos encontrar actualmente son aplicaciones distribuidas. Pongamos el ejemplo de twitter, donde encontramos unos servicios que están alojados en la nube y una serie de clientes diferentes según sean plataformas móviles, páginas web o aplicaciones de escritorio.
+			</p>
+			<p>
+				Todas estas aplicaciones usan los mismos servicios que son quienes manejan los datos. Para comunicarse con ellos se utiliza un tipo de comunicación asíncrona, con lo que conseguimos que nuestra aplicación no se quede congelada esperando una respuesta del servidor. Y para gestionar la interacción con el usuario se utilizan los eventos.
+			</p>
+			<p>
+				Es decir, nuestras aplicaciones convierten eventos en llamadas a servicios. Pero la forma de manejar unos y otros es muy diferentes y es justo en este punto en el que aparecen las reactive extensions y encontramos su objetivo: <strong>unificar la forma de gestionar eventos y las llamadas a servicios
+				</strong>.
+			</p>
+			<p>
+				Para conseguir esta compleja tarea se recurre a la <strong>programación reactiva
+				</strong>. Un nuevo paradigma de programación que podemos decir que se diferencia de la programación tradicional en que es un sistema <strong>Push
+				</strong> y no <strong>Pull
+				</strong>. Es decir el código en la forma de programación tradicional se maneja bajo demanda (cada vez que escribimos una línea) y en la programación reactiva, se evalúa código cuando un acontecimiento que tiene relación con él ocurre (como las <strong>notificaciones Push
+				</strong> del móvil).
+			</p>
+			<p>
+				Y es aquí cuando llegamos a una nueva problemática, la de programar de forma reactiva usando un lenguaje secuencial. La solución nos la aporta esta función que definen las reactive extensions y que nos brindan desde los <strong>Microsoft Live Labs
+				</strong>:
+			</p><img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/09/rx3.gif" alt="Formula de las reactive extensions" width="400" height="162" /> 
+			<p>
+				Para poder explicar esta formula de una forma cercana a la programación hemos creado una aplicación: <strong>BeerToBeer
+				</strong>, que ya mostramos en la <strong>codemotion
+				</strong>. Una red social (tipo twitter) en la que puedes enviar mensajes a propósito de la cerveza que estás bebiendo en ese momento.
+			</p>
+			<p>
+				El ejemplo está compuesto de una serie de servicios WCF (con netTcp, http y REST) y unos clientes para tres plataformas diferentes: HTML 5, Windows Phone 7 y Windows (WPF).
+			</p>
+			<h2>
+				Descargas de material
+			</h2>
+			Entre los materiales de la charla se encuentra la presentación que mostramos y la aplicación de ejemplo BeerToBeer con el código de servicios y los clientes. Además también podréis encontrar otros ejemplos que no mostramos como un EventAggregator reactivo, el típico ejemplo de Drag 'n Drop o un mini cliente twitter. 
+			<p>
+				<a href="https://skydrive.live.com/redir?resid=5EC9B8BAE659AAF3!248" target="_blank">
+					Descargar el ejemplo
+				</a>
+			</p>
+			<p>
+				<a href="https://skydrive.live.com/redir?resid=5EC9B8BAE659AAF3!247" target="_blank">
+					La presentación que mostramos
+				</a>
+			</p>
+			<p>
+				 
+			</p>
+			<p>
+				Y si crees que las reactive extensions pueden serte de utilidad en tu trabajo o simplemente quieres saber más sobre las mismas, no olvides que en esta misma web tenemos una serie de cinco artículos donde se trata a fondo esta framework.
+			</p>
+			<h2>
+				Índice de artículos
+			</h2>
+			<ol>
+				<li>
+					<a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">
+						Qué son las reactive extensions
+					</a>
+				</li>
+				<li>
+					<a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">
+						Observables (los sujetos)
+					</a>
+				</li>
+				<li>
+					<a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">
+						Linq: crear objetos observables
+					</a>
+				</li>
+				<li>
+					<a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables">
+						Linq: operaciones con observables
+					</a>
+				</li>
+				<li>
+					<a title="Rx V - Schedulers y Linq2Events" href="/2012/03/26/rx-v-schedulers-y-linq2events">
+						Schedulers y Linq2Events
+					</a>
+				</li>
+			</ol>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Reactive Extensions (#codemotion)&url=https://www.developerro.com/2012/03/27/reactive-extensions" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/03/27/reactive-extensions" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/03/27/reactive-extensions" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/03/27/reactive-extensions" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Un vistazo a Roslyn · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content='El n&#250;mero de resultados que encuentras al buscar "Roslyn" es de 9-13 millones. Est&#225; claro que est&#225; de moda. Pero &#191;qu&#233; es Roslyn? &#191;y por qu&#233; deber&#237;a importarme?
+' />
+		<meta property="og:title" content="Un vistazo a Roslyn" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="El número de resultados que encuentras al buscar " roslyn es de 9-13 millones. está claro que está de moda. pero ¿qué es roslyn? ¿y por qué debería importarme? />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2016-02-09 19:24:03Z" />
+		<meta property="article:published_time" content="2016-02-09 19:24:03Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Un vistazo a Roslyn" />
+		<meta name="twitter:description" content="El número de resultados que encuentras al buscar " roslyn es de 9-13 millones. está claro que está de moda. pero ¿qué es roslyn? ¿y por qué debería importarme? />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" />
+		<meta name="description" content="El número de resultados que encuentras al buscar " roslyn es de 9-13 millones. está claro que está de moda. pero ¿qué es roslyn? ¿y por qué debería importarme? />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Un vistazo a Roslyn
+			</h1><small>09 feb. 2016 · 11 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				El número de resultados que encuentras al buscar "Roslyn" es de 9-13 millones. Está claro que está de moda. Pero ¿qué es Roslyn? ¿y por qué debería importarme?
+			</p>
+			<!--break-->
+			<p>
+				Roslyn es un compilador de .Net. Es un analizador semántico de código. Es un binder. Es un refactorizador. Es open source. Es el segundo advenimiento del desarrollo. Emite IL. Está integrado con Visual Studio. Pero funciona en cualquier plataforma. Es como el famoso "jamón" al que <a href="https://www.youtube.com/watch?v=PMxdM38QxUY" title="Los Berzas - Yo amo el jamón">cantaban Los Berzas
+				</a>.
+			</p>
+			<p>
+				Cuando escucho la palabra "Roslyn" me viene a la mente La Hora Chanante. Pienso en Joaquín Reyes repitiendo esta palabra. Primero más agudo. Luego más grave. Y para terminar alargando las vocales mientras agudiza el tono.
+			</p>
+			<p>
+				Últimamente he estado jugando un poco con Roslyn. Sobre todo porque el próximo 24 de febrero tengo una charla junto con mi compañero <a href="https://twitter.com/juanbacardit" title="Juan Bacardit">Juan Bacardit
+				</a> en la <a href="https://www.desarrollaconmicrosoft.com/Dotnetspain2016" title="DotNet Spain Conference 2016">DotNet Spain Conference 2016
+				</a> en Madrid. Y he aquí los resultados de mis experimentos:
+			</p>
+			<p>
+				Una vez nos hemos instalado <a href="https://github.com/dotnet/roslyn/wiki/Getting-Started-on-Visual-Studio-2015" title="Instalar Roslyn en Visual Studio">Roslyn en Visual Studio
+				</a>, las <a href="https://visualstudiogallery.msdn.microsoft.com/2ddb7240-5249-4c8c-969e-5d05823bcb89" title="Instalar plantillas y el SDK de Roslyn">plantillas y el SDK
+				</a>; es muy fácil empezar a trabajar. Tan solo tenemos que elegir una de esas plantillas y ya tendremos un ejemplo de lo que podemos hacer:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/02/templates.png" alt="Roslyn templates" />
+			</p>
+			<h2 id="como-hacer-tu-ide-mas-lento">
+				Como hacer tu IDE más lento
+			</h2>
+			<p>
+				La plantilla que más me fascina es la de "Analyzer with Code Fix (NuGet+VSIX)". Es un todo en uno para enlentecer tu entorno. Automáticamente te crea una regla de análisis de código y un refacor para corregirlo. Como resultado de compilarlo: un paquete NuGet y un VSIX. Todo listo para ser instalado en todos los Visual Studio del mundo.
+			</p>
+			<p>
+				Pero el analizador de demostración no me gusta. Así que vamos a implementar el nuestro propio. La idea es que cada vez que detectemos un nombre que NO contenga palabrotas, nos avise. Así que he añadido este archivo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class BadWordService
+{
+    public static readonly string[] BadWords = new string[] { "shit", "crap", "dick", "asshole", "motherfucker", "bastard", "prick", "jerk", "bitch", "damn", "fuck", "hell" };
+
+    public static bool ContainsBadWords(this string source)
+    {
+        return BadWords.Any(s => source.ToLowerInvariant().Contains(s.ToLowerInvariant()));
+    }
+
+    public static string AddBadWord(this string source)
+    {
+        var r = new Random();
+        var word = BadWords[r.Next(0, BadWords.Length - 1)];
+        return string.Format("{0}{1}{2}", source, char.ToUpperInvariant(word[0]), word.Substring(1));
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y he modificado el código del analyzer a algo como esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[DiagnosticAnalyzer(LanguageNames.CSharp)]
+public class BadWordsRulesAnalyzer : DiagnosticAnalyzer
+{
+    public const string DiagnosticId = "BadWordsRules";
+    private const string Title = "No Bad Words in Name";
+    private const string MessageFormat = "There is no Bad Word in this name: '{0}'";
+    private const string Description = "There is no Bad Word in this name";
+    private const string Category = "Naming";
+
+    private static DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
+
+    public override ImmutableArray
+					<diagnosticdescriptor>
+						SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
+
+    public override void Initialize(AnalysisContext context)
+    {
+        context.RegisterSymbolAction(AnalyzeBadWordsInSymbolName, SymbolKind.NamedType);
+    }
+
+    private static void AnalyzeBadWordsInSymbolName(SymbolAnalysisContext context)
+    {
+        var namedTypeSymbol = context.Symbol;
+        var name = namedTypeSymbol.Name;
+        AnalyzeName(context, name, namedTypeSymbol.Locations[0]);
+    }
+
+    private static void AnalyzeName(SymbolAnalysisContext context, string name, Location location)
+    {
+        if (!name.ContainsBadWords())
+        {
+            var diagnostic = Diagnostic.Create(Rule, location, name);
+            context.ReportDiagnostic(diagnostic);
+        }
+    }
+}</diagnosticdescriptor>
+				</code>
+</pre>
+			<p>
+				Al ejecutar se nos abrirá una nueva instancia de Visual Studio. Si abrimos un proyecto, veremos que nos marcará los nombres de las clases que no contengan palabras mal sonantes.
+			</p>
+			<p>
+				Y a partir de aquí es donde viene lo bueno. Podemos hacer que el sistema nos proponga cómo corregir estos errores. Esto lo podríamos hacer modificando el archivo "CodeFix":
+			</p>
+			<pre class="language-csharp highlight">
+<code>[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(BadWordsRulesCodeFixProvider)), Shared]
+public class BadWordsRulesCodeFixProvider : CodeFixProvider
+{
+    private const string title = "Add Bad Word";
+
+    public sealed override ImmutableArray
+					<string>
+						FixableDiagnosticIds
+    {
+        get { return ImmutableArray.Create(BadWordsRulesAnalyzer.DiagnosticId); }
+    }
+
+    public sealed override FixAllProvider GetFixAllProvider()
+    {
+        return WellKnownFixAllProviders.BatchFixer;
+    }
+
+    public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context)
+    {
+        var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+        var diagnostic = context.Diagnostics.First();
+        var diagnosticSpan = diagnostic.Location.SourceSpan;
+        var token = root.FindToken(diagnosticSpan.Start);
+
+        context.RegisterCodeFix(
+            CodeAction.Create(
+                title: title,
+                createChangedSolution: c => AddBadWord(context.Document, token, c),
+                equivalenceKey: title),
+            diagnostic);
+    }
+
+    private static Task
+						<solution>
+							AddBadWord(Document document, SyntaxToken token, CancellationToken cancellationToken)
+    {
+        var newName = token.Text.AddBadWord();
+        return RenameAsync(document, token, cancellationToken, newName);
+    }
+
+    private static async Task
+							<solution>
+								RenameAsync(Document document, SyntaxToken token, CancellationToken cancellationToken, string newName)
+    {
+        var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
+        var typeSymbol = semanticModel.GetDeclaredSymbol(token.Parent, cancellationToken);
+
+        var originalSolution = document.Project.Solution;
+        var optionSet = originalSolution.Workspace.Options;
+        var newSolution = await Renamer.RenameSymbolAsync(document.Project.Solution, typeSymbol, newName, optionSet, cancellationToken).ConfigureAwait(false);
+
+        return newSolution;
+    }
+}
+							</solution>
+						</solution></string>
+				</code>
+</pre>
+			<p>
+				Si ejecutamos este último código nos propondrá poner una palabrota al final de cada nombre de clase. Y al hacerlo, buscará una aleatoría y la añadira. Haciendo el correspondiente refactor en todo el proyecto.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/02/badwords-analyzer.png" alt="Ejemplo Analyzer y Code Fix" />
+			</p>
+			<p>
+				Si al ejecutar no aparece esto instantaneamente, dadle algo de tiempo. Como rezaba el título, es una forma de hacer que Visual Studio vaya un poco más lento.
+			</p>
+			<p>
+				Una forma de no perder agilidad a la hora de programar es gastar este tiempo a la hora de compilar. Para esto sustituiremos
+			</p>
+			<pre class="language-csharp highlight">
+<code>context.RegisterSymbolAction(...);
+				</code>
+</pre>
+			<p>
+				Por:
+			</p>
+			<pre class="language-csharp highlight">
+<code>context.RegisterCompilationAction(action);
+				</code>
+</pre>
+			<p>
+				Donde en "action" tendremos que tener un rastreador del arbol de sintaxis en busca de objetos de tipo "TypeDeclarationSyntax". Este es el tipo de objeto que almacena las declaraciones de las clases. Lo que nos lleva a lo más importante a la hora de trabajar con roslyn: <strong>conocer el arbol de sintaxis
+				</strong>.
+			</p>
+			<p>
+				A día de hoy, imagino que este árbol solo lo conocen los programadores de Roslyn. Si quieres empezar a jugar, te recomiendo que abras en Visual Studio la ventana de "Syntax Visualizer". Esta ventana se instala con el SDK de Roslyn. Y nos ayudará a entender qué forma tiene un árbol de sintaxis para el documento que tengamos abierto.
+			</p>
+			<h2 id="como-hacer-lo-mismo-de-antes-con-la-mitad-de-trabajo">
+				Como hacer lo mismo de antes, con la mitad de trabajo
+			</h2>
+			<p>
+				Otra de las opciones es elegir el template de "Code Refactoring (VSIX)". Esto es un template semejante al anterior. Pero haciendo solo la mitad del trabajo. Y lo mejor de todo es que más de la mitad del código que ya hemos escrito, nos sirve aquí.
+			</p>
+			<p>
+				Cuando quieres proponer una modificación, pero no quieres que aparezca un aviso o que se marque aquel trozo de código que quieres modificar, tenemos que usar los objetos "CodeRefactoringProvider".
+			</p>
+			<p>
+				Para tener la misma funcionalidad que en el ejemplo anterior, solo tendríamos que insertar este código en la clase que se nos ha generado:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[ExportCodeRefactoringProvider(LanguageNames.CSharp, Name = nameof(BadWordsRefactorProvider)), Shared]
+internal class BadWordsRefactorProvider : CodeRefactoringProvider
+{
+    public sealed override async Task ComputeRefactoringsAsync(CodeRefactoringContext context)
+    {
+        var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+        var node = root.FindNode(context.Span);
+        var classDeclaration = node as ClassDeclarationSyntax;
+
+        if (classDeclaration == null) return;
+
+        var token = classDeclaration.Identifier;
+        if (token.Text.ContainsBadWords()) return;
+
+        var action = CodeAction.Create("Add a Bad Word", c => AddBadWord(context.Document, token, c));
+        context.RegisterRefactoring(action);
+    }
+
+    private static Task
+					<solution>
+						AddBadWord(Document document, SyntaxToken token, CancellationToken cancellationToken)
+    {
+        // igual que arriba
+    }
+
+    private static async Task
+						<solution>
+							RenameAsync(Document document, SyntaxToken token, CancellationToken cancellationToken, string newName)
+    {
+        // igual que arriba
+    }
+						</solution></solution>
+				</code>
+</pre>
+			<p>
+				Es fácil ¿verdad?. El secreto de esta clase es que solo se evalua cuando estamos en una línea en concreto. Por eso el contexto tiene un "Span". Esta marca nos dice donde está el cursor en ese momento. Tan solo tenemos que comprobar que en nuestra posición haya un tipo de objeto que esperamos.
+			</p>
+			<p>
+				En este punto te plantearás la pregunta de ¿cómo es que <a href="https://blog.jetbrains.com/dotnet/2014/04/10/resharper-and-roslyn-qa/">los desarrolladores de Resharper no van usar Roslyn
+				</a>? Inconcebible. Me voy a hacer mi propio Resharper. Con casinos. Y furcias. Es más, paso de Resharper.
+			</p>
+			<h2 id="mi-propio-analizador-out-of-the-box">
+				Mi propio analizador out-of-the-box
+			</h2>
+			<p>
+				Imagina que quieres analizar tu código. Pero no quieres usar Visual Studio. Imagina que estás en Linux. ¿Cómo puedo analizar mi código entonces? Muy fácil. Con la tercera plantilla que se instala: "Stand-Alone Code Analysis Tool".
+			</p>
+			<p>
+				La primera sensación cuando generas este tipo de proyecto es extraña. Un proyecto de consola vacío. ¿En serio?. Sí en serio. Pero escondidas entre bastidores están todas las referencias del mundo a todo lo que es compilar. Así que a partir de aquí es fácil seguir trabajando. Tan solo tenemos que añadir en el flamente método vacío "Main" este código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static void Main(string[] args)
+{
+    var solutionFile = args[1]; // valid VS Solution (.sln)
+    var ws = MSBuildWorkspace.Create();
+    var soln = ws.OpenSolutionAsync(solutionFile).Result;
+    var proj = soln.Projects.Single();
+    var compilation = proj.GetCompilationAsync().Result;
+
+    foreach (var tree in compilation.SyntaxTrees)
+    {
+        var classes = tree.GetRoot().DescendantNodesAndSelf().Where(x => x.IsKind(SyntaxKind.ClassDeclaration));
+        foreach (var c in classes)
+        {
+            var classDeclaration = (ClassDeclarationSyntax)c;
+            var token = classDeclaration.Identifier;
+            if (token.Text.ContainsBadWords()) continue;
+            Console.WriteLine(string.Format("There is no Bad Word in this name: '{0}'", token.Text));
+        }
+    }
+
+    Console.ReadKey();
+}
+				</code>
+</pre>
+			<p>
+				Esta aplicación, al ejecutarla con la ruta de una solución de Visual Studio, nos dirá que clases no tienen palabrotas en sus nombres. Creo que es una utilidad indispensable para todo <em>Badass Developer
+				</em>.
+			</p>
+			<h2 id="rompiendose-la-cabeza">
+				Rompiéndose la cabeza
+			</h2>
+			<p>
+				La última de las andanzas con Roslyn ha sido mirar el código fuente. Es open source. Lo tenéis aquí <a href="https://github.com/dotnet/roslyn">https://github.com/dotnet/roslyn
+				</a>.
+			</p>
+			<p>
+				El código fuente de Roslyn es grande. Pero simple. Simplemente muy grande. Se puede entender. Pero hay que conocerlo. Simplemente lo conocen los que lo programan. Si quieres invertir horas y añadir una feature totalmente loca como cambiar la palabra clave "static" por "motherfucker", no será demasiado trabajo. Solo tienes que saber qué línea tocar.
+			</p>
+			<p>
+				Tampoco me quiero extender mucho más con este punto. El código fuente de Roslyn se actualiza cada poco. Y si escribimos un ejemplo con una línea en concreto, quizá mañana esa línea ya no esté ahí.
+			</p>
+			<p>
+				Lo que sí que os recomiendo es que le echéis un vistazo. Es muy interesante. Aunque solo sea por curiosidad.
+			</p>
+			<h2 id="mis-conclusiones">
+				Mis conclusiones
+			</h2>
+			<p>
+				Roslyn me gusta. La idea que hay detrás también. Las herramientas que podemos crear son muy flexibles. Solo hay que esperar a que otros hagan lo que necesitamos. O si somos valientes y queremos cacharrear un poco, hacerlo nosotros mismos.
+			</p>
+			<p>
+				Si queréis ver algunos analyzers que ya está implementando la comunidad, solo tenéis que echar un vistazo a esta web: <a href="https://github.com/DotNetAnalyzers">https://github.com/DotNetAnalyzers
+				</a>. Tiene muy buena pinta. Y aunque no está todo al completo, sí que tienen muchas normas ya escritas.
+			</p>
+			<p>
+				Pd. Para acceder a la demo final, con todo, tendréis que venir a vernos a la <a href="https://www.desarrollaconmicrosoft.com/Dotnetspain2016" title="DotNet Spain Conference 2016">DotNet Spain Conference 2016
+				</a>. Sin presión ;P
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Un vistazo a Roslyn&url=https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

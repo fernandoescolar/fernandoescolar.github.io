@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Autenticando una API con JWT · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Uno de los grandes problemas de ser programador hoy en d&#237;a es que, tenemos tantas librer&#237;as y tantas facilidades, que resulta muy sencillo ignorar el funcion..." />
+		<meta property="og:title" content="Autenticando una API con JWT" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/03/12/jwt-api-authentication" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/security1.jpg" />
+		<meta property="og:description" content="Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcion..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-03-12 05:26:33Z" />
+		<meta property="article:published_time" content="2019-03-12 05:26:33Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Autenticando una API con JWT" />
+		<meta name="twitter:description" content="Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcion..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/security1.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/03/12/jwt-api-authentication" />
+		<meta name="description" content="Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcion..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/03/12/jwt-api-authentication" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/security1.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Autenticando una API con JWT
+			</h1><small>12 mar. 2019 · 13 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación+autorización de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo
+				<!--break-->
+				[guiño][guiño].
+			</p>
+			<p>
+				Lo más común dentro de una API moderna, es exponerla públicamente siguiendo (o intentando seguir) las premisas de <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm">REST
+				</a> y el <a href="https://martinfowler.com/articles/richardsonMaturityModel.html">modelo de madurez de Richardson
+				</a>. Así pues, usaremos el <a href="https://tools.ietf.org/html/rfc2616">protocolo HTTP
+				</a> para realizar la comunicación. Y la forma más común de solicitar autorización y autenticarse con este protocolo es utilizar las cabeceras de las peticiones. Concretamente se suele usar una llamada "<a href="https://tools.ietf.org/html/rfc7235#section-4.2">Authorization
+				</a>" y como valor solemos encontrar dos textos: uno que dice "Bearer" y otro indescifrable que suele coincidir con el <em>token
+				</em> que hemos solicitado a otro servicio.
+			</p>
+			<h2 id="bearer">
+				Bearer
+			</h2>
+			<p>
+				Seguro que más de uno se ha preguntado por qué tiene que poner "Bearer" delante del <em>token
+				</em>. ¡Vaya chorrada! Podemos poner directamente el <em>token
+				</em> y listo.
+			</p>
+			<p>
+				Está claro que somos libres de hacer lo que queramos. Por eso somos programadores. Por esa extraña y enfermiza adicción que tenemos a la sensación de poder hacer lo que queramos con una máquina. Esa sensación de que, de alguna manera, somos los dioses de nuestro ordenador.
+			</p>
+			<p>
+				Pero el mundo de los estándares, la mantenibilidad y las APIs, no está hecho para personas diferentes. Es un mundo para que todos sigamos las mismas normas y mantengamos una relación de simbiosis con el todo que, al final, haga desaparecer nuestra propia identidad pasando a formar parte de un conjunto más extenso. Es decir: que no reinventéis la rueda <del>¡coño ya!
+				</del>
+			</p>
+			<p>
+				Dentro del RFC del protocolo HTTP existen dos esquemas de autenticación:
+			</p>
+			<ul>
+				<li>
+					<p>
+						Primero está el "<a href="https://tools.ietf.org/html/rfc7617">Basic
+						</a>", que es una castaña. Básicamente [guiño] consiste en coger el nombre de usuario, la contraseña, separarlo por el símbolo de dos puntos y pasarlo a base 64. Super seguro.
+					</p>
+				</li>
+				<li>
+					<p>
+						Y segundo tenemos el "<a href="https://tools.ietf.org/html/rfc7616">Digest
+						</a>" que para no liarnos es como una especie de <em>token
+						</em> con varias propiedades, firmas e incluso alguna cosilla medio encriptada; pero que se envía en formato de texto plano. No está mal, pero con un man-in-the-middle podemos comprometer información sensible de un usuario y del sistema fácilmente.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Luego ya hay otro tipo de modelos, pero nosotros nos centraremos en el uso del <em>estándar
+				</em> de autorización OAuth 2.0, que es "<a href="https://tools.ietf.org/html/rfc6750">Bearer
+				</a>". Un formato que nos permite la autorización en conjunto con la autenticación de usuarios. Este es el esquema que está más de moda hoy en día. Viene a avisar de que detrás le acompaña un <em>token
+				</em> de tipo <em>JSON Web Token
+				</em>.
+			</p>
+			<h2 id="jwt">
+				JWT
+			</h2>
+			<p>
+				Un <a href="https://tools.ietf.org/html/rfc7519">JSON Web Token
+				</a> o JWT es un formato estándar, compacto y seguro de trasmitir <em>Claims
+				</em> (propiedades, afirmaciones o en general información) entre diferentes sistemas.
+			</p>
+			<p>
+				Su gran ventaja es que pueden ser validadas ya que vienen firmadas digitalmente con una clave privada, que puede ser verificada usando una clave pública.
+			</p>
+			<p>
+				Entre otras <em>Claims
+				</em>, podemos enviar desde la IP de la máquina para la que se ha emitido un JWT, los ámbitos a los que se le permite acceder, hasta la fecha y hora de expiración del mismo. De esta forma podremos conseguir comunicaciones mucho más seguras.
+			</p>
+			<p>
+				El formato de un JWT se basa en tres partes:
+			</p>
+			<h3 id="header">
+				Header
+			</h3>
+			<p>
+				Generalmente consiste en dos valores:
+			</p>
+			<ul>
+				<li>
+					El algoritmo que se ha usado para firmar el token.
+				</li>
+				<li>
+					El tipo de token. Que es "JWT".
+				</li>
+			</ul>
+			<pre class="language-json highlight">
+<code>{
+    "typ": "JWT",
+    "alg": "RS256",
+}
+				</code>
+</pre>
+			<h3 id="payload">
+				Payload
+			</h3>
+			<p>
+				El cuerpo del mensaje está compuesto por las <em>Claims
+				</em> que se trasmiten. Existen tres tipos:
+			</p>
+			<ul>
+				<li>
+					<em>
+						<a href="https://tools.ietf.org/html/rfc7519#section-4.1">
+							Registered Claim Names
+						</a>
+					</em>: que son datos acerca del registro.
+					<ul>
+						<li>
+							"iss": identifica al emisor del <em>token
+							</em>.
+						</li>
+						<li>
+							"sub": es el asunto, que coincide con el identificador la persona que se identifica.
+						</li>
+						<li>
+							"aud": la audiencia para la que se ha emitido.
+						</li>
+						<li>
+							"exp": la hora de expiración, a partir de la cual, el <em>token
+							</em> no será válido.
+						</li>
+						<li>
+							"nbf": la hora hasta la que no será aceptado un token (su omisión indica 0).
+						</li>
+						<li>
+							"iat": la hora a la que fue emitido.
+						</li>
+						<li>
+							"jti": el identificador del <em>token
+							</em>.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<em>
+						<a href="https://tools.ietf.org/html/rfc7519#section-4.2">
+							Public Claim Names
+						</a>
+					</em>: son valores personalizados, pero públicos. Pueden estar representados por una URL o por un nombre. Y para evitar colisiones, se recomienda registrarlos en <a href="https://www.iana.org/assignments/jwt/jwt.xhtml">IANA JSON Web Token Registry
+					</a> (por ejemplo "email", "given_name", ...).
+				</li>
+				<li>
+					<em>
+						<a href="https://tools.ietf.org/html/rfc7519#section-4.3">
+							Private Claim Names
+						</a>
+					</em>: Esto son campos que se acuerdan compartir entre las partes, diferentes de los públicos.
+				</li>
+			</ul>
+			<pre class="language-json highlight">
+<code>{
+    "aud": "https://mycompany.com/mi-app",
+    "iss": "https://sts.windows.net/common/",
+    "sub": "asdasd34asf2332r23fea",
+    "iat": 1552212046,
+    "nbf": 1552212046,
+    "exp": 1552215946,
+    "family_name": "Pil",
+    "given_name": "Paco",
+    "ipaddr": "10.0.0.1",
+    "name": "Paco Pil"
+}
+				</code>
+</pre>
+			<h3 id="firma">
+				Firma
+			</h3>
+			<p>
+				La firma se realiza usando una clave privada digital. Es un proceso bastante simple, si por ejemplo elegimos com algoritmo RSA256:
+			</p>
+			<pre class="language-js highlight">
+<code>signature = RSA256(
+    encodeURI(base64(header))
+    + "." +
+    encodeURI(base64(payload)),
+    private_key
+)
+				</code>
+</pre>
+			<h3 id="el-token-completo">
+				El <em>token
+				</em> completo
+			</h3>
+			<p>
+				Para ponerlo todo junto usaremos el mismo formato que el firmado, añadiendo la firma:
+			</p>
+			<pre class="language-js highlight">
+<code>header = { ... }
+payload = { ... }
+content = encodeURI(base64(header)) + "."  + encodeURI(base64(payload))
+signature = RSA256(content, private_key)
+JWT = content + "." + encodeURI(signature)
+				</code>
+</pre>
+			<h2 id="validando-jwt">
+				Validando JWT
+			</h2>
+			<p>
+				A la hora de validar vamos a usar como ejemplo un <em>JWT
+				</em> emitido por un Azure Active Directory. Para ello lo primero que tendremos que hacer es validar la cabecera de la petición HTTP. Comprobaremos que tiene una cabecera llamada "Authorization" y un valor que puede ser dividido en dos, separándolo por un espacio vacío. El primero de esos valores deberá ser "Bearer" y el segundo nuestro <em>token
+				</em>.
+			</p>
+			<p>
+				Después deberemos saber de dónde recuperar las claves públicas para comprobar la firma. Esto se puede hacer preguntando a la configuración de openid connect, que encontraremos en:
+			</p>
+			<pre>
+				<code>
+					https://login.windows.net/[nuestro_tenant_id]/.well-known/openid-configuration
+
+				</code></pre>
+			<p>
+				Si desconocemos cual es el tenantId que estamos usando, lo podemos leer (en el caso de Azure Active Directory) del propio <em>token
+				</em>. Se guarda en una propiedad llamada "tid". Por lo que, si cogemos el cuerpo del token, lo convertimos a un formato JSON y buscamos esta propiedad ya tenemos el tenantId. Ahora solo tenemos que realizar esa petición y de entre los diferentes datos que nos envía buscar un campo llamado "jwks_uri". En esa dirección web encontraremos las claves públicas para comprobar la firma de nuestro token.
+			</p>
+			<p>
+				La respuesta de esta última consulta, tendremos que mirar en la propiedad "keys" y dentro de los objetos que contiene esta propiedad, las claves se almacenan en formato de <code>string
+				</code> en la propiedad "x5c". Ahora bastaría con coger estas cadenas que vienen en base 64 y convertirlas a un formato de clave conocido por nuestro sistema. Generalmente se tratará de un certificado con solo una clave pública.
+			</p>
+			<p>
+				Por último, utilizaremos las librerías más conocidas para que valide nuestro JWT usando los certficados que hemos creado.
+			</p>
+			<p>
+				Ahora vamos a ver 3 escenarios en donde resolverlo: TypeScript, .Net Core y Asp.Net Core.
+			</p>
+			<h3 id="typescript">
+				TypeScript
+			</h3>
+			<p>
+				Para TypeScript vamos a usar un paquete <em>npm
+				</em> llamado <code>jsonwebtoken
+				</code>, que nos ayudará a tratar con <em>JWTs
+				</em>. La idea es recoger las claves públicas y usar este paquete para que valide si es un <em>token
+				</em> correcto o no:
+			</p>
+			<pre class="language-ts highlight">
+<code>import * as jsonwebtoken from 'jsonwebtoken';
+import axios from 'axios';
+
+export class JwtAadValidator {
+    constructor(private readonly jwt: string){
+    }
+
+    public get tenantId(): string {
+        return jsonwebtoken.decode(this.jwt)["tid"] as string;
+    };
+
+    public async verify(options?: any): Promise
+					<boolean>
+						{
+        options = options|| {};
+        options.algorithms = ['RS256'];
+        options.issuer = 'https://sts.windows.net/' + this.tenantId + '/';
+
+        const certificates = await this.requestSigningCertificates();
+        let lastError = null;
+        for (let i = 0; i < certificates.length; i++) {
+            try {
+                jsonwebtoken.verify(this.jwt, certificates[i], options);
+                return true;
+            } catch(error) {
+                lastError = error;
+                if (error.message !== 'invalid signature') {
+                    throw lastError;
+                }
+            }
+        }
+
+        throw lastError;
+    }
+
+    private async requestCertificateUrl(): Promise
+						<string>
+							{
+        const url = 'https://login.windows.net/' + this.tenantId + '/.well-known/openid-configuration';
+        const result = await axios.get(url);
+        return result.data.jwks_uri as string;
+    }
+
+    private async requestSigningCertificates(): Promise
+							<string []>
+								{
+        const url = await this.requestCertificateUrl();
+        const result = await axios.get(url);
+        const certificates: string[] = [];
+        result.data.keys.forEach(publicKeys => {
+            publicKeys.x5c.forEach(certificate => {
+                certificates.push(this.convertToCertificate(certificate));
+            });
+        });
+        return certificates;
+    }
+
+    private convertToCertificate(cert: string): string {
+        const beginCert = "-----BEGIN CERTIFICATE-----";
+        const endCert = "-----END CERTIFICATE-----";
+
+        let result = beginCert;
+        while (cert.length > 0) {
+            if (cert.length > 64) {
+                result += "\n" + cert.substring(0, 64);
+                cert = cert.substring(64, cert.length);
+            }
+            else {
+                result += "\n" + cert;
+                cert = "";
+            }
+        }
+
+        if (result[result.length ] != "\n") {
+            result += "\n";
+        }
+
+        result += endCert + "\n";
+        return result;
+    }
+}
+							</string>
+						</string></boolean>
+				</code>
+</pre>
+			<h3 id="net-core">
+				.Net Core
+			</h3>
+			<p>
+				Cuando estamos usando la plataforma .Net podemos generar un código semejante al que hicimos en TypeScript, pero en este caso vamos a usar los artefactos que nos proporciona la plataforma.
+			</p>
+			<p>
+				En este caso, las claves públicas hay que convertirlas en certificados X509 primero. Y la verificación del <em>token
+				</em> se realiza usando un artefacto del paquete <code>System.IdentityModel.Tokens.Jwt
+				</code> llamado <code>JwtSecurityTokenHandler
+				</code>. Este objeto tiene un comportamiento bastante simple: se le pasa un <em>token
+				</em> y unos parámetros, y valida.
+			</p>
+			<pre class="language-csharp highlight">
+<code>using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+
+namespace Security
+{
+    public class JwtAadValidator
+    {
+        private readonly string _jwt;
+
+        public JwtAadValidator(string token)
+        {
+            _jwt = token;
+        }
+
+        public string TenantId
+        {
+            get
+            {
+                return new JwtSecurityToken(_jwt).Claims.FirstOrDefault(x => x.Type == "tid")?.Value;
+            }
+        }
+
+        public async Task
+					<bool>
+						Verify()
+        {
+            var validationParameter = new TokenValidationParameters()
+            {
+                RequireSignedTokens = true,
+                ValidateAudience = false, //¡ojo! para ser seguro se debe validar la audiencia
+                ValidIssuer = $"https://sts.windows.net/{TenantId}/",
+                ValidateIssuer = true,
+                ValidateIssuerSigningKey = true,
+                ValidateLifetime = true,
+                IssuerSigningKeys = await RequestSigningCertificates()
+            };
+
+            try
+            {
+                var handler = new JwtSecurityTokenHandler();
+                handler.ValidateToken(_jwt, validationParameter, out var token);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private async Task
+						<string>
+							RequestCertificateUrl()
+        {
+            var url = $"https://login.windows.net/{TenantId}/.well-known/openid-configuration";
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync(url);
+                var data = await response.Content.ReadAsStringAsync();
+                var json = JsonConvert.DeserializeObject
+							<jobject>
+								(data);
+                return json["jwks_uri"].Value
+								<string>
+									();
+            }
+        }
+
+        private async Task
+									<ienumerable <securitykey>
+										> RequestSigningCertificates()
+        {
+            var url = await RequestCertificateUrl();
+            var result = new List
+										<securitykey>
+											();
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync(url);
+                var data = await response.Content.ReadAsStringAsync();
+                var json = JsonConvert.DeserializeObject
+											<jobject>
+												(data);
+                json["keys"].Values
+												<jobject>
+													().ToList().ForEach(key =>
+                {
+                    key["x5c"].Values
+													<string>
+														().ToList().ForEach(cert =>
+                    {
+                        result.Add(ConvertToCertificate(cert));
+                    });
+                });
+            }
+
+            return result;
+        }
+
+        private SecurityKey ConvertToCertificate(string cert)
+        {
+            var c = new X509Certificate2(Convert.FromBase64String(cert));
+            return new X509SecurityKey(c);
+        }
+    }
+}
+													</string>
+												</jobject>
+											</jobject>
+										</securitykey>
+									</ienumerable>
+								</string>
+							</jobject>
+						</string></bool>
+				</code>
+</pre>
+			<h3 id="asp.net-core">
+				Asp.Net Core
+			</h3>
+			<p>
+				Este es el escenario más simple, ya que existe un <em>middleware
+				</em> que podemos utilizar para autenticar JWT. Así que solo tendremos que modificar el <code>Startup.cs
+				</code> para que se parezca al siguiente:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Startup
+{
+    private const key = "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING";
+
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+        services.AddAuthentication(x =>
+        {
+            x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(x =>
+        {
+            x.RequireHttpsMetadata = false;
+            x.SaveToken = true;
+            x.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,  //¡ojo! para ser seguro se debe validar el issuew
+                ValidateAudience = false //¡ojo! para ser seguro se debe validar la audiencia
+            };
+        });
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAuthentication();
+        app.UseMvc();
+    }
+}
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Evidentemente, los ejemplos están incompletos: no se usan cachés, no se validan campos importantes como la audiencia y en general no tratamos identidades, solo el <em>token
+				</em>. Pero hemos visto a fondo cómo funciona el mundo de la autenticación y autorización con OAuth 2.0 para nuestras APIs. Además, hemos demostrado los principios de cómo realizar estas autenticación+autorización nosotros mismos o cómo funcionan internamente otros sistemas que la realizan por nosotros.
+			</p>
+			<p>
+				Y aunque ningún sistema es completamente seguro, siempre está bien conocer su funcionamiento interno para ser capaces de prevenir ataques y fallos de seguridad.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Autenticando una API con JWT&url=https://www.developerro.com/2019/03/12/jwt-api-authentication" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/03/12/jwt-api-authentication" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/03/12/jwt-api-authentication" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/03/12/jwt-api-authentication" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/03/19/oauth-authentication-grant-types">
+						OAuth 2.0 Grant Types
+					</a> <small>19 mar. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/04/22/unit-testing-tips">
+						Unit testing tips
+					</a> <small>22 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/09/n-texture-chocolate-cake-architecture">
+						N-Texture Chocolate Cake Architecture
+					</a> <small>09 abr. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

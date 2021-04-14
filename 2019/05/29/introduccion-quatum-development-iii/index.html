@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Introducción a Quatum Development (iii) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="S&#233; que ten&#233;is miedo. Tem&#233;is los qubits. Tem&#233;is el cambio. Yo no conozco el futuro. No he venido para deciros c&#243;mo acabar&#225; todo esto. Al contrario, he venido ..." />
+		<meta property="og:title" content="Introducción a Quatum Development (iii)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/engineering3.jpg" />
+		<meta property="og:description" content="Sé que tenéis miedo. Teméis los qubits. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido ..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-05-29 08:01:23Z" />
+		<meta property="article:published_time" content="2019-05-29 08:01:23Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Introducción a Quatum Development (iii)" />
+		<meta name="twitter:description" content="Sé que tenéis miedo. Teméis los qubits. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido ..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/engineering3.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" />
+		<meta name="description" content="Sé que tenéis miedo. Teméis los qubits. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido ..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/engineering3.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Introducción a Quatum Development (iii)
+			</h1><small>29 may. 2019 · 10 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Sé que tenéis miedo. Teméis los <em>qubits
+				</em>. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido a deciros cómo va a comenzar. Voy a terminar de escribir este artículo. Voy a enseñarles a todos lo que vosotros no queréis que vean. Les enseñaré un mundo sin vosotros. Un mundo sin <em>bits
+				</em> y sin problemas de calor en los transistores, sin limites ni fronteras. Un mundo donde todos los estados sean posibles. Lo que hagáis después, es una decisión que dejo en vuestras manos.
+				<!--break-->
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-meme.jpg" alt="We need qubits, lots of qubits (meme)" />
+			</p>
+			<p>
+				En artículos anteriores (<a href="/2019/05/10/introduccion-quatum-development">i
+				</a> y <a href="/2019/05/23/introduccion-quatum-development-ii">ii
+				</a>) ya introdujimos la computación cuántica, el <a href="/2019/05/10/introduccion-quatum-development/#microsoft-quantum-development-kit">Microsoft Quantum Development Kit
+				</a>, los <em>qubits
+				</em> de forma <a href="/2019/05/10/introduccion-quatum-development/#qubit">básica
+				</a> y algo <a href="/2019/05/23/introduccion-quatum-development-ii/#qubit">más avanzada
+				</a>, además de varias operaciones y puertas lógicas de este nuevo paradigma.
+			</p>
+			<p>
+				Y como lo prometido es deuda, hoy vamos a hablar de entrelazamiento y teleportación cuánticos:
+			</p>
+			<h2 id="entrelazamiento">
+				Entrelazamiento
+			</h2>
+			<p>
+				El entrelazamiento cuántico es algo más abstracto (si cabe ya) de explicar. Quizá lo más sencillo es verlo con un ejemplo:
+			</p>
+			<p>
+				Imaginad que tenemos dos qubits representados de la siguiente forma:
+			</p>
+			<p>
+				<code>
+					a|00> + b|01> + c|10> + d|11>
+				</code>
+			</p>
+			<p>
+				Donde: <code>a
+				</code> y <code>d
+				</code> valen uno partido de la raíz cuadrada de dos y <code>b
+				</code> y <code>c
+				</code> valen <code>0
+				</code>:
+			</p>
+			<p>
+				<code>
+					1/sqrt(2)|00> + 0|01> + 0|10> + 1/sqrt(2)|11> = (1/sqrt(2))(|00> + |11>)
+				</code>
+			</p>
+			<p>
+				Esto quiere decir que solo tenemos dos estados posibles con un 50% de posibilidades de que ocurra <code>00
+				</code> o 50% de <code>11
+				</code> mientras que no es posible que sea <code>01
+				</code> ni <code>10
+				</code>.
+			</p>
+			<p>
+				Como ya vimos en <a href="/2019/05/10/introduccion-quatum-development/#m">otros artículos
+				</a>, en el momento en el que realizo una medida de un <em>qubit
+				</em> este colapsa a ese estado. Una consecuencia del principio de incertidumbre.
+			</p>
+			<p>
+				Entonces si midiéramos el valor del primer <em>qubit
+				</em> y este diera como resultado <code>0
+				</code>, esto significaría que el segundo <em>qubit
+				</em> colapsaría también pasando a valer <code>0
+				</code>.
+			</p>
+			<p>
+				Podríamos decir que un estado de entrelazamiento es un estado en el que tener un valor en un <em>qubit
+				</em> implica otro valor en otro <em>qubit
+				</em> diferente.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-meme2.gif" alt="Me explota la cabeza (meme)" />
+			</p>
+			<p>
+				A estos estados de entrelazamiento completo se les conoce como <a href="https://en.wikipedia.org/wiki/Bell_state">estados de Bell
+				</a>. Y para este ejemplo en concréto, se puede conseguir aplicando una fórmula con operaciones que ya hemos visto:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-bell-state.png" alt="CNOT de H" />
+			</p>
+			<p>
+				Esta misma formula escrita en Q# podría ser:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation Entanglement(q1: Qubit, q2: Qubit): Unit
+{
+    H(q1);
+    CNOT(q1, q2);
+}
+				</code>
+</pre>
+			<p>
+				Donde aplicamos una puerta <code>H
+				</code> al primer <em>qubit
+				</em> y acto seguido una puerta <code>CNOT
+				</code> usando como objetivo el segundo <em>qubit
+				</em>. El resultado de estas dos operaciones es un estado de entrelazamiento semejante al usado en el ejemplo anterior: 50% <code>00
+				</code> y 50% <code>11
+				</code>.
+			</p>
+			<p>
+				Ahora podríamos escribir el código de ejemplo de ejecución de la operación de entrelazar:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation Set(q: Qubit, value: Result): Unit
+{
+    let current = M(q);
+    if (current != value)
+    {
+        X(q);
+    }
+}
+
+operation MakeEntanglement(initial: Result): (Result, Result)
+{
+    using (qubits = Qubit[2])
+    {
+        Set(qubits[0], initial);
+        Set(qubits[1], Zero);
+
+        Entanglement(qubits[0], qubits[1]);
+
+        let res0 = M(qubits[0]);
+        let res1 = M(qubits[1]);
+
+        ResetAll(qubits);
+
+        return (res0, res1);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Aquí simplemente asignamos un valor inicial a un par de <em>qubits
+				</em>, realizamos el entrelazado y los medimos.
+			</p>
+			<p>
+				En C# podríamos realizar una prueba con este código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>using (var qsim = new QuantumSimulator())
+{
+    var initials = new Result[] { Result.Zero, Result.One };
+    foreach (var initial in initials)
+    {
+        var res = MakeEntanglement.Run(qsim, initial).Result;
+        var (res1, res2) = res;
+        Console.WriteLine($"{res1} {res2}");
+    }
+}
+				</code>
+</pre>
+			<p>
+				Que al ejecutar podría tener una salida semejante a:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet run
+Zero Zero
+One One
+				</code>
+</pre>
+			<p>
+				Aunque podría tener diferentes combinaciones (por eso del 50% de posibilidades de uno y otro) siempre que se repitan el valor primero y segundo (por eso del entrelazamiento cuántico).
+			</p>
+			<h2 id="teleportacion">
+				Teleportación
+			</h2>
+			<p>
+				La <a href="https://es.wikipedia.org/wiki/Teleportaci%C3%B3n_cu%C3%A1ntica">teleportación cuántica
+				</a> es algo parecido a lo que piensas, pero no es exactamente como piensas.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-meme3.jpg" alt="¿Esquivar balas? Puedes teletransportarte (meme)" />
+			</p>
+			<p>
+				La idea es conseguir enviar el estado de un <em>qubit
+				</em> <code>a
+				</code> a otro <code>b
+				</code> que no se encuentra en el mismo lugar.
+			</p>
+			<p>
+				Para ello podemos usar el entrelazamiento cuántico como canal de comunicación:
+			</p>
+			<p>
+				Imaginemos que tenemos dos partículas entrelazadas como en el ejemplo anterior. Una la coges tu y la otra la cojo yo. Cada uno nos vamos a nuestra casa. En la comodidad del hogar decides mirar el valor de tu partícula, y en ese momento colapsas el valor de ambas. De forma que si la tuya vale <code>1
+				</code> ya sabes que la mía vale <code>1
+				</code>.
+			</p>
+			<p>
+				Ahora, si tú copias el valor de otra partícula no entrelazada con la mía, en la que sí que está entrelazada, entonces podríamos decir que has pasado el estado de una tercera partícula hasta mi.
+			</p>
+			<p>
+				La realidad detrás de este experimento es que no se ha transmitido ninguna información. Esta información ya la teníamos tanto tú como yo. Y si yo llego a mirar primero el valor de mi partícula, hubiera obtenido el mismo resultado. Es lo que se conoce como <a href="https://es.wikipedia.org/wiki/Paradoja_EPR">la paradoja EPR
+				</a>, algo que escapa totalmente al ámbito de este artículo.
+			</p>
+			<p>
+				Podríamos aclarar (o complicar, no lo tengo claro) todo un poco más, usando un ejemplo con punteros de C++:
+			</p>
+			<pre class="language-cpp highlight">
+<code>// esta es mi partícula
+int mine = 1;
+// esta es la tuya
+int *yours = NULL;
+// y este el valor que quieres teleportar
+int other = 0;
+
+// nos entrelazamos
+yours = &mine;
+
+// ahora cada uno nos iríamos a nuestra casa
+
+// desde tu casa transformas el valor de tu partícula
+*yours = other;
+
+// el resultado final es que tanto tu partícula como la mia son 0
+cout << "Mine: " << mine << endl;
+cout << "Yours: " << *yours << endl;
+				</code>
+</pre>
+			<p>
+				Realizar esta operación en Q# es algo más complejo, pero no mucho. Si echamos un vistazo a <a href="https://es.wikipedia.org/wiki/Teleportaci%C3%B3n_cu%C3%A1ntica">la página de la wikipedia sobre el tema
+				</a>, nos propone unos pasos:
+			</p>
+			<ul>
+				<li>
+					Puerta CNOT
+				</li>
+				<li>
+					Operador de Hadamard
+				</li>
+				<li>
+					Medida y transmisión
+					<ul>
+						<li>
+							Finalmente se debería aplicar un operador <code>Z
+							</code> o <code>X
+							</code> en el valor del <em>qubit
+							</em> <code>b
+							</code>, en dependencia de los valores medidos, para tener el valor original:
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<pre class="language-ts highlight">
+<code>operation Teleport (source : Qubit, target : Qubit) : Unit
+{
+    // creamos un canal de transmisión
+    using (channel = Qubit())
+    {
+        // lo entrelazamos con el qubit objetivo
+        Entanglement(channel, target);
+
+        // puerta CNOT
+        CNOT(source, channel);
+
+        // operador de Hadamard
+        H(source);
+
+        // medida
+        let data1 = M(source);
+        let data2 = M(channel);
+
+        // transformación
+        if (data1 == One) { Z(target); }
+        if (data2 == One) { X(target); }
+
+        // dejar los qubits a Zero
+        Reset(channel);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Para llamar a la teleportación usaríamos la siguiente operación de Q#:
+			</p>
+			<pre class="language-ts highlight">
+<code>operation MakeTeleport(message : Result) : Result
+{
+    using ((source, target) = (Qubit(), Qubit()))
+    {
+        Set(source, message);
+
+        Teleport(source, target);
+
+        let measurement = M(target);
+        ResetAll([source, target]);
+
+        return measurement;
+    }
+}
+				</code>
+</pre>
+			<p>
+				Donde creamos dos <em>qubits
+				</em>. En el primero guardamos el valor del mensaje que queremos enviar. Realizamos la teleportación y devolvemos el valor del destino.
+			</p>
+			<p>
+				El código en C# para probarlo sería algo como esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>using (var qsim = new QuantumSimulator())
+{
+    var initials = new Result[] { Result.Zero, Result.One };
+    foreach (var initial in initials)
+    {
+        var res = MakeTeleport.Run(qsim, initial).Result;
+        Console.WriteLine($"{initial} = {res}");
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y la salida que obtendríamos al ejecutar vendría a confirmar que se ha transmitido la información:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet run
+Zero = Zero
+One = One
+				</code>
+</pre>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-meme4.jpg" alt="Goku: ¿teletransporte? Esto es teletransporte (meme)" />
+			</p>
+			<p>
+				Como curiosidad, unos científicos chinos tienen el <a href="http://www.rtve.es/noticias/20170615/dos-particulas-separadas-1200-kilometros-se-entrelazan-forma-cuantica/1565524.shtml">record de distancia de teleportación cuántica
+				</a>, llegando a 1200km de separación entre dos partículas entrelazadas ¡Ahí es nada!
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Creo que con esta tercera parte he conseguido resarcirme del fiasco de la anterior. Aquí se aplican prácticamente todos los conceptos que hemos ido explicando en los artículos anteriores y es cuando empezamos a ver dos capacidades muy potentes de la programación cuántica.
+			</p>
+			<p>
+				Por ejemplo, el uso de estas técnicas es fundamental en la <a href="https://es.wikipedia.org/wiki/Criptograf%C3%ADa_cu%C3%A1ntica">criptografía cuántica
+				</a>: un tipo de encriptación de información mucho más seguro de los usados hoy en día. Y por extensión sería muy interesante el uso de ambas técnicas para conseguir una comunicación muy rápida y segura.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/05/quantum3-meme5.jpg" alt="Quantum entanglement, is all about Aliens (meme)" />
+			</p>
+			<p>
+				Eso sí, todo esto que comentamos, hoy en día, sería muy difícil de aplicar en el mundo real...
+			</p>
+			<p>
+				No te digo nada y te lo digo todo. Así a la vez.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Introducción a Quatum Development (iii)&url=https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/07/09/introduccion-programacion-cuantica">
+						Introducción a la programación cuántica v2
+					</a> <small>09 jul. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/04/introduccion-programacion-cuantica">
+						Introducción a la programación cuántica
+					</a> <small>04 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/23/introduccion-quatum-development-ii">
+						Introducción a Quatum Development (ii)
+					</a> <small>23 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/10/introduccion-quatum-development">
+						Introducción a Quatum Development (i)
+					</a> <small>10 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

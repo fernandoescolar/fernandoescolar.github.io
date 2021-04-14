@@ -1,0 +1,708 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>developerro</title>
+ <link href="https://www.developerro.com/atom.xml" rel="self"/>
+ <link href="https://www.developerro.com/"/>
+ <updated></updated>
+ <id>https://www.developerro.com</id>
+ <author>
+   <name>Fernando Escolar</name>
+   <email>fer.escolar@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Azure Functions con .NET 5</title>
+   <link href="https://www.developerro.com/2021/03/24/azure-functions-net-5"/>
+   <updated>2021-03-24 02:21:02Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el <a href="https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916">anuncio</a> dentro de un roadmap de las próximas versiones de <em>.Net</em>, las <em>dotnet Isolated Functions</em> pasan a RTM</content>
+ </entry>
+ 
+ <entry>
+   <title>EF Core vs. Records</title>
+   <link href="https://www.developerro.com/2021/03/10/efcore-vs-records"/>
+   <updated>2021-03-10 03:21:02Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>No cabe duda de que los <em>tipos registro</em> son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo <em>.Net</em></content>
+ </entry>
+ 
+ <entry>
+   <title>ChorraTip: rutas windows en git bash</title>
+   <link href="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command"/>
+   <updated>2021-03-03 13:20:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto no funciona con el <strong>bash</strong> de <em>Git for Windows</em>. Así que he decidido hacer que sí que funcione</content>
+ </entry>
+ 
+ <entry>
+   <title>Raiders of the lost leak</title>
+   <link href="https://www.developerro.com/video/2021/02/27/raiders-od-the-lost-leak"/>
+   <updated>2021-02-27 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Esto que has terminado la primera fase de tu proyecto. Subes la aplicación a azure. Lo pones en producción. Empiezan a llegar visitas. Todo genial. Se empieza a caer la aplicación. Aleatoriamente. Miras la herramienta de monitoring y tienes la memoria a tope. Miras Application Insights y tienes un montón de excepciones de tipo "OutOfMemoryException". Ay yai yai! Tienes un memory leak</content>
+ </entry>
+ 
+ <entry>
+   <title>.Net 5 Just Talking</title>
+   <link href="https://www.developerro.com/video/2020/12/09/net-5-just-talking"/>
+   <updated>2020-12-09 21:02:25Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Al fin ha llegó el día de la publicación de <strong>.Net 5 - <em>A unified platform</em></strong>. Y todo el mundo tiene dudas: ¿Es tán unificada como decían? ¿Es fácil actualizar a esta nueva versión? ¿Cuando sacan la 5.1? ¿Al final mola tanto C# 9 como parecía? ¿Qué novedades trae todo esto? ¿Estamos ante un cambio de ciclo?</content>
+ </entry>
+ 
+ <entry>
+   <title>Personalización de Windows Terminal</title>
+   <link href="https://www.developerro.com/2020/11/18/custom-windows-terminal"/>
+   <updated>2020-11-18 01:06:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece <em>3|173</em>, es que eres <em>3|173</em>. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante</content>
+ </entry>
+ 
+ <entry>
+   <title>Workshop Azure 100M</title>
+   <link href="https://www.developerro.com/video/2020/10/19/workshop-azure"/>
+   <updated>2020-10-19 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Tengo una aplicación Web que podría calificarse en todo sentido como una web normal. Una WebApp que vive en un pacífico hosting en un data center empresarial, donde se ha desarrollado al igual que otras tantas aplicaciones. Pero ese día no fue para nada normal: nuestra aplicación debería subir a la nube y aguantar 100 millones de usuarios</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola</title>
+   <link href="https://www.developerro.com/video/2020/10/15/solid-menos-mola"/>
+   <updated>2020-10-15 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>He de reconocer que el trabajo de Uncle Bob (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios S.O.L.I.D. no son una excepción</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola (D)</title>
+   <link href="https://www.developerro.com/2020/10/14/solid-menos-mola-d"/>
+   <updated>2020-10-14 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La <em>D</em> de <em>SOLID</em> se refiere al principio de inversión de dependencia o <strong>DIP</strong> por sus siglas en inglés (<strong>D</strong>ependency <strong>I</strong>nversion <strong>P</strong>rinciple). Se puede resumir con que una clase debe depender de las abstracciones, no de las concreciones. Aunque <a href="https://twitter.com/unclebobmartin">Robert C. Martin</a> es mucho más específico y realiza una definición dividida en dos partes</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola (I)</title>
+   <link href="https://www.developerro.com/2020/10/06/solid-menos-mola-i"/>
+   <updated>2020-10-06 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La <em>I</em> de <em>SOLID</em> se refiere al principio de segregación de interfaz o <strong>ISP</strong> por sus siglas en inglés (<strong>I</strong>nterface <strong>S</strong>egregation  <strong>P</strong>rinciple). Se puede definir como que muchas interfaces específicas son mejores que una interfaz de propósito general. O como diría <a href="https://twitter.com/unclebobmartin">Robert C. Martin</a>, "los clientes no deben ser forzados a depender de interfaces que no utilizan"</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola (L)</title>
+   <link href="https://www.developerro.com/2020/09/30/solid-menos-mola-l"/>
+   <updated>2020-09-30 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La <em>L</em> de <em>SOLID</em> se refiere al principio de sustitución de Liskov o <strong>LSP</strong> por sus siglas en inglés (<strong>L</strong>iskov <strong>S</strong>ubstitution  <strong>P</strong>rinciple). Se puede definir como que cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas. Una definición muy compleja para un concepto mucho más simple. Pero con una historia algo truculenta detrás</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola (O)</title>
+   <link href="https://www.developerro.com/2020/09/23/solid-menos-mola-o"/>
+   <updated>2020-09-23 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La <em>O</em> de <em>SOLID</em> se refiere al principio de abierto/cerrado, <strong>OCP</strong> por sus siglas en inglés (<strong>O</strong>pen/<strong>C</strong>losed <strong>P</strong>rinciple). Se puede definir como que una clase debe estar abierta a la extensión y cerrada a la modificación. Fue acuñado por primera vez por <a href="https://twitter.com/Bertrand_Meyer">Bertrand Meyer</a>. Pero no fue hasta que <a href="https://twitter.com/unclebobmartin">Robert C. Martin</a> lo reformuló e introdujo dentro del acrónimo <em>SOLID</em>, que se popularizó</content>
+ </entry>
+ 
+ <entry>
+   <title>SOLID menos mola (S)</title>
+   <link href="https://www.developerro.com/2020/09/16/solid-menos-mola-s"/>
+   <updated>2020-09-16 02:16:54Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La <em>S</em> de <em>SOLID</em> se refiere al principio de responsabilidad única o <strong>SRP</strong> por sus siglas en inglés (<strong>S</strong>ingle <strong>R</strong>esponsibility <strong>P</strong>rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría <a href="https://twitter.com/unclebobmartin">Robert C. Martin</a>, "una clase debe tener solo una razón para cambiar"</content>
+ </entry>
+ 
+ <entry>
+   <title>The Hitchhiker's Guide to Azure WebApps</title>
+   <link href="https://www.developerro.com/video/2020/09/10/advanced-azure-webapps"/>
+   <updated>2020-09-10 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La grabación del evento de Twitch de <a href="https://twitter.com/CAT_zure">Catzure</a> junto con <a href="https://twitter.com/robertbemejo">Robert Bermejo</a>. En esta sesión os enseñamos algunos de esos truquillos que solemos utilizar para mantener nuestras aplicaciones con vida a pesar de que el mundo las quiera matar</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure WebApps Tips & Tricks</title>
+   <link href="https://www.developerro.com/2020/08/26/azure-webapps-tips-n-tricks"/>
+   <updated>2020-08-26 01:03:24Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p><em>Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y de cualquier cosa que no pueda ser programada, etiquetada o clasificada</em>.</content>
+ </entry>
+ 
+ <entry>
+   <title>Novedades de c# 9</title>
+   <link href="https://www.developerro.com/2020/08/19/csharp-9"/>
+   <updated>2020-08-19 01:22:31Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Este año 2020 está siendo como una montaña rusa. Y el mundo de las tecnologías de desarrollo de Microsoft no iba a ser diferente. En noviembre se espera la presentación de <strong>.Net 5 - <em>A unified platform</em></strong>. No, no es el título de una película de sábado por la tarde de antena 3. Es la nueva plataforma para gobernarlas a todas. Una plataforma para encontrarlas, una plataforma para atraerlas a todas y atarlas en las tinieblas.</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Summer Talks Community</title>
+   <link href="https://www.developerro.com/video/2020/07/31/azure-summer-talks"/>
+   <updated>2020-07-31 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Como cada año para estas fechas desde <a href="https://twitter.com/CAT_zure">Catzure</a> organizan una mesa redonda con los mejores expertos de Azure de España para conversar sobre el cloud, desarrollo y todo aquello que les aptezca. Y este año he tenido la suerte de ser uno de los invitados.</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a la programación cuántica v2</title>
+   <link href="https://www.developerro.com/video/2020/07/09/introduccion-programacion-cuantica"/>
+   <updated>2020-07-09 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?</content>
+ </entry>
+ 
+ <entry>
+   <title>Asp.Net core data protection</title>
+   <link href="https://www.developerro.com/2020/05/13/aspnet-core-data-protection"/>
+   <updated>2020-05-13 07:00:41Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Cuando encontré en <a href="https://stackoverflow.com/search?q=c%23+encrypt+data">stackoverflow</a> mi primer algoritmo para encriptar datos, fue como entrar por primera vez en Hogwarts, la escuela de magia y hechicería. No entendía muy bien que era eso, pero podía copiar el código y hacer lo mismo en mis aplicaciones</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure DevOps: El panel de expertos</title>
+   <link href="https://www.developerro.com/video/2020/04/24/gab-azure-devops"/>
+   <updated>2020-04-24 17:10:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>En esta sesión del Global Azure Bootcamp 2020 nuestros expertos van a repasar la actualidad del universo Azure DevOps y su ecosistema. Se abordan temas tales como Github, Ephimeral Agents, IaC, monitorización, MLOps y otras muchas cosas más</content>
+ </entry>
+ 
+ <entry>
+   <title>Unit testing tips</title>
+   <link href="https://www.developerro.com/2020/04/22/unit-testing-tips"/>
+   <updated>2020-04-22 09:15:41Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Cuando preguntas a la gente por unit tests, en mi experiencia, te puedes encontrar con tan solo un puñado de posibilidades: los que no saben qué son, los que dicen saber qué son y los que saben que son. Y si miramos más profundamente este último grupo nos encontraremos con: los que dicen usarlos cuando deben, los que dicen usarlos cuando pueden, los que dicen usarlos siempre y los que los usan cuando pueden</content>
+ </entry>
+ 
+ <entry>
+   <title>No comments...</title>
+   <link href="https://www.developerro.com/2020/04/11/no-comments"/>
+   <updated>2020-04-11 11:02:29Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Muchas gracias a todos por los comentarios que habéis ido dejando en este blog. Siempre me habéis animado a seguir escribiendo y de alguna manera, le habéis dado sentido a todo esto. Hoy admito mi derrota. Las redes sociales han ganado. Hoy comienza la era de sin comentarios</content>
+ </entry>
+ 
+ <entry>
+   <title>N-Texture Chocolate Cake Architecture</title>
+   <link href="https://www.developerro.com/video/2020/04/09/n-texture-chocolate-cake-architecture"/>
+   <updated>2020-04-09 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La arquitectura de "la tarta de chocolate de n-texturas", también conocida como "arquitectura tarta sacher" o, por su nombre más informal, "Vertical Slice"; es un modelo de desarrollo que ha venido a revolucionar el mundo de la arquitectura de software tal y como lo conocemos</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a la programación cuántica</title>
+   <link href="https://www.developerro.com/video/2020/04/04/introduccion-programacion-cuantica"/>
+   <updated>2020-04-04 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?</content>
+ </entry>
+ 
+ <entry>
+   <title>Github Actions vs. Azure Pipelines</title>
+   <link href="https://www.developerro.com/video/2020/01/25/github-actions-vs-azure-pipelines"/>
+   <updated>2020-01-25 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Analizaremos a fondo Github Actions y Azure Pipelines en busca de sus ventajas y sus puntos débiles. Será un combate a muerte entre estas dos tecnologías mellizas para gestionar nuestro CI/CD</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure hex-char-counter tutorial</title>
+   <link href="https://www.developerro.com/2019/10/01/azure-hex-char-counter"/>
+   <updated>2019-10-01 13:51:23Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El objetivo era conseguir el tamaño de una cadena de texto en formato hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?</content>
+ </entry>
+ 
+ <entry>
+   <title>Terraform con Azure</title>
+   <link href="https://www.developerro.com/2019/07/19/terraform-azure"/>
+   <updated>2019-07-19 07:51:23Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La terraformación es una serie de técnicas que, aplicadas en conjunto, conseguirían dotar a un planeta o asteroide inerte, de una serie de características semejantes a las de la tierra. De esta forma se conseguiría un planeta habitable. Y aunque pueda parecer pomposo (que lo es), Terraform va de eso mismo, pero con el <em>cloud</em>.</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a Quatum Development (iii)</title>
+   <link href="https://www.developerro.com/2019/05/29/introduccion-quatum-development-iii"/>
+   <updated>2019-05-29 08:01:23Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Sé que tenéis miedo. Teméis los <em>qubits</em>. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido a deciros cómo va a comenzar. Voy a terminar de escribir este artículo. Voy a enseñarles a todos lo que vosotros no queréis que vean. Les enseñaré un mundo sin vosotros. Un mundo sin <em>bits</em> y sin problemas de calor en los transistores, sin limites ni fronteras. Un mundo donde todos los estados sean posibles. Lo que hagáis después, es una decisión que dejo en vuestras manos.</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a Quatum Development (ii)</title>
+   <link href="https://www.developerro.com/2019/05/23/introduccion-quatum-development-ii"/>
+   <updated>2019-05-23 07:37:32Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Te explicaré por qué estás aquí. Estás aquí porque sabes algo, aunque lo que sabes no lo puedes explicar, pero lo percibes. Ha sido así durante toda tu vida. Algo no funciona en la programación, no sabes lo que es, pero ahí está, como una astilla clavada en tu mente. Y te está enloqueciendo. Esa sensación te ha traído hasta aquí ¿Sabes de lo que estoy hablando? ¿Te gustaría saber qué es la programación cuántica?</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a Quatum Development (i)</title>
+   <link href="https://www.developerro.com/2019/05/10/introduccion-quatum-development"/>
+   <updated>2019-05-10 07:51:23Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El mundo de la programación tal y cómo lo conocemos tiene fecha de caducidad. Por muchos materiales nuevos, aleaciones especiales o mejoras tecnológicas que tengamos, un microprocesador tiene un límite de tamaño a partir del cual deja de ser eficiente. Cada día estamos más cerca de ese límite y es aquí donde aparece la computación cuántica. Prepárate para cambiar de paradigma, para cambiar <em>bits</em> por <em>qubits</em></content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Functions: custom triggers</title>
+   <link href="https://www.developerro.com/2019/05/02/azure-functions-custom-triggers"/>
+   <updated>2019-05-02 07:59:43Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear <em>triggers</em> personalizados de <em>Azure Functions</em>. Y antes ya tuvimos los de los bindings de <a href="/2019/04/15/azure-functions-custom-out-bindings/"><em>out</em></a> y de <a href="/2019/04/23/azure-functions-custom-in-bindings/"><em>in</em></a>. Tenéis que entender que tengo otra vida más allá de este blog. Además, creo que al final queda mucho mejor separado</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Functions: custom in bindings</title>
+   <link href="https://www.developerro.com/2019/04/23/azure-functions-custom-in-bindings"/>
+   <updated>2019-04-23 07:44:11Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El otro día veíamos <a href="/2019/04/15/azure-functions-custom-out-bindings">cómo crear <em>custom out bindings</em> para <em>Azure Functions</em></a>, así que hoy me he visto obligado a tratar los <em>custom in bindings</em> o de entrada. Para ello utilizaremos de ejemplo la creación de un <em>binding</em> que lea un valor (secret) del servicio Azure Key Vault</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Functions: custom out bindings</title>
+   <link href="https://www.developerro.com/2019/04/15/azure-functions-custom-out-bindings"/>
+   <updated>2019-04-15 07:59:45Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La gran ventaja en de Azure Functions frente a otra tecnología es que escribes muy poco código, ya que solo debes gestionar como fluyen los datos usando unos <em>bindings</em> de entrada y salida. El propio SDK nos aporta un buen conjunto por defecto de <em>bindings</em> que nos ayudarán a tratar con peticiones HTTP, Azure Storage Account (Blob, Queue y Table), Service Bus o Cosmos DB. Pero ¿y si quiero integrarme con otro sistema no soportado?</content>
+ </entry>
+ 
+ <entry>
+   <title> Microsoft Graph: Webhooks</title>
+   <link href="https://www.developerro.com/2019/04/09/microsoft-graph-webhooks"/>
+   <updated>2019-04-09 07:58:12Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Es el día en el que salen a la venta las entradas de la <a href="https://www.comic-con.org/">Comic-Con</a>, o cualquier evento grande, de semejante calado, como el Global Azure Bootcamp (en <a href="https://azurebootcamp.es/">Madrid</a>, <a href="https://catazurebootcamp.azurewebsites.net/">Barcelona</a> o incluso en Seattle). Cuando publicas un nuevo <em>post</em> en tu blog y todavía no se ha actualizado. Si estás usando autenticación de doble factor y aun no ha llegado el email de verificación. El caso es que toda situación semejante, acaba igual: aporreando la tecla F5</content>
+ </entry>
+ 
+ <entry>
+   <title>Microsoft Graph</title>
+   <link href="https://www.developerro.com/2019/04/02/microsoft-graph"/>
+   <updated>2019-04-02 07:40:40Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al principio, solo se notan pequeños y casuales atisbos. Después de una gran aventura de autoconocimiento y superación personal, el protagonista consigue dominar este poder oculto y convertirse en un verdadero héroe</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Functions con docker</title>
+   <link href="https://www.developerro.com/2019/03/26/azure-functions-docker"/>
+   <updated>2019-03-26 07:35:02Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Docker y los containers son a la programación, lo que el rebozado y empanado a la cocina tradicional. Si bien añade un paso extra que ensucia y a veces se hace un poco difícil, después puedes transportar la comida con mucha facilidad, sin romperla, y además te resulta muy fácil de comer. Y no nos engañemos, está claro que a todo el mundo le gustan las croquetas</content>
+ </entry>
+ 
+ <entry>
+   <title>OAuth 2.0 Grant Types</title>
+   <link href="https://www.developerro.com/2019/03/19/oauth-authentication-grant-types"/>
+   <updated>2019-03-19 08:26:33Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types) permitidos por OAuth 2.0, como por ejemplo "password". Un, dos, tres, responda otra vez</content>
+ </entry>
+ 
+ <entry>
+   <title>Autenticando una API con JWT</title>
+   <link href="https://www.developerro.com/2019/03/12/jwt-api-authentication"/>
+   <updated>2019-03-12 05:26:33Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Uno de los grandes problemas de ser programador hoy en día es que, tenemos tantas librerías y tantas facilidades, que resulta muy sencillo ignorar el funcionamiento interno de las cosas que utilizamos. Supongo que el caso de la autenticación+autorización de una API, al ser un factor importante dentro de una aplicación, no será uno de estos casos. No obstante, y solo por prevenir, vamos a describirlo</content>
+ </entry>
+ 
+ <entry>
+   <title>Método Kanban con Azure DevOps (y 2)</title>
+   <link href="https://www.developerro.com/2019/03/05/azure-devops-kanban-ii"/>
+   <updated>2019-03-05 07:58:14Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Si ya tienes claro qué es el Método Kanban, pero no tienes del todo claro cómo aplicarlo en una metodología; si ya aplicas este método, pero te interesan las experiencias de otros equipos; o si por el contrario, tu objetivo en la vida es demostrarle a todo el mundo lo equivocado que está: te va a encantar lo que viene a continuación.</content>
+ </entry>
+ 
+ <entry>
+   <title>Método Kanban con Azure DevOps</title>
+   <link href="https://www.developerro.com/2019/02/26/azure-devops-kanban"/>
+   <updated>2019-02-26 06:35:21Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Reservar un trozo de pared, dividirlo en columnas con cinta aislante y ponerle post-its de colores; no es Kanban. A eso se le llama guarrear la oficina. Y la idea de este artículo es que aprendas a guarrear Azure DevOps y así puedas dejar las paredes limpias. Todos te lo agradecerán.</content>
+ </entry>
+ 
+ <entry>
+   <title>Novedades de c# 8</title>
+   <link href="https://www.developerro.com/2019/02/19/csharp-8"/>
+   <updated>2019-02-19 07:52:43Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>¡Qué fuerte! ¡Qué fuerte! ¡Qué fuerte! ¡Qué Visual Studio 2019 ya está aquí! Bueno, casi. Ahora mismo tenemos disponible la versión <em>Preview</em> 2.2. Promete ser la ostia de rápido. Tiene un montón de novedades para programar en <em>python</em>. Una nueva experiencia para tratar con <em>WorkItems</em> de <em>Azure DevOps</em>. Realmente tiene innumerables nuevas <em>features</em> a la medida del desarrollador moderno. Pero hoy, solo hay una de ellas que nos interese: C# 8.0.</content>
+ </entry>
+ 
+ <entry>
+   <title>Azure Functions con TypeScript</title>
+   <link href="https://www.developerro.com/2019/02/12/azure-functions-typescript"/>
+   <updated>2019-02-12 07:18:25Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos explicativos que su autor ha añadido, vais directamente al contenido de los <em>code snipets</em> y vais copiando y pegando... No os ha pasado que ignoráis la prosa que tanto tiempo ha costado escribir y solo leéis el código, porque ya os resulta bastante auto explicativo... </content>
+ </entry>
+ 
+ <entry>
+   <title>Historia de C#</title>
+   <link href="https://www.developerro.com/2019/02/05/historia-csharp"/>
+   <updated>2019-02-05 05:08:11Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta afirmación puede demostrarse hoy en día echando un vistazo a un medio al que todo el mundo tiene acceso: internet. Una plataforma donde todos podemos escribir <em>nuestra propia historia</em>. Así pues, al igual que cualquier otro ignorante de la red, os voy a dar mi versión de la historia de C#. Y además os aseguro que esta sí cuenta lo que sucedió de verdad de la buena.</content>
+ </entry>
+ 
+ <entry>
+   <title>Serverless API Rest</title>
+   <link href="https://www.developerro.com/2019/01/29/serverless-api-rest"/>
+   <updated>2019-01-29 08:59:42Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de ejecución rápida y que responde a eventos. Literalmente, se traduce como "sin servidor". Y aquí es donde empieza el conflicto. </content>
+ </entry>
+ 
+ <entry>
+   <title>IoT con MxChip (I)</title>
+   <link href="https://www.developerro.com/2019/01/21/iot-con-mxchip-i"/>
+   <updated>2019-01-21 14:02:53Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hoy empezamos una pequeña serie sobre IoT usando un dispositivo MxChip y la plataforma Azure. Nada como empezar el año escribiendo un nuevo artículo sobre una tecnología de la que nunca antes lo había hecho.</content>
+ </entry>
+ 
+ <entry>
+   <title>GAB18 - Por qué todo lo que subo a azure está mal</title>
+   <link href="https://www.developerro.com/video/2018/04/26/gab18-todo-subo-azure-esta-mal"/>
+   <updated>2018-04-26 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>"Azure es muy lento" o "Me voy a amazon" son solo un par de las frases que puedes oir cuando ayudas a alguien con las migración de su aplicación on-premises (que en la mayoría de los casos es del tipo on-my-laptop) a Microsoft Azure. Pero ¿Que hay detrás de este tipo de comentarios?</content>
+ </entry>
+ 
+ <entry>
+   <title>Por qué todo lo que subo a azure está mal</title>
+   <link href="https://www.developerro.com/2018/04/27/todo-subo-azure-esta-mal"/>
+   <updated>2017-04-27 09:06:12Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hoy he venido contaros mis experiencias ayudando a diferentes empresas en la subida de sus aplicaciones a azure, y concretamente a azure PaaS. Así que en realidad no son mis experiencias, son las de esas empresas. Y si soy totalmente sincero, no son sus experiencias, en realidad de lo que os voy a hablar es de sus quejas.</content>
+ </entry>
+ 
+ <entry>
+   <title>Zork (en Español) - Bot</title>
+   <link href="https://www.developerro.com/2017/02/20/zork-en-espanol"/>
+   <updated>2017-02-20 10:47:23Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><blockquote>
+<p>Corriendo, rodeé la casa hasta su parte trasera, donde encontré una ventana mal cerrada. La abrí y me colé. Como esperaba, había entrado por la cocina. En el centro de aquel espacio había una mesa de madera y sobre ella reposaba un saco marrón, alargado, y una botella de agua. Aun lado había una chimenea y una escalera que conducía al desván. Un distribuidor, situado a la izquierda, conducíaalsalón. Igual que en eljuego.</content>
+ </entry>
+ 
+ <entry>
+   <title>Duelo de espadas: el bot definitivo</title>
+   <link href="https://www.developerro.com/2017/02/15/duelo-espadas-bot-definitivo"/>
+   <updated>2017-02-16 09:08:03Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Los 90 fueron una década estupenda. En cuanto a videojuegos, quizá sea por la edad, pero creo que eran los mejores. Y aprovechando este momento melancólico decidí volver a jugar al Monkey Island. Una saga que como todos sabréis consta de dos partes. En el que teníamos duelos de espada/insultos delirantes. Pero algunas veces eran combates bastante complejos. Quizá la nueva tecnología me podría ayudar con esto. Dos horas más tarde, el proyecto terminado. He aquí el diario del pirata. Las notas de desarrollo del bot definitivo: El duelo de espadas.</content>
+ </entry>
+ 
+ <entry>
+   <title>ReConnect(); //2016 - Microsoft ALM End to End</title>
+   <link href="https://www.developerro.com/video/2016/12/12/reconnect-alm-end-to-end"/>
+   <updated>2016-12-12 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Veremos cómo hacer una una pull request con modificaciones, lanzar compilaciones con sonar para comprobar la calidad, reléase y deployment automático en varios entornos y finalmente cómo controlar el ciclo de vida completo con VSTS/TFS.</content>
+ </entry>
+ 
+ <entry>
+   <title>Novedades de c# 7</title>
+   <link href="https://www.developerro.com/2016/11/16/csharp-7"/>
+   <updated>2016-11-16 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La nueva versión de c# se acerca. Será la número 7 ya. C# 7 lo llaman. Aunque posiblemente le acompañará una versión de .Net Framework 4.X.X. Ó quizá una dotNet Core 1.X. De cualquier forma no podemos ignorarlo. Pero no es mi intención realizar un aburrido recorrido sobre sus novedosas características. El objetivo del post es realizar un aburrido recorrido sobre sus novedosas características, y ponerles nota.</content>
+ </entry>
+ 
+ <entry>
+   <title>VSTS: Package Management</title>
+   <link href="https://www.developerro.com/2016/10/03/vsts-package-management"/>
+   <updated>2016-10-03 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>¿Os acordais de John McClane? Lo dejamos salvando la navidad en Los Ángeles. Ahora está en Nueva York. Feliz. Hasta que Simon, el hermano de Hans, aparece con ganas de bronca. Quiere robar el oro de los Estados Unidos de America. Pero esta vez John McClane cuenta con la ayuda de Samuel L. Jackson. ¿Podrán superar juntos el juego de "Simon dice"?</content>
+ </entry>
+ 
+ <entry>
+   <title>VSTS: Migrar TFVC a Git</title>
+   <link href="https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git"/>
+   <updated>2016-09-15 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hace no mucho, <a href="https://twitter.com/elbruno" title="El Bruno">El Bruno</a> me invitó a participar en <a href="https://elbruno.com/2016/08/30/podcast-por-que-odio-git/" title="Podcast: Por qué odio Git">uno de sus conocidos podcast</a>. En este caso la temática trataba de un artículo que podréis leer en esta misma Web: <a href="http://fernandoescolar.github.io/2016/02/16/por-que-odio-git/" title="Artículo: por qué odio Git">Por qué odio Git</a>. Dejando de lado lo agradecido que estoy por esta oportunidad, dentro de la conversación, me preguntó si me habían pedido migrar a Git muchos clientes. La verdad es que no. Pero me dió una buena idea sobre la que escribir.</content>
+ </entry>
+ 
+ <entry>
+   <title>Quiero mi propio NuGet</title>
+   <link href="https://www.developerro.com/2016/09/08/quiero-mi-propio-nuget"/>
+   <updated>2016-09-08 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>¿Recuerdas la primera vez que viste a John McClane? Nada más llegar en avión, le llevaron a la torre Nakatomi. La idea era recoger a Holly y llevarla de vuelta a casa. En navidad. Todo era estupendo. Hasta Allen disfrutaba de un día tranquilo. Pero un maldito bastardo llamado Hans tuvo que venir a joder el cotarro.</content>
+ </entry>
+ 
+ <entry>
+   <title>El preguntón y cierre evento</title>
+   <link href="https://www.developerro.com/video/2016/04/20/gab16-pregunton"/>
+   <updated>2016-04-20 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Cierre del Global Azure Bootcamp 2016 con el concurso "El Preguntón".</content>
+ </entry>
+ 
+ <entry>
+   <title>Por qué odio Git</title>
+   <link href="https://www.developerro.com/2016/02/16/por-que-odio-git"/>
+   <updated>2016-02-16 09:52:03Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El sistema de control de versión que más se ha extendido en los últimos años posiblemente sea Git. Algo que no ha pasado desapercibido para los desarrolladores de Microsoft. Así que han decidido integrarlo en todas sus herramientas. Y este hecho... Me ha destrozado la vida.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Un vistazo a Roslyn</title>
+   <link href="https://www.developerro.com/2016/02/09/un-vistazo-a-roslyn"/>
+   <updated>2016-02-09 19:24:03Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El número de resultados que encuentras al buscar "Roslyn" es de 9-13 millones. Está claro que está de moda. Pero ¿qué es Roslyn? ¿y por qué debería importarme?</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>SCBCN15 - #NoEstimates</title>
+   <link href="https://www.developerro.com/video/2015/10/19/scbcn15-no-estimates"/>
+   <updated>2015-10-19 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Aquí podrás encontrar el vídeo grabado de la sesión de la <strong>Software Craftsmanship Barcelona de 2015</strong> sobre #NoEstimates junto con <a href="https://twitter.com/acasquete">Alex Casquete</a>:</content>
+ </entry>
+ 
+ <entry>
+   <title>SCBCN15 - Code Smells</title>
+   <link href="https://www.developerro.com/video/2015/10/06/scbcn15-code-smells"/>
+   <updated>2015-10-06 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Aquí podrás encontrar el vídeo grabado de la sesión de la <strong>Software Craftsmanship Barcelona de 2015</strong> sobre Code Smells:</content>
+ </entry>
+ 
+ <entry>
+   <title>Cach&eacute;s</title>
+   <link href="https://www.developerro.com/2015/03/18/caches"/>
+   <updated>2015-03-18 10:57:29Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La memoria caché es un tipo de almacenamiento, menor que la unidad de almacenamiento principal, pero con un acceso más rápido, que se utiliza en ingeniería de la computación para aportar un mayor rendimiento al sistema. La caché no es un concepto nuevo dentro de la informática, es una memoria que se lleva utilizando años y desde el punto de más bajo nivel de una computadora (procesador), hasta el más alto (software).
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Load Test - Cómo crear un Web Performance Test</title>
+   <link href="https://www.developerro.com/video/2014/02/17/load-tests-2"/>
+   <updated>2014-02-17 00:01:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>En esta serie de vídeos se explicarán las pruebas de carga y cómo desarrollarlas usando la herramientas de Microsoft Visual Studio.</content>
+ </entry>
+ 
+ <entry>
+   <title>Load Test - Introducción a las pruebas de carga</title>
+   <link href="https://www.developerro.com/video/2014/02/17/load-tests-1"/>
+   <updated>2014-02-17 00:00:00Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>En esta serie de vídeos se explicarán las pruebas de carga y cómo desarrollarlas usando la herramientas de Microsoft Visual Studio.</content>
+ </entry>
+ 
+ <entry>
+   <title>Mesa redonda sobre SPA</title>
+   <link href="https://www.developerro.com/video/2014/01/22/mesa-redonda-sobre-spa"/>
+   <updated>2014-01-22 17:57:42Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El pasado miércoles día 15 de enero realizamos una mesa redonda vía Hangout Air para tratar sobre retos, estado, y el "por qué" de las apps SPA. Contamos con la colaboración de Alfredo Fernandez (<a href="https://twitter.com/afernandez_l">@afernandez_l</a>), Albert Margarit (<a href="https://twitter.com/albertmargarit">@albertmargarit</a>), Marc Rubiño (<a href="https://twitter.com/Marc_Rubino">@Marc_Rubino</a>), Óscar Sotorrío (<a href="https://twitter.com/osotorrio">@osotorrio</a>), Tomás Corral (<a href="https://twitter.com/amischol">@amischol</a>) y Fernando Escolar (<a href="https://twitter.com/fernandoescolar">@fernandoescolar</a>).
+</content>
+ </entry>
+ 
+ <entry>
+   <title>La peque&ntilde;a gran gu&iacute;a sobre Load Tests</title>
+   <link href="https://www.developerro.com/2013/10/21/la-pequea-gran-gua-sobre-load-tests"/>
+   <updated>2013-10-21 09:41:58Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Las pruebas de carga se usan para observar y analizar un sistema en unas circunstancias específicas. Por ejemplo, podríamos crear un portal web en el que esperamos un número determinado de usuarios. Y antes de ponerlo en producción queremos estar seguros de que se va a comportar correctamente cuando lleguemos al cupo esperado.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Scrum con TFS</title>
+   <link href="https://www.developerro.com/2013/01/23/scrum-con-tfs"/>
+   <updated>2013-01-23 09:13:27Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>En los últimos años estamos asistiendo a un cambio radical en la forma de gestionar los proyectos de desarrollo de software. Empieza a resultar extraño encontrar ofertas de trabajo en las que no se mencione scrum, o proyectos que empiecen en los que no se haya planteado el uso de metodologías ágiles. Pero de nada nos sirve una metodología, por muy buena que pueda ser, si perdemos más tiempo gestionando el proceso que programando. Por lo que nos vemos casi obligados a empezar a usar herramientas que nos ayuden con esta tarea. A lo largo de este artículo trataremos una de esas herramientas, que consideramos más potentes: TFS.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Patrones de dise&ntilde;o: Repository</title>
+   <link href="https://www.developerro.com/2013/01/07/patrones-de-diseo-repository"/>
+   <updated>2013-01-07 11:13:39Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p><em>En todos los asuntos de opinión, nuestros adversarios están locos</em> (Oscar Wilde). Por suerte los locos con los que puedes compartir opiniones en la lista de correo de la fundación <a href="http://www.techdencias.net" target="_blank">[T]echdencias</a>, son magníficos profesionales como <a href="https://twitter.com/Marc_Rubino" target="_blank">@Marc_Rubino</a> o <a href="https://twitter.com/mserrate" target="_blank">@mserrate</a>. Hace unos días tuvimos la oportunidad de discutir sobre el patrón "Repository".</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Team Foundation Server: Mac OS X+Java+Eclipse+Maven</title>
+   <link href="https://www.developerro.com/2012/11/26/team-foundation-server-mac-os-xjavaeclipsemaven"/>
+   <updated>2012-11-26 09:41:48Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hace unos meses, me encontraba en un cliente hablando de la posibilidad de sustituir su conjunto de aplicativos para&nbsp; ALM (Application Lifecycle Management o gestión del ciclo de vida de las aplicaciones) por el potente TFS de Microsoft. Se mostró fascinado por la herramienta: estuvimos navegando por el portal, mostrándole las gráficas y lo fácil que era gestionar todo el trabajo. No obstante, el líder tecnológico era escéptico y no confiaba en las capacidades del entorno que estábamos proponiendo. </p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Patrones de dise&ntilde;o: Mediator</title>
+   <link href="https://www.developerro.com/2012/10/18/patrones-de-diseno-mediator"/>
+   <updated>2012-10-18 09:32:22Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>En el mundo de la programación orientada a objetos una de las máximas que debemos cumplir, si queremos desarrollar un código de calidad, es que debemos buscar una elevada cohesión con bajo acoplamiento. Y con el fin de ayudarnos en esta ardua tarea, aparece el patrón Mediator.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Patrones de diseño: Strategy</title>
+   <link href="https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy"/>
+   <updated>2012-10-03 14:10:06Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Analizando la seguridad de una aplicación en .net
+</title>
+   <link href="https://www.developerro.com/2012/09/18/analizando-seguridad-aplicacion-net"/>
+   <updated>2012-09-18 09:15:52Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Se han escrito muchas líneas acerca de la seguridad de las aplicaciones que realizamos en .Net. Se dice que son muy fáciles de hackear, que aun usando herramientas de ofuscación, la seguridad de los empaquetados que se distribuyen es nula.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Patrones de diseño: Singleton</title>
+   <link href="https://www.developerro.com/2012/09/10/patrones-diseno-singleton"/>
+   <updated>2012-09-10 13:06:17Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Cuando hablamos de un <strong>patr&oacute;n de dise&ntilde;o nos referimos a una soluci&oacute;n a un problema concreto en el desarrollo de software</strong>. Pero no cualquier soluci&oacute;n, s&oacute;lo aquellas que se ha desmostrado que <span style="text-decoration: underline;">son eficientes en diferentes escenarios</span> y&nbsp;<span style="text-decoration: underline;">reutilizables en gran cantidad de contextos</span> de aplicaciones. Por lo tanto, aunque los ejemplos que podamos dar est&eacute;n en un lenguaje de programaci&oacute;n concreto, la idea ser&aacute; extrapolable a diferentes lenguajes de programaci&oacute;n orientada a objetos.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Deuda Técnica</title>
+   <link href="https://www.developerro.com/2012/05/29/deuda-tecnica"/>
+   <updated>2012-05-29 12:15:18Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>¿Qué desarrollador de software nunca ha estado una semana programando a toda velocidad, casi sin saber que hace, ya que la fecha de entrega está cerca y todo tiene que estar terminado “para ayer”? ¿Quién no se ha encontrado en la situación de saber que está programando una chapuza, pensando que otro día lo mejorará, y ese día nunca llega? ¿Quién alguna vez, al ver una porción de código fuente no ha exclamado indignado: ¡qué narices hace este código! o ¡quién leches lo ha programado!?</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gestión de excepciones con WCF</title>
+   <link href="https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf"/>
+   <updated>2012-04-12 15:45:34Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hace unos días en los <a title="Cual es la diferencia entre Faults y Exception " href="http://social.msdn.microsoft.com/Forums/es-ES/wcfes/thread/fa88fa15-fe22-42a8-98ef-85f260a8c97b" target="_blank">foros de Windows Communication Foundation de MSDN</a> un usuario preguntaba por la diferencia entre <strong>Faults</strong> y <strong>Exceptions</strong> dentro de esta plataforma. La respuesta me llevó a escribir una pequeña introducción a la <strong>gestión de excepciones para los servicios WCF</strong> que me gustaría ampliar en este artículo. Para los más experimentados resultará un texto algo básico. Para los demás sin embargo, les puede ayudar a programar siguiendo las buenas prácticas en el desarrollo de sus servicios.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Reactive Extensions (#codemotion)</title>
+   <link href="https://www.developerro.com/2012/03/27/reactive-extensions"/>
+   <updated>2012-03-27 09:30:32Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>El pasado fin de semana <a title="@Quiqu3" href="https://twitter.com/quiqu3" target="_blank">@quiqu3</a> y <a title="@fernandoescolar" href="https://twitter.com/fernandoescolar" target="_blank">@fernandoescolar</a> estuvieron en Madrid, en la <strong>codemotion</strong>, en representación de <strong>programando en .net</strong>. Además tuvieron el placer de impartir una pequeña charla de 45 minutos acerca de las reactive extensions. Aprovechando este hecho, nos gustaría cerrar de una forma más o menos elegante la serie de artículos sobre rx, aportando un índice de los artículos, un breve resumen basado en la charla y varios programas de ejemplo (incluida la red social de moda: <strong>BeerToBeer</strong>).</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rx V &#8211; Schedulers y Linq2Events</title>
+   <link href="https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events"/>
+   <updated>2012-03-26 15:30:57Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hoy os vamos a proponer el último artículo teórico acerca de las <strong>reactive extensions</strong>. Una vez hemos <a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">definido las rx</a>, sabemos <a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">qué son los <strong>sujetos</strong></a> y las operaciónes de <a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">creación</a> y <a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables"><strong>Linq</strong></a>, ya podemos hablar de el último parámetro de la fórmula que definimos en su día: los <strong>Schedulers</strong>.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rx IV &#8211; Linq: operaciones con observables</title>
+   <link href="https://www.developerro.com/2012/02/15/rx-iv-linq-operaciones-con-observables"/>
+   <updated>2012-02-15 10:15:08Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hemos llegado al cuarto art&iacute;culo sobre <strong>reactive extensions</strong> en el que vamos a hablar de operaciones que se pueden realizar con observables. Pero, como hace unos d&iacute;as que no public&aacute;bamos nada al respecto, vamos a hacer primero una peque&ntilde;a retrospectiva. Hasta ahora hemos tratado de explicar <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - Qu&eacute; son las Reactive eXtensions">rx como una f&oacute;rmula matem&aacute;tica</a>:</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sobre WCF, DTO, EF, POCO y los principios de la programación
+</title>
+   <link href="https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion"/>
+   <updated>2012-01-22 18:45:36Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Creo que este es el primer art&iacute;culo que vamos a ver en <a href="http://www.programandonet.com"><strong>programandonet</strong></a> a modo editorial. Esto es el resultado de <a href="http://www.linkedin.com/groups/WCF-DTO-vs-WCF-POCO-2615616.S.89901834?qid=56f3138d-d4ae-4072-9eb3-617867092b49&amp;trk=group_most_popular-0-b-ttl&amp;goback=%2Egmp_2615616" target="_blank">una conversaci&oacute;n</a> en el <a href="http://www.linkedin.com/groups/Arquitectos-NET-2615616?trk=myg_ugrp_ovr" target="_blank">grupo de <em>arquitectos .net</em></a>&nbsp;de <a href="http://www.linkedin.com" target="_blank">LinkedIn</a>, en la que se hablaba sobre usar <strong>POCO</strong>s de entity framework como <strong>DTO</strong> para servicios <strong>WCF</strong>, que se inici&oacute; hace unos d&iacute;as. Y es que, no me hubiera gustado que algunas conclusiones y escritos se <em>perdieran</em> en este grupo y por eso hemos cre&iacute;do interesante publicarlas aqu&iacute;, para tenerlas <em>a mano</em>.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rx III &#8211; Linq: crear objetos observables</title>
+   <link href="https://www.developerro.com/2012/01/02/rx-iii-linq-crear-objetos-observables"/>
+   <updated>2012-01-02 12:30:10Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework</strong>. Hasta ahora hemos visto <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)</a> e incluso introdujimos el uso de una clase llamada <em><strong>Observable</strong></em> que contiene m&eacute;todos y extensiones para que todo esto sea m&aacute;s sencillo.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rx II &#8211; Observables: los sujetos</title>
+   <link href="https://www.developerro.com/2011/12/19/rx-ii-observables-los-sujetos"/>
+   <updated>2011-12-19 10:00:06Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Hace <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - &iquest;Qu&eacute; son las Reactive eXtensions?">unos d&iacute;as empezamos a hablar de las <strong>Reactive eXtensions</strong></a>. Estudiamos su contexto y las bases te&oacute;ricas en las que se fundamentan. Adem&aacute;s expusimos la&nbsp;f&oacute;rmula&nbsp;creada por los <strong>Microsoft Live Labs</strong> para definirla. Y terminamos el art&iacute;culo comentando que resolver&iacute;amos esta f&oacute;rmula en futuras publicaciones. Hoy es el d&iacute;a de resolver el primer par&aacute;metro: <strong>Observables</strong>.&nbsp;</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Rx I &#8211; Qué son las Reactive eXtensions</title>
+   <link href="https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions"/>
+   <updated>2011-12-12 10:15:01Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>Dentro de las librer&iacute;as de moda para .net la, posiblemente, m&aacute;s dif&iacute;cil de explicar tiene el nombre de <strong>Reactive eXtensions</strong> o <strong>Rx</strong>. Una idea que nace en el contexto actual de aplicaciones distribuidas. Donde la informaci&oacute;n se encuentra en la nube, y mediante llamadas as&iacute;ncronas podemos procesarla usando clientes que interaccionan con el usuario bas&aacute;ndose en eventos.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Usando la palabra clave &#8220;ref&#8221;</title>
+   <link href="https://www.developerro.com/2011/12/07/usando-la-palabra-clave-ref"/>
+   <updated>2011-12-07 11:45:20Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>No hace mucho, estabamos tomando unas cervezas algunos desarrolladores de .net de Barcelona. Entonces sali&oacute; el tema de los talibanes del c&oacute;digo. Cosas como <em>fxCop</em> o <em>styleCop</em>. Aunque estas herramientas y sus reglas dan para varios art&iacute;culos de debate, el caso es que surgi&oacute; una norma del<strong> code analysis</strong> (<em>fxCop</em>) que recomienda no usar la palabra en clave "<em>ref</em>".</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>TDD en entornos .net #bdc11</title>
+   <link href="https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11"/>
+   <updated>2011-11-21 15:00:08Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p>La semana pasada, los días 17, 18 y 19, estuvimos en la: <a href="http://bcndevcon.org/">Barcelona Developers Conference</a>.</p>
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducción a Windows Phone 7</title>
+   <link href="https://www.developerro.com/2011/11/20/introduccion-a-windows-phone-7"/>
+   <updated>2011-11-20 21:30:03Z</updated>
+   <id>https://www.developerro.com</id>
+   <content type="html"><p><strong>Windows Phone 7</strong> es un sistema operativo móvil desarrollado por <strong>Microsoft</strong> como sustituto de <strong>Windows Mobile</strong>. Pero se diferencia de este último en que está pensando para un mercado generalista, en detrimento del empresarial. En adición no mantiene compatibilidad con su antecesor, debido a que es un desarrollo nuevo, y no una evolución.</p>
+</content>
+ </entry>
+ 
+
+</feed>

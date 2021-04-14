@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			SOLID menos mola (L) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La L de SOLID se refiere al principio de sustituci&#243;n de Liskov o LSP por sus siglas en ingl&#233;s (Liskov Substitution  Principle). Se puede definir como que cad..." />
+		<meta property="og:title" content="SOLID menos mola (L)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/09/30/solid-menos-mola-l" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/solid2.jpg" />
+		<meta property="og:description" content="La L de SOLID se refiere al principio de sustitución de Liskov o LSP por sus siglas en inglés (Liskov Substitution  Principle). Se puede definir como que cad..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-09-30 02:16:54Z" />
+		<meta property="article:published_time" content="2020-09-30 02:16:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="SOLID menos mola (L)" />
+		<meta name="twitter:description" content="La L de SOLID se refiere al principio de sustitución de Liskov o LSP por sus siglas en inglés (Liskov Substitution  Principle). Se puede definir como que cad..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/solid2.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/09/30/solid-menos-mola-l" />
+		<meta name="description" content="La L de SOLID se refiere al principio de sustitución de Liskov o LSP por sus siglas en inglés (Liskov Substitution  Principle). Se puede definir como que cad..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/09/30/solid-menos-mola-l" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/solid2.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				SOLID menos mola (L)
+			</h1><small>30 sept. 2020 · 13 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La <em>L
+				</em> de <em>SOLID
+				</em> se refiere al principio de sustitución de Liskov o <strong>LSP
+				</strong> por sus siglas en inglés (<strong>L
+				</strong>iskov <strong>S
+				</strong>ubstitution <strong>P
+				</strong>rinciple). Se puede definir como que cada clase que hereda de otra puede usarse como su padre sin necesidad de conocer las diferencias entre ellas. Una definición muy compleja para un concepto mucho más simple. Pero con una historia algo truculenta detrás
+				<!--break-->
+				.
+			</p>
+			<p>
+				<a href="https://es.wikipedia.org/wiki/Barbara_Liskov">
+					Barbara Liskov
+				</a> es una reconocida científica de computación del MIT. Como grandes logros encontramos que recibió la Medalla John von Neumann y el premio Turing (el Nobel de la informática) en 2004 y 2008 respectivamente. Pero lo que hoy nos interesa es un ensayo que escribió en Octubre de 1987 titulado <a href="https://www.cs.tufts.edu/%7Enr/cs257/archive/barbara-liskov/data-abstraction-and-hierarchy.pdf">Data Abstraction and Hierarchy
+				</a>. En este documento la Doctora Liskov investiga la utilidad de dos de las características de la programación orientada a objetos: la abstracción y la herencia.
+			</p>
+			<p>
+				Cuando empieza a hablar de herencia de tipos escribe:
+			</p>
+			<blockquote>
+				<p>
+					Lo que se desea aquí es algo como la siguiente propiedad de sustitución: Si para cada objeto <em>o<sub>1</sub>
+					</em> de tipo <em>S
+					</em> hay un objeto <em>o<sub>2</sub>
+					</em> de tipo <em>T
+					</em>, tal que para todos los programas <em>P
+					</em> definidos en términos de <em>T
+					</em>, el comportamiento de <em>P
+					</em> no cambia cuando <em>o<sub>1</sub>
+					</em> sustituye a <em>o<sub>2</sub>
+					</em>, entonces <em>S
+					</em> es un subtipo de <em>T
+					</em>.
+				</p>
+			</blockquote>
+			<p>
+				Entonces <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a>, 8 años después utiliza esta frase para acuñar <a href="https://web.archive.org/web/20060313120844/http://www.objectmentor.com/resources/articles/lsp.pdf">el principio de sustitución de Liskov
+				</a> como:
+			</p>
+			<blockquote>
+				<p>
+					Las funciones que usan punteros o referencias a clases base, deben de poder usar objetos de clases derivadas sin tener conocimiento de ellos.
+				</p>
+			</blockquote>
+			<p>
+				Y lo complementa con un ejemplo que me he permitido la libertad de traducir a C#:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Rectangle
+{
+  public virtual int Height { get; set; }
+  public virtual int Width { get; set; }
+}
+
+class Square : Rectangle
+{
+  public override int Height
+  {
+    get => base.Height;
+    set
+    {
+      base.Height = value;
+      base.Width = value;
+    }
+  }
+
+  public override int Width
+  {
+    get => base.Width;
+    set
+    {
+      base.Height = value;
+      base.Width = value;
+    }
+  }
+}
+				</code>
+</pre>
+			<p>
+				Como podemos observar, tenemos un objeto <code>Rectangle
+				</code> con dos propiedades para almacenar sus dimensiones: <code>Width
+				</code> y <code>Height
+				</code>. Entonces hemos creado un objeto <code>Square
+				</code> de hereda de <code>Rectangle
+				</code>. Y como un cuadrado es un rectángulo con la altura y la anchura iguales, sobrescribimos el <code>set
+				</code> de las propiedades para que tengan esto en cuenta.
+			</p>
+			<p>
+				Ahora imaginemos que tenemos también un código así:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static void OperateRectangle(Rectangle r)
+{
+  r.Width = 4;
+  r.Height = 5;
+  Assert.AreEqual(r.Width * r.Height, 20);
+}
+				</code>
+</pre>
+			<p>
+				Lo que pasará es que si le pasamos un objeto <code>Rectangle
+				</code> este código funcionará, pero si le pasamos un objeto <code>Square
+				</code> la línea del <code>Assert
+				</code> lanzará un error.
+			</p>
+			<p>
+				Por lo tanto, estaríamos violando el <strong>LSP
+				</strong>. Porque como menciona el enunciado de este principio:
+			</p>
+			<blockquote>
+				<p>
+					Las funciones que usan punteros o referencias a clases base (<code>OperateRectangle
+					</code>), deben de poder usar objetos de clases derivadas (<code>Square
+					</code> hereda de <code>Rectangle
+					</code>) sin tener conocimiento de ellos.
+				</p>
+			</blockquote>
+			<p>
+				Quizá con la definición no esté del todo claro, pero entiendo que como el código ha dado un error en tiempo de ejecución, no está bien. A partir de este punto, <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> empieza a divagar sobre <strong>DbC
+				</strong> (<strong>D
+				</strong>esign <strong>b
+				</strong>y <strong>C
+				</strong>ontract ¿os acordáis de <em>Code Contracts
+				</em>?) y cómo esa aserción que hemos añadido al código nos ayuda a prevenir un mal uso de este principio.
+			</p>
+			<p>
+				El problema aquí es que se ha malinterpretado el texto de <a href="https://es.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov
+				</a>, donde si traducimos la fórmula como:
+			</p>
+			<blockquote>
+				<p>
+					Si para cada objeto <em>o<sub>1</sub>
+					</em> de tipo <em>S
+					</em> (<code>Square
+					</code>) hay un objeto <em>o<sub>2</sub>
+					</em> de tipo <em>T
+					</em> (<code>Rectangle
+					</code>), tal que para todos los programas <em>P
+					</em> (<code>OperateRectangle
+					</code>) definidos en términos de <em>T
+					</em> (<code>Rectangle
+					</code>), el comportamiento de <em>P
+					</em> (<code>OperateRectangle
+					</code>) no cambia cuando <em>o<sub>1</sub>
+					</em> (de tipo <code>Square
+					</code>) sustituye a <em>o<sub>2</sub>
+					</em> (de tipo <code>Rectangle
+					</code>), entonces <em>S
+					</em> (<code>Square
+					</code>) es un subtipo de <em>T
+					</em> (<code>Rectangle
+					</code>).
+				</p>
+			</blockquote>
+			<p>
+				Si nos paramos a leer con atención, lo que aquí dice la Doctora Liskov es que, si usamos cualquier objeto <code>Square
+				</code> para sustituir a cualquier objeto <code>Rectangle
+				</code>, y no tenemos que cambiar nada en <code>OperateRectangle
+				</code>, significa que <code>Square
+				</code> es un subtipo de <code>Rectangle
+				</code>. Mientras que <strong>LSP
+				</strong> nos expone este concepto del revés: cuando <code>Square
+				</code> es un subtipo de <code>Rectangle
+				</code>, tenemos que poder intercambiarlos sin que <code>OperateRectangle
+				</code> conozca sus implementaciones.
+			</p>
+			<p>
+				En el ejemplo aplican las dos reglas, por lo que podemos deducir que C# funciona bien como lenguaje orientado a objetos y cumple a la perfección con la característica de la herencia. Quizá el problema es que este tipo de herencia no sea el más apropiado. Pero aquí lo que se expone como incorrecto es que una clase derivada tenga diferentes resultados que una clase base ante las mismas operaciones.
+			</p>
+			<p>
+				¿Os imagináis un mundo donde en la programación orientada a objetos no se pudiera modificar el comportamiento respetando el contrato de una clase en otra derivada? A esto se le llama <strong>herencia
+				</strong> y <strong>polimorfismo
+				</strong>, y son dos de las características de la POO.
+			</p>
+			<p>
+				Lo mejor de todo esto, es que era el propio Robert C. Martin quien nos proponía el uso exhaustivo de objetos derivados para cambiar el comportamiento de un programa en la definición del <strong>OCP
+				</strong>.
+			</p>
+			<p>
+				Y además Liskov jamás ideó un principio, simplemente estaba describiendo en qué consistía la herencia de tipos. De hecho, recibió el premio Turing por "<em>su contribución a los fundamentos teóricos y prácticos en el diseño de lenguajes de programación y sistemas, <strong>especialmente relacionados con la abstracción de datos</strong>, tolerancia a fallos y computación distribuida
+				</em>".
+			</p>
+			<h2 id="hay-vida-despues-de-lsp">
+				Hay vida después de LSP
+			</h2>
+			<p>
+				He de reconocer que el trabajo de <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios <strong>SOLID
+				</strong>, incluido <strong>LSP
+				</strong>, no son una excepción. Mi consejo es que:
+			</p>
+			<ul>
+				<li>
+					Olvídate de <strong>LSP
+					</strong> y piensa en cómo definir bien la herencia de tus objetos.
+				</li>
+				<li>
+					Si no sabes cómo, mira la fórmula de la Doctora Liskov, porque de eso va la herencia de tipos.
+				</li>
+				<li>
+					Quizá te interesen temas como la composición o la inmutabilidad.
+				</li>
+			</ul>
+			<p>
+				Creo que este principio fue una campaña de marketing para conseguir el acrónimo SOLID. Debió ser sinceramente difícil encontrar un principio con la letra 'L' y se tuvo que recurrir a lo que se pudo.
+			</p>
+			<p>
+				Aunque una interpretación bastante libre de este principio, creo que sí que me llevó a aprender una lección. Y es que no uses métodos en una base que luego no vayas a usar en las derivadas. Porque esto sería una mala abstracción. Un ejemplo sobre el mismo tema:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Shape
+{
+  public virtual int Height { get; set; }
+  public virtual int Width { get; set; }
+  public virtual int Radious { get; set; }
+}
+
+class Rectangle : Shape
+{
+  public override int Radious
+  {
+    get => throw new InvalidOperationException();
+    set => throw new InvalidOperationException();
+  }
+}
+
+class Circle : Shape
+{
+  public override int Height
+  {
+    get => throw new InvalidOperationException();
+    set => throw new InvalidOperationException();
+  }
+  public override int Width
+  {
+    get => throw new InvalidOperationException();
+    set => throw new InvalidOperationException();
+  }
+}
+				</code>
+</pre>
+			<p>
+				En este caso tendríamos una mala abstracción del objeto <code>Shape
+				</code>. Ya que, en lugar de tratarlo como una clase base, lo estamos usando como una agregación donde encontramos todas las propiedades de sus clases derivadas.
+			</p>
+			<p>
+				La forma de prevenir estos usos poco canónicos, por así decirlo, podría estar en otro lado. En conceptos como la inmutabilidad y la composición:
+			</p>
+			<h3 id="inmutabilidad">
+				Inmutabilidad
+			</h3>
+			<p>
+				La inmutabilidad es la capacidad de un objeto de permanecer en el mismo estado en el que se encuentra siempre. Es decir, un objeto que no puede cambiar de estado. Es una capacidad tradicional de paradigmas de programación funcional. Para conseguir este comportamiento tenemos varias herramientas en el lenguaje C#:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Rectangle
+{
+  private readonly int _width;
+  private readonly int _height;
+
+  public Rectangle(int width, int height)
+  {
+      _width = width;
+      _height = height;
+  }
+
+  public int Width => _width;
+  public int Height => _height;
+}
+				</code>
+</pre>
+			<p>
+				Usando la palabra clave <code>readonly
+				</code>, propiedades de solo lectura, y constructores, podemos conseguir que una clase sea inmutable. Y si queremos trabajar con colecciones inmutables entonces podemos descargarnos el paquete de <em>nuget
+				</em> <code>System.Collections.Immutable
+				</code>.
+			</p>
+			<p>
+				El caso es que este tipo de implementaciones son muy prácticas porque:
+			</p>
+			<ul>
+				<li>
+					Son artefactos muy fáciles de entender.
+				</li>
+				<li>
+					Son <em>thread-safe
+					</em>, que para aplicaciones multihilo como asp.net vienen genial.
+				</li>
+				<li>
+					Siempre están en un estado válido.
+				</li>
+			</ul>
+			<p>
+				Y basándonos en esto, una forma de solucionar los problemas que exponía Robert C. Martin sería:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Rectangle
+{
+  private readonly int _width;
+  private readonly int _height;
+
+  public Rectangle(int width, int height)
+  {
+      _width = width;
+      _height = height;
+  }
+
+  public Rectangle(Rectangle r, int width, int height)
+  {
+      // copy other rectangle properties here
+      _width = width;
+      _height = height;
+  }
+
+  public int Width => _width;
+  public int Height => _height;
+}
+
+public class Square : Rectangle
+{
+  public Square(int size) : base(size, size)
+  {
+  }
+}
+
+public static Rectangle OperateRectangle(Rectangle r)
+{
+  return new Rectangle(r, 4, 5);
+}
+				</code>
+</pre>
+			<p>
+				De esta forma siempre funcionará correctamente y no tendríamos ningún problema como los que señala Uncle Bob.
+			</p>
+			<h3 id="composicion-vs-herencia">
+				Composición vs Herencia
+			</h3>
+			<p>
+				Es posible que no sea la primera vez que escuchas o lees sobre este concepto. Una idea que nace teniendo en cuenta las grandes virtudes de la herencia en un lenguaje orientado a objetos:
+			</p>
+			<ul>
+				<li>
+					Rápido de programar
+				</li>
+				<li>
+					Sencillo de diseñar
+				</li>
+				<li>
+					Es un nexo de unión básico con otras características como el polimorfismo o la abstracción.
+				</li>
+			</ul>
+			<p>
+				Pero también teniendo en cuenta sus defectos:
+			</p>
+			<ul>
+				<li>
+					Una aplicación exhaustiva lleva a que sea muy difícil conocer qué es exactamente lo que hace un objeto que herede de una larga cadena de bases.
+				</li>
+				<li>
+					Es muy fácil realizar malas herencias que nos pasarán factura con el tiempo.
+				</li>
+				<li>
+					Es más difícil probar el código.
+				</li>
+				<li>
+					En los lenguajes modernos de programación no existe la multi-herencia.
+				</li>
+			</ul>
+			<p>
+				Una forma de prevenir estos problemas sería usar la composición. Un ejemplo rápido:
+			</p>
+			<pre class="language-csharp highlight">
+<code>// herencia
+abstract class Thing { ... }
+class MovableThing : Thing { void Move(...) }
+class SolidThing : Thing { bool Collide(...) }
+class MovableSolidThing : MovableThing { bool Collide(...) }
+				</code>
+</pre>
+			<p>
+				Como podemos ver en este ejemplo sobre herencia, tenemos un objeto base del que heredan dos objetos: uno que se puede mover y otro que es sólido (que puede chocar). Cuando queremos crear un objeto con ambas propiedades, encontramos un problema, que tenemos que volver a implementar una de ellas. Además, si seguimos haciendo esto, nuestro código va a ser muy difícil de mantener, porque tendremos muchas características y finalmente será muy complicado seguir como funciona realmente un método.
+			</p>
+			<p>
+				La propuesta de la composición sería:
+			</p>
+			<pre class="language-csharp highlight">
+<code>// composición
+interface IMoveable { void Move(...) }
+class Moveable : IMoveable { ... }
+class Static : IMoveable { ... }
+
+interface ISolid { void Collide(...) }
+class Solid : ISolid { ... }
+class NotSolid : ISolid { ... }
+
+class Thing
+{
+  private readonly IMoveable _moveable;
+  private readonly ISolid _solid;
+
+  public Thing(IMoveable moveable, ISolid solid)
+  {
+      _moveable = moveable;
+      _solid = solid;
+  }
+  public void Move(...)
+  {
+    _moveable.Move(...);
+  }
+
+  public bool Collide(...)
+  {
+      return _solid.Collide(...);
+  }
+}
+				</code>
+</pre>
+			<p>
+				De esta forma podemos crear diferentes sabores del mismo objeto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var staticNotSolidThing   = new Thing(new Static(),   new NotSolid());
+var staticSolidThing      = new Thing(new Static(),   new Solid());
+var moveableNotSolidThing = new Thing(new Moveable(), new NotSolid());
+var moveableSolidThing    = new Thing(new Moveable(), new Solid());
+				</code>
+</pre>
+			<p>
+				También hay que tener en cuenta que no es oro todo lo que reluce. La composición tiene sus problemas como, por ejemplo:
+			</p>
+			<ul>
+				<li>
+					Es mucho más complicado de diseñar.
+				</li>
+				<li>
+					Es muy fácil caer en métodos vacíos o implementaciones banales.
+				</li>
+				<li>
+					No siempre encaja, hay veces que es mucho mejor usar herencia.
+				</li>
+			</ul>
+			<p>
+				De cualquier forma, es una buena práctica a tener en cuenta cuando desarrollamos.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=SOLID menos mola (L)&url=https://www.developerro.com/2020/09/30/solid-menos-mola-l" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/09/30/solid-menos-mola-l" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/09/30/solid-menos-mola-l" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/09/30/solid-menos-mola-l" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/15/solid-menos-mola">
+						SOLID menos mola
+					</a> <small>15 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/14/solid-menos-mola-d">
+						SOLID menos mola (D)
+					</a> <small>14 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/06/solid-menos-mola-i">
+						SOLID menos mola (I)
+					</a> <small>06 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/23/solid-menos-mola-o">
+						SOLID menos mola (O)
+					</a> <small>23 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/16/solid-menos-mola-s">
+						SOLID menos mola (S)
+					</a> <small>16 sept. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

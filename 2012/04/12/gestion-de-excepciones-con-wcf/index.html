@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Gestión de excepciones con WCF · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Hace unos d&#237;as en los&#160;foros de Windows Communication Foundation de MSDN un usuario preguntaba por la diferencia entre Faults y Exceptions dentro de esta plat..." />
+		<meta property="og:title" content="Gestión de excepciones con WCF" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Hace unos días en los foros de Windows Communication Foundation de MSDN un usuario preguntaba por la diferencia entre Faults y Exceptions dentro de esta plat..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-04-12 15:45:34Z" />
+		<meta property="article:published_time" content="2012-04-12 15:45:34Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Gestión de excepciones con WCF" />
+		<meta name="twitter:description" content="Hace unos días en los foros de Windows Communication Foundation de MSDN un usuario preguntaba por la diferencia entre Faults y Exceptions dentro de esta plat..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" />
+		<meta name="description" content="Hace unos días en los foros de Windows Communication Foundation de MSDN un usuario preguntaba por la diferencia entre Faults y Exceptions dentro de esta plat..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Gestión de excepciones con WCF
+			</h1><small>12 abr. 2012 · 8 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Hace unos días en los <a title="Cual es la diferencia entre Faults y Exception " href="http://social.msdn.microsoft.com/Forums/es-ES/wcfes/thread/fa88fa15-fe22-42a8-98ef-85f260a8c97b" target="_blank">foros de Windows Communication Foundation de MSDN
+				</a> un usuario preguntaba por la diferencia entre <strong>Faults
+				</strong> y <strong>Exceptions
+				</strong> dentro de esta plataforma. La respuesta me llevó a escribir una pequeña introducción a la <strong>gestión de excepciones para los servicios WCF
+				</strong> que me gustaría ampliar en este artículo. Para los más experimentados resultará un texto algo básico. Para los demás sin embargo, les puede ayudar a programar siguiendo las buenas prácticas en el desarrollo de sus servicios.
+			</p>
+			<!--break-->
+			<p>
+				Para empezar lo que vamos a necesitar es crear un servicio WCF que nos sirva como prueba. Este servicio tendrá que cumplir el siguiente contrato:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[ServiceContract]
+public interface IMyService
+{
+    [OperationContract]
+    int Operation(int a);
+}</pre>
+			</div>
+			Y para implementarlo vamos a crear una lógica que lance diferentes excepciones según el valor del parámetro que se le pasa al método. O lo que es lo mismo: vamos a desarrollar un método que si le pasas '0' devuelva un ArgumentException, si le pasas un número negativo lance una InvalidOperationException y si no devuelva el propio número que se le envía. Así que vamos allá:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+public class MyService : IMyService
+{
+    public int Operation(int a)
+    {
+        if (a == 0)
+            throw new ArgumentException("Cannot be zero");
+
+					<pre>
+						<code>
+							if (a &amp;lt; 0)
+        throw new InvalidOperationException("The parameter must be greater than zero");
+
+    return a;
+}
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			Hasta aquí todos podemos ver que estamos desarrollando como siempre lo hemos hecho. Lanzamos las excepciones en nuestro código para informar del error que se ha producido. Por lo que, con el fin de probarlo, vamos a crear una función en una aplicación cliente, que sea capaz de llamar a este servicio:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">public int CallOperation(int i)
+{
+   using (var factory = new ChannelFactory&lt;IMyService>("MyServiceEndPointName"))
+   {
+      var proxy = factory.CreateChannel();
+      return proxy.Operation(i);
+   }
+}</pre>
+			</div>
+			Con este código, crearemos un canal de conexión con nuestro servicio (siempre y cuando todo esté configurado correctamente en el app.config o web.config) y llamaremos mediante un proxy al método "<em>Operation
+			</em>". 
+			<p>
+				Ahora, teniendo en cuenta las excepciones que podemos lanzar vamos a probar nuestro código:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">public void SafeCallOperation(int numero)
+{
+   try
+   {
+      var result = CallOperation(numero);
+      System.Console.WriteLine("El resultado es: " + result);
+   }
+   catch(ArgumentException aex)
+   {
+      System.Console.WriteLine("Has introducido 0: " + aex.Message);
+   }
+   catch(InvalidOperationException iex)
+   {
+      System.Console.WriteLine("Has introducido un número menor de cero: " + iex.Message);
+   }
+   catch(Exception ex)
+   {
+      System.Console.WriteLine("Error desconocido: " + ex.Message);
+   }
+}</pre>
+			</div>
+			Lo llamamos de tres formas diferentes para obtener los resultados diferentes que esperamos:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">SafeCallOperation(0);
+SafeCallOperation(-1);
+SafeCallOperation(2);</pre>
+			</div>
+			Pero al ejecutar estas llamadas nos encontramos con una salida inesperada:
+			<pre style="color: #fff; font-size: 12px; background-color: #000;">Error desconocido: Cannot be zero
+Error desconocido: The parameter must be greater than zero
+El resultado es: 2</pre>
+			Las dos primeras dan como resultado "<em>Error desconocido: ...
+			</em>" y la última si que responde con el resultado como esperábamos. ¿Por qué no ha respondido capturando las excepciones que hemos lanzado desde el servicio? 
+			<p>
+				Si analizamos la ejecución en modo debug, nos daremos cuenta de que enviemos la excepción que enviemos, siempre recibimos en el cliente una de tipo "<strong>
+					<em>
+						FaultException&lt;ExceptionDetail></em>
+				</strong>". De esto deducimos que WCF convierte las excepciones en FaultException y cuando las queremos usar, estamos perdiendo información importante para diferenciarlas.
+			</p>
+			<p>
+				Esto ocurre porque una excepción cualquiera no es serializable. Lo que quiere decir que no es <em>materializable
+				</em> (solo puede existir en memoria) y por lo tanto tampoco se puede enviar por un canal de comunicación ni tampoco guardar en un fichero. Para eso existen <em>
+					<strong>
+						FaultException</strong>
+				</em> y <em>
+					<strong>
+						FaultException&lt;T></strong>
+				</em>.
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[SerializableAttribute]
+public class FaultException&lt;TDetail> : FaultException</pre>
+			</div>
+			Ambas excepciones son serializables y representan un error en el protocolo SOAP (que es el protocolo que usan para comunicarse los servicios web). Al tener esta característica se pueden enviar por el canal de comunicación entre el servidor y el cliente. Y además nos ayudarán a enviar información personalizada gracias a que <em>
+				<strong>
+					FaultException&lt;T> </strong>
+			</em>es una clase genérica, que puede transportar cualquier información siempre que esta sea un DTO (<strong>D
+			</strong>ata <strong>T
+			</strong>ransfer <strong>O
+			</strong>bject). 
+			<p>
+				Para adaptar nuestro código, vamos a crear dos DTOs que manejen las excepciones del servidor. Para que un objeto se convierta en transportable, basta con añadir los atributos <strong>DataContract
+				</strong> al objeto y <strong>DataMember
+				</strong> a todas las propiedades que se quieran enviar. Como nota,<strong> las propiedades decoradas con DataMember deben ser de lectura y escritura
+				</strong>. Vamos a crear entonces nuestros nuevos objetos:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[DataContract]
+public class ArgumentFault
+{
+   [DataMember]
+   public string Argument { get; set; }
+
+					<p>
+						[DataMember]
+public string Message { get; set; }
+}
+					</p>
+
+					<p>
+						[DataContract]
+public class InvalidOperationFault
+{
+[DataMember]
+public string Message { get; set; }
+}
+					</p></pre>
+			</div>
+			Con <strong>
+				<em>
+					ArgumentFault</em>
+			</strong> gestionaremos las excepciones tipo <em>
+				<strong>
+					ArgumentException</strong>
+			</em> y con <strong>
+				<em>
+					InvalidOperationFault</em>
+			</strong>, las de <strong>
+				<em>
+					InvalidOperationException</em>
+			</strong>. Entonces el código de nuestro servicio cambiará, para gestionar excepciones de tipo <strong>
+				<em>
+					FaultException</em>
+			</strong> que contengan los objetos <em>Fault
+			</em> que hemos creado. Algo parecido a esto:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+public class MyService : IMyService
+{
+    public int Operation(int a)
+    {
+        if (a == 0)
+        {
+            var argumentFault = new ArgumentFault { Argument = "a", Message = "Cannot be zero" };
+            throw new FaultException&lt;ArgumentFault>(argumentFault);
+        }
+
+					<pre>
+						<code>
+							if (a &amp;lt; 0)
+    {
+        var operationFault = new InvalidOperationFault { Message = "The parameter must be greater than zero" };
+        throw new FaultException&amp;lt;InvalidOperationFault&amp;gt;(operationFault);
+    }
+
+    return a;
+}
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			Además, como estamos usando el contrato <em>IMyService
+			</em>, deberemos adaptarlo para que "conozca" las excepciones/faltas que puede lanzar. Esto se hace usando el atributo FaultContract, mediante el cual especificaremos los DTOs que pueden ser enviados dentro de una FaultException:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">[ServiceContract]
+public interface IMyService
+{
+    [OperationContract]
+    [FaultContract(typeof(ArgumentFault))]
+    [FaultContract(typeof(InvalidOperationFault))]
+    int Operation(int a);
+}</pre>
+			</div>
+			Con estos pasos ya hemos adaptado nuestro servicio para que pueda enviar excepciones más descriptivas que puedan ser recogidas mediante diferentes bloques <em>catch
+			</em>. Así que para terminar con nuestro desarrollo, solo quedaría modificar el cliente de tal forma que sea capaz  de reconocer las diferentes excepciones/faltas que provengan del servidor:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">public void SafeCallOperation(int numero)
+{
+   try
+   {
+      var result = CallOperation(numero);
+      System.Console.WriteLine("El resultado es: " + result);
+   }
+   catch(FaultException&lt;ArgumentFault> aex)
+   {
+      System.Console.WriteLine("Has introducido 0: " + aex.Detail.Message);
+   }
+   catch(FaultException&lt;InvalidOperationFault> iex)
+   {
+      System.Console.WriteLine("Has introducido un número menor de cero: " + iex.Detail.Message);
+   }
+   catch(Exception ex)
+   {
+      System.Console.WriteLine("Error desconocido: " + ex.Message);
+   }
+}</pre>
+			</div>
+			Se pueden apreciar dos diferencias con respecto el código original. La primera es que ahora capturamos siempre excepciones de tipo <strong>
+				<em>
+					FaultException</em>
+			</strong>. Y la segunda es que la información significativa que hemos creado, la podemos encontrar en la propiedad <strong>
+				<em>
+					Detail</em>
+			</strong> de la <strong>
+				<em>
+					FaultException</em>
+			</strong> genérica que hemos capturado. 
+			<p>
+				Al ejecutar de nuevo estas tres llamadas:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">SafeCallOperation(0);
+SafeCallOperation(-1);
+SafeCallOperation(2);</pre>
+			</div>
+			Podremos ver que esta vez si que la salida es como estábamos esperando.
+			<pre style="color: #fff; font-size: 12px; background-color: #000;">Has introducido 0: Cannot be zero
+Has introducido un número menor de cero: The parameter must be greater than zero
+El resultado es: 2</pre>
+			  
+			<p>
+				Así que ya no hay excusas para no gestionar correctamente las excepciones en WCF. Podremos desarrollar más esta solución. Por ejemplo creando un objeto base para gestión de las diferentes excepciones, o incluso desmarcarnos haciendo un "serializador" de excepciones genérico para todas nuestras aplicaciones...
+			</p>
+			<p>
+				Aquí solo exponemos el comportamiento básico y su por qué. Explorarlo e implementarlo mejor, corre a cargo del cada uno 😃
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Gestión de excepciones con WCF&url=https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/04/12/gestion-de-excepciones-con-wcf" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Serverless API Rest · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Serverless es un concepto nacido en la Nube. Su gran &#233;xito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de..." />
+		<meta property="og:title" content="Serverless API Rest" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/01/29/serverless-api-rest" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-01-29 08:59:42Z" />
+		<meta property="article:published_time" content="2019-01-29 08:59:42Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Serverless API Rest" />
+		<meta name="twitter:description" content="Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/01/29/serverless-api-rest" />
+		<meta name="description" content="Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/01/29/serverless-api-rest" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Serverless API Rest
+			</h1><small>29 ene. 2019 · 11 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Serverless es un concepto nacido en la Nube. Su gran éxito es ser una arquitectura para backend, del lado del servidor (Server-side), que no tiene estado, de ejecución rápida y que responde a eventos. Literalmente, se traduce como "sin servidor". Y aquí es donde empieza el conflicto.
+				<!--break-->
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/01/serverless-wat.jpg" alt="Wat if I told you wat?" />
+			</p>
+			<p>
+				Y es que serverless es de las tecnologías con nombre más traicionero que existen. Se traduce como "sin servidor". Pero en realidad se refiere a un tipo de arquitectura en la que el servidor no es importante para el desarrollador. Se ejecutan en entornos aislados, como en contenedores específicos. Pero evidentemente, estos entornos y/o contenedores, se ejecutan en uno o varios servidores.
+			</p>
+			<p>
+				La forma más conocida de programar serverless es usar las plataformas de "Function as a Service" (FaaS). Este tipo de servicios está totalmente gestionado por el proveedor cloud que utilicemos. Y se caracterizan por basarse en funciones como unidad de trabajo. Estas funciones:
+			</p>
+			<ul>
+				<li>
+					Serán independientes, pequeñas y basadas en una unidad lógica.
+				</li>
+				<li>
+					Podrán recibir y devolver parámetros.
+				</li>
+				<li>
+					No tendrán estado.
+				</li>
+				<li>
+					Estarán diseñadas para ser rápidas y efímeras: con cada llamada, se instancia todo lo necesario, se ejecuta la función y libera todos los recursos de la memoria.
+				</li>
+				<li>
+					Deberán ser escalables. Pudiendo tener tantas instancias como sean necesarias, ejecutándose en el mismo momento. Incluso en paralelo.
+				</li>
+				<li>
+					Sus desencadenadores serán eventos: bien sea una petición HTTP, un evento en una base de datos, la respuesta a un mensaje en una cola...
+				</li>
+			</ul>
+			<p>
+				Hoy en día tenemos muchísimas variantes de estos servicios, aunque los más importantes son los que han implementado las "Big Three" de la nube: Amazon, Google y Microsoft. Y como todos sabemos de qué pie cojeo, pues vamos a hablar de la implementación de Microsoft: Azure Functions.
+			</p>
+			<h2 id="mi-primera-function">
+				Mi primera Function
+			</h2>
+			<p>
+				La forma más fácil de programar para Azure Functions es usar un Visual Studio Enterprise o Community. Desde ahí crearemos un nuevo proyecto, seleccionaremos como tipo "Cloud", y dentro de las diferentes propuestas de plantilla, la denominada como "Azure Functions".
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/01/serverless-newproject-1.png" alt="New Visual Studio Enterprise Project" />
+			</p>
+			<p>
+				Entonces nos pedirá cierta configuración adicional para el proyecto. La primera será seleccionar el Framework, que en este caso nos hemos decantado por "Azure Functions v2 (.Net Core)". Después, como vamos a implementar una API Rest, hemos escogido "Http trigger" como desencadenador por defecto. Y finalmente, en el nivel de acceso le hemos puesto "Anonymous", para que sea pública y no haga falta autenticarse.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/01/serverless-newproject-2.png" alt="New Visual Studio Enterprise Azure Functions Project settings" />
+			</p>
+			<p>
+				Si ahora ejecutamos el proyecto, nos aparecerá una consola donde se indica una URL donde se ha montado nuestra Function en la máquina local. Para lanzarla, abriremos el navegador e introduciremos esa URL con el parámetro "name" y un valor. En mi caso ha sido: "http://localhost:7071/api/Function1?name=MaxPower".
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/01/serverless-first-function.png" alt="Azure Functions primera ejecución" />
+			</p>
+			<p>
+				Está muy bien tener resultados con solo 30'' de clics en la pantalla 😃. Os prometo que no os robaré mucho más tiempo implementando una API Rest.
+			</p>
+			<h2 id="azure-function-api">
+				Azure Function API
+			</h2>
+			<p>
+				Si queremos una API, es posible que necesitemos previamente un tipo de recurso que utilizar en la misma. En este caso hemos decidido usar un "Todo", para implementar una API de gestión de tareas:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Todo
+{
+    public string Id { get; set; } = Guid.NewGuid().ToString("n");
+
+    public DateTime Created { get; set; } = DateTime.UtcNow;
+
+    public string Text { get; set; }
+
+    public bool Done { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Para almacenar este tipo de datos nos hemos decantado por un Sql Server. Por cuestiones de facilidad, hemos añadido una referencia al paquete de Nuget de <a href="https://dapper-tutorial.net/dapper">Dapper
+				</a>. De esta forma podremos usar sus características de mapping con las conexiones con el motor de base de datos.
+			</p>
+			<p>
+				Así que hacer una función que lea de nuestra base datos y devuelva esos datos en formato API Rest será un código tan simple como el siguiente:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class TodoApi
+{
+    [FunctionName("Todo_Get")]
+    public static async Task
+					<iactionresult>
+						SelectAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos")]
+        HttpRequest req,
+        ILogger log)
+    {
+        var cnnString = "my_connection_string";
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            var todos = await connection.QueryAsync
+						<todo>
+							("select Id, Created, Text, Done from dbo.Todos");
+            // QueryAsync
+							<t>
+								is a Dapper function. It maps the result of the query in to a IEnumerable
+								<t>
+									if (todos.Count() == 0) return new EmptyResult(); // status code 204 No Content
+            return new OkObjectResult(todos); // status code 200 Ok + body { ...todos }
+        }
+    }
+}
+								</t>
+							</t>
+						</todo></iactionresult>
+				</code>
+</pre>
+			<p>
+				Uno de los típicos retos que vamos a encontrar usando Microsoft Azure, es que nos da la posibilidad de usar settings de aplicación configurados en el propio entorno de Azure. De esta forma las aplicaciones no tienen por qué conocer los datos de conexión de, por ejemplo, una base de datos. Esa información se la proveerá el propio entorno.
+			</p>
+			<p>
+				En el caso de Azure Functions, existen los Application Settings, que pueden ir en archivos de configuración json o también en forma de variables de entorno. Para poder recoger estos valores de cualquiera de las dos fuentes, tendremos que instanciar un "ConfigurationBuilder" para así poder crear un "IConfigurationRoot" de donde leer la información. A este fin crearemos la siguiente función que devolverá una cadena de conexión llamada "DefaultConnection" por defecto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static string GetConnectionString(ILogger log, ExecutionContext context)
+{
+    var config = new ConfigurationBuilder()
+                    .SetBasePath(context.FunctionAppDirectory)
+                    .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
+                    .AddEnvironmentVariables()
+                    .Build();
+
+    return config.GetConnectionString("DefaultConnection");
+}
+				</code>
+</pre>
+			<p>
+				Después en el archivo del proyecto "local.settings.json", añadiremos una sección nueva con las cadenas de conexión que usamos de forma local:
+			</p>
+			<pre class="language-json highlight">
+<code>"ConnectionStrings": {
+    "DefaultConnection": "my_connection_string"
+}
+				</code>
+</pre>
+			<p>
+				Y finalmente modificaremos nuestro código para que la "Function" recupere el "ExecutionContext" (añadiéndolo como parámetro) y para que la cadena de conexión la resuelva usando el código que hemos visto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class TodoApi
+{
+    [FunctionName("Todo_Get")]
+    public static async Task
+					<iactionresult>
+						SelectAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context /*Added ExecutionContext parameter*/)
+    {
+        var cnnString = GetConnectionString(log, context); // call GetConnectionString(..) method
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            var todos = await connection.QueryAsync
+						<todo>
+							("select Id, Created, Text, Done from dbo.Todos");
+
+            if (todos.Count() == 0) return new EmptyResult();
+            return new OkObjectResult(todos);
+        }
+    }
+}
+						</todo></iactionresult>
+				</code>
+</pre>
+			<p>
+				Por último, y con el fin de conseguir tener una API completa, tendremos que ser capaces de leer información de la petición HTTP. Hay dos vías:
+			</p>
+			<h3 id="url.path-parameter">
+				Url.Path parameter
+			</h3>
+			<p>
+				Para leer un parámetro que nos encontramos en la propia URL de la API, lo primero que tendremos que hacer es añadirlo a la ruta de la función. Esto se especifica en el atributo "HttpTrigger", en la variable "Route". De la misma forma que haríamos con Asp.Net, indicando el nombre de la variable entre llaves:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos/{id}")]
+HttpRequest req
+				</code>
+</pre>
+			<p>
+				Y para recogerlo, simplemente añadimos el parámetro a la función:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[FunctionName("Todo_GetById")]
+public static async Task
+					<iactionresult>
+						SelectByIdAsync(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos/{id}")] /* the 'id' parameter in the Route*/
+    HttpRequest req,
+    ILogger log,
+    ExecutionContext context,
+    string id /*the 'id' parameter as a function parameter*/)
+{
+    // ...
+}</iactionresult>
+				</code>
+</pre>
+			<h3 id="request.body">
+				Request.Body
+			</h3>
+			<p>
+				Por otro lado, si queremos recoger el valor del cuerpo de la petición HTTP, tendremos que usar un deserializador de json. En nuestro proyecto ya tendremos incluido el <a href="https://www.newtonsoft.com/json">NewtonSoft.Json
+				</a>. Así que deberíamos serializarlo leyéndolo de la Request:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[FunctionName("Todo_Create")]
+public static async Task
+					<iactionresult>
+						CreateAsync(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "todos")]
+    HttpRequest req,
+    ILogger log,
+    ExecutionContext context)
+{
+    var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    var input = JsonConvert.DeserializeObject
+						<todo>
+							(requestBody);
+
+    // ...
+}
+						</todo></iactionresult>
+				</code>
+</pre>
+			<h2 id="api-rest">
+				API Rest
+			</h2>
+			<p>
+				Conociendo estos detalles, ya no tendremos problemas en implementar una versión completa de una API Rest basada en Azure Functions y con una base de datos hospedada en un Azure Sql Database. La podéis ver a continuación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class TodoApi
+{
+    [FunctionName("Todo_Get")]
+    public static async Task
+					<iactionresult>
+						SelectAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context)
+    {
+        var cnnString = GetConnectionString(log, context);
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            var todos = await connection.QueryAsync
+						<todo>
+							("select Id, Created, Text, Done from dbo.Todos");
+
+            if (todos.Count() == 0) return new EmptyResult();
+            return new OkObjectResult(todos);
+        }
+    }
+
+    [FunctionName("Todo_GetById")]
+    public static async Task
+							<iactionresult>
+								SelectByIdAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todos/{id}")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context,
+        string id)
+    {
+        var cnnString = GetConnectionString(log, context);
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            var todos = await connection.QueryAsync
+								<todo>
+									("select Id, Created, Text, Done from dbo.Todos where Id = @id", new { id });
+
+            if (todos.Count() == 0) return new NotFoundResult();
+            return new OkObjectResult(todos.First());
+        }
+    }
+
+    [FunctionName("Todo_Create")]
+    public static async Task
+									<iactionresult>
+										CreateAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "todos")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context)
+    {
+        var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        var input = JsonConvert.DeserializeObject
+										<todo>
+											(requestBody);
+
+        var cnnString = GetConnectionString(log, context);
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            await connection.ExecuteAsync("insert into dbo.Todos (Id, Created, Text, Done) values (@Id, @Created, @Text, @Done)", input);
+
+            var location = $"{req.Scheme}://{req.Host}{req.Path}{req.QueryString}/{input.Id}";
+            return new CreatedResult(location, input);
+        }
+    }
+
+    [FunctionName("Todo_Update")]
+    public static async Task
+											<iactionresult>
+												UpdateAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todos/{id}")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context,
+        string id)
+    {
+        var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        var input = JsonConvert.DeserializeObject
+												<todo>
+													(requestBody);
+
+        var cnnString = GetConnectionString(log, context);
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            await connection.ExecuteAsync("update dbo.Todos set Text = @Text, Done = @Done where Id = @Id", input);
+
+            return new OkObjectResult(input);
+        }
+    }
+
+    [FunctionName("Todo_Delete")]
+    public static async Task
+													<iactionresult>
+														DeleteAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "todos/{id}")]
+        HttpRequest req,
+        ILogger log,
+        ExecutionContext context,
+        string id)
+    {
+        var cnnString = GetConnectionString(log, context);
+        using (var connection = new SqlConnection(cnnString))
+        {
+            connection.Open();
+            await connection.ExecuteAsync("delete from dbo.Todos where Id = @id", new {  id });
+
+            return new OkObjectResult(id);
+        }
+    }
+
+    private static string GetConnectionString(ILogger log, ExecutionContext context)
+    {
+        var config = new ConfigurationBuilder()
+                        .SetBasePath(context.FunctionAppDirectory)
+                        .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
+                        .AddEnvironmentVariables()
+                        .Build();
+
+        return config.GetConnectionString("DefaultConnection");
+    }
+}
+													</iactionresult>
+												</todo>
+											</iactionresult>
+										</todo>
+									</iactionresult>
+								</todo>
+							</iactionresult>
+						</todo></iactionresult>
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Decidir desarrollar una arquitectura basada en serverless va a proporcionarnos muchas ventajas:
+			</p>
+			<ul>
+				<li>
+					Un coste de infraestructura basado solamente en el tiempo de ejecución. Sin tener que administrar nada en absoluto.
+				</li>
+				<li>
+					Servicios más pequeños y mejor divididos. Siendo más fácil responder al cambio. Necesitando menos experiencia en complejas arquitecturas.
+				</li>
+				<li>
+					Facilidad de automatización y menor time-to-market.
+				</li>
+				<li>
+					Herramientas de monitorización out-of-the-box.
+				</li>
+			</ul>
+			<p>
+				Pero siempre tendremos que conocer ciertas limitaciones:
+			</p>
+			<ul>
+				<li>
+					Es una tecnología nueva, y por tanto inmadura. Sin best-practices claras.
+				</li>
+				<li>
+					Al tener todo tan dividido se multiplica la posibilidad de crear bloqueos de recursos y se añade mayor dificultad a la hora de controlarlos.
+				</li>
+				<li>
+					El equipo de desarrollo tiene que tener muy interiorizada la filosofía de serverless a la hora de desarrollar.
+				</li>
+				<li>
+					No es una arquitectura válida para procesos con gran carga de CPU y/o una larga duración.
+				</li>
+				<li>
+					La arquitectura no aporta la velocidad necesaria en aplicaciones de tiempo real.
+				</li>
+			</ul>
+			<p>
+				Así que queda en los problemas y consideraciones de cada proyecto el aplicar este modelo o no.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Serverless API Rest&url=https://www.developerro.com/2019/01/29/serverless-api-rest" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/01/29/serverless-api-rest" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/01/29/serverless-api-rest" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/01/29/serverless-api-rest" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/02/azure-functions-custom-triggers">
+						Azure Functions: custom triggers
+					</a> <small>02 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/04/23/azure-functions-custom-in-bindings">
+						Azure Functions: custom in bindings
+					</a> <small>23 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/04/15/azure-functions-custom-out-bindings">
+						Azure Functions: custom out bindings
+					</a> <small>15 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/03/26/azure-functions-docker">
+						Azure Functions con docker
+					</a> <small>26 mar. 2019
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

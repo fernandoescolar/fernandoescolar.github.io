@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			VSTS: Migrar TFVC a Git · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Hace no mucho, El Bruno me invit&#243; a participar en uno de sus conocidos podcast. En este caso la tem&#225;tica trataba de un art&#237;culo que podr&#233;is leer en esta mism..." />
+		<meta property="og:title" content="VSTS: Migrar TFVC a Git" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Hace no mucho, El Bruno me invitó a participar en uno de sus conocidos podcast. En este caso la temática trataba de un artículo que podréis leer en esta mism..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2016-09-15 00:00:00Z" />
+		<meta property="article:published_time" content="2016-09-15 00:00:00Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="VSTS: Migrar TFVC a Git" />
+		<meta name="twitter:description" content="Hace no mucho, El Bruno me invitó a participar en uno de sus conocidos podcast. En este caso la temática trataba de un artículo que podréis leer en esta mism..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" />
+		<meta name="description" content="Hace no mucho, El Bruno me invitó a participar en uno de sus conocidos podcast. En este caso la temática trataba de un artículo que podréis leer en esta mism..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				VSTS: Migrar TFVC a Git
+			</h1><small>15 sept. 2016 · 9 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Hace no mucho, <a href="https://twitter.com/elbruno" title="El Bruno">El Bruno
+				</a> me invitó a participar en <a href="https://elbruno.com/2016/08/30/podcast-por-que-odio-git/" title="Podcast: Por qué odio Git">uno de sus conocidos podcast
+				</a>. En este caso la temática trataba de un artículo que podréis leer en esta misma Web: <a href="http://fernandoescolar.github.io/2016/02/16/por-que-odio-git/" title="Artículo: por qué odio Git">Por qué odio Git
+				</a>. Dejando de lado lo agradecido que estoy por esta oportunidad, dentro de la conversación, me preguntó si me habían pedido migrar a Git muchos clientes. La verdad es que no. Pero me dió una buena idea sobre la que escribir.
+				<!--break-->
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/09/meme-migrate.jpg" alt="migrate to git meme" />
+			</p>
+			<p>
+				Y es que la mejor forma de migrar de TFVC a Git, es no migrar. Si usamos directamente Git nos quitamos todos los problemas.
+			</p>
+			<p>
+				Pero si para ti esto es imposible. Si ya tienes un proyecto en Visual Studio Team Services. Si tienes un histórico, una trazabilidad. Si <del>te confundiste
+				</del> elegiste TFVC como repositorio. Si ya estás harto de TFVC. O si eres un fanboy de Git. Si quieres cambiar el repositorio, pero no quieres perder nada. Tengo una buena noticia para ti: ¡sí se puede!
+			</p>
+			<p>
+				Lo primero que tenemos que hacer es crear un nuevo repositorio de código fuente dentro del proyecto. Una opción que encontraremos en la sección de código del portal de VSTS:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/09/migrate-git-1.png" alt="nuevo repositorio" />
+			</p>
+			<p>
+				Pero esta vez hay que elegir Git. Y ponerle un nombre bonito:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/09/migrate-git-2.png" alt="crear nuevo repositorio Git" />
+			</p>
+			<p>
+				Una opción de <em>hacker
+				</em> es activar el checkbox de crear el archivo "readme.md". Esto es un archivo con el leeme del proyecto. Muy útil si pensais pasarlo a GitHub en algún momento.
+			</p>
+			<p>
+				Al terminar de crear el repositorio, os aparecerá una pantalla donde encontrareis la url del mismo. Además de una opción para crear unas credenciales para poder conectaros:
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/09/migrate-git-3.png" alt="repositorio creado" />
+			</p>
+			<p>
+				Recordad guardaros tanto la url como las credenciales, que a continuación serán necesarias.
+			</p>
+			<p>
+				El problema de hoy en día es que existen multitud de opciones. Multitud de herramientas para hacer lo mismo. Nos encontramos en una permanente disyuntiva. Cerveza negra o rubia. Cristiano Ronaldo o Messi. <a href="http://www.fangazing.com/berto/algo_para_pensar_01__la_disyuntiva_allen__johansson/43&amp;style=flat" title="Disyuntiva Allen-Johansson">Allen o Johansson
+				</a>. Cuando queremos migrar de TFVC a Git, es lo mismo. Nunca recuerdo cual era la aplicación buena: ¿"git-tf" o "git-tfs"?. Siempre me confundo. Al final termino instalándome ambas. Y ¿cómo eran los dichosos comandos?
+			</p>
+			<p>
+				Sí, comandos. Las herramientas que conozco que nos pueden ayudar, se ejecutan en modo consola. Por eso nos crearemos un directorio de trabajo. Por ejemplo "c:\wat", que será la ruta desde donde lanzaremos las instrucciones.
+			</p>
+			<blockquote>
+				<p>
+					You Can't Write Perfect Software. Did that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software.
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					<strong>
+						Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
+					</strong>
+				</p>
+			</blockquote>
+			<h2 id="git-tf">
+				Git-Tf
+			</h2>
+			<p>
+				Git-Tf es la primera herramienta que conocí. Por eso la menciono primero. Está escrita en java. Esto la hace compatible con sistemas operativos windows, linux o macos. Es muy simple usarla. Si queremos instalarla tenemos la opción de usar chocolatey:
+			</p>
+			<pre class="language-bash highlight">
+<code>choco install git-tf -y
+				</code>
+</pre>
+			<p>
+				O bien descargarla de su <a href="https://gittf.codeplex.com/" title="Git-Tf">web
+				</a>.
+			</p>
+			<p>
+				Una vez lo hemos hecho, abriremos una consola. Y ejecutaremos un comando para descargarnos nuestro código fuente original. Git-Tf lo transformará a formato de repositorio Git:
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\wat> git-tf clone "http://
+					<yourname>
+						.visualstudio.com/DefaultCollection/" "$/
+						<teamprojectname>
+							/
+							<path>
+								" –deep
+							</path>
+						</teamprojectname></yourname>
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<strong>
+							YourName
+						</strong>: es el nombre de tu cuenta de Visual Studio Team Services.
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>
+							TeamProjectName
+						</strong>: es el nombre de tu proyecto.
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>
+							Path
+						</strong>: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Esto nos descargará todo el código fuente con su historial desde el TFS. Desde nuestro repositorio TFVC.
+			</p>
+			<p>
+				Como anteriormente ya creamos el repositorio de Git, copiaremos la url del mismo que tendrá un formato del estilo:
+			</p>
+			<pre class="language-bash highlight">
+<code>https://
+					<yourname>
+						.visualstudio.com/DefaultCollection/
+						<teamprojectname>
+							/_git/
+							<gitname>
+							</gitname>
+						</teamprojectname></yourname>
+				</code>
+</pre>
+			<p>
+				En la consola, nos situaremos en la carpeta "c:\wat". Dentro de esta buscaremos una subcarpeta con el nombre del proyecto que hemos descargado de TFVC anteriormente. Situaremos la consola en esa carpeta y añadiremos el repositorio de Git como un nuevo "remote":
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\wat> cd 
+					<project>
+						C:\wat\
+						<project>
+							> git remote add origin "https://
+							<yourname>
+								.visualstudio.com/DefaultCollection/
+								<teamprojectname>
+									/_git/
+									<gitname>
+										"
+									</gitname>
+								</teamprojectname>
+							</yourname>
+						</project></project>
+				</code>
+</pre>
+			<p>
+				Lo que habremos hecho es relacionar nuestro repositorio local, el que acabamos de clonar desde TFVC, con el repositorio Git. A continuación, para iniciar la subida al repositorio Git, realizaremos un "push":
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\wat\
+					<project>
+						> git push origin master</project>
+				</code>
+</pre>
+			<p>
+				Nos pedirá el usuario y la contraseña para realizar la subida. Los introducimos y esperamos a que suba todos los datos.
+			</p>
+			<p>
+				Cuando termine esta operación tendremos en nuestro repositorio de Git todos los changesets que teníamos en TFVC y ya podremos trabajar con él.
+			</p>
+			<h2 id="git-tfs">
+				Git-Tfs
+			</h2>
+			<p>
+				Una alternativa a Git-Tf, es Git-Tfs. Es una herramienta semejante. Aunque a mi me gusta más. Está escrita en c#. Luego si no la migran a core, solo se podrá usar en sistemas windows. Para instalarla podemos seguir la misma mecánica. O usar chocolatey:
+			</p>
+			<pre class="language-bash highlight">
+<code>choco install gittfs -y
+				</code>
+</pre>
+			<p>
+				O dirigirnos a su <a href="https://github.com/git-tfs/git-tfs" title="Git-Tfs">web
+				</a>, a <a href="https://github.com/git-tfs/git-tfs/releases" title="Git-Tfs Releases">la sección de releases
+				</a>.
+			</p>
+			<p>
+				Los comandos que tendremos que utilizar son muy parecidos. Aunque en este caso usaremos algún parámetro más. Lo primero clonaremos el repositorio de TFVC original y cambiaremos su formato a Git:
+			</p>
+			<pre class="language-bash highlight">
+<code>c:\wat> git tfs clone "http://
+					<yourname>
+						.visualstudio.com/DefaultCollection/" "$/
+						<teamprojectname>
+							/
+							<path>
+								" . --branches=all --export --export-work-item-mapping="c:\wat\mapping\file.txt"
+							</path>
+						</teamprojectname></yourname>
+				</code>
+</pre>
+			<p>
+				Donde:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<strong>
+							YourName
+						</strong>: es el nombre de tu cuenta de Visual Studio Team Services.
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>
+							TeamProjectName
+						</strong>: es el nombre de tu proyecto.
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>
+							Path
+						</strong>: si no deseas descargar el proyecto entero, solo una carpeta "source" o algo así, lo especificas aquí.
+					</p>
+				</li>
+			</ul>
+			<p>
+				La parte buena de Git-Tfs es que es capaz de copiar también las branches. Además tiene un sistema de mapping de workitems. Muy útil si en lugar de migrar dentro de la misma cuenta de VSTS, lo estamos haciendo a otra. O incluso a un TFS on premises.
+			</p>
+			<p>
+				La contra es que, al ser una herramienta más completa, también se toma ciertas libertades. Una de ellas es cambiar los mensajes de TFVC, con un extra de metadatos. Así que el segundo comando que ejecutaremos limpiará esos mensajes:
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\wat> cd 
+					<project>
+						C:\wat\
+						<project>
+							> git filter-branch -f --msg-filter "sed 's/^git-tfs-id:.*$//g'" -- --all
+						</project></project>
+				</code>
+</pre>
+			<p>
+				Después verficaremos que todo está correcto y borraremos la siguiente carpeta: "C:\wat
+				<project>
+					.git\refs\original". Esto borrará branches antiguas.
+				</project>
+			</p>
+			<p>
+				Para terminar, incluiremos el repositorio de Git que creamos al principio y enviaremos todas las modificaciones:
+			</p>
+			<pre class="language-bash highlight">
+<code>C:\wat\
+					<project>
+						> git remote add origin https://
+						<yourname>
+							.visualstudio.com/DefaultCollection/
+							<teamprojectname>
+								/_git/
+								<gitname>
+									C:\wat\
+									<project>
+										> git push --all origin
+									</project>
+								</gitname>
+							</teamprojectname>
+						</yourname></project>
+				</code>
+</pre>
+			<p>
+				Al finalizar, ya tendremos nuestro repositorio Git en VSTS listo para usar. Además conservará todos los changesets que realizamos en el anterior repositorio.
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				El coste de migrar a Git es relativamente pequeño. Pero el coste de que todos los desarrolladores de un equipo aprendan Git, es algo mayor. A mi personalmente el uso de Git me ha ayudado.
+			</p>
+			<p>
+				Si quieres realizar una migración rápida. Si no tienes/quieres migrar branches. Git-Tf es tu herramienta. Pero hay que tener en cuenta que no tiene versiones nuevas desde 2013.
+			</p>
+			<p>
+				Si quieres realizar una migración con todas las ramas. Si quieres luego seguir gestionando esta compatibilidad entre un TFVC y un Git. Git-Tfs es lo que deberías usar. Es muy potente. Mucho más de lo que se expone en este artículo. Pero también más complicada.
+			</p>
+			<p>
+				Y si os preguntais si estos comandos solo valen para una misma cuenta de Visual Studio Team Services, os puedo decir que no es así. Vale para TFS también. Además, no tiene por qué ser ni el mismo TFS ni VSTS el que recibe los cambios. Puedes recogerlos de una versión on-premises con TFVC y migrarlos a un repositorio Git de una cuenta de VSTS en la nube. Pero para esta última operación, os recomiendo que useis Git-Tfs.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=VSTS: Migrar TFVC a Git&url=https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2016/09/15/vsts-migrar-tfvc-a-git" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/04/24/gab-azure-devops">
+						Azure DevOps: El panel de expertos
+					</a> <small>24 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/01/25/github-actions-vs-azure-pipelines">
+						Github Actions vs. Azure Pipelines
+					</a> <small>25 ene. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/03/05/azure-devops-kanban-ii">
+						Método Kanban con Azure DevOps (y 2)
+					</a> <small>05 mar. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/26/azure-devops-kanban">
+						Método Kanban con Azure DevOps
+					</a> <small>26 feb. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2016/12/12/reconnect-alm-end-to-end">
+						ReConnect(); //2016 - Microsoft ALM End to End
+					</a> <small>12 dic. 2016
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Azure Functions con .NET 5 · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Ha tardado m&#225;s de lo que esper&#225;bamos, pero ya est&#225; aqu&#237;. Despu&#233;s de meses de espera y escondiendo el anuncio dentro de un roadmap de las pr&#243;ximas versiones d..." />
+		<meta property="og:title" content="Azure Functions con .NET 5" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/thunder.jpg" />
+		<meta property="og:description" content="Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el anuncio dentro de un roadmap de las próximas versiones d..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2021-03-24 02:21:02Z" />
+		<meta property="article:published_time" content="2021-03-24 02:21:02Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Azure Functions con .NET 5" />
+		<meta name="twitter:description" content="Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el anuncio dentro de un roadmap de las próximas versiones d..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/thunder.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta name="description" content="Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el anuncio dentro de un roadmap de las próximas versiones d..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/thunder.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Azure Functions con .NET 5
+			</h1><small>24 mar. 2021 · 15 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el <a href="https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916">anuncio
+				</a> dentro de un roadmap de las próximas versiones de <em>.Net
+				</em>, las <em>dotnet Isolated Functions
+				</em> pasan a RTM
+				<!--break-->
+				. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
+			</p>
+			<p>
+				Para conseguir compatibilidad con <em>.Net 5
+				</em> se ha cambiado la estrategia. En lugar de actualizar todos los paquetes y crear una nueva versión de <em>Azure Functions
+				</em>, se ha creado un nuevo <em>worker
+				</em> llamado <em>dotnet-isolated
+				</em>. Esto es una suerte de <em>host
+				</em> que lanza nuestro ensamblado de funciones como un proceso aislado. Para la comunicación entre el proceso del <em>host
+				</em> y el de las funciones se ha utilizado un canal <em>gRPC
+				</em>. La idea es que, con este modelo podremos incluir todo lenguaje y framework para trabajar con <em>Azure Functions
+				</em>. Aunque la realidad es que, hoy en día solo soporta <em>.Net 5
+				</em>.
+			</p>
+			<p>
+				Este nuevo modelo de desarrollo nos va a suponer unos cuantos cambios en nuestros desarrollos. Vamos a echar un vistazo:
+			</p>
+			<ul>
+				<li>
+					TOC
+				</li>
+			</ul>
+			<h2 id="quick-start">
+				Quick Start
+			</h2>
+			<p>
+				Para empezar a trabajar con <em>Azure Functions
+				</em> para <em>.Net 5
+				</em> tendremos que crear o adaptar un proyecto ya existente.
+			</p>
+			<p>
+				Necesitaremos un archivo <code>host.json
+				</code>:
+			</p>
+			<pre class="language-json highlight">
+<code>{
+    "version": "2.0"
+}
+				</code>
+</pre>
+			<p>
+				Si ya tenemos el archivo <code>local.settings.json
+				</code> tendremos que reemplazar el tipo de <em>worker
+				</em> a <code>dotnet-isolated
+				</code>:
+			</p>
+			<pre class="language-diff highlight">
+<code>{
+    "IsEncrypted": false,
+    "Values": {
+-       "FUNCTIONS_WORKER_RUNTIME": "dotnet",
++       "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true"
+    },
+    "disabled": false
+}
+				</code>
+</pre>
+			<p>
+				O bien crear un archivo nuevo.
+			</p>
+			<p>
+				Sobre el tipo de proyecto nos servirá uno de tipo consola de <em>.Net 5
+				</em> añadiendo las referencias necesarias:
+			</p>
+			<pre class="language-diff highlight">
+<code>
+					<project sdk="Microsoft.NET.Sdk">
+						
+						<propertygroup>
+							
+							<targetframework>
+								net5.0
+							</targetframework>
+							
+							<outputtype>
+								Exe
+							</outputtype>
+							+   
+							<azurefunctionsversion>
+								v3
+							</azurefunctionsversion>
+							+   <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
+  
+						</propertygroup>
+						
+						<itemgroup>
+							+   
+							<packagereference include="Microsoft.Azure.Functions.Worker" version="1.0.0" />
+							+   
+							<packagereference include="Microsoft.Azure.Functions.Worker.Sdk" version="1.0.1" outputitemtype="Analyzer" />
+							
+						</itemgroup>
+						
+						<itemgroup>
+							
+							<none update="host.json">
+								
+								<copytooutputdirectory>
+									PreserveNewest
+								</copytooutputdirectory>
+								
+							</none>
+							
+							<none update="local.settings.json">
+								
+								<copytooutputdirectory>
+									PreserveNewest
+								</copytooutputdirectory>
+								
+								<copytopublishdirectory>
+									Never
+								</copytopublishdirectory>
+								
+							</none>
+							
+						</itemgroup>
+						</project>
+				</code>
+</pre>
+			<p>
+				Aquí definiremos la versión 3 de <em>Azure Functions
+				</em> y una serie de paquetes de <em>nuget
+				</em> que nos proveerán del entorno necesario para ejecutar nuestro proyecto al amparo del proceso anfitrión de las funciones:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Microsoft.Azure.Functions.Worker
+					</code>
+				</li>
+				<li>
+					<code>
+						Microsoft.Azure.Functions.Worker.Sdk
+					</code>
+				</li>
+			</ul>
+			<p>
+				Finalmente, tendremos que añadir o bien editar el archivo <code>Program.cs
+				</code> para crear el <em>host
+				</em> de las <em>Isolated Functions
+				</em> y ejecutarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults()
+                  .Build();
+
+  await host.RunAsync();
+}
+				</code>
+</pre>
+			<p>
+				Para añadir funciones, lo primero que tenemos que saber es que los paquetes de atributos han cambiado. Ahora lo que se usa es <code>Microsoft.Azure.Functions.Worker.Extensions.xxxxx
+				</code> don la <em>xxxxx
+				</em> es el nombre o tipo de servicio queremos usar: Http, Timer, ServiceBus, EventHubs, Storages...
+			</p>
+			<p>
+				Puedes encontrar un listado completo <a href="https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions">aquí
+				</a>.
+			</p>
+			<p>
+				Para nuestro ejemplo vamos a añadir una referencia al paquete <code>Microsoft.Azure.Functions.Worker.Extensions.Http
+				</code>. De esta forma tendremos disponibles los <em>bindings
+				</em> para el protocolo <em>HTTP
+				</em> y podremos crear nuestra primera función:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class HttpFunction
+{
+  [Function(nameof(HttpFunction))]
+  public static HttpResponseData Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+    HttpRequestData req,
+    FunctionContext context)
+  {
+      var logger = context.GetLogger("HttpFunction");
+      logger.LogInformation("request arrived");
+
+      var response = req.CreateResponse(HttpStatusCode.OK);
+      response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+      response.WriteString("Mis jugadores han corrido hoy por el campo como pollos sin cabeza. (John Toshack)");
+
+      return response;
+  }
+}
+				</code>
+</pre>
+			<p>
+				A primera vista encontraremos nuevos tipos para definir un desencadenador <em>HTTP
+				</em>:
+			</p>
+			<ul>
+				<li>
+					El tipo de resultado de la función ya no es <code>IActionResult
+					</code>. Ahora es un objeto de tipo <code>HttpResponseData
+					</code>.
+				</li>
+				<li>
+					El tipo de objeto que recibe el <em>trigger
+					</em> ya no es <code>HttpRequest
+					</code>. Ahora es un nuevo objeto acorde con el tipo de respuesta: <code>HttpRequestData
+					</code>.
+				</li>
+				<li>
+					El parámetro de tipo <code>FunctionContext
+					</code>. Desde este parámetro vamos a tener acceso al contexto de ejecución de la función. De esta manera, si por ejemplo necesitamos el <code>ILogger
+					</code> para escribir unas trazas, podemos recogerlo de ahí.
+				</li>
+			</ul>
+			<p>
+				Para ver cómo podemos definir <em>bindings
+				</em> de salida vamos a usar el paquete <code>Microsoft.Azure.Functions.Worker.Extensions.Storage
+				</code> que, entre otras cosas, nos permitirá acceder a colas de <em>Azure Storage Account
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class QueueFunction
+{
+  [Function(nameof(QueueFunction))]
+  [QueueOutput("outqueue", Connection = "StorageConnectionString")]
+  public static string Run(
+    [QueueTrigger("inqueue", Connection = "StorageConnectionString")]
+    string message,
+    FunctionContext context)
+  {
+    return "Estoy tan feliz como uno puede estar. Pero he estado más feliz. (Ugo Ehiogu)";
+  }
+}
+				</code>
+</pre>
+			<p>
+				Como podemos ver en el código anterior:
+			</p>
+			<ul>
+				<li>
+					El parámetro de salida de la función irá redirigido a una cola llamada <em>"outqueue"
+					</em>.
+				</li>
+				<li>
+					El desencadenador es un mensaje que viene de una cola llamada <em>"inqueue"
+					</em>.
+				</li>
+			</ul>
+			<p>
+				Por lo tanto, basta con añadir el <em>out
+				</em> <em>binding
+				</em> a la función para que el valor que se devuelve sea redirigido a un lugar concreto. Pero ¿qué hago para tener más de un parámetro de salida?
+			</p>
+			<p>
+				Para obtener más de un <em>out
+				</em> <em>binding
+				</em> tendremos que crear una clase nueva donde definiremos los diferentes tipos de <em>outputs
+				</em> usando los mismos atributos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class FunctionResult
+{
+    [QueueOutput("outqueue", Connection = "StorageConnectionString")]
+    public string Message { get; set; }
+
+    public HttpResponseData HttpReponse { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Después solo tendremos que devolver una nueva instancia de este objeto que hemos creado:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static class HttpMultiOutputFunction
+{
+  [Function(nameof(HttpMultiOutputFunction))]
+  public static FunctionResult Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+    HttpRequestData req,
+    FunctionContext context)
+  {
+      var response = req.CreateResponse(HttpStatusCode.OK);
+      response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+      response.WriteString("Sólo hay una posibilidad: victoria, derrota o empate. (Franz Beckenbauer)");
+
+      return new FunctionResult
+      {
+        Message = "Si llega a entrar el balón es gol. (Míchel González)",
+        HttpReponse = response
+      };
+  }
+}
+				</code>
+</pre>
+			<h2 id="debugging">
+				Debugging
+			</h2>
+			<p>
+				Una vez tenemos nuestras funciones creadas, nos interesará probarlas. Para ejecutar este nuevo tipo de aplicación no vamos a poder usar los típicos comandos de ejecución de <em>Visual Studio
+				</em> o el <em>dotnet run
+				</em> de siempre. Necesitaremos descargar, si no la tenemos ya, una <em>tool
+				</em> llamada <a href="https://github.com/Azure/azure-functions-core-tools">Azure Funcions Core Tools
+				</a>. Una vez instalada, nos tendremos que dirigir a la ruta de nuestro proyecto y ejecutar el siguiente comando:
+			</p>
+			<pre class="language-bash highlight">
+<code>func start
+				</code>
+</pre>
+			<p>
+				Al usar nuestro navegador para dirigirnos a una de nuestras funciones <em>HTTP
+				</em> encontraremos:
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/functions-net5.png" alt="Vista en el navegador" />
+			</p>
+			<h2 id="dependency-injection">
+				Dependency Injection
+			</h2>
+			<p>
+				Una de las cosas más engorrosas relacionadas con <em>Azure Functions
+				</em> es la de añadir la inyección de dependencias de <em>dotnet core
+				</em>. Hay que añadir un paquete especial y forzar una clase de arranque de la aplicación donde entonces creas todo lo necesario...
+			</p>
+			<p>
+				La buena noticia es que en este nuevo modelo de aplicación ya tenemos la capacidad de usar el <code>IServiceProvider
+				</code> de serie.
+			</p>
+			<p>
+				Para probarlo vamos a crear la interfaz de un servicio:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public interface IQuotesService
+{
+  string GetQuoteOfTheDay();
+}
+				</code>
+</pre>
+			<p>
+				La idea es que nos devuelva la frase del día, así que vamos a crear una implementación con varias frases y que nos devuelva una aleatoria:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class QuotesService : IQuotesService
+{
+  private static readonly string[] _quotes = new []
+  {
+    "Gaste mucho dinero en coches, alcohol y mujeres. El resto lo he malgastado. (George Best)",
+    "A medida que uno va ganando cosas, se hamburguesa. (Carlos Tévez)",
+    "Como todo equipo africano, Jamaica será un rival difícil. (Edinson Cavani)",
+    "Perdimos porque no ganamos. (Ronaldo Nazário)",
+    "El fútbol es como el ajedrez, pero sin dados. (Lukas Podolski)",
+    "No hay nada entre medio, o eres bueno o eres malo. Nosotros estuvimos entre medio. (Gary Lineker)",
+    "Jugamos como nunca y perdimos como siempre. (Alfredo Di Stefano)",
+    "A veces, en fútbol, tienes que marcar goles. (Thierry Henry)",
+    "El problema es que no ha entrado el balón. (Sergio Ramos)"
+  };
+
+  public string GetQuoteOfTheDay()
+  {
+      var index = new Random()
+                      .Next(0, _quotes.Length);
+
+      return _quotes[index];
+  }
+}
+				</code>
+</pre>
+			<p>
+				Si quisiéramos inyectar este servicio a una función haríamos algo parecido a esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class QuoteOfTheDayFunction
+{
+  private readonly IQuotesService _service;
+  private readonly ILogger _logger;
+
+  public QuoteOfTheDayFunction(IQuotesService service, ILogger
+					<quoteofthedayfunction>
+						logger)
+  {
+    _service = service;
+    _logger = logger;
+  }
+
+  [Function(nameof(QuoteOfTheDayFunction))]
+  public HttpResponseData Run(
+      [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+      HttpRequestData req
+  )
+  {
+    _logger.LogInformation("getting quote of the day");
+
+    var response = req.CreateResponse(HttpStatusCode.OK);
+    response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+    response.WriteString(_service.GetQuoteOfTheDay());
+
+    return response;
+  }
+}</quoteofthedayfunction>
+				</code>
+</pre>
+			<p>
+				Pasamos las dependencias como parámetros de entrada de la función. Como detalle especial, hemos quitado las referencias al <code>FunctionContext
+				</code> y hemos añadido el <code>ILogger
+				</code> en el constructor.
+			</p>
+			<p>
+				Para añadir los servicios al <code>IServiceCollection
+				</code> usaremos el método extensor <code>ConfigureServices
+				</code> en la creación del <em>host
+				</em> en el archivo <code>Program.cs
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults()
+                  .ConfigureServices(services =>
+                  {
+                      services.AddScoped
+					<iquotesservice , quotesservice>
+						();
+                  })
+                  .Build();
+
+  await host.RunAsync();
+}</iquotesservice>
+				</code>
+</pre>
+			<p>
+				Ahora podremos volver a lanzar nuestra aplicación:
+			</p>
+			<pre class="language-bash highlight">
+<code>func start
+				</code>
+</pre>
+			<p>
+				Y comprobaremos que hemos llamado correctamente al servicio de frases del día:
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/functions-net5-2.png" alt="Vista en el navegador" />
+			</p>
+			<h2 id="middlewares">
+				Middlewares
+			</h2>
+			<p>
+				Otra de las sorpresas que traen consigo las <em>dotnet-isolated
+				</em> es la posibilidad de usar <em>middlewares
+				</em> de una forma semejante a como los usamos en una aplicación de <em>aspnet core
+				</em>.
+			</p>
+			<p>
+				Para ello crearemos un simple <em>middleware
+				</em> implementando la interfaz <code>IFunctionsWorkerMiddleware
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class DummyMiddleware : IFunctionsWorkerMiddleware
+{
+  public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
+  {
+    var logger = context.GetLogger
+					<dummymiddleware>
+						();
+    logger.LogInformation($"My Funcion: {context.FunctionDefinition.Name}");
+
+    await next(context);
+  }
+}</dummymiddleware>
+				</code>
+</pre>
+			<p>
+				Desde el <code>Invoke
+				</code> de un <em>middleware
+				</em> tendremos acceso a <code>FunctionContext
+				</code> y al delegado de la próxima ejecución.
+			</p>
+			<p>
+				Para usar este middleware nos dirigiremos al método <code>ConfigureFunctionsWorkerDefaults
+				</code> del <code>Main
+				</code> y lo añadiremos al <em>pipeline
+				</em> de ejecución con el método <code>UseMiddleware
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults(app =>
+                  {
+                    app.UseMiddleware
+					<dummymiddleware>
+						();
+                  })
+                  .Build();
+
+  await host.RunAsync();
+}</dummymiddleware>
+				</code>
+</pre>
+			<h2 id="tips-tricks">
+				Tips & Tricks
+			</h2>
+			<p>
+				Como presentación todo esto está muy bien, pero seguro que en cuanto empecéis a enredar os entrarán dudas. Entonces, seguro que os vienen bien estos "truquillos":
+			</p>
+			<h3 id="mejorando-el-debugging">
+				Mejorando el debugging
+			</h3>
+			<p>
+				Hemos visto que podemos lanzar la ejecución de nuestras funciones con el comando <code>func start
+				</code>. Y si queremos realizar un <em>debug
+				</em>, tendremos que <em>"attachar"
+				</em> <em>Visual Studio
+				</em> al proceso <code>dotnet
+				</code> que lanzamos mediante ese comando.
+			</p>
+			<p>
+				El caso es que nos puede interesar que el proceso se espere a que haya un <em>debugger
+				</em> en marcha, para que así no se nos cuele una ejecución fuera de este contexto. Para ello usaremos el parámetro <code>--dotnet-isolated-debug
+				</code>.
+			</p>
+			<p>
+				Y si también tenemos interés en tener más trazas sobre las ejecuciones de nuestras funciones usaremos el parámetro <code>--verbose
+				</code>.
+			</p>
+			<p>
+				Así que la llamada que posiblemente cubra nuestras expectativas a la hora de probar, sería más bien:
+			</p>
+			<pre class="language-bash highlight">
+<code>func start --dotnet-isolated-debug --verbose
+				</code>
+</pre>
+			<h3 id="anadir-variables-de-entorno">
+				Añadir variables de entorno
+			</h3>
+			<p>
+				Existe un problema cuando nos llevamos nuestras funciones a Azure y es que no se cargan por defecto las variables de entorno. Este tipo de variables son importantes porque es la forma que usa Azure para cargar la famosa configuración que ponemos desde el portal.
+			</p>
+			<p>
+				Es de suponer que esto lo cambiarán en un futuro próximo, pero mientras tanto, puedes usar el método <code>ConfigureAppConfiguration
+				</code> y dentro de este <code>AddEnvironmentVariables
+				</code>, para poder añadirlas:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults()
+                  .ConfigureAppConfiguration(config =>
+                  {
+                    config.AddEnvironmentVariables();
+                  })
+                  .Build();
+
+  await host.RunAsync();
+}
+				</code>
+</pre>
+			<h3 id="usar-la-configuracion">
+				Usar la configuración
+			</h3>
+			<p>
+				Muchas veces, cuando estamos configurando el inyector de dependencias de nuestra aplicación queremos que ciertos parámetros los cargue de la configuración. A ese fin, usaremos una de las sobre escrituras del método <code>ConfigureServices
+				</code> que vimos anteriormente. Si en lugar de pasarle un solo parámetro, usamos dos, en el primero tendremos el contexto de configuración. Desde ahí no nos costará buscar una sección concreta y usarla como en cualquier otro desarrollo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>static async Task Main(string[] args)
+{
+  var host = new HostBuilder()
+                  .ConfigureFunctionsWorkerDefaults()
+                  .ConfigureServices((context, services) =>
+                  {
+                      services.AddQuotes(op => context.Configuration
+                                                      .GetSection("Quotes")
+                                                      .Bind(op));
+                  })
+                  .Build();
+
+  await host.RunAsync();
+}
+				</code>
+</pre>
+			<h3 id="publicar-en-azure">
+				Publicar en Azure
+			</h3>
+			<p>
+				Se pueden publicar las <em>Azure Functions
+				</em> en <em>.Net 5
+				</em> usando la <em>tool
+				</em> que usamos para lanzarla. La forma de llamarla sería:
+			</p>
+			<pre class="language-bash highlight">
+<code>func azure functionapp publish 
+					<my_function_app></my_function_app>
+				</code>
+</pre>
+			<p>
+				También podemos usar métodos tradicionales como el <em>web deploy
+				</em>, subir un archivo <em>zip
+				</em> o vincular un repositorio.
+			</p>
+			<p>
+				Pero todo esto no nos garantiza que la función que estamos <em>deployando
+				</em> tenga instalado <em>.Net 5
+				</em>. Para conseguirlo, podemos ejecutar el siguiente comando de <em>az-cli
+				</em>:
+			</p>
+			<pre class="language-bash highlight">
+<code>az functionapp config set --net-framework-version v5.0 --name 
+					<my_function_app>
+						--resource-group 
+						<my_resource_group>
+						</my_resource_group></my_function_app>
+				</code>
+</pre>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Creo que más que las <em>Azure Functions
+				</em> para <em>.Net 5
+				</em>, que es una mejora totalmente esperada, lógica y obvia, la gran noticia es el uso de un proceso aislado para su ejecución.
+			</p>
+			<p>
+				Tal cual lo veo, en cuanto a las <em>dotnet-isolated
+				</em> todo son ventajas:
+			</p>
+			<ul>
+				<li>
+					Menos conflictos: un proceso aislado te permite tener dependencias diferentes a las del proceso anfitrión.
+				</li>
+				<li>
+					Control total del proceso: poder gestionar el inicio, el final y lo que sucede en medio (<em>middlewares
+					</em>) de la ejecución de nuestras funciones.
+				</li>
+				<li>
+					Inyección de dependencias sin malabarismos.
+				</li>
+				<li>
+					Posible compatibilidad futura con cualquier plataforma sin necesidad de cambiar la versión del <em>host
+					</em>. Como por ejemplo .Net 6 o lo que esté por venir.
+				</li>
+			</ul>
+			<p>
+				Bienvenidas sean.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Azure Functions con .NET 5&url=https://www.developerro.com/2021/03/24/azure-functions-net-5" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2021/03/24/azure-functions-net-5" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2021/03/24/azure-functions-net-5" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2021/03/24/azure-functions-net-5" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/01/29/serverless-api-rest">
+						Serverless API Rest
+					</a> <small>29 ene. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/05/02/azure-functions-custom-triggers">
+						Azure Functions: custom triggers
+					</a> <small>02 may. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/04/23/azure-functions-custom-in-bindings">
+						Azure Functions: custom in bindings
+					</a> <small>23 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/04/15/azure-functions-custom-out-bindings">
+						Azure Functions: custom out bindings
+					</a> <small>15 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2019/03/26/azure-functions-docker">
+						Azure Functions con docker
+					</a> <small>26 mar. 2019
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

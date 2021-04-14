@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Patrones de diseño: Strategy · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La mayor parte de los problemas que nos podemos encontrar al usar patrones de dise&#241;o vienen de no ser capaces de reconocer en qu&#233; contextos hay que aplicarlos.
+" />
+		<meta property="og:title" content="Patrones de diseño: Strategy" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-10-03 14:10:06Z" />
+		<meta property="article:published_time" content="2012-10-03 14:10:06Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Patrones de diseño: Strategy" />
+		<meta name="twitter:description" content="La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" />
+		<meta name="description" content="La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Patrones de diseño: Strategy
+			</h1><small>03 oct. 2012 · 9 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos.
+			</p>
+			<!--break-->
+			<p>
+				Caemos en la trampa de, al intentar escribir código mejor, generar deuda técnica, ya que el patrón aplicado no resolvía el problema que teníamos en realidad. Es por eso que la pregunta más importante que tenemos que responder cuando empezamos a estudiar un patrón de diseño es: ¿para qué sirve?.
+			</p>
+			<p>
+				El patrón Strategy tiene sentido cuando nos encontramos en un escenario en el que para conseguir un objetivo, tenemos diferentes formas de afrontarlo. Por poner un ejemplo, imaginemos que estamos desarrollando un programa que añade estilos en formato HTML a un texto. Los estilos que soporta serán: poner en negrita, letra cursiva y subrayar.
+			</p>
+			<p>
+				Una solución que podríamos dar sería:
+			</p>
+			<div>
+				<pre class="brush: csharp">public enum Styles
+{
+    Bold,
+    Italic,
+    Underline
+}
+
+					<p>
+						public class Styler
+{
+public string SetStyle(string input, Styles style)
+{
+switch (style)
+{
+case Styles.Bold:
+return "&lt;b>" + input + "&lt;/b>";
+case Styles.Italic:
+return "&lt;i>" + input + "&lt;/i>";
+case Styles.Underline:
+return "&lt;u>" + input + "&lt;/u>";
+default:
+throw new NotImplementedException("This style is not supported");
+}
+}
+}
+					</p></pre>
+			</div>
+			Como podemos ver, hemos usado un bloque de tipo “<em>switch
+			</em>” y en dependencia del estilo que queramos añadirle al texto de entrada (“<em>input
+			</em>”), realizamos una acción u otra. El resultado final es que si dentro de dos días tenemos el requerimiento de añadir dos o tres estilos nuevos a nuestro sistema, tendremos que añadir más bloques “case” a nuestro código. Esto en definitiva, lo que provocaría es que no estuviéramos cumpliendo con el <strong>principio SOLID de Open Closed
+			</strong>. 
+			<p>
+				Este principio señala que nuestro código debería estar <strong>abierto a la extensión, pero cerrado a la modificación
+				</strong>. Es decir, que para añadir una nueva funcionalidad, no tengamos la necesidad de modificar los algoritmos que ya están programados. Y es aquí es donde el patrón strategy cobra su importancia.
+			</p>
+			<p>
+				Con el fin de no tener que modificar nuestro bloque “<em>switch
+				</em>” con cada nuevo estilo que queramos aplicar al texto, vamos a dividir cada uno de los estilos existentes, en clases más pequeñas, que solo resuelvan un estilo cada una:
+			</p>
+			<div>
+				<pre class="brush: csharp">public class BoldStyler
+{
+    public string SetStyle(string input)
+    {
+        return "&lt;b>" + input + "&lt;/b>";
+    }
+}
+
+					<p>
+						public class ItalicStyler
+{
+public string SetStyle(string input)
+{
+return "&lt;i>" + input + "&lt;/i>";
+}
+}
+					</p>
+
+					<p>
+						public class UnderlineStyler
+{
+public string SetStyle(string input)
+{
+return "&lt;u>" + input + "&lt;/u>";
+}
+}
+					</p></pre>
+			</div>
+			Como podemos ver, todas las clases son muy parecidas y podríamos sacar una interface común que defina su comportamiento:
+			<div>
+				<pre class="brush: csharp">public interface IStyler
+{
+    string SetStyle(string input);
+}
+public class BoldStyler : IStyler
+//...
+
+					<p>
+						public class ItalicStyler : IStyler
+//...
+					</p>
+
+					<p>
+						public class UnderlineStyler : IStyler
+//...
+					</p></pre>
+			</div>
+			Ahora tendríamos que modificar el código inicial para que use estas nuevas clases y seguir resolviendo el problema:
+			<div>
+				<pre class="brush: csharp">public class Styler
+{
+    public string SetStyle(string input, IStyler styler)
+    {
+        return styler.SetStyle(input);
+    }
+}</pre>
+			</div>
+			Y si por un casual, ahora necesitáramos añadir un nuevo formato a nuestro programa, solo tendríamos que desarrollar un nuevo objeto que implementara “IStyler”. Y así evitaríamos tener que modificar el código que ya tenemos escrito. 
+			<p>
+				Dando un repaso a los objetos que hemos ido desarrollando hasta este momento, podríamos extraer un diagrama de clases como este:
+			</p>
+			<p>
+				<a href="/assets/uploads/2012/10/styler-strategy-pattern.png">
+					<img style="background-image: none; float: none; padding-top: 0; padding-left: 0; margin-left: auto; display: block; padding-right: 0; margin-right: auto; border-width: 0;" title="styler-strategy-pattern" src="/assets/uploads/2012/10/styler-strategy-pattern_thumb.png" alt="styler-strategy-pattern" width="546" height="171" border="0" />
+				</a>
+			</p>
+			<p>
+				Donde vemos que nuestro objeto “Styler” consume objetos que implementan “IStyler” como son “BoldStyler”, “ItalicStyler”, … . Un diagrama semejante al que define el patrón Strategy:
+			</p>
+			<p>
+				<a href="/assets/uploads/2012/10/strategy-pattern.png">
+					<img style="background-image: none; float: none; padding-top: 0; padding-left: 0; margin-left: auto; display: block; padding-right: 0; margin-right: auto; border-width: 0;" title="strategy-pattern" src="/assets/uploads/2012/10/strategy-pattern_thumb.png" alt="strategy-pattern" width="545" height="171" border="0" />
+				</a>
+			</p>
+			<p>
+				Donde los artefactos son:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						Context
+					</strong>: es el objeto que orquesta el funcionamiento de las estrategias. Puede recibir una de estas por parámetro o gestionarlas internamente.
+				</li>
+				<li>
+					<strong>
+						IStrategy
+					</strong>: es la definición común que tiene que implementar todo algoritmo que soporte el sistema.
+				</li>
+				<li>
+					<strong>
+						ConcreteStrategyX
+					</strong>: los objetos que, implementando la interface común, desarrollan un algoritmo concreto.
+				</li>
+			</ul>
+			En este primer ejemplo hemos creado un contexto que acepta recibir una estrategia como parámetro, pero quizá, el problema podría ser que obligatoriamente hay que aplicar los tres formatos al texto que le pasemos. En este caso podríamos generar una clase de contexto como esta:
+			<div>
+				<pre class="brush: csharp">public class Styler
+{
+    private readonly List&lt;IStyler> strategies = new List&lt;IStyler>
+                                            {
+                                                new BoldStyler(),
+                                                new ItalicStyler(),
+                                                new UnderlineStyler()
+                                            };
+    public string SetStyle(string input)
+    {
+        var result = input;
+        foreach(var strategy in this.strategies)
+        {
+            result += strategy.SetStyle(result);
+        }
+
+					<pre>
+						<code>
+							return result;
+}
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			Y si usáramos alguna Framework de inyección de dependencias como Autofac, StructureMaps o NInject, podríamos aprovecharnos  de los sistemas de escaneo de ensamblados para poder obtener en el constructor todas las estrategias de un tipo correspondiente:
+			<div>
+				<pre class="brush: csharp">public class Styler
+{
+    private readonly IEnumerable&lt;IStyler> strategies;
+
+					<pre>
+						<code>
+							public Styler(IEnumerable&amp;lt;IStyler&amp;gt; strategies)
+{
+    this.strategies = strategies;
+}
+
+public string SetStyle(string input)
+{
+    var result = input;
+    foreach(var strategy in this.strategies)
+    {
+        result += strategy.SetStyle(result);
+    }
+
+    return result;
+}
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			  
+			<p>
+				Una de las grandes ventajas del <strong>Strategy Pattern
+				</strong> es que no es exclusivo de c# o la plataforma .Net, puede ser usado con diferentes lenguajes de programación, como por ejemplo <strong>Javascript
+				</strong>. Una implementación de este mismo código podría ser esta:
+			</p>
+			<div>
+				<pre class="brush: javascript">function HtmlStyler() {
+    this.setStyle = function (input) {
+        var result = input;
+        for (var key in this.strategies) {
+            var strategy = this.strategies[key];
+            if (strategy.setStyle)
+                result = strategy.setStyle(result);
+            else
+                throw "Invalid strategy";
+        }
+
+					<pre>
+						<code>
+							return result;
+};
+
+						</code></pre>
+
+					<p>
+						}
+					</p>
+
+					<p>
+						HtmlStyler.prototype.strategies = ;
+HtmlStyler.prototype.strategies.boldStyler = {
+setStyle: function(input) {
+return '&lt;b>' + input + '&lt;/b>';
+},
+};
+					</p>
+
+					<p>
+						HtmlStyler.prototype.strategies.italicStyler = {
+setStyle: function (input) {
+return '&lt;i>' + input + '&lt;/i>';
+},
+};
+					</p>
+
+					<p>
+						HtmlStyler.prototype.strategies.underlineStyler = {
+setStyle: function (input) {
+return '&lt;u>' + input + '&lt;/u>';
+},
+};
+					</p></pre>
+			</div>
+			La peculiaridad de esta implentación en Javascript es el uso de "prototype" para facilitar las futuras características nuevas que se pueden desarrollar. No hará falta modificar el programa original, si no añadir una nueva propiedad a las estrategias del prototipo de nuestro objeto. 
+			<p>
+				Y cómo no, también podríamos realizar el mismo código en el lenguaje de programación de moda, <strong>Typescript
+				</strong>:
+			</p>
+			<div>
+				<pre class="brush: csharp">interface IStyler {
+    setStyle: (input: string) => string;
+}
+
+					<p>
+						class HTMLStyler {
+					</p>
+
+					<pre>
+						<code>
+							strategies: IStyler[];
+
+constructor (strategies: IStyler[]) {
+
+    this.strategies = strategies;
+
+}
+
+setStyle(input: string):string {
+    var result: string = input;
+    for (var i = 0; i &amp;lt; this.strategies.length; i++) {
+        var strategy : IStyler = this.strategies[i];
+        result = strategy.setStyle(result);
+    }
+    return result;
+}
+
+						</code></pre>
+
+					<p>
+						}
+					</p>
+
+					<p>
+						class BoldStyler implements IStyler {
+setStyle(input: string) {
+return '&lt;b>' + input + '&lt;/b>';
+}
+}
+					</p>
+
+					<p>
+						class ItalicStyler implements IStyler {
+setStyle(input: string) {
+return '&lt;i>' + input + '&lt;/i>';
+}
+}
+					</p>
+
+					<p>
+						class UnderlineStyler implements IStyler {
+setStyle(input: string) {
+return '&lt;u>' + input + '&lt;/u>';
+}
+}
+					</p>
+
+					<p>
+						var styler = new HTMLStyler([new BoldStyler(), new ItalicStyler(), new UnderlineStyler()]);
+alert(styler.setStyle('hola!'));
+					</p></pre>
+			</div>
+			Y podremos ver claramente que el resultado final <strong>se asemeja más al que desarrollamos con c#
+			</strong>, que a la solución propuesta en javascript. 
+			<h3>
+				Conclusiones
+			</h3>
+			Mientras describíamos el patrón Strategy hemos dejado caer alguno de sus beneficios, como por ejemplo que es más fácil de leer el código. También será más fácil por tanto de mantener y por supuesto de ampliar con nuevas funcionalidades. Gracias a este patrón vamos a cumplir con dos de los principios de SOLID: el principio de responsabilidad única, al crear pequeñas clases que contienen un algoritmo muy concreto; y el de abierto/cerrado, abriendo nuestra solución a la extensión pero no a la modificación. 
+			<p>
+				También queda claro el problema que podría suponer a largo plazo: una gran cantidad nueva de objetos para que sean gestionados por el hilo principal de nuestro programa. Por lo que para un sistema de tiempo real o donde la velocidad de respuesta y el poco consumo de recursos, fueran lo más importante, no sería la implementación ideal.
+			</p>
+			<p>
+				No obstante, teniendo en cuenta que en este ejemplo usamos lenguajes como Javascript o c#, en los que la velocidad no es su punto fuerte, siempre deberíamos pensar en este patrón antes de escribir un bloque “switch”.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Patrones de diseño: Strategy&url=https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/10/03/patrones-de-diseno-strategy" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

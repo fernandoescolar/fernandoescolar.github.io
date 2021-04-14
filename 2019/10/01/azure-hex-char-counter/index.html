@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Azure hex-char-counter tutorial · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="El otro d&#237;a en el trabajo surgi&#243; la necesidad de crear un sistema online complejo y escalable para la resoluci&#243;n de un problema general que ten&#237;amos. El obje..." />
+		<meta property="og:title" content="Azure hex-char-counter tutorial" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/10/01/azure-hex-char-counter" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El obje..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-10-01 13:51:23Z" />
+		<meta property="article:published_time" content="2019-10-01 13:51:23Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Azure hex-char-counter tutorial" />
+		<meta name="twitter:description" content="El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El obje..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/10/01/azure-hex-char-counter" />
+		<meta name="description" content="El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El obje..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/10/01/azure-hex-char-counter" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Azure hex-char-counter tutorial
+			</h1><small>01 oct. 2019 · 5 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				El otro día en el trabajo surgió la necesidad de crear un sistema online complejo y escalable para la resolución de un problema general que teníamos. El objetivo era conseguir el tamaño de una cadena de texto en formato hexadecimal. Lo primero que nos vino a la cabeza fue Azure: ¿cómo podría ayudarnos?
+				<!--break-->
+			</p>
+			<p>
+				La respuesta a esta pregunta es que de una forma muy eficiente. Si no, no hubiéramos escrito este artículo... Ya teníamos proyecto. Y su code-name: <em>HCC
+				</em> (<strong>H
+				</strong>exadecimal-<strong>C
+				</strong>haracters-<strong>C
+				</strong>ounter). Y he aquí como lo ejecutamos:
+			</p>
+			<h2 id="implementando-hcc">
+				Implementando HCC
+			</h2>
+			<p>
+				Lo primero que tenemos que hacer es ir al portal de Microsoft Azure y crear un servicio <em>PaaS
+				</em> donde hospedar nuestra aplicación. Así que buscaremos en el <em>marketplace
+				</em> el recurso de tipo "Web App":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-1.png" alt="Crear azure web app" />
+			</p>
+			<p>
+				Entonces tendremos que configurar los datos sobre la suscripción, el grupo de recursos, el tipo de aplicación (usaremos la de por defecto: .Net 4.7 en una máquina Windows), la región y el tamaño del servicio:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-2.png" alt="Configurar la web app" />
+			</p>
+			<p>
+				El tema de monitoring lo dejaremos configurado por defecto. Esto implica que creará un servicio de App Insights con el mismo nombre que nuestra aplicación.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-3.png" alt="Confirmar y crear la web app" />
+			</p>
+			<p>
+				Una vez hemos revisado todo, creamos el servicio dentro de Azure y tras unos pocos segundos, se notificará de que ya está disponible:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-4.png" alt="Notificación de creada" />
+			</p>
+			<p>
+				Por cuestiones de facilidad hemos decidido utilizar <em>nodejs
+				</em> como lenguaje de programación de servidor. Así no tendremos que crear complejos procesos de compilación. Para ello tendremos que añadir un en la configuración del "App Service" un "AppSettting" con el nombre "WEBSITE_NODE_DEFAULT_VERSION" y con el valor de una versión estable, como por ejemplo la "6.2.2":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-5.png" alt="Configurando node" />
+			</p>
+			<p>
+				Después de guardar todos los cambios, tendremos que subir la aplicación en cuestión que ayudará a los servicios de Azure a realizar la cuenta de la longitud de una cadena de texto en hexadecimal. Así que podemos abrir el editor de código online, seleccionando la opción de "App Service Editor (Preview)" del menú:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-6.png" alt="Desarrollando la aplicación" />
+			</p>
+			<p>
+				Una vez en este editor tendremos que crear un nuevo archivo llamado "index.js" con el siguiente contenido:
+			</p>
+			<pre class="language-js highlight">
+<code>const http   = require('http');
+const port   = process.env.PORT || 3000;
+const server = http.createServer(myServer);
+
+function myServer(request, response) {
+	response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.end(request.url.substring(1));
+    return;
+}
+
+server.listen(port);
+console.log('Server running at port ' + port);
+				</code>
+</pre>
+			<p>
+				Como podemos observar, nuestro servicio va a devolver en forma de texto, el valor que pasemos a la url de nuestro explorador. Si por ejemplo ponemos en la barra de dirección "http://domain.com/something", devolverá "something".
+			</p>
+			<p>
+				Después tendremos que crear otro archivo llamado "Web.config" donde le diremos al servicio de Azure cómo puede ejecutar nuestra aplicación:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-7.png" alt="Monaco editor" />
+			</p>
+			<p>
+				El contenido de este archivo debería ser parecido a este:
+			</p>
+			<pre class="language-xml highlight">
+<code>
+					<configuration>
+						
+						<system.webserver>
+							
+							<websocket enabled="false" />
+							
+							<handlers>
+								
+								<add name="iisnode" path="index.js" verb="*" modules="iisnode" />
+								
+							</handlers>
+							
+							<rewrite>
+								
+								<rules>
+									
+									<rule name="DynamicContent">
+										
+										<conditions>
+											
+											<add input="{REQUEST_FILENAME}" matchtype="IsFile" negate="True" />
+											
+										</conditions>
+										
+										<action type="Rewrite" url="index.js" />
+										
+									</rule>
+									
+								</rules>
+								
+							</rewrite>
+							
+							<httperrors existingresponse="PassThrough" />
+							
+						</system.webserver>
+						</configuration>
+				</code>
+</pre>
+			<p>
+				Con esto ya podemos probar nuestra aplicación. Pero entonces os daréis cuenta de que solo devuelve texto y que en ningún momento estamos contando los caracteres de la cadena:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-bad.png" alt="No funciona exactamente como queremos" />
+			</p>
+			<p>
+				Aquí es donde una de las mejores <em>features
+				</em> de Microsoft Azure nos pueden ayudar. Con 3 sencillos pasos vamos a conseguir aplicar la magia:
+			</p>
+			<ol>
+				<li>
+					Dentro del "App Service" ir al menú de "Application Insights"
+				</li>
+				<li>
+					Cambiar el valor de "Collection level" a "Recommended"
+				</li>
+				<li>
+					Pulsar el botón de "Apply"
+				</li>
+			</ol>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-8.png" alt="Do magic tricks" />
+			</p>
+			<p>
+				Una vez termine la actualización si entramos de nuevo en nuestra aplicación web, podremos ver que tendremos una respuesta diferente:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/hex-counter-9.png" alt="El resultado" />
+			</p>
+			<p>
+				Donde en la primera línea de la respuesta, podremos ver el tamaño de la cadena de texto que hemos enviado en hexadecimal.
+			</p>
+			<p>
+				<em>
+					HCC
+				</em> ya está funcionando, en un entorno escalable y al servicio de todos. ¡Misión cumplida!
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/09/ronaldinho.jpg" alt="Ronaldinho sonrie" />
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Son solo dos:
+			</p>
+			<ol>
+				<li>
+					Qué fácil es hacer cosas con Azure. Los chicos de Microsoft están haciendo un gran trabajo.
+				</li>
+				<li>
+					Me parece genial lo de estas <em>features
+					</em> ocultas que meten sin avisar. Aportan muchísimo valor. Aunque vendría muy bien que estuvieran documentadas.
+				</li>
+			</ol>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Azure hex-char-counter tutorial&url=https://www.developerro.com/2019/10/01/azure-hex-char-counter" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/10/01/azure-hex-char-counter" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/10/01/azure-hex-char-counter" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/10/01/azure-hex-char-counter" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/19/workshop-azure">
+						Workshop Azure 100M
+					</a> <small>19 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/09/10/advanced-azure-webapps">
+						The Hitchhiker's Guide to Azure WebApps
+					</a> <small>10 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/26/azure-webapps-tips-n-tricks">
+						Azure WebApps Tips & Tricks
+					</a> <small>26 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/07/31/azure-summer-talks">
+						Azure Summer Talks Community
+					</a> <small>31 jul. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2018/04/26/gab18-todo-subo-azure-esta-mal">
+						GAB18 - Por qué todo lo que subo a azure está mal
+					</a> <small>26 abr. 2018
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

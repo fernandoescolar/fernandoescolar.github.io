@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Novedades de c# 7 · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La nueva versi&#243;n de c# se acerca. Ser&#225; la n&#250;mero 7 ya. C# 7 lo llaman. Aunque posiblemente le acompa&#241;ar&#225; una versi&#243;n de .Net Framework 4.X.X. &#211; quiz&#225; una dot..." />
+		<meta property="og:title" content="Novedades de c# 7" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2016/11/16/csharp-7" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/programming1.jpg" />
+		<meta property="og:description" content="La nueva versión de c# se acerca. Será la número 7 ya. C# 7 lo llaman. Aunque posiblemente le acompañará una versión de .Net Framework 4.X.X. Ó quizá una dot..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2016-11-16 00:00:00Z" />
+		<meta property="article:published_time" content="2016-11-16 00:00:00Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Novedades de c# 7" />
+		<meta name="twitter:description" content="La nueva versión de c# se acerca. Será la número 7 ya. C# 7 lo llaman. Aunque posiblemente le acompañará una versión de .Net Framework 4.X.X. Ó quizá una dot..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/programming1.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2016/11/16/csharp-7" />
+		<meta name="description" content="La nueva versión de c# se acerca. Será la número 7 ya. C# 7 lo llaman. Aunque posiblemente le acompañará una versión de .Net Framework 4.X.X. Ó quizá una dot..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2016/11/16/csharp-7" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/programming1.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Novedades de c# 7
+			</h1><small>16 nov. 2016 · 17 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La nueva versión de c# se acerca. Será la número 7 ya. C# 7 lo llaman. Aunque posiblemente le acompañará una versión de .Net Framework 4.X.X. Ó quizá una dotNet Core 1.X. De cualquier forma no podemos ignorarlo. Pero no es mi intención realizar un aburrido recorrido sobre sus novedosas características. El objetivo del post es realizar un aburrido recorrido sobre sus novedosas características, y ponerles nota.
+				<!--break-->
+			</p>
+			<p>
+				El problema es que puede resultar un poco simplista usar el manido sistema de una escala de valores del 1 al 10. Las nuevas características de c# se merecen un sistema de puntuación que nos aporte más granularidad del detalle...
+			</p>
+			<p>
+				Recuerdo que en un capitulo de la serie <em>How I Met Your Mother
+				</em> nuestro estimado Barney Stinson exponía un sistema de calificación llamado <em>escala sexi-loca
+				</em>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/11/hot_crazy.jpg" alt="escala sexy loca" />
+			</p>
+			<p>
+				Así que he decidido coger prestado este sistema. La idea es que:
+			</p>
+			<ul>
+				<li>
+					<p>
+						en el eje vertical encontraremos cómo de buena resulta la característica para el lenguaje
+					</p>
+				</li>
+				<li>
+					<p>
+						y en el horizontal cómo de loco nos parece que es implementarla como la han implementado
+					</p>
+				</li>
+			</ul>
+			<p>
+				Determinaremos que toda puntuación que se encuentra por encima de <em>la diagonal Vicky Mendoza
+				</em> es una buena característica. Y lo que se encuentre por debajo... ejem...
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/11/useful-crazy.png" alt="escala useful-crazy" />
+			</p>
+			<blockquote>
+				<p>
+					Nota: la diagonal Vicky Mendoza es la recta formada por la función x = y.
+				</p>
+			</blockquote>
+			<h1 id="variables-out">
+				Variables "out"
+			</h1>
+			<p>
+				Si alguna vez hemos trabajado con este tipo de variables sabremos lo engorroso que resulta tenerlas que declarar antes de llamar a la función que las asigna. En c# 7 esto deja de ser un problema. Ahora las podemos declarar <em>inline
+				</em>. Además, después de declararlas de esta forma, están disponibles para su uso en el <em>scope
+				</em> principal:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void PrintCoordinates(Point p)
+{
+    p.GetCoordinates(out int x, out int y);
+    Console.WriteLine($"({x}, {y})");
+}
+				</code>
+</pre>
+			<p>
+				Y como además conocemos el tipo que se va a devolver, ahora se permite el uso de "var" en sus declaraciones:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void PrintCoordinates(Point p)
+{
+    p.GetCoordinates(out var x, out var y);
+    Console.WriteLine($"({x}, {y})");
+}
+				</code>
+</pre>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>9
+					</b>
+				</p>
+				<p>
+					Crazy = <b>2
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="pattern-matching">
+				Pattern matching
+			</h1>
+			<p>
+				No sé si alguno habrá trabajado con F# alguna vez. Si lo has hecho, te sonará esta funcionalidad. Si no, estás de suerte: ahora ya nada más que tu ignorancia impedirá que programes usando el paradigma funcional.
+			</p>
+			<p>
+				Pattern matching es un patrón de programación que nos ayuda a determinar si un objeto cumple unas características determindas. Algo así como un montón de <em>if's
+				</em> muy potentes, o un super <em>switch
+				</em>.
+			</p>
+			<h2 id="en-un-if">
+				En un "if"
+			</h2>
+			<p>
+				La mejor forma de ver qué es pattern matching es un ejemplo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void PrintStars(object o)
+{
+    if (o is null) return;     // determina si un objeto es nulo
+    if (!(o is int i)) return; // determina si un objeto es un int y lo asigna a "i"
+    WriteLine(new string('*', i)); // note que el scope de "i" no es solo el "if"
+}
+				</code>
+</pre>
+			<p>
+				Una forma de usarlo que parece un poco magia negra sería al transformar un "object" en un "int":
+			</p>
+			<pre class="language-csharp highlight">
+<code>if (o is int i || (o is string s && int.TryParse(s, out i)) { /* use i */ }
+				</code>
+</pre>
+			<h2 id="en-un-switch">
+				En un "switch"
+			</h2>
+			<p>
+				Siempre me ha hecho gracia cuando hablas sobre que "switch is evil", que algún iluminado salta con un "en mi código nunca uso 'switch'". Pero luego vas a su código y tiene una cantidad de <em>if's
+				</em> encadenados que da miedo. Un <em>if
+				</em> es como un <em>switch
+				</em>. Por lo que en este tipo de cláusulas, también podremos usar pattern matching:
+			</p>
+			<pre class="language-csharp highlight">
+<code>switch(shape)
+{
+    case Circle c: // determina si es de tipo 'Circle' y lo asigna a 'c'
+        WriteLine($"circle with radius {c.Radius}");
+        break;
+    case Rectangle s when (s.Length == s.Height): // determina si es un cuadrado
+        WriteLine($"{s.Length} x {s.Height} square");
+        break;
+    case Rectangle r: // si es un rectángulo
+        WriteLine($"{r.Length} x {r.Height} rectangle");
+        break;
+    default: // si no tenemos ni pajolera idea de qué es
+        WriteLine("
+					<unknown shape>
+						");
+        break;
+    case null: // o si es 'null'
+        throw new ArgumentNullException(nameof(shape));
+}</unknown>
+				</code>
+</pre>
+			<p>
+				Aquí tendremos que tener en cuenta varias cosas que son importantes:
+			</p>
+			<ul>
+				<li>
+					<p>
+						El orden de lo <em>case
+						</em> importa.
+					</p>
+				</li>
+				<li>
+					<p>
+						La cláusula <em>default
+						</em> siempre será evaluada la última. Aunque esté rodeada de <em>case
+						</em>'s.
+					</p>
+				</li>
+				<li>
+					<p>
+						El <em>case null
+						</em> del final sí que es posible que se ejecute.
+					</p>
+				</li>
+				<li>
+					<p>
+						La variable que se declara dentro de un <em>case
+						</em> solo está disponible en el scope de ese <em>case
+						</em>, no en el de todo el switch.
+					</p>
+				</li>
+			</ul>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>8
+					</b>
+				</p>
+				<p>
+					Crazy = <b>7
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="tuplas">
+				Tuplas
+			</h1>
+			<p>
+				Cuando necesitas que una función devuelva más de una variable y te parece que eso del encapsulamiento de la programación orientada a objetos es una pamplina, solo puedes hacer alguna <em>ñapa
+				</em>:
+			</p>
+			<ul>
+				<li>
+					<p>
+						Usar parámetros "out" (pero no va con async/await)
+					</p>
+				</li>
+				<li>
+					<p>
+						Usar el objeto System.Tuple<...> como valor a devolver por la función (meh!)
+					</p>
+				</li>
+				<li>
+					<p>
+						Usar métodos anónimos (no sirve para static)
+					</p>
+				</li>
+			</ul>
+			<p>
+				Pero tranquilo. C# 7 trae la solución para todos aquellos programadores que piensan que la cohesión es una fuerza física.
+			</p>
+			<p>
+				Las tuplas están aquí y han venido para quedarse. Esto es una forma más o menos elegante de declarar objetos anónimos al vuelo sin necesidad de definir nombres, pero sí tipos. Un ejemplo sería si quisiéramos que una función nos devolviera 3 <em>strings
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>(string, string, string) LookupName(long id) // devuelce una tupla formada por 3 strings
+{
+    ... // realizamos nuestra movida con las variables first, middle y last
+    return (first, middle, last); // y devolvemos la tupla de 3 strings
+}
+				</code>
+</pre>
+			<p>
+				La eficiencia de esto es incuestionable. El saber qué demonios devuelve la función es otra cosa...
+			</p>
+			<p>
+				Vamos ahora a consumir esta función:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var names = LookupName(id);
+Console.WriteLine($"found {names.Item1} {names.Item3}.");
+				</code>
+</pre>
+			<p>
+				Como podéis ver solo hace falta que llamemos a las propiedades desde <em>Item1
+				</em> hasta <em>ItemN
+				</em> de nuestra tupla. Está claro que este código puede confundir más que ayudar. Así que también se permite poner nombre a los diferentes objetos que devolvemos en una tupla (y menos mal):
+			</p>
+			<pre class="language-csharp highlight">
+<code>(string first, string middle, string last) LookupName(long id) // tuplas con nombres de elementos
+				</code>
+</pre>
+			<p>
+				Para devolver una tupla con nombres, se nos permite usarlos en su creación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return (first: first, middle: middle, last: last); // creando una tupla usando los nombres
+				</code>
+</pre>
+			<p>
+				De tal forma que al llamarla, el código resultante será más intuitivo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var names = LookupName(id);
+WriteLine($"found {names.first} {names.last}.");
+				</code>
+</pre>
+			<p>
+				Una tupla es para el sistema un tipo de valor. Sus elementos son públicos y mutables. Además, si comparamos dos tuplas con los mismos elementos, podemos determinar si son iguales o no.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>7
+					</b>
+				</p>
+				<p>
+					Crazy = <b>7
+					</b>
+				</p>
+			</blockquote>
+			<h2 id="deconstruction">
+				Deconstruction
+			</h2>
+			<p>
+				Otra forma de utilizar tuplas es la deconstrucción. Esto es una sintaxis que nos permite declarar variables individuales a las que le asignamos las diferentes propiedades de una tupla. Un ejemplo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>(string first, string middle, string last) = LookupName(id1); // deconstrucción por constructor
+Console.WriteLine($"found {first} {last}."); // podemos acceder a las variables
+				</code>
+</pre>
+			<p>
+				En la deconstrucción podemos usar también tipo inferido "var":
+			</p>
+			<pre class="language-csharp highlight">
+<code>(var first, var middle, var last) = LookupName(id1); // var inside
+				</code>
+</pre>
+			<p>
+				O incluso abreviarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var (first, middle, last) = LookupName(id1); // var outside
+				</code>
+</pre>
+			<p>
+				También se puede deconstruir una tupla usando variables ya existentes:
+			</p>
+			<pre class="language-csharp highlight">
+<code>string first, middle, last;
+(first, middle, last) = LookupName(id2); // deconstrucción con asignación
+				</code>
+</pre>
+			<p>
+				Pero cuidado. Una deconstrucción no es solo para tuplas. Vale para cualquier tipo de objeto que tengamos. Solo tenemos que crear un método "Deconstruct" que pase como parámetros de salida "out" las variables que queremos deconstruir. La firma del método podría ser esta:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void Deconstruct(out T1 x1, ..., out Tn xn) { ... }
+				</code>
+</pre>
+			<p>
+				La parte graciosa de todo esto es que no hay herencia de ningún tipo. Cada objeto tendrá que implementar su propio método con diferentes parámetros de salida. Así que por ahora no esperéis un "IDeconstructable" ni nada por el estilo que le dé algo de consistencia a nuestro código.
+			</p>
+			<p>
+				Un ejemplo de uso de esta feature:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Point
+{
+    public int X { get; }
+    public int Y { get; }
+
+    public Point(int x, int y) { X = x; Y = y; }
+    public void Deconstruct(out int x, out int y) { x = X; y = Y; }
+}
+
+(var myX, var myY) = GetPoint(); // esto llama a Deconstruct(out myX, out myY);
+				</code>
+</pre>
+			<p>
+				Ya estamos esperando un analyzer de roslyn que compruebe que tenemos un constructor y una función "Deconstruct" con los mismos parámetros para que tenga sentido todo esto.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>7
+					</b>
+				</p>
+				<p>
+					Crazy = <b>8
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="wildcards">
+				Wildcards
+			</h1>
+			<p>
+				El nuevo sistema de wildcards nos permite usar el símbolo asterisco para no tener que definir algo que no queremos. Por ejemplo, si tenemos una variable "out" que no necesitamos, podemos usarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>p.GetCoordinates(out int x, out *); // solo me preocupa la 'x'
+				</code>
+</pre>
+			<p>
+				O en el caso de usar deconstrucción, también podemos usarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>(var myX, *) = GetPoint(); // I only care about myX
+				</code>
+</pre>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>4
+					</b>
+				</p>
+				<p>
+					Crazy = <b>8
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="funciones-locales">
+				Funciones locales
+			</h1>
+			<p>
+				Si eres de los que echa de menos la forma de programar de javascript. Si te mola un montón tener funciones anidadas unas dentro de otras. Si te piensas que el espagueti code se hace solo con if's. Ahora tenemos una de las novedades de c# 7: funciones locales.
+			</p>
+			<p>
+				¿Y esto qué es lo qué es? Te preguntarás... Pues muy fácil: declarar funciones en medio de una función. Así:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public int Fibonacci(int x)
+{
+    if (x < 0) throw new ArgumentException("Less negativity please!", nameof(x));
+    return Fib(x).current;
+
+    (int current, int previous) Fib(int i)
+    {
+        if (i == 0) return (1, 0);
+        var (p, pp) = Fib(i - 1);
+        return (p + pp, p);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Con hoisting. Una funcionalidad muy útil cuando tienes una función recursiva y otra que realiza la llamada de la función recursiva 😃.
+			</p>
+			<p>
+				Además de estar en el mismo contexto de una función, prevendrá a otros objetos llamar a este método sin comprobar que efectivamente el número x es mayor de 1.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>2
+					</b>
+				</p>
+				<p>
+					Crazy = <b>9
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="literales">
+				Literales
+			</h1>
+			<p>
+				¿Nunca has tenido en tu código un <em>magic number
+				</em> que era muy difícil de leer por ser muy largo? C# 7 tiene la solución. Ahora puedes separar los dígitos literales con '_'. Y este símbolo no alterará su valor. Por ejemplo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var d = 123_456;
+var x = 0xAB_CD_EF;
+				</code>
+</pre>
+			<p>
+				¿Cómo hemos podido vivir sin esta funcionalidad antes? Podrá parecer una tontería, pero si os contamos que también se han añadido literales binarios, entonces empieza a cobrar algo de sentido la posibilidad de añadir legibilidad a este tipo de cifras:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var b = 0b1010_1011_1100_1101_1110_1111;
+				</code>
+</pre>
+			<p>
+				Si no trabajas directamente en binario, es porque no quieres.
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>3
+					</b>
+				</p>
+				<p>
+					Crazy = <b>8
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="ref-returns">
+				Ref returns
+			</h1>
+			<p>
+				Si actualmente te ves obligado a devolver una referencia de un valor. Si estás aficionado al uso de "ref". Ahora puedes devolver una referencia directamente con una función añadiendo "ref" delante del tipo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public ref int Find(int number, int[] numbers)
+{
+    for (int i = 0; i < numbers.Length; i++)
+    {
+        if (numbers[i] == number)
+        {
+            return ref numbers[i]; // devuelve la referencia a la posición del array no el valor
+        }
+    }
+
+    throw new IndexOutOfRangeException($"{nameof(number)} not found");
+}
+
+int[] array = { 1, 15, -39, 0, 7, 14, -12 };
+ref int place = ref Find(7, array); // devuelve la referencia a la posición donde está el 7
+place = 9; // cambia el valor de 7 por 9
+WriteLine(array[4]); // escribe en pantalla el 9
+				</code>
+</pre>
+			<p>
+				Y es que he estado pensando mucho acerca de esta funcionalidad. Se parece mucho a usar punteros. Quizá sea lo mismo. Podría ser que no haya punteros en c# 7. Y tendría sentido que las wildcards, al usar el caracter que usan los punteros, fueran las culpables. ¡Malditas!
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>5
+					</b>
+				</p>
+				<p>
+					Crazy = <b>2
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="mas-definiciones-inline">
+				Más definiciones inline
+			</h1>
+			<p>
+				En c# 6 se añadió la definición de métodos inline, una funcionalidad que en c# 7 se extiende. Ahora podremos declarar inline todo lo que antes no se podía:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Person
+{
+    private static ConcurrentDictionary
+					<int , string>
+						names = new ConcurrentDictionary
+						<int , string>
+							();
+    private int id = GetId();
+
+    public Person(string name) => names.TryAdd(id, name); // constructores
+    ~Person() => names.TryRemove(id, out *);              // destructores
+    public string Name
+    {
+        get => names[id];                                 // getters
+        set => names[id] = value;                         // setters
+    }
+}
+						</int></int>
+				</code>
+</pre>
+			<p>
+				Y lo que es mejor: es una funcionalidad que viene de la comunidad. ¡Viva el open source!
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>9
+					</b>
+				</p>
+				<p>
+					Crazy = <b>1
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="throw-en-expresiones">
+				Throw en expresiones
+			</h1>
+			<p>
+				Otra de las nuevas ventajas de c# 7 es poder lanzar excepciones dentro de expresiones. Suena un poco raro, pero creo que es la funcionalidad que cierra el círculo de las definiciones inline:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Person
+{
+    public string Name { get; }
+    public Person(string name) => Name = name ?? throw new ArgumentNullException(name);
+    public string GetFirstName()
+    {
+        var parts = Name.Split(" ");
+        return (parts.Length > 0) ? parts[0] : throw new InvalidOperationException("No name!");
+    }
+    public string GetLastName() => throw new NotImplementedException();
+}
+				</code>
+</pre>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>8
+					</b>
+				</p>
+				<p>
+					Crazy = <b>1
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="bola-extra-default-interface-implementations">
+				Bola extra: default interface implementations
+			</h1>
+			<p>
+				Esta es una funcionalidad que está muy en el aire. Pero se comenta que en user voice (se comenta aquí para ser exactos: <a href="https://github.com/dotnet/roslyn/issues/73">https://github.com/dotnet/roslyn/issues/73
+				</a>) que un degenerado solicitó imitar la peor feature de java de los últimos años en c#: definir una implementación por defecto para una interfaz. Por ahora esto es lo que plantean:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface ISomeInterface
+{
+  string Property { get; }
+
+  default string Format()
+  {
+    return string.Format ("{0} ({1})", GetType().Name, Property);
+  }
+}
+
+class SomeClass : ISomeInterface
+{
+  public string Property { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Sin comentarios...
+			</p>
+			<blockquote>
+				<p>
+					<b>
+						Valoración
+					</b>:
+				</p>
+				<p>
+					Useful = <b>-1
+					</b>
+				</p>
+				<p>
+					Crazy = <b>1000
+					</b>
+				</p>
+			</blockquote>
+			<h1 id="conclusiones">
+				Conclusiones
+			</h1>
+			<p>
+				Estas características no es seguro que aparezcan en c# 7. Aunque estoy seguro de que muchas de ellas sí. Actualmente hemos podido jugar con versiones preview. De cualquier forma, está muy bien que sigan trayendo novedades cuando ya han pasado 7 versiones de este lenguaje de programación orientado a objetos. Quizá por ser demasiadas versiones y no poder sacar más chicha de este paradigma se haya optado por incluir características de lenguajes funcionales.
+			</p>
+			<p>
+				A continuación unas gráficas (así parece que sabemos de lo que hablamos cientificamente):
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/11/chart-csharp7-1.png" alt="chart-1" />
+			</p>
+			<p>
+				<img src="/assets/uploads/2016/11/chart-csharp7-2.png" alt="chart-2" />
+			</p>
+			<blockquote>
+				<p>
+					Nota: hemos excluido las <em>default interface implementations
+					</em> porque nos jodia las gráficas
+				</p>
+			</blockquote>
+			<blockquote>
+				<p>
+					Disclaimer: Todo esto pueden ser patrañas. No te lo tomes en serio. La información ha sido extraida de <a href="https://blogs.msdn.microsoft.com/dotnet/2016/08/24/whats-new-in-csharp-7-0/">https://blogs.msdn.microsoft.com/dotnet/2016/08/24/whats-new-in-csharp-7-0/
+					</a>, <a href="https://github.com/dotnet/roslyn/issues/73">https://github.com/dotnet/roslyn/issues/73
+					</a> y de la preview 4 de c# 7.
+				</p>
+			</blockquote>
+			<p>
+				Y yo me pregunto: ¿Para cuando palabra clave "let"?
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Novedades de c# 7&url=https://www.developerro.com/2016/11/16/csharp-7" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2016/11/16/csharp-7" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2016/11/16/csharp-7" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2016/11/16/csharp-7" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/19/csharp-8">
+						Novedades de c# 8
+					</a> <small>19 feb. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2019/02/05/historia-csharp">
+						Historia de C#
+					</a> <small>05 feb. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			SOLID menos mola (D) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La D de SOLID se refiere al principio de inversi&#243;n de dependencia o DIP por sus siglas en ingl&#233;s (Dependency Inversion Principle). Se puede resumir con que u..." />
+		<meta property="og:title" content="SOLID menos mola (D)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/10/14/solid-menos-mola-d" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/solid4.jpg" />
+		<meta property="og:description" content="La D de SOLID se refiere al principio de inversión de dependencia o DIP por sus siglas en inglés (Dependency Inversion Principle). Se puede resumir con que u..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-10-14 02:16:54Z" />
+		<meta property="article:published_time" content="2020-10-14 02:16:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="SOLID menos mola (D)" />
+		<meta name="twitter:description" content="La D de SOLID se refiere al principio de inversión de dependencia o DIP por sus siglas en inglés (Dependency Inversion Principle). Se puede resumir con que u..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/solid4.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/10/14/solid-menos-mola-d" />
+		<meta name="description" content="La D de SOLID se refiere al principio de inversión de dependencia o DIP por sus siglas en inglés (Dependency Inversion Principle). Se puede resumir con que u..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/10/14/solid-menos-mola-d" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/solid4.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				SOLID menos mola (D)
+			</h1><small>14 oct. 2020 · 15 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La <em>D
+				</em> de <em>SOLID
+				</em> se refiere al principio de inversión de dependencia o <strong>DIP
+				</strong> por sus siglas en inglés (<strong>D
+				</strong>ependency <strong>I
+				</strong>nversion <strong>P
+				</strong>rinciple). Se puede resumir con que una clase debe depender de las abstracciones, no de las concreciones. Aunque <a href="https://twitter.com/unclebobmartin">Robert C. Martin
+				</a> es mucho más específico y realiza una definición dividida en dos partes
+				<!--break-->
+				:
+			</p>
+			<blockquote>
+				<ol type="A">
+					<li>
+						<em>
+							Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de las abstracciones.
+						</em>
+					</li>
+				</ol>
+			</blockquote>
+			<blockquote>
+				<ol type="A" start="2">
+					<li>
+						<em>
+							Las abstracciones no deben depender de los detalles. Los detalles deben depender de las abstracciones.
+						</em>
+					</li>
+				</ol>
+			</blockquote>
+			<p>
+				<a href="https://twitter.com/unclebobmartin">
+					Uncle Bob
+				</a> lo explica mediante un ejemplo, <a href="https://web.archive.org/web/20110714224327/http://www.objectmentor.com/resources/articles/dip.pdf">en su ensayo sobre <strong>DIP</strong>
+				</a>, que voy a intentar traducir a C# a continuación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  private const char EndOfFile = default;
+
+  public void Copy()
+  {
+    char c;
+    while ((c = ReadCharFromConsole()) != EndOfFile)
+      WriteCharInPrinter(c);
+  }
+
+  public char ReadCharFromConsole() { ... }
+
+  public void WriteCharInPrinter(char c) { ... }
+}
+				</code>
+</pre>
+			<p>
+				Tenemos una clase llamada <code>Copier
+				</code>. Esta clase realiza la copia <code>char
+				</code> a <code>char
+				</code> de lo que escribes en consola con dirección la impresora. En este caso, nuestra clase tiene una dependencia directa con los módulos de bajo nivel para la lectura de la consola y para la escritura en la impresora. En <em>.Net
+				</em> esas capacidades las encontramos en los artefactos <code>System.Console
+				</code> y <code>System.Drawing.Printing.PrintDocument
+				</code>.
+			</p>
+			<p>
+				Si quisiéramos darle la capacidad de escribir en la impresora o en un archivo en disco, podríamos ampliar nuestro código con:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public enum OutputDevice { Printer, Disk };
+				</code>
+</pre>
+			<p>
+				<code>
+					OutputDevice
+				</code> es una enumeración que nos aportará el destino de los caracteres que estoy escribiendo. Así que tendremos que modificar nuestra clase original con algo parecido a esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public void Copy(OutputDevice device)
+{
+  char c;
+  while ((c = ReadCharFromConsole()) != EndOfFile)
+    if (device == OutputDevice.Printer)
+      WriteCharInPrinter(c);
+    else
+      WriteCharInDisk(c);
+}
+
+public char ReadCharFromConsole() { ... }
+public void WriteCharInPrinter(char c) { ... }
+public void WriteCharInDisk(char c) { ... }
+				</code>
+</pre>
+			<p>
+				Este cambio también implicaría que estaríamos añadiendo una dependencia de <code>System.IO.File
+				</code>, el artefacto mediante el cual podemos gestionar archivos en disco.
+			</p>
+			<p>
+				Al usar tantos módulos externos dentro de nuestra clase <code>Copier
+				</code>, vamos a tener un problema a la hora de realizar los <em>unit tests
+				</em>. Una prueba unitaria no debería crear archivos en disco o realizar una impresión. Y, sobre todo, una prueba unitaria no debería quedarse a la espera de que el usuario escriba algo en la consola.
+			</p>
+			<p>
+				Además, tenemos el problema de que cada nuevo comportamiento que le queramos añadir será una nueva dependencia, un nuevo método y una nueva condición en el bucle.
+			</p>
+			<p>
+				Todo esto se soluciona, como dice el punto <em>A
+				</em> del principio de inversión de dependencia, diseñando abstracciones:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public interface ICharReader
+{
+    char Read();
+}
+public interface ICharWriter
+{
+    void Write(char c);
+}
+				</code>
+</pre>
+			<p>
+				Y haciendo que nuestros módulos dependan de estas:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  private const char EndOfFile = default(char);
+  private readonly ICharReader _reader;
+  private readonly ICharWriter _writer;
+
+  public Copier(ICharReader reader, ICharWriter writer)
+  {
+      _reader = reader;
+      _writer = writer;
+  }
+
+  public void Copy()
+  {
+    char c;
+    while ((c = _reader.Read()) != EndOfFile)
+      _writer.Write(c);
+  }
+}
+				</code>
+</pre>
+			<p>
+				Gracias a esta implementación, podríamos hacer pruebas unitarias. Abstraernos de las dependencias sería sencillo usando <em>test doubles
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[Fact]
+public void Copier_Does_not_write_When_reads_EOF()
+{
+  var reader = new Mock
+					<icharreader>
+						();
+  var writer = new Mock
+						<icharwriter>
+							(MockBehavior.Strict);
+  reader.Setup(x => x.Read()).Returns(default(char));
+
+  var target = new Copier(reader.Object, writer.Object);
+  target.Copy();
+
+  writer.Verify();
+}
+						</icharwriter></icharreader>
+				</code>
+</pre>
+			<p>
+				Y también añadimos la posibilidad de realizar composición. Esto nos ayuda a dotar a nuestro código de más opciones de lectura y escritura:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class ConsoleCharReader : ICharReader { ... }
+public class PrinterCharWriter : ICharWriter { ... }
+public class FileCharWriter : ICharWriter { ... }
+
+var copyToPrinter = new Copier(new ConsoleCharReader(), new PrinterCharWriter());
+var copyToFile    = new Copier(new ConsoleCharReader(), new FileCharWriter());
+				</code>
+</pre>
+			<p>
+				Por lo tanto, podemos deducir que los módulos de alto y bajo nivel dependan de las abstracciones, aporta mucho valor a nuestro código. Desacopla artefactos, los hace <em>testeables
+				</em> y nos ayuda a aplicar patrones con más facilidad.
+			</p>
+			<p>
+				Pero ¿qué pasaría si en lugar de leer desde la consola, quisiera leer los caracteres que me vienen en una conexión remota? Posiblemente tendría que crear una nueva implementación de <code>ICharReader
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class SocketCharReader : ICharReader, IDisposable
+{
+  private readonly NetworkStream _reader;
+
+  public SocketCharReader(Socket socket)
+  {
+    _reader = new NetworkStream(socket);
+  }
+
+  public char Read()
+  {
+    int i;
+    if ((i = _reader.ReadByte()) > 0)
+      return (char)i;
+
+    return default;
+  }
+
+  public void Dispose()
+  {
+    _reader.Dispose();
+  }
+}
+				</code>
+</pre>
+			<p>
+				El caso es que, si pensamos en sacar un buen rendimiento a la hora de leer desde un socket, escribir en un archivo o enviar a la impresora, todo este código es ineficiente. Para este tipo de funcionalidades es mejor realizar lecturas y escrituras en bloque. Por ejemplo, usando un <em>buffer
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>// Reader
+public int Read(byte[] buffer)
+{
+  return _streamReader.Read(buffer, 0, buffer.Length);
+}
+
+// Writer
+public void Write(byte[] buffer, int length)
+{
+  _streamWriter.Write(buffer, 0, length);
+}
+
+// Copier
+public void Copy()
+{
+  var buffer = new byte[2048];
+  int read;
+  while ((read = _reader.Read(buffer, 0, buffer.Length)) > 0)
+  {
+    _writer.Write(buffer, 0, read);
+  }
+}
+				</code>
+</pre>
+			<p>
+				Pero nuestra abstracción está pensada para leer carácter a carácter conforme se van pulsado teclas desde la consola del sistema. Así que eso de que las <em>abstracciones no deben depender de los detalles
+				</em> quizá, si buscamos realizar esta operación en un tiempo razonable, no encajaría del todo.
+			</p>
+			<p>
+				Y es que la eficiencia y el buen rendimiento se encuentra en los detalles. Y esta es la parte que creo que no funciona del todo dentro de <strong>DIP
+				</strong>.
+			</p>
+			<h2 id="patrones">
+				Patrones
+			</h2>
+			<p>
+				Para aplicar el principio de inversión de dependencia encontramos una serie de patrones de diseño que nos pueden ayudar. Los más comunes en este ámbito son:
+			</p>
+			<h3 id="service-locator">
+				Service Locator
+			</h3>
+			<p>
+				Este patrón consiste en crear un artefacto donde almacenar todas las dependencias de nuestros módulos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class ServiceLocator
+{
+  private static readonly Dictionary
+					<type , object>
+						_services;
+
+  static ServiceLocator()
+  {
+    _services = new Dictionary
+						<type , object>
+							{
+      { typeof(ICharReader), new ConsoleCharReader() },
+      { typeof(ICharWriter), new PrinterCharWriter() },
+    };
+  }
+
+  public static T GetService
+							<t>
+								()
+  {
+    if (_services.ContainsKey(typeof(T)))
+      return (T)_services[typeof(T)];
+
+    throw new ArgumentException(nameof(T), "Type not found");
+  }
+}
+							</t>
+						</type></type>
+				</code>
+</pre>
+			<p>
+				De esta forma, en nuestras clases, podemos ir a buscar las dependencias a <code>ServiceLocator
+				</code> y de esta forma no depender de concreciones, solo de abstracciones:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  private const char EndOfFile = default(char);
+  private readonly ICharReader _reader;
+  private readonly ICharWriter _writer;
+
+  public Copier()
+  {
+      _reader = ServiceLocator.GetService
+					<icharreader>
+						();
+      _writer = ServiceLocator.GetService
+						<icharwriter>
+							();
+  }
+						</icharwriter></icharreader>
+				</code>
+</pre>
+			<p>
+				Todo esto salvo por una particularidad, si aplicamos este patrón el propio <code>ServiceLocator
+				</code> será una dependencia a lo largo de todo nuestro código, haciendo que todos nuestros módulos dependan de él.
+			</p>
+			<h3 id="dependency-injection">
+				Dependency Injection
+			</h3>
+			<p>
+				El <em>design pattern
+				</em> de inyección de dependencias nos ayuda a crear objetos sin necesidad de tener que definir sus dependencias. Estás serán inyectadas por un constructor o una fábrica.
+			</p>
+			<p>
+				Existen diferentes formas de inyectar dependencias:
+			</p>
+			<h4 id="di-constructor">
+				DI Constructor
+			</h4>
+			<p>
+				La más común que nos podemos encontrar es por el constructor. La idea es que el constructor de nuestra clase contenga una referencia a las abstracciones de las que depende:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  // ...
+  public Copier(ICharReader reader, ICharWriter writer)
+  {
+      _reader = reader;
+      _writer = writer;
+  }
+  // ...
+}
+				</code>
+</pre>
+			<p>
+				Y luego estás serán inyectadas al ser instanciada:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class CopierFactory
+{
+  public Copier CreateConsoleToPrinterCopier()
+  {
+    return new Copier(new ConsoleCharReader(), new PrinterCharWriter());
+  }
+}
+				</code>
+</pre>
+			<h4 id="di-propiedad">
+				DI Propiedad
+			</h4>
+			<p>
+				Esta es una idea semejante al constructor, pero usando propiedades. La idea es crear tantas propiedades como dependencias tenga un módulo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  // ...
+  public ICharReader Reader { get; set; }
+  public ICharWriter Writer { get; set; }
+  // ...
+}
+				</code>
+</pre>
+			<p>
+				Y asignarlas nada más crear la instancia:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class CopierFactory
+{
+  public Copier CreateConsoleToPrinterCopier()
+  {
+    return new Copier
+    {
+      Reader = new ConsoleCharReader(),
+      Writer = new PrinterCharWriter()
+    };
+  }
+}
+				</code>
+</pre>
+			<h4 id="di-metodo">
+				DI Método
+			</h4>
+			<p>
+				Y por último está la inyección de dependencias vía método, en la que crearemos métodos que nos permiten asignar las dependencias de nuestro módulo, que luego llamaremos al instanciarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Copier
+{
+  // ...
+  public void SetReader(ICharReader reader) { ... }
+  public void SetWriter(ICharWriter writer) { ... }
+  // ...
+}
+
+public class CopierFactory
+{
+  public Copier CreateConsoleToPrinterCopier()
+  {
+    var copier = new Copier();
+    copier.SetReader(new ConsoleCharReader());
+    copier.SetWriter(new PrinterCharWriter());
+
+    return copier;
+  }
+}
+				</code>
+</pre>
+			<p>
+				Si ahora cogemos el patrón de <em>service locator
+				</em>, lo mezclamos con el de <em>dependency injection
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public interface IServiceLocator
+{
+  T GetService
+					<t>
+						();
+}
+
+public interface IServiceRegister
+{
+  void Register
+						<t>
+							(Func
+							<iservicelocator , t>
+								factory);
+}
+
+public class DependencyInjector : IServiceLocator, IServiceRegister
+{
+  private static readonly ConcurrentDictionary
+								<type , object>
+									_services = new   ConcurrentDictionary
+									<type , object>
+										();
+
+  public T GetService
+										<t>
+											()
+  {
+    if (_services.ContainsKey(typeof(T)))
+      return (T)_services[typeof(T)];
+
+    throw new ArgumentException(nameof(T), "Type not found");
+  }
+
+  public void Register
+											<t>
+												(Func
+												<iservicelocator , t>
+													factory)
+  {
+    var instance = factory(this);
+    _services.AddOrUpdate(typeof(T), instance, (a, b) => instance);
+  }
+}
+												</iservicelocator>
+											</t>
+										</t>
+									</type>
+								</type>
+							</iservicelocator>
+						</t></t>
+				</code>
+</pre>
+			<p>
+				Ahora podríamos tener un inicio de nuestra aplicación parecido a este:
+			</p>
+			<pre class="language-csharp highlight">
+<code>// build dependency tree
+var dependencyInjector = new DependencyInjector();
+dependencyInjector.Register
+					<icharreader>
+						(_ => new ConsoleCharReader());
+dependencyInjector.Register
+						<icharwriter>
+							(_ => new PrinterCharWriter());
+dependencyInjector.Register
+							<copier>
+								(serviceLocator => new Copier(serviceLocator.GetService
+								<icharreader>
+									(), serviceLocator.GetService
+									<icharwriter>
+										()));
+
+// run application
+var copier = dependencyInjector.GetService
+										<copier>
+											();
+copier.Copy();
+										</copier>
+									</icharwriter>
+								</icharreader>
+							</copier>
+						</icharwriter></icharreader>
+				</code>
+</pre>
+			<h3 id="inversion-of-control">
+				Inversion of Control
+			</h3>
+			<p>
+				Otra vuelta de tuerca sobre la misma idea, y la que más personas conocerán, es el patrón de inversión de control (o <em>IoC
+				</em>).
+			</p>
+			<p>
+				En este patrón la idea es tener un contenedor que se asemeje a la clase <code>DependencyInjector
+				</code> que hemos implementado anteriormente. A este contenedor le añadimos la capacidad de crear, reutilizar y destruir estas dependencias que registramos. Y terminamos controlando el flujo de nuestra aplicación mediante su uso.
+			</p>
+			<p>
+				Así que si pensamos en qué control se invierte cuando usamos <em>IoC
+				</em>, nos referimos a que en lugar de controlar nosotros el ciclo de vida de los objetos de nuestra aplicación, delegamos esto en el contenedor de <em>IoC
+				</em>.
+			</p>
+			<p>
+				En <em>dotnet core
+				</em> este patrón ya forma parte del propio <em>framework
+				</em> usando el paquete de nuget <code>Microsoft.Extensions.DependencyInjection
+				</code>. Pero seguro que muchos ya lo habéis visto en librerías de terceros como <code>Autofac
+				</code>, <code>Ninject
+				</code>, <code>Unity
+				</code>, ...
+			</p>
+			<p>
+				Para ponerlo a prueba usando la librería del <em>framework
+				</em> de <em>dotnet core
+				</em>, primero usaríamos un objeto de tipo <code>ServiceCollection
+				</code> para registrar nuestras dependencias y su ciclo de vida:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var serviceCollection = new ServiceCollection();
+serviceCollection.AddSingleton
+					<icharreader , consolecharreader>
+						();
+serviceCollection.AddScoped
+						<icharwriter , printercharwriter>
+							();
+serviceCollection.AddTransient
+							<copier>
+								();
+							</copier>
+						</icharwriter></icharreader>
+				</code>
+</pre>
+			<p>
+				Como se puede observar, en este ejemplo:
+			</p>
+			<ul>
+				<li>
+					<code>
+						ConsoleCharReader
+					</code>: ha sido declarado como <em>singleton
+					</em>, es decir, que solo existirá una instancia lo usemos las veces que lo usemos.
+				</li>
+				<li>
+					<code>
+						PrinterCharWriter
+					</code>: se instanciará uno por ámbito. Si por ejemplo estamos en <em>asp.net core
+					</em>, el ámbito sería lo que dure una <em>request
+					</em>. Pero podemos crear nuevos ámbitos usando el método <code>serviceProvider.CreateScope()
+					</code>.
+				</li>
+				<li>
+					<code>
+						Copier
+					</code>: se instanciará uno por cada llamada que hagamos, independientemente del ámbito o de que una dependencia sea <em>singleton
+					</em>.
+				</li>
+			</ul>
+			<p>
+				Después crearíamos un objeto tipo service locator al que han llamado <code>IServiceProvider
+				</code> a partir del cual podríamos resolver nuestros servicios:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var serviceProvider = serviceCollection.BuildServiceProvider();
+serviceProvider.GetService
+					<copier>
+						();
+copier.Copy();</copier>
+				</code>
+</pre>
+			<p>
+				Este tipo de patrones nos obligan a ser muy cuidadosos configurando el ciclo de vida de nuestros artefactos, porque podemos tener muchos problemas si no cuidamos la jerarquía de duración. Es decir, que los objetos, solo dependan de artefactos con un ciclo de vida igual o mayor al que estamos usando y no al revés.
+			</p>
+			<h2 id="hay-vida-despues-de-dip">
+				Hay vida después de DIP
+			</h2>
+			<p>
+				He de reconocer que el trabajo de <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios <strong>SOLID
+				</strong>, y en concreto el <strong>DIP
+				</strong>, no son una excepción. Mi consejo es que:
+			</p>
+			<ul>
+				<li>
+					Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
+				</li>
+				<li>
+					Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
+				</li>
+				<li>
+					Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
+				</li>
+			</ul>
+			<h3 id="depender-de-abstracciones">
+				Depender de abstracciones
+			</h3>
+			<p>
+				Como hemos podido ver, depender de abstracciones viene muy bien a nuestro código. Es muy útil y nos aporta muchas ventajas. El problema que encontramos aquí es cómo se consigue aplicar este patrón. Por lo general todo el mundo usa <em>IoC
+				</em> y quizá no sea necesario siempre. Por ejemplo, una <em>Azure Function
+				</em> o un programa de consola mono hilo es muy posible que, por usar inversión de control, estemos añadiendo una complejidad innecesaria a nuestra aplicación.
+			</p>
+			<p>
+				En mi opinión, siempre que podamos, es mejor depender de abstracciones y no de concreciones. Sobre todo, si estamos interesados en tener pruebas unitarias o código desacoplado. Pero no debemos caer el en anti-patrón del <a href="https://es.wikipedia.org/wiki/Martillo_de_oro">martillo dorado
+				</a>: <em>IoC
+				</em> no es siempre la respuesta a <strong>DIP
+				</strong>, es solo una de ellas.
+			</p>
+			<h3 id="las-abstracciones-no-deben-depender-de-los-detalles">
+				Las abstracciones no deben depender de los detalles
+			</h3>
+			<p>
+				Está claro que, si hacemos que las abstracciones no dependan de los detalles, nos va a aportar muchos beneficios. Sobre todo, que nuestro código será más susceptible a ser reutilizado en otras partes o incluso en otros proyectos. Pero quizá este objetivo no debería ser lo primero que debemos buscar a la hora de realizar un programa. Quizá la reutilización de código debería surgir como un subproducto de dos proyectos que usan las mismas tecnologías. Y quizá debamos dejar de obsesionarnos con lo que sucederá mañana y prepararnos para lo que tenemos hoy.
+			</p>
+			<p>
+				En mi opinión, esta parte del principio de <strong>DIP
+				</strong> tiene muchos casos en los que es mejor no aplicarla, ya que nos puede obligar a tener un mal diseño y por tanto una pobre mantenibilidad y sobre todo un mal rendimiento.
+			</p>
+			<p>
+				El caso es que esta es mi opinión a día de hoy. Lo que me pueda parecer mañana, ya lo veremos...
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=SOLID menos mola (D)&url=https://www.developerro.com/2020/10/14/solid-menos-mola-d" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/10/14/solid-menos-mola-d" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/10/14/solid-menos-mola-d" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/10/14/solid-menos-mola-d" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/15/solid-menos-mola">
+						SOLID menos mola
+					</a> <small>15 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/06/solid-menos-mola-i">
+						SOLID menos mola (I)
+					</a> <small>06 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/30/solid-menos-mola-l">
+						SOLID menos mola (L)
+					</a> <small>30 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/23/solid-menos-mola-o">
+						SOLID menos mola (O)
+					</a> <small>23 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/16/solid-menos-mola-s">
+						SOLID menos mola (S)
+					</a> <small>16 sept. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

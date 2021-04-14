@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			SOLID menos mola (O) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La O de SOLID se refiere al principio de abierto/cerrado, OCP por sus siglas en ingl&#233;s (Open/Closed Principle). Se puede definir como que una clase debe esta..." />
+		<meta property="og:title" content="SOLID menos mola (O)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/09/23/solid-menos-mola-o" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/solid1.jpg" />
+		<meta property="og:description" content="La O de SOLID se refiere al principio de abierto/cerrado, OCP por sus siglas en inglés (Open/Closed Principle). Se puede definir como que una clase debe esta..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-09-23 02:16:54Z" />
+		<meta property="article:published_time" content="2020-09-23 02:16:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="SOLID menos mola (O)" />
+		<meta name="twitter:description" content="La O de SOLID se refiere al principio de abierto/cerrado, OCP por sus siglas en inglés (Open/Closed Principle). Se puede definir como que una clase debe esta..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/solid1.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/09/23/solid-menos-mola-o" />
+		<meta name="description" content="La O de SOLID se refiere al principio de abierto/cerrado, OCP por sus siglas en inglés (Open/Closed Principle). Se puede definir como que una clase debe esta..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/09/23/solid-menos-mola-o" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/solid1.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				SOLID menos mola (O)
+			</h1><small>23 sept. 2020 · 23 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La <em>O
+				</em> de <em>SOLID
+				</em> se refiere al principio de abierto/cerrado, <strong>OCP
+				</strong> por sus siglas en inglés (<strong>O
+				</strong>pen/<strong>C
+				</strong>losed <strong>P
+				</strong>rinciple). Se puede definir como que una clase debe estar abierta a la extensión y cerrada a la modificación. Fue acuñado por primera vez por <a href="https://twitter.com/Bertrand_Meyer">Bertrand Meyer
+				</a>. Pero no fue hasta que <a href="https://twitter.com/unclebobmartin">Robert C. Martin
+				</a> lo reformuló e introdujo dentro del acrónimo <em>SOLID
+				</em>, que se popularizó
+				<!--break-->
+				.
+			</p>
+			<p>
+				Siguiendo <a href="https://web.archive.org/web/20060822033314/http://www.objectmentor.com/resources/articles/ocp.pdf">la definición de Uncle Bob
+				</a> el <strong>OCP
+				</strong> se rige por dos propiedades:
+			</p>
+			<ul>
+				<li>
+					<em>
+						Open For Extension
+					</em>: esto significa que el comportamiento de un módulo puede ser extendido. Y expone que esto se consigue gracias a una de las propiedades de la programación orientada a objetos: el polimorfismo.
+				</li>
+				<li>
+					<em>
+						Closed for Modification
+					</em>: que dice que el código fuente de un módulo es inviolable. Que nadie debería poder realizar cambios en él.
+				</li>
+			</ul>
+			<p>
+				El truco es más simple de lo que parece: consiste en que todo objeto tenga una clase abstracta base que podamos sobrescribir y aplicar patrones conocidos.
+			</p>
+			<p>
+				Si tuviéramos un sistema que dibuja figuras:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Line { ... }
+class Circle { ... }
+class Rectangle { ... }
+
+class Drawer
+{
+  public static void Draw(object o)
+  {
+    if (o is Line l) { /*Draw line stuff*/ }
+    if (o is Circle c) { /*Draw circle stuff*/ }
+    if (o is Rectangle r) { /*Draw rectangle stuff*/ }
+  }
+}
+				</code>
+</pre>
+			<p>
+				Podríamos hacerlo extensible creando una clase base abstracta con el contrato de dibujado y una implementación para cada una de las figuras:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class Shape
+{
+  public abstract void Draw();
+}
+
+class Line : Shape
+{
+  public override void Draw() { /*Draw line stuff*/ }
+}
+
+class Circle : Shape
+{
+  public override void Draw() { /*Draw circle stuff*/ }
+}
+
+class Rectangle : Shape
+{
+  public override void Draw() { /*Draw rectangle stuff*/ }
+}
+
+class Drawer
+{
+  public static void Draw(object o)
+  {
+    if (o is Shape s) s.Draw();
+  }
+}
+				</code>
+</pre>
+			<p>
+				Pero en un futuro podríamos querer añadir por ejemplo un recuadro rojo cuando algo esté seleccionado. Para esto podríamos poner todos los métodos como extensibles (usando la palabra clave <code>virtual
+				</code>) y crear nuevas clases tipo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Line : Shape
+{
+  public override void Draw() { /*Draw line stuff*/ }
+}
+
+class Circle : Shape
+{
+  public override void Draw() { /*Draw circle stuff*/ }
+}
+
+class Rectangle : Shape
+{
+  public override void Draw() { /*Draw rectangle stuff*/ }
+}
+
+class RedBorderedLine : Line
+{
+  public override void Draw()
+  {
+    /*Draw red border*/
+    base.Draw();
+  }
+}
+
+class RedBorderedCircle : Circle
+{
+  public override void Draw()
+  {
+    /*Draw red border*/
+    base.Draw();
+  }
+}
+
+class RedBorderedRectangle : Rectangle
+{
+  public override void Draw()
+  {
+    /*Draw red border*/
+    base.Draw();
+  }
+}
+				</code>
+</pre>
+			<p>
+				O podríamos optar por el patrón <em>Decorator
+				</em> y así prevendríamos futuros cambios compuestos, como por ejemplo dibujar un borde rojo, fondo azul o un <em>emote
+				</em>, junto con mi figura.
+			</p>
+			<p>
+				Así que crearíamos nuestros decoradores:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class Decorator
+{
+  public abstract void Decorate(Shape shape);
+}
+
+class RedBorderedDecorator : Decorator
+{
+  public override void Decorate(Shape shape) { /*Draw red border*/ }
+}
+
+class LineDecorator : Decorator
+{
+  public override void Decorate(Shape shape) { /*Draw line stuff*/ }
+}
+
+class CircleDecorator : Decorator
+{
+  public override void Decorate(Shape shape) { /*Draw circle stuff*/ }
+}
+
+class RectangleDecorator : Decorator
+{
+  public override void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
+}
+				</code>
+</pre>
+			<p>
+				Y modificaríamos nuestro original para que utilizara los decoradores que hemos creado:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class Shape
+{
+  private readonly Decorator _decorator;
+
+  public Shape(Decorator decorator)
+  {
+      _decorator = decorator;
+  }
+
+  public bool IsSelected { get; set; }
+
+  public virtual void Draw()
+  {
+      if (IsSelected)
+      {
+          new RedBorderedDecorator().Decorate(this);
+      }
+
+      _decorator.Decorate(this);
+  }
+}
+
+class Line : Shape
+{
+  public Line() : base(new LineDecorator()) { }
+}
+
+class Circle : Shape
+{
+  public Circle() : base(new CircleDecorator()) { }
+}
+
+class Rectangle : Shape
+{
+  public Rectangle() : base(new RectangleDecorator()) { }
+}
+				</code>
+</pre>
+			<p>
+				Pero aquí hemos hecho trampa. Si os fijáis hemos añadido una propiedad a <code>Shape
+				</code> llamada <code>IsSelected
+				</code> y quizá en un futuro esa propiedad no deba de estar en nuestro código, así que lo mejor sería refactorizarlo y, por ejemplo, usar un patrón <em>Visitor
+				</em> para cambiar el estado de nuestra figura:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class Visitor
+{
+  public abstract void Visit(Shape shape);
+}
+
+class SelectVisitor : Visitor
+{
+  public override void Visit(Shape shape)
+  {
+      shape.AddDecorator(new RedBorderedDecorator());
+  }
+}
+
+class UnselectVisitor : Visitor
+{
+  public override void Visit(Shape shape)
+  {
+      shape.RemoveDecorator(typeof(RedBorderedDecorator));
+  }
+}
+
+abstract class Shape
+{
+  private readonly List
+					<decorator>
+						_decorators;
+
+  public Shape(Decorator decorator)
+  {
+      _decorators = new List
+						<decorator>
+							{ decorator };
+  }
+
+  public void AddDecorator(Decorator d) { ... }
+
+  public void RemoveDecorator(Type t) { ... }
+
+  public virtual void Draw()
+  {
+      _decorators.ForEach(d => d.Decorate(this));
+  }
+}
+						</decorator></decorator>
+				</code>
+</pre>
+			<p>
+				Para hacer que estos objetos "visiten" nuestras figuras, necesitaremos otro tipo de elemento, como por ejemplo un <em>Command
+				</em>. Aplicando este patrón crearíamos acciones que se pueden ejecutar en nuestro sistema:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class Command
+{
+  public abstract void Execute(Manager manager, Shape shape);
+}
+
+class SelectCommand : Command
+{
+  private readonly Visitor _selectVisitor = new SelectVisitor();
+  private readonly Visitor _unselectVisitor = new UnselectVisitor();
+
+  public override void Execute(Manager manager, Shape shape)
+  {
+    manager.Shapes.ToList().ForEach(x => _unselectVisitor.Visit(x));
+    _selectVisitor.Visit(shape);
+  }
+}
+				</code>
+</pre>
+			<p>
+				Y finalmente para orquestar esos <em>Commands
+				</em> crearemos otra clase que nos servirá de ayuda:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Manager
+{
+  private readonly List
+					<shape>
+						_shapes = new List
+						<shape>
+							();
+  private readonly IDictionary
+							<string , command>
+								_commands;
+
+  public Manager(IDictionary
+								<string , command>
+									commands)
+  {
+    _commands = commands;
+  }
+
+  public IEnumerable
+									<string>
+										Commands { get => _commands.Keys; }
+
+  public IEnumerable
+										<shape>
+											Shapes { get => _shapes; }
+
+  public void AddShape(Shape s)
+  {
+      _shapes.Add(s);
+  }
+
+  public void RemoveShape(Shape s)
+  {
+      _shapes.Remove(s);
+  }
+
+  public void DoCommand(string commandKey, Shape s)
+  {
+      if (_commands.ContainsKey(commandKey))
+      {
+          _commands[commandKey].Execute(this, s);
+      }
+  }
+}
+										</shape>
+									</string>
+								</string>
+							</string>
+						</shape></shape>
+				</code>
+</pre>
+			<p>
+				De esta manera, nuestro programa estará abierto a la extensión:
+			</p>
+			<ul>
+				<li>
+					Si quisiéramos añadir o modificar una figura, añadiríamos un nuevo objeto que heredara de <code>Shape
+					</code> y otro que lo hiciera de <code>Decorator
+					</code> para dibujarla en pantalla.
+				</li>
+				<li>
+					Si quisiéramos añadir o modificar una característica de dibujado, crearíamos un nuevo objeto de tipo <code>Decorator
+					</code>.
+				</li>
+				<li>
+					Si quisiéramos añadir o modificar una característica de dibujado condicional, además de lo que hicimos en el paso anterior, crearíamos una serie de objetos de tipo <code>Visitor
+					</code> para cambiar el listado de decoradores de nuestra figura.
+				</li>
+				<li>
+					Si quisiéramos añadir acciones a realizar en una lista de figuras, crearíamos un nuevo objeto tipo <code>Command
+					</code>.
+				</li>
+				<li>
+					Si quisiéramos borrar alguno de los objetos que ya existen, solo tendríamos que ignorarlos.
+				</li>
+			</ul>
+			<p>
+				Por lo que también estará cerrado a la modificación, porque todo cambio consistirá en crear nuevos objetos y/o ignorar los que ya existen.
+			</p>
+			<p>
+				Si bien es verdad que se ha incrementado un poco la complejidad del sistema, como estamos usando patrones conocidos, a nuestro equipo de programadores no les importará demasiado. Sería pagar un poco de complejidad a cambio de que todo lo que está hecho, se tenga la seguridad de que no se va a tener que tocar jamás ¿Quién no firmaría esto ahora mismo para sus desarrollos?
+			</p>
+			<p>
+				Ahora surge un nuevo problema, empieza un <em>sprint
+				</em> y tenemos una nueva <em>feature
+				</em>:
+			</p>
+			<ul>
+				<li>
+					Añadir colores al pintado de la figura
+				</li>
+			</ul>
+			<p>
+				Siguiendo el <strong>OCP
+				</strong> para poder pintar en colores, no podemos modificar el código existente, luego tendríamos que crear un nuevo conjunto de decoradores:
+			</p>
+			<pre class="language-csharp highlight">
+<code>abstract class ColoredDecorator : Decorator
+{
+  protected ColoredDecorator(Color color)
+  {
+      Color = color;
+  }
+
+  protected Color Color { get; private set; }
+}
+
+class ColoredBorderedDecorator : ColoredDecorator
+{
+  public ColoredBorderedDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw red border*/ }
+}
+
+class ColoredLineDecorator : ColoredDecorator
+{
+  public ColoredLineDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw line stuff*/ }
+}
+
+class ColoredCircleDecorator : ColoredDecorator
+{
+  public ColoredCircleDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw circle stuff*/ }
+}
+
+class ColoredRectangleDecorator : ColoredDecorator
+{
+  public ColoredRectangleDecorator(Color color): base(color) { }
+  public override void Decorate(Shape shape) { /*Draw rectangle stuff*/ }
+}
+				</code>
+</pre>
+			<p>
+				También tendríamos que crear nuevas figuras para que usarán estos nuevos decoradores. Y lo mismo para los <em>Visitors
+				</em> y los <em>Commands
+				</em>. Tendríamos que crear alguna forma de que los <em>Commands
+				</em> recibieran el parámetro de color de forma dinámica, así que al final terminaríamos reescribiendo la implementación completa del <code>Manager
+				</code> llamándolo <code>ColoredManager
+				</code> o recubriéndola en un <em>wrapper
+				</em>.
+			</p>
+			<p>
+				El caso es que en un desarrollo normal terminaremos o bien haciendo <em>Copy & Paste
+				</em> de todo nuestro código cientos de veces para crear un objeto nuevo con una nueva capacidad, o bien extendiendo de unas bases que en un principio no contenían toda la complejidad del sistema.
+			</p>
+			<p>
+				¿Os imagináis un año un equipo de 4 personas desarrollando este proyecto para ir dotándolo de más características? Imagino una cantidad de objetos inabarcable. Algo que a una persona nueva en el proyecto le sería prácticamente incomprensible por lo distribuida que estaría la información.
+			</p>
+			<p>
+				Y es que, hemos caído en nuestra propia trampa: no podemos modificar, solo extender. Esto implica que tenemos que programar haciendo que nuestro código sea extensible en todos aquellos puntos en los que podría tener que ser modificado en el futuro. Pero hasta donde sé, nunca he conocido un programador adivino que vea cómo va a evolucionar un producto en el futuro. Al menos no en su totalidad.
+			</p>
+			<p>
+				Por esta razón, <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> decidió <a href="https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html">reformular en 2014 su propuesta de OCP
+				</a>. En este nuevo documento nos habla del uso de sistemas de <em>plugins
+				</em>, como los que usan nuestros IDEs preferidos, para poner en práctica este principio. Y aunque creo que es muy interesante esta propuesta, también creo que son pocas las aplicaciones que he programado en las que añadir un sistema de complementos vaya a impactar directamente en la mejora de la calidad de su código fuente.
+			</p>
+			<p>
+				El ejemplo que hemos expuesto es un buen código. Sigue a rajatabla <strong>OCP
+				</strong>. Pero llega un momento en el que, en dependencia de la nueva <em>feature
+				</em> que tengamos que implementar, creo que mejoraría más modificando ciertos objetos que añadiendo extensiones, derivaciones o <em>plugins
+				</em>.
+			</p>
+			<p>
+				Porque el desarrollo de software, la gestión del ciclo de vida de una aplicación, las metodologías ágiles, las prácticas XP (e<strong>X
+				</strong>treme <strong>P
+				</strong>rogramming) y todo lo que lo rodea, va en dirección de adaptarse al cambio, no a preverlo. Y cuando un requisito del sistema cambia, significa que tu código no es válido y tienes que reemplazarlo.
+			</p>
+			<h2 id="hay-vida-despues-de-ocp">
+				Hay vida después de OCP
+			</h2>
+			<p>
+				He de reconocer que el trabajo de <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios <strong>SOLID
+				</strong>, y en concreto el <strong>OCP
+				</strong>, no son una excepción. Mi consejo es que:
+			</p>
+			<ul>
+				<li>
+					Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
+				</li>
+				<li>
+					Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
+				</li>
+				<li>
+					Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
+				</li>
+			</ul>
+			<p>
+				Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
+			</p>
+			<ul>
+				<li>
+					Si tengo que estar cerrado a la modificación ¿Cómo puedo predecir qué código va a cambiar para hacerlo extensible?
+				</li>
+				<li>
+					Si intento prever todos los cambios que se pueden dar en un sistema ¿Qué pasa con eso de "adaptarse al cambio" que promueve el desarrollo <em>agile
+					</em>?
+				</li>
+				<li>
+					¿Es este principio una oposición directa a <abbr title="You Aren't Gonna Need It">YAGNI
+					</abbr>?
+				</li>
+				<li>
+					¿Es más importante estar abierto a la extensión y cerrado a la modificación que el principio <abbr title="Don't Repeat Yourself">DRY
+					</abbr>?
+				</li>
+				<li>
+					¿Es mejor tener un sistema abierto a la extensión o una aplicación que se ciña a hacer lo que dice que debe hacer?
+				</li>
+				<li>
+					Si quiero aplicar OCP en un código que nunca lo ha tenido en cuenta ¿podría entonces modificar las clases existentes?
+				</li>
+			</ul>
+			<p>
+				El principio de abierto/cerrado creo que busca reducir el uso de bloques condicionales (como <code>switch
+				</code> e <code>if
+				</code>) aplicando patrones y usando las capacidades de un lenguaje orientado a objetos. Esto es importante porque los bloques condicionales hacen que nuestro código sea más difícil de entender y, por lo tanto, de mantener. Aunque seguirlo sin sentido nos llevará a conseguir todo lo contrario, un código en el que todo está tan desperdigado y hay tantas herencias, que resulta muy difícil de comprender.
+			</p>
+			<p>
+				Afortunadamente no todo en este mundo es <strong>SOLID
+				</strong>. Existen multitud de principios y reglas de programación que son muy válidas también. Antes que seguir el <strong>OCP
+				</strong> creo que sería interesante pensar en uno de <a href="http://www.extremeprogramming.org/values.html">los valores en los que se basa XP
+				</a> (e<strong>X
+				</strong>treme <strong>P
+				</strong>rogramming):
+			</p>
+			<ul>
+				<li>
+					<em>
+						simplicity
+					</em>: Es mejor hacer una cosa simple hoy y pagar un poco más mañana para cambiarlo, que hacer una cosa más complicada hoy que jamás vaya a ser utilizada.
+				</li>
+			</ul>
+			<p>
+				Y después tendría en cuenta seguir el abierto/cerrado procurando no contradecir dos de las <a href="https://martinfowler.com/bliki/BeckDesignRules.html">
+					<em>
+						four rules of simple design</em>
+				</a> de <a href="https://twitter.com/kentbeck">Kent Beck
+				</a>: <em>No duplication
+				</em> y <em>Fewest elements
+				</em>. Las cuatro me parecen muy importantes, pero una aplicación agresiva de <strong>OCP
+				</strong> podría llevarnos a duplicar mucho código con la excusa de no poder modificarlo, y encontrarnos con muchos artefactos con una alta probabilidad de tener el <em>smell
+				</em> de <em>Parallel Inheritance Hierarchies
+				</em>.
+			</p>
+			<p>
+				Según la opinión que tengo hoy en día y usando lenguaje de acrónimos: <strong>OCP
+				</strong> debería estar supeditado por otros principios como <strong>KISS
+				</strong>, <strong>DRY
+				</strong> y <strong>YAGNI
+				</strong>. Pero eso no quiere decir que sea equivocado o que no lo apliquemos.
+			</p>
+			<p>
+				Y lo que me pueda opinar mañana, ya lo veremos...
+			</p>
+			<h2 id="ejemplo-en-el-mundo-real">
+				Ejemplo en el mundo real
+			</h2>
+			<p>
+				En otro de los famosos <em>code reviews
+				</em> en los que tuve la suerte de poder asistir, salió un código que nos viene al pelo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static dynamic FromObject(dynamic obj)
+{
+  if (obj is ExpandoObject) return obj;
+
+  var expando = new ExpandoObject();
+  if (obj is Document d)
+  {
+    obj = JsonConvert.DeserializeObject(d.ToString());
+  }
+
+  var dictionary = (IDictionary
+					<string , object>
+						)expando;
+  if (obj is JObject)
+  {
+    ((JObject)obj).Children
+						<jproperty>
+							().ToList().ForEach(x =>
+    {
+      dictionary.Add(x.Name, x.Value);
+    });
+
+    return expando;
+  }
+
+  (obj.GetType() as Type).GetProperties().ToList().ForEach(p =>
+  {
+    dictionary[p.Name] = p.GetValue(obj);
+  });
+
+  if (dictionary.Keys.All(x => x == "Payload") && (obj.GetType() as Type).FullName == "Microsoft.Azure.Documents.QueryResult")
+  {
+    return FromObject(dictionary["Payload"]);
+  }
+
+  return expando;
+}
+						</jproperty></string>
+				</code>
+</pre>
+			<p>
+				Es un ejemplo real de algo que conocemos vulgarmente como <em>spaghetti-code
+				</em>. Y lo mejor es que el autor de semejante atentado contra la humanidad fui yo mismo. Así que primero me sirvió para bajarme los humos y segundo para ser crítico con mi propio trabajo. Por muy bueno que se considere un programador siempre cometerá errores. Y la mejor forma de aprender y mejorar, es que tu código aparezca en un <em>code review
+				</em>.
+			</p>
+			<p>
+				Como este código era un conjunto de <em>bugfixes
+				</em> hechos con el menor rigor profesional, lo primero que tuvimos que hacer fue explicar qué hacía y por qué. Así que os lo voy a dejar a continuación en formato de comentario:
+			</p>
+			<pre class="language-csharp highlight">
+<code>// convierte un objeto cualquiera en un ExpandoObject, que es un tipo dinámico que nos permite añadir nuevas propiedades al vuelo
+// en este caso se usa para crear un objeto al que le vamos añadiendo ciertas propiedades en tiempo de ejecución y que será almacenado en una base de datos de tipo documental sin esquema
+public static dynamic FromObject(dynamic obj)
+{
+  // si el objeto de entrada ya es un ExpandoObject lo devolvemos tal cual
+  if (obj is ExpandoObject) return obj;
+
+  // nuestra función devolverá finalmente este "expando"
+  var expando = new ExpandoObject();
+
+  // si el objeto de entrada es de tipo Document (de cosmosDB) lo deserializamos para convertirlo en un JObject
+  if (obj is Document d)
+  {
+    obj = JsonConvert.DeserializeObject(d.ToString());
+  }
+
+  // para poder interactuar de una forma sencilla con un ExpandoObject, lo podemos convertir en un diccionario
+  var dictionary = (IDictionary
+					<string , object>
+						)expando;
+
+  // si el objeto de entrada es un JObject
+  if (obj is JObject)
+  {
+    // copiamos las propiedades de este objeto
+    ((JObject)obj).Children
+						<jproperty>
+							().ToList().ForEach(x =>
+    {
+      dictionary.Add(x.Name, x.Value);
+    });
+
+    // devolvemos el ExpandoObject
+    return expando;
+  }
+
+  // si no, copiamos las propiedades de un objeto cualquiera
+  (obj.GetType() as Type).GetProperties().ToList().ForEach(p =>
+  {
+    dictionary[p.Name] = p.GetValue(obj);
+  });
+
+  // si después de copiar los datos, observamos que solo existe la propiedad Payload y que el objeto de entrada es de tipo QueryResult
+  // *QueryResult es un objeto interno al que no se tiene acceso, por eso comparamos con el nombre del tipo
+  if (dictionary.Keys.All(x => x == "Payload") && (obj.GetType() as Type).FullName == "Microsoft.Azure.Documents.QueryResult")
+  {
+    // lanzamos otra vez la función de convertir pero usando solo la propiedad Payload
+    return FromObject(dictionary["Payload"]);
+  }
+
+  // devolvemos el ExpandoObject
+  return expando;
+}
+						</jproperty></string>
+				</code>
+</pre>
+			<p>
+				Como se puede observar por los comentarios, estamos creando un objeto <code>ExpandoObject
+				</code> a partir de otro objeto, haciendo diferenciación de si este objeto es de tipo <code>Document
+				</code>, <code>JObject
+				</code>, <code>QueryResult
+				</code> o cualquier otro tipo.
+			</p>
+			<p>
+				Los primeros comentarios que surgieron en el <em>code review
+				</em> proponían montar un <em>Command Pattern
+				</em> o algo parecido para gestionar esto. Pero nadie sabía cómo empezar a hacerlo. Así que decidimos empezar por los pequeños pasos seguros que teníamos y a partir de ahí ver cómo evolucionaba el código.
+			</p>
+			<h3 id="evita-el-uso-de-dynamic-en-contratos">
+				Evita el uso de dynamic en contratos
+			</h3>
+			<p>
+				Creo que todos tendremos grabado a fuego que <a href="https://cloudncode.blog/2016/07/12/c-dynamic-keyword-what-why-when/">no es recomendable usar el tipo <code>dynamic</code> en C#
+				</a>. Y menos como parámetros de entrada y salida de un método o función:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static dynamic FromObject(dynamic obj)
+				</code>
+</pre>
+			<p>
+				Realmente estábamos construyendo un objeto de tipo <code>ExpandoObject
+				</code> a partir de cualquier otro <code>object
+				</code>. Por lo que la firma sin usar <code>dynamic
+				</code> nos simplificaría lo que vendría después:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static ExpandoObject FromObject(object obj)
+				</code>
+</pre>
+			<h3 id="simplifica-los-condicionales">
+				Simplifica los condicionales
+			</h3>
+			<p>
+				Al final de código teníamos esta comprobación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>if (dictionary.Keys.All(x => x == "Payload") && (obj.GetType() as Type).FullName == "Microsoft.Azure.Documents.QueryResult")
+{
+  return FromObject(dictionary["Payload"]);
+}
+				</code>
+</pre>
+			<p>
+				Aquí estamos <em>hackeando
+				</em> el sistema para realizar una conversión de un tipo <code>internal
+				</code> del SDK 2.0 de cosmosDB, pero también estamos comprobando que tenga una propiedad llamada "Payload". Quizá nos podríamos ahorrar esta comprobación si ya sabemos cuál es el tipo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>if (obj.GetType().FullName == "Microsoft.Azure.Documents.QueryResult")
+{
+  var payload = obj.GetType().GetProperty("Payload");
+  return FromObject(payload);
+}
+				</code>
+</pre>
+			<p>
+				Este cambio tiene un efecto secundario, ya no hace falta que sea la última condición porque nos hemos quitado la dependencia de <code>diccionary
+				</code>. Así que podría situarse en las comprobaciones iniciales.
+			</p>
+			<h3 id="empieza-por-extraer-metodos">
+				Empieza por extraer métodos
+			</h3>
+			<p>
+				Cuando ya te quedas sin ideas, lo que puedes hacer con un código espagueti es empezar a extraer métodos en busca de algo que te llame la atención.
+			</p>
+			<p>
+				En este caso nos fijamos en la asignación de propiedades, que se podría hacer de dos formas diferentes, una en si es un <code>JObject
+				</code> y otra si no:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static ExpandoObject PopulateProperties(object obj)
+{
+  var expando = new ExpandoObject();
+  var dictionary = (IDictionary
+					<string , object>
+						)expando;
+
+  PopulateJsonProperties(dictionary, obj);
+  PopulateDefaultProperties(dictionary, obj);
+
+  return expando;
+}
+
+private static void PopulateJsonProperties(IDictionary
+						<string , object>
+							dictionary, object obj)
+{
+  if (!(obj is JObject o)) return;
+
+  o.Children
+							<jproperty>
+								().ToList().ForEach(x =>
+    {
+        dictionary.Add(x.Name, x.Value);
+    });
+}
+
+private static void PopulateDefaultProperties(IDictionary
+								<string , object>
+									dictionary, object obj)
+{
+  if (obj is JObject) return;
+
+  obj.GetType().GetProperties().ToList().ForEach(p =>
+  {
+      dictionary[p.Name] = p.GetValue(obj);
+  });
+}
+								</string>
+							</jproperty>
+						</string></string>
+				</code>
+</pre>
+			<h3 id="encontrando-el-patron">
+				Encontrando el patrón
+			</h3>
+			<p>
+				Entonces empezamos a extraer a métodos los bloques <code>if
+				</code> que teníamos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static ExpandoObject FromExpandoObject(object obj)
+{
+  if (obj is ExpandoObject e) return e;
+  return default;
+}
+				</code>
+</pre>
+			<p>
+				Primero para ver si era un <code>ExpandoObject
+				</code> y luego para cuando era un <code>QueryResult
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private const string QueryResultTypeName = "Microsoft.Azure.Documents.QueryResult";
+private const string PayloadPropertyName = "Payload";
+
+private static ExpandoObject FromQueryResult(object obj)
+{
+  if (obj.GetType().FullName == QueryResultTypeName)
+  {
+    var payload = obj.GetType().GetProperty(PayloadPropertyName);
+    return FromObject(payload);
+  }
+
+  return default;
+}
+				</code>
+</pre>
+			<p>
+				Y ya teníamos un patrón a la vista, crear funciones con la firma que acepten un parámetro de entrada de tipo <code>object
+				</code> y devuelvan <code>ExpandoObject
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>Func
+					<object , expandoobject></object>
+				</code>
+</pre>
+			<p>
+				Así que terminamos con el último bloque <code>if
+				</code> que nos quedaba, para cuando se trataba de un objeto de tipo <code>Document
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static ExpandoObject FromDocument(object obj)
+{
+  if (obj is Document d)
+  {
+    var json = JsonConvert.DeserializeObject(d.ToString());
+    return FromObject(json);
+  }
+
+  return default;
+}
+				</code>
+</pre>
+			<p>
+				Y después refactorizamos los métodos que creamos en el paso anterior para asignación de propiedades, con la misma forma que habíamos estandarizado:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static ExpandoObject FromJObject(object obj)
+{
+  if (obj is JObject o)
+  {
+      var expando = new ExpandoObject();
+      var dictionary = (IDictionary
+					<string , object>
+						)expando;
+      o.Children
+						<jproperty>
+							().ToList().ForEach(x =>
+      {
+        dictionary.Add(x.Name, x.Value);
+      });
+
+      return expando;
+  }
+
+  return default;
+}
+
+private static ExpandoObject FromAnyObject(object obj)
+{
+  var expando = new ExpandoObject();
+  var dictionary = (IDictionary
+							<string , object>
+								)expando;
+  obj.GetType().GetProperties().ToList().ForEach(p =>
+  {
+    dictionary[p.Name] = p.GetValue(obj);
+  });
+
+  return expando;
+}
+							</string>
+						</jproperty></string>
+				</code>
+</pre>
+			<p>
+				Finalmente, nuestra función quedaría como una llamada encadenada a cada una de las funciones que intentaban realizar la conversión a <code>ExpandoObject
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public static ExpandoObject FromObject(object obj)
+{
+  var result = FromExpandoObject(obj);
+  result ??= FromQueryResult(obj);
+  result ??= FromDocument(obj);
+  result ??= FromJObject(obj);
+  result ??= FromAnyObject(obj);
+  return result;
+}
+				</code>
+</pre>
+			<h3 id="resultado-final">
+				Resultado final
+			</h3>
+			<p>
+				Aquí surgió de nuevo si merecía la pena implementar un <em>Strategy Pattern
+				</em> para separar todas estas funciones en clases completas (abierto a la extensión, pero cerrado a la modificación). Pero, teniendo en cuenta que era el código de una clase de apoyo (un <em>Helper
+				</em>), que no se espera que cambie nunca, el equipo decidió que una solución intermedia era suficiente, creando una lista de funciones y realizando un recorrido por todas ellas:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private static readonly Func
+					<object , expandoobject>
+						[] _strategies = new Func
+						<object , expandoobject>
+							[] {
+  FromExpandoObject,
+  FromQueryResult,
+  FromDocument,
+  FromJObject,
+  FromAnyObject
+};
+
+public static ExpandoObject FromObject(object obj)
+{
+  return _strategies.Select(x => x(obj))
+                    .FirstOrDefault(x => x != null);
+}
+						</object></object>
+				</code>
+</pre>
+			<p>
+				Es posible que el código hubiera mejorado con el patrón de estrategia, o con cualquier otro patrón de los que hemos visto en el primer ejemplo. Pero el equipo consideró que ya había realizado una buena refactorización y que dejarían esa decisión para el futuro. En ese momento ya habíamos conseguido el objetivo de la reunión: refactorizar el horrible código inicial y hacerlo legible.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=SOLID menos mola (O)&url=https://www.developerro.com/2020/09/23/solid-menos-mola-o" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/09/23/solid-menos-mola-o" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/09/23/solid-menos-mola-o" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/09/23/solid-menos-mola-o" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/15/solid-menos-mola">
+						SOLID menos mola
+					</a> <small>15 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/14/solid-menos-mola-d">
+						SOLID menos mola (D)
+					</a> <small>14 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/06/solid-menos-mola-i">
+						SOLID menos mola (I)
+					</a> <small>06 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/30/solid-menos-mola-l">
+						SOLID menos mola (L)
+					</a> <small>30 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/16/solid-menos-mola-s">
+						SOLID menos mola (S)
+					</a> <small>16 sept. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

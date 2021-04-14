@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			ChorraTip: rutas windows en git bash · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="&#191;No te ha pasado nunca que est&#225;s navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A m&#237; s&#237;. Y resulta que esto n..." />
+		<meta property="og:title" content="ChorraTip: rutas windows en git bash" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/tip.jpg" />
+		<meta property="og:description" content="¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto n..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2021-03-03 13:20:00Z" />
+		<meta property="article:published_time" content="2021-03-03 13:20:00Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="ChorraTip: rutas windows en git bash" />
+		<meta name="twitter:description" content="¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto n..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/tip.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="description" content="¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto n..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/tip.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				ChorraTip: rutas windows en git bash
+			</h1><small>03 mar. 2021 · 2 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto no funciona con el <strong>bash
+				</strong> de <em>Git for Windows
+				</em>. Así que he decidido hacer que sí que funcione
+				<!--break-->
+				. Porque infravaloramos el poder que tiene el simple deseo de ser mas vago. Es una de las fuerzas más importantes que dan impulso a la evolución de la humanidad.
+			</p>
+			<p>
+				Así pues, en el #chorraTip del día de hoy, vamos a crear el comando <code>wcd
+				</code> para el <strong>bash
+				</strong> de <em>Git for Windows
+				</em>. Solo tienes que seguir estos pasos:
+			</p>
+			<ul>
+				<li>
+					Crea un archivo en "C:\Program Files\Git\usr\bin" llamado "wincd".
+				</li>
+				<li>
+					Añade este contenido:
+				</li>
+			</ul>
+			<pre class="language-bash highlight">
+<code>#!/usr/bin/env bash
+dir=$(echo "/$1" | sed -e 's/\\/\//g' -e 's/://' -e 's/\/C\//\/c\//')
+cd "$dir"
+				</code>
+</pre>
+			<ul>
+				<li>
+					<p>
+						Abre tu terminal de <strong>bash
+						</strong>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Situate en tu carpeta <em>HOME
+						</em>:
+					</p>
+				</li>
+			</ul>
+			<pre class="language-bash highlight">
+<code>$ cd ~
+				</code>
+</pre>
+			<ul>
+				<li>
+					Crea un alias para hacer que el comando <code>wincd
+					</code> se ejecute en el mismo proceso que el <strong>bash
+					</strong>:
+				</li>
+			</ul>
+			<pre class="language-bash highlight">
+<code>$ echo alias wcd='. wincd' >> .bashrc
+				</code>
+</pre>
+			<ul>
+				<li>
+					Ya puedes copiar la ruta del explorador de windows y llamar a <code>wcd
+					</code> para situarte ahí directamente:
+				</li>
+			</ul>
+			<pre class="language-bash highlight">
+<code>$ wcd "C:\projects\ConsoleApp1\bin"
+				</code>
+</pre>
+			<p>
+				Menuda chorrada...
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=ChorraTip: rutas windows en git bash&url=https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2020/11/18/custom-windows-terminal">
+						Personalización de Windows Terminal
+					</a> <small>18 nov. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/04/24/gab-azure-devops">
+						Azure DevOps: El panel de expertos
+					</a> <small>24 abr. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2016/09/15/vsts-migrar-tfvc-a-git">
+						VSTS: Migrar TFVC a Git
+					</a> <small>15 sept. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2016/02/16/por-que-odio-git">
+						Por qué odio Git
+					</a> <small>16 feb. 2016
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

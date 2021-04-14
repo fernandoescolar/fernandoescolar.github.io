@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Sobre WCF, DTO, EF, POCO y los principios de la programación · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Creo que este es el primer art&amp;iacute;culo que vamos a ver en programandonet a modo editorial. Esto es el resultado de una conversaci&amp;oacute;n en el grupo de..." />
+		<meta property="og:title" content="Sobre WCF, DTO, EF, POCO y los principios de la programación
+" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Creo que este es el primer art&iacute;culo que vamos a ver en programandonet a modo editorial. Esto es el resultado de una conversaci&oacute;n en el grupo de..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-01-22 18:45:36Z" />
+		<meta property="article:published_time" content="2012-01-22 18:45:36Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Sobre WCF, DTO, EF, POCO y los principios de la programación
+" />
+		<meta name="twitter:description" content="Creo que este es el primer art&iacute;culo que vamos a ver en programandonet a modo editorial. Esto es el resultado de una conversaci&oacute;n en el grupo de..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" />
+		<meta name="description" content="Creo que este es el primer art&iacute;culo que vamos a ver en programandonet a modo editorial. Esto es el resultado de una conversaci&oacute;n en el grupo de..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Sobre WCF, DTO, EF, POCO y los principios de la programación
+			</h1><small>22 ene. 2012 · 11 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Creo que este es el primer artículo que vamos a ver en <a href="http://www.programandonet.com">
+					<strong>
+						programandonet</strong>
+				</a> a modo editorial. Esto es el resultado de <a href="http://www.linkedin.com/groups/WCF-DTO-vs-WCF-POCO-2615616.S.89901834?qid=56f3138d-d4ae-4072-9eb3-617867092b49&amp;trk=group_most_popular-0-b-ttl&amp;goback=%2Egmp_2615616" target="_blank">una conversación
+				</a> en el <a href="http://www.linkedin.com/groups/Arquitectos-NET-2615616?trk=myg_ugrp_ovr" target="_blank">grupo de <em>arquitectos .net</em>
+				</a> de <a href="http://www.linkedin.com" target="_blank">LinkedIn
+				</a>, en la que se hablaba sobre usar <strong>POCO
+				</strong>s de entity framework como <strong>DTO
+				</strong> para servicios <strong>WCF
+				</strong>, que se inició hace unos días. Y es que, no me hubiera gustado que algunas conclusiones y escritos se <em>perdieran
+				</em> en este grupo y por eso hemos creído interesante publicarlas aquí, para tenerlas <em>a mano
+				</em>.
+			</p>
+			<!--break-->
+			<p>
+				Para aquellas personas que no estén familiarizadas con estas siglas haremos un breve glosario:
+			</p>
+			<ul>
+				<li>
+					<b>
+						POCO
+					</b>: Son las siglas de <strong>P
+					</strong>lain <strong>O
+					</strong>ld <strong>C
+					</strong># <strong>O
+					</strong>bject, y se refieren a clases simples que no dependen de ninguna framework. Es un término derivado del concepto del mundo Java: <strong>POJO
+					</strong>.
+				</li>
+				<li>
+					<b>
+						EF
+					</b>: <strong>E
+					</strong>ntity <strong>F
+					</strong>ramework es un <strong>ORM
+					</strong> diseñado por Microsoft, sirve para convertir en un lenguaje orientado a objetos (como c#), una base de datos relacional. En sus últimas versiones permite el uso de <strong>POCO
+					</strong>s como entidades de las bases de datos.
+				</li>
+				<li>
+					<b>
+						DTO
+					</b>: Se refiere a <strong>D
+					</strong>ata <strong>T
+					</strong>ransfer <strong>O
+					</strong>bjects y es un objeto que por definición se envía y recibe dentro de un servicio. Nuestro compañero <a href="https://twitter.com/pbousan" target="_blank">
+						<strong>
+							@pbousan</strong>
+					</a> hace referencia a <a href="http://www.linkedin.com/redirect?url=http%3A%2F%2Fmartinfowler%2Ecom%2FeaaCatalog%2FdataTransferObject%2Ehtml&amp;urlhash=R8WJ&amp;_t=tracking_disc" target="_blank">este artículo de Martin Fowler
+					</a> donde explica el concepto.
+				</li>
+				<li>
+					<b>
+						WCF
+					</b>: Es la abreviación de <strong>W
+					</strong>indows <strong>C
+					</strong>ommunication <strong>F
+					</strong>oundation, que es una API de Microsoft para crear aplicaciones orientadas a los servicios (SOA). De lo que deducimos que los objetos que se envían o reciben en estos servicios son DTOs.
+				</li>
+			</ul>
+			<p>
+				Si retomamos la cuestión inicial, la primera conclusión que desarrollamos fue que: <strong>si usas objetos POCO de Entity Framework como DTO, le estás dando dos responsabilidades a tu objeto
+				</strong>. Por un lado sirve de entidad del ORM y por otro de transferencia de WCF. Por lo que <strong>estarías incumpliendo la S de los principios SOLID
+				</strong>: Single responsibility principle (SRP). Por lo tanto la respuesta es que no deberíamos hacerlo.
+			</p>
+			<p>
+				Además al darle estas dos responsabilidades a un objeto, obligas a que tus servicios envíen "toda" la información que almacenas en la base de datos, y quizá solo hace falta una parte de esa información. Entonces corres el riesgo de enviar demasiada información con un servicio, o demasiada poca, haciendo necesario llamar a dos métodos diferentes. Es decir, un alto riesgo de crear servicios poco eficientes.
+			</p>
+			<p>
+				Pero existe el contexto en el que los datos almacenados sean exactamente los mismos que queremos enviar en nuestros servicios. En este sentido <strong>
+					<a href="https://twitter.com/#!/jc_quijano" target="_blank">
+						@jc_quijano</a>
+				</strong> defendió una postura que se amparaba en el principio de la programación <strong>KISS
+				</strong> (Keep It Simple, Stupid!). Es decir, <strong>es más rápido y fácil desarrollar un POCO para EF y reutilizarlo como DTO
+				</strong> para nuestros servicios. Además, <strong>si se añaden DTOs
+				</strong> a este concepto, <strong>estamos añadiendo una capa nueva de complejidad a la aplicación
+				</strong>. Y como no es la estructura de los objetos lo que me definen su responsabilidad, si no el uso que le doy a esos objetos,<strong> estructuralmente, tampoco estoy rompiendo ningún principio SOLID
+				</strong>.
+			</p>
+			<p>
+			</p>
+			<p>
+				Esta filosofía me parece correcta a la hora de desarrollar aplicaciones con un ciclo de vida muy corto. Como puede ser una herramienta que ayuda a corregir un problema puntual y que una vez corregido, podemos deshacernos de esta. De esa forma no tendría un mantenimiento largo y no se convertiría en un problema el acoplamiento que crea usar un objeto para dos tareas diferentes.
+			</p>
+			<p>
+				Y es que KISS no es un principio más importante que el SRP o que cualquiera de SOLID. Ni un principio de SOLID es más importante que cualquier otro principio (incluido KISS). Los principios SOLID te llevan a programar mejor e indirectamente a empezar a seguir otros principios como KISS o YAGNI. Mi opinión y recomendación es seguirlos todos.
+			</p>
+			<p>
+				El principio <strong>KISS no debe confundirse con programar poco
+				</strong>, si no que lo que programes hacerlo simple. No añadir 20 capas a una solución que con 2 va de sobra. Pero tampoco hacer una clase maestra que lleve todo el peso de la aplicación y que tenga 100 propiedades.
+			</p>
+			<p>
+				Vamos a proponer un ejercicio de imaginación para desarrollar un ejemplo:
+			</p>
+			<p>
+				Si tenemos nuestro proyecto en orden (como fan confeso de TDD), con los test unitarios correspondientes, podemos ser capaces de medir fácilmente la complejidad de la solución. Estará determinada por el número de tests unitarios que habrá que modificar en el momento en el que se produzca un cambio.
+			</p>
+			<p>
+				Imaginemos un escenario en el que por alguna razón, nuestro servicio tiene que cambiar a consecuencia de una nueva especificación de nuestro product owner. Algo que creemos que es común en los proyectos con un ciclo de vida medio/largo.
+			</p>
+			<p>
+				Si tenemos la solución que usa objetos DTO específicos, este cambio podría implicar modificar un test unitario y a su vez añadir una propiedad a nuestro DTO. Pero si nuestra solución no sigue el SRP, es decir, que usamos los objetos POCO también como DTOs, el escenario es diferente. Cambiaremos un test, después el DTO/POCO, y después nos fallarían un par de tests unitarios (por decir un número) que están relacionados con la forma de almacenar los datos. Y para terminar tendríamos que añadir, sin que tenga por qué ser necesario, un campo más a nuestra base de datos. Ahora imaginemos las consecuencias de este cambio multiplicada por el número de cambios que suceden en una aplicación cualquiera (que no tenga un corto ciclo de vida, claro :D).
+			</p>
+			<p>
+				La conclusión que podemos sacar de todo esto es que el código que ha resultado más fácil de seguir para el resto de los programadores, más mantenible y en consecuencia más simple; ha sido el desacoplado con sus DTOs por un lado y su EF por otro. Tener una buena estructura es programar de forma simple. Si cada objeto hace lo que debe hacer, no es difícil entender una aplicación. Si las clases empiezan a tener más de una responsabilidad, podremos encontrar resultados inesperados cuando hacemos un cambio.
+			</p>
+			<p>
+				<strong>
+					El principio de responsabilidad única nos ha llevado a hacer un código más simple
+				</strong>, aunque hayamos que tenido que programar más líneas de código. Por lo que personalmente, prefiero seguir todos los principios y hacer aplicaciones que tengan objetos POCO por un lado y DTO por otro.
+			</p>
+			<p>
+				 
+			</p>
+			<p>
+				Y por si seguir los principios de la programación no parece un argumento lo suficiente <em>sólido
+				</em> para argumentar separar estas dos responsabilidades en dos objetos, una reflexión personal: No creo que un ORM sea la solución que deba ser "<em>visible
+				</em>", si no más bien una "<em>pasarela
+				</em>", porque:
+			</p>
+			<ul>
+				<li>
+					Si generas una serie de objetos a partir de una base de datos, estos no son la abstracción más correcta, ya que la base de datos utiliza unas herramientas totalmente diferentes a nuestra Framework de programación, y se basa en otras premisas para resolver los problemas. No es lo mismo normalizar que crear un buen dominio. Y es más, una buena base de datos normalizada, seguro que no es el mejor dominio de una aplicación.
+				</li>
+				<li>
+					Si generas la base de datos a partir de tu dominio (con EFCodeFirst, por ejemplo), la base de datos no será la mejor, ya que de nuevo la abstracción no es la más correcta. Y si creas un buen dominio, al convertirlo a base de datos, lo más probable es que no esté normalizada en absoluto.
+				</li>
+			</ul>
+			<p>
+				De estas dos premisas, la deducción que he sacado es que el acceso a datos tiene que ser una parte "<em>aislada
+				</em>" del resto de la aplicación. Está en una capa de nuestra arquitectura llamada "persistencia". Y tendremos abstrayéndonos de este ORM a un modelo de dominio (donde aplicaremos normas de negocio) y/o de servicios (DTO, para comunicárselo al "mundo"). De esta forma cada parte de la aplicación hará lo que debe de la forma más eficiente para su cometido...
+			</p>
+			<p>
+			</p>
+			<p>
+				Eso si, como arquitectos debemos encontrar la solución que más se adecua al escenario de nuestro proyecto. No sobre-dimensionar un programa que nos sirve para calcular números primos con 5 capas. Pero tampoco crear una aplicación que va a ser mantenida/expandida durante 20 años y esté totalmente acoplada.
+			</p>
+			<p>
+				Ahora bien, todo esto es una opinión que puede ser modificada por unos argumentos que consideremos mejores:
+			</p>
+			<p style="text-align: center;">
+				<strong>
+					¿Qué opináis vosotros?
+				</strong>
+			</p>
+			<p style="text-align: center;">
+				<strong>
+					<br />
+				</strong>
+			</p>
+			<p style="font-size: 10px;">
+				Podeís seguir<a href="http://www.linkedin.com/groups/WCF-DTO-vs-WCF-POCO-2615616.S.89901834?qid=56f3138d-d4ae-4072-9eb3-617867092b49&amp;trk=group_most_popular-0-b-ttl&amp;goback=%2Egmp_2615616" target="_blank"> la conversación en LinkedIn
+				</a> a ver en que termina derivando ya que creo que es muy interesante...
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Sobre WCF, DTO, EF, POCO y los principios de la programación
+&url=https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/01/22/sobre-wcf-dto-ef-poco-y-los-principios-de-la-programacion" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

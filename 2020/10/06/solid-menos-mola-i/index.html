@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			SOLID menos mola (I) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La I de SOLID se refiere al principio de segregaci&#243;n de interfaz o ISP por sus siglas en ingl&#233;s (Interface Segregation  Principle). Se puede definir como que..." />
+		<meta property="og:title" content="SOLID menos mola (I)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/10/06/solid-menos-mola-i" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/solid6.jpg" />
+		<meta property="og:description" content="La I de SOLID se refiere al principio de segregación de interfaz o ISP por sus siglas en inglés (Interface Segregation  Principle). Se puede definir como que..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-10-06 02:16:54Z" />
+		<meta property="article:published_time" content="2020-10-06 02:16:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="SOLID menos mola (I)" />
+		<meta name="twitter:description" content="La I de SOLID se refiere al principio de segregación de interfaz o ISP por sus siglas en inglés (Interface Segregation  Principle). Se puede definir como que..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/solid6.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/10/06/solid-menos-mola-i" />
+		<meta name="description" content="La I de SOLID se refiere al principio de segregación de interfaz o ISP por sus siglas en inglés (Interface Segregation  Principle). Se puede definir como que..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/10/06/solid-menos-mola-i" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/solid6.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				SOLID menos mola (I)
+			</h1><small>06 oct. 2020 · 14 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La <em>I
+				</em> de <em>SOLID
+				</em> se refiere al principio de segregación de interfaz o <strong>ISP
+				</strong> por sus siglas en inglés (<strong>I
+				</strong>nterface <strong>S
+				</strong>egregation <strong>P
+				</strong>rinciple). Se puede definir como que muchas interfaces específicas son mejores que una interfaz de propósito general. O como diría <a href="https://twitter.com/unclebobmartin">Robert C. Martin
+				</a>, "los clientes no deben ser forzados a depender de interfaces que no utilizan"
+				<!--break-->
+				.
+			</p>
+			<p>
+				<a href="https://twitter.com/unclebobmartin">
+					Uncle Bob
+				</a> lo explica mediante un ejemplo, <a href="https://web.archive.org/web/20060313141044/http://www.objectmentor.com/resources/articles/isp.pdf">en su ensayo sobre <strong>ISP</strong>
+				</a>, que voy a intentar simplificar y traducir a C# a continuación.
+			</p>
+			<p>
+				Estamos desarrollando la interfaz del cajero automático. Este cajero tiene diferentes formas de comunicarse con un ser humano:
+			</p>
+			<ul>
+				<li>
+					Un formato visual.
+				</li>
+				<li>
+					Una interfaz hablada.
+				</li>
+				<li>
+					Y otra en braille.
+				</li>
+			</ul>
+			<p>
+				Lo ideal sería tener este conjunto de artefactos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IUserInterface { ... }
+class ScreenUI : IUserInterface { ... }
+class SpeechUI : IUserInterface { ... }
+class BrailleUI : IUserInterface { ... }
+				</code>
+</pre>
+			<p>
+				Además, en nuestro cajero podemos realizar operaciones de depósito de dinero, transferencia o retirada de efectivo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface ITransaction { ... }
+
+class Deposit : ITransaction
+{
+  public Deposit(IUserInterface ui) { ... }
+  ...
+}
+
+class Transfer : ITransaction
+{
+  public Transfer(IUserInterface ui) { ... }
+  ...
+}
+
+class Withdraw : ITransaction
+{
+  public Withdraw(IUserInterface ui) { ... }
+  ...
+}
+				</code>
+</pre>
+			<p>
+				Entonces, aquí es muy probable que la interfaz <code>IUserInterface
+				</code> tenga un contrato semejante a:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IUserInterface
+{
+    void RequestDepositAmount(...);
+    void RequestTransferAmount(...);
+    void RequestWithdrawlAmount(...);
+}
+				</code>
+</pre>
+			<p>
+				La coyuntura con la que nos enfrentamos es que una <code>Transfer
+				</code> no tendría por qué conocer el método <code>RequestWithdrawlAmount
+				</code>. Y lo mismo con <code>RequestDepositAmount
+				</code>. Tampoco le interesaría a <code>Withdraw
+				</code> conocer el método <code>RequestTransferAmount
+				</code>. Y así sucesivamente. Para darle solución, lo que propone Uncle Bob es que cojamos <code>IUserInterface
+				</code> y la segreguemos en interfaces más pequeñas:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IDepositUI
+{
+    void RequestDepositAmount(...);
+}
+
+interface ITransferUI
+{
+    void RequestTransferAmount(...);
+}
+
+interface IWithdrawlUI
+{
+    void RequestWithdrawlAmount(...);
+}
+
+interface IUserInterface : IDepositUI, ITransferUI, IWithdrawlUI
+{
+}
+				</code>
+</pre>
+			<p>
+				De tal forma que nuestras operaciones quedarían como:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Deposit : ITransaction
+{
+  public Deposit(IDepositUI ui) { ... }
+  ...
+}
+
+class Transfer : ITransaction
+{
+  public Deposit(ITransferUI ui) { ... }
+  ...
+}
+
+class Withdraw : ITransaction
+{
+  public Deposit(IWithdrawlUI ui) { ... }
+  ...
+}
+				</code>
+</pre>
+			<p>
+				De esta manera, nos desacoplaríamos. O al menos conseguiríamos que una clase no referenciara a una interfaz que tuviera métodos que no se usan en dicha clase. Y, por lo tanto, cumpliríamos con la norma de no depender de contratos que no vamos a usar.
+			</p>
+			<p>
+				Pero ahora vamos a completar un poco este ejemplo, porque en un cajero automático tenemos muchas más interacciones con el ser humano de las que hemos expuesto:
+			</p>
+			<ul>
+				<li>
+					Bienvenida
+				</li>
+				<li>
+					Selección de operación
+				</li>
+				<li>
+					Selección de cuenta
+				</li>
+				<li>
+					Operación realizada con éxito
+				</li>
+				<li>
+					Error en la operación
+				</li>
+				<li>
+					Selección de si se desea recibo
+				</li>
+				<li>
+					Selección de si se desea realizar otra operación
+				</li>
+			</ul>
+			<p>
+				Así que en realidad tendríamos que añadir estas interfaces:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IWelcomeUI
+{
+    void WelcomeUser(...);
+}
+
+interface IOperationSelectionUI
+{
+    void SelectOperation(...);
+}
+
+interface IAccountSelectionUI
+{
+    void SelectAccount(...);
+}
+
+interface ISuccessUI
+{
+    void OperationSucceeded(...);
+}
+
+interface IErrorUI
+{
+    void OperationFailed(...);
+}
+
+interface IReceiptUI
+{
+    bool PrintReceipt(...);
+}
+
+interface IFinishOperationUI
+{
+    bool ShouldExit(...);
+}
+				</code>
+</pre>
+			<p>
+				Así que, por ejemplo, nuestra clase <code>Deposit
+				</code> debería ser:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Deposit : ITransaction
+{
+  public Deposit(IDepositUI ui,
+                 IWelcomeUI welcomeUI,
+                 IAccountSelectionUI accountSelectionUI,
+                 ISuccessUI successUI,
+                 IErrorUI errorUI,
+                 IFinishOperationUI finishUI)
+  {
+    ...
+  }
+  ...
+}
+				</code>
+</pre>
+			<p>
+				De esta forma tendríamos cada interfaz independiente y jamás ocurriría que tuviéramos disponible un método de una dependencia que no usáramos.
+			</p>
+			<p>
+				Lo malo de este código es que es muy posible que todas esas interfaces de tipo "ui" sean en realidad la misma instancia. Una forma de solucionar esto sería crear una implementación para cada una de ellas, teniendo en cuenta que tenemos 3 formas de comunicarnos con los usuarios. Por lo que tendríamos estos artefactos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class ScreenWelcomeUI : WelcomeUI { ... }
+class SpeechWelcomeUI : WelcomeUI { ... }
+class BrailleWelcomeUI : WelcomeUI { ... }
+
+class ScreenOperationSelectionUI : IOperationSelectionUI { ... }
+class SpeechOperationSelectionUI : IOperationSelectionUI { ... }
+class BrailleOperationSelectionUI : IOperationSelectionUI { ... }
+
+class ScreenAccountSelectionUI : IAccountSelectionUI { ... }
+class SpeechAccountSelectionUI : IAccountSelectionUI { ... }
+class BrailleAccountSelectionUI : IAccountSelectionUI { ... }
+
+class ScreenSuccessUI : ISuccessUI { ... }
+class SpeechSuccessUI : ISuccessUI { ... }
+class BrailleSuccessUI : ISuccessUI { ... }
+
+class ScreenErrorUI : IErrorUI { ... }
+class SpeechErrorUI : IErrorUI { ... }
+class BrailleErrorUI : IErrorUI { ... }
+
+class ScreenReceiptUI : IReceiptUI { ... }
+class SpeechReceiptUI : IReceiptUI { ... }
+class BrailleReceiptUI : IReceiptUI { ... }
+
+class ScreenFinishOperationUI : IFinishOperationUI { ... }
+class SpeechFinishOperationUI : IFinishOperationUI { ... }
+class BrailleFinishOperationUI : IFinishOperationUI { ... }
+				</code>
+</pre>
+			<p>
+				Pero este tipo de soluciones es posible que alerte a más de uno. El caso es que existe un <em>code smell
+				</em> llamado <em>Parallel Inheritance Hierarchies
+				</em>. Esto ocurre cuando tenemos un árbol de dependencias entre clases con varias ramificaciones en las que las dependencias de unas con otras van en paralelo. Y en este caso sería fácil terminar teniendo ese tipo de patrón de herencias.
+			</p>
+			<p>
+				Otra solución que quizá nos haga sentir más cómodos sería crear una especie de grafo de interfaces, con una interfaz "base" que aglutine otras interfaces como, por ejemplo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IOperationUI : IWelcomeUI,
+                         IAccountSelectionUI,
+                         ISuccessUI,
+                         IErrorUI,
+                         IFinishOperationUI
+{
+}
+				</code>
+</pre>
+			<p>
+				Así podríamos hacer que nuestras interfaces dependieran de esa interfaz común:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IDepositUI : IOperationUI
+{
+    void RequestDepositAmount(...);
+}
+
+interface ITransferUI : IOperationUI
+{
+    void RequestTransferAmount(...);
+}
+
+interface IWithdrawlUI : IOperationUI
+{
+    void RequestWithdrawlAmount(...);
+}
+
+interface IUserInterface : IDepositUI, ITransferUI, IWithdrawlUI
+{
+}
+				</code>
+</pre>
+			<p>
+				Pero imaginemos que una <code>Transfer
+				</code> no espera un resultado de la operación porque se realiza en segundo plano y se le envía un email al usuario para comunicar el resultado. Esto nos llevaría tener diferentes interfaces comunes:
+			</p>
+			<pre class="language-csharp highlight">
+<code>interface IOperationUI : IWelcomeUI,
+                         IAccountSelectionUI,
+                         IFinishOperationUI
+{
+}
+
+interface IOperationWithResultUI : IOperationUI,
+                                   ISuccessUI,
+                                   IErrorUI
+{
+}
+
+interface IDepositUI : IOperationWithResultUI
+{
+    void RequestDepositAmount(...);
+}
+
+interface ITransferUI : IOperationUI
+{
+    void RequestTransferAmount(...);
+}
+
+interface IWithdrawlUI : IOperationWithResultUI
+{
+    void RequestWithdrawlAmount(...);
+}
+				</code>
+</pre>
+			<p>
+				No obstante, en este ejemplo no estamos usando las interfaces en más de un lugar. En caso de que una misma agrupación de interfaces, se usara en otra clase donde no se llamara a alguno de sus métodos ¿tendríamos que seguir dividiéndola en más interfaces?
+			</p>
+			<p>
+				Si seguimos esta tendencia en nuestro desarrollo, estaríamos generando muchas herencias y un código un tanto caótico. Además, esto de crear agrupaciones ¿no iría en contra de segregar interfaces? Pero claro, muy dividido ¿no estaría perdiendo cohesión?
+			</p>
+			<p>
+				No sé si merecería la pena dejar alguna interfaz con algún método que pueda o no ser usado, siempre y cuando mantenga coherencia. Por ejemplo, en <em>.Net
+				</em> encontramos el objeto <code>System.Console
+				</code>. Puede que no sea la mejor implementación del mundo, y que sea una clase estática. Puede que no cumpla con los principios <em>SOLID
+				</em> en absoluto. Pero todos sabemos que ahí vamos a encontrar todo lo necesario para interactuar con el terminal: <em>write
+				</em>, <em>read
+				</em>, colores, limpieza... y lo tenemos todo a pesar de que una aplicación simple de consola no lea nada del terminal. Y tampoco es que me genere demasiados problemas tenerlo.
+			</p>
+			<p>
+				Solo opino que, aunque hay implementaciones mejores y mucho más completas para acceder al terminal, <code>System.Console
+				</code> te aporta un comportamiento básico muy útil. Y que es suficiente, fácil de usar e intuitivo, a pesar de haberse saltado el <strong>ISP
+				</strong> (y otros tantos principios).
+			</p>
+			<h2 id="hay-vida-despues-de-isp">
+				Hay vida después de ISP
+			</h2>
+			<p>
+				He de reconocer que el trabajo de <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios <strong>SOLID
+				</strong>, y en concreto el <strong>ISP
+				</strong>, no son una excepción. Mi consejo es que:
+			</p>
+			<ul>
+				<li>
+					Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
+				</li>
+				<li>
+					Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
+				</li>
+				<li>
+					Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
+				</li>
+			</ul>
+			<p>
+				Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
+			</p>
+			<ul>
+				<li>
+					¿La solución genérica es crear una interfaz por cada método?
+				</li>
+				<li>
+					¿Tener muchas interfaces muy pequeñas es siempre mejor que unas pocas más grandes?
+				</li>
+				<li>
+					Y si nos ponemos a dividir mucho una interfaz para desencapsular ¿Podríamos estar ignorando activamente una de las propiedades de la orientación a objetos como es la cohesión?
+				</li>
+			</ul>
+			<p>
+				El principio de segregación de interfaz no es el mal. Es parecido al principio de responsabilidad única. Creo que ambos buscan simplificar el código fuente. Aunque si los seguimos sin sentido, podríamos terminar consiguiendo lo contrario de lo que buscábamos.
+			</p>
+			<p>
+				Tal cual lo veo, a <strong>ISP
+				</strong> le pasaría lo mismo que a <strong>SRP
+				</strong>. Considero que es necesario cumplir una serie de requisitos antes de aplicarlo sin consecuencias negativas:
+			</p>
+			<ul>
+				<li>
+					<em>
+						simplicity
+					</em>, de <a href="http://www.extremeprogramming.org/values.html">los valores en los que se basa XP
+					</a>.
+				</li>
+				<li>
+					<em>
+						Reveals intention
+					</em> y <em>Fewest elements
+					</em>, de las <a href="https://martinfowler.com/bliki/BeckDesignRules.html">
+						<em>
+							four rules of simple design</em>
+					</a> de <a href="https://twitter.com/kentbeck">Kent Beck
+					</a>.
+				</li>
+			</ul>
+			<p>
+				El caso es que hoy en día me parece más importante aplicar estos valores y reglas, que el principio de segregación de interfaz. Pero eso no quiere decir que no tenga en cuenta este último.
+			</p>
+			<p>
+				Y lo que me pueda parecer mañana, ya lo veremos...
+			</p>
+			<h2 id="ejemplo-en-el-mundo-real">
+				Ejemplo en el mundo real
+			</h2>
+			<p>
+				Lamentablemente hoy no traigo una de las famosas sesiones de <em>code review
+				</em> que solemos hacer. Así que os propongo hacerla online y ahora mismo.
+			</p>
+			<p>
+				Actualmente tenemos una serie de aplicaciones en las que usamos configuraciones específicas a partir del país. A este fin, creamos una librería genérica donde poner todo en orden y normalizar las gestiones con países a todos estos proyectos. Esta librería, entre otras cosas expone esta interfaz:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public interface ICountryStore
+{
+  Task
+					<ienumerable <country>
+						> LoadAllCountriesAsync();
+
+  Task
+						<country>
+							LoadByCountryIsoCodeAsync(string countryIsoCode);
+
+  Task
+							<country>
+								LoadByPhonePrefixAsync(string internationalPhoneCode);
+
+  Task
+								<bool>
+									ExistsAsync(string countryIsoCode);
+}
+								</bool>
+							</country>
+						</country></ienumerable>
+				</code>
+</pre>
+			<p>
+				Este artefacto expone la operativa esencial:
+			</p>
+			<ul>
+				<li>
+					Recoger todas las configuraciones de países: algunos programas necesitan cargar todos los paísesal principio para determinar cuáles están disponibles para su uso.
+				</li>
+				<li>
+					Devolver un país por <em>ISO Code
+					</em>: las <em>requests
+					</em> que generalmente se reciben, suelen contener el código <em>ISO
+					</em> para el país donde deben ejecutarse.
+				</li>
+				<li>
+					Devolver un país por prefijo de teléfono: existen diferentes normas de validación de un número de teléfono en dependencia del país, con esto podemos saber de cual se trata.
+				</li>
+				<li>
+					Conocer si un país existe: para saber si se soporta un país específico.
+				</li>
+			</ul>
+			<p>
+				Y la forma que tenemos de exponerlo es mediante el <em>IoC
+				</em> de <em>dotnet core
+				</em> y su <code>IServiceCollection
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>services.AddScoped
+					<icountrystore , countrystore>
+						();</icountrystore>
+				</code>
+</pre>
+			<p>
+				Ahora bien, después de leer en qué consiste <strong>ISP
+				</strong> lo que deducimos es que deberíamos crear esta división de interfaces (o al menos una parecida):
+			</p>
+			<pre class="language-csharp highlight">
+<code>public interface IAllCountriesLoader
+{
+  Task
+					<ienumerable <country>
+						> LoadAllCountriesAsync();
+}
+
+public interface IByIsoCodeCountryLoader
+{
+  Task
+						<country>
+							LoadByCountryIsoCodeAsync(string countryIsoCode);
+}
+
+public interface IByPhonePrefixCountryLoader
+{
+  Task
+							<country>
+								LoadByPhonePrefixAsync(string internationalPhoneCode);
+}
+
+public interface ICountryExistsChecker
+{
+  Task
+								<bool>
+									ExistsAsync(string countryIsoCode);
+}
+
+public interface ICountryStore : IAllCountriesLoader,
+                                 IByIsoCodeCountryLoader,
+                                 IByPhonePrefixCountryLoader,
+                                 ICountryExistsChecker
+{
+}
+								</bool>
+							</country>
+						</country></ienumerable>
+				</code>
+</pre>
+			<p>
+				No hay problema, ya que es solo añadir más código a lo que ya tengo hecho. Aunque un pequeño detalle, ahora también deberíamos exponer estas instancias para que se puedan usar con el <code>IServiceProvider
+				</code> de <em>dotnet core
+				</em>. Así que tendríamos que hacer algo así:
+			</p>
+			<pre class="language-csharp highlight">
+<code>services.AddScoped
+					<icountrystore , countrystore>
+						();
+services.AddScoped
+						<iallcountriesloader , countrystore>
+							();
+services.AddScoped
+							<ibyisocodecountryloader , countrystore>
+								();
+services.AddScoped
+								<ibyphoneprefixcountryloader , countrystore>
+									();
+services.AddScoped
+									<icountryexistschecker , countrystore>
+										();
+									</icountryexistschecker>
+								</ibyphoneprefixcountryloader>
+							</ibyisocodecountryloader>
+						</iallcountriesloader></icountrystore>
+				</code>
+</pre>
+			<p>
+				Pero haciendo esto directamente o mediante algún método automatizado que explote <code>System.Reflection
+				</code>, nos va a generar un problema y es que, si necesito dos de esas interfaces, al haberlas declaradas como <code>Scoped
+				</code>, durante el mismo <em>scope
+				</em> se me generarán dos instancias del mismo objeto. Así que lo ideal sería cambiar la declaración a algo como esto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>services.AddScoped
+					<icountrystore , countrystore>
+						();
+services.AddScoped
+						<iallcountriesloader>
+							(s => s.GetService
+							<icountrystore>
+								());
+services.AddScoped
+								<ibyisocodecountryloader>
+									(s => s.GetService
+									<icountrystore>
+										());
+services.AddScoped
+										<ibyphoneprefixcountryloader>
+											(s => s.GetService
+											<icountrystore>
+												());
+services.AddScoped
+												<icountryexistschecker>
+													(s => s.GetService
+													<icountrystore>
+														());
+													</icountrystore>
+												</icountryexistschecker>
+											</icountrystore>
+										</ibyphoneprefixcountryloader>
+									</icountrystore>
+								</ibyisocodecountryloader>
+							</icountrystore>
+						</iallcountriesloader></icountrystore>
+				</code>
+</pre>
+			<p>
+				Ahora ya tendría finalizado el <em>refactoring
+				</em> de este artefacto, pero el resultado final, ¿es mejor resultado o en realidad añade una capa de abstracción que no necesitamos?
+			</p>
+			<p>
+				Si, por ejemplo, ahora no quiero que sean instancias <code>Scoped
+				</code> si no que las quiero <code>Transient
+				</code>, tendría que volver a modificar todas estas líneas. Mientras que con el código anterior era solo una.
+			</p>
+			<p>
+				También es verdad que desgranar en interfaces me da más capacidad para ser eficiente al realizar una sola operación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Demo
+{
+  public Demo(IByPhonePrefixCountryLoader loader) { ... }
+}
+				</code>
+</pre>
+			<p>
+				Pero si necesito dos, ¿uso la <code>ICountryStore
+				</code> o las dos interfaces que necesite?
+			</p>
+			<pre class="language-csharp highlight">
+<code>class Demo
+{
+  public Demo(IByPhonePrefixCountryLoader loader, ICountryExistsChecker existsChecker) { ... }
+}
+
+// vs.
+
+class Demo
+{
+  public Demo(ICountryStore store) { ... }
+}
+				</code>
+</pre>
+			<p>
+				¿Incluso si se trata de la misma instancia?
+			</p>
+			<p>
+				En mi opinión, este código ya está bien como estaba. Y no solo eso, funciona correctamente. Guarda cohesión, porque todos los métodos de carga y de existencia están en un lugar. No tengo que conocer 4 interfaces ni elegir una en dependencia de la operación que quiera realizar. Me vale con: <code>ICountryStore
+				</code>. Además, si sigo la misma forma de nombrar objetos y quiero buscar, por ejemplo, clientes, puedo imaginar que tendré una interfaz <code>IClientStore
+				</code> donde existirá un abanico de posibilidades de búsqueda. Es un comportamiento bastante coherente de la aplicación. Y por estas razones tiraría para atrás lo que hemos hecho y lo dejaría como estaba.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=SOLID menos mola (I)&url=https://www.developerro.com/2020/10/06/solid-menos-mola-i" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/10/06/solid-menos-mola-i" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/10/06/solid-menos-mola-i" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/10/06/solid-menos-mola-i" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/15/solid-menos-mola">
+						SOLID menos mola
+					</a> <small>15 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/14/solid-menos-mola-d">
+						SOLID menos mola (D)
+					</a> <small>14 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/30/solid-menos-mola-l">
+						SOLID menos mola (L)
+					</a> <small>30 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/23/solid-menos-mola-o">
+						SOLID menos mola (O)
+					</a> <small>23 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/16/solid-menos-mola-s">
+						SOLID menos mola (S)
+					</a> <small>16 sept. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

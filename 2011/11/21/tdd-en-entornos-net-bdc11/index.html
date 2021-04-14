@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			TDD en entornos .net #bdc11 · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La semana pasada, los d&#237;as 17, 18 y 19, estuvimos en la: Barcelona Developers Conference.
+" />
+		<meta property="og:title" content="TDD en entornos .net #bdc11" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="La semana pasada, los días 17, 18 y 19, estuvimos en la: Barcelona Developers Conference." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2011-11-21 15:00:08Z" />
+		<meta property="article:published_time" content="2011-11-21 15:00:08Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="TDD en entornos .net #bdc11" />
+		<meta name="twitter:description" content="La semana pasada, los días 17, 18 y 19, estuvimos en la: Barcelona Developers Conference." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" />
+		<meta name="description" content="La semana pasada, los días 17, 18 y 19, estuvimos en la: Barcelona Developers Conference." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				TDD en entornos .net #bdc11
+			</h1><small>21 nov. 2011 · 9 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La semana pasada, los días 17, 18 y 19, estuvimos en la: <a href="http://bcndevcon.org/">Barcelona Developers Conference
+				</a>.
+			</p>
+			<!--break-->
+			<p>
+				El primer día por la mañana tuve el placer de, además de escuchar grandes ponencias, dar una charla sobre <strong>TDD en entornos .net
+				</strong>. Y de coletilla, <em>para el mundo real
+				</em>. Esta última frase que hacía del título algo parecido a una película mala de antena 3 por la tarde, venía a raíz de que mucha gente habla de <strong>TDD
+				</strong>, y casi nadie de cómo se aplica realmente en el desarrollo diario.
+			</p>
+			<p>
+				Durante poco más de una hora intenté que los asistentes entendieran el por qué de esta metodología, cómo nos beneficia y cómo aplicarla en el desarrollo diario.
+			</p>
+			<p>
+				Si no pudisteis asistir, os diré que <strong>TDD 
+				</strong>son las siglas de<strong> Test Driven Development
+				</strong> o en castellano: desarrollo guiado por las pruebas. Y es una técnica de desarrollo (de <em>eXtreme Programing
+				</em>) que se basa en dos pasos: primero escribir la pruebas y después refactorizar.
+			</p><img style="margin-right: 5px;" src="/assets/uploads/2012/09/test-driven.jpg" alt="test driven" align="left" /> 
+			<p>
+				La <strong>programación extrema
+				</strong> engloba una serie de metodologías de programación ágiles, basadas en que a lo largo de un desarrollo van a ocurrir cambios de especificaciones y en lugar de intentar prevenir esto con una gran cantidad de código, que en ocasiones sobra, se decide adaptarse a esos cambios en cualquier fase del ciclo de vida del proyecto.
+			</p>
+			<p>
+				Sobre <strong>refactorización
+				</strong>, es una técnica de la ingeniería del software que reestructura el código fuente sin cambiar su funcionalidad. Es decir, cambiar nombres de variables y métodos; reordenar el código; dividir una función en varias, … Algo que se conoce comúnmente como <em>limpiar el código
+				</em>.
+			</p>
+			<p>
+				Las pruebas se escriben generalmente como<strong> pruebas unitarias
+				</strong> (o <em>unit tests 
+				</em>en inglés). Una prueba unitaria es una forma de probar que un determinado bloque de código fuente, funciona correctamente. Es decir, mediante un pequeño programa comprobamos que cada porción de código fuente escrita funciona correctamente por separado. Y aunque estas pruebas no nos garantizan el funcionamiento global de la aplicación, pueden ser completadas con otro tipo de tests como los de integración, que comprueban que los diferentes artefactos funcionan correctamente unos con otros.
+			</p>
+			<p>
+				Para que se considere una prueba unitaria válida esta debe ser:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Automatizable
+						</span>: que significa que se puede ejecutar sin intervención humana. (CI)
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Rápida
+						</span>: una prueba de este tipo no debe tardar un gran espacio de tiempo, tiene que ser prácticamente instantáneo el resultado de su ejecución.
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Repetible
+						</span>: es decir, que la podemos ejecutar tantas veces como queramos sin obtener resultados diferentes cada vez. (una prueba que solo se puede ejecutar una vez no es una buena prueba).
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Independiente
+						</span>: La ejecución de una prueba no debe influir en el resto de pruebas.
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Profesional
+						</span>: y decimos profesional porque una prueba ha de hacerse con el mismo esfuerzo y dedicación que se haría cualquier otra parte de código. Hay que mantenerla y refactorizarla si es necesario.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Y como en mucho proyectos se tiende a olvidar este punto, lo repetimos 😉 : <strong>una prueba unitaria es parte del código de la aplicación
+				</strong>.
+			</p>
+			<p>
+				La <strong>estructura de un test unitario
+				</strong> es simple:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Arrange
+						</span>: Disponer lo necesario para la prueba
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Act
+						</span>: Realizar el acto que dará un resultado. La prueba en si.
+					</p>
+				</li>
+				<li>
+					<p>
+						<span style="text-decoration: underline;">
+							Assert
+						</span>: comprobar que el resultado de la prueba es correcto.
+					</p>
+				</li>
+			</ul>
+			<p>
+				Triple A como los videojuegos buenos…
+			</p>
+			<p>
+				Pero vamos a volver al concepto inicial: desarrollo guiado por las pruebas.
+			</p>
+			<p>
+				Generalmente expresado como <strong>Red 
+				</strong>-> <strong>Green 
+				</strong>-> <strong>Refactor
+				</strong>, expone un diagrama de actividad simplificado de esta técnica.
+			</p>
+			<div style="text-align: center;">
+				<img src="/assets/uploads/2012/09/tdd.gif" alt="" />
+			</div>
+			Quiere decir que primero vamos a hacer un test unitario, comprobaremos que falla (Red), se completa el código de la forma más simple solo para que este pase (Green), y una vez funciona se refactoriza el código para así limpiarlo de malos nombres, espacios de nombre confusos  o de código repetitivo… 
+			<p>
+				Pero hemos dicho que esta es la versión simple…
+			</p>
+			<p>
+				En la versión real nosotros nos encontraríamos dentro de un proyecto. Como estaremos usando metodologías ágiles (algo como <strong>scrum
+				</strong>), tendremos un <em>product backlog
+				</em> para el <strong>sprint 
+				</strong>actual. Dentro de este encontraremos las <strong>historias de usuario
+				</strong> que nos hablan de un requerimiento del software que estamos desarrollando. Y este requerimiento lo dividiremos en una o varias <strong>especificaciones
+				</strong>.
+			</p>
+			<div style="text-align: center;">
+				<img src="/assets/uploads/2012/09/tdd-process.gif" alt="" />
+			</div>
+			Una vez tenemos claro lo que tenemos que probar (la especificación) realizamos nuestro test unitario para acto seguido comprobar que este falla. Es muy importante comprobar esto, porque si no falla de buenas a primeras es porque nuestro test es posible que no compruebe nada en realidad. 
+			<p>
+				Una vez tenemos nuestro test fallando podemos ponernos a codificar la <strong>mínima cantidad de código necesaria
+				</strong> para que se vea cumplido. O seguir el principio <strong>KISS 
+				</strong>(<em>Keep It Simple, Stupid!
+				</em>).
+			</p>
+			<p>
+				El siguiente paso sería comprobar que <strong>todas las pruebas que tenemos escritas pasan
+				</strong>. Es decir, no solo la actual si no todas las demás porque podemos haber roto algo.
+			</p>
+			<p>
+				A partir de aquí se nos permitirá hacer una <strong>refactorización
+				</strong>. Hay que ser pragmáticos y <strong>modificar el código, pero no su comportamiento
+				</strong>. Y aplicar el principio <strong>DRY 
+				</strong>(<em>Don't Repeat Yourself
+				</em>). Entonces volvemos a comprobar de nuevo que <span style="text-decoration: underline;">todos los tests pasan
+				</span>y pasamos a la siguiente especificación.
+			</p>
+			<p>
+				Me gustaría poneros un ejemplo (en la <a href="https://twitter.com/#!/search/%23bdc11">#bdc11
+				</a> si lo hicimos, aunque muy rápido). Aunque creo que esto queda muy claro en vivo, leyendo es posible que no aclare demasiado... Así que explicaré cómo TDD nos llevó a crear clases y propiedades. Como tuvimos que desacoplar artefactos usando interfaces y al final nos decidimos a usar inyección de dependencias. Pero solo cuando el propio test nos <em>llevó a ello
+				</em>.
+			</p>
+			<p>
+				Para terminar con este enorme post comentar los <strong>beneficios de esta técnica
+				</strong>:
+			</p><img src="/assets/uploads/2012/09/tdd-beneficios.png" alt="" align="right" /> 
+			<p>
+				Esto que vemos es una<strong> curva de coste
+				</strong>. Se suele utilizar para representar el coste de desarrollo de una aplicación en dependencia de la metodología utilizada. Muy común cuando la temática de la charla es sobre <strong>deuda técnica
+				</strong>.
+			</p>
+			<p>
+				En el eje vertical vemos el coste y en el horizontal el tiempo. La línea naranja es el desarrollo usando test driven development y la roja el método “tradicional” de codificar.
+			</p>
+			<p>
+				La línea roja empieza a tener resultados muy rápidamente, pero el coste de desarrollo se va haciendo más grande con el tiempo. Al final existe una cantidad enorme de código sin ningún test que lo compruebe. Y el más mínimo cambio tiene un impacto en el coste muy grande.
+			</p>
+			<p>
+				Por otro lado vemos en un principio un desarrollo <strong>TDD 
+				</strong>es más costoso y tardará más tener resultados semejantes al otro. Eso sin contar con el tiempo de aprendizaje del equipo. Pero la curva se estabiliza rápidamente. Y una vez estabilizada y con una serie de test de respaldo, las modificaciones no se hacen a ciegas, y además son más simples, ya que esta técnica nos ha hecho seguir otra serie de principios de desarrollo como:
+			</p>
+			<p>
+				- <strong>YAGNI
+				</strong>: You Ain’t Gonna Need It. TDD nos ayuda a prevenir la escritura de código que no va a ser utilizado en nuestra aplicación. Básicamente porque solo escribimos lo mínimo necesario para cubrir las especificaciones.
+			</p>
+			<p>
+				- <strong>Menos 
+				</strong>uso del <strong>debugger
+				</strong>: se dice que los buenos programadores de TDD dejan de usar el debugger, ya que no lo necesitan. Todo su código ya está probado. ;P
+			</p>
+			<p>
+				- <strong>Interface Segregation Principle
+				</strong>: es un principio SOLID (la 'i' concretamente) que dice que debemos segregar las responsabilidades en interfaces. TDD nos obliga a separar componente según responsabilidad porque los test unitarios como norma, no pueden comprobar más de una funcionalidad en un solo artefacto (unitario).
+			</p>
+			<p>
+				- <strong>Dependency Injection
+				</strong>: el patrón de inyección de dependencias dice que deberíamos crear un contendor que sea quien controle y resuelva las dependencias de todos los artefactos de nuestra aplicación. Y seguiremos este patrón para facilitarnos la creación de objetos mediante interfaces correctamente segregadas.
+			</p>
+			<p>
+				- Y estos dos últimos punto nos llevan a seguir otro principio de SOLID: <strong>Dependency Inversion Principle
+				</strong>. Que dice que una clase debería de depender de las abstracciones y no al contrario.
+			</p>
+			<p>
+				- Desarrollaremos siguiendo los <strong>principios ágiles
+				</strong>: dividimos el problema en pequeños pasos y lo vamos solucionando uno a uno. Buscaremos especificaciones y las codificaremos una a una con su test unitario. Nos adaptaremos a los cambios rápidamente.
+			</p>
+			<ul>
+				<li>
+					Y algo más evidente como que tendremos una <strong>mayor cobertura de código
+					</strong> con test unitarios. Esto nos aportará una <strong>red de seguridad
+					</strong> de cara a los cambios, ya que si alguien cambia algo que hace fallar una especificación, por antigua que esta sea, un test fallará.
+				</li>
+			</ul>
+			<p>
+				Y hasta aquí puedo escribir, debajo encontrareis el archivo con la presentación de la ponencia...
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=TDD en entornos .net #bdc11&url=https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2011/11/21/tdd-en-entornos-net-bdc11" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

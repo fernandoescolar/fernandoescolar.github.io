@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Rx V – Schedulers y Linq2Events · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Hoy os vamos a proponer el &#250;ltimo art&#237;culo te&#243;rico acerca de las reactive extensions. Una vez hemos definido las rx, sabemos qu&#233; son los sujetos y las operac..." />
+		<meta property="og:title" content="Rx V &#8211; Schedulers y Linq2Events" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Hoy os vamos a proponer el último artículo teórico acerca de las reactive extensions. Una vez hemos definido las rx, sabemos qué son los sujetos y las operac..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2012-03-26 15:30:57Z" />
+		<meta property="article:published_time" content="2012-03-26 15:30:57Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Rx V &#8211; Schedulers y Linq2Events" />
+		<meta name="twitter:description" content="Hoy os vamos a proponer el último artículo teórico acerca de las reactive extensions. Una vez hemos definido las rx, sabemos qué son los sujetos y las operac..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" />
+		<meta name="description" content="Hoy os vamos a proponer el último artículo teórico acerca de las reactive extensions. Una vez hemos definido las rx, sabemos qué son los sujetos y las operac..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Rx V – Schedulers y Linq2Events
+			</h1><small>26 mar. 2012 · 13 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Hoy os vamos a proponer el último artículo teórico acerca de las <strong>reactive extensions
+				</strong>. Una vez hemos <a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">definido las rx
+				</a>, sabemos <a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">qué son los <strong>sujetos</strong>
+				</a> y las operaciónes de <a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">creación
+				</a> y <a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables">
+					<strong>
+						Linq</strong>
+				</a>, ya podemos hablar de el último parámetro de la fórmula que definimos en su día: los <strong>Schedulers
+				</strong>.
+			</p>
+			<!--break--><img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-schedulers.png" alt="Rx Schedulers" width="450" height="182" align="middle" /> 
+			<p>
+				Es muy normal en el contexto actual de aplicaciones hablar de hilos de ejecución (<strong>Thread
+				</strong>), de las <strong>Task Parallel Library
+				</strong> o de <strong>sincronismo/asincronismo
+				</strong>. Y es aquí donde vamos a encontrar la utilidad de los <strong>schedulers
+				</strong> de las<strong> reactive extensions
+				</strong>:
+			</p>
+			<h2>
+				Schedulers
+			</h2>
+			La traducción al castellano de esta palabra inglesa podría significar "programadores" o "planificadores". Su función en este contexto es decidir dónde se van a ejecutar las operaciones. En Rx diferenciamos dos tipos de operaciones:
+			<ul>
+				<li>
+					Cuando Observamos (<strong>OnObserve
+					</strong>): Esta es la forma de referirnos al momento el que llega una iteración o notificación (<em>OnNext()
+					</em>).
+				</li>
+				<li>
+					Cuando nos Suscribimos (<strong>OnSubscribe
+					</strong>): Aquí nos referimos al momento en el que se ejecuta el proceso de suscripción (<em>Subscribe()
+					</em>).
+				</li>
+			</ul>
+			Para entender la diferencia entre estas dos operaciones vamos a crear una sentencia que nos lea cada una de las líneas de un fichero:
+			<pre class="brush: csharp">var filePath = "c:\mifichero.txt";
+var observableLines = Observable.Create&lt;string>(observer =>
+{
+    using (var reader = new StreamReader(filePath))
+    {
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            observer.OnNext(line);
+        }
+    }
+
+				<pre>
+					<code>
+						observer.OnCompleted();
+
+ return () =&amp;gt; { };
+
+					</code></pre>
+
+				<p>
+					});
+				</p></pre>
+			Como podemos ver, hemos creado un <strong>
+				<em>
+					IObservable</em>
+			</strong> de <strong>
+				<em>
+					string</em>
+			</strong>, en el que abriremos un <em>StreamReader
+			</em> que apunta a un fichero de nuestro ordenador. Entonces empezamos a leer línea a línea y enviamos notivicaciones mediante un sujeto. Si ahora quisieramos suscribirnos a este observable, para que nos escriba en pantalla todas las líneas:
+			<pre class="brush: csharp">observableLines.Subscribe(line => Console.WriteLine);</pre>
+			<p>
+				Encontraremos que al ejecutar esta línea de código el programa se queda congelado en ella hasta que no termina de leer todo el archivo. Esto se debe a que estamos leyendo de forma síncrona en el momento de suscribirnos. Para solucionarlo tendríamos que ejecutar esta operación en otro contexto como por ejemplo <strong>un nuevo thread
+				</strong> (hilo de ejecución):
+			</p>
+			<pre class="brush: csharp">observableLines
+   .SubscribeOn(Scheduler.NewThread)
+   .Subscribe(line => Console.WriteLine);</pre>
+			<p>
+				Al ejecutar este código, nos daremos cuenta de que la operación de leer el archivo se realiza en un nuevo hilo y esto hace que nuestro programa no se quede a la espera de que se termine de leerse hasta el final. Pero si estuvieramos en un programa <strong>WPF
+				</strong> y en lugar de quererlo escribir por consola lo añadieramos a un control tipo <strong>TextBox
+				</strong>, nos encontraríamos con un nuevo problema.
+			</p>
+			<p>
+				Cuando ejecutamos una aplicación tipo WPF o WinForms, las ventanas y controles son dibujadas por un hilo especial que se encarga de todo lo gráfico. La consecuencia de esto es que no se puede modificar un control gráfico desde otro hilo diferente a ese. Por lo que si ejecutamos este código:
+			</p>
+			<pre class="brush: csharp">observableLines
+   .SubscribeOn(Scheduler.NewThread)
+   .Subscribe(line => txtContent.Text += line);</pre>
+			<p>
+				En cuanto se lea (desde el nuevo hilo) la primera línea y la intente añadir a la propiedad Text de nuestro control de Texto, nos saltará una excepción debido a que es una operación invalida. Este momento en el que se evalúa cada una de las iteraciones es lo que antes hemos definido como "<strong>cuando observamos
+				</strong>". Para ello podríamos indicarle a nuestra sentencia que la operación de observar se ejecute en el contexto del hilo que trabaja con los gráficos. En WPF a este hilo se le conoce como el Dispatcher:
+			</p>
+			<pre class="brush: csharp">observableLines
+   .ObserveOnDispatcher()
+   .SubscribeOn(Scheduler.NewThread)
+   .Subscribe(line => txtContent.Text += line);</pre>
+			<p>
+				Así podremos conseguir que nuestro código ejecute de forma asíncrona la lectura del fichero, pero que añada cada una de las líneas usando el hilo de ejecución de los gráficos.
+			</p>
+			<p>
+				Pero no solo existen dos contextos para poder planificar las operaciones de rx. Encontraremos (en dependencia de la plataforma):
+			</p>
+			<ul>
+				<li>
+					<strong>
+						Dispatcher
+					</strong>: El hilo de ejecución principal de las aplicaciones WPF y Silverlight (<em>ObserveOnDispatcher()
+					</em>, <em>SubscribeOnDispatcher()
+					</em>).
+				</li>
+				<li>
+					<strong>
+						NewThread
+					</strong>: Nuevo hilo de ejecución (<em>ObserveOn(Schedulers.NewThread)
+					</em>, <em>SubscribeOn(Schedulers.NewThread)
+					</em>).
+				</li>
+				<li>
+					<strong>
+						TaskPool
+					</strong>: Nueva tarea de la TPL (Task Parallel Library)(<em>ObserveOn(Schedulers.TaskPool)
+					</em>, <em>SubscribeOn(Schedulers.TaskPool)
+					</em>)
+				</li>
+				<li>
+					<strong>
+						ThreadPool
+					</strong>: Encola la operación en la ThreadPool (<em>ObserveOn(Schedulers.ThreadPool)
+					</em>, <em>SubscribeOn(Schedulers. ThreadPool)
+					</em>).
+				</li>
+				<li>
+					<strong>
+						CurrentThread
+					</strong>: La ejecutará, tan pronto como sea posible, en el thread actual  (<em>ObserveOn(Schedulers.CurrentThread)
+					</em>, <em>SubscribeOn(Schedulers.CurrentThread)
+					</em>).
+				</li>
+				<li>
+					<strong>
+						Immediate
+					</strong>: Se ejecuta inmediatamente en el thread actual (<em>ObserveOn(Schedulers.Immediate)
+					</em>, <em>SubscribeOn(Schedulers.Immediate)
+					</em>) .
+				</li>
+			</ul>
+			  
+			<p>
+				Gracias a todos estos schedulers, tendremos un control total de nuestro programa, terminamos de explicar la fórmula de las reactive extensions y por tanto cerramos la explicación general de esta framework. Pero prácticamente todos los ejemplos que hemos visto hasta ahora van relacionados con lógica interna o llamadas asincronas y servicios.
+			</p>
+			<p>
+				Así que ahora vamos a tratar la última característica de las reactive extensions: su interacción con eventos.
+			</p>
+			<h2>
+				Linq To Events
+			</h2>
+			La primera vez que nos referimos a los sujetos, hablamos de sus semejanzas con la gestión de eventos. Podríamos compararlos de la siguiente forma: <img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-vs-events.png" alt="rx vs. events" width="600" height="288" /> 
+			<p>
+				Ambos tienen su declaración, su suscripción, publicación y la forma de dejar de "escuchar" los acontecimientos. Y es gracias a esta característica que las reactive extensions nos proporcionarán una forma de gestionar los eventos con linq.
+			</p>
+			<p>
+				Dentro de las extensiones de rx encontramos dos específicas para crear observables a partir de eventos:
+			</p>
+			<ul>
+				<li>
+					<em>
+						FromEvent
+					</em>: donde especificaremos el proceso de suscripción (evento += handler) y desuscripción (evento -= handler).
+				</li>
+				<li>
+					<em>
+						FromEventPattern
+					</em>: donde solo tendremos que especificar el objeto y el nombre del evento que queremos observar.
+				</li>
+			</ul>
+			Una vez podemos observar un evento, obtendremos una gran facilidad para gestionarlo mediante sentencias linq. Característica que cuando exponemos mediante un ejemplo queda muy clara. 
+			<p>
+				Buscando un tipo de aplicación que se base en eventos, nos hemos encontrado con un programa de dibujo, en el que pulsando con el ratón podemos dibujar lo que queramos. Así que vamos a desarrollar un pequeño proyecto a tal fin.
+			</p>
+			<p>
+				Nos hemos decidido por usar WPF como plataforma y el objetivo es crear un programa de dibujo en el que mientras pulsemos con el ratón sobre él, se irá dibujando en rojo la traza de nuestros movimientos de ratón. Por lo que el primer paso que tendremos que dar es crear un <strong>nuevo proyecto WPF en nuestro Visual Studio
+				</strong>.
+			</p>
+			<p>
+				Automáticamente nos va a generar una ventana de inicio (<em>MainWindow
+				</em>) sobre la que podremos trabajar. En WPF el control gráfico que nos deja dibujar se denomina <strong>Canvas
+				</strong> (como en <strong>HTML5
+				</strong>). Así pues, abriremos el archivo MainWindow.xaml y añadiremos un control de este tipo:
+			</p>
+			<pre class="brush: xml">&lt;Window x:Class="ReactiveDraw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    &lt;Grid>
+        &lt;Canvas Loaded="Canvas_Loaded" Background="White" />
+    &lt;/Grid>
+&lt;/Window></pre>
+			<p>
+				A nuestro control le hemos capturado el evento "<em>Loaded
+				</em>" para que una vez esté cargado en pantalla se ejecute la función "<em>Canvas_Loaded
+				</em>" en nuestro code-behind. Es por eso que el siguiente paso será trabajar en esta función. Si abrimos el archivo "<em>MainWindow.cs
+				</em>" podremos empezar a programar.
+			</p>
+			<p>
+				Lo primero que deberíamos hacer en nuestra función es especificar el control con el que trabajamos:
+			</p>
+			<pre class="brush: csharp">private void Canvas_Loaded(object sender, RoutedEventArgs e)
+{
+    var canvas = (Canvas)sender;
+}</pre>
+			<p>
+				Ahora crearemos eventos observables de nuestro ratón, según se pulse el botón, se deje de pulsar o se mueva por pantalla:
+			</p>
+			<pre class="brush: csharp">private void Canvas_Loaded(object sender, RoutedEventArgs e)
+{
+    var canvas = (Canvas)sender;
+
+    var mouseDown = Observable
+                        .FromEventPattern&lt;MouseEventArgs>(canvas, "MouseLeftButtonDown");
+
+    var mouseUp = Observable
+                        .FromEventPattern&lt;MouseEventArgs>(canvas, "MouseLeftButtonUp");
+
+    var mouseMove = Observable
+                        .FromEventPattern&lt;MouseEventArgs>(canvas, "MouseMove")
+                        .Select(ev => ev.EventArgs.GetPosition(this));
+}</pre>
+			<p>
+				Como podemos ver capturaremos el evento de presionar el botón izquierdo del ratón (<em>MouseLeftButtonDown
+				</em>), el de cuando lo levantamos (<em>MouseLeftButtonUp
+				</em>) y para cuando movemos el ratón (<em>MouseMove
+				</em>), recogeremos la posición del mismo.
+			</p>
+			<p>
+				Ahora tendríamos que decirle a nuestro programa que desde que se pulsa el botón, hasta que se deja de pulsar, recoga el movimiento del ratón:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">var drawingPoints = from start in mouseDown
+                        from move in mouseMove.TakeUntil(mouseUp)
+                        select new Point
+                                    {
+                                        X = move.X,
+                                        Y = move.Y
+                                    };</pre>
+			</div>
+			Creo que la sentencia habla por si sola... 
+			<p>
+				Por último solo tendríamos que suscribirnos al observable resultante de la sentencia y hacer que dibuje por ejemplo un punto en pantalla:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">drawingPoints
+    .Subscribe(point =>
+                    {
+                       var ellipse = new Ellipse
+                                         {
+                                             Stroke = Brushes.Red,
+                                             StrokeThickness = 5
+                                         };
+                       canvas.Children.Add(ellipse);
+                       Canvas.SetLeft(ellipse, point.X);
+                       Canvas.SetTop(ellipse, point.Y);
+                    });</pre>
+			</div>
+			Lo que hacemos es crear un círculo rojo de un tamaño de 5 puntos, lo añadimos a nuestro canvas y al final lo posicionamos. 
+			<p>
+				Al ejecutar nuestro programa veremos que nos dibuja correctamente, pero que si movemos muy rápido el ratón, nos deja espacios. Para solucionar esto, lo que vamos a dibujar en realidad son líneas, de forma que si movemos muy rápido el puntero, tendremos almacenado el último punto y el nuevo, dibujando una recta que los una.
+			</p>
+			<p>
+				Para esto vamos a crear dos variables:
+			</p>
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">var isTheFirst = true; // indica si es el primer punto de la traza
+var lastPosition = new Point(); // almacena el punto anterior de la traza</pre>
+			</div>
+			Con el fin de poder gestionar diferentes trazas (y no una línea continua), cada vez que levantemos el bottón izquierdo del ratón resetearemos el valor de "isTheFirst":
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">var mouseUp = Observable
+                        .FromEventPattern&lt;MouseEventArgs>(canvas, "MouseLeftButtonUp")
+                        .Do(_ => isTheFirst = true);</pre>
+			</div>
+			Y modificaremos la suscripción del evento de tal manera que dibujemos líneas basandonos en los datos que almacenamos. El código resultante de la función sería:
+			<div id="CodeDiv" dir="ltr">
+				<pre class="brush: csharp">private void Canvas_Loaded(object sender, RoutedEventArgs e)
+{
+    var canvas = (Canvas)sender;
+    var isTheFirst = true;
+    var lastPosition = new Point();
+
+					<pre>
+						<code>
+							var mouseDown = Observable
+                    .FromEventPattern&amp;lt;MouseEventArgs&amp;gt;(canvas, "MouseLeftButtonDown");
+
+var mouseUp = Observable
+                    .FromEventPattern&amp;lt;MouseEventArgs&amp;gt;(canvas, "MouseLeftButtonUp")
+                    .Do(_ =&amp;gt; isTheFirst = true);
+
+var mouseMove = Observable
+                    .FromEventPattern&amp;lt;MouseEventArgs&amp;gt;(canvas, "MouseMove")
+                    .Select(ev =&amp;gt; ev.EventArgs.GetPosition(this));
+
+var drawingPoints = from start in mouseDown
+                    from move in mouseMove.TakeUntil(mouseUp)
+                    select new Point
+                                {
+                                    X = move.X,
+                                    Y = move.Y
+                                };
+
+drawingPoints
+    .Subscribe(point =&amp;gt;
+                   {
+                       var ellipse = new Ellipse
+                                         {
+                                             Stroke = Brushes.Red,
+                                             StrokeThickness = 5
+                                         };
+                       canvas.Children.Add(ellipse);
+                       Canvas.SetLeft(ellipse, point.X);
+                       Canvas.SetTop(ellipse, point.Y);
+                            if (isTheFirst)
+                            {
+                                isTheFirst = false;
+                                lastPosition = point;
+                                return;
+                            }
+
+                            canvas.Children.Add(new Line
+                                                    {
+                                                        Stroke = Brushes.Red,
+                                                        X1 = lastPosition.X,
+                                                        X2 = point.X,
+                                                        Y1 = lastPosition.Y,
+                                                        Y2 = point.Y
+                                                    });
+
+                            lastPosition = point;
+                        });
+
+						</code></pre>
+
+					<p>
+						}
+					</p></pre>
+			</div>
+			Si volvemos a ejecutar nuestro programa de dibujo, veremos que con un código muy cercano al lenguaje corriente, hemos realizado una operación que antes de conocer las reactive extensions hubiera sido un verdadero lío de funciones, variables y demás. 
+			<p>
+				 
+			</p>
+			<h2>
+				Conclusiones
+			</h2>
+			Hasta este punto hemos podido explicaros casi todas las características de las reactive extensions. Desde en qué se basan, pasando por sus funciones, hasta cómo usarlas en diferentes contextos. 
+			<p>
+				El resumen de toda la información expuesta en estos últimos meses, es que las reactive extensions son una herramienta muy potente para el desarrollo. Se basa en un paradigma novedoso y útil. Y su función es facilitar las operaciones que ya realizábamos usando un lenguaje más cercano al que usamos para comunicarnos unos con otros.
+			</p>
+			<p>
+				En unos días y en referencia a este tema, publicaremos el último artículo en el que hablaremos de la codemotion, haremos un resumen de todo lo que contamos allí, crearemos un índice de los artículos y además añadiremos mucho código fuente con ejemplos de todo tipo para que podáis ver las reactive extensions en un ámbito de ejecución.
+			</p>
+			<p>
+				Permaneced atentos 😃
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Rx V &#8211; Schedulers y Linq2Events&url=https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2012/03/26/rx-v-schedulers-y-linq2events" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

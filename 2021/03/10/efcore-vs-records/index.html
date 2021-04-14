@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			EF Core vs. Records · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="No cabe duda de que los tipos registro son la funcionalidad m&#225;s molona de C# 9. Es el abrazo definitivo que necesit&#225;bamos para poder mezclar, de una vez por ..." />
+		<meta property="og:title" content="EF Core vs. Records" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/storage.jpg" />
+		<meta property="og:description" content="No cabe duda de que los tipos registro son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por ..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2021-03-10 03:21:02Z" />
+		<meta property="article:published_time" content="2021-03-10 03:21:02Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="EF Core vs. Records" />
+		<meta name="twitter:description" content="No cabe duda de que los tipos registro son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por ..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/storage.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta name="description" content="No cabe duda de que los tipos registro son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por ..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/storage.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				EF Core vs. Records
+			</h1><small>10 mar. 2021 · 12 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				No cabe duda de que los <em>tipos registro
+				</em> son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo <em>.Net
+				</em>
+				<!--break-->
+				. Es una oda de rima libre, que une <code>record
+				</code> con <code>with
+				</code>, y allí donde no llega aparece <code>init
+				</code>, a la forma en la que nos gustaría programar.
+			</p>
+			<p>
+				Todo son palabras bonitas a la hora de hablar de <code>record
+				</code>. Porque ha venido para quedarse y utilizarse en todos los lugares posibles de nuestros desarrollos. Y te preguntarás: ¿en todos?
+			</p>
+			<p>
+				Bueno, existe una pequeña aldea poblada de irreductibles ensamblados que aún no hemos probado. Nos referimos a <strong>Entity Framework Core
+				</strong> (EF). Y en este artículo lo vamos a poner a prueba.
+			</p>
+			<blockquote>
+				<p>
+					<strong>
+						TL;DR
+					</strong> todo funciona bien, pero el <code>ChangeTracker
+					</code> no es fiable del todo debido a la inmutabilidad.
+				</p>
+			</blockquote>
+			<ul>
+				<li>
+					TOC
+				</li>
+			</ul>
+			<h2 id="primeros-pasos">
+				Primeros pasos
+			</h2>
+			<p>
+				Para empezar a probar esta dupla de <code>record
+				</code>s con <strong>EF
+				</strong> comenzaremos creando una "Entity" llamada <code>Item
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public record Item(Guid Id, string Name, bool IsDone);
+				</code>
+</pre>
+			<p>
+				Para integrar este objeto con <strong>EF
+				</strong> crearemos un nuevo <code>DbContext
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class TodoContext : DbContext
+{
+  public TodoContext(DbContextOptions
+					<todocontext>
+						options)
+    : base(options)
+  {
+  }
+
+  public DbSet
+						<item>
+							Items { get; set; }
+}
+						</item></todocontext>
+				</code>
+</pre>
+			<p>
+				Para probar nuestro escenario en un entorno lo más aproximado al mundo real, usaremos una instancia de <strong>Sql Express
+				</strong> que tenemos instalada en la máquina local:
+			</p>
+			<pre class="language-csharp highlight">
+<code>const string SqlConnectionString = @"Server=.\SQLEXPRESS;Database=Test;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+private TodoContext CreateContext()
+{
+  var options = new DbContextOptionsBuilder
+					<todocontext>
+						();
+  options.UseSqlServer(SqlConnetionString);
+  return new TodoContext(options.Options);
+}</todocontext>
+				</code>
+</pre>
+			<p>
+				Y finalmente, nos aseguraremos de que creamos la base de datos que va a necesitar nuestra aplicación con el método <code>EnsureDatabaseIsCreated
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private void EnsureDatabaseIsCreated()
+{
+  using var context = CreateContext();
+  if (context != null && context.Database != null)
+  {
+    context.Database.EnsureCreated();
+  }
+}
+				</code>
+</pre>
+			<p>
+				Ahora ya estamos listos para empezar a probar las diferentes funcionalidades:
+			</p>
+			<h2 id="insert">
+				Insert
+			</h2>
+			<p>
+				La operación de insertar en <strong>EF
+				</strong> es muy sencilla. Consiste en instanciar la entidad que queremos añadir y llamar al método <code>Add
+				</code> del <code>DbSet
+				</code> correspondiente en nuestro contexto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private const string TodoItemName = "publish a new post";
+
+private async Task CreateItemAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = new Item(id, TodoItemName, false);
+  context.Items.Add(item);
+
+  await context.SaveChangesAsync();
+}
+				</code>
+</pre>
+			<p>
+				Para comprobar que, hemos creado la instancia en la base de datos, vamos a realizar una comprobación de lectura, comprobando que el estado en la base de datos es el mismo que creamos en el método anterior:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task AssertItemAsync(Guid id, bool isDone)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items.FindAsync(id);
+  Assert.Equal(TodoItemName, item.Name);
+  Assert.Equal(isDone, item.IsDone);
+}
+				</code>
+</pre>
+			<p>
+				Para terminar, creamos una prueba de integración donde: crearemos la base de datos, un nuevo <code>id
+				</code> y un <code>Item
+				</code> en base de datos; para comprobar que esta operación ha tenido éxito:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[Fact]
+public async Task IntegrationTest()
+{
+  EnsureDatabaseIsCreated();
+
+  var id = Guid.NewGuid();
+  await CreateItemAsync(id);
+  await AssertItemAsync(id, false);
+}
+				</code>
+</pre>
+			<p>
+				Y al ejecutar: ¡Sorpresa! ¡Todo funciona correctamente si ningún problema! Igual que si hubiéramos usado <code>class
+				</code> en lugar de <code>record
+				</code>.
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/wow-will-smith.gif" alt="Wow" />
+			</p>
+			<h2 id="delete">
+				Delete
+			</h2>
+			<p>
+				La operación de borrar es otra de esas que <strong>EF
+				</strong> nos facilita muchísimo. Su funcionamiento es igual que el de añadir una entidad: cargamos la entidad y llamamos al método <code>Remove
+				</code> dentro del <code>DbSet
+				</code> correspondiente a nuestro objeto en el contexto:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task DeleteItemAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items.FindAsync(id);
+  context.Items.Remove(item);
+
+  await context.SaveChangesAsync();
+}
+				</code>
+</pre>
+			<p>
+				Una vez lo hemos borrado, podemos comprobar que al intentar volver a cargar la misma entidad, obtendremos un valor <code>null
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task AssertItemDoesNotExistsAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items.FindAsync(id);
+  Assert.Null(item);
+}
+				</code>
+</pre>
+			<p>
+				Si completamos nuestra prueba inicial con la operación de borrado, tendremos un código como el siguiente:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[Fact]
+public async Task IntegrationTest()
+{
+  EnsureDatabaseIsCreated();
+
+  var id = Guid.NewGuid();
+  await CreateItemAsync(id);
+  await AssertItemAsync(id, false);
+  await DeleteItemAsync(id);
+  await AssertItemDoesNotExistsAsync(id);
+}
+				</code>
+</pre>
+			<p>
+				Y al ejecutar: ¡Sorpresa de nuevo! ¡Todo funciona correctamente si ningún problema! Podemos crear y borrar entidades de la misma forma que hacíamos antes.
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/wow.gif" alt="Wow" />
+			</p>
+			<h2 id="update">
+				Update
+			</h2>
+			<p>
+				Estamos en racha: dos de dos. Vamos a modificar el contenido de una entidad existente.
+			</p>
+			<p>
+				El caso es que un <code>record
+				</code> es un objeto inmutable. Para modificar cualquier propiedad de este objeto, tenemos que crear una copia del mismo, modificando el valor de la propiedad que queremos cambiar. Aquí es donde entra en juego la palabra clave <code>with
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task MarkItemAsDoneAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items.FindAsync(id);
+  item = item with { IsDone = true };
+
+  await context.SaveChangesAsync();
+}
+				</code>
+</pre>
+			<p>
+				Ahora vamos a añadir a la prueba el marcar una tarea como terminada y además comprobaremos que en base de datos hemos realizado ese cambio con el método de comprobación que creamos al principio <code>AssertItemAsync
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>[Fact]
+public async Task IntegrationTest()
+{
+  EnsureDatabaseIsCreated();
+
+  var id = Guid.NewGuid();
+  await CreateItemAsync(id);
+  await AssertItemAsync(id, false);
+  await MarkItemAsDoneAsync(id);
+  await AssertItemAsync(id, true);
+  await DeleteItemAsync(id);
+  await AssertItemDoesNotExistsAsync(id);
+}
+				</code>
+</pre>
+			<p>
+				Al ejecutar veremos que esta comprobación falla. La prueba esperaba que después de llamar a <code>MarkItemAsDoneAsync
+				</code> el valor de la propiedad <code>IsDone
+				</code> fuera <code>true
+				</code>, pero se ha encontrado con que no se han realizado cambios.
+			</p>
+			<p>
+				<strong>
+					Entity Framework Core
+				</strong> usa un artefacto llamado <code>ChangeTracker
+				</code> que se dedica a observar las entidades que estamos usando y a detectar los cambios que realizamos en ellas. Cuando llamamos a <code>SaveChangesAsync
+				</code> sondea estos cambios y actúa en consecuencia.
+			</p>
+			<p>
+				¡Claro! ¿Cómo vamos a realizar la operación de modificación creando una nueva instancia de nuestro <code>Item
+				</code> si no informamos debidamente a <strong>EF
+				</strong> de que hemos cambiado la instancia?
+			</p>
+			<p>
+				Para ello añadiremos la llamada al método <code>Attach
+				</code> que nos ayudará a indicarle al <code>ChangeTracker
+				</code> que hemos modificado esta entidad:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task MarkItemAsDoneAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items.FindAsync(id);
+  item = item with { IsDone = true };
+  context.Items.Attach(item).State = EntityState.Modified;
+
+  await context.SaveChangesAsync();
+}
+				</code>
+</pre>
+			<p>
+				Al ejecutar:
+			</p>
+			<blockquote>
+				<p>
+					<strong>
+						System.InvalidOperationException
+					</strong>: The instance of entity type 'Item' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached.
+				</p>
+			</blockquote>
+			<p>
+				Resulta que como hemos cargado una instancia de nuestra entidad desde el contexto de <strong>EF
+				</strong> y luego hemos añadido otra instancia que representa el mismo objeto, el <code>ChangeTracker
+				</code> ha decidido que esto no puede ser.
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/slapping.gif" alt="Bofetada inesperada" />
+			</p>
+			<p>
+				La solución está en no usar el <code>ChangeTracker
+				</code> cuando vamos a realizar modificaciones en una entidad de tipo <code>record
+				</code>. Esto lo conseguiremos con el método <code>AsNoTracking
+				</code> cuando recogemos valores desde la base de datos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task MarkItemAsDoneAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items
+                          .AsNoTracking()
+                          .SingleOrDefaultAsync(x => x.Id == id);
+
+  item = item with { IsDone = true };
+  context.Items.Attach(item).State = EntityState.Modified;
+
+  await context.SaveChangesAsync();
+}
+				</code>
+</pre>
+			<p>
+				¡Por fin funciona!
+			</p>
+			<h2 id="ejemplo-complejo">
+				Ejemplo complejo
+			</h2>
+			<p>
+				Muy bonito el ejemplo simple de una sola entidad. ¿Pero qué pasaría si tuviéramos un grafo un poco más complejo?
+			</p>
+			<p>
+				Para enfrentarnos con un escenario más complejo vamos a añadir a un <code>Item
+				</code> un listado de <code>ItemTask
+				</code> con una relación de <em>Many To One
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public record ItemTask(Guid Id, string Name);
+
+public record Item(Guid Id, string Name, bool IsDone, ReadOnlyCollection
+					<itemtask>
+						Tasks);</itemtask>
+				</code>
+</pre>
+			<p>
+				Si somos consecuentes con el comportamiento de un <code>record
+				</code>, deberíamos crear una <code>ReadOnlyCollection&lt;>
+				</code> para almacenar <em>child items
+				</em>. Pero añadir una propiedad de navegación en el constructor no le va a gustar demasiado a <strong>EF
+				</strong>. Afortunadamente es casi lo mismo separarlo:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public record ItemTask(Guid Id, string Name);
+
+public record Item(Guid Id, string Name, bool IsDone)
+{
+  public ReadOnlyCollection
+					<itemtask>
+						Tasks { get; init; }
+}</itemtask>
+				</code>
+</pre>
+			<p>
+				El problema ahora lo tendremos con la <code>ReadOnlyCollection&lt;>
+				</code>. A <strong>EF
+				</strong> no le gusta este tipo de objetos para hacer propiedades de navegación. Lo que sí que nos permitirá es usar <code>List&lt;>
+				</code> o <code>Collection&lt;>
+				</code>. Para poder seguir siendo inmutables, se nos ha ocurrido esta implementación:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public record ItemTask(Guid Id, string Name);
+
+public record Item(Guid Id, string Name, bool IsDone)
+{
+  private List
+					<itemtask>
+						_tasks = new List
+						<itemtask>
+							();
+
+  public IEnumerable
+							<itemtask>
+								Tasks
+  {
+    get => new ReadOnlyCollection
+								<itemtask>
+									(_tasks);
+    init => _tasks = value.ToList();
+  }
+}
+								</itemtask>
+							</itemtask>
+						</itemtask></itemtask>
+				</code>
+</pre>
+			<p>
+				Para añadir una <code>ItemTask
+				</code> a un <code>Item
+				</code> existente se nos ha complicado un poco. Tendremos que crear una nueva lista de <code>ItemTask
+				</code> a partir de la lista de solo lectura que ya existe, añadirle nuestro nuevo objeto y crear una copia del objeto <code>Item
+				</code> que tenga este listado y no el anterior. Evidentemente, como todo son objetos inmutables, el <code>ChangeTracker
+				</code> no se va a enterar de nada, así que tendremos que ignorarlo y adjuntar finalmente tanto el objeto padre como el objeto hijo que estamos creando:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task AddItemTaskAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items
+                          .AsNoTracking()
+                          .Include(nameof(Item.Tasks))
+                          .SingleOrDefaultAsync(x => x.Id == id);
+  var task = new ItemTask(Guid.NewGuid(), TodoItemTaskName);
+  var list = item.Tasks.ToList();
+  list.Add(task);
+
+  item = item with { Tasks = list };
+
+  context.Items.Attach(item).State = EntityState.Modified;
+  context.Set
+					<itemtask>
+						().Attach(task).State = EntityState.Added;
+  await context.SaveChangesAsync();
+}</itemtask>
+				</code>
+</pre>
+			<p>
+				Y para modificar alguna de las propiedades de una <code>ItemTask
+				</code> existente, tendremos que volver a ignorar el <code>ChangeTracker
+				</code> y actuar de la misma manera que en el ejemplo más simple:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private async Task ModifyItemTaskAsync(Guid id)
+{
+  using var context = CreateContext();
+
+  var item = await context.Items
+                          .AsNoTracking()
+                          .Include(nameof(Item.Tasks))
+                          .SingleOrDefaultAsync(x => x.Id == id);
+
+  var task = item.Tasks.FirstOrDefault();
+  task = task with { Name = TodoItemTaskUpdatedName };
+  context.Set
+					<itemtask>
+						().Attach(task).State = EntityState.Modified;
+
+  await context.SaveChangesAsync();
+}</itemtask>
+				</code>
+</pre>
+			<p>
+				Si os interesa el ejemplo completo podéis echarle un vistazo aquí:
+			</p>
+			<p>
+				<a href="https://gist.github.com/fernandoescolar/53df9ac1bf71ff032c1b9284f6890530">
+					Código fuente completo en <em>gist
+					</em>
+				</a>
+			</p>
+			<p>
+				<img src="/assets/uploads/2021/03/deal-with-it.gif" alt="Deal with it" />
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				En lo relacionado con <code>record
+				</code> y <strong>Entity Framework Core
+				</strong> parece ser que podemos añadir y borrar, entidades o entidades hijas, sin necesidad de cambiar nuestro código. Pero si queremos modificar una entidad existente, tendremos que dejar de lado el <code>ChangeTracker
+				</code>. Fin.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=EF Core vs. Records&url=https://www.developerro.com/2021/03/10/efcore-vs-records" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2021/03/10/efcore-vs-records" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2021/03/10/efcore-vs-records" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2021/03/10/efcore-vs-records" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/19/csharp-9">
+						Novedades de c# 9
+					</a> <small>19 ago. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/05/13/aspnet-core-data-protection">
+						Asp.Net core data protection
+					</a> <small>13 may. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

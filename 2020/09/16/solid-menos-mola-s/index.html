@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			SOLID menos mola (S) · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="La S de SOLID se refiere al principio de responsabilidad &#250;nica o SRP por sus siglas en ingl&#233;s (Single Responsibility Principle). Se puede definir como que un..." />
+		<meta property="og:title" content="SOLID menos mola (S)" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2020/09/16/solid-menos-mola-s" />
+		<meta property="og:image" content="https://www.developerro.com/assets/uploads/bg/solid5.jpg" />
+		<meta property="og:description" content="La S de SOLID se refiere al principio de responsabilidad única o SRP por sus siglas en inglés (Single Responsibility Principle). Se puede definir como que un..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2020-09-16 02:16:54Z" />
+		<meta property="article:published_time" content="2020-09-16 02:16:54Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="SOLID menos mola (S)" />
+		<meta name="twitter:description" content="La S de SOLID se refiere al principio de responsabilidad única o SRP por sus siglas en inglés (Single Responsibility Principle). Se puede definir como que un..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/uploads/bg/solid5.jpg" />
+		<meta name="twitter:url" content="https://www.developerro.com/2020/09/16/solid-menos-mola-s" />
+		<meta name="description" content="La S de SOLID se refiere al principio de responsabilidad única o SRP por sus siglas en inglés (Single Responsibility Principle). Se puede definir como que un..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2020/09/16/solid-menos-mola-s" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+		<style>
+			
+			    header { background: linear-gradient(to bottom, rgba(228, 225, 216, 0.95) 0%, rgba(172, 65, 66, 0.55) 100%), url(/assets/uploads/bg/solid5.jpg) center / cover; }
+			  
+		</style>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				SOLID menos mola (S)
+			</h1><small>16 sept. 2020 · 19 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				La <em>S
+				</em> de <em>SOLID
+				</em> se refiere al principio de responsabilidad única o <strong>SRP
+				</strong> por sus siglas en inglés (<strong>S
+				</strong>ingle <strong>R
+				</strong>esponsibility <strong>P
+				</strong>rinciple). Se puede definir como que una clase debe tener una sola responsabilidad, o como diría <a href="https://twitter.com/unclebobmartin">Robert C. Martin
+				</a>, "una clase debe tener solo una razón para cambiar"
+				<!--break-->
+				.
+			</p>
+			<p>
+				Es un concepto muy simple. Algo que todo el mundo entiende. Y, por lo tanto, un concepto muy fuerte. Una clase, una responsabilidad. Y qué demonios: un método, una sola responsabilidad también. Pero siempre dentro de una clase con una responsabilidad.
+			</p>
+			<p>
+				Si definimos una responsabilidad como un eje de un cambio, podemos determinar que cuantas más responsabilidades asuma una clase, esta será más susceptible al cambio. Y cuando las clases de nuestra aplicación son muy susceptibles al cambio, decimos que nuestro código está acoplado.
+			</p>
+			<p>
+				Así que desacoplar el código implica separar las responsabilidades y crear un objeto para cada una de ellas. De esta forma nuestro código será más legible y, en consecuencia, más sencillo de mantener.
+			</p>
+			<p>
+				Pero vamos a ver todo esto en código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Order
+{
+    public Guid Id { get; }
+    public Customer Customer { get; }
+    public IEnumerable
+					<orderline>
+						Lines { get; }
+    public decimal TotalAmount { get; }
+    public decimal Taxes { get; }
+
+    public void AddLine(Product product, int quantity) { ... }
+    public void RemoveLine(OrderLine line) { ... }
+    public void CalculateAmountAndTaxes() { ... }
+    public bool Validate() { ... }
+    public void Load() { ... }
+    public void Save() { ... }
+    public Invoice CreateInvoice() { ... }
+}</orderline>
+				</code>
+</pre>
+			<p>
+				Si pensáramos en responsabilidades podríamos decir que la clase <code>Order
+				</code> tiene las siguientes:
+			</p>
+			<ul>
+				<li>
+					Almacenar los datos de un pedido en las propiedades <code>Customer
+					</code>, <code>Lines
+					</code>, <code>TotalAmount
+					</code> y <code>Taxes
+					</code>.
+				</li>
+				<li>
+					Añadir líneas del pedido con el método <code>AddLine
+					</code>.
+				</li>
+				<li>
+					Borrar líneas del pedido con el método <code>RemoveLine
+					</code>.
+				</li>
+				<li>
+					Cálculo del importe total del pedido con el método <code>CalculateAmountAndTaxes
+					</code>.
+				</li>
+				<li>
+					Cálculo de los impuestos con el mismo método que el anterior: <code>CalculateAmountAndTaxes
+					</code>.
+				</li>
+				<li>
+					Validación de un pedido con el método <code>Validate
+					</code>.
+				</li>
+				<li>
+					Carga de un pedido desde la base de datos con el método <code>Load
+					</code>.
+				</li>
+				<li>
+					Guardado de un pedido en la base de datos con el método <code>Save
+					</code>.
+				</li>
+				<li>
+					Creación de una factura para el pedido con el método <code>CreateInvoice
+					</code>.
+				</li>
+			</ul>
+			<p>
+				Aplicando el principio de responsabilidad única, no sería una locura decir que cada una de estas responsabilidades las podríamos separar en un objecto diferente. Porque son responsabilidades únicas todas ellas. Así que dividiríamos nuestro código en:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Order
+					</code>: clase de tipo <em>POCO
+					</em> que almacena los datos de un pedido.
+				</li>
+				<li>
+					<code>
+						OrderAddLineService
+					</code>: clase de tipo servicio que añade una línea a un pedido.
+				</li>
+				<li>
+					<code>
+						OrderRemoveLineService
+					</code>: clase de tipo servicio que borra una línea a un pedido.
+				</li>
+				<li>
+					<code>
+						CalculateAmountService
+					</code>: clase de tipo servicio para el cálculo del importe total del pedido.
+				</li>
+				<li>
+					<code>
+						CalculateTaxesService
+					</code>: clase de tipo servicio para el cálculo de los impuestos.
+				</li>
+				<li>
+					<code>
+						OrderValidator
+					</code>: clase de tipo validador de un pedido.
+				</li>
+				<li>
+					<code>
+						OrderStoreReader
+					</code>: clase para cargar de un pedido de la base de datos.
+				</li>
+				<li>
+					<code>
+						OrderStoreWriter
+					</code>: clase para el guardado de un pedido en la base de datos.
+				</li>
+				<li>
+					<code>
+						InvoiceFactory
+					</code>: clase de tipo <em>factory
+					</em> para la creación de una factura.
+				</li>
+			</ul>
+			<p>
+				Cuando empecemos a usar este conjunto de artefactos, es posible que añadamos una clase de tipo <em>façade
+				</em> para poder orquestarlo todo: <code>OrderFacade
+				</code>. Aunque seguro que más de uno está pensando que se nos ha ido de las manos...
+			</p>
+			<p>
+				Es muy difícil determinar qué es una responsabilidad. <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> la <a href="https://web.archive.org/web/20110912055122/http://www.objectmentor.com/resources/articles/srp.pdf">define como "una razón para cambiar"
+				</a>. Se me ocurren dos razones para cambiar código en un proyecto: <em>bug fixing
+				</em> o <em>new feature
+				</em>. Y podríamos tener que cambiar uno o varios artefactos por cualquiera de ellas.
+			</p>
+			<p>
+				Es por eso que en 2014 escribió <a href="https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html">un nuevo artículo
+				</a> sobre el tema. Aquí menciona que "Este principio es sobre las personas". Donde habla de que hay que preguntarse por quién es el responsable de ese código en cuestión. Si es un tema del director de finanzas, del director de tecnología, del de operaciones... Y en mi caso personal puedo afirmar, sin miedo a equivocarme, que el responsable siempre es el desarrollador. Y a poder ser el que ya no está en la empresa.
+			</p>
+			<p>
+				Comentarios jocosos aparte, otra lección que podemos extraer de este último artículo es que las responsabilidades en realidad no están pensadas para tener tanta granularidad como representamos anteriormente. Todo este código quedaría mucho mejor agrupando ciertas características por responsabilidades a más alto nivel:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Order
+					</code>: clase que almacena los datos de un pedido. Tendrá además los métodos que la modifican: <code>AddLine
+					</code> y <code>RemoveLine
+					</code>.
+				</li>
+				<li>
+					<code>
+						OrderService
+					</code>: aquí montaremos una clase de tipo servicio que nos ayudará a operar con nuestro pedido. Tendrá los métodos para calcular el importe, los impuestos y para generar las facturas.
+				</li>
+				<li>
+					<code>
+						OrderValidator
+					</code>: esta clase la dejaremos como está, ya que valida nuestro objeto <code>Order
+					</code>.
+				</li>
+				<li>
+					<code>
+						OrderStore
+					</code>: una clase que nos permitirá guardar y cargar objectos <code>Order
+					</code> de la base de datos.
+				</li>
+			</ul>
+			<p>
+				Podríamos describirlo en código como algo así:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Order
+{
+    public Guid Id { get; }
+    public Customer Customer { get; }
+    public IEnumerable
+					<orderline>
+						Lines { get; }
+
+    public void AddLine(Product product, int quantity) { ... }
+    public void RemoveLine(OrderLine line) { ... }
+}
+
+public class OrderService
+{
+    public decimal CalculateAmount(Order order) { ... }
+    public decimal CalculateTaxes(Order order) { ... }
+    public Invoice CreateInvoice(Order order) { ... }
+}
+
+public class OrderValidator
+{
+    public ValidationResult Validate(Order order) { ... }
+}
+
+public class OrderStore
+{
+    public void Load(Guid id) { ... }
+    public void Save(Order order) { ... }
+}</orderline>
+				</code>
+</pre>
+			<p>
+				Supongo, que esta última implementación será con la que la mayoría estará más de acuerdo. Es una forma de crear artefactos muy común, que divide muy bien los conceptos, que genera poco acoplamiento y que hace nuestro código más mantenible. No hay duda de que seguir el <em>Single Responsibility Principle
+				</em> nos ha ayudado a crear un mejor código.
+			</p>
+			<p>
+				Pero tal vez tengáis en mente una separación de responsabilidades mucho mejor de las que hemos propuesto aquí...
+			</p>
+			<p>
+				Es muy difícil determinar qué es una responsabilidad. Y creo que aún más, después del tema este de lo de las personas. Son definiciones muy vagas que llevan a confusión, que generan diferentes puntos de vista y diferentes verdades encontradas. Y es muy difícil llegar a un acuerdo cuando, sobre un mismo tema, hay dos interpretaciones que son válidas al mismo tiempo.
+			</p>
+			<p>
+				A lo que hace el primer enfoque algunos lo llamarán sobre-arquitectura o sobre-ingeniería. A lo que hace el segundo otros lo señalarán como código acoplado que no se rige por el SRP. Y habrá quien piense que ambos ejemplos son basura y que la implementación debería ser totalmente diferente. Lo mejor es que todos tienen razón.
+			</p>
+			<h2 id="hay-vida-despues-de-srp">
+				Hay vida después de SRP
+			</h2>
+			<p>
+				He de reconocer que el trabajo de <a href="https://twitter.com/unclebobmartin">Uncle Bob
+				</a> (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios <strong>SOLID
+				</strong>, y en concreto el <strong>SRP
+				</strong>, no son una excepción. Mi consejo es que:
+			</p>
+			<ul>
+				<li>
+					Si consideras que este principio es una mierda, acostúmbrate a seguirlo siempre.
+				</li>
+				<li>
+					Si siempre lo sigues y consideras que este artículo es una mierda, sigue aplicándolo.
+				</li>
+				<li>
+					Y si lo has aplicado hasta la extenuación y te surgen dudas, sigue leyendo.
+				</li>
+			</ul>
+			<p>
+				Debemos ser críticos con todo lo que hacemos y encontrar esos puntos débiles en las "reglas" que seguimos al programar:
+			</p>
+			<ul>
+				<li>
+					¿Qué es exactamente una responsabilidad única? Resulta un concepto demasiado abierto a todo tipo de interpretaciones.
+				</li>
+				<li>
+					Si una responsabilidad es una razón para cambiar ¿Cómo puedo predecir qué código va a cambiar?
+				</li>
+				<li>
+					Si una responsabilidad es sobre las personas ¿Cómo puedo determinar quién es el responsable de esa porción de código si me informo por un <em>backlog
+					</em>?
+				</li>
+				<li>
+					¿Tener muchas clases muy pequeñas es siempre mejor que una sola más grande?
+				</li>
+				<li>
+					Y si nos ponemos a dividir mucho una clase para desencapsular ¿Podríamos estar ignorando activamente una de las propiedades de la orientación a objetos como es la cohesión?
+				</li>
+			</ul>
+			<p>
+				El principio de responsabilidad única creo que es una forma de intentar simplificar el código. Aunque seguirlo sin sentido puede llevarnos a conseguir todo lo contrario.
+			</p>
+			<p>
+				Afortunadamente no todo en este mundo es <strong>SOLID
+				</strong>. Existen multitud de principios y reglas de programación que son muy válidas también. Antes que seguir el <strong>SRP
+				</strong> creo que sería interesante pensar en uno de <a href="http://www.extremeprogramming.org/values.html">los valores en los que se basa XP
+				</a> (e<strong>X
+				</strong>treme <strong>P
+				</strong>rogramming):
+			</p>
+			<ul>
+				<li>
+					<em>
+						simplicity
+					</em>: Es mejor hacer una cosa simple hoy y pagar un poco más mañana para cambiarlo, que hacer una cosa más complicada hoy que jamás vaya a ser utilizada.
+				</li>
+			</ul>
+			<p>
+				Y después tendría en cuenta seguir el principio de responsabilidad única procurando no contradecir dos de las <a href="https://martinfowler.com/bliki/BeckDesignRules.html">
+					<em>
+						four rules of simple design</em>
+				</a> de <a href="https://twitter.com/kentbeck">Kent Beck
+				</a>: <em>Reveals intention
+				</em> y <em>Fewest elements
+				</em>. Las cuatro me parecen muy importantes, pero una aplicación agresiva de <strong>SRP
+				</strong> podría llevarnos a ocultar la intención y comportamiento de nuestro código por encontrarse demasiado dividida en muchos artefactos.
+			</p>
+			<p>
+				El caso es que hoy en día me parece más importante aplicar estos valores y reglas, que el principio de responsabilidad única. Pero eso no quiere decir que no tenga en cuenta este último.
+			</p>
+			<p>
+				Y lo que me pueda parecer mañana, ya lo veremos...
+			</p>
+			<h2 id="ejemplo-en-el-mundo-real">
+				Ejemplo en el mundo real
+			</h2>
+			<p>
+				Hace poco hicimos un <em>code review
+				</em> en un proyecto en el que usamos <a href="/video/2020/04/09/n-texture-chocolate-cake-architecture/">Vertical Slice
+				</a> como arquitectura. Cuando trabajamos con este tipo de arquitectura y creamos una API, cada feature al menos debe implementar cuatro artefactos:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Request
+					</code>: una petición a nuestro sistema.
+				</li>
+				<li>
+					<code>
+						Handler
+					</code>: el artefacto que gestiona una petición y responde correctamente.
+				</li>
+				<li>
+					<code>
+						Response
+					</code>: la respuesta a la petición.
+				</li>
+				<li>
+					<code>
+						Controller
+					</code>: para gestionar el flujo de navegación. Desde que llega una petición hasta que se envía la respuesta.
+				</li>
+			</ul>
+			<p>
+				Pero tener estos objetos es solo la base, a partir de aquí vamos añadiendo todo lo que necesitemos. En este contexto, se añadió:
+			</p>
+			<ul>
+				<li>
+					<code>
+						Validator
+					</code> para validar la <code>Request
+					</code>
+				</li>
+				<li>
+					<code>
+						IRepository
+					</code> y <code>Repository
+					</code> para recoger datos de la base de datos.
+				</li>
+				<li>
+					<code>
+						Mapper
+					</code> para transformar los datos de base de datos en la <code>Response
+					</code> del <code>Handler
+					</code>.
+				</li>
+			</ul>
+			<p>
+				Así que la <em>Feature
+				</em> que analizamos tenía esta estructura:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						GetProductById
+					</strong>
+					<ul>
+						<li>
+							<em>
+								Controller.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Handler.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								IRepository.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Map.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Repository.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Request.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Response.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Validator.cs
+							</em>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				El artefacto donde transcurre la acción de nuestra <em>feature
+				</em> es el <code>Handler
+				</code>, y este fue el código que empezamos a analizar:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Handler: IRequestHandler
+					<request , commandresult<response>
+						>
+{
+    private readonly IRepository _repository;
+
+    public Handler(IRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task
+						<commandresult <response>
+							> Handle(Request request, CancellationToken cancellationToken)
+    {
+        var product = await GetProduct(request);
+        var dto = Map.MapToDto(product);
+        return GenerateResponse(dto);
+    }
+
+
+    private CommandResult
+							<response>
+								GenerateResponse(ProductDto product)
+        => CommandResult
+								<response>
+									.Success(new Response(product));
+
+
+    public Task
+									<product>
+										GetProduct(Request request)
+        => _repository.GetProduct(request.ProductId);
+}
+									</product>
+								</response>
+							</response>
+						</commandresult></request>
+				</code>
+</pre>
+			<p>
+				Este código, desde un punto de vista de <strong>SRP
+				</strong> es muy bueno. Pero quizá hemos complicado demasiado ciertas partes que hacen que tengamos que recorrer más camino del necesario para terminar haciendo lo mismo:
+			</p>
+			<h3 id="si-una-funcion-es-una-linea-de-codigo-tal-vez-no-haga-falta-una-funcion">
+				Si una función es una línea de código tal vez no haga falta una función
+			</h3>
+			<p>
+				Estamos hablando de este método:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public Task
+					<product>
+						GetProduct(Request request)
+      => _repository.GetProduct(request.ProductId);</product>
+				</code>
+</pre>
+			<p>
+				Nos referimos a ese tipo de funciones que llaman a otro método con el mismo nombre dentro de otro artefacto y que su gran valor es envolver una llamada algo más larga. Esto nos llamó la atención y pensamos que no era muy diferente poner:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var product = await GetProduct(request);
+				</code>
+</pre>
+			<p>
+				Que:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var product = await _repository.GetProduct(request.ProductId);
+				</code>
+</pre>
+			<p>
+				Así que nos deshicimos de ese método.
+			</p>
+			<h3 id="si-una-linea-de-codigo-no-se-entiende-de-un-primer-vistazo-tal-vez-haga-falta-simplificarla">
+				Si una línea de código no se entiende de un primer vistazo tal vez haga falta simplificarla
+			</h3>
+			<p>
+				Por la misma razón intentamos cambiar este otro método:
+			</p>
+			<pre class="language-csharp highlight">
+<code>private CommandResult
+					<response>
+						GenerateResponse(ProductDto product)
+     => CommandResult
+						<response>
+							.Success(new Response(product));
+						</response></response>
+				</code>
+</pre>
+			<p>
+				Pero esta vez, sustituir esta línea de código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return GenerateResponse(dto);
+				</code>
+</pre>
+			<p>
+				Por esta otra:
+			</p>
+			<pre class="language-csharp highlight">
+<code>return CommandResult
+					<response>
+						.Success(new Response(product));</response>
+				</code>
+</pre>
+			<p>
+				No nos dejaba tan claro qué es lo que hacía.
+			</p>
+			<p>
+				Analizando más profundamente nos dimos cuenta de que aquí entraban en juego 3 artefactos y que para darle claridad, antes de realizar el cambio, tendríamos que refactorizar esta parte.
+			</p>
+			<h3 id="si-necesitamos-3-artefactos-para-montar-una-respuesta-tal-vez-podamos-simplificar-a-uno">
+				Si necesitamos 3 artefactos para montar una respuesta, tal vez podamos simplificar a uno
+			</h3>
+			<p>
+				Los artefactos a los que nos referimos son:
+			</p>
+			<ul>
+				<li>
+					<code>
+						CommandResult&lt;T>
+					</code>: una clase genérica que usamos para recubrir respuestas estándares del sistema. Básicamente tiene un listado de errores y un <em>payload
+					</em>.
+				</li>
+				<li>
+					<code>
+						Response
+					</code>: es el objeto de respuesta de la <em>feature
+					</em>. Cada una tiene el suyo. Y aquí contiene un DTO (<strong>D
+					</strong>ata <strong>T
+					</strong>ransfer <strong>O
+					</strong>bject) de tipo <code>ProductDto
+					</code>.
+				</li>
+				<li>
+					<code>
+						ProductDto
+					</code>: es el DTO que se encapsula dentro del objeto <code>Response
+					</code>.
+				</li>
+			</ul>
+			<p>
+				Lo primero que nos llama la atención es que en este caso no estamos gestionando errores. Solo hay dos posibilidades: devolvemos un <code>CommandResult&lt;Response>
+				</code> exitoso o lanzamos una excepción que no hemos gestionado. Por lo que, en realidad, no estamos usando las características de este objeto. Así que lo desechamos.
+			</p>
+			<p>
+				Por otro lado, que un objeto <code>Response
+				</code> contenga otro de tipo <code>ProductDto
+				</code>, tampoco nos aportaba valor. Así que decidimos crear un objeto <code>Response
+				</code> con las propiedades que necesitábamos del <code>ProductDto
+				</code>. De esta forma nos quedamos con un solo objeto y pudimos cambiar nuestro código:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var product = await _repository.GetProduct(request.ProductId);;
+var response = Map.MapToResponse(product);
+return response;
+				</code>
+</pre>
+			<p>
+				Así solucionábamos dos problemas de un tiro.
+			</p>
+			<h3 id="si-necesitamos-una-clase-con-un-solo-metodo-que-se-usa-en-un-solo-lugar-tal-vez-esa-clase-no-haga-falta">
+				Si necesitamos una clase con un solo método que se usa en un solo lugar tal vez esa clase no haga falta
+			</h3>
+			<p>
+				Resulta que los objetos <code>IRepository
+				</code> y <code>Repository
+				</code>, solo se usaban dentro de esta <em>feature
+				</em>. Además, solo tenían un método: <code>GetProduct
+				</code>. Al analizarlo por dentro, todo parecía ser una llamada simple a un método de búsqueda de un artefacto de Mongo.Driver: <code>IMongoCollection&lt;Product>
+				</code>.
+			</p>
+			<pre class="language-csharp highlight">
+<code>internal class Repository : IRepository
+{
+  public Repository(IMongoCollection
+					<product>
+						mongoCollection)
+  {
+    _mongoCollection = mongoCollection;
+  }
+
+  public Task
+						<project>
+							GetProduct(string productId)
+  {
+    return _mongoCollection.Find(x => x.ProductId == request.ProductId)
+                           .FirstOrDefaultAsync();
+  }
+}
+						</project></product>
+				</code>
+</pre>
+			<p>
+				Como el código parecía muy simple, pensamos en cogerlo y aplicarlo directamente al <code>Handler
+				</code>, pero ¿esto complicaría mucho el código?
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Handler : IRequestHandler
+					<request , response>
+						{
+  private readonly IMongoCollection
+						<product>
+							_mongoCollection;
+
+  public Handler(IMongoCollection
+							<product>
+								mongoCollection)
+  {
+    _mongoCollection = mongoCollection;
+  }
+
+  public Task
+								<response>
+									Handle(Request request, CancellationToken cancellationToken)
+  {
+    var product = _mongoCollection.Find(x => x.ProductId == request.ProductId)
+                                  .FirstOrDefaultAsync(cancellationToken);
+    var response = Map.MapToResponse(product);
+    return response;
+  }
+}
+								</response>
+							</product>
+						</product></request>
+				</code>
+</pre>
+			<p>
+				La verdad es que visto con perspectiva es bastante parecido a lo que teníamos al inicio, pero nos hemos quitado de en medio dos dependencias: la de la abstracción <code>IRepsository
+				</code> y la concreción <code>Repository
+				</code>.
+			</p>
+			<h3 id="si-estamos-usando-un-mapper-para-convertir-un-objeto-de-base-de-datos-a-otra-cosa-tal-vez-podriamos-usar-una-proyeccion">
+				Si estamos usando un Mapper para convertir un objeto de base de datos a otra cosa, tal vez podríamos usar una proyección
+			</h3>
+			<p>
+				Como ahora mismo, no teníamos un repositorio que nos ocultara el comportamiento con respecto la base de datos, nos encontramos con que el método <code>Find
+				</code> de una <code>IMongoCollection&lt;T>
+				</code> acepta proyecciones. Así que quizá podríamos quitarnos también el objeto <code>Mapper
+				</code>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>_mongoCollection.Find(x => x.ProductId == request.ProductId)
+                .Project(new ClientSideDeserializationProjectionDefinition
+					<product , response>
+						())
+                .FirstOrDefaultAsync(cancellationToken);</product>
+				</code>
+</pre>
+			<h3 id="resultado-final">
+				Resultado final
+			</h3>
+			<p>
+				El resultado final de esta sesión fue la simplificación del código tanto en número de artefactos:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						GetProductById
+					</strong>
+					<ul>
+						<li>
+							<em>
+								Controller.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Handler.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Request.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Response.cs
+							</em>
+						</li>
+						<li>
+							<em>
+								Validator.cs
+							</em>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				Como en número de líneas en el <code>Handler
+				</code>. Además de, en nuestra opinión, ser un código más legible:
+			</p>
+			<pre class="language-csharp highlight">
+<code>public class Handler : IRequestHandler
+					<request , response>
+						{
+  private readonly IMongoCollection
+						<product>
+							_mongoCollection;
+
+  public Handler(IMongoCollection
+							<product>
+								mongoCollection)
+  {
+    _mongoCollection = mongoCollection;
+  }
+
+  public Task
+								<response>
+									Handle(Request request, CancellationToken cancellationToken)
+  {
+    return _mongoCollection.Find(x => x.ProductId == request.ProductId)
+                           .Project(new ClientSideDeserializationProjectionDefinition
+									<product , response>
+										())
+                           .FirstOrDefaultAsync(cancellationToken);
+  }
+}
+									</product>
+								</response>
+							</product>
+						</product></request>
+				</code>
+</pre>
+			<p>
+				Todo este <em>code review
+				</em> te hace pensar. Si todo lo que estaba hecho al principio era correcto... ¿significa que este código está más acoplado?
+			</p>
+			<p>
+				Si pensamos en cuanto me implica realizar un cambio, como por ejemplo añadir una propiedad nueva en la base de datos, antiguamente hubiera implicado cambiar: <code>Product
+				</code>, <code>ProductDto
+				</code> y <code>Mapper
+				</code>. Con el código que hemos desarrollado solo tendríamos que cambiar <code>Product
+				</code> y <code>Response
+				</code> ¿Es esto mejor? Pero si tenemos un cambio más grande en el futuro, quizá tenga que pasar por todas mis <em>features
+				</em> y cambiarlas una a una. Entonces esto podría ser un mal cambio.
+			</p>
+			<p>
+				¿Sería mejor tener más clases y métodos pequeños, como hemos tenido al principio? ¿O es mejor tener un código como el resultado final?
+			</p>
+			<p>
+				El equipo finalmente prefirió este resultado. La razón principal era porque resultaba más fácil de leer. También añadía menos pasos para encontrar una línea de código concreta. Cumplía con que una <em>feature
+				</em> encapsule una sola acción completa con el mínimo código imprescindible. En definitiva, se sentían más cómodos con esta implementación.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=SOLID menos mola (S)&url=https://www.developerro.com/2020/09/16/solid-menos-mola-s" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2020/09/16/solid-menos-mola-s" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2020/09/16/solid-menos-mola-s" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2020/09/16/solid-menos-mola-s" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/video/2020/10/15/solid-menos-mola">
+						SOLID menos mola
+					</a> <small>15 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/14/solid-menos-mola-d">
+						SOLID menos mola (D)
+					</a> <small>14 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/10/06/solid-menos-mola-i">
+						SOLID menos mola (I)
+					</a> <small>06 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/30/solid-menos-mola-l">
+						SOLID menos mola (L)
+					</a> <small>30 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/09/23/solid-menos-mola-o">
+						SOLID menos mola (O)
+					</a> <small>23 sept. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

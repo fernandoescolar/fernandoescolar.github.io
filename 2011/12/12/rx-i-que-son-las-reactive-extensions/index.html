@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Rx I – Qué son las Reactive eXtensions · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Dentro de las librer&amp;iacute;as de moda para .net la, posiblemente, m&amp;aacute;s dif&amp;iacute;cil de explicar tiene el nombre de Reactive eXtensions o Rx. Una ide..." />
+		<meta property="og:title" content="Rx I &#8211; Qué son las Reactive eXtensions" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Dentro de las librer&iacute;as de moda para .net la, posiblemente, m&aacute;s dif&iacute;cil de explicar tiene el nombre de Reactive eXtensions o Rx. Una ide..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2011-12-12 10:15:01Z" />
+		<meta property="article:published_time" content="2011-12-12 10:15:01Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Rx I &#8211; Qué son las Reactive eXtensions" />
+		<meta name="twitter:description" content="Dentro de las librer&iacute;as de moda para .net la, posiblemente, m&aacute;s dif&iacute;cil de explicar tiene el nombre de Reactive eXtensions o Rx. Una ide..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" />
+		<meta name="description" content="Dentro de las librer&iacute;as de moda para .net la, posiblemente, m&aacute;s dif&iacute;cil de explicar tiene el nombre de Reactive eXtensions o Rx. Una ide..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Rx I – Qué son las Reactive eXtensions
+			</h1><small>12 dic. 2011 · 10 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Dentro de las librerías de moda para .net la, posiblemente, más difícil de explicar tiene el nombre de <strong>Reactive eXtensions
+				</strong> o <strong>Rx
+				</strong>. Una idea que nace en el contexto actual de aplicaciones distribuidas. Donde la información se encuentra en la nube, y mediante llamadas asíncronas podemos procesarla usando clientes que interaccionan con el usuario basándose en eventos.
+			</p>
+			<!--break-->
+			<center>
+				<img src="/assets/uploads/2012/09/rx1.gif" alt="" align="middle" width="500" height="209" />
+			</center>
+			<p>
+				Encontramos ejemplos de esto en cualquiera de las aplicaciones más comunes que usamos. Por ejemplo el cliente de Whatsapp de nuestro teléfono móvil, el TweetDeck para ver el twitter o el widget del escritorio que nos informa del tiempo.
+			</p>
+			<p>
+				Todas estas aplicaciones recogen datos de una serie de servicios que se encuentran en internet. Y mediante la interacción con el usuario los tratan. Además, como en la mayor parte de las tecnologías y APIs para interfaces gráficas, para entender que quiere hacer el usuario, se basan en eventos como un "onClick" del ratón sobre un botón concreto.
+			</p>
+			<p>
+				Entonces llegamos, al igual que un físico en busca de una teoría unificada, al origen de las <strong>reactive extensions: la creación de un lenguaje común para gestionar llamadas asíncronas a un servicio y los eventos que ocurren en la interfaz gráfica
+				</strong>.
+			</p>
+			<p>
+				Es posible que esto que estamos hablando a muchos os suene, ya que gracias a <a href="http://www.secondnug.com/">Second Nug
+				</a> hicimos un <a href="http://www.secondnug.com/EventosDesarrollo/tabid/57/Default.aspx">WebCast
+				</a> sobre el tema hace unos meses. A lo largo de la serie de artículos, con la que comenzamos hoy, intentaremos extender esa charla, además de abordar los diferentes temas con más calma y perspectiva.
+			</p>
+			<h3>
+				Programación reactiva
+			</h3>
+			<p>
+				Si estudiamos detenidamente el nombre de la librería que nos ocupa, encontramos dos palabras:
+			</p>
+			<ul>
+				<li>
+					<strong>
+						Reactive
+					</strong>: que hace referencia a la programación reactiva.
+				</li>
+				<li>
+					<strong>
+						Extensions
+					</strong>: implica que son extensiones para la framework de .net.
+				</li>
+			</ul>
+			<p>
+				<i>
+					Reactive programming
+				</i> es un paradigma de programación basado en los flujos de datos y la propagación de los cambios. Esto significa que deberíamos poder crear flujos de datos con facilidad (usando el propio lenguaje de programación), y nuestro propio entorno de ejecución debería ser capaz de propagarse a través de los cambios que se producen en estos flujos de datos.
+			</p>
+			<p>
+				Ahora parémonos un momento a coger aire... Vamos a ver un ejemplo práctico para entender todo esto: imaginemos un contexto de programación secuencial tradicional.
+			</p>
+			<pre class="brush: c#">int a, b, c;
+b = 10;
+c = 2;
+a = b + c; // a = 12
+c = 4; // a = 12
+b = 3; // a = 12</pre>
+			<p>
+				Como vemos, una vez asignamos el valor de la variable 'a' como una suma de 'b' más 'c', se evalúa esa suma. Y aunque cambiemos el valor de 'b' o 'c', el valor de 'a' ya ha sido evaluado y sigue siendo el mismo que la primera vez (<em>12
+				</em>).
+			</p>
+			<p>
+				La <strong>programación reactiva
+				</strong> propone un comportamiento diferente. Algo parecido a una tabla de excel donde nosotros asignamos a la celda 'A1' para que calcule el valor de 'B1' más 'C1'. Aquí, si cambiamos el valor de la columna 'B1' o 'C1' el valor de 'A1' se actualiza (evalúa) automáticamente.
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx2.gif" alt="" width="452" height="98" />
+			</center>
+			<p>
+				Ahora ya podemos decir que<strong> Rx
+				</strong> es ese conjunto de herramientas que<strong> extienden el lenguaje secuencial tradicional
+				</strong> que conocemos, para poder <strong>crear código de programación reactiva
+				</strong>.
+			</p>
+			<p>
+				Vamos a ver cómo lo hace :).
+			</p>
+			<h3>
+				Reactive Framework
+			</h3>
+			<p>
+				La Reactive Framework ha sido desarrollada en los <b>Microsoft Live Labs
+				</b> y es otra de las creaciones de <b>Erik Meijer
+				</b>, el padre de <b>Linq
+				</b>.
+			</p>
+			<p>
+				Como hemos visto el objetivo de Rx es unir y simplificar la programación basada en eventos complejos y la asíncrona proporcionándonos un nuevo modelo de programación para estos escenarios. Para conseguirlo, se propuso un principio fundamental: crear la dualidad entre el patrón <b>iterator
+				</b> y el patrón <b>observer
+				</b>.
+			</p>
+			<p>
+				La propia gente de los Microsoft Live Labs la define así:
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx3.gif" alt="" width="400" height="162" />
+			</center>
+			<p>
+				Donde <em>observables
+				</em> hace referencia al patrón observer. <em>Linq
+				</em> lo usamos para gestionar de una forma sencilla el patrón iterator. Y <em>schedulers
+				</em> se refiere a la planificación de estas tareas en diferentes contextos de ejecución.
+			</p>
+			<p>
+				Para empezar, en este artículo trataremos los dos patrones base de la fórmula para en futuras publicaciones poder dar una explicación de cada uno de sus parámetros.
+			</p>
+			<h4>
+				Iterator
+			</h4>
+			<p>
+				Comenzamos con los conceptos base refrescando el<strong> patrón iterator
+				</strong>, que nos provee de una forma de acceso a los elementos de un objeto agregado, de forma secuencial, sin exponer su representación interna.
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx4.gif" alt="" width="351" height="335" />
+			</center>
+			<p>
+				En todas las versiones de la framework de .net se implementa este patrón usando el contrato <em>IEnumerable
+				</em>. Y normalmente cada una de las iteraciones de un enumerable la gestionamos con el bucle <i>foreach:
+				</i>
+			</p>
+			<pre class="brush: c#">var iterable = new List&lt;int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+foreach (var iterator in iterable)
+{
+   if (iterator &lt; 10)
+   {
+      System.Console.WriteLine(iterator);
+   }
+}
+
+				<p>
+					System.Console.ReadLine();
+				</p></pre>
+			<p>
+				Gracias a Linq se ha encontrado una sintaxis cómoda y rápida para trabajar con este tipo de objetos. Por lo que una forma de hacer lo mismo mediante esta tecnología sería:
+			</p>
+			<pre class="brush: c#">var query = iterable.Where(iterator => iterator &lt; 10).Select(iterator => { System.Console.WriteLine(iterator); return iterator; });
+
+				<p>
+					// tengo que 'compilar' la query para que se ejecute.
+query.ToArray();
+				</p>
+
+				<p>
+					System.Console.ReadLine();
+				</p></pre>
+			<h4>
+				Observer
+			</h4>
+			<p>
+				El otro concepto base es el <strong>patrón observador
+				</strong>, también conocido como publicación/subscripción o modelo-patrón. Este surge de una serie de sencillos conceptos: Un objeto observable puede ser vigilado por objetos observadores. De esta forma, un observable almacena referencias sus observadores y tendrá la capacidad de notificarles cambios.
+			</p>
+			<center>
+				<img src="/assets/uploads/2012/09/rx5.gif" alt="" width="483" height="179" />
+			</center>
+			<p>
+				Gracias a este patrón podemos crear una especie de referencias débiles entre objetos. Ya que los observadores no guardan ninguna relación con el observado.
+			</p>
+			<p>
+				Para ver un ejemplo de como funciona este patrón, vamos a crear una clase que observará el estado del stock de un almacén. La llamaremos StockObserver:
+			</p>
+			<pre class="brush: c#">public class StockObserver
+{
+   public string Name { get; set; }
+
+				<p>
+					public void Notify(Stock sender, int units)
+{
+Console.WriteLine("[{0}] The stock {1} has now {2} units", this.Name, sender.Name, units);
+}
+}
+				</p></pre>
+			<p>
+				Esta clase nos notificará de los cambios en el stock. Pero no vale nada si no creamos objetos observables a los que suscribirse. En este caso haremos una clase para cada tipo de stock que sea observable y nos podamos suscribir a ella:
+			</p>
+			<pre class="brush: c#">public class Stock
+{
+   private readonly IList&lt;StockObserver> observers;
+
+				<p>
+					private int units;
+				</p>
+
+				<p>
+					public Stock()
+{
+this.observers = new List&lt;StockObserver>();
+}
+				</p>
+
+				<p>
+					public string Name { get; set; }
+				</p>
+
+				<p>
+					public int Units
+{
+get
+{
+return this.units;
+}
+				</p>
+
+				<pre>
+					<code>
+						set
+  {
+     if (this.units != value)
+     {
+        this.units = value;
+        this.NotifyObservers();
+     }
+  }
+
+					</code></pre>
+
+				<p>
+					}
+				</p>
+
+				<p>
+					public void Subscribe(StockObserver observer)
+{
+System.Console.WriteLine(observer.Name + " suscrito a " + this.Name);
+this.observers.Add(observer);
+}
+				</p>
+
+				<p>
+					public void Unsubscribe(StockObserver observer)
+{
+if (this.observers.Contains(observer))
+{
+this.observers.Remove(observer);
+}
+}
+				</p>
+
+				<p>
+					private void NotifyObservers()
+{
+foreach (var observer in this.observers)
+{
+observer.Notify(this, this.units);
+}
+}
+}
+				</p></pre>
+			<p>
+				Una vez tenemos nuestros objetos observador y observable, podemos crear un pequeño programa que los utilice:
+			</p>
+			<pre class="brush: c#">// creamos stocks
+var manzanas = new Stock { Name = "Manzanas" };
+var peras = new Stock { Name = "Peras" };
+var armarios = new Stock { Name = "Armarios" };
+
+				<p name="Fruter&amp;iacute;a">
+					// creamos observadores
+var fruteria = new StockObserver ;
+var almacen = new StockObserver ;
+				</p>
+
+				<p>
+					manzanas.Subscribe(fruteria);
+manzanas.Subscribe(almacen);
+				</p>
+
+				<p>
+					peras.Subscribe(fruteria);
+peras.Subscribe(almacen);
+				</p>
+
+				<p>
+					armarios.Subscribe(almacen);
+				</p>
+
+				<p>
+					Console.WriteLine("Inicializa manzanas y peras a 20 unidades");
+manzanas.Units = 20;
+peras.Units = 20;
+				</p>
+
+				<p>
+					for (int i = 0; i &lt; 5; i++)
+{
+if (i % 2 == 0)
+{
+Console.WriteLine("Resto una manzana");
+manzanas.Units--;
+}
+else
+{
+Console.WriteLine("Resto una pera");
+peras.Units--;
+}
+				</p>
+
+				<pre>
+					<code>
+						Thread.Sleep(1000);
+
+					</code></pre>
+
+				<p>
+					}
+				</p>
+
+				<p>
+					Console.WriteLine("Inicializa armarios a 3 unidades");
+armarios.Units = 3;
+				</p>
+
+				<p>
+					Thread.Sleep(1000);
+				</p>
+
+				<p>
+					Console.WriteLine("Suma un armario");
+armarios.Units = 4;
+				</p>
+
+				<p>
+					System.Console.WriteLine("pulsa intro...");
+System.Console.ReadLine();
+				</p></pre>
+			<p>
+				En este pequeño programa veremos como creamos diferentes stocks de algunas frutas y armarios. Entonces crearemos dos observadores uno que observa el stock de las frutas y otro que observa el stock de todo el almacén (incluidas las frutas). Suscribiremos los stocks a los observadores que proceda y jugamos con los valores para ver como son los observadores quienes nos información de los cambios en su zona de actuación.
+			</p>
+			<p>
+				 
+			</p>
+			<p>
+				Y hasta aquí este capítulo introductorio a las <strong>reactive extensions
+				</strong>. En próximas publicaciones intentaremos hablar más de ellas y resolver uno a uno todos los operadores que forman parte de la fórmula que la define. Por lo que espero que no os perdáis <a href="/2011/12/19/rx-ii-observables-los-sujetos" title="Rx II - Observables: los sujetos">el siguiente capítulo de <b>Observables</b> (<i>Subjects</i>)
+				</a>.
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Rx I &#8211; Qué son las Reactive eXtensions&url=https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2011/12/12/rx-i-que-son-las-reactive-extensions" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/10/efcore-vs-records">
+						EF Core vs. Records
+					</a> <small>10 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/03/chorra-tip-1-wcd-command">
+						ChorraTip: rutas windows en git bash
+					</a> <small>03 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2021/02/27/raiders-od-the-lost-leak">
+						Raiders of the lost leak
+					</a> <small>27 feb. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/12/09/net-5-just-talking">
+						.Net 5 Just Talking
+					</a> <small>09 dic. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es-es">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<title>
+			Microsoft Graph · developerro
+		</title>
+		<!-- Social Metas -->
+		<meta name="description" content="Toda buena pel&#237;cula adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al prin..." />
+		<meta property="og:title" content="Microsoft Graph" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="https://www.developerro.com/2019/04/02/microsoft-graph" />
+		<meta property="og:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta property="og:description" content="Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al prin..." />
+		<meta property="og:site_name" content="developerro" />
+		<meta property="og:locale" content="es_es" />
+		<meta property="article:modified_time" content="2019-04-02 07:40:40Z" />
+		<meta property="article:published_time" content="2019-04-02 07:40:40Z" />
+		<meta property="article:author" content="Fernando Escolar" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/24/azure-functions-net-5" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/10/efcore-vs-records" />
+		<meta property="og:see_also" content="https://www.developerro.com/2021/03/03/chorra-tip-1-wcd-command" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@fernandoescolar" />
+		<meta name="twitter:creator" content="@fernandoescolar" />
+		<meta name="twitter:title" content="Microsoft Graph" />
+		<meta name="twitter:description" content="Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al prin..." />
+		<meta name="twitter:image" content="https://www.developerro.com/assets/apple-touch-icon-144-precomposed.png" />
+		<meta name="twitter:url" content="https://www.developerro.com/2019/04/02/microsoft-graph" />
+		<meta name="description" content="Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al prin..." />
+		<link rel="alternate" type="application/atom+xml" title="Developerro" href="/atom.xml" />
+		<link rel="canonical" href="https://www.developerro.com/2019/04/02/microsoft-graph" />
+		<!-- Icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144-precomposed.png" />
+		<link rel="shortcut icon" href="/assets/favicon.ico" />
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Developerro" href="/atom.xml" />
+		<!-- Styles -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css" />
+		<link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css" />
+		<link rel="stylesheet" href="/assets/main.css" />
+		<link rel="stylesheet" href="/assets/syntax.css" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163390000-1">
+		</script>
+		<script>
+			
+			    function activateGoogleAnalytics() {
+			        window.dataLayer = window.dataLayer || [];
+			        function gtag(){dataLayer.push(arguments);}
+			        gtag('js', new Date());
+			        gtag('config', 'UA-163390000-1');
+			    }
+			
+		</script>
+	</head>
+	<body>
+		<nav>
+			<i id="hamburger">
+			</i> <a href="/">
+				<b>
+					d</b>eveloperro
+			</a>
+			<ul>
+				<li>
+					<a href="/posts">blog
+					</a>
+				</li>
+				<li>
+					<a href="/about">
+						acerca de
+					</a>
+				</li>
+				<li>
+					<a href="/archive">
+						archivo
+					</a>
+				</li>
+				<li>
+					<a href="/projects">
+						oss
+					</a>
+				</li>
+				<li>
+					<a href="/search">
+						buscar
+					</a>
+				</li>
+				<li>
+					<a href="/videos">
+						vídeos
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<header class="post">
+			<h1>
+				Microsoft Graph
+			</h1><small>02 abr. 2019 · 15 min. de lectura
+			</small>
+		</header>
+		<article class="post">
+			<p>
+				Toda buena película adolescente de los 80, comienza con un pelele al que todo el mundo margina. Este personaje esconde algo en su interior de lo que, al principio, solo se notan pequeños y casuales atisbos. Después de una gran aventura de autoconocimiento y superación personal, el protagonista consigue dominar este poder oculto y convertirse en un verdadero héroe
+				<!--break-->
+				. Esto es lo que le pasa a <del>Naruto
+				</del> Microsoft Graph, que es como Daniel Larusso.
+			</p>
+			<p>
+				Todos llegamos a esta API por lo que parece que promete, por esos atisbos de poder que nos dejan vislumbrar las demos que Microsoft nos presenta. Luego, cuando llega la hora de utilizarla a fondo, nos damos cuenta de sus problemas, de lo <em>crazy
+				</em> de algunas decisiones de su modelado. Entonces, la marginamos. Nos metemos con ella. Ya no la invitamos a nuestros meetups. Una vez superado este duro camino plagado de frustración, la aceptamos y nos damos cuenta de todas las posibilidades que nos aporta, llegando finalmente, a un idilio llano y sincero.
+			</p>
+			<p>
+				<a href="https://docs.microsoft.com/en-us/graph/">
+					Microsoft Graph
+				</a> es una API con un modelo de datos unificado para poder explotar todas las aplicaciones que forman parte de <em>Office 365
+				</em>, <em>Azure Active Directory
+				</em>, <em>Enterprise Mobility
+				</em>, <em>Windows 10
+				</em> y <em>Education
+				</em>. Está basada en <a href="https://www.odata.org">OData
+				</a> v4, aunque no todos los recursos tienen hoy en día las mismas capacidades. Y podemos encontrar toda la documentación de la versión 1.0 (y beta) <a href="https://docs.microsoft.com/en-us/graph/api/overview?toc=./ref/toc.json&amp;view=graph-rest-1.0">aquí
+				</a>.
+			</p>
+			<p>
+				Existe <a href="https://github.com/microsoftgraph?q=sdk">un SDK
+				</a> para, prácticamente, todos los lenguajes y plataformas de programación conocidas, que nos ayudará a autenticarnos y solicitar datos de esta API. No obstante, al ser OData una especificación por encima de REST, resulta simple utilizarla sin necesidad de usar el SDK.
+			</p>
+			<h2 id="app-registration">
+				App registration
+			</h2>
+			<p>
+				Lo primero que tenemos que saber para explotar Microsoft Graph es cómo conseguir acceso. Para ello tendremos que solicitar un <em>token
+				</em> a la API v2 del protocolo de autenticación de Azure Active Directory. Afortunadamente, esta API usa la especificación OIDC que se basa en OAuth 2.0. Así que este paso lo tenemos prácticamente superado. Lo único que tendremos que saber es que hay dos tipos de permisos dentro de Graph que podemos solicitar:
+			</p>
+			<ul>
+				<li>
+					<em>
+						Delegated
+					</em>: es un tipo de permiso que se obtiene al identificarse usando un usuario y una contraseña. De esta forma diremos que se delega un permiso sobre Graph a este usuario. Algunos privilegios específicos pueden exigir que este usuario sea Administrador.
+				</li>
+				<li>
+					<em>
+						Application
+					</em>: este es el tipo de permiso que tenemos que usar en una aplicación que no requiere de un usuario para que realice ninguna acción. Para estas aplicaciones se requiere que un administrador apruebe previamente el uso de estos permisos.
+				</li>
+			</ul>
+			<p>
+				Para configurar estos permisos tendremos que dirigirnos al <a href="https://portal.azure.com/">portal de Azure
+				</a> con una cuenta de administrador de nuestro <em>tenant
+				</em>. Ahí nos dirigiremos a la opción de menú "Azure Active Directory" dentro de esta opción a "App registrations (Preview)" y al botón de "New registration":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-1.png" alt="New app registration" />
+			</p>
+			<p>
+				Después le daremos un nombre al "App registration" comprobaremos que está marcada la opción de permitir solo accesos con cuentas de nuestro directorio y presionaremos el botón "Register":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-2.png" alt="New app registration" />
+			</p>
+			<p>
+				Al crearla, podremos observar en el panel de "Overview":
+			</p>
+			<ul>
+				<li>
+					Application (client) ID: que corresponde con el <code>client_id
+					</code>
+				</li>
+				<li>
+					Directory (tenant) ID: que se corresponde con el valor de <code>tenant_id
+					</code>
+				</li>
+			</ul>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-ids.png" alt="client_id y tenant_id" />
+			</p>
+			<p>
+				Una vez hemos creado el nuevo registro, podremos generar un nuevo secreto navegando a "Certificates & secrets" y presionando el botón de "New client secret":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-secret.png" alt="New secret" />
+			</p>
+			<p>
+				No olvides guardar en un lugar seguro el secreto que se acaba de generar, ya que coincidirá con el valor de <code>client_secret
+				</code>.
+			</p>
+			<p>
+				Ahora vamos a asignar los permisos del registro. Para ello iremos a "API permissions" y dentro de esta opción, pulsaremos "Add a permission":
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-3.png" alt="Add permissions" />
+			</p>
+			<p>
+				En el nuevo modal que se abrirá lo primero que tendremos que elegir es "Microsoft Graph", para poder elegir los permisos para esta API:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-4.png" alt="Select Microsoft Graph" />
+			</p>
+			<p>
+				Después nos dará a elegir entre "Delegated permissions" o "Application permissions". Deberemos elegir una en dependencia de cómo tenemos pensado obtener el <em>token
+				</em>. Después tendremos un listado de recursos y al desplegar alguno de ellos encontraremos los permisos específicos que podemos asignar:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-app-registration-5.png" alt="Search your permissions" />
+			</p>
+			<p>
+				Si queremos saber qué permisos deberíamos añadir, todo depende de la operación dentro de Microsoft Graph que queremos realizar. Afortunadamente, en la documentación, en <a href="https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0">la referencia a la API
+				</a>, podremos encontrar antes de cada acción, qué permisos son necesarios para ejecutarla:
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/microsoft-graph-permissions.png" alt="Microsoft Graph Reference: Action Permissions" />
+			</p>
+			<p>
+				Una vez hayamos añadido los que necesitemos, en el portal de Azure, podemos presionar en "Add Permissions". Y si queremos que ya cuenten con la validación del administrador, en la pantalla de "API permissions", presionaremos el botón de "Grant admin consent for [your directory]".
+			</p>
+			<p>
+				Ahora ya podremos conectar con Microsoft Graph y jugar con todas las posibilidades que nos ofrece. Para ello proponemos 4 formas:
+			</p>
+			<ul>
+				<li>
+					<a href="#a-mano">
+						A mano
+					</a>: esta es la que siempre me gusta más para enseñar. Aquí podréis ver cómo funciona internamente.
+				</li>
+				<li>
+					<a href="#usando-el-sdk">
+						Usando el SDK
+					</a>: esta es la más recomendada a día de hoy.
+				</li>
+				<li>
+					<a href="#el-futuro-del-sdk">
+						Usando el futuro SDK
+					</a>: esta es la que más me gusta, pero tienen que pulir aun ciertos aspectos.
+				</li>
+				<li>
+					<a href="#microsoft-graph-explorer">
+						Microsoft Graph Explorer
+					</a>: para que podamos probar nuestras llamadas en un contexto más directo y simple.
+				</li>
+			</ul>
+			<h2 id="a-mano">
+				A mano
+			</h2>
+			<h3 id="access-token">
+				Access token
+			</h3>
+			<p>
+				En un <a href="/2019/03/19/oauth-authentication-grant-types/">artículo anterior
+				</a> vimos las diferentes formas que podríamos usar para pedir este <em>token
+				</em> a un servicio que usara OAuth 2.0. En este caso vamos a usar el más simple, <a href="/2019/03/19/oauth-authentication-grant-types/#client-credentials">usando tan solo el <em>Grant Type</em> de "client_credentials"
+				</a>.
+			</p>
+			<p>
+				Para ello nos crearemos una clase donde almacenar la respuesta de una petición de <em>token
+				</em>:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class AuthResponse
+{
+    [JsonProperty("access_token")]
+    public string AccessToken { get; set; }
+
+    [JsonProperty("token_type")]
+    public string Type { get; set; }
+
+    [JsonProperty("expires_in")]
+    public int ExpiresIn { get; set; }
+
+    [JsonProperty("ext_expires_in")]
+    public int ExtExpiresIn { get; set; }
+
+    public AuthenticationHeaderValue AsHeader()
+    {
+        return new AuthenticationHeaderValue(Type, AccessToken);
+    }
+}
+				</code>
+</pre>
+			<p>
+				Y realizaremos la petición al servidor de la forma que indicábamos:
+			</p>
+			<pre class="language-csharp highlight">
+<code>async Task
+					<authresponse>
+						GetAuthAsync(string tenantId, string clientId, string clientSecret)
+{
+    var url = $"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token";
+    var data = new Dictionary
+						<string , string>
+							();
+    data.Add("grant_type", "client_credentials");
+    data.Add("client_id", clientId);
+    data.Add("client_secret", clientSecret);
+    data.Add("scope", "https://graph.microsoft.com/.default");
+
+    using (var client = new HttpClient())
+    {
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        var response =  await client.PostAsync(url, new FormUrlEncodedContent(data));
+        var json = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject
+							<authresponse>
+								(json);
+    }
+}
+							</authresponse>
+						</string></authresponse>
+				</code>
+</pre>
+			<p>
+				Donde los valores que le pasamos a la función coincidirán que aquellos que recogimos en el proceso de creación del "App registration" en el portal de Azure. Y el valor de <code>scope
+				</code> serán los permisos que queremos solicitar para llamar a la API (que tenemos que haber seleccionado y consentido en el "App registration"); o el valor "https://graph.microsoft.com/.default", que indicará que estamos solicitando todos los permisos que hemos seleccionado en el "App registration" y así evitar estar constantemente indicándolos.
+			</p>
+			<h3 id="llamando-a-microsoft-graph">
+				Llamando a Microsoft Graph
+			</h3>
+			<p>
+				Vamos a usar como ejemplo una llamada al <a href="https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0">listado de usuario
+				</a> basándonos en la propia referencia de Microsoft Graph. Para ello tendremos que tener al menos el permiso de aplicación de "User.Read.All" consentido en nuestro "App registration".
+			</p>
+			<p>
+				Una vez tenemos esto, tendremos que realizar una llamada al endpoint "https://graph.microsoft.com/v1.0/users" usando un <em>token
+				</em> válido y tendremos ese listado.
+			</p>
+			<p>
+				La respuesta de listados desde Microsoft Graph está envuelta en un objeto que nos indica cual es la siguiente página, así pues, crearemos una estructura compleja para mapear los resultados:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class GraphListResponse
+					<t>
+						{
+    [JsonProperty("@odata.context")]
+    public string Context { get; set; }
+    [JsonProperty("@odata.nextLink")]
+    public string NextLink { get; set; }
+    [JsonProperty("value")]
+    public IEnumerable
+						<t>
+							Value { get; set; }
+}
+						</t></t>
+				</code>
+</pre>
+			<p>
+				De un usuario nos interesaría en un principio el <code>id
+				</code>, el <code>displayName
+				</code>y el <code>mail
+				</code>, por lo que no vamos a crear más propiedades:
+			</p>
+			<pre class="language-csharp highlight">
+<code>class User
+{
+    [JsonProperty("id")]
+    public string Id { get; set; }
+    [JsonProperty("displayName")]
+    public string DisplayName { get; set; }
+    [JsonProperty("mail")]
+    public string Email { get; set; }
+}
+				</code>
+</pre>
+			<p>
+				Por lo que la llamada para listar todos los usuarios, podremos filtrar las propiedades a devolver añadiendo la propiedad <code>$select
+				</code> con el valor "id,displayName,mail", quedando el endpoint como: "https://graph.microsoft.com/v1.0/users?$select=id,displayName,mail":
+			</p>
+			<pre class="language-csharp highlight">
+<code>async Task
+					<ienumerable <user>
+						> GetUsersAsync(AuthResponse auth, string nextLink = null)
+{
+    var result = new List
+						<user>
+							();
+    var url = "https://graph.microsoft.com/v1.0/users?$select=id,displayName,mail";
+    using (var client = new HttpClient())
+    {
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        client.DefaultRequestHeaders.Authorization = auth.AsHeader();
+
+        GraphListResponse
+							<user>
+								res = null;
+        do {
+            var response = await client.GetAsync(url);
+            var json = await response.Content.ReadAsStringAsync();
+            res = JsonConvert.DeserializeObject
+								<graphlistresponse <user>
+									>(json);
+            if (res != null)
+            {
+                result.AddRange(res.Value);
+                url = res.NextLink;
+            }
+        } while (res != null && !string.IsNullOrEmpty(res.NextLink));
+    }
+
+    return result;
+}
+								</graphlistresponse>
+							</user>
+						</user></ienumerable>
+				</code>
+</pre>
+			<p>
+				Así pues, podríamos recoger e imprimir todos los usuarios por pantalla realizando una llamada para recoger el <em>token
+				</em> de acceso y otra para recoger los usuarios:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var auth = await Functions.GetAuthAsync(tenant_id, client_id, client_secret);
+var users = await Functions.GetUsersAsync(auth);
+
+Console.WriteLine("User List:");
+foreach(var user in users)
+{
+    Console.WriteLine($" - {user.DisplayName} ({user.Email})");
+}
+				</code>
+</pre>
+			<h2 id="usando-el-sdk">
+				Usando el SDK
+			</h2>
+			<p>
+				Si queremos usar el SDK para .Net que nos provee Microsoft, primero tendremos que instalar los paquetes de <code>Microsoft.Identity.Client
+				</code> y <code>Microsoft.Graph
+				</code>.
+			</p>
+			<p>
+				En un proyecto de dotnet core se puede realizar mediante consola:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet add MyProject.csproj package Microsoft.Identity.Client
+...
+$ dotnet add MyProject.csproj package Microsoft.Graph
+...
+				</code>
+</pre>
+			<p>
+				Y si estamos en Visual Studio, siempre podemos abrir el panel de "Package Manager Console":
+			</p>
+			<pre class="language-bash highlight">
+<code>> Install-Package Microsoft.Identity.Client
+...
+> Install-Package Microsoft.Graph
+...
+				</code>
+</pre>
+			<p>
+				El código es bastante parecido. En un principio usamos los artefactos de <code>Microsoft.Identity.Client
+				</code> para poder recoger un <em>token
+				</em> para acceder a Microsoft Graph. Después declaramos un cliente de Graph que use el proveedor de <em>tokens
+				</em> que hemos generado. Finalmente realizamos la llamada a la API y escribimos los resultados por pantalla:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var clientCredential = new ClientCredential(clientSecret);
+var authClient = new ConfidentialClientApplication(
+        clientId,
+        $"https://login.microsoftonline.com/{tenantId}/v2.0",
+        "urn:ietf:wg:oauth:2.0:oob",
+        clientCredential,
+        new TokenCache(),
+        new TokenCache());
+var authProvider = new DelegateAuthenticationProvider(async request =>
+    {
+        var authResult = await authClient.AcquireTokenForClientAsync(new [] { "https://graph.microsoft.com/.default" });
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+    });
+var graphServiceClient = new GraphServiceClient("https://graph.microsoft.com/v1.0", authProvider);
+IGraphServiceUsersCollectionPage page = null;
+
+Console.WriteLine("User List:");
+do {
+    var task = page != null ? page.NextPageRequest : graphServiceClient.Users.Request().Select(u => new { u.Id, u.DisplayName, u.Mail });
+    page = await task.GetAsync();
+    foreach(var user in page)
+    {
+        Console.WriteLine($" - {user.DisplayName} ({user.Mail})");
+    }
+} while(page != null && page.NextPageRequest != null);
+				</code>
+</pre>
+			<h2 id="el-futuro-del-sdk">
+				El futuro del SDK
+			</h2>
+			<p>
+				Como el código actual para obtener <em>tokens
+				</em> puede resultar un poco confuso, se está desarrollando un paquete que está actualmente en fase de pruebas (y falla como una escopeta de feria), donde la idea es simplificar esa parte. El paquete en cuestión se llama <code>Microsoft.Graph.Auth
+				</code>:
+			</p>
+			<pre class="language-bash highlight">
+<code>$ dotnet add MyProject.csproj package Microsoft.Graph
+...
+$ dotnet add MyProject.csproj package Microsoft.Graph.Auth
+...
+				</code>
+</pre>
+			<p>
+				o en Visual Studio:
+			</p>
+			<pre class="language-bash highlight">
+<code>> Install-Package Microsoft.Graph
+...
+> Install-Package Microsoft.Graph.Auth
+...
+				</code>
+</pre>
+			<p>
+				El código, que hoy en día no funciona, sería el siguiente:
+			</p>
+			<pre class="language-csharp highlight">
+<code>var clientCredential = new ClientCredential(clientSecret);
+var clientApplication = ClientCredentialProvider.CreateClientApplication(clientId, clientCredential, tenant: tenantId);
+var authenticationProvider = new ClientCredentialProvider(clientApplication);
+
+var graphServiceClient = new GraphServiceClient(authenticationProvider);
+IGraphServiceUsersCollectionPage page = null;
+
+Console.WriteLine("User List:");
+do {
+    var task = page != null ? page.NextPageRequest : graphServiceClient.Users.Request().Select(u => new { u.Id, u.DisplayName, u.Mail });
+    page = await task.GetAsync();
+    foreach(var user in page)
+    {
+        Console.WriteLine($" - {user.DisplayName} ({user.Mail})");
+    }
+} while(page != null && page.NextPageRequest != null);
+				</code>
+</pre>
+			<p>
+				Como podemos observar, quedaría mucho mejor expuesta la obtención del token, simplificando mucho el código anterior.
+			</p>
+			<h2 id="microsoft-graph-explorer">
+				Microsoft Graph Explorer
+			</h2>
+			<p>
+				Si queréis conocer bien Microsoft Graph (y así entender un poco mejor lo que significa la palabra frustración), siempre podéis usar una herramienta que Microsoft nos ofrece para que, junto con la documentación, podamos explorar y entender la potencia interior oculta en esta API.
+			</p>
+			<p>
+				Es muy sencillo de utilizar:
+			</p>
+			<ul>
+				<li>
+					Vamos a la página web de Microsoft Graph Explorer (<a href="https://developer.microsoft.com/en-us/graph/graph-explorer">https://developer.microsoft.com/en-us/graph/graph-explorer
+					</a>)
+				</li>
+				<li>
+					Hacemos login y nos asignamos permisos usando el panel de la izquierda.
+				</li>
+			</ul>
+			<p>
+				Es un funcionamiento de petición/respuesta de HTTP, pero si abrimos unas cuantas ventanas, podremos realizar operaciones más complejas y navegar en los oscuros y desconocidos fondos que ahí se ocultan.
+			</p>
+			<h2 id="conclusiones">
+				Conclusiones
+			</h2>
+			<p>
+				Hoy hemos mostrado como utilizar Microsoft Graph, a partir de aquí, si seguís profundizando en el tema, ya no es mi culpa.
+			</p>
+			<p>
+				<img src="/assets/uploads/2019/04/homer-fadeoff.gif" alt="Homer se esconde entre los matorrales" />
+			</p>
+		</article>
+		<section id="share">
+			<a href="https://twitter.com/intent/tweet?text=Microsoft Graph&url=https://www.developerro.com/2019/04/02/microsoft-graph" rel="nofollow" target="_blank" title="Share on Twitter">
+				<i class="fab fa-twitter">
+				</i>
+			</a> <a href="https://facebook.com/sharer.php?u=https://www.developerro.com/2019/04/02/microsoft-graph" rel="nofollow" target="_blank" title="Share on Facebook">
+				<i class="fab fa-facebook"></i>
+			</a> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.developerro.com/2019/04/02/microsoft-graph" rel="nofollow" target="_blank" title="Share on Linkedlin">
+				<i class="fab fa-linkedin"></i>
+			</a> <a href="http://www.reddit.com/submit?url=https://www.developerro.com/2019/04/02/microsoft-graph" rel="nofollow" target="_blank" title="Share on Reddit">
+				<i class="fab fa-reddit"></i>
+			</a> <a href="https://www.buymeacoffee.com/fernandoescolar" rel="nofollow" target="_blank" title="Buy me a beer">
+				<i class="fa fa-beer"></i> buy me a beer
+			</a>
+		</section>
+		<section id="related">
+			<h2>
+				Relacionado (o no)
+			</h2>
+			<ul>
+				<li>
+					<a href="/2019/04/09/microsoft-graph-webhooks">
+						Microsoft Graph: Webhooks
+					</a> <small>09 abr. 2019
+					</small>
+				</li>
+				<li>
+					<a href="/2021/03/24/azure-functions-net-5">
+						Azure Functions con .NET 5
+					</a> <small>24 mar. 2021
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/10/19/workshop-azure">
+						Workshop Azure 100M
+					</a> <small>19 oct. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/video/2020/09/10/advanced-azure-webapps">
+						The Hitchhiker's Guide to Azure WebApps
+					</a> <small>10 sept. 2020
+					</small>
+				</li>
+				<li>
+					<a href="/2020/08/26/azure-webapps-tips-n-tricks">
+						Azure WebApps Tips & Tricks
+					</a> <small>26 ago. 2020
+					</small>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<ul>
+				<li>
+					<a href="mailto:fer.escolar@gmail.com" target="_blank">
+						<i class="far fa-envelope">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/fernandoescolar" target="_blank">
+						<i class="fab fa-twitter">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/fernandoescolar" target="_blank">
+						<i class="fab fa-linkedin">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/fernandoescolar" target="_blank">
+						<i class="fab fa-github">
+						</i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.buymeacoffee.com/fernandoescolar" target="_blank">
+						<i class="fa fa-beer">
+						</i>
+					</a>
+				</li>
+			</ul><a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+				<img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+			</a>
+		</footer>
+		<dialog id="cookie-notice">
+			Nos gustaría usar cookies de terceros para hacer este sitio mejor. <a id="cookie-notice-accept">vale
+			</a>
+		</dialog>
+		<script src="/assets/scripts.js">
+		</script>
+	</body>
+</html>
