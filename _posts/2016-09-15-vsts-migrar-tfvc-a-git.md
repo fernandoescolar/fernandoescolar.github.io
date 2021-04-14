@@ -2,7 +2,7 @@
 ID: 15091600
 title: 'VSTS: Migrar TFVC a Git'
 author: fernandoescolar
-post_date: {}
+post_date: 2016-09-15 00:00:00
 layout: post
 tags: azure devops git
 ---

@@ -8,7 +8,7 @@
       "tags"     : "{{ post.tags | join: ', ' }}",
       "url"      : "{{ post.url }}",
       "date"     : "{{ post.date }}",
-      "content"  : {{ post.content | strip_html | escape  | strip_newlines | remove_chars | jsonify  }}
+      "content"  : "{{ post.content | strip_html | strip_newlines | url_decode | remove_chars }}"
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

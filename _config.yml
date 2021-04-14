@@ -34,6 +34,7 @@ author:
 paginate:         5
 paginate_path:    'posts/page:num'
 
+excerpt_separator: '<!--break-->'
 version:          2.1.0
 
 github:

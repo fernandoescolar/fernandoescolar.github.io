@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Blog
+paginate: 5
 background: '/assets/uploads/bg/blog.jpg'
 ---
 
@@ -15,7 +16,7 @@ background: '/assets/uploads/bg/blog.jpg'
     <h2>{{ post.title }}</h2>
   </a>
   <small>
-    {{ post.date | date_to_string }} &middot; {% include read_time.html content=post.content %}
+    {{ post.date | date_to_string }} {% if post.time_to_read %}&middot; {{ post.time_to_read }} min. de lectura {% endif %}
   </small>
   <p>
     {% if post.subtitle %}

@@ -2,7 +2,7 @@
 ID: 08091600
 title: Quiero mi propio NuGet
 author: fernandoescolar
-post_date: {}
+post_date: 2016-09-08 00:00:00
 layout: post
 published: true
 tags: nuget-server nuget dotnet

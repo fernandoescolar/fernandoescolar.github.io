@@ -385,7 +385,7 @@ $P$G
 
 Para descifrar estos símbolos podemos usar esta tabla:
 
-```text
+```
   $A   & (Ampersand)
   $B   | (pipe o tubería)
   $C   ( (paréntesis izquierdo)
@@ -458,7 +458,7 @@ notepad git-prompt.sh
 
 Ahora se abrirá la aplicación de `notepad` con el *shell script* de arranque por defecto. Lo importante es modificar el valor de la variable `PS1` que es la que contiene el *prompt*:
 
-```sh
+```bash
 ...
 PS1="$PS1"'\[\033[32m\]'       # change to green
 PS1="$PS1"'fer '               # fer

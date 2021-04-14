@@ -1,3 +1,6 @@
+---
+# Minimize
+---
 /* navbar opacity management */
 window.addEventListener('scroll', function(e) {
   if (window.scrollY > 100) {

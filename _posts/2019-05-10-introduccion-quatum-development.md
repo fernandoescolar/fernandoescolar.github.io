@@ -240,7 +240,7 @@ Partiremos de un número de iteraciones llamado `count` y de un estado de inicio
 
 Cuando terminemos las operaciones y antes de dejar de usar los _qubits_ que necesitemos, hay que dejarlos en estado `Zero`, si no, nos aparecerá el error de:
 
-```log
+```
 Microsoft.Quantum.Simulation.Simulators.Exceptions.ReleasedQubitsAreNotInZeroState: Released qubits are not in zero state.
 ```
 

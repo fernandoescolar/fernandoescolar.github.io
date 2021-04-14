@@ -66,7 +66,7 @@ Donde:
 
 Entonces el servidor de autorización solicita un usuario y un password vía un formulario web (autenticación). Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
 
-```text
+```
 http://exampledomain.com/
     ?code=examplecode
     &state=string_as_status
@@ -157,7 +157,7 @@ Donde:
 
 Entonces el servidor de autorización solicita un usuario y un password vía un formulario web. Al introducir datos correctos, el servidor nos redireccionará a la página que le pasamos en el parámetro `redirect_uri`:
 
-```text
+```
 http://exampledomain.com/
     ?code=examplecode
     &state=string_as_status
@@ -275,7 +275,7 @@ Donde:
 
 La respuesta de esta petición será una llamada a la URI que le pasamos en `redirect_uri`, con el siguiente formato:
 
-```text
+```
 http://exampledomain.com/
     #access_token=a_lot_of_characters_in_base_64
     &token_type=Bearer

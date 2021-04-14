@@ -131,7 +131,7 @@ La realidad detrás de este experimento es que no se ha transmitido ninguna info
 
 Podríamos aclarar (o complicar, no lo tengo claro) todo un poco más, usando un ejemplo con punteros de C++:
 
-```c++
+```cpp
 // esta es mi partícula
 int mine = 1;
 // esta es la tuya

@@ -2,7 +2,7 @@
 published: true
 ID: 820096
 author: fernandoescolar
-post_date: {}
+post_date: 2016-10-03 00:00:00
 layout: post
 title: 'VSTS: Package Management'
 tags: nuget-server nuget dotnet azure devops
