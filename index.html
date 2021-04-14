@@ -21,7 +21,7 @@ background: '/assets/uploads/bg/mydesktop.jpg'
           <h2>{{ post.title }}</h2>
 
           <small>
-            {{ post.date | date_to_string }} {% if post.time_to_read %}&middot; {{ post.time_to_read }} min. de lectura {% endif %}
+            {{ post.date | date_to_string }} &middot; {% include read_time.html content=post.content %}
           </small>
 
           <p>
@@ -55,11 +55,13 @@ background: '/assets/uploads/bg/mydesktop.jpg'
     {% endif %}
     {% endfor %}
     <li class="tags">
-      {% for t in site.tags_weight %}
-        {% if t.count > 0 %}
-        <a href="/tags#{{ t.tag }}"
-           style="font-size: {{ t.count | times: 4 | plus: 100  }}%">
-                {{ t.tag | replace:'-', ' ' }}
+      {% assign tags = site.tags | sort %}
+      {% for tag in tags %}
+        {% assign count = tag | last | size %}
+        {% if count > 0 %}
+        <a href="/tags#{{ tag | first | slugify }}"
+           style="font-size: {{ tag | last | size | times: 4 | plus: 100  }}%">
+                {{ tag[0] | replace:'-', ' ' }}
         </a>
         {% endif %}
       {% endfor %}
@@ -68,16 +70,15 @@ background: '/assets/uploads/bg/mydesktop.jpg'
       <h2>Suscríbete</h2>
       <p>
         Recibe los artículos nuevos en tu cuenta de correo <b>¡Suscríbete!</b>:
+        <form id="subscribe" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow">
+          <fieldset>
+            <input type="text" name="email" placeholder="you@domain.com" />
+            <button type="submit">Subscribirse</button>
+          </fieldset>
+          <input type="hidden" value="Developerro" name="uri" />
+          <input type="hidden" name="loc" value="es_ES" />
+        </form>
       </p>
-      <form id="subscribe" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow">
-        <fieldset>
-          <input type="text" name="email" placeholder="you@domain.com" />
-          <button type="submit">Subscribirse</button>
-        </fieldset>
-        <input type="hidden" value="Developerro" name="uri" />
-        <input type="hidden" name="loc" value="es_ES" />
-      </form>
-      <p></p>
     </li>
   </ul>
 </main>
