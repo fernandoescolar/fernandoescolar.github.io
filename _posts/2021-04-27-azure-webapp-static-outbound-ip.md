@@ -166,6 +166,6 @@ Si en la primera ejecución no coincide os invito a intentarlo un par de minutos
 
 Os propondré un juego: buscad en google "azure webapp static outbound ip".
 
-¿Veis toda esa gente preguntando como se puede hacer? Solo puedo decir que:
+¿Veis toda esa gente preguntando como se puede hacer? Solo puedo decir:
 
-Ya era hora...
+Por fin...
