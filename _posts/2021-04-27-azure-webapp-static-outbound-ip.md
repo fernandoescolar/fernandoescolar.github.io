@@ -9,7 +9,7 @@ tags: Azure webapp ip vnet nat gateway
 background: '/assets/uploads/bg/street.jpg'
 ---
 
-Uno de los grandes inconvenientes de usar Azure Web Apps ha sido el de configurar una IP estática de salida. Simplemente no se podía. Ha habido soluciones de los más variopintas: usar un ASE, montar una máquina virtual tipo gateway, Application Gateway, proxies... Pero ninguna de ellas se ha visto como una solución verdaderamente aceptable, hasta hoy<!--break-->.
+Uno de los grandes inconvenientes de usar Azure Web Apps ha sido el de configurar una IP estática de salida. Simplemente no se podía. Ha habido soluciones de lo más variopintas: usar un ASE, montar una máquina virtual tipo pasarela, Application Gateway, proxies... Pero ninguna de ellas se ha visto como una solución verdaderamente aceptable, hasta hoy<!--break-->.
 
 Seguro que si integras con servicios de terceros o que si estás implementando comunicaciones seguras te habrán preguntado por las IP de salida. La intención es crear un listado de posibles direcciones IP de consumo de una API y así protegerla de conexiones no deseadas. El problema de Azure App Services y concretamente las Web Apps, es que teníamos un rango de IPs que podían cambiar según el tamaño de la instancia o cómo tuviera el día el administrador del datacenter.
 
