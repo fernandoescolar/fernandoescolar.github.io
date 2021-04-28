@@ -13,7 +13,7 @@ Todos conocemos sistemas como *OneDrive*, *Dropbox*, *iCloud*, *Google Drive*, *
 
 Ser un geek implica no seguir el camino fácil. No dejarse seducir por el lado oscuro, el camino fácil y sencillo de conseguir las cosas. No dejarse engatusar por las atractivas ofertas de miles de millones de trillones de "*baits*" por cuatro con ochenta y nueve "*lereles*". Ser un geek significa que, si te puedes montar un sistema propio, por laborioso que esto pueda resultar y a pesar del desmesurado desembolso económico que pueda suponer, debes hacerlo. Y este artículo va por ahí.
 
-Una de las aplicaciones más conocidas para servir archivos en internet es [ownCloud](https://owncloud.com/). Este software cuenta con una extensa comunidad, un fork ([nextcloud](https://nextcloud.com/)) super conocido y unas aplicaciones móviles nativas que funcionan de maravilla (al menos la de *iPhone*). Me diréis que está escrito en *PHP*, y os responderé que nadie es perfecto.
+Una de las aplicaciones más conocidas para servir archivos en internet es [ownCloud](https://owncloud.com/). Este software cuenta con una extensa comunidad, un fork super conocido  ([nextcloud](https://nextcloud.com/)) y unas aplicaciones móviles nativas que funcionan de maravilla (al menos la de *iPhone*). Me diréis que está escrito en *PHP*, y os responderé que nadie es perfecto.
 
 El problema de montar solo este software es que no garantiza backups, sistemas de recuperación ni réplicas de datos. Pero hay un servicio en Azure que sí que nos lo garantiza: Azure Blob Storage. Así que vamos a montar ownCloud con almacenamiento en Azure Blob Storage.
 
@@ -23,11 +23,11 @@ El problema de montar solo este software es que no garantiza backups, sistemas d
 
 Como ya imaginareis, ownCloud se instala en un LAMP: **L**inux, **A**pache, **M**ySQL y **P**HP. Que novedad que una aplicación web Open Source se deba instalar ahí. Jamás podría haberlo imaginado...
 
-Bueno, lo primero será instalar esto. Para ello usaremos una cuenta de *root* directamente sobre una imagen de Debian 10 que tengo en una máquina virtual. Pero si no eres tan buen geek como yo puedes usar un Ubuntu o cualquier otra distribución Debian-based con la que te sientas cómodo.
+Bueno, lo primero será instalar esto. Para ello usaremos una cuenta de *root* directamente sobre una imagen de Debian 10 que tengo en una máquina virtual. Pero si no eres tan buen geek, puedes usar un Ubuntu o cualquier otra distribución Debian-based con la que te sientas cómodo.
 
 Si no usas Debian como distro de cabecera de Linux, te recomiendo que pagues uno de los servicios que he enumerado al principio y dejes de perder el tiempo intentando montar tu propia nube. Tus amigos ya saben que has vendido tu alma a Apple, Google o Microsoft. No tienes por qué intentar aparentar otra cosa...
 
-Abriremos un terminal como *root* en Linux y primero, actualizaremos el sistema:
+Abriremos un terminal como *root* en Linux y actualizaremos el sistema:
 
 ```bash
 apt update && apt upgrade
