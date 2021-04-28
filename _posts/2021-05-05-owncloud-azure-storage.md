@@ -11,17 +11,23 @@ background: '/assets/uploads/bg/warehouse.jpg'
 
 Todos conocemos sistemas como *OneDrive*, *Dropbox*, *iCloud*, *Google Drive*, *Cloud Drive* o *Mega*. Unos pocos de los muchos servicios de almacenamiento de archivos en la nube. Lo cierto es que además son bastante económicos. Debe ser gracias a la fuerte competencia. Pero ¿para qué usar un servicio de terceros si puedo montar el mío propio?<!--break-->
 
-La mejor opción es usar uno de estos servicios que ya existen. Pero ser un geek implica que no vas a seguir el camino fácil. Ser un geek significa que, si te puedes montar un sistema propio, debes hacerlo. Aunque al final termines pagando dos o tres de estos servicios. Y este artículo va por ahí.
+Ser un geek implica no seguir el camino fácil. No dejarse seducir por el lado oscuro, el camino fácil y sencillo de conseguir las cosas. No dejarse engatusar por las atractivas ofertas de miles de millones de trillones de "*baits*" por cuatro con ochenta y nueve "*lereles*". Ser un geek significa que, si te puedes montar un sistema propio, por laborioso que esto pueda resultar y a pesar del desmesurado desembolso económico que pueda suponer, debes hacerlo. Y este artículo va por ahí.
 
-Uno de los aplicativos para servir archivos en internet más conocidos es [ownCloud](https://owncloud.com/). Este software cuenta con una extensa comunidad, un fork ([nextcloud](https://nextcloud.com/)) super conocido y unas aplicaciones móviles nativas que funcionan de maravilla (al menos la de *iPhone*). Me diréis que está escrito en *PHP*, y es que algo malo tenía que tener.
+Una de las aplicaciones más conocidas para servir archivos en internet es [ownCloud](https://owncloud.com/). Este software cuenta con una extensa comunidad, un fork ([nextcloud](https://nextcloud.com/)) super conocido y unas aplicaciones móviles nativas que funcionan de maravilla (al menos la de *iPhone*). Me diréis que está escrito en *PHP*, y os responderé que nadie es perfecto.
 
-El problema de montar solo este software es que no garantiza backups, sistemas de recuperación ni réplicas de datos. Pero hay un servicio en Azure que sí que nos lo garantiza: Azure Blob Storage. Vamos a montar ownCloud con almacenamiento en Azure Blob Storage.
+El problema de montar solo este software es que no garantiza backups, sistemas de recuperación ni réplicas de datos. Pero hay un servicio en Azure que sí que nos lo garantiza: Azure Blob Storage. Así que vamos a montar ownCloud con almacenamiento en Azure Blob Storage.
+
+¿Por qué? Porque podemos. Porque somos geeks de los de verdad. No unos meros farsantes con una pegatina de Batman en 8 bits en la tapa del portátil.
 
 ## Instalar LAMP
 
-Como ya imaginareis, ownCloud se instala en un LAMP: **L**inux, **A**pache, **M**ySQL y **P**HP. Así que lo primero será instalar esto. Para ello usaremos una cuenta de *root* directamente sobre una imagen de Debian 10 que tengo en una máquina virtual.
+Como ya imaginareis, ownCloud se instala en un LAMP: **L**inux, **A**pache, **M**ySQL y **P**HP. Que novedad que una aplicación web Open Source se deba instalar ahí. Jamás podría haberlo imaginado...
 
-Primero actualizaremos el sistema:
+Bueno, lo primero será instalar esto. Para ello usaremos una cuenta de *root* directamente sobre una imagen de Debian 10 que tengo en una máquina virtual. Pero si no eres tan buen geek como yo puedes usar un Ubuntu o cualquier otra distribución Debian-based con la que te sientas cómodo.
+
+Si no usas Debian como distro de cabecera de Linux, te recomiendo que pagues uno de los servicios que he enumerado al principio y dejes de perder el tiempo intentando montar tu propia nube. Tus amigos ya saben que has vendido tu alma a Apple, Google o Microsoft. No tienes por qué intentar aparentar otra cosa...
+
+Abriremos un terminal como *root* en Linux y primero, actualizaremos el sistema:
 
 ```bash
 apt update && apt upgrade
@@ -55,7 +61,7 @@ Crearemos una base de datos:
 CREATE DATABASE owncloud;
 ```
 
-Crearemos un usuario para usar desde ownCloud. Acuérdate de reemplazar `[tu_contraseña]` por un password de tu cosecha:
+Crearemos un usuario para usar desde ownCloud. Acuérdate de reemplazar `[tu_contraseña]` por un password de tu propia cosecha. Ese es el que uso yo y no te interesará usarlo por tu propia seguridad:
 
 ```sql
 GRANT ALL ON owncloud.* TO 'owncloud_user'@'localhost' IDENTIFIED BY '[tu_contraseña]';
@@ -125,13 +131,13 @@ a2enmod rewrite mime unique_id
 systemctl restart apache2
 ```
 
-Aquí ya tendremos nuestro sitio funcionando, pero antes de hacer nada, te recomendamos que instales el acceso a Azure Blob Storage.
+Y aquí ya tendremos nuestro sitio funcionando. Pero antes de que te aventures a visitar la aplicación web que acabas de instalar, te recomendamos que configures el acceso a Azure Blob Storage.
 
 ## Montar blob storage
 
-OwnCloud a día de hoy no tiene soporte para Azure Blob Storage, por lo que vamos a usar *[blobfuse](https://github.com/Azure/azure-storage-fuse)*. Esto es un sistema basado FUSE que nos permite montar un contenedor de Azure Blob Storage como si fuera un disco cualquiera en linux.
+OwnCloud hoy en día no tiene soporte para Azure Blob Storage, por lo que vamos a usar *[blobfuse](https://github.com/Azure/azure-storage-fuse)*. Esto es un sistema basado FUSE que nos permite montar un contenedor de Azure Blob Storage como si fuera un disco cualquiera en Linux.
 
-Vamos a añadir los paquetes de Microsoft para linux:
+Vamos a añadir los paquetes de Microsoft para Linux:
 
 ```bash
 wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb
@@ -162,13 +168,15 @@ accountKey clave_de_acceso
 containerName nombre_contenedor
 ```
 
+Huelga decir que `nombre_cuenta`, `clave_de_acceso` y `nombre_contenedor` son valores que has recogido del portal de Azure para tu Azure Storage Account.
+
 Ahora, para montar una unidad de Azure en nuestro disco crearemos un script de inicio:
 
 ```bash
 nano /etc/rc.local
 ```
 
-Aquí usaremos el usuario de web de apache y montaremos el blob en la carpeta que usa ownCloud para almacenar los archivos:
+Aquí usaremos el usuario de web que usa apache para servir las páginas (*www-data*) y montaremos el Blob Storage en la carpeta que usa ownCloud para almacenar los archivos:
 
 ```bash
 #!/bin/sh -e
@@ -176,27 +184,27 @@ Aquí usaremos el usuario de web de apache y montaremos el blob en la carpeta qu
 sudo -u www-data blobfuse /var/www/owncloud/data --tmp-path=/tmp -o uid=33 -o gid=33  -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 --config-file=/blobfuse/blob.cfg  --log-level=LOG_DEBUG --file-cache-timeout-in-seconds=120
 ```
 
-Si por casualidad has llegado a entrar en ownCloud o ya lo tenías configurado antes de configurar *blobfuse*, ahora es el momento de hacer una copia de los datos existentes:
+Si has ignorado nuestras recomendaciones y has entrado y configurado ownCloud, antes de seguir con  *blobfuse* deberías realizar una copia de seguridad:
 
 ```bash
 cp -r /var/www/owncloud/data /var/www/owncloud/data.old
 ```
 
-Limpiaremos el contenido de la carpeta para que se pueda montar:
+Entonces, limpiaremos el contenido de la carpeta para que se pueda montar:
 
 ```bash
 rm  /var/www/owncloud/data/*
 rm -rf /var/www/owncloud/data/.*
 ```
 
-Ahora cambiaremos los permisos del script de arranque y lo ejecutaremos:
+Ahora cambiaremos los permisos del script de arranque que hemos creado y lo ejecutaremos:
 
 ```bash
 chmod +x /etc/rc.local
 /etc/rc.local
 ```
 
-Para finalizar podremos volver a copiar el contenido antiguo dentro de la carpeta de *blobfuse*, pero tendremos que usar el usuario *www-data* para ello:
+Para finalizar podremos volver a copiar el contenido antiguo dentro de la carpeta de *blobfuse*. Pero esta vez tendremos que usar el usuario *www-data* para ello:
 
 ```bash
 sudo -u www-data cp -r /var/www/owncloud/data.old/* /var/www/owncloud/data
@@ -204,7 +212,7 @@ sudo -u www-data cp -r /var/www/owncloud/data.old/* /var/www/owncloud/data
 
 ## Configurando ownCloud
 
-Ha llegado el momento de abrir un navegador y dirigirnos a nuestro servidor, o bien a "localhost" si estamos trabajando en él. Al abrir la página nos encontraremos un formulario el que se nos pedirá:
+Por fin habrá llegado el momento de abrir un navegador y dirigirnos a nuestro servidor, o bien a "localhost", si estamos trabajando desde él. Al abrir la página nos encontraremos un formulario el que se nos pedirá:
 - Crear un usuario y una contraseña.
 - Elegir la carpeta de datos: `/var/www/owncloud/data`.
 - Configurar la conexión con la base de datos usando las credenciales: `owncloud_user` con la contraseña que introdujimos y apuntando a `localhost`.
@@ -215,9 +223,9 @@ Para finalizar presionaremos "Finish setup" y ya podremos empezar a manejar nues
 
 ## Usar Azure Files
 
-Si usar *blobfuse* te parece mucho lío o si, simplemente, quieres usar también el servicio de Azure Files de tu cuenta de almacenamiento siempre puedes usar el protocolo de compartir archivos de Windows *SMB* (**S**erver **M**essage **B**lock).
+Si usar *blobfuse* te parece mucho lío o si, simplemente, quieres usar también el servicio de Azure Files de tu cuenta de almacenamiento, siempre puedes usar el protocolo de compartir archivos de Windows: *SMB* (**S**erver **M**essage **B**lock).
 
-Para ello instalaremos el cliente de linux:
+Para ello instalaremos el cliente de Linux:
 
 ```bash
 apt install smbclient
@@ -235,10 +243,14 @@ En el formulario tendremos que añadir:
 - Service Account: nombre_cuenta
 - Service Account Password: clave_de_acceso
 
-Y al aceptar tendremos una carpeta en todas las cuentas de ownCloud que almacenará los datos en nuestra cuenta de Azure Files.
+Y al aceptar tendremos una carpeta en todas las cuentas de ownCloud que almacenará los datos en nuestro contendor de Azure Files.
 
 ## Conclusiones
 
-Montar cosas es super divertido e integrar servicios de Azure con linux y software libre, más. Pero no tengo claro que merezca la pena.
+Montar cosas es super divertido e integrar servicios de Azure con Linux y software libre, más. Pero no tengo claro que merezca la pena.
 
-Si de todas formas quieres crear tu propia nube que almacene datos en Azure Storage Account, has de saber que deberías crear un sitio web con SSL y quizá merezca la pena montar una VPN para poder acceder. Ten en cuenta que vas a almacenar tus datos ahí.
+Si de todas formas quieres crear tu propia nube que almacene datos en Azure Storage Account, has de saber que deberías crear un sitio web con SSL y quizá merezca la pena montar algún sistema adicional de seguridad como 2FA o un firewall. Ten en cuenta que vas a almacenar tus datos ahí. Tu verás cómo de expuestos quieres que se encuentren.
+
+Al final todo esto puede costar mucho dinero. Y quizá sea más barato poner una Raspberry Pi con un disco duro antiguo (pero bueno) y hacer unos apaños en el router de tu casa configurando una VPN.
+
+O quizá sea más sencillo pagar unos pocos euros al mes por uno de los servicios que citábamos al principio...
