@@ -464,6 +464,16 @@ Server: Kestrel
 Content-Length: 0
 ```
 
+Standard D2s v3 (2 vcpus, 8 GiB memory)
+
+```bash
+BenchmarkDotNet=v0.12.1, OS=ubuntu 20.10
+Intel Xeon CPU E5-2673 v4 2.30GHz, 1 CPU, 2 logical cores and 1 physical core
+.NET Core SDK=5.0.202
+  [Host]     : .NET Core 5.0.5 (CoreCLR 5.0.521.16609, CoreFX 5.0.521.16609), X64 RyuJIT
+  DefaultJob : .NET Core 5.0.5 (CoreCLR 5.0.521.16609, CoreFX 5.0.521.16609), X64 RyuJIT
+```
+
 a
 
 | Tool              | Method   |     Mean |   %99.9 | Ratio | Allocated |
