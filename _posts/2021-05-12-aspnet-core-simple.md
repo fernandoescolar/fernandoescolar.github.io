@@ -5,7 +5,7 @@ title: 'Asp.Net Core: Routing Records'
 author: fernandoescolar
 post_date: 2021-05-12 01:05:31
 layout: post
-tags: aspnet net5 dotnet
+tags: aspnet net5 dotnet routing
 background: '/assets/uploads/bg/fast.jpg'
 ---
 
