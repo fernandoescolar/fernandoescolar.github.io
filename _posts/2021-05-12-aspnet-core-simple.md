@@ -539,7 +539,7 @@ Y hasta aquí todo correcto.
 
 Hemos realizado una API explicita, con muy poco código, muy sencilla y fácil de seguir para cualquier programador. Y al haber dejado de lado MVC, es posible que hayamos rebajado los tiempos de ejecución. MVC añade una capa de *middlewares* pesados que resuelven los *binders* de modelos y estados...
 
-Así que decidimos comprobar esta supuesta mejora. Para ello nos gastamos unos 0.86 € en una máquina virtual en Azure durante una hora. Un Ubuntu 20.10 de tamaño D2v3. O lo que es lo mismo: 2 vcpus y 8 gb de memoria.
+Así que decidimos comprobar esta supuesta mejora. Para ello nos gastamos unos 0.085 € en una máquina virtual en Azure durante una hora. Un Ubuntu 20.10 de tamaño D2v3. O lo que es lo mismo: 2 vcpus y 8 gb de memoria.
 
 Con la ayuda de `BenchmarkDotnet` comprobamos la API escrita en MVC y el mismo código en base a `RouteRecord`.
 
