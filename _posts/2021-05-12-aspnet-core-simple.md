@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202105121
-title: 'Asp.Net Core: Routing Records'
+title: 'Simple Asp.Net Core'
 author: fernandoescolar
 post_date: 2021-05-12 01:05:31
 layout: post
