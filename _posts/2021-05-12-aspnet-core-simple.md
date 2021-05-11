@@ -127,7 +127,7 @@ app.get('/todos', (req, res) => {
 });
 ```
 
-Este código se entiende muy bien. No hace falta tener un conocimiento especial de la plataforma para saber que se carga un listado de `todos`. Si este listado está vacío devuelve `204`y si no, devuelve el propio listado en formato *json*.
+Este código se entiende muy bien. No hace falta tener un conocimiento especial de la plataforma para saber que se carga un listado de `todos`. Si este listado está vacío devuelve `204` y si no, devuelve el propio listado en formato *json*.
 
 Me gusta mucho este formato. Es explícito porque expone el comportamiento de nuestra API sin ocultar ningún tipo de información. Además, es muy poco código. En javascript puede ser una función suelta dentro de un archivo. Podríamos crear uno por ruta y esto nos ayudaría a organizar nuestro código de una forma intuitiva.
 
