@@ -1,9 +1,9 @@
 ---
 published: true
 ID: 202105121
-title: 'Simple Asp.Net Core'
+title: 'Asp.Net Core: Routing Records'
 author: fernandoescolar
-post_date: 2021-05-12 01:05:31
+post_date: 2021-05-26 01:05:31
 layout: post
 tags: aspnet net5 dotnet routing
 background: '/assets/uploads/bg/fast.jpg'
@@ -131,7 +131,7 @@ Este código se entiende muy bien. No hace falta tener un conocimiento especial 
 
 Me gusta mucho este formato. Es explícito porque expone el comportamiento de nuestra API sin ocultar ningún tipo de información. Además, es muy poco código. En javascript puede ser una función suelta dentro de un archivo. Podríamos crear uno por ruta y esto nos ayudaría a organizar nuestro código de una forma intuitiva.
 
-Si intentásemos traducir esto a C#, se podría parecer a esto:
+Si intentásemos traducir esto a C# tendríamos, se podría parecer a esto:
 
 ```csharp
 public class ReadTodos : RouteClass
