@@ -39,4 +39,4 @@ version:          2.1.0
 github:
   repo:           https://github.com/fernandoescolar
 
-future:           true
+future:           false
