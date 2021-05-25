@@ -39,6 +39,8 @@ Rust es un proyecto *Open Source* cuyo código fuente puedes encontrar en [su p�
 
 Existe una mascota (no oficial pero sí oficiosa) de Rust con forma de cangrejo que se llama "[Ferris](https://www.rustacean.net/)". Debido a esto, los programadores de este lenguaje se autodenominan "*rustaceans*" (que se podría traducir como "*rustáceos*"). Una mezcla de "rust" y "*crustacean*" (crustáceo).
 
+<img src="/assets/uploads/2021/05/ferris.png" alt="Ferris the crab" width="300" />
+
 Existe un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
 
 No me enrollo más:
