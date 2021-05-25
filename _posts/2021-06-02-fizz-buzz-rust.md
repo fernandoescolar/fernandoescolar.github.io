@@ -21,15 +21,21 @@ Podríamos definir los requisitos de nuestro ejercicio como:
 
 Y siguiendo las enseñanzas del [artículo anterior sobre Rust](/2021/05/26/rust-intro/), vamos a resolver esta *kata* usando este lenguaje. Atentos que vienen curvas ;).
 
+Lo primero será crear nuestro proyecto usando `cargo`:
+
 ```bash
 $ cargo new fizzbuzz
      Created binary (application) `fizzbuzz` package
 ```
 
+Después navegaremos a la carpeta y lanzaremos Visual Studio Code para programarlo:
+
 ```bash
 cd fizzbuzz
 code .
 ```
+
+En el archivo "src/main.rs" añadiremos nuestra función que hará las veces de convertidor de número a cadena de texto que toca:
 
 ```rust
 fn main() {
@@ -41,6 +47,7 @@ fn fizzbuzzer(number: u8) -> &str {
 }
 ```
 
+Y lanzaremos una *build* para ver que vamos bien:
 
 ```bash
 $ cargo build
@@ -65,11 +72,15 @@ error: could not compile `fizzbuzz`
 To learn more, run the command again with --verbose.
 ```
 
+¡Vaya sorpresa! No hemos hecho más que añadir una función casi vacía y ya nos ha dado errores. Parece ser que eso de que nuestra función devuelva un *slice* (`&str`) l eha hecho gracia a medias. Nos dice claramente que tenemos que ponerle un tiempo de vida de tipo `static`. Y de hecho, nos explica claramente cómo hacerlo. Así que vamos a hacerle caso al compilador:
+
 ```rust
 fn fizzbuzzer(number: u8) -> &'static str {
     ""
 }
 ```
+
+Y volvemos a lanzar el proceso de construcción:
 
 ```bash
 $ cargo build
@@ -94,6 +105,13 @@ warning: 2 warnings emitted
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.69s
 ```
+
+¡No me lo puedo creer! ¡Este compilador es exquisito!
+
+Ahora nos da dos alertas. Esto quiere decir que podemos seguir desarrollando, compilando y ejecutando nuestro código, sin problemas. No obstante, no me gustaría empezar esta primera *kata* con mal pie. Así que vamos a estudiar un poco estos problemas:
+
+- El primero habla sobre que esta función no se llama en ningún lado. Así que por defecto nos da este aviso. Con una búsqueda rápida por internet encontraremos que añadiendo una anotación (sí, Rust tiene anotaciones :D) así `#[allow(dead_code)]`, corregiremos este problema.
+- El segundo habla sobre que uno de los parámetros
 
 ```rust
 #[allow(dead_code)]
