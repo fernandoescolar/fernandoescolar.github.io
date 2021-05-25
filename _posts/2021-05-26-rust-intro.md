@@ -312,7 +312,7 @@ println!("top: {}, left: {}, deep: {}", left_edge, top_edge, deep_edge);
 
 <a id="modules"></a>Todo esto está genial, pero ir declarando estructuras, funciones y demás, por todos los lados, nos puede generar un pequeño dolor de cabeza a la hora de gestionar. Para prevenir estos problemas nos encontramos la palabra clave `mod`, que nos ayuda a definir módulos.
 
-Antes de hacer nada, hay que saber que todo lo que pongamos dentro de un módulo es privado. Por lo que si queremos exponerlo al exterior tendríamos que exponerlo usando la palabra clave `pub`. Aquí un ejemplo de un módulo:
+Antes de hacer nada, hay que saber que todo lo que pongamos dentro de un módulo es privado. Por lo que si queremos exponerlo al exterior tendríamos que usar la palabra clave `pub`. Aquí un ejemplo de un módulo:
 
 ```rust
 mod my_mod {
