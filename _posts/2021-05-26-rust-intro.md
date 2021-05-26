@@ -41,7 +41,7 @@ Existe una mascota (no oficial pero sí oficiosa) de Rust con forma de cangrejo 
 
 <img src="/assets/uploads/2021/05/ferris.png" alt="Ferris the crab" width="300" />
 
-Existe un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
+Hay un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
 
 No me enrollo más:
 
