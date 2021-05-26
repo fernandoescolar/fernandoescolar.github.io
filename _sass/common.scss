@@ -48,7 +48,7 @@ h2, h3, h4, h5, h6 {
     margin-top: 1rem;
 }
 
-[id]::before {
+[id]:not(i)::before {
     content: '';
     display: block;
     height:      75px;
