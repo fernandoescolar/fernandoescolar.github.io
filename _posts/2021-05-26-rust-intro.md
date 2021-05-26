@@ -31,7 +31,7 @@ Como en un futuro próximo querré volver a algún punto tratado en este artícu
 - [Módulos](#modules)
 - [Conclusiones](#conclusiones)
 
-<a id="intro"></a>El desarrollo de Rust arrancó en 2006. [Graydon Hoare](https://twitter.com/graydon_pub) empezó un proyecto personal al que llamó "Rust" utilizando como inspiración un [tipo de hongo](https://en.wikipedia.org/wiki/Rust_(fungus)). Años más tarde, en 2009, la empresa en la que trabajaba, que era ni más ni menos que ([Mozilla](https://www.mozilla.org/)), decidió patrocinar el proyecto. El momento en el que el proyecto es [anunciado oficialmente](http://venge.net/graydon/talks/intro-talk-2.pdf) es en 2010, durante un "Mozilla Summit". Por ahí por 2012 se publicó la primera versión *alpha*, y no fue hasta 2015 que no se lanzó [la primera *relase* estable](https://blog.rust-lang.org/2015/05/15/Rust-1.0.html), la 1.0.
+<a id="intro"></a>El desarrollo de Rust arrancó en 2006. Ese año, [Graydon Hoare](https://twitter.com/graydon_pub) empezó un proyecto personal al que llamó "Rust" tomando como fuente de inspiración un [tipo de hongo](https://en.wikipedia.org/wiki/Rust_(fungus)). Años más tarde, en 2009, la empresa en la que trabajaba, que era ni más ni menos que [Mozilla](https://www.mozilla.org/), decidió patrocinar el proyecto. El momento en el que el fue [anunciado oficialmente](http://venge.net/graydon/talks/intro-talk-2.pdf) es en 2010, durante un "Mozilla Summit". Por ahí por 2012 se publicó la primera versión *alpha*, y no fue hasta 2015 que se lanzó [la primera *relase* estable](https://blog.rust-lang.org/2015/05/15/Rust-1.0.html), la 1.0.
 
 A partir de ese momento, su popularidad y uso han ido en aumento hasta el punto en el que, por sus características y alto rendimiento, actualmente es uno de los lenguajes más usados para nuevos desarrollos, por encima, incluso, de lenguajes tradicionales como C o C++. Ha sido tan grande el aumento de su popularidad y tiene tan buen rendimiento que también es la plataforma más usada a la hora de trabajar con criptomonedas (y su minado).
 
@@ -41,7 +41,7 @@ Existe una mascota (no oficial pero sí oficiosa) de Rust con forma de cangrejo 
 
 <img src="/assets/uploads/2021/05/ferris.png" alt="Ferris the crab" width="300" />
 
-Existe un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
+Hay un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
 
 No me enrollo más:
 
@@ -312,7 +312,7 @@ println!("top: {}, left: {}, deep: {}", left_edge, top_edge, deep_edge);
 
 <a id="modules"></a>Todo esto está genial, pero ir declarando estructuras, funciones y demás, por todos los lados, nos puede generar un pequeño dolor de cabeza a la hora de gestionar. Para prevenir estos problemas nos encontramos la palabra clave `mod`, que nos ayuda a definir módulos.
 
-Antes de hacer nada, hay que saber que todo lo que pongamos dentro de un módulo es privado. Por lo que si queremos exponerlo al exterior tendríamos que exponerlo usando la palabra clave `pub`. Aquí un ejemplo de un módulo:
+Antes de hacer nada, hay que saber que todo lo que pongamos dentro de un módulo es privado. Por lo que si queremos exponerlo al exterior tendríamos que usar la palabra clave `pub`. Aquí un ejemplo de un módulo:
 
 ```rust
 mod my_mod {
