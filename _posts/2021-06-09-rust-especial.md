@@ -165,7 +165,7 @@ trait Shape {
 }
 ```
 
-Este `trait` indicaría que tenemos que nuestro objeto implementa una función llamada `area` que devuelve un número. Si quisiéramos implementarlo para un `struct` existente:
+Este `trait` indicaría que nuestro objeto implementa una función llamada `area` que devuelve un número. Si quisiéramos implementarlo para un `struct` existente:
 
 ```rust
 struct Rectangle {
