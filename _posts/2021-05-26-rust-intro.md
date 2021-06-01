@@ -370,3 +370,5 @@ De este artículo me quedo con el tema de las tuplas. Es muy interesante ver có
 La semana que viene me comprometo a aplicar los conocimientos que hemos adquirido en algún pequeño desarrollo y exponerlo en un nuevo artículo.
 
 Ya estoy con ganas de seguir trabajando con Rust y saber más sobre este fantástico lenguaje de programación :).
+
+![El Dr. Zoidberg sale corriendo](/assets/uploads/2021/06/zoidberg2.gif)
