@@ -108,7 +108,9 @@ let s2 = &s1;
 println!("{} k ase", s1);
 ```
 
-Los tipos que son de referencia (se almacenan en el *Heap*) son `String`, `str` y todo lo que creemos usando `struct`. Mientras que los tipos que no les afectaría este problema por ser de tipo valor son: los numéricos, booleanos y de tipo carácter.
+Los tipos que se verían afectados si no pasamos la referencia son los se almacenan en el *Heap*, como `String`, `str` (que es un pedazo de un string), `Box<T>`, `Vec<T>`, etc. Y los tipos `struct`, que aunque se guardan en el *stack*, como referencian a otros objetos dentro de este, tendrían un comportamiento semejante.
+
+Los tipos que no les afectaría este problema por ser de tipo valor son: los numéricos, booleanos y de tipo carácter.
 
 ## Impl Struct
 
