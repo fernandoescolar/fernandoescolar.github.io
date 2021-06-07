@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202106091
+ID: 202106101
 title: 'Rust es especial'
 author: fernandoescolar
-post_date: 2021-06-09 01:05:31
+post_date: 2021-06-10 01:05:31
 layout: post
 tags: rust
 background: '/assets/uploads/bg/crab3.jpg'
