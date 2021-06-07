@@ -11,7 +11,7 @@ background: '/assets/uploads/bg/radio.jpg'
 
 Lo que más me gusta de los eventos técnicos presenciales es lo de las "charlas del bar". Esas que surgen esporádicamente en el bar más cercano al lugar donde se celebra la convención y, cerveza en mano, se monta un corro improvisado donde todo el que quiera está invitado a hablar o expresar su opinión sobre: tecnologías, experiencias, lo que está por venir, lo que nos gustaría viniera... sobre todo. Y eso mismo es lo que nos ofrece el podcast [No Tiene Nombre](https://www.ivoox.com/podcast-bruno-no-tiene-nombre_sq_f1277993_1.html).<!--break-->
 
-[Bruno Capuano](https://twitter.com/elbruno) junto con su fiel escudero [Juan Carlos Quijano](https://twitter.com/jc_quijano) nos llevan a conocer a diferentes talentos del mundo del desarrollo, se ponen a hablar, lo graban y tienen a bien subirlo a internet para que todos podamos escucharlo.
+[Bruno Capuano](https://twitter.com/elbruno) junto con su fiel escudero [Juan Carlos Quijano](https://twitter.com/jc_quijano) nos llevan a conocer a diferentes talentos del mundo del desarrollo. Montan reuniones online, se ponen a hablar, lo graban y tienen a bien subirlo a internet para que todos podamos escucharlo.
 
 Por su programa han pasado verdaderos referentes y grandísimos profesionales. No me atrevo a citarlos a todos porque son casi 100 programas ya. Tampoco voy a nombrar a ninguno, aunque sea a modo de ejemplo, porque sería injusto con los demás que, por supuesto, también merecerían esa mención. Así que, si no lo hacéis ya, os recomiendo que los escuchéis.
 
