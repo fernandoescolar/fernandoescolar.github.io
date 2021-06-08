@@ -33,4 +33,4 @@ Podéis encontrar el capítulo 93 de NTN en diferentes lugares:
 - [PlayerFM](https://player.fm/series/el-bruno-no-tiene-nombre/ntn-93-de-todo-menos-de-lo-que-vinimos-a-hablar-build-2021-rust-and-c-vs-vs-vscode-windows-11-y-mas)
 - [Castbox](https://castbox.fm/episode/NTN-93---De-todo-menos-de-lo-que-vinimos-a-hablar%2C-Build-2021%2C-Rust-and-C%2B%2B%2C-VS-vs-VSCode%2C-Windows-11-y-m%C3%A1s-...-id979080-id389247786?country=es)
 
-Y sí, como suelen decir siempre los invitados es verdad: a mí también se me hizo corto.
+Y sí, lo que suelen decir siempre los invitados al final, es verdad: a mí también se me hizo corto.
