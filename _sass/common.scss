@@ -48,13 +48,20 @@ h2, h3, h4, h5, h6 {
     margin-top: 1rem;
 }
 
-[id]:not(i)::before {
+[id]:not(i,ul)::before {
     content: '';
     display: block;
-    height:      75px;
+    height: 75px;
     margin-top: -75px;
     visibility: hidden;
-  }
+}
+ul#markdown-toc {
+    [id]:not(i,ul)::before {
+        display: inline;
+        height: 0px;
+        margin-top: 0px;
+    }
+}
 
 div.highlight {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
