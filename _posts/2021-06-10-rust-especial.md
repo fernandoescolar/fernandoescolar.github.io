@@ -17,6 +17,7 @@ Por ahora todo lo que hemos visto en los anteriores artículos será muy familia
 
 Entonces, ¿dónde está eso que tanto les gusta a los programadores de [stackoverflow](https://stackoverflow.com/)?
 
+* TOC
 {:toc}
 
 ## Lifecycle
