@@ -15,7 +15,7 @@ No obstante, hay que tener en cuenta que en ningún momento nos ha engañado. [L
 
 Por ahora todo lo que hemos visto en los anteriores artículos será muy familiar para todos aquellos programadores que utilicen lenguajes como C y sus derivados. Lo único que la sintaxis te puede gustar más o menos. O quizá los automatismos te pueden parecer mejores o peores. De cualquier forma, es muy similar a lo que ya conocemos.
 
-Entonces, ¿dónde está eso que tanto les gusta a los programadores de [stackoverflow](https://stackoverflow.com/)?
+Entonces, ¿dónde está eso que tanto les gusta a los programadores de [stackoverflow](https://stackoverflow.com/)? A continuación encontraréis esas características que lo diferencian del resto: 
 
 * TOC
 {:toc}
