@@ -42,6 +42,13 @@
       </a>
     </li>
     {% endif %}
+    {% if site.author.twitch %}
+    <li>
+      <a href="https://twitch.tv/{{ site.author.twitch }}" target="_blank">
+        <i class="fab fa-twitch"></i>
+      </a>
+    </li>
+    {% endif %}
     {% if site.author.youtube %}
     <li>
       <a href="https://youtube.com/{{ site.author.youtube }}" target="_blank">
