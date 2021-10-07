@@ -12,6 +12,14 @@ background: '/assets/uploads/bg/mydesktop.jpg'
   <ul>
     {% for post in site.posts limit:5 %}
     <li>
+      {% if post.categories contains "video" %}
+        <i class="fa fa-video category"></i>
+      {% elsif  post.categories contains "podcast" %}
+        <i class="fa fa-headphones category"></i>
+      {% else %}
+        <i class="fa fa-book category"></i>
+      {% endif %}
+
       <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
         {% if post.background %}
         <img src="{{ post.background | prepend: site.baseurl | replace: '//', '/' }}" alt="Ilustración que queda bonita en el layout del portfolio" />
