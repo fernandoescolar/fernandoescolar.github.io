@@ -1,29 +1,32 @@
 ---
-layout: page
+layout: default
 title: Vídeos
 menu: vídeos
 background: '/assets/uploads/bg/videos.jpg'
 ---
 
-<p class="message">
-Aquí podrás encontrar todas las publicaciones de vídeos y sesiones grabadas en las que he participado:
-</p>
+<header>
+  <h1>Vídeos</h1>
+</header>
 
-{% for post in site.categories.video %}
-  {% assign currentdate = post.date | date: "%Y" %}
-  {% if currentdate != date %}
-    {% unless forloop.first %}</ul>{% endunless %}
-    <h1 id="y{{post.date | date: "%Y"}}">{{ currentdate }}</h1>
-    <ul>
-    {% assign date = currentdate %}
-  {% endif %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-          </a>
+<main id="videos">
+  <ul>
+    {% for post in site.categories.video %}
+    <li>
+      <i class="fa fa-video category"></i>
+      <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+        {% if post.background %}
+        <img src="{{ post.background | prepend: site.baseurl | replace: '//', '/' }}" alt="Ilustración que queda bonita en el layout del portfolio" />
+        {% else %}
+        <img src="{{ page.background | prepend: site.baseurl | replace: '//', '/' }}" alt="Ilustración estandar para vídeo" />
+        {% endif %}
+
+        <article>
+          <h2>{{ post.title }}</h2>
           <small>{{ post.date | date_to_string }}</small>
-        </h3>
-      </li>
-  {% if forloop.last %}</ul>{% endif %}
-{% endfor %}
+        </article>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</main>

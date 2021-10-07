@@ -1,5 +1,5 @@
 main {
-    &#portfolio {
+    &#portfolio, &#videos {
         padding: 0;
 
         a:hover {
@@ -133,6 +133,15 @@ main {
 
 @media screen and (min-width: 768px) {
     main {
+        &#videos {
+            ul {
+                li {
+                    width: calc((100% / 3) - 60px);
+                    display: flex;
+                }
+            }
+        }
+
         &#portfolio {
             ul {
                 li {
