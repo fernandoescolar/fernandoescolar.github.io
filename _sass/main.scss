@@ -37,11 +37,12 @@ main {
                     position: absolute;
                     left: 10px;
                     top: 10px;
-                    color: white;
+                    color: rgba(255,255,255,0.7);
+                    font-size: 64px;
 
                     &:hover {
                         text-decoration: none;
-                        color: white;
+                        color: rgba(255,255,255,0.7);
                     }
                 }
 
