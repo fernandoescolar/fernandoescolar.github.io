@@ -3,6 +3,7 @@ name: Build every day
 on:
   schedule:
    - cron: '0 3 * * *'
+  workflow_dispatch:
 jobs:
   curl:
     runs-on: ubuntu-latest
