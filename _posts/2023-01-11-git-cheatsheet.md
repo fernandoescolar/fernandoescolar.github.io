@@ -3,7 +3,7 @@ published: true
 ID: 202301111
 title: 'Mi chuleta de Git'
 author: fernandoescolar
-post_date: 2023-01-11 05:15:46
+post_date: 2023-01-11 01:01:46
 layout: post
 tags: git best-practices
 background: '/assets/uploads/bg/libros.jpg'
