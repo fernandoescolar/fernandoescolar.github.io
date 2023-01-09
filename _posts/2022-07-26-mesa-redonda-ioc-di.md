@@ -9,7 +9,7 @@ categories: video
 tags: ioc di inversionofcontrol best-practices
 background: '/assets/uploads/bg/meeting.jpg'
 ---
-Tertulia técnica sobre las implicaciones del uso de Dependency Injection y contenedores de Inversion Of Control en nuestros desarrollos.
+Tertulia técnica sobre las implicaciones del uso de Dependency Injection y contenedores de Inversion Of Control en nuestros desarrollos.<!--break-->
 
 - [Adrián Díaz](https://twitter.com/AdrianDiaz81)
 - [Eduard Tomàs](https://twitter.com/eiximenis)

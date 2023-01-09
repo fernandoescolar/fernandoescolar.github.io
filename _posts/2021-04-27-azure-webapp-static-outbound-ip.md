@@ -5,7 +5,7 @@ title: 'Azure WebApps: Ip estática de salida'
 author: fernandoescolar
 post_date: 2021-04-27 01:20:57
 layout: post
-tags: Azure webapp ip vnet nat gateway
+tags: azure webapp ip vnet nat gateway
 background: '/assets/uploads/bg/street.jpg'
 ---
 
