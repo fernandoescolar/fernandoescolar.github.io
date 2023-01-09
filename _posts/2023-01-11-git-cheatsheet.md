@@ -1,6 +1,6 @@
 ---
 published: true
-ID: 202205111
+ID: 202301111
 title: 'Mi chuleta de Git'
 author: fernandoescolar
 post_date: 2023-01-11 05:15:46
