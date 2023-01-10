@@ -17,7 +17,6 @@ main {
                 display: inline-block;
                 list-style: none;
                 width: 100%;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                 background-color: #fff;
                 transition: 0.3s;
                 margin: 20px 20px;
@@ -26,6 +25,7 @@ main {
                 flex-wrap: wrap;
                 position: relative;
                 cursor: pointer;
+                border-radius: 0.5em;
 
                 &:hover {
                     box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
@@ -49,6 +49,7 @@ main {
 
                 img {
                     display: inline-block;
+                    border-radius: 0.5em 0.5em 0 0;
 
                     &.avatar {
                         border-radius: 50%;
@@ -80,6 +81,7 @@ main {
 
                 article {
                     width: 100%;
+                    padding: 1rem;
                 }
 
                 &.tags {
@@ -87,6 +89,7 @@ main {
                     padding: 20px;
                     text-align: center;
                     cursor: default;
+                    padding: 1.5rem;
 
                     a {
                         margin-right: 20px;
@@ -94,6 +97,8 @@ main {
                 }
 
                 &.about-me {
+                    padding: 1rem;
+
                     h2 {
                         margin-top: 43px;
                         text-align: center;
@@ -102,6 +107,7 @@ main {
 
                     p {
                         margin-top: 15px;
+                        padding: 0 12px;
                         font-style: italic;
                         color: rgb(83, 87, 81);
                         text-align: left;
@@ -114,6 +120,7 @@ main {
 
                 &.subscribe {
                     cursor: default;
+                    padding: 1.5rem;
 
                     fieldset {
                         border: 0;
@@ -164,6 +171,7 @@ main {
                                 margin: 0;
                                 object-fit: cover;
                                 height: 100%;
+                                border-radius: 0.5em 0 0 0.5em;
                             }
 
                             article {

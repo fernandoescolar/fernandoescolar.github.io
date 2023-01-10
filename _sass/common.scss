@@ -17,11 +17,7 @@ body {
     color: rgb(33, 37, 41);
     margin: 0;
     padding: 0;
-    background: rgb(254,254,254);
-    background: linear-gradient(55deg, rgba(254,254,254,1) 0%,
-                                       rgba(246,246,246,1) 43%,
-                                       rgba(246,246,246,1) 71%,
-                                       rgba(254,254,254,1) 100%);
+    background: rgb(241, 245, 249)
 }
 
 p {
@@ -37,7 +33,7 @@ img {
 
 
 body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: Ubuntu, 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 a {
