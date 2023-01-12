@@ -33,7 +33,7 @@ body {
   --body-background-color: var(--background-color);
   --body-font-family: 'Ubuntu', 'Open Sans', Arial, Helvetica, sans-serif;
 
-  --code-inline-text-color: var(--accent-color--light);
+  --code-inline-text-color: var(--accent-color-light);
   --code-inline-background-color: var(--background-color-light-alt);
 
   --blockquote-text-color: var(--text-color-light);
@@ -44,7 +44,7 @@ body {
   --input-background-color: var(--background-color-light-alt);
 
   --button-text-color: var(--background-color-light);
-  --button-background-color: var(--accent-color--light);
+  --button-background-color: var(--accent-color-light);
 
   --cookie-consent-text-color: var(--background-color-light-alt);
   --cookie-consent-background-color: var(--text-color);
@@ -80,10 +80,10 @@ body {
   --logo-color: var(--accent-color);
 
   --share-button-text-color: var(--background-color-light);
-  --share-button-background-color: var(--accent-color--light);
+  --share-button-background-color: var(--accent-color-light);
 
   --pagination-button-text-color: var(--background-color-light);
-  --pagination-button-background-color: var(--accent-color--light);
+  --pagination-button-background-color: var(--accent-color-light);
 
   --table-cell-background-color: var(--background-color-light-alt);
   --table-cell-border-color: var(--background-color);
