@@ -10,14 +10,14 @@ section {
     }
 
     &#share{
-        border-top: 1px solid rgba(0,0,0,.1);
+        border-top: 1px solid var(--border-color);
         text-align: center;
 
 
         a {
-            color: #fff;
-            background-color: #bf616a;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            color: var(--share-button-text-color);
+            background-color: var(--share-button-background-color);
+            box-shadow: 0 4px 8px 0 var(--shadow-color);
             padding: 8px 18px;
             display: inline-block;
             text-align: center;
@@ -44,8 +44,8 @@ section {
         margin-top: 1em;
 
         a {
-            color: #fff;
-            background-color: #bf616a;
+            color: var(--pagination-button-text-color);
+            background-color: var(--pagination-button-background-color);
             padding: 8px 18px;
             margin-top: -9px;
             width: 140px;
@@ -54,7 +54,7 @@ section {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: var(--media-screen-min-width)) {
     section {
         &#pagination {
             a {

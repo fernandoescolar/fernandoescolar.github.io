@@ -17,7 +17,7 @@ main {
                 display: inline-block;
                 list-style: none;
                 width: 100%;
-                background-color: #fff;
+                background-color: var(--box-background-color);
                 transition: 0.3s;
                 margin: 20px 20px;
                 display: flex;
@@ -28,7 +28,7 @@ main {
                 border-radius: 0.5em;
 
                 &:hover {
-                    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+                    box-shadow: 0 16px 32px 0 var(--shadow-color);
                     margin-top: 10px;
                     margin-bottom: 30px;
                 }
@@ -38,12 +38,12 @@ main {
                     position: absolute;
                     left: 10px;
                     top: 10px;
-                    color: rgba(255,255,255,0.4);
+                    color: var(--box-icon-color);
                     font-size: 64px;
 
                     &:hover {
                         text-decoration: none;
-                        color: rgba(255,255,255,0.4);
+                        color: var(--box-icon-color);
                     }
                 }
 
@@ -63,7 +63,7 @@ main {
                 h2 {
                     padding: 0 12px;
                     margin-bottom: 0;
-                    color: rgb(33, 37, 41);
+                    color: var(--box-text-color);
                     display: inline-block;
                 }
 
@@ -75,7 +75,7 @@ main {
                 p {
                     margin-top: 15px;
                     padding: 0 12px;
-                    color: rgb(33, 37, 41);
+                    color: var(--box-text-color);
                     display: inline-block;
                 }
 
@@ -109,7 +109,7 @@ main {
                         margin-top: 15px;
                         padding: 0 12px;
                         font-style: italic;
-                        color: rgb(83, 87, 81);
+                        color: var(--box-aboutme-text-color);
                         text-align: left;
 
                         i {
@@ -140,7 +140,7 @@ main {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: var(--media-screen-min-width)) {
     main {
         &#videos {
             ul {
@@ -183,6 +183,10 @@ main {
 
                     &.tags {
                         width: calc(((100% / 3) - 60px) * 2 + 40px);
+                        display: flex;
+                        flex-flow: row wrap;
+                        align-items: center;
+                        justify-content: center;
                     }
 
                     &.subscribe {

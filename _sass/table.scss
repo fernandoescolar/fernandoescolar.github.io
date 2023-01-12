@@ -4,14 +4,14 @@ table {
   table-layout: fixed;
 
   tr {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    background-color: var(--table-cell-background-color);
+    border: 1px solid var(--table-cell-border-color);
     padding: .35em;
   }
 
   th {
-    background-color: #31343f;
-    color:#ddd;
+    background-color: var(--table-header-background-color);
+    color: var(--table-header-text-color);
     padding: .625em;
     font-size: .90em;
     letter-spacing: .1em;

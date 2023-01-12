@@ -18,8 +18,8 @@
 .message {
     margin-bottom: 1rem;
     padding: 1rem;
-    color: #717171;
-    background-color: #f9f9f9;
+    color: var(--message-text-color);
+    background-color: var(--message-background-color);
 }
 
 .highlight {

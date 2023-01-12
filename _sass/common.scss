@@ -14,10 +14,10 @@ html {
 body {
     font-size: 18px;
     font-weight: 400;
-    color: rgb(33, 37, 41);
+    color: var(--body-text-color);
     margin: 0;
     padding: 0;
-    background: rgb(241, 245, 249)
+    background: var(--body-background-color);
 }
 
 p {
@@ -34,11 +34,11 @@ img {
 
 
 body, h1, h2, h3, h4, h5, h6 {
-    font-family: Ubuntu, 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: var(--body-font-family);
 }
 
 a {
-    color: #ac4142;
+    color: var(--a-color);
     text-decoration: none;
 
     &:hover {
@@ -66,13 +66,13 @@ ul#markdown-toc {
 }
 
 div.highlight {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
 code {
     font-size: 92%;
-    color: #bf616a;
-    background-color: #f9f9f9;
+    color: var(--code-inline-text-color);
+    background-color: var(--code-inline-background-color);
 
     &.language-plaintext {
         word-break: break-word;
@@ -90,7 +90,7 @@ pre {
 }
 
 small {
-    color: #9a9a9a;
+    color: var(--small-color);
     font-size: 16px;
     line-height: 1.5;
 }
@@ -99,21 +99,21 @@ hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid var(--border-color);
 }
 
 blockquote {
     padding: .5rem 1rem;
     margin: .8rem 0;
-    color: #7a7a7a;
-    background-color: #f9f9f9;
-    border-left: .25rem solid #e5e5e5;
+    color: var(--blockquote-text-color);
+    background-color: var(--blockquote-background-color);
+    border-left: .25rem solid var(--blockquote-border-color);
     quotes: "\201C""\201D""\2018""\2019";
     text-align: left;
 
     &:before {
         position: absolute;
-        color: #e5e5e5;
+        color: var(--blockquote-border-color);
         content: open-quote;
         font-size: 4em;
         line-height: 0.1em;
@@ -130,13 +130,13 @@ blockquote {
 }
 
 input {
-    background-color: #ebefe9;
+    background-color: var(--input-background-color);
     border: 0;
     border-radius: 0;
     padding: 8px 18px;
     margin: 0;
     font-size: 20px;
-    color: #212529;
+    color: var(--input-text-color);
     &:focus {
         border: 0;
         box-shadow: none;
@@ -145,8 +145,8 @@ input {
 }
 
 button {
-    color: #fff;
-    background-color: #bf616a;
+    color: var(--button-text-color);
+    background-color: var(--button-background-color);
     border: 0;
     padding: 8px 18px;
     text-align: center;

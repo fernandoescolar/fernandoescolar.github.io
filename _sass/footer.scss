@@ -3,8 +3,8 @@ footer {
     margin-top: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--footer-background-color);
 
     ul {
         list-style: none;
@@ -12,31 +12,31 @@ footer {
 
         li {
             display: inline-block;
-            background-color: #212529;;
+            background-color: var(--footer-button-background-color);
             width: 48px;
             height: 48px;
             border-radius: 50%;
             font-size: 35px;
             border: 4px solid;
             margin: 5px;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px 0 var(--shadow-color);
 
             a {
-                color: #fff;
+                color: var(--footer-button-text-color);
 
                 i {
                     position: relative;
                 }
 
                 &:hover {
-                    color: #fff;
+                    color: var(--footer-button-hover-text-color);
                     text-decoration: none;
                 }
             }
 
             &:hover {
-                background-color: #ac4142;
-                border-color: #ac4142;
+                background-color: var(--footer-button-hover-background-color);
+                border-color: var(--footer-button-hover-background-color);
             }
         }
     }

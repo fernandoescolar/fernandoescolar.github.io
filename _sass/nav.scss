@@ -1,6 +1,6 @@
 nav {
     margin-bottom: 0;
-    background-color: #fff;
+    background-color: var(--nav-background-color);
     height: 68px;
     position: fixed;
     top: 0px;
@@ -8,7 +8,7 @@ nav {
     padding: 0 .1em;
     opacity: 0.8;
     transition: all 0.2s ease-out;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 var(--shadow-color), 0 6px 20px 0 var(--shadow-color);
     z-index: 1;
 
     &.solid {
@@ -16,7 +16,7 @@ nav {
     }
 
     a:hover {
-        color: #ac4142;
+        color: var(--logo-color);
         text-decoration: none;
     }
 
@@ -28,8 +28,8 @@ nav {
         font-weight: 900;
 
         b {
-            background-color: #ac4142;
-            color: #fff;
+            background-color: var(--logo-color);
+            color: var(--nav-background-color);
             padding: 0 4px;
             font-weight: bold;
         }
@@ -41,17 +41,17 @@ nav {
         margin-left: -2px;
         margin-right: -2px;
         margin-top: 66px;
-        background-color: #fff;
+        background-color: var(--nav-background-color);
         visibility: hidden;
         opacity: 0;
         transition: all 0.2s ease-out;
-        border-bottom: 1px solid rgba(0,0,0,.1);
+        border-bottom: 1px solid var(--border-color);
 
         li {
             text-align: center;
             margin: 24px auto;
             a {
-                color: #212529;
+                color: var(--nav-a-color);
                 font-weight: 650;
             }
         }
@@ -60,7 +60,7 @@ nav {
     #hamburger {
         float: right;
         cursor: pointer;
-        color: #212529;
+        color: var(--nav-a-color);
         font-size: 1.5em;
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
@@ -91,7 +91,7 @@ nav {
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: var(--media-screen-min-width)) {
     nav {
         padding: 0 1em;
 
@@ -113,7 +113,7 @@ nav {
                 padding-right: 1em;
 
                 a {
-                    color: #212529;
+                    color: var(--nav-a-color);
                 }
             }
         }
