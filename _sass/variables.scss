@@ -29,10 +29,6 @@ body.dark-theme {
 }
 
 body {
-  --media-screen-min-width: 768px;
-
-  /* real variables */
-
   --body-text-color: var(--text-color);
   --body-background-color: var(--background-color);
   --body-font-family: 'Ubuntu', 'Open Sans', Arial, Helvetica, sans-serif;
@@ -51,7 +47,7 @@ body {
   --button-background-color: var(--accent-color--light);
 
   --cookie-consent-text-color: var(--background-color-light-alt);
-  --cookie-consent-background-color: var(--text-color)
+  --cookie-consent-background-color: var(--text-color);
   --cookie-consent-button-text-color: var(--background-color-light);
   --cookie-consent-button-background-color: var(--accent-color);
 
@@ -66,7 +62,7 @@ body {
 
   --header-title-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   --header-title-text-color: var(--background-color-light);
-  --header-background-color: linear-gradient(to bottom, var(--header-color-1) 0%, var(--header-color-2)100%);
+  --header-background-color: linear-gradient(to bottom, var(--header-color-1) 0%, var(--header-color-2) 100%);
   --header-background-image: url(/assets/uploads/bg/desktop.jpg) center / cover;
 
   --box-text-color: var(--text-color);
