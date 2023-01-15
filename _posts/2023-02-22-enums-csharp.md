@@ -28,7 +28,7 @@ enum BeerTypes
 }
 ```
 
-En este ejemplo, hemos creado un enum llamado `BeerTypes` que tiene siete elementos: `Ale`, `Ipa`, `Lager`, `Porter`, `Stout`, `Wheat` y `Witbier`. Cada uno de estos elementos tiene un valor entero asignado por defecto, comenzando en `0` para Lunes y continuando en incrementos de `1` para cada elemento adicional. Por lo tanto, `Ale` tiene el valor `0`, `Ipa` tiene el valor `1`, y así sucesivamente.
+En este ejemplo, hemos creado un enum llamado `BeerTypes` que tiene siete elementos: `Ale`, `Ipa`, `Lager`, `Porter`, `Stout`, `Wheat` y `Witbier`. Cada uno de estos elementos tiene un valor entero asignado por defecto, comenzando en `0` para `Ale` y continuando en incrementos de `1` para cada elemento adicional. Por lo tanto, `Ale` tiene el valor `0`, `Ipa` tiene el valor `1`, y así sucesivamente.
 
 Puedes usar los elementos del enum en tu código como cualquier otra constante:
 
@@ -104,7 +104,7 @@ En este código, hemos declarado un enum llamado `BeerTypes` con un tipo de valo
 
 **No puedes declarar una variable del tipo enum con un tipo de valor de `string` o `char`.**
 
-## Obtener todos los elementos de una enumeraciones
+## Obtener todos los elementos de una enumeración
 
 Puedes usar el método `Enum.GetValues` para obtener una lista de todos los valores de un enum. Este método devuelve una matriz de objetos que representa todos los valores del enum especificado.
 
@@ -215,7 +215,7 @@ if (option2Enabled != option2) // 0000 != 0010
 
 Por eso es importante que cada elemento del enum tenga un valor entero que represente una opción diferente. Si no lo haces, el resultado de las operaciones booleanas será incorrecto.
 
-A continuación se muestra una tabla con los valores enteros y la representación en binario que podríamos usar en los elementos de un `enum`:
+A continuación, se muestra una tabla con los valores enteros y la representación en binario que podríamos usar en los elementos de un `enum`:
 
 | Valor entero | Representación en binario |
 |--------------|---------------------------|

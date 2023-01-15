@@ -9,9 +9,9 @@ tags: csharp dotnet best-practices
 background: '/assets/uploads/bg/programming2.jpg'
 ---
 
-¿Alguna vez has intentado tomarte un botellín de cerveza sin abrir? Puede ser divertido, pero también será decepcionante. Si no andas con cuidado, podrías hacerte una herida con la chapa que cierra el botellín. Siempre deberías abrir una cerveza antes de tomarla, o terminarás con la garganta seca, el estomago vacío y una estupenda cerveza en la mano que no te puedes beber.<!--break--> Esto mismo es lo que pasa con `NullReferenceException`.
+¿Alguna vez has intentado tomarte un botellín de cerveza sin abrir? Puede ser divertido, pero también será decepcionante. Si no andas con cuidado, podrías hacerte una herida con la chapa que cierra el botellín. Siempre deberías abrir una cerveza antes de tomarla, o terminarás con la garganta seca, el estómago vacío y una estupenda cerveza en la mano que no te puedes beber.<!--break--> Esto mismo es lo que pasa con `NullReferenceException`.
 
-Una excepción `NullReferenceException` se produce cuando el programa intenta acceder a una propiedad o llamar a un método de un objeto que es `null` (una cerveza cerrada). Esto puede ocurrir cuando un objeto no ha sido inicializado correctamente (o la cerveza ha sido abierta) antes de ser utilizado (beberla), o cuando un objeto ha sido asignado null accidentalmente (se nos ha roto el botellín por abajo y no nos hemos dado cuenta). Es un problema muy común en el desarrollo de aplicaciones C#.
+Una excepción `NullReferenceException` se produce cuando el programa intenta acceder a una propiedad o llamar a un método de un objeto que es `null` (una cerveza cerrada). Esto puede ocurrir cuando un objeto no ha sido inicializado correctamente (o la cerveza ha sido abierta) antes de ser utilizado (beberla), o cuando un objeto ha sido asignado `null` accidentalmente (se nos ha roto el botellín por abajo y no nos hemos dado cuenta). Es un problema muy común en el desarrollo de aplicaciones C#.
 
 Un ejemplo de código que causa una NullReferenceException:
 
