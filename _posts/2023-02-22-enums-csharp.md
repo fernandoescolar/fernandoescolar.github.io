@@ -1,11 +1,11 @@
 ---
 published: true
-ID: 202301251
+ID: 202302221
 title: 'C#: enum'
 author: fernandoescolar
-post_date: 2023-01-25 01:04:36
+post_date: 2023-02-22 01:04:36
 layout: post
-tags: csharp dotnet enum
+tags: csharp dotnet enum best-practices
 background: '/assets/uploads/bg/programming1.jpg'
 ---
 
