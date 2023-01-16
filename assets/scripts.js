@@ -36,10 +36,10 @@ document.querySelectorAll('.post a').forEach(link => {
 /* theme switcher */
 const li = document.createElement('li');
 if (localStorage.getItem('dark-theme') == 'dark-theme') {
-  li.innerHTML = `<a href="#"><i id="theme-switch" class="fas fa-toggle-on"></i></a>`;
+  li.innerHTML = `<a style="cursor: pointer"><i id="theme-switch" class="fas fa-toggle-on"></i></a>`;
   document.body.classList.add('dark-theme');
 } else {
-  li.innerHTML = `<a href="#"><i id="theme-switch" class="fas fa-toggle-off"></i></a>`;
+  li.innerHTML = `<a style="cursor: pointer"><i id="theme-switch" class="fas fa-toggle-off"></i></a>`;
 }
 document.getElementById('nav-options').appendChild(li);
 
