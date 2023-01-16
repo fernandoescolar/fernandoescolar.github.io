@@ -33,6 +33,22 @@ document.querySelectorAll('.post a').forEach(link => {
   }
 });
 
+/* theme switcher */
+document.getElementById('theme-switch').addEventListener("click", (e) => {
+  const a = document.getElementById('theme-switch');
+  const darkEnabled = localStorage.getItem('dark-theme') != 'dark-theme';
+  localStorage.setItem('dark-theme', darkEnabled ? 'dark-theme' : '');
+  if (darkEnabled) {
+    a.classList.add('fa-toggle-on');
+    a.classList.remove('fa-toggle-off');
+    document.body.classList.add('dark-theme');
+  } else {
+    a.classList.add('fa-toggle-off');
+    a.classList.remove('fa-toggle-on');
+    document.body.classList.remove('dark-theme');
+  }
+});
+
 /* cookie consent and google analytics */
 function createCookie(name,value,days) {
   var expires = "";
