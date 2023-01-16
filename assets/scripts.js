@@ -34,6 +34,15 @@ document.querySelectorAll('.post a').forEach(link => {
 });
 
 /* theme switcher */
+const li = document.createElement('li');
+if (localStorage.getItem('dark-theme') == 'dark-theme') {
+  li.innerHTML = `<a href="#"><i id="theme-switch" class="fas fa-toggle-on"></i></a>`;
+  document.body.classList.add('dark-theme');
+} else {
+  li.innerHTML = `<a href="#"><i id="theme-switch" class="fas fa-toggle-off"></i></a>`;
+}
+document.getElementById('nav-options').appendChild(li);
+
 document.getElementById('theme-switch').addEventListener("click", (e) => {
   const a = document.getElementById('theme-switch');
   const darkEnabled = localStorage.getItem('dark-theme') != 'dark-theme';
