@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202301251
-title: 'Cómo corregir una NullReferenceException'
+title: 'Cómo corregir una Null Reference Exception'
 author: fernandoescolar
 post_date: 2023-01-25 01:04:36
 layout: post
