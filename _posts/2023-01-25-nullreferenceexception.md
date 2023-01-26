@@ -143,10 +143,10 @@ También a partir de la versión 8 de C#, se puede utilizar el modo seguro de nu
 
 Esta propiedad puede tener los valores:
 
-    * `disable`: El modo seguro de nulos está desactivado.
-    * `enable`: El modo seguro de nulos está activado.
-    * `warnings`: El modo seguro de nulos está activado y se emiten advertencias cuando se detectan posibles errores de nulidad.
-    * `annotations`: El modo seguro de nulos está activado y se emiten advertencias cuando se detectan posibles errores de nulidad
+- `disable`: El modo seguro de nulos está desactivado.
+- `enable`: El modo seguro de nulos está activado.
+- `warnings`: El modo seguro de nulos está activado y se emiten advertencias cuando se detectan posibles errores de nulidad.
+- `annotations`: El modo seguro de nulos está activado y se emiten advertencias cuando se detectan posibles errores de nulidad
 
 Esta característica, requiere que los tipos de referencia sean anotados con `?` para indicar que pueden ser nulos.
 
