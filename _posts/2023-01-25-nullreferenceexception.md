@@ -59,12 +59,10 @@ beers[1] = new Beer();
 beers[2] = new Beer();
 
 beers[4].Hello();
-
-Beer myBeer = beers[5];
 // Esta línea causará una NullReferenceException, ya que el índice 4 no ha sido inicializado en la lista
 ```
 
-En este ejemplo, la lista `beers` contiene 3 objetos `Beer`, pero se intenta acceder al índice 5, que no existe. Como resultado, se produce una `NullReferenceException`.
+En este ejemplo, la lista `beers` contiene 5 objetos `Beer`, solo se jan inicializado los 3 primeros y se intenta acceder al índice 4, que no se ha inicializado. Como resultado, se produce una `NullReferenceException`.
 
 Vamos a estudiar varias formas más genéricas y globales de evitar esta excepción:
 
