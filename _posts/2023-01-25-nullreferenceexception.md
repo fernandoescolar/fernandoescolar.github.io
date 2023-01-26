@@ -53,13 +53,15 @@ De esta manera, se evitará la excepción `NullReferenceException` y el código 
 Esta solución sería la evidente, pero aun siendo conscientes de que los objetos en *dotnet* pueden ser nulos, a veces nos olvidamos de comprobarlo. Por ejemplo, si tenemos una lista de objetos, y queremos acceder a uno de ellos, podemos cometer el error de no comprobar si el objeto existe en la lista:
 
 ```csharp
-List<Beer> beers = new List<Beer>();
-beers.Add(new Beer());
-beers.Add(new Beer());
-beers.Add(new Beer());
+var beers = new Beer[5];
+beers[0] = new Beer();
+beers[1] = new Beer();
+beers[2] = new Beer();
+
+beers[4].Hello();
 
 Beer myBeer = beers[5];
-// Esta línea causará una NullReferenceException, ya que el índice 5 no existe en la lista
+// Esta línea causará una NullReferenceException, ya que el índice 4 no ha sido inicializado en la lista
 ```
 
 En este ejemplo, la lista `beers` contiene 3 objetos `Beer`, pero se intenta acceder al índice 5, que no existe. Como resultado, se produce una `NullReferenceException`.
