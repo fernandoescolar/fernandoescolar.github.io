@@ -9,7 +9,7 @@ tags: aspnet aspnetcore dotnet csharp
 background: '/assets/uploads/bg/programming4.jpg'
 ---
 
-**ASP.NET** es un framework desarrollado por Microsoft para construir aplicaciones web y servicios web. Llea muchos años en el mercado y es una solución muy robusta. Con la aparición de **.Net Core**, se creó **Asp.Net Core**. Una versión moderna y más ligera, diseñada para ser multiplataforma y compatible con una variedad de sistemas operativos, incluyendo *Windows*, *MacOS* y *Linux*. Pero su gran robusted sigue vinculada a cierta complejidad a la hora de programarla. Aquí es donde entra **Minimal API**.<!--break-->
+**ASP.NET** es un framework desarrollado por Microsoft para construir aplicaciones web y servicios web. Lleva muchos años en el mercado y es una solución muy robusta. Con la aparición de **.Net Core**, se creó **Asp.Net Core**. Una versión moderna y más ligera, diseñada para ser multiplataforma y compatible con una variedad de sistemas operativos, incluyendo *Windows*, *MacOS* y *Linux*. Pero su gran robusted sigue vinculada a cierta complejidad a la hora de programarla. Aquí es donde entra **Minimal API**.<!--break-->
 
 Pongamos cierto contexto a esta afirmación. Tradicionalmente, para crear una aplicación web con **Asp.Net Core** siempre ha sido abligatorio crear dos archivos de código: *"Program.cs"* y *"Startup.cs"*. En el primero, se configura el host y en el segundo, se configuran los servicios y el pipeline de la aplicación. Su contenido sería parecido a esto:
 
