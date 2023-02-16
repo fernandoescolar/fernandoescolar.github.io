@@ -19,7 +19,7 @@ Se centra en proporcionar una guía para los líderes técnicos que están lider
 
 Es difícil proporcionar una cifra exacta, pero se ha convertido en un *best-seller* en su categoría. En general, el libro ha sido muy positivo en términos de ventas y recibimiento entre la comunidad de liderazgo y tecnología, y se considera un recurso valioso para cualquier líder técnico que busque mejorar sus habilidades de gestión y liderazgo.
 
-El caso es que el primer capítulo de *"The Manager's Path"* se centra en la gestión de personas, pero desde el punto de vista de la persona gestionada. Nos pone en la tesitura de plantearnos qué podemos esperar de nuestra *manager*, y qué podemos hacer para que nos ayude a crecer y desarrollarnos como profesionales. Pero desde un punto de vista que no sea el de gestor, sino el de empleado.
+El caso es que el primer capítulo de *"The Manager's Path"* se centra en la gestión de personas, pero desde el punto de vista de la persona gestionada, no desde un perfíl de gestión. Nos pone en la tesitura de plantearnos qué podemos esperar de nuestra *manager*, y qué podemos hacer para que nos ayude a crecer y desarrollarnos como profesionales.
 
 Es un punto de vista que me parece muy acertado y que, en mi opinión, debería ser el punto de partida de cualquier persona que quiera ser un buen *manager*. Es importante reflexionar sobre cómo nos gustaría que fuera nuestra *manager* antes de asumir ese rol. Esto nos ayudará a establecer metas y objetivos claros para nuestra gestión y a asegurarnos de que estamos tomando decisiones y acciones que estén alineadas con nuestros valores y principios. También nos ayudará a ser conscientes de las áreas en las que podemos mejorar como líderes y a desarrollar habilidades y estrategias para ser un *manager* eficaz y eficiente. Pero, lo que es más importante, es un buen tema de conversación para cualquier trabajador independientemente de su posición en la empresa.
 
@@ -66,21 +66,21 @@ Un buen *feedback* debería ser:
 - **Equilibrado**: Debe ser equilibrado, es decir, debe incluir tanto elogios como críticas.
 - **Dado de forma clara y respetuosa**: El *feedback* debe darse de forma clara y respetuosa, y debe ser recibido de la misma manera, con una actitud abierta y receptiva.
 
-Es importante dar feedback regularmente, y no solo en ocasiones específicas como las evaluaciones del desempeño o "1-1". Esto ayuda a asegurar que el feedback es oportuno y relevante, y permite a los miembros de tu equipo tomar medidas para mejorar su desempeño de manera continua.
+Es importante dar feedback regularmente, y no solo en ocasiones específicas como las evaluaciones del desempeño o "1-1". Esto ayuda a asegurar que el feedback es oportuno y relevante, y nos permite tomar medidas para mejorar nuestro desempeño de manera continua.
 
 Y una técnica muy útil: los elogios en público y las críticas en privado.
 
-En primer lugar, al dar elogios en público, puedes reconocer y valorar el buen trabajo de un miembro de tu equipo frente a los demás miembros del equipo y a la organización en general. Esto puede ayudar a motivar y comprometer a los miembros de tu equipo, y a crear un ambiente positivo en el equipo.
+En primer lugar, al dar elogios en público, puedes reconocer y valorar el buen trabajo frente a los demás miembros del equipo y a la organización en general. Esto puede ayudar a motivarnos y comprometernos más con el equipo. En resumen, a crear un ambiente positivo.
 
-Por otro lado, al dar críticas en privado, puedes asegurarte de que el miembro de tu equipo se sienta cómodo y seguro al recibir la crítica, y puedes asegurarte de que el mensaje se entienda claramente. Además, al dar críticas en privado, puedes evitar que el miembro de tu equipo se sienta humillado o avergonzado frente a los demás miembros del equipo.
+Por otro lado, al dar críticas en privado, podemos sentirnos más cómodos y seguros al recibirla. Además de que prestaremos más atención, entenderemos el mensaje y no tendremos por qué sentirnos atacados, humillados o avergonzados delante de los compoñaros.
 
 ### Crecimiento y desarrollo profesional
 
 Espero que mi *manager* me ayude a definir y recorrer un camino de crecimiento profesional. Una *manager* efectiva debe ser capaz de identificar las metas y objetivos a largo plazo de sus miembros de equipo y ayudarles a desarrollar las habilidades y las estrategias necesarias para alcanzarlos. Esto puede incluir proporcionar oportunidades de aprendizaje y desarrollo, proporcionar feedback para ayudarnos a mejorar nuestras habilidades, y proporcionar oportunidades para tomar decisiones y asumir responsabilidades adicionales.
 
-Además, una *manager* debería ser capaz de proporcionar orientación y asesoramiento sobre cómo navegar por la organización y cómo desarrollar nuestras carreras profesionales en función de sus objetivos y metas personales. Esto puede incluir proporcionar información sobre oportunidades de promoción y desarrollo, y ayudarnos a construir relaciones con otros líderes y mentores en la organización.
+Además, una *manager* debería ser capaz de proporcionar orientación y asesoramiento sobre cómo navegar por la organización y cómo desarrollar nuestras carreras profesionales en función de nuestros objetivos y metas personales. Esto puede incluir proporcionar información sobre oportunidades de promoción y desarrollo, y ayudarnos a construir relaciones con otros líderes y mentores en la organización.
 
-En resumen, una *manager* debería ser una mentora y un guía, ayudándonos a desarrollar nuestras habilidades y conocimientos, a alcanzar nuestras metas y objetivos, y a avanzar en nuestras carreras.
+En resumen, una *manager* debería ser una mentora y un guía, ayudándonos a desarrollar nuestras habilidades y conocimientos, a alcanzar nuestras metas y objetivos. Ayudarnos a avanzar en nuestras carreras.
 
 ### Los objetivos de la organización
 
