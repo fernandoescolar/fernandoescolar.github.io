@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202303151
+ID: 202303221
 title: 'Minimal API en .NET 7'
 author: fernandoescolar
-post_date: 2023-03-15 01:04:36
+post_date: 2023-03-22 01:04:36
 layout: post
 tags: aspnet aspnetcore dotnet csharp
 background: '/assets/uploads/bg/programming4.jpg'
@@ -11,7 +11,32 @@ background: '/assets/uploads/bg/programming4.jpg'
 
 **ASP.NET** es un framework desarrollado por Microsoft para construir aplicaciones web y servicios web. Lleva muchos años en el mercado y es una solución muy robusta. Con la aparición de **.Net Core**, se creó **Asp.Net Core**. Una versión moderna y más ligera, diseñada para ser multiplataforma y compatible con una variedad de sistemas operativos, incluyendo *Windows*, *MacOS* y *Linux*. Pero su gran robusted sigue vinculada a cierta complejidad a la hora de programarla. Aquí es donde entra **Minimal API**.<!--break-->
 
-Pongamos cierto contexto a esta afirmación. Tradicionalmente, para crear una aplicación web con **Asp.Net Core** siempre ha sido abligatorio crear dos archivos de código: *"Program.cs"* y *"Startup.cs"*. En el primero, se configura el host y en el segundo, se configuran los servicios y el pipeline de la aplicación. Su contenido sería parecido a esto:
+- [Introducción](#introducción)
+- [Características](#características)
+- [Cómo empezar](#cómo-empezar)
+- [Routing](#routing)
+- [Verbos](#verbos)
+- [Bindings](#bindings)
+  - [Attributes](#attributes)
+  - [Optionals](#optionals)
+  - [Dependency Injection](#dependency-injection)
+  - [Constants](#constants)
+- [BindAsync](#bindasync)
+  - [AsParameters](#asparameters)
+- [Response Codes](#response-codes)
+  - [Multi Result](#multi-result)
+  - [Annotate](#annotate)
+- [Open API](#open-api)
+  - [Annotations](#annotations)
+  - [WithOpenApi](#withopenapi)
+- [Validation](#validation)
+- [Filters](#filters)
+- [RouteGroups](#routegroups)
+- [Conclusiones](#conclusiones)
+
+## Introducción
+
+Pongamos cierto contexto: tradicionalmente, para crear una aplicación web con **Asp.Net Core** siempre ha sido abligatorio crear dos archivos de código: *"Program.cs"* y *"Startup.cs"*. En el primero, se configura el host y en el segundo, se configuran los servicios y el pipeline de la aplicación. Su contenido sería parecido a esto:
 
 ```csharp
 // Program.cs

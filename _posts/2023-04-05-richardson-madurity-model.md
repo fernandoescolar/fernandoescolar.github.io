@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202303291
+ID: 202304051
 title: 'Modelo de madurez de Richardson'
 author: fernandoescolar
-post_date: 2023-03-29 01:04:36
+post_date: 2023-04-05 01:04:36
 layout: post
 tags: aspnet aspnetcore dotnet csharp best-practices
 background: '/assets/uploads/bg/programming3.jpg'
@@ -11,9 +11,15 @@ background: '/assets/uploads/bg/programming3.jpg'
 
 Al *loco* de [Leonard Richardson](https://twitter.com/leonardr) se le ocurrió la feliz idea de que para implementar una *API* en internet no hacía falta seguir las normas de la *WWW*. Solo necesitábamos recoger los principios del protocolo *HTTP* y construir un modelo propio basado en 3 pilares: dividir correctamente la información, refactorizar nuestro código y describir el comportamiento de una forma estandarizada<!--break-->. A todo esto se le bautizó como el **Modelo de Madurez de Richardson** en el libro [REST in Practice](https://www.oreilly.com/library/view/rest-in-practice/9781449383312/). Y más tarde fue popularizado por [Martin Fowler](https://twitter.com/martinfowler) en su artículo [Richardson Maturity Model](https://www.martinfowler.com/articles/richardsonMaturityModel.html).
 
-El modelo fue presentado por primera vez en una sesión llamada [Justice Will Take Us Millions of Intricate Moves](https://www.crummy.com/writing/speaking/2008-QCon/) en la [QCon de San Francisco en 2008](https://qconsf.com/sf2008/). Richardson propone que *HTTP* es menos potente que *WWW*, ya que *HTTP* se utiliza principalmente como un mecanismo de transporte para la transferencia de datos, mientras que *WWW* se utiliza para la navegación y la interacción con recursos en la web. Y propone que una API REST debería partir de HTTP, pero implementar una serie de características diferenciales: utilizar URIs para identificar los recursos, verbos HTTP para indicar las acciones a realizar en los recursos y controles hipermedia para permitir la navegación entre recursos.
+El modelo fue presentado en sociedad en una sesión llamada [Justice Will Take Us Millions of Intricate Moves](https://www.crummy.com/writing/speaking/2008-QCon/) en la [QCon de San Francisco en 2008](https://qconsf.com/sf2008/):
 
-> **_DISCLAIMER_**: Es importante mencionar que este modelo es solamente una herramienta, y no tiene una clasificación estandarizada, el modelo es una guía, no una norma. Es importante evaluar cada caso en particular y ver si se ajusta a las necesidades del proyecto.
+Richardson propone que *WWW* como uno de los protocolos originales de internet y de facto el, si no único, al menos el más usado. A su vez, expone *WWW* como un conjunto de tecnologías: *HTTP* como protocolo de transporte, *URI* (o _**U**nique **R**esource **I**dentifier_) para identificar recursos y *HTML* (o _**H**yper**T**ext **M**arkup **L**anguage_) para mostrarlos de una forma amigable y permitirnos la navegación.
+
+De esta manera, cuando hablamos de *Web Services*, la propuesta es seguir el mismo modelo exitoso que *WWW*, usando como base una arquitectura *REST*. Esto es un acrónimo de *Representational State Transfer*, y que es un modelo de arquitectura de software que se basa en el uso de *HTTP* como protocolo de transporte, utilizar *URI*s para identificar los recursos, los verbos *HTTP* para realizar diferentes acciones y propone hipermedia para permitir la navegación entre recursos.
+
+Y aquí es donde surje el modelo de madurez de Richardson. Una forma de clasificar nuestras *APIs* en base a los conceptos usados en *WWW* y buscando el diseño *RESTFul* ideal.
+
+> **_DISCLAIMER_**: Es importante mencionar que este modelo es solamente una herramienta, una guía, no una norma. En cualquier caso, siempre hay que evaluar cada caso en particular y ver si esto se ajusta a las necesidades del proyecto.
 
 Richardson establece 3 niveles, que en realidad son 4, porque el primero lo considera como un nivel 0, un estado inicial, en el que no se ha empezado a aplicar este modelo. A continuación, describiremos los diferentes niveles del modelo de madurez de Richardson:
 
@@ -26,7 +32,7 @@ Richardson establece 3 niveles, que en realidad son 4, porque el primero lo cons
 
 ## Nivel 0: HTTP como transporte
 
-El nivel 0 del modelo de madurez de Richardson se refiere a una *API* que utiliza *HTTP* como mecanismo de transporte, pero no utiliza todos mecanismos de la web, como *URIs*, verbos *HTTP* o códigos de estado. Este es similar al uso de *HTTP* en servicios web *SOAP*, donde se utiliza *HTTP* como medio de transporte para la invocación de procedimientos remotos, sin importar verbos.
+El nivel 0 del modelo de madurez de Richardson se refiere a una *API* que utiliza *HTTP* como mecanismo de transporte, pero utiliza de forma desprecupada los mecanismos de la web, como *URIs*, verbos *HTTP* o códigos de estado. Este es similar al uso de *HTTP* en servicios web *XML-RPC* o *SOAP*.
 
 También sería el caso en el que un *nefito* en el desarrollo de *APIs* *REST* podría crear una *API*, ya que no conocería el modelo de madurez de Richardson y por tanto no aplicaría sus características. Un ejemplo podría ser el siguiente:
 
@@ -59,9 +65,9 @@ En este nivel, se introduce la idea de que una *API* debe estar compuesta por re
 
 En este nivel, también se pueden utilizar verbos *HTTP*, pero se utilizan principalmente como mecanismos de tunelización para canalizar las interacciones a través de *HTTP*. Aunque es posible utilizar verbos *HTTP*, su uso correcto no es necesario para alcanzar este nivel.
 
-En este nivel, el cliente debe conocer la *URI* de un recurso para poder interactuar con él, y las respuestas de las llamadas suelen ser estáticas, no contienen enlaces a otros recursos.
+En este nivel, el servicio debe exponer sus recursos usando toda la  potencia que permite la *URI*. Por ejemplo, si tenemos un servicio que nos permite buscar cervezas, podríamos tener un *endpoint* que nos permita buscar cervezas por nombre, otro que nos permita buscar cervezas por país de origen, etc. Cada uno de estos *endpoints* tendría su propia *URI*. Pero al ser todos referentes a cervezas, podrían tener un *path base* similar, por ejemplo `/beers`.
 
-Un ejemplo de un *endpoint* de este nivel podría ser el siguiente:
+Este ejemplo se podría expresar de la siguiente forma:
 
 ```csharp
 app.MapGet("beers", (BeerDbContext db) => {
@@ -84,7 +90,7 @@ En este ejemplo, tenemos 3 *endpoints*:
 - `beers/{id}`: Devuelve la cerveza con el identificador especificado.
 - `breweries/{id}/beers`: Devuelve todas las cervezas de la cervecera con el identificador especificado.
 
-Se puede ver que cada *endpoint* tiene una *URI* única, y que la hemos basado en el concepto de recurso. Además, es fácil de entender,  *endpoint* devuelve un recurso diferente.
+Se puede ver que cada *endpoint* tiene una *URI* única, y que la hemos basado en el concepto de recurso. Además, es fácil de entender, ya que cada *endpoint* tiene una ruta que nos indica a qué recurso estamos accediendo y de qué forma.
 
 A este ejemplo le podríamos añadir paginación a la hora de devolver las cervezas, usando parámetros de consulta:
 
@@ -101,7 +107,7 @@ app.MapGet("beers", (BeerDbContext db, int page = 0, int pageSize = 10) => {
 
 Este *endpoint* sería invocado usando la *URI* `beers?page=2&pageSize=20`.
 
-En resumen, el nivel 1 del modelo de madurez de Richardson se centra en dividir un servicio en múltiples recursos, permitiendo una mayor facilidad de uso y comprensión de la API.
+En resumen, el nivel 1 del modelo de madurez de Richardson se centra en dividir un servicio en múltiples recursos y usar correctamente los *path* para describirlos. De esta forma, permitirá una mayor facilidad de uso y comprensión de la *API*.
 
 ## Nivel 2: Verbos y estados HTTP
 
@@ -232,7 +238,7 @@ En resumen, el nivel 2 del modelo de madurez de Richardson se centra en introduc
 
 En este nivel, se utilizan enlaces y controles hipermedia para navegar entre recursos. Los controles hipermedia proporcionan una forma de hacer que un protocolo sea más autodocumentado, ya que indican qué acciones se pueden realizar en un recurso y cómo hacerlo. Esto ayuda a los desarrolladores a entender cómo interactuar con la API sin tener que consultar una documentación específica.
 
-En este nivel se utiliza el acrónimo HATEOAS (Hypermedia As The Engine Of Application State), que se refiere a la idea de que los enlaces y controles hipermedia son la forma en que un cliente navega y entiende una *API*. En lugar de que el cliente tenga que conocer las *URIs* de los recursos, los controles hipermedia indican qué recursos están disponibles y cómo acceder a ellos.
+En este nivel se utiliza el acrónimo *HATEOAS* (_**H**ypermedia **A**s **T**he **E**ngine **O**f **A**pplication **S**tate_), que se refiere a la idea de que los enlaces y controles hipermedia son la forma en que un cliente navega y entiende una *API*. En lugar de que el cliente tenga que conocer las *URIs* de los recursos, los controles hipermedia indican qué recursos están disponibles y cómo acceder a ellos.
 
 En este nivel, los recursos que se devuelven contienen enlaces y controles hipermedia. Por ejemplo, el recurso `BeerWithLinks` prepresentaría una cerveza con enlaces y controles hipermedia:
 

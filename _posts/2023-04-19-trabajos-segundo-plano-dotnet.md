@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202304121
+ID: 202304191
 title: 'Trabajos en segundo plano en .Net'
 author: fernandoescolar
-post_date: 2023-04-12 01:04:36
+post_date: 2023-04-19 01:04:36
 layout: post
 tags: csharp dotnet aspnet aspnetcore best-practices
 background: '/assets/uploads/bg/programming5.jpg'
