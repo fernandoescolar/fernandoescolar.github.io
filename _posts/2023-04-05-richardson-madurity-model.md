@@ -5,7 +5,7 @@ title: 'Modelo de madurez de Richardson'
 author: fernandoescolar
 post_date: 2023-04-05 01:04:36
 layout: post
-tags: aspnet aspnetcore dotnet csharp best-practices
+tags: rest aspnet aspnetcore dotnet csharp best-practices
 background: '/assets/uploads/bg/programming3.jpg'
 ---
 
