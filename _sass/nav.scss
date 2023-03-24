@@ -96,9 +96,10 @@ nav {
     nav {
         padding: 0 1em;
 
-        >a {
+        >a.text {
             opacity: 1;
         }
+
         ul {
             list-style: none;
             padding: 0.2em;
