@@ -33,6 +33,11 @@ nav {
         &.text {
             transition: all 0.2s ease-out;
             opacity: 0;
+            display: none;
+        }
+
+        img {
+            margin-left: 10px;
         }
     }
 
@@ -98,6 +103,7 @@ nav {
 
         >a.text {
             opacity: 1;
+            display: block;
         }
 
         ul {
