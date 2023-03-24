@@ -30,9 +30,9 @@ nav {
         font-size: 2.5em;
         font-weight: 900;
 
-        .text {
+        &.text {
             transition: all 0.2s ease-out;
-            opacity: 1;
+            opacity: 0;
         }
     }
 
@@ -96,6 +96,9 @@ nav {
     nav {
         padding: 0 1em;
 
+        >a {
+            opacity: 1;
+        }
         ul {
             list-style: none;
             padding: 0.2em;
