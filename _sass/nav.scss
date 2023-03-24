@@ -13,6 +13,9 @@ nav {
 
     &.solid {
         opacity: 1;
+        a.text {
+            opacity: 0;
+        }
     }
 
     a:hover {
@@ -21,17 +24,15 @@ nav {
     }
 
     >a {
-        padding: 0.5em;
+        padding: 0 5px 0 5px;
         float: left;
         font-family: 'Open Sans';
-        font-size: 1.5em;
+        font-size: 2.5em;
         font-weight: 900;
 
-        b {
-            background-color: var(--logo-color);
-            color: var(--nav-background-color);
-            padding: 0 4px;
-            font-weight: bold;
+        .text {
+            transition: all 0.2s ease-out;
+            opacity: 1;
         }
     }
 
