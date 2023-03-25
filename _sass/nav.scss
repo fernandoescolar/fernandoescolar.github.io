@@ -24,14 +24,15 @@ nav {
     }
 
     >a {
-        padding: 0 5px 0 5px;
+        padding: 2px 5px 0 5px;
         float: left;
         font-family: 'Open Sans';
-        font-size: 2.5em;
+        font-size: 2.4em;
         font-weight: 900;
 
         &.text {
             transition: all 0.2s ease-out;
+            padding-left: 0px;
             opacity: 0;
             display: none;
         }
