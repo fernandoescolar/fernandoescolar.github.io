@@ -34,6 +34,7 @@ nav {
             transition: all 0.2s ease-out;
             padding-left: 0px;
             opacity: 0;
+            letter-spacing: -2px;
             display: none;
         }
 
@@ -99,12 +100,15 @@ nav {
 }
 
 @media screen and (min-width: 768px) {
+    body:not(header.home) nav>a.text {
+        display: block;
+    }
+
     nav {
         padding: 0 1em;
 
         >a.text {
             opacity: 1;
-            display: block;
         }
 
         ul {
