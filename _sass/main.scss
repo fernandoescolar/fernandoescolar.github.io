@@ -145,7 +145,7 @@ main {
         &#videos {
             ul {
                 li {
-                    width: calc((100% / 3) - 60px);
+                    width: calc((100% / 3) - 40px);
                     display: flex;
                 }
             }
@@ -154,11 +154,11 @@ main {
         &#portfolio {
             ul {
                 li {
-                    width: calc((100% / 3) - 60px);
+                    width: calc((100% / 3) - 40px);
                     display: flex;
 
                     &:first-child {
-                        width: calc(((100% / 3) - 60px) * 2 + 40px);
+                        width: calc(((100% / 3) - 40px) * 2 + 40px);
 
                         a {
                             display: flex;
@@ -182,7 +182,7 @@ main {
                     }
 
                     &.tags {
-                        width: calc(((100% / 3) - 60px) * 2 + 40px);
+                        width: calc(((100% / 3) - 40px) * 2 + 40px);
                         display: flex;
                         flex-flow: row wrap;
                         align-items: center;
@@ -190,7 +190,7 @@ main {
                     }
 
                     &.subscribe {
-                        width: calc(100% - 100px);
+                        width: calc(100% - 40px);
 
                         fieldset {
                             input {

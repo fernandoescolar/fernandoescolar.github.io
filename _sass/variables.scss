@@ -5,6 +5,7 @@ body {
   --background-color-light: #fff;
   --background-color-light-alt: #f9f9f9;
   --border-color: rgba(0, 0, 0, 0.1);
+  --header-title-color: #fff;
   --header-color-1: rgba(255, 255, 255, 0.95);
   --header-color-2: rgba(172, 65, 66, 0.55);
   --shadow-color: rgba(0, 0, 0, 0.2);
@@ -20,6 +21,7 @@ body.dark-theme {
   --background-color-light: #000;
   --background-color-light-alt: #393939;
   --border-color: rgba(0, 0, 0, 0.1);
+  --header-title-color: #fff;
   --header-color-1: rgba(0, 0, 0, 0.95);
   --header-color-2: rgba(128, 128, 128, 0.85);
   --shadow-color: rgba(150, 150, 150, 0.0);
@@ -61,7 +63,7 @@ body {
   --footer-button-hover-background-color: var(--accent-color);
 
   --header-title-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  --header-title-text-color: var(--background-color-light);
+  --header-title-text-color: var(--header-title-color);
   --header-background-color: linear-gradient(to bottom, var(--header-color-1) 0%, var(--header-color-2) 100%);
   --header-background-image: url(/assets/uploads/bg/desktop.jpg) center / cover;
 
@@ -79,10 +81,10 @@ body {
 
   --logo-color: var(--accent-color);
 
-  --share-button-text-color: var(--background-color-light);
+  --share-button-text-color: var(--header-title-color);
   --share-button-background-color: var(--accent-color-light);
 
-  --pagination-button-text-color: var(--background-color-light);
+  --pagination-button-text-color: var(--header-title-color);
   --pagination-button-background-color: var(--accent-color-light);
 
   --table-cell-background-color: var(--background-color-light-alt);
