@@ -34,7 +34,7 @@ Richardson establece 3 niveles, que en realidad son 4, porque el primero lo cons
 
 El nivel 0 del modelo de madurez de Richardson se refiere a una *API* que utiliza *HTTP* como mecanismo de transporte, pero utiliza de forma desprecupada los mecanismos de la web, como *URIs*, verbos *HTTP* o códigos de estado. Este es similar al uso de *HTTP* en servicios web *XML-RPC* o *SOAP*.
 
-También sería el caso en el que un *nefito* en el desarrollo de *APIs* *REST* podría crear una *API*, ya que no conocería el modelo de madurez de Richardson y por tanto no aplicaría sus características. Un ejemplo podría ser el siguiente:
+También sería el caso en el que un *neófito* en el desarrollo de *APIs* *REST* podría crear una *API*, ya que no conocería el modelo de madurez de Richardson y por tanto no aplicaría sus características. Un ejemplo podría ser el siguiente:
 
 ```csharp
 app.MapPost("beerService", (BeerDbContext db, int? id) => {
@@ -61,11 +61,11 @@ El nivel 1 se centra en el uso de *URI*. Una URI es un acrónimo de *Uniform Res
 - **Query**: Es la cadena de consulta que se utiliza para filtrar el recurso. Por ejemplo, `?q=api`.
 - **Fragment**: Es la parte de la URI que se utiliza para identificar un fragmento de un recurso. Por ejemplo, `#section1`.
 
-En este nivel, se introduce la idea de que una *API* debe estar compuesta por recursos, que son entidades independientes y identificables con una *URI* específica. En este nivel, se comienza a hablar con recursos individuales en lugar de hacer todas las solicitudes a un punto final de servicio único.
+En este nivel, se introduce la idea de que una *API* debe estar compuesta por recursos, que son entidades independientes e identificables con una *URI* específica. En este nivel, se comienza a hablar con recursos individuales en lugar de hacer todas las solicitudes a un punto final de servicio único.
 
-En este nivel, también se pueden utilizar verbos *HTTP*, pero se utilizan principalmente como mecanismos de tunelización para canalizar las interacciones a través de *HTTP*. Aunque es posible utilizar verbos *HTTP*, su uso correcto no es necesario para alcanzar este nivel.
+También se pueden utilizar verbos *HTTP*, pero se utilizan principalmente como mecanismos de tunelización para canalizar las interacciones a través de este protocolo. Aunque es posible utilizar verbos *HTTP*, su uso correcto no es necesario para alcanzar este nivel.
 
-En este nivel, el servicio debe exponer sus recursos usando toda la  potencia que permite la *URI*. Por ejemplo, si tenemos un servicio que nos permite buscar cervezas, podríamos tener un *endpoint* que nos permita buscar cervezas por nombre, otro que nos permita buscar cervezas por país de origen, etc. Cada uno de estos *endpoints* tendría su propia *URI*. Pero al ser todos referentes a cervezas, podrían tener un *path base* similar, por ejemplo `/beers`.
+Aquí, el servicio debe exponer sus recursos usando toda la  potencia que permite la *URI*. Por ejemplo, si tenemos un servicio que nos permite buscar cervezas, podríamos tener un *endpoint* que nos permita buscar cervezas por nombre, otro que nos permita buscar cervezas por país de origen, etc. Cada uno de estos *endpoints* tendría su propia *URI*. Pero al ser todos referentes a cervezas, podrían tener un *path base* similar, por ejemplo `/beers`.
 
 Este ejemplo se podría expresar de la siguiente forma:
 
@@ -186,7 +186,7 @@ Los verbos *HTTP* que tenemos disponibles son más, como se muestran en la sigui
 
 > Idenpotencia es la propiedad de una operación que puede ser ejecutada varias veces sin cambiar el resultado. Por ejemplo, la operación de sumar 1 a un número es idempotente, ya que el resultado es siempre el mismo. En cambio, la operación de sumar la fecha actual a un número no es idempotente, ya que el resultado cambia cada vez que se ejecuta.
 
-En este nivel, también se utilizan códigos de estado *HTTP* para indicar el estado de la respuesta. Los códigos de estado *HTTP*:
+También se utilizan códigos de estado *HTTP* para indicar el estado de la respuesta. Los códigos de estado *HTTP*:
 
 - **2XX**: Indican que la solicitud se ha procesado correctamente. p.e. `200` (OK), `201` (Created), `204` (No Content).
 - **3XX**: Indican que la solicitud se ha procesado correctamente, pero que el cliente debe realizar una acción adicional para completarla. p. e. `301` (Moved Permanently), `302` (Found), `304` (Not Modified).
@@ -230,7 +230,7 @@ app.MapPost("beers", (BeerDbContext db, Beer beer) => {
 
 En este ejemplo, si la cerveza es `null`, se devuelve un código de estado `400` (Bad Request). Si el nombre de la cerveza es `null` o vacío, se devuelve un código de estado `400` (Bad Request) con un mensaje de error. Y si la cerveza se crea correctamente, se devuelve un código de estado `201` (Created) con la cerveza.
 
-En este nivel, el cliente sigue conociendo las URIs de los recursos, pero las respuestas contienen información sobre los verbos HTTP permitidos y los códigos de estado de respuesta.
+El cliente sigue conociendo las URIs de los recursos, pero las respuestas contienen información sobre los verbos HTTP permitidos y los códigos de estado de respuesta.
 
 En resumen, el nivel 2 del modelo de madurez de Richardson se centra en introducir un conjunto estándar de verbos y códigos de estado HTTP para manejar situaciones similares de la misma manera, eliminando variaciones innecesarias, mejorando la experiencia de usuario y la facilidad de uso de la API.
 
@@ -238,9 +238,9 @@ En resumen, el nivel 2 del modelo de madurez de Richardson se centra en introduc
 
 En este nivel, se utilizan enlaces y controles hipermedia para navegar entre recursos. Los controles hipermedia proporcionan una forma de hacer que un protocolo sea más autodocumentado, ya que indican qué acciones se pueden realizar en un recurso y cómo hacerlo. Esto ayuda a los desarrolladores a entender cómo interactuar con la API sin tener que consultar una documentación específica.
 
-En este nivel se utiliza el acrónimo *HATEOAS* (_**H**ypermedia **A**s **T**he **E**ngine **O**f **A**pplication **S**tate_), que se refiere a la idea de que los enlaces y controles hipermedia son la forma en que un cliente navega y entiende una *API*. En lugar de que el cliente tenga que conocer las *URIs* de los recursos, los controles hipermedia indican qué recursos están disponibles y cómo acceder a ellos.
+Utilizaremos el acrónimo *HATEOAS* (_**H**ypermedia **A**s **T**he **E**ngine **O**f **A**pplication **S**tate_), que se refiere a la idea de que los enlaces y controles hipermedia son la forma en que un cliente navega y entiende una *API*. En lugar de que el cliente tenga que conocer las *URIs* de los recursos, los controles hipermedia indican qué recursos están disponibles y cómo acceder a ellos.
 
-En este nivel, los recursos que se devuelven contienen enlaces y controles hipermedia. Por ejemplo, el recurso `BeerWithLinks` prepresentaría una cerveza con enlaces y controles hipermedia:
+Los recursos que se devuelven contienen enlaces y controles hipermedia. Por ejemplo, el recurso `BeerWithLinks` prepresentaría una cerveza con enlaces y controles hipermedia:
 
 ```csharp
 public class BeerWithLinks
