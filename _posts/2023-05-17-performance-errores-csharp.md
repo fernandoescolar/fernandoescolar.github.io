@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-05-17 01:04:36
 layout: post
 tags: net7 aspnet aspnetcore dotnet csharp performance
-background: '/assets/uploads/bg/security3.jpg'
+background: '/assets/uploads/bg/performance.jpg'
 ---
 
 ¿Alguna vez has sentido que tu aplicación .NET se arrastra como un caracol en la nieve? ¿Te has quedado mirando fijamente la pantalla mientras una tarea tardaba minutos en completarse? ¿Te has preguntado si hay algo mal con tu código? o ¿simplemente la máquina se niega a colaborar contigo? Si has respondido "sí" a cualquiera de estas preguntas, podrías estar sufriendo alguno de los típicos problemas derivados de malas prácticas de programación. Pero no te preocupes. No estás solo. En este artículo, te presentamos algunos de los errores más comunes hemos visto en nuestros proyectos. Además, las soluciones para resolverlos. Así que agarra una taza de café, relájate y prepárate para aprender cómo hacer que tu aplicación funcione como un Ferrari<!--break-->.
