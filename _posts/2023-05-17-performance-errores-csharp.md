@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 202305171
-title: 'Errores de performance en C#'
+title: 'Top 5: Errores de performance en C#'
 author: fernandoescolar
 post_date: 2023-05-17 01:04:36
 layout: post
