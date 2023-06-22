@@ -22,7 +22,7 @@ Desde la primera versión de .Net Core se ha incluido un inyector de dependencia
 - [Thread-Safe](#thread-safe)
 - [Asincronía](#asincronía)
 - [Patrón Service Locator](#patrón-service-locator)
-- [Resumen](#resumen)
+- [Conclusiones](#conclusiones)
 
 
 ## Introducción
@@ -477,8 +477,14 @@ Si creamos diferentes contenedores, podemos tener diferentes configuraciones de 
 
 Por lo tanto, si usamos aplicaciones que usan `IHost` debemos evitar llamar al método `BuildServiceProvider`. Porque esta llamada la gestiona el propio `IHost` y no debemos interferir en su funcionamiento. Y si no, debemos solo llamarlo una vez y usar el mismo contenedor de inversión de control en toda la aplicación.
 
-## Resumen
+## Conclusiones
 
 En este artículo hemos visto cómo usar el contenedor de inversión de control de .Net para resolver dependencias en nuestra aplicación. Cómo registrar dependencias y  usarlas en nuestra aplicación. Además de los diferentes ciclos de vida para nuestras dependencias. Y hemos visto cómo usar el patrón *factory* para resolver dependencias que no se pueden resolver directamente por el contenedor de inversión de control.
 
-La idea es evitar los anti-patrones y usar el contenedor de inversión de control de forma correcta. Y, sobre todo, cargar la configuración de la aplicación en diferido y no en el momento de la construcción del contenedor de inversión de control.
+Resumiendo:
+- Usa el contenedor de inversión de control de .Net para resolver dependencias en tu aplicación.
+- Analiza el ciclo de vida de tus dependencias y usa el adecuado para cada una de ellas.
+- Usa ámbitos o `scopes` para agrupar ejecuciones de un solo proceso y así limpiar correctamente sus dependencias.
+- Configura en diferido.
+- Usa el patrón *factory* para resolver dependencias que no se pueden resolver directamente por el contenedor de inversión de control.
+- Evita el patrón *Service Locator* y llamar al método `BuildServiceProvider`.
