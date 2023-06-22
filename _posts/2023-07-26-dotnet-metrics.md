@@ -1,30 +1,30 @@
 ---
 published: true
-ID: 202306281
-title: 'Métricas en .Net'
+ID: 202307261
+title: 'Observabilidad en .Net: Métricas'
 author: fernandoescolar
-post_date: 2023-06-28 01:04:36
+post_date: 2023-07-26 01:04:36
 layout: post
-tags: dotnet csharp net7 metrics
+tags: observability dotnet csharp net7 metrics
 background: '/assets/uploads/bg/golang.jpg'
 ---
 
-Hoy vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.
+Dentro de la rama de la observabilidad existen tres pilares fundamentales: métricas, logs y trazas. En este artículo vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.
 
 - [Introducción](#introducción)
 - [Visualizando métricas](#visualizando-métricas)
 - [Métricas personalizadas](#métricas-personalizadas)
 - [Tipos de métricas](#tipos-de-métricas)
-	- [Counter](#counter)
-	- [UpDownCounter](#updowncounter)
-	- [ObservableCounter](#observablecounter)
-	- [ObservableUpDownCounter](#observableupdowncounter)
-	- [ObservableGauge](#observablegauge)
-	- [Histogram](#histogram)
+  - [Counter](#counter)
+  - [UpDownCounter](#updowncounter)
+  - [ObservableCounter](#observablecounter)
+  - [ObservableUpDownCounter](#observableupdowncounter)
+  - [ObservableGauge](#observablegauge)
+  - [Histogram](#histogram)
 - [Conclusiones](#conclusiones)
 
 
-Así que siéntete libre de abrir tu cerveza favorita y sigue leyendo, porque aquí vamos a enseñarte cómo medir tus cervezas (y tus aplicaciones):
+Así que siéntete libre de abrir tu cerveza favorita y sigue leyendo, porque aquí vamos a enseñarte cómo medir ~~tus cervezas~~ tus aplicaciones:
 
 ## Introducción
 
@@ -102,7 +102,7 @@ El frameowork nos provee de una serie de métricas por defecto para nuestras apl
 
 ## Métricas personalizadas
 
-Ahora, vamos a enseñarte cómo puedes crear tus propias métricas personalizadas en .NET. Para esto, vamos a necesitar el paquete de nuget `System.Diagnostics.DiagnosticSource`, que es la librería recomendada para crear métricas personalizadas en .NET en las últimas versiones del runtime.
+Ahora, vamos a enseñarte cómo puedes crear tus propias métricas personalizadas en .Net. Para esto, vamos a necesitar el paquete de nuget `System.Diagnostics.DiagnosticSource`, que es la librería recomendada para crear métricas personalizadas en .Net en las últimas versiones del runtime.
 
 Estas librerías sustituyen a las antiguas `EventCounters` y `System.Diagnostics.PerformanceCounter`.
 
@@ -167,7 +167,7 @@ Press p to pause, r to resume, q to quit.
 
 ## Tipos de métricas
 
-Hasta aquí hemos visto cómo crear un contador simple, pero .NET nos permite crear otros tipos de métricas más complejas. Estos son los tipos de métricas que podemos crear:
+Hasta aquí hemos visto cómo crear un contador simple, pero .Net nos permite crear otros tipos de métricas más complejas. Estos son los tipos de métricas que podemos crear:
 
 ### Counter
 
@@ -260,6 +260,6 @@ beers-meter-histogram
 
 ## Conclusiones
 
-En este artículo hemos visto cómo podemos crear métricas en .NET. Hemos visto los diferentes tipos de métricas que podemos crear y cómo podemos usarlas. Estas métricas nos permiten medir el rendimiento de nuestra aplicación y detectar posibles problemas. Y al ser el estándar de .Net actual, podremos usarlas con cualquier recolector de métricas, como por ejemplo OpenTelemetry.
+En este artículo hemos visto cómo podemos crear métricas en .Net. Hemos visto los diferentes tipos de métricas que podemos crear y cómo podemos usarlas. Estas métricas nos permiten medir el rendimiento de nuestra aplicación y detectar posibles problemas. Y al ser el estándar de .Net actual, podremos usarlas con cualquier recolector de métricas, como por ejemplo OpenTelemetry.
 
 Si quieres controlar y aprender del uso y funcionamiento de tus aplicaciones, no dudes en crear y consumir tus propias métricas.
