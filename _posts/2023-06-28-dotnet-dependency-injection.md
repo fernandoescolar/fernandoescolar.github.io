@@ -35,11 +35,29 @@ Para entender mejor cómo funciona esta herramienta quizá deberíamos aclarar a
 
 El principio de inversión de dependencia es un principio de diseño de software que establece que las dependencias de una clase deben ser abstracciones, no implementaciones concretas. Esto significa que las clases de alto nivel no deben depender de las clases de bajo nivel; ambas deben depender de las abstracciones. O lo que es lo mismo: las clases no deben depender de los detalles, deben depender de contratos o interfaces.
 
+```csharp
+// clase que no cumple el principio de inversión de dependencia
+public class BeerService
+{
+    // dependencia de una clase concreta
+    private readonly BeerRepository _beerRepository;
+    // ...
+}
+
+// clase que cumple el principio de inversión de dependencia
+public class BeerService : IBeerService
+{
+    // dependencia de una interfaz
+    private readonly IBeerRepository _beerRepository;
+    // ...
+}
+```
+
 Este principio es importante porque reduce el acoplamiento entre clases y hace que nuestra implementación sea más sencilla de probar en forma de pruebas unitarias. Además, hace que nuestro código sea más flexible y fácil de mantener.
 
 ### ¿Qué es la inyección de dependencias?
 
-La inyección de dependencias es una práctica de programación en la que un objecto o función recibe sus dependencias de una fuente externa en lugar de crearlas. Esto significa que una clase no debe configurar sus dependencias directamente. En su lugar, se deben pasar a la clase desde el exterior. La "inyección" se refiere al hecho de que una dependencia se pasa a la clase, generalmente por medio de un constructor o un método, que luego "inyecta" la dependencia en la clase.
+La inyección de dependencias es una práctica de programación en la que un objecto o función recibe sus dependencias de una fuente externa en lugar de crearlas. Esto significa que una clase no debe configurar sus dependencias directamente. En su lugar, se deben pasar a la clase desde el exterior. La "inyección" se refiere al hecho de que una dependencia se pasa a la clase, generalmente por medio de un constructor, un método o una propiedad, que luego "inyecta" la dependencia en la clase.
 
 ```csharp
 public class BeerService : IBeerService
@@ -60,41 +78,41 @@ public class BeerService : IBeerService
 
 El patrón de inversión de control es un patrón de diseño de software en el que el control de objetos o partes de un programa se invierte. En lugar de que un desarrollador escriba el código de flujo de control, el marco llama al código del desarrollador. El marco se encarga del flujo de control en lugar de que el desarrollador lo haga.
 
-El contenedor de inversión de control es un buen lugar donde desarrollar la inyección de dependencias ya que es el encargado de crear y destruir las instancias de las clases. Así que tiene sentido que gestione también las dependencias entre ellas. Y la forma más simple de hacerlo es a través de la inyección de dependencias.
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.MapGet("/", () => "Hello World!");
+app.Run();
+```
+
+En .Net, cuando estamos desarrollando usando ASP.NET Core, el objeto `app` (que implementa `IHost`) es el encargado de gestionar el flujo de control de la aplicación. Y por tanto, una implementación del patrón de inversión de control.
+
+Este gestor del flujo de la aplicación es un buen lugar donde desarrollar la inyección de dependencias ya que es el encargado de crear y destruir las instancias de las clases. Así que tiene sentido que gestione también las dependencias entre ellas. Y la forma más simple de hacerlo es a través de la inyección de dependencias.
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+// aquí se configura el inyector de dependencias
+builder.Services.AddScoped<IBeerService, BeerService>();
+builder.Services.AddScoped<IBeerRepository, BeerRepository>();
+var app = builder.Build();
+// aquí se inyecta la dependencia IBeerService
+app.MapGet("/", (IBeerService service) => /* ... */);
+app.Run();
+```
 
 ### ¿Cómo funciona el inyector de dependencias de .Net?
 
-El inyector de dependencias de .Net es un contenedor de inversión de control. Es decir, es un contenedor de objetos que se encarga de crear y destruir las instancias de las clases. Y, además, gestiona las dependencias entre ellas. La idea es que el programador configure todas las clases que entran en juego en la aplicación y su ciclo de vida. Después, el contenedor se encarga de crear las instancias de las clases y de inyectar las dependencias entre ellas cuando sea necesario.
+Dentro de .Net y las aplicaciones que usan implementaciones de `IHost`, el inyector de dependencias se basa en dos piezas: `IServiceCollection` e `IServiceProvider`. El primero sirve para configurar las clases que entran en juego en la aplicación y el segundo para crear las instancias de las clases y gestionar las dependencias entre ellas.
 
-Si tuviéramos una serie de clases que dependen unas de otras, por ejemplo:
+El inyector de dependencias es un contenedor de inversión de control. Es decir, es un contenedor de objetos que se encarga de crear y destruir las instancias de las clases. Y, además, gestiona las dependencias entre ellas. La idea es que el programador configure todas las clases que entran en juego en la aplicación y su ciclo de vida. Después, el contenedor se encarga de crear las instancias de las clases y de inyectar las dependencias entre ellas cuando sea necesario.
 
-```csharp
-public class BeerService : IBeerService
-{
-    private readonly IBeerRepository _beerRepository;
-
-    public BeerService(IBeerRepository beerRepository)
-    {
-        _beerRepository = beerRepository;
-    }
-
-    // ...
-}
-
-public class BeerRepository : IBeerRepository
-{
-    // ...
-}
-```
-
-Y quisiéramos crear una instancia de la clase `BeerService` usando esta librería, tendríamos que hacerlo de la siguiente forma:
+Si quisiéramos crear una instancia de la clase `BeerService` usando esta librería, tendríamos que hacerlo de la siguiente forma:
 
 ```csharp
 // registramos las clases que vamos a utilizar
 var services = new ServiceCollection(); // creamos una colección de servicios
 services.AddTransient<IBeerService, BeerService>(); // añadimos una clase de servicio definida por una interfaz
 services.AddTransient<IBeerRepository, BeerRepository>(); // añadimos una clase de repositorio, que es una dependencia de la clase de servicio
-
 
 var serviceProvider = services.BuildServiceProvider(); // construimos el contenedor de inversión de control y lo exponemos como un proveedor de servicios
 var beerService = serviceProvider.GetService<IBeerService>(); // obtenemos una instancia de la clase de servicio
@@ -112,6 +130,14 @@ public class Startup
         services.AddTransient<IBeerRepository, BeerRepository>();
     }
 }
+```
+
+O podremos utilizar la propiedad `Services` de la clase `WebApplicationBuilder` para configurar los servicios que se van a utilizar en la aplicación.
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IBeerService, BeerService>();
+builder.Services.AddScoped<IBeerRepository, BeerRepository>();
 ```
 
 Lo importante es que el programador no tiene que preocuparse de crear ni destruir las instancias de las clases y sus dependencias. El contenedor de inversión de control se encarga de todo esto.
