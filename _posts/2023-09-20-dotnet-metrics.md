@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202307261
+ID: 202309201
 title: 'Observabilidad en .Net: Métricas'
 author: fernandoescolar
-post_date: 2023-07-26 01:04:36
+post_date: 2023-09-20 01:04:36
 layout: post
 tags: observability dotnet csharp net7 metrics
 background: '/assets/uploads/bg/golang.jpg'

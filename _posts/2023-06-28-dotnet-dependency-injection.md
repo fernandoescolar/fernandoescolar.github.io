@@ -5,7 +5,7 @@ title: 'El inyector de dependencias de .Net'
 author: fernandoescolar
 post_date: 2023-06-28 01:04:36
 layout: post
-tags: dependency-injection dotnet csharp
+tags: di dotnet csharp best-practices
 background: '/assets/uploads/bg/inversion-of-control.jpg'
 ---
 
