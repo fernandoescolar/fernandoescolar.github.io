@@ -64,7 +64,7 @@ public class BeerService : IBeerService
 {
     private readonly IBeerRepository _beerRepository;
 
-    // hay que inyectar la dependencia a través del constructor
+    // se inyecta la dependencia a través del constructor
     public BeerService(IBeerRepository beerRepository)
     {
         _beerRepository = beerRepository;
@@ -76,7 +76,7 @@ public class BeerService : IBeerService
 
 ### ¿Qué es el patrón de inversión de control?
 
-El patrón de inversión de control es un patrón de diseño de software en el que el control de objetos o partes de un programa se invierte. En lugar de que un desarrollador escriba el código de flujo de control, el marco llama al código del desarrollador. El marco se encarga del flujo de control en lugar de que el desarrollador lo haga.
+El patrón de inversión de control es un patrón de diseño de software en el que el control de objetos o partes de un programa se invierte. En lugar de que un desarrollador escriba el código que controla el flujo y ciclo de vida de los objetos, se crea un marco o contexto de ejecución que controla todo.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -144,7 +144,7 @@ Lo importante es que el programador no tiene que preocuparse de crear ni destrui
 
 ## Ciclo de vida
 
-El ciclo de vida de un objecto es el tiempo que transcurre desde que se crea hasta que se destruye. En el caso del inyector de dependencias de .Net, el ciclo de vida de un objecto depende de cómo se registre en el contenedor de inversión de control. Hay tres formas de registrar un objecto:
+El ciclo de vida de un objecto es el tiempo que transcurre desde que se crea hasta que se destruye. En el caso del inyector de dependencias de .Net, el ciclo de vida de un objecto depende de cómo se registre en la colección de servicios. Hay tres formas de registrar un objecto:
 
 - `Transient`: se crea una nueva instancia cada vez que se solicita.
 - `Scoped`: se crea una nueva instancia por ámbito que se crea. En Asp.Net cada petición HTTP crea un ámbito nuevo.
@@ -213,7 +213,7 @@ class SingletonObject : Disposable, ISingletonObject
 }
 ```
 
-Y los registraremos en el contenedor de inversión de control:
+Y los registraremos en la colección de servicios:
 
 ```csharp
 var services = new ServiceCollection();
@@ -358,7 +358,7 @@ public class BeerOptions
     public string DatabaseName { get; set; }
 }
 
-public class BeerService
+public class BeerService : IBeerService
 {
     public BeerService(BeerOptions options)
     {
@@ -371,7 +371,7 @@ public static class BeerExtensions
     public static IServiceCollection AddBeers(this IServiceCollection services, BeerOptions options)
     {
         services.AddSingleton(options);
-        services.AddSingleton<BeerService>();
+        services.AddSingleton<IBeerService, BeerService>();
         return services;
     }
 }
@@ -379,14 +379,14 @@ public static class BeerExtensions
 
 Aquí hemos creado una clase de opciones que contiene las propiedades que necesitamos. Y hemos creado una extensión que registra las opciones y el servicio. Pero esto nos obliga a tener cargados los datos en el momento de arrancar la aplicación. Si por ejemplo a la cadena de conexión la tenemos en un *Azure Key Vault*, esto es un servicio externo al que tendremos que conectar y acceder antes de que nuestra aplicación haya arrancado si quiera.
 
-Este comportamiento puede generar problemas en el arranque de la aplicación. Por ejemplo, si la cadena de conexión no es correcta, la aplicación no podrá arrancar. O si el servicio externo no está disponible, la aplicación no podrá arrancar. O si el servicio externo tarda mucho en responder, la aplicación tardará mucho en arrancar.
+Este comportamiento puede generar problemas en el arranque de la aplicación. Por ejemplo, si la cadena de conexión no es correcta, la aplicación no podrá arrancar. O si el servicio externo no está disponible, tres cuartos de lo mismo. Incluso si lo que sucede es que el servicio externo tarda mucho en responder, la aplicación tardará mucho en arrancar o quizá ni si quiera cargue.
 
-Estos errores al arrancar no generan trazas claras, ya que los sistemas de observabilidad no han cargado todavía. Por lo que es muy difícil saber qué ha pasado.
+Este tipo de errores en tiempo de arranque son una faena. El problema es que por lo general, no hemos cargado sistemas de observabilidad ni gestionamos errores en tiempo de carga de la aplicación. Así que son problemas que muchas veces no sabemos que han sucedido ni tenemos detalles suficientes como para sabers cómo solucionarlos.
 
-Por eso es recomendable usar lo que personalmente denomino como carga en diferido:
+Por eso es recomendable usar lo que personalmente denomino como **carga en diferido**:
 
 ```csharp
-public class BeerService
+public class BeerService : IBeerService
 {
     public BeerService(IOptions<BeerOptions> options)
     {
@@ -400,7 +400,7 @@ public static class BeerExtensions
     public static IServiceCollection AddBeers(this IServiceCollection services, Action<BeerOptions> configure)
     {
         services.Configure<BeerOptions>(configure);
-        services.AddSingleton<BeerService>();
+        services.AddSingleton<IBeerService, BeerService>();
 
         return services;
     }
@@ -415,10 +415,10 @@ app.Services.AddBeers(op => app.Configuration.GetSection("Beers").Bind(op));
 
 Si hay algún error al cargar la configuración, la aplicación devolverá el error en el momento determinado de instanciar la clase `BeerService` y todos los sistemas de observabilidad estarán disponibles para capturar el error y mostrarlo o almacenarlo en el lugar adecuado.
 
-Y si por alguna razón no puedes modificar el constructor de la clase para que acepte un objecto que implemente `IOptions<T>`, siempre puedes usar el patrón `Factory`:
+Y si por alguna razón no puedes modificar el constructor de la clase para que acepte un objecto que implemente `IOptions<T>`, siempre puedes usar registrar un objeto especificando un método que instancie la clase:
 
 ```csharp
-public class BeerService
+public class BeerService : IBeerService
 {
     public BeerService(string connectionString, string database, int retries)
     {
@@ -431,9 +431,9 @@ public static class BeerExtensions
     public static IServiceCollection AddBeers(this IServiceCollection services, Action<BeerOptions> configure)
     {
         services.Configure<BeerOptions>(configure);
-        services.AddSingleton<BeerService>(sp =>
+        services.AddSingleton<IBeerService>(sp =>
         {
-            var options = sp.GetRequiredService<IOptions<BeerOptions>>();
+            var options = sp.GetRequiredService<IOptions<BeerOptions>>().Value;
             return new BeerService(options.ConnectionString, options.DatabaseName, options.Retries);
         });
 
@@ -479,6 +479,9 @@ services.AddSingleton<Func<Task<IBeerService>>>(_ => async () => {
     var dependency = await CreateDependencyAsync();
     return new BeerService(dependency);
 });
+// ...
+var factory = provider.GetRequiredService<Func<Task<IBeerService>>>();
+var service = await factory();
 ```
 
 ## Patrón Service Locator
