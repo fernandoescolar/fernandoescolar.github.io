@@ -13,7 +13,6 @@ table {
     background-color: var(--table-header-background-color);
     color: var(--table-header-text-color);
     padding: .625em;
-    font-size: .90em;
     letter-spacing: .1em;
     text-align: left;
     font-weight: bold;
@@ -21,7 +20,6 @@ table {
 
   td {
     padding: .625em;
-    font-family: monospace;
   }
 
 }

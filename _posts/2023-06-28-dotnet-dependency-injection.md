@@ -110,12 +110,18 @@ Si quisiéramos crear una instancia de la clase `BeerService` usando esta librer
 
 ```csharp
 // registramos las clases que vamos a utilizar
-var services = new ServiceCollection(); // creamos una colección de servicios
-services.AddTransient<IBeerService, BeerService>(); // añadimos una clase de servicio definida por una interfaz
-services.AddTransient<IBeerRepository, BeerRepository>(); // añadimos una clase de repositorio, que es una dependencia de la clase de servicio
+//  creamos una colección de servicios
+var services = new ServiceCollection();
+//  añadimos una clase de servicio definida por una interfaz
+services.AddTransient<IBeerService, BeerService>();
+//  añadimos una clase de repositorio, que es una dependencia de la clase de servicio
+services.AddTransient<IBeerRepository, BeerRepository>();
 
-var serviceProvider = services.BuildServiceProvider(); // construimos el contenedor de inversión de control y lo exponemos como un proveedor de servicios
-var beerService = serviceProvider.GetService<IBeerService>(); // obtenemos una instancia de la clase de servicio
+// construimos el contenedor de inversión de control y lo exponemos como un proveedor de servicios
+var serviceProvider = services.BuildServiceProvider();
+
+// obtenemos una instancia de la clase de servicio
+var beerService = serviceProvider.GetService<IBeerService>();
 // aquí ya podemos utilizar la clase de servicio
 ```
 
@@ -151,9 +157,12 @@ El ciclo de vida de un objecto es el tiempo que transcurre desde que se crea has
 - `Singleton`: se crea una única instancia que se reutiliza en todas las peticiones y vive hasta que la aplicación se cierra.
 
 ```csharp
-services.AddTransient<ITransientObject, TransientObject>(); // se crea una nueva instancia cada vez que se solicita
-services.AddScoped<IScopedObject, ScopedObject>(); // se crea una nueva instancia por ámbito que se crea
-services.AddSingleton<ISingletonObject, SingletonObject>(); // se crea una única instancia que se reutiliza en todas las peticiones
+// se crea una nueva instancia cada vez que se solicita
+services.AddTransient<ITransientObject, TransientObject>();
+// se crea una nueva instancia por ámbito que se crea
+services.AddScoped<IScopedObject, ScopedObject>();
+// se crea una única instancia que se reutiliza en todas las peticiones
+services.AddSingleton<ISingletonObject, SingletonObject>();
 ```
 
 Hay que tener en cuenta que el ciclo de vida de un objecto depende también del ciclo de vida de sus dependencias. Por ejemplo, si registramos una clase como `Singleton`, pero una de sus dependencias como `Transient`, la dependencia se creará cada vez que se solicite, aunque la clase que la contiene sea `Singleton`.
