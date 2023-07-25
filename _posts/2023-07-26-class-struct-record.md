@@ -11,8 +11,6 @@ background: '/assets/uploads/bg/golang.jpg'
 
 En este post vamos a ver las diferencias entre los tipos de datos de referencia `class`, los tipos de datos de valor `struct` y cómo encaja en todo este entramado de objetos los nuevos tipos `record` y `record struct` que han sido introducidos en las últimas versiones del lenguaje C#<!--break-->.
 
-El en mundo de la programación orientada a objetos, se define un objeto como una entidad que tiene un estado y un comportamiento. Y esto nos permite cumplir con el principio de encapsulación, que es uno de los pilares de la programación orientada a objetos.
-
 - [Introducción](#introduccion)<!-- table -->
 - [Clase: `class`](#clase-class)
 - [Struct: `struct`](#struct-struct)
@@ -22,16 +20,23 @@ El en mundo de la programación orientada a objetos, se define un objeto como un
 
 <span id="introduccion"></span>
 
+El en mundo de la programación orientada a objetos, se define un objeto como una entidad que tiene un estado y un comportamiento. Y esto nos permite cumplir con el principio de encapsulación, que es uno de los pilares de la programación orientada a objetos.
+
 La **encapsulación** es un principio de POO que permite ocultar los detalles internos de una clase y solo exponer una interfaz bien definida para interactuar con los objetos creados a partir de esa clase. Los campos y métodos de una clase pueden tener diferentes niveles de acceso (por ejemplo, público, protegido, privado), lo que controla qué partes del código pueden acceder y modificar esos miembros.
 
 ```csharp
-// el objeto Beer
+// el objeto publico Beer
 public class Beer
+{
+}
+
+// el objeto protegido Water
+protected class Water
 {
 }
 ```
 
-Para gestionar el estado de un objeto en C#, utilizaremos **campos** y **propiedades**. Los campos son variables que almacenan datos relacionados con el objeto. Las propiedades son métodos que permiten acceder y modificar los campos de manera controlada. Las propiedades son útiles para aplicar lógica adicional, como validación, antes de leer o escribir un valor.
+Para almacenar el estado de un objeto en C#, utilizaremos **campos** y **propiedades**. Los campos son variables que almacenan datos relacionados con el objeto. Las propiedades son métodos que permiten acceder y modificar los campos de manera controlada. Las propiedades son útiles para aplicar lógica adicional, como validación, antes de leer o escribir un valor.
 
 ```csharp
 public class Beer
@@ -51,6 +56,27 @@ public class Beer
     {
         get => _year;
         set => _year = value;
+    }
+}
+```
+
+El comportamiento de un objeto se define mediante **métodos**. Los métodos son bloques de código dentro de una clase que definen comportamientos. Pueden realizar acciones, manipular datos y devolver resultados. Los métodos también pueden tener diferentes niveles de acceso y pueden ser estáticos (métodos de clase) o de instancia (métodos de objeto).
+
+```csharp
+public class Beer
+{
+    // ...
+
+    // método de instancia
+    public void Drink()
+    {
+        Console.WriteLine("Drinking beer...");
+    }
+
+    // método de clase
+    public static void Drink(Beer beer)
+    {
+        Console.WriteLine($"Drinking {beer.Name}...");
     }
 }
 ```
@@ -78,28 +104,35 @@ public class Beer
 }
 ```
 
-El comportamiento de un objeto se define mediante **métodos**. Los métodos son bloques de código dentro de una clase que definen comportamientos. Pueden realizar acciones, manipular datos y devolver resultados. Los métodos también pueden tener diferentes niveles de acceso y pueden ser estáticos (métodos de clase) o de instancia (métodos de objeto).
+Y si necesitamos realizar operaciones con nuestros objetos, podemos sobrecargar los operadores. La **sobrecarga de operadores** es una característica de C# que permite definir el comportamiento de los operadores integrados en el lenguaje. Por ejemplo, podemos definir cómo se suman dos objetos de una clase personalizada.
 
 ```csharp
 public class Beer
 {
     // ...
 
-    // método de instancia
-    public void Drink()
+    // sobrecarga del operador +
+    public static Beer operator +(Beer beer1, Beer beer2)
     {
-        Console.WriteLine("Drinking beer...");
-    }
-
-    // método de clase
-    public static void Drink(Beer beer)
-    {
-        Console.WriteLine($"Drinking {beer.Name}...");
+        return new Beer
+        {
+            Name = $"{beer1.Name} {beer2.Name}",
+            Year = beer1.Year + beer2.Year
+        };
     }
 }
+
+var beer1 = new Beer("Mahou", 2000);
+var beer2 = new Beer("San Miguel", 2000);
+
+// usamos el operador +
+var beer3 = beer1 + beer2;
+
+Console.WriteLine($"Beer: {beer3.Name} - {beer3.Year}");
+// Beer: Mahou San Miguel - 4000
 ```
 
-Adicionalmente, C# admite el uso de *eventos* para permitir la comunicación entre objetos. Los eventos son notificaciones que se envían cuando ocurre algo dentro de un objeto y de lo que se quiera informar al exterior. Los objetos que deseen recibir notificaciones sobre un evento pueden suscribirse a él.
+Adicionalmente, C# admite el uso de **eventos** para permitir la comunicación entre objetos. Los eventos son notificaciones que se envían cuando ocurre algo dentro de un objeto y de lo que se quiera informar al exterior. Los objetos que deseen recibir notificaciones sobre un evento pueden suscribirse a él.
 
 ```csharp
 public class Beer
