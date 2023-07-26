@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-07-26 01:04:36
 layout: post
 tags: csharp dotnet best-practices
-background: '/assets/uploads/bg/golang.jpg'
+background: '/assets/uploads/bg/programming2.jpg'
 ---
 
 En este post vamos a ver las diferencias entre los tipos de datos de referencia `class`, los tipos de datos de valor `struct` y cómo encaja en todo este entramado de objetos los nuevos tipos `record` y `record struct` que han sido introducidos en las últimas versiones del lenguaje C#<!--break-->.
