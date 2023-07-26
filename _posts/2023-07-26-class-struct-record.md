@@ -314,7 +314,7 @@ A partir de C# 9.0, se introdujo la palabra clave `record` que se utiliza para d
 public record Beer(string Name, int Year);
 ```
 
-Un registro es inmutable por diseño, por lo que, para modificar sus propiedades, debemos crear una nueva instancia del mismo, pero podemos usar la palabra clave `with` para crear una nueva instancia con los valores de las propiedades que queramos modificar:
+En un registro los parámetros del constructor son propiedades inmutables por diseño, por lo que, para modificar su valor, debemos crear una nueva instancia del `record`. También podemos usar la palabra clave `with` para crear una nueva instancia basada en otra existente y modificando algunas de sus propiedades:
 
 ```csharp
 var b1 = new Beer ("Estrella Galicia", 1906);
@@ -325,7 +325,7 @@ Console.WriteLine(b1.Name); // Estrella Galicia
 Console.WriteLine(b2.Name); // Estrella Damm
 ```
 
-Además de ser inmutables, los registros tienen funcionalidad especial para la igualdad estructural. Esto significa que dos registros son iguales si tienen el mismo tipo y sus propiedades tienen los mismos valores. Por ejemplo:
+Además, los registros tienen funcionalidad especial para la igualdad estructural. Esto significa que dos registros son iguales si tienen el mismo tipo y sus propiedades tienen los mismos valores. Por ejemplo:
 
 ```csharp
 record Point(int X, int Y);
@@ -344,17 +344,17 @@ Console.WriteLine(x); // 1
 Console.WriteLine(y); // 2
 ```
 
-Usarías un `record` en lugar de una `class` en situaciones en las que necesitas representar datos inmutables o casi inmutables y te beneficias de la funcionalidad proporcionada automáticamente por los registros, como igualdad estructural y representación de cadena. Si buscas alguna de las siguientes características, un registro es una buena opción:
+Usarías un `record` en lugar de una `class` en situaciones en las que necesitas representar datos inmutables o para beneficiarte de la funcionalidad proporcionada automáticamente, como igualdad estructural o la descomposición. Si buscas alguna de las siguientes características, un registro es una buena opción:
 
 - *Modelado de datos inmutables*: Si necesitas representar una entidad que no cambiará después de su creación, como un punto en un plano, una fecha o cualquier objeto que se suponga inmutable, los registros son una elección natural. Al ser inmutables, los registros garantizan que los datos no cambiarán inadvertidamente en diferentes partes del código, lo que facilita la comprensión y el mantenimiento del programa.
 
 - *Comparación por igualdad estructural*: Cuando necesitas comparar objetos por su contenido en lugar de su referencia, los registros son convenientes. Al utilizar registros, obtienes automáticamente una implementación adecuada del método Equals que verifica la igualdad de los campos del registro. Esto es útil para colecciones, búsquedas y otras operaciones en las que necesitas comparar objetos por sus valores y no por sus ubicaciones en memoria.
 
-- *Sintaxis concisa*: Los registros ofrecen una sintaxis más concisa para definir clases inmutables. Sin la necesidad de escribir constructores, propiedades y métodos de igualdad, puedes definir una clase de datos en pocas líneas de código.
+- *Sintaxis concisa*: Los registros ofrecen una sintaxis más concisa para definir clases inmutables. Sin la necesidad de escribir constructores, propiedades y métodos de igualdad, puedes llegar a definir una clase de datos en una sola línea de código.
 
 - *Patrones de desestructuración*: Los registros admiten patrones de desestructuración, lo que significa que puedes descomponer un registro en sus campos individuales fácilmente. Esto puede simplificar el código en situaciones en las que necesitas acceder a los campos con frecuencia.
 
-- *Patrones de patrón de diseño _Value Object_*: Los registros se ajustan bien al patrón de diseño "Value Object", que se refiere a objetos que son iguales por su valor, no por su identidad. Este patrón es útil para representar tipos de datos que no tienen una identidad única y se utilizan principalmente para transmitir datos.
+- *Patrones *_Value Object_*: Los registros se ajustan bien al patrón de diseño "Value Object", que se refiere a objetos que son iguales por su valor, no por su identidad. Este patrón es útil para representar tipos de datos que no tienen una identidad única y se utilizan principalmente para transmitir datos.
 
 Eso sí, es importante que sepas que a día de hoy un `record` no es más que una `class` con algunas características adicionales, y todo lo que hacemos con el primero, lo podemos hacer con la segunda. Pero no al revés. Por ejemplo, si quisiéramos crear un objeto inmutable, podríamos hacerlo con una `class` usando la palabra clave `init`:
 
@@ -429,7 +429,7 @@ Console.WriteLine(x); // 1
 Console.WriteLine(y); // 2
 ```
 
-En definitiva, los `record` son una forma más sencilla de crear objetos inmutables, pero no son la única. Y si no necesitas la funcionalidad adicional que proporcionan, puedes seguir usando `class` para crear objetos inmutables.
+En definitiva, los `record` son una forma más sencilla de crear objetos inmutables, pero no son la única. Y si no necesitas la funcionalidad adicional que proporcionan, puedes seguir usando `class` para crear objetos con características similares.
 
 ## Registro estructura: `record struct`
 
