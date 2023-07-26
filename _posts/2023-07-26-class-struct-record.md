@@ -346,15 +346,15 @@ Console.WriteLine(y); // 2
 
 Usarías un `record` en lugar de una `class` en situaciones en las que necesitas representar datos inmutables o para beneficiarte de la funcionalidad proporcionada automáticamente, como igualdad estructural o la descomposición. Si buscas alguna de las siguientes características, un registro es una buena opción:
 
-- *Modelado de datos inmutables*: Si necesitas representar una entidad que no cambiará después de su creación, como un punto en un plano, una fecha o cualquier objeto que se suponga inmutable, los registros son una elección natural. Al ser inmutables, los registros garantizan que los datos no cambiarán inadvertidamente en diferentes partes del código, lo que facilita la comprensión y el mantenimiento del programa.
+- **Modelado de datos inmutables**: Si necesitas representar una entidad que no cambiará después de su creación, como un punto en un plano, una fecha o cualquier objeto que se suponga inmutable, los registros son una elección natural. Al ser inmutables, los registros garantizan que los datos no cambiarán inadvertidamente en diferentes partes del código, lo que facilita la comprensión y el mantenimiento del programa.
 
-- *Comparación por igualdad estructural*: Cuando necesitas comparar objetos por su contenido en lugar de su referencia, los registros son convenientes. Al utilizar registros, obtienes automáticamente una implementación adecuada del método Equals que verifica la igualdad de los campos del registro. Esto es útil para colecciones, búsquedas y otras operaciones en las que necesitas comparar objetos por sus valores y no por sus ubicaciones en memoria.
+- **Comparación por igualdad estructural**: Cuando necesitas comparar objetos por su contenido en lugar de su referencia, los registros son convenientes. Al utilizar registros, obtienes automáticamente una implementación adecuada del método Equals que verifica la igualdad de los campos del registro. Esto es útil para colecciones, búsquedas y otras operaciones en las que necesitas comparar objetos por sus valores y no por sus ubicaciones en memoria.
 
-- *Sintaxis concisa*: Los registros ofrecen una sintaxis más concisa para definir clases inmutables. Sin la necesidad de escribir constructores, propiedades y métodos de igualdad, puedes llegar a definir una clase de datos en una sola línea de código.
+- **Sintaxis concisa**: Los registros ofrecen una sintaxis más concisa para definir clases inmutables. Sin la necesidad de escribir constructores, propiedades y métodos de igualdad, puedes llegar a definir una clase de datos en una sola línea de código.
 
-- *Patrones de desestructuración*: Los registros admiten patrones de desestructuración, lo que significa que puedes descomponer un registro en sus campos individuales fácilmente. Esto puede simplificar el código en situaciones en las que necesitas acceder a los campos con frecuencia.
+- **Patrones de desestructuración**: Los registros admiten patrones de desestructuración, lo que significa que puedes descomponer un registro en sus campos individuales fácilmente. Esto puede simplificar el código en situaciones en las que necesitas acceder a los campos con frecuencia.
 
-- *Patrones *_Value Object_*: Los registros se ajustan bien al patrón de diseño "Value Object", que se refiere a objetos que son iguales por su valor, no por su identidad. Este patrón es útil para representar tipos de datos que no tienen una identidad única y se utilizan principalmente para transmitir datos.
+- **Patrones _Value Object_**: Los registros se ajustan bien al patrón de diseño _Value Object_, que se refiere a objetos que son iguales por su valor, no por su identidad. Este patrón es útil para representar tipos de datos que no tienen una identidad única y se utilizan principalmente para transmitir datos.
 
 Eso sí, es importante que sepas que a día de hoy un `record` no es más que una `class` con algunas características adicionales, y todo lo que hacemos con el primero, lo podemos hacer con la segunda. Pero no al revés. Por ejemplo, si quisiéramos crear un objeto inmutable, podríamos hacerlo con una `class` usando la palabra clave `init`:
 
