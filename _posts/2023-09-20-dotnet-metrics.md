@@ -1,12 +1,12 @@
 ---
 published: true
 ID: 202309201
-title: 'Observabilidad en .Net: Métricas'
+title: 'Métricas en .Net'
 author: fernandoescolar
 post_date: 2023-09-20 01:04:36
 layout: post
-tags: observability dotnet csharp net7 metrics
-background: '/assets/uploads/bg/golang.jpg'
+tags: observability dotnet csharp metrics
+background: '/assets/uploads/bg/metrics.jpg'
 ---
 
 Dentro de la rama de la observabilidad existen tres pilares fundamentales: métricas, logs y trazas. En este artículo vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.
