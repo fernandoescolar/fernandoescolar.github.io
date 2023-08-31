@@ -5,7 +5,7 @@ title: 'Trazas en .Net'
 author: fernandoescolar
 post_date: 2023-09-06 01:04:36
 layout: post
-tags: observability dotnet csharp traces
+tags: observability dotnet csharp
 background: '/assets/uploads/bg/observe.jpg'
 ---
 

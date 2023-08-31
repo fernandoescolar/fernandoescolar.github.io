@@ -5,7 +5,7 @@ title: 'Métricas en .Net'
 author: fernandoescolar
 post_date: 2023-09-20 01:04:36
 layout: post
-tags: observability dotnet csharp metrics
+tags: observability dotnet csharp
 background: '/assets/uploads/bg/metrics.jpg'
 ---
 
