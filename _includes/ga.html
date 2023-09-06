@@ -1,36 +1,20 @@
+<script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Default ad_storage to 'denied' as a placeholder
+    // Determine actual values based on your own requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied'
+    });
+</script>
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XV0V8ER7H1"></script>
 <script>
-    const cyrb53 = function (str, seed = 0) {
-        let h1 = 0xdeadbeef ^ seed,
-            h2 = 0x41c6ce57 ^ seed;
-        for (let i = 0, ch; i < str.length; i++) {
-            ch = str.charCodeAt(i);
-            h1 = Math.imul(h1 ^ ch, 2654435761);
-            h2 = Math.imul(h2 ^ ch, 1597334677);
-        }
-        h1 = Math.imul(h1 ^ h1 >>> 16, 2246822507) ^ Math.imul(h2 ^ h2 >>> 13, 3266489909);
-        h2 = Math.imul(h2 ^ h2 >>> 16, 2246822507) ^ Math.imul(h1 ^ h1 >>> 13, 3266489909);
-        return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-    };
-
-    const getClientId = (clientIP) => {
-        let validityInterval = Math.round(new Date() / 1000 / 3600 / 24 / 4);
-        let clientIDSource = clientIP + ";" + window.location.host + ";" + navigator.userAgent + ";" + navigator.language + ";" + validityInterval;
-        return cyrb53(clientIDSource).toString(16);
-    };
-
-    const loadGTag = (clientIP) => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-XV0V8ER7H1', {
-            client_storage: 'none',
-            client_id: getClientId(clientIP),
-        });
-    };
-
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => loadGTag(data.ip));
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XV0V8ER7H1');
 </script>
