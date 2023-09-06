@@ -1,20 +1,31 @@
 <script>
-    // Define dataLayer and the gtag function.
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    // Override document.cookie
+    const cookies = {}
 
-    // Default ad_storage to 'denied' as a placeholder
-    // Determine actual values based on your own requirements
-    // gtag('consent', 'default', {
-    //   'ad_storage': 'denied',
-    //   'analytics_storage': 'denied'
-    // });
+    Object.defineProperty(document, 'cookie', {
+        get: function () {
+            const allCookies = []
+            for (const [key, value] of Object.entries(cookies)) {
+                allCookies.push(`${key}=${value}`)
+            }
+
+            return allCookies.join('; ')
+        },
+        set: function (value) {
+            const cookieParts = value.split('=')
+            const cookieName = cookieParts.shift()
+            const cookieValue = cookieParts.join('=')
+
+            cookies[cookieName] = cookieValue
+            return value
+        }
+    })
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XV0V8ER7H1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XV0V8ER7H1');
 </script>
