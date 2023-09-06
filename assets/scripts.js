@@ -84,8 +84,16 @@ function eraseCookie(name) {
   createCookie(name,"",-1);
 }
 
+function consentCookies() {
+  if (!gtag) return;
+  gtag('consent', 'update', {
+    'ad_storage': 'granted',
+    'analytics_storage': 'granted'
+  });
+}
+
 if(readCookie('cookie-notice-dismissed')=='true') {
-  activateGoogleAnalytics();
+  consentCookies();
 } else {
   document.getElementById('cookie-notice').style.display = 'block';
 }
@@ -93,5 +101,5 @@ if(readCookie('cookie-notice-dismissed')=='true') {
 document.getElementById('cookie-notice-accept').addEventListener("click",function() {
   createCookie('cookie-notice-dismissed','true',180);
   document.getElementById('cookie-notice').style.display = 'none';
-  location.reload();
+  consentCookies();
 });
