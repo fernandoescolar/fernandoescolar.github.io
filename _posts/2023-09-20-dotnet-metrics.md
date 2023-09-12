@@ -151,7 +151,7 @@ beersDrank.Add(2,
 Si queremos ver estas métricas en `dotnet-counters` podemos ejecutar el siguiente comando:
 
 ```bash
-dotnet counters monitor -p <ID de proceso> -n beer_meter
+dotnet counters monitor -p <ID de proceso> beer_meter
 ```
 
 Y obtendremos una salida como esta:
