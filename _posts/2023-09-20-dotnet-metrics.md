@@ -9,7 +9,7 @@ tags: observability dotnet csharp
 background: '/assets/uploads/bg/metrics.jpg'
 ---
 
-Dentro de la rama de la observabilidad existen tres pilares fundamentales: métricas, logs y trazas. En este artículo vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.
+Dentro de la rama de la observabilidad existen tres pilares fundamentales: métricas, logs y [trazas](/2023/09/06/dotnet-traces/). En este artículo vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.
 
 - [Introducción](#introducción)
 - [Visualizando métricas](#visualizando-métricas)
@@ -120,8 +120,8 @@ Aquí, hemos creado un `Meter` con el nombre `beer_meter`, y un contador con el 
 Console.WriteLine("Press any key to exit");
 while(!Console.KeyAvailable)
 {
-	Thread.Sleep(1000);
-	beersDrank.Add(1);
+  Thread.Sleep(1000);
+  beersDrank.Add(1);
 }
 ```
 
@@ -134,8 +134,8 @@ Si queremos dar más detalle al `Meter` y el `Counter<int>` podemos hacerlo con 
 ```csharp
 var myMeter = new Meter("beer-meter", "1.0.0");
 var beersDrank = myMeter.CreateCounter<int>(name: "beers-meter-drank",
-											description: "Number of beers drank",
-											unit: "beer");
+                      description: "Number of beers drank",
+                      unit: "beer");
 ```
 
 Si definimos una unidad de medida `unit` la especificaremos usando el nombre de una sola unidad de medida. En este caso `beer` o "cerveza".
@@ -144,8 +144,8 @@ También podemos añadirle eiquetas a un contador para poder filtrar las métric
 
 ```csharp
 beersDrank.Add(2,
-				new KeyValuePair<string,object>("Person", "Fer"),
-				new KeyValuePair<string,object>("Liters", 1));
+        new KeyValuePair<string,object>("Person", "Fer"),
+        new KeyValuePair<string,object>("Liters", 1));
 ```
 
 Si queremos ver estas métricas en `dotnet-counters` podemos ejecutar el siguiente comando:
@@ -204,7 +204,7 @@ var beersDrank = myMeter.CreateObservableCounter<int>("beers-meter-drank", () =>
 
 int GetValue()
 {
-	return new Random().Next(0, 100);
+  return new Random().Next(0, 100);
 }
 ```
 
@@ -218,7 +218,7 @@ var beersDrank = myMeter.CreateObservableUpDownCounter<int>("beers-meter-drank",
 
 int GetValue()
 {
-	return new Random().Next(-100, 100);
+  return new Random().Next(-100, 100);
 }
 ```
 
@@ -232,7 +232,7 @@ var beersDrankTimer = myMeter.CreateObservableGauge<int>("beers-meter-drank-time
 
 int GetValue()
 {
-	return DateTime.Now.Second;
+  return DateTime.Now.Second;
 }
 ```
 
