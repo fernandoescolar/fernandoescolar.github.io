@@ -29,7 +29,7 @@ Para poder trabajar con *logs* en .Net, necesitamos usar la interfaz `ILogger`. 
 dotnet add package Microsoft.Extensions.Logging
 ```
 
-Un `ILogger` por sí mismo no fuciona. Necesitamos un proveedor de *logs* que se encargue de escribir los mensajes en algún sitio. Por ejemplo, podemos usar el proveedor que escribe los mensajes en la consola añdiendo este paquete:
+Un `ILogger` por sí mismo no funciona. Necesitamos un proveedor de *logs* que se encargue de escribir los mensajes en algún sitio. Por ejemplo, podemos usar el proveedor que escribe los mensajes en la consola añadiendo este paquete:
 
 ```bash
 dotnet add package Microsoft.Extensions.Logging.Console
@@ -285,7 +285,7 @@ Y poniendo todo junto podríamos tener una configuración más compleja:
 
 ## Fast logging
 
-Como hubo algunas personas que se quejaron de la *performance* del sistema de *logs* de .Net, Microsoft desarrollo un método de *fast logging*. Esta funcionalidad nos permite escribir mensajes de *logs* de una manera más rápida. Para ello, se ha añadido uan utilidad llamada `LoggerMessage` que nos permite definir un mensaje de *log* específico y mantenerlo precompilado en memoria:
+Como hubo algunas personas que se quejaron de la *performance* del sistema de *logs* de .Net, Microsoft desarrollo un método de *fast logging*. Esta funcionalidad nos permite escribir mensajes de *logs* de una manera más rápida. Para ello, se ha añadido una utilidad llamada `LoggerMessage` que nos permite definir un mensaje de *log* específico y mantenerlo precompilado en memoria:
 
 ```csharp
 public static class FastLoggingExtension
