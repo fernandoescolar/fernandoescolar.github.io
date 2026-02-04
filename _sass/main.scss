@@ -1,5 +1,7 @@
 main {
-    &#portfolio, &#videos {
+
+    &#portfolio,
+    &#videos {
         padding: 0;
 
         a:hover {
@@ -26,11 +28,12 @@ main {
                 position: relative;
                 cursor: pointer;
                 border-radius: 0.5em;
+                //box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
+                border: 1px solid var(--border-color);
 
                 &:hover {
-                    box-shadow: 0 16px 32px 0 var(--shadow-color);
-                    margin-top: 10px;
-                    margin-bottom: 30px;
+                    //box-shadow: 0 20px 25px -5px var(--shadow-color), 0 10px 10px -5px var(--shadow-color);
+                    //transform: translateY(-5px);
                 }
 
                 i.category {
@@ -196,6 +199,7 @@ main {
                             input {
                                 width: 60%;
                             }
+
                             button {
                                 width: 140px;
                             }
@@ -204,6 +208,7 @@ main {
 
                     &.oss {
                         width: 100%;
+
                         a {
                             display: flex;
                             flex-direction: row;

@@ -11,29 +11,31 @@ body {
   --shadow-color: rgba(0, 0, 0, 0.2);
   --text-color: #212529;
   --text-color-light: #717171;
-  --watermark-color: rgba(255,255,255,0.4);
+  --watermark-color: rgba(255, 255, 255, 0.4);
 }
 
+
 body.dark-theme {
-  --accent-color: #ac4142;
-  --accent-color-light: #ac4142;
-  --background-color: #212529;
-  --background-color-light: #000;
-  --background-color-light-alt: #393939;
-  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #E11D48;
+  --accent-color-light: #F43F5E;
+  --background-color: #0f172a;
+  --background-color-light: #1e293b;
+  --background-color-light-alt: #334155;
+  --border-color: rgba(255, 255, 255, 0.1);
   --header-title-color: #fff;
-  --header-color-1: rgba(0, 0, 0, 0.95);
-  --header-color-2: rgba(128, 128, 128, 0.85);
-  --shadow-color: rgba(150, 150, 150, 0.0);
+  --header-color-1: rgba(15, 23, 42, 0.95);
+  --header-color-2: rgba(225, 29, 72, 0.55);
+  --shadow-color: rgba(0, 0, 0, 0.3);
   --text-color: #f1f5f9;
-  --text-color-light: #717171;
-  --watermark-color: rgba(255,255,255,0.4);
+  --text-color-light: #94a3b8;
+  --watermark-color: rgba(255, 255, 255, 0.1);
+  --nav-background-color: rgba(15, 23, 42, 0.7);
 }
 
 body {
   --body-text-color: var(--text-color);
   --body-background-color: var(--background-color);
-  --body-font-family: 'Ubuntu', 'Open Sans', Arial, Helvetica, sans-serif;
+  --body-font-family: 'Inter', sans-serif;
 
   --code-inline-text-color: var(--accent-color-light);
   --code-inline-background-color: var(--background-color-light-alt);
@@ -62,7 +64,7 @@ body {
   --footer-button-hover-text-color: var(--background-color-light);
   --footer-button-hover-background-color: var(--accent-color);
 
-  --header-title-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  --header-title-font-family: 'Inter', sans-serif;
   --header-title-text-color: var(--header-title-color);
   --header-background-color: linear-gradient(to bottom, var(--header-color-1) 0%, var(--header-color-2) 100%);
   --header-background-image: url(/assets/uploads/bg/desktop.jpg) center / cover;

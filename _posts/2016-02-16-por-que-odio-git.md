@@ -5,7 +5,7 @@ author: fernandoescolar
 post_date: 2016-02-16T09:52:03.000Z
 post_excerpt: ""
 layout: post
-tags: git best-practices
+tags: git best-practices ironic
 background: '/assets/uploads/bg/hate.jpg'
 ---
 

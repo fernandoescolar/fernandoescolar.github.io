@@ -6,6 +6,7 @@ highlighter:      rouge
 plugins:
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-sitemap
 
 # Permalinks
 permalink:           pretty
@@ -17,7 +18,7 @@ title:            developerro
 tagline:          'El blog de Fernando Escolar'
 description:      'cuando en mi máquina tampoco funciona...'
 url:              https://www.developerro.com
-baseurl:          /
+baseurl:
 icon:             '/assets/apple-touch-icon-144-precomposed.png'
 locale:           es_es
 

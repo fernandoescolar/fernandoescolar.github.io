@@ -2,6 +2,8 @@ nav {
     margin-bottom: 0;
     background-color: var(--nav-background-color);
     height: 68px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     position: fixed;
     top: 0px;
     width: 100vw;
@@ -13,6 +15,7 @@ nav {
 
     &.solid {
         opacity: 1;
+
         a.text {
             opacity: 0;
         }
@@ -58,6 +61,7 @@ nav {
         li {
             text-align: center;
             margin: 24px auto;
+
             a {
                 color: var(--nav-a-color);
                 font-weight: 650;
@@ -87,10 +91,12 @@ nav {
 
     &.active {
         opacity: 1;
+
         ul {
             visibility: visible;
             opacity: 1;
         }
+
         #hamburger {
             &:before {
                 content: "\f00d";
