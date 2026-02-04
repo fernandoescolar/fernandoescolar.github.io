@@ -3,7 +3,7 @@ published: true
 ID: 202604011
 title: 'Tidying up your code'
 author: fernandoescolar
-post_date: 2026-04-01 03:15:54
+post_date: 2026-04-01 02:15:54
 layout: post
 tags: solid best-practices
 background: '/assets/uploads/bg/organize.jpg'
