@@ -4,6 +4,7 @@ _site
 .jekyll-cache
 .bundle
 .sass-cache
+.ruby-lsp
 .vscode
 Gemfile.lock
 vendor/bundle
