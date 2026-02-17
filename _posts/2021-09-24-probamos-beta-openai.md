@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-09-24 17:03:14
 layout: post
 categories: video
-tags: openai copilot gpt3 js codex
+tags: ia openai copilot gpt3 js codex
 background: '/assets/uploads/bg/ai1.jpg'
 ---
 Nos hemos puesto a probar la API beta de OpenAI: GPT-3, Codex y además Github Copilot. Y para ello hemos contado con la ayuda de Bruno Capuano ([@elbruno](https://www.twitter.com/elbruno)), Microsoft AI MVP y Lead Innovation en Avanade<!--break-->.

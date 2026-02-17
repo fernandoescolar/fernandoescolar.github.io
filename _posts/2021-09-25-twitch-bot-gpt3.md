@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-09-25 17:03:14
 layout: post
 categories: video
-tags: openai gpt3 js twitch bot
+tags: ia openai gpt3 js twitch bot
 background: '/assets/uploads/bg/ai2.jpg'
 ---
 Aprovechando que tenemos acceso a la beta de la API de GPT-3 de OpenAi, vamos a crear un chat bot de twitch usando para responder esta inteligencia artificial. El resultado seguro que no es lo que esperabas..<!--break-->.
