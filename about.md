@@ -9,16 +9,35 @@ background: '/assets/uploads/bg/main.jpg'
 
 > Creo que fue tomando unas cañas. Alguien comentó que "desarrolladora" en Euskera venía a decirse "developerra". Así que, aunque no vivo en el Pais Vasco ni conozco otro idioma más que el que escribo, me entró envidía. Iba a ser un "developerro".
 
+Mi nombre es Fernando y, efectivamente, he decidido abrir un blog personal.
+Sí. En pleno siglo XXI. Cuando ya nadie abre blogs. Cuando todo el mundo hace newsletters, vídeos verticales de 12 segundos o hilos motivacionales sobre productividad que enumeran los 5 pasos clave que no sigue ni quien los escribe.
 
-Mi nombre es Fernando y he decidido por primera vez en mi vida, abrir un blog personal. Lo he pensado. Lo he meditado. Lo he consultado con la almohada. Fui a visitar al oráculo en Matrix. Publiqué una pregunta en stackoverflow. Negocié con mi familia. Tiré una moneda al aire. Y por último, me jugué a piedra-papel-tijera la última ronda. Tener un blog personal es muy *vintage*. Definitivamente era el momento de abrir un blog...
+Lo pensé. Lo medité. Lo consulté con la almohada. Fui a ver al oráculo en Matrix. Publiqué una pregunta en StackOverflow esperando que me cerraran el hilo por duplicado. Negocié con mi familia. Tiré una moneda al aire. Perdí. Gané. Empaté. Y finalmente me jugué la última ronda a piedra-papel-tijera.
 
-Llevo programando desde que conozco que se puede programar. No toda la vida, pero sí bastante. En el mundo del desarrollo, he trabajado practicamente de todo. Lo que ha provocado que en ocasiones me crea más importante de lo que soy. También soy coordinador de la comunidad de desarrolladores de .Net de Cataluña [CatDotNet](http://www.catdotnet.net). Además de 2015 a 2017 me otorgaron el honor de ser nombrado [MVP de Microsoft](https://mvp.microsoft.com/).
+Tener un blog personal es muy *vintage*. Y lo vintage vuelve. Así que aquí estamos.
 
-La idea inicial de la creación de este sitio es poder escribir sobre cosas que me parecen interesantes. Y así, de paso, tener un repositorio donde poder buscar después aquello que hice, que no recuerdo cómo se hacía. Un diario de abordo.
+Llevo programando desde que descubrí que se podía hablar con una máquina sin gritarle. No toda la vida, pero sí lo suficiente como para haber visto modas tecnológicas nacer, crecer, convertirse en imprescindibles y luego desaparecer en silencio.
 
-Desde el primer día hay muchas publicaciones, pero no te asustes. Simplemente recogí un backup antiguo, de una web que ya no existe, en la que escribía (quizá a alguno os suene: programando en .net). Y los he publicado en este nuevo blog. Para conocer que es lo nuevo, una pista: empieza en 2016 ;).
+He trabajado prácticamente en todo lo que tiene que ver con el desarrollo de software. He sido consultor, programador, arquitecto, gestor, responsable de personas. He tocado backend, frontend, cloud y lo que hiciera falta para que aquello funcionara. Algunos proyectos salieron bien. Otros nos enseñaron humildad.
 
-Si quieres contactar conmigo, puedes hacerlo pulsando alguno de los círculos que encontrarás al final de esta página.
+Porque la experiencia tiene un efecto secundario curioso: empieza a susurrarte que eres importante. Que sin ti esto no funciona. Hasta que la puesta en producción decide reencauzarte. Y producción, a diferencia de nosotros, no tiene sentido del humor.
+
+Durante años coordiné la comunidad de desarrolladores .NET de Cataluña, CatDotNet. Fue una etapa intensa. Mucha comunidad, muchas charlas, muchas discusiones técnicas que empezaban hablando de inyección de dependencias y terminaban hablando de filosofía de vida.
+
+Entre 2015 y 2017 tuve el honor de ser nombrado MVP de Microsoft. Una experiencia interesante. Aprendí que el reconocimiento está bien, pero lo que realmente importa es seguir sintiendo curiosidad cuando abres el editor de código.
+
+Hoy trabajo como Principal Software Engineer. Más de veinte años en el sector. He pasado por farma, media, industria, retail. He hecho consultoría. He hecho producto. He construido sistemas que procesan millones de eventos y otros cuya única misión era no caerse un lunes por la mañana. Y si algo he aprendido es que el software siempre es menos romántico de lo que parece en los libros… y mucho más humano de lo que creemos.
+
+La idea de este sitio es simple. Escribir sobre cosas que me parecen interesantes. Tecnología, arquitectura, diseño de sistemas, liderazgo técnico, decisiones incómodas, errores que enseñan más que los aciertos. Y, de paso, tener un repositorio personal donde buscar dentro de tres años aquello que hice y que ya no recordaré cómo se hacía. Un diario de abordo. Con faltas de ortografía ocasionales y opiniones probablemente revisables.
+
+Hay publicaciones muy antiguas. Muy. No es que el blog naciera ayer con vocación retro: es que rescaté el contenido de una web anterior (quizá a alguno le suene “**Programando en .NET**”) y lo publiqué aquí.
+
+Algunos artículos pertenecen a otra era tecnológica. Y se nota. No los he reescrito para fingir que siempre supe lo que hacía. Me parecen más honestos así.
+
+Este blog no pretende sentar cátedra. No es un manual definitivo. Es más bien una conversación en voz alta. A veces técnica. A veces irónica. A veces incómoda. Siempre honesta.
+
+Si quieres contactar conmigo, puedes hacerlo pulsando alguno de los círculos al final de la página. Prometo responder. Pero no prometo cuándo.
+
 
 ## Este blog
 

@@ -1,15 +1,15 @@
 ---
 published: true
-ID: 2026040151
+ID: 2026040291
 title: 'IA: el Gran Filtro'
 author: fernandoescolar
-post_date: 2026-04-15 02:15:54
+post_date: 2026-04-29 01:15:54
 layout: post
 tags: ia
 background: '/assets/uploads/bg/ai3.jpg'
 ---
 
-La paradoja de Fermi no nació en un congreso, ni en una pizarra llena de ecuaciones, ni en un paper con veinte coautores peleándose por el orden del apellido. Nació como nacen las mejores ideas. En una conversación informal. Año 1950. Los Álamos. Gente brillante que venía de inventar cosas que no deberían inventarse dos veces. Y en medio del debate sobre ovnis, viajes interestelares y civilizaciones avanzadas, Enrico Fermi soltó la pregunta que lo arruina todo por simple.
+La paradoja de Fermi no nació en un congreso, ni en una pizarra llena de ecuaciones, ni en un paper con veinte coautores peleándose por el orden del apellido. Nació como nacen las mejores ideas. En una conversación informal.<!--break--> Año 1950. Los Álamos. Gente brillante que venía de inventar cosas que no deberían inventarse dos veces. Y en medio del debate sobre ovnis, viajes interestelares y civilizaciones avanzadas, Enrico Fermi soltó la pregunta que lo arruina todo por simple.
 
 > ¿Dónde está todo el mundo?
 

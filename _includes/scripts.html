@@ -1,1 +1,4 @@
 <script src="{{"/assets/scripts.js" | relative_url }}"></script>
+{% if page.mermaid %}
+  {% include mermaid.html %}
+{% endif %}

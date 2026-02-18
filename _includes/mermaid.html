@@ -1,0 +1,34 @@
+<script rel="preload" src="https://unpkg.com/mermaid@11.12.3/dist/mermaid.min.js"></script>
+<script>
+    (function () {
+      const styles = () => getComputedStyle(document.body);
+      const cssVar = (name, fallback) => {
+        const value = styles().getPropertyValue(name).trim();
+        return value || fallback;
+      };
+
+      const themeVariables = {
+        primaryColor: cssVar('--background-color-light', '#1e293b'),
+        secondaryColor: cssVar('--background-color-light-alt', '#334155'),
+        tertiaryColor: cssVar('--background-color', '#0f172a'),
+        backgroundColor: cssVar('--background-color', '#0f172a'),
+        primaryBorderColor: cssVar('--border-color', 'rgba(255, 255, 255, 0.1)'),
+        primaryTextColor: cssVar('--text-color', '#f1f5f9'),
+        nodeTextColor: cssVar('--text-color', '#f1f5f9'),
+        lineColor: cssVar('--accent-color', '#E11D48'),
+        edgeLabelBackground: cssVar('--background-color-light', '#1e293b'),
+        edgeLabelTextColor: cssVar('--text-color-light', '#94a3b8'),
+        fontFamily: cssVar('--body-font-family', 'Inter, sans-serif'),
+        clusterBkg: cssVar('--background-color-light', '#1e293b'),
+        clusterBorder: cssVar('--border-color', 'rgba(255, 255, 255, 0.1)')
+      };
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        themeVariables
+      });
+
+      window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    })();
+</script>

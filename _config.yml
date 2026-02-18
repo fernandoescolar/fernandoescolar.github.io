@@ -25,7 +25,7 @@ locale:           es_es
 author:
   name:           'Fernando Escolar'
   url:            https://twitter.com/fernandoescolar
-  email:          fer.escolar@gmail.com
+  email:          fernando.escolar@outlook.com
   twitter:        fernandoescolar
   github:         fernandoescolar
   linkedin:       fernandoescolar
@@ -42,4 +42,4 @@ version:          2.1.0
 github:
   repo:           https://github.com/fernandoescolar
 
-future:           false
+future:           true
