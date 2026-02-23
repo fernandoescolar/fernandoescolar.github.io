@@ -6,6 +6,7 @@ post_date: 2013-01-23 09:13:27
 post_excerpt: ""
 layout: post
 published: true
+tags: scrum agile tfs devops project-management
 ---
 <p>En los últimos años estamos asistiendo a un cambio radical en la forma de gestionar los proyectos de desarrollo de software. Empieza a resultar extraño encontrar ofertas de trabajo en las que no se mencione scrum, o proyectos que empiecen en los que no se haya planteado el uso de metodologías ágiles. Pero de nada nos sirve una metodología, por muy buena que pueda ser, si perdemos más tiempo gestionando el proceso que programando. Por lo que nos vemos casi obligados a empezar a usar herramientas que nos ayuden con esta tarea. A lo largo de este artículo trataremos una de esas herramientas, que consideramos más potentes: TFS.</p>
 <!--break-->

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-09-10 00:00:00
 layout: post
 categories: video
+duration: 02:06:42
 tags: azure webapp appservice
 background: '/assets/uploads/bg/cloud2.jpg'
 ---

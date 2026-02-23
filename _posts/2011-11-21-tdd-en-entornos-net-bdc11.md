@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2011-11-21 15:00:08
 post_excerpt: ""
 layout: post
+tags: dotnet csharp tdd testing bdc11
 ---
 La semana pasada, los días 17, 18 y 19, estuvimos en la: <a href="http://bcndevcon.org/">Barcelona Developers Conference</a>.
 <!--break-->

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2018-04-26 00:00:00
 layout: post
 categories: video
+duration: 00:49:27
 tags: azure webapp appservice cosmos
 ---
 

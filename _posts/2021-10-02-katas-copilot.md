@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2021-10-02 17:03:14
 layout: post
 categories: video
+duration: 01:46:34
 tags: ia copilot codex dotnet kata marsrober fizzbuzz twitch
 background: '/assets/uploads/bg/kata1.jpg'
 ---

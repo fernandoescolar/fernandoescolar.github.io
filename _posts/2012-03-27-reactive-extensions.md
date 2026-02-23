@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-03-27 09:30:32
 post_excerpt: ""
 layout: post
+tags: dotnet csharp rx reactive-extensions event-driven
 ---
 El pasado fin de semana <a title="@Quiqu3" href="https://twitter.com/quiqu3" target="_blank">@quiqu3</a> y <a title="@fernandoescolar" href="https://twitter.com/fernandoescolar" target="_blank">@fernandoescolar</a> estuvieron en Madrid, en la <strong>codemotion</strong>, en representación de <strong>programando en .net</strong>. Además tuvieron el placer de impartir una pequeña charla de 45 minutos acerca de las reactive extensions. Aprovechando este hecho, nos gustaría cerrar de una forma más o menos elegante la serie de artículos sobre rx, aportando un índice de los artículos, un breve resumen basado en la charla y varios programas de ejemplo (incluida la red social de moda: <strong>BeerToBeer</strong>).
 <!--break-->

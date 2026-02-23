@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-01-25 00:00:00
 layout: post
 categories: video
+duration: 00:32:05
 tags: azure devops github pipelines actions
 ---
 

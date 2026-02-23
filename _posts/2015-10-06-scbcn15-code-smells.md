@@ -6,6 +6,8 @@ author: fernandoescolar
 post_date: 2015-10-06 00:00:00
 layout: post
 categories: video
+duration: 00:52:01
+tags: code-smells best-practices clean-code scbcn15
 ---
 
 Aquí podrás encontrar el vídeo grabado de la sesión de la **Software Craftsmanship Barcelona de 2015** sobre Code Smells:<!--break-->

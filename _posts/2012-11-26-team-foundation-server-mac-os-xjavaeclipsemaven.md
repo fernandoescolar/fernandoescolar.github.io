@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-11-26 09:41:48
 post_excerpt: ""
 layout: post
+tags: tfs devops java maven eclipse macos
 ---
 <p>Hace unos meses, me encontraba en un cliente hablando de la posibilidad de sustituir su conjunto de aplicativos para&nbsp; ALM (Application Lifecycle Management o gestión del ciclo de vida de las aplicaciones) por el potente TFS de Microsoft. Se mostró fascinado por la herramienta: estuvimos navegando por el portal, mostrándole las gráficas y lo fácil que era gestionar todo el trabajo. No obstante, el líder tecnológico era escéptico y no confiaba en las capacidades del entorno que estábamos proponiendo. </p>
 <!--break-->

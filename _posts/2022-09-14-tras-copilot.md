@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2022-09-14 20:03:14
 layout: post
 categories: video
+duration: 01:01:12
 tags: copilot codex dotnet js
 background: '/assets/uploads/bg/radio.jpg'
 ---

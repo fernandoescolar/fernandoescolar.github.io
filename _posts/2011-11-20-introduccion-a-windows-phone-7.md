@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2011-11-20 21:30:03
 post_excerpt: ""
 layout: post
+tags: windows-phone mobile dotnet csharp silverlight
 ---
 <strong>Windows Phone 7</strong> es un sistema operativo móvil desarrollado por <strong>Microsoft</strong> como sustituto de <strong>Windows Mobile</strong>. Pero se diferencia de este último en que está pensando para un mercado generalista, en detrimento del empresarial. En adición no mantiene compatibilidad con su antecesor, debido a que es un desarrollo nuevo, y no una evolución.
 <!--break-->

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2021-07-03 02:16:54
 layout: post
 categories: video
+duration: 00:56:56
 tags: csharp dotnet novedades
 background: '/assets/uploads/bg/programming1.jpg'
 ---

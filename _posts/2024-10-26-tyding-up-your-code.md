@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2024-10-26 23:16:54
 layout: post
 categories: video
+duration: 00:46:44
 tags: solid best-practices
 background: '/assets/uploads/bg/clean.jpg'
 ---

@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-10-18 09:32:22
 post_excerpt: ""
 layout: post
+tags: design-patterns mediator dotnet csharp
 ---
 En el mundo de la programación orientada a objetos una de las máximas que debemos cumplir, si queremos desarrollar un código de calidad, es que debemos buscar una elevada cohesión con bajo acoplamiento. Y con el fin de ayudarnos en esta ardua tarea, aparece el patrón Mediator.
 <!--break-->

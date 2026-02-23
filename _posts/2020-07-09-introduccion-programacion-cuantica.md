@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-07-09 00:00:00
 layout: post
 categories: video
+duration: 00:57:28
 tags: quantum programming
 background: '/assets/uploads/bg/atom.jpg'
 ---

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-04-24 17:10:00
 layout: post
 categories: video
+duration: 00:59:14
 tags: azure devops alm github git iac monitoring cac
 background: '/assets/uploads/bg/team.jpg'
 ---

@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2013-10-21 09:41:58
 post_excerpt: ""
 layout: post
+tags: load-testing performance visual-studio tfs devops
 ---
 Las pruebas de carga se usan para observar y analizar un sistema en unas circunstancias específicas. Por ejemplo, podríamos crear un portal web en el que esperamos un número determinado de usuarios. Y antes de ponerlo en producción queremos estar seguros de que se va a comportar correctamente cuando lleguemos al cupo esperado.
 <!--break-->

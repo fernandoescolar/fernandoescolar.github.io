@@ -6,6 +6,7 @@ post_date: 2014-01-22 17:57:42
 post_excerpt: ""
 layout: post
 categories: video
+tags: spa javascript frontend angularjs durandal backbone
 ---
 <p>El pasado miércoles día 15 de enero realizamos una mesa redonda vía Hangout Air para tratar sobre retos, estado, y el "por qué" de las apps SPA. Contamos con la colaboración de Alfredo Fernandez (<a href="https://twitter.com/afernandez_l">@afernandez_l</a>), Albert Margarit (<a href="https://twitter.com/albertmargarit">@albertmargarit</a>), Marc Rubiño (<a href="https://twitter.com/Marc_Rubino">@Marc_Rubino</a>), Óscar Sotorrío (<a href="https://twitter.com/osotorrio">@osotorrio</a>), Tomás Corral (<a href="https://twitter.com/amischol">@amischol</a>) y Fernando Escolar (<a href="https://twitter.com/fernandoescolar">@fernandoescolar</a>).
 <!--break-->

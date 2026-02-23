@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-04-09 00:00:00
 layout: post
 categories: video
+duration: 00:52:13
 tags: best-practices csharp architecture
 background: '/assets/uploads/bg/programming1.jpg'
 ---

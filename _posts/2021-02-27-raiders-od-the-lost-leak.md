@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2021-02-27 02:16:54
 layout: post
 categories: video
+duration: 00:46:16
 tags: net5 dotnet tools monitoring dump memory
 background: '/assets/uploads/bg/adventure.jpg'
 ---

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2025-11-14 11:16:54.000000000 +01:00
 layout: post
 categories: video
+duration: 00:51:28
 tags: ia productivity vscode
 background: "/assets/uploads/bg/programming3.jpg"
 ---

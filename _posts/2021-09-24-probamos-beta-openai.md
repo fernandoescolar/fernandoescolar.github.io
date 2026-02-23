@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2021-09-24 17:03:14
 layout: post
 categories: video
+duration: 00:52:35
 tags: ia openai copilot gpt3 js codex
 background: '/assets/uploads/bg/ai1.jpg'
 ---

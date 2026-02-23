@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2023-03-04 09:30:00
 layout: post
 categories: video
+duration: 00:56:28
 tags: rest net7 aspnet aspnetcore dotnet csharp
 background: '/assets/uploads/bg/programming5.jpg'
 ---

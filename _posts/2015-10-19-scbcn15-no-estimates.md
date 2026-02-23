@@ -6,6 +6,8 @@ author: fernandoescolar
 post_date: 2015-10-19 00:00:00
 layout: post
 categories: video
+duration: 00:56:02
+tags: agile no-estimates scbcn15 product-management
 ---
 
 Aquí podrás encontrar el vídeo grabado de la sesión de la **Software Craftsmanship Barcelona de 2015** sobre #NoEstimates junto con [Alex Casquete](https://twitter.com/acasquete):<!--break-->

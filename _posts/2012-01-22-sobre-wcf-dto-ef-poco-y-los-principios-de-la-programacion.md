@@ -7,6 +7,7 @@ author: fernandoescolar
 post_date: 2012-01-22 18:45:36
 post_excerpt: ""
 layout: post
+tags: dotnet wcf ef dto arquitectura
 ---
 <p>Creo que este es el primer art&iacute;culo que vamos a ver en <a href="http://www.programandonet.com"><strong>programandonet</strong></a> a modo editorial. Esto es el resultado de <a href="http://www.linkedin.com/groups/WCF-DTO-vs-WCF-POCO-2615616.S.89901834?qid=56f3138d-d4ae-4072-9eb3-617867092b49&amp;trk=group_most_popular-0-b-ttl&amp;goback=%2Egmp_2615616" target="_blank">una conversaci&oacute;n</a> en el <a href="http://www.linkedin.com/groups/Arquitectos-NET-2615616?trk=myg_ugrp_ovr" target="_blank">grupo de <em>arquitectos .net</em></a>&nbsp;de <a href="http://www.linkedin.com" target="_blank">LinkedIn</a>, en la que se hablaba sobre usar <strong>POCO</strong>s de entity framework como <strong>DTO</strong> para servicios <strong>WCF</strong>, que se inici&oacute; hace unos d&iacute;as. Y es que, no me hubiera gustado que algunas conclusiones y escritos se <em>perdieran</em> en este grupo y por eso hemos cre&iacute;do interesante publicarlas aqu&iacute;, para tenerlas <em>a mano</em>.</p>
 <!--break-->

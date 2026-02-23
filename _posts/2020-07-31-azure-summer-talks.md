@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-07-31 00:00:00
 layout: post
 categories: video
+duration: 02:04:32
 tags: azure webapp appservice cosmos functions
 background: '/assets/uploads/bg/talk.jpg'
 ---

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2021-09-25 17:03:14
 layout: post
 categories: video
+duration: 01:30:29
 tags: ia openai gpt3 js twitch bot
 background: '/assets/uploads/bg/ai2.jpg'
 ---

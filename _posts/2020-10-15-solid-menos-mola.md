@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-10-15 02:16:54
 layout: post
 categories: video
+duration: 00:49:33
 tags: solid best-practices
 background: '/assets/uploads/bg/solid3.jpg'
 ---

@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2011-12-07 11:45:20
 post_excerpt: ""
 layout: post
+tags: dotnet csharp ref language
 ---
 <p>No hace mucho, estabamos tomando unas cervezas algunos desarrolladores de .net de Barcelona. Entonces sali&oacute; el tema de los talibanes del c&oacute;digo. Cosas como <em>fxCop</em> o <em>styleCop</em>. Aunque estas herramientas y sus reglas dan para varios art&iacute;culos de debate, el caso es que surgi&oacute; una norma del<strong> code analysis</strong> (<em>fxCop</em>) que recomienda no usar la palabra en clave "<em>ref</em>".</p>
 <!--break-->

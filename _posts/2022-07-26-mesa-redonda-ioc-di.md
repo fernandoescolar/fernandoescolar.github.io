@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2022-07-26 20:03:14
 layout: post
 categories: video
+duration: 01:53:54
 tags: ioc di inversionofcontrol best-practices
 background: '/assets/uploads/bg/meeting.jpg'
 ---

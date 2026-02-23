@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2022-09-17 20:03:14
 layout: post
 categories: video
+duration: 00:48:52
 tags: net7 aspnet aspnetcore dotnet csharp
 background: '/assets/uploads/bg/engineering1.jpg'
 ---

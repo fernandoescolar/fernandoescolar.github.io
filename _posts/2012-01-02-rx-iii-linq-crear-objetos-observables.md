@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-01-02 12:30:10
 post_excerpt: ""
 layout: post
+tags: dotnet csharp rx reactive-extensions observables linq
 ---
 <p>A&ntilde;o nuevo art&iacute;culo nuevo. Despu&eacute;s de dos art&iacute;culos cargados de conceptos te&oacute;ricos y pruebas, ha llegado el momento de empezar a sacarle partido de verdad a la <strong>reactive framework</strong>. Hasta ahora hemos visto <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions">cuales son los principios en los que se fundamenta Rx</a>,<a href="/2011/12/19/rx-ii-observables-los-sujetos"> los objetos que vamos a tener que utilizar (los sujetos)</a> e incluso introdujimos el uso de una clase llamada <em><strong>Observable</strong></em> que contiene m&eacute;todos y extensiones para que todo esto sea m&aacute;s sencillo.</p>
 <!--break-->

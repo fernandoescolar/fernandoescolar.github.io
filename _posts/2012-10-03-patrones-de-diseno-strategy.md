@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-10-03 14:10:06
 post_excerpt: ""
 layout: post
+tags: design-patterns strategy dotnet csharp
 ---
 La mayor parte de los problemas que nos podemos encontrar al usar patrones de diseño vienen de no ser capaces de reconocer en qué contextos hay que aplicarlos.
 <!--break-->

@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2019-01-21 14:02:53
 post_excerpt: ""
 layout: post
+tags: azure iot mxchip arduino hardware
 ---
 
 Hoy empezamos una pequeña serie sobre IoT usando un dispositivo MxChip y la plataforma Azure. Nada como empezar el año escribiendo un nuevo artículo sobre una tecnología de la que nunca antes lo había hecho.<!--break-->

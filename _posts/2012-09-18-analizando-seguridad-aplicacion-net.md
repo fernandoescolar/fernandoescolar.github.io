@@ -7,6 +7,7 @@ author: fernandoescolar
 post_date: 2012-09-18 09:15:52
 post_excerpt: ""
 layout: post
+tags: dotnet security reverse-engineering reflector il
 ---
 Se han escrito muchas líneas acerca de la seguridad de las aplicaciones que realizamos en .Net. Se dice que son muy fáciles de hackear, que aun usando herramientas de ofuscación, la seguridad de los empaquetados que se distribuyen es nula.
 <!--break-->

@@ -5,6 +5,7 @@ author: fernandoescolar
 post_date: 2012-02-15 10:15:08
 post_excerpt: ""
 layout: post
+tags: dotnet csharp rx reactive-extensions linq observables
 ---
 <p>Hemos llegado al cuarto art&iacute;culo sobre <strong>reactive extensions</strong> en el que vamos a hablar de operaciones que se pueden realizar con observables. Pero, como hace unos d&iacute;as que no public&aacute;bamos nada al respecto, vamos a hacer primero una peque&ntilde;a retrospectiva. Hasta ahora hemos tratado de explicar <a href="/2011/12/12/rx-i-que-son-las-reactive-extensions" title="Rx I - Qu&eacute; son las Reactive eXtensions">rx como una f&oacute;rmula matem&aacute;tica</a>:</p>
 <!--break-->

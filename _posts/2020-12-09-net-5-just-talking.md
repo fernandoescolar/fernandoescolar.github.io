@@ -6,6 +6,7 @@ author: fernandoescolar
 post_date: 2020-12-09 21:02:25
 layout: post
 categories: video
+duration: 01:53:02
 tags: net5 dotnet csharp
 background: '/assets/uploads/bg/talk2.jpg'
 ---
