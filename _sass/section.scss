@@ -22,6 +22,7 @@ section {
             display: inline-block;
             text-align: center;
             margin-top: 6px;
+            border-radius: 0.5em;
         }
     }
 
@@ -40,8 +41,8 @@ section {
 
     &#pagination {
         height: 50px;
-        margin-bottom: 1em;
-        margin-top: 1em;
+        margin-bottom: 2em;
+        margin-top: 2em;
 
         a {
             color: var(--pagination-button-text-color);
@@ -50,6 +51,7 @@ section {
             margin-top: -9px;
             width: 140px;
             text-align: center;
+            border-radius: 0.5em;
         }
     }
 }
@@ -60,10 +62,13 @@ section {
             a {
                 margin-top: 0;
             }
+
+            margin-bottom: 6em;
         }
 
         &#share{
             margin-top: 50px;
+            text-align: left;
         }
 
         &#related {

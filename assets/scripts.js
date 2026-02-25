@@ -35,9 +35,9 @@ document.querySelectorAll('.post a').forEach(link => {
 
 /* theme switcher */
 const li = document.createElement('li');
-if (localStorage.getItem('dark-theme') == 'dark-theme') {
+if (localStorage.getItem('light-theme') == 'light-theme') {
   li.innerHTML = `<a style="cursor: pointer"><i id="theme-switch" class="fas fa-toggle-on"></i></a>`;
-  document.body.classList.add('dark-theme');
+  document.body.classList.add('light-theme');
 } else {
   li.innerHTML = `<a style="cursor: pointer"><i id="theme-switch" class="fas fa-toggle-off"></i></a>`;
 }
@@ -45,15 +45,15 @@ document.getElementById('nav-options').appendChild(li);
 
 document.getElementById('theme-switch').addEventListener("click", (e) => {
   const a = document.getElementById('theme-switch');
-  const darkEnabled = localStorage.getItem('dark-theme') != 'dark-theme';
-  localStorage.setItem('dark-theme', darkEnabled ? 'dark-theme' : '');
+  const darkEnabled = localStorage.getItem('light-theme') != 'light-theme';
+  localStorage.setItem('light-theme', darkEnabled ? 'light-theme' : '');
   if (darkEnabled) {
     a.classList.add('fa-toggle-on');
     a.classList.remove('fa-toggle-off');
-    document.body.classList.add('dark-theme');
+    document.body.classList.add('light-theme');
   } else {
     a.classList.add('fa-toggle-off');
     a.classList.remove('fa-toggle-on');
-    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('light-theme');
   }
 });

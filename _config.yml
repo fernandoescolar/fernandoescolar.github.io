@@ -43,3 +43,14 @@ github:
   repo:           https://github.com/fernandoescolar
 
 future:           false
+
+collections:
+  news:
+    output: true
+    permalink: /news/:name/
+defaults:
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: news

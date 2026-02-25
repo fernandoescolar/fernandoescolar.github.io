@@ -12,11 +12,12 @@ header {
     margin-bottom: 20px;
 
     h1 {
-        color: var(--header-title-text-color);
         font-size: 50px;
         margin-top: 80px;
         font-weight: 900;
         font-family: var(--header-title-font-family);
+        color: var(--header-text-color);
+        //text-shadow: 2px -4px var(--accent-color-light);
     }
 
     small {
@@ -41,6 +42,12 @@ header {
             font-size: 16px;
         }
     }
+
+     &.news {
+        h1 {
+            font-size: 40px;
+        }
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -61,6 +68,12 @@ header {
 
             small {
                 font-size: 24px;
+            }
+        }
+
+        &.news {
+            h1 {
+                font-size: 80px;
             }
         }
     }

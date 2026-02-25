@@ -1,0 +1,12 @@
+{% if post.duration > 60 %}
+  {% assign duration = post.duration | divided_by: 60 %}
+  {% if duration > 60 %}
+    {% assign hours = duration | divided_by: 60 %}
+    {% assign minutes = duration | modulo: 60 %}
+      {{ hours | round}} h {{ minutes | round }} mins
+  {% else %}
+      {{ duration | round }} mins
+  {% endif %}
+{% elsif post.duration > 0 %}
+  {{ post.duration | round }} seg
+{% endif %}

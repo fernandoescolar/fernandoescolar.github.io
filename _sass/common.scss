@@ -17,7 +17,10 @@ body {
     color: var(--body-text-color);
     margin: 0;
     padding: 0;
-    background: var(--body-background-color);
+    background: var(--body-gradient), var(--body-background-color);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color-scheme: var(--color-scheme);
 }
 
 p {
@@ -46,9 +49,11 @@ h6 {
 a {
     color: var(--a-color);
     text-decoration: none;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
 
     &:hover {
         text-decoration: underline;
+        text-shadow: 0 0 16px rgba(34, 211, 238, 0.35);
     }
 }
 
@@ -143,7 +148,7 @@ blockquote {
 input {
     background-color: var(--input-background-color);
     border: 0;
-    border-radius: 0;
+    border-radius: 0.5em;
     padding: 8px 18px;
     margin: 0;
     font-size: 20px;
@@ -163,6 +168,7 @@ button {
     padding: 8px 18px;
     text-align: center;
     font-size: 20px;
+    border-radius: 0.5em;
 
     &:focus {
         border: 0;
@@ -207,5 +213,27 @@ section {
     section {
         width: 1200px;
         padding: 0;
+    }
+}
+
+@keyframes hueShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header h1,
+    nav > a.text {
+        animation: none !important;
+        background-position: 50% 50% !important;
     }
 }

@@ -2,7 +2,7 @@
 layout: page
 title: Acerca de...
 menu: acerca de
-background: '/assets/uploads/bg/main.jpg'
+background: '/assets/uploads/bg/popurri.png'
 ---
 
 <img src="/assets/uploads/fernandoescolar400x400.jpg" class="avatar" alt="Foto de Fernando Escolar" />
@@ -50,6 +50,8 @@ Un poco de información acerca del desarrollo de este blog:
 * Diseñado con amor y cerveza, intentando seguir la filosofía de web semántica.
 * La mayor parte de las imágenes que puedes ver vienen de [Pexels](https://www.pexels.com/).
    - Más concretamente de los siguientes autores: *Stanislav Kondratiev*, *Josh Sorenson*, *Olia Danilevich*, *Negative Space*, *Kevin Fu*, *Miguel Á. Padriñán*, *Peter Döpper*, *Nandhu Kumar*, *msvr*, *Pille Kirsi*, *Pixabay*, *Lukas*, *Kaboompics*, *Polina Zimmerman*, *NEOSiAM*, *Ketut Subiyanto*, *Alexander Isreb*, *Taryn Elliott*, *Mateusz Dach*, *Kat Jayne*, *fauxels*, *ThisIsEngineering*, *Tim Mossholder*, *Johannes Plenio*, *Ivo Rainha*, *Andrea Piacquadio*, *Chanaka*, *RODNAE Productions*, *Sean Patrick*, *Bruno Massao*, *Ahmed Shan*, *Summer Li*, *Alex Knight*, *Tara Winstead*, *Rachel Claire*, *fauxels*, *cottonbro studio*, *Canva Studio*, *Mat Brown*, *Petr Ganaj*
-, *Mari M*, *Valentine Valentine*, *revac film's&photography*, *cottonbro studio* y *Kehn Hermano*.
+, *Mari M*, *Valentine Valentine*, *revac film's&photography*, *cottonbro studio*, *Steve Johnson*, *Francesco Ungaro*, *Google DeepMind* y *Kehn Hermano*.
 
 Muchas gracias por leerme :D
+
+ <img id="logo" src="{{ "/assets/logos/developerro.svg" | relative_url }}" alt="developerro" width="128" height="128">

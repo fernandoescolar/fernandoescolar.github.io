@@ -1,0 +1,24 @@
+---
+layout: default
+title: Actualidad
+background: '/assets/uploads/bg/news.png'
+---
+
+{% assign sorted_news = site.news | sort: "date" | reverse %}
+{% assign current = sorted_news[0] %}
+{% assign older = sorted_news[1] %}
+
+<header class="news">
+  <h1>{{ current.title }}</h1>
+</header>
+
+<section class="page">
+  <h1>Titulares:</h1>
+  {{ current.content }}
+</section>
+
+<section id="pagination">
+  {% if older %}
+    <a class="button" href="{{ older.url | relative_url }}">← día anterior</a>
+  {% endif %}
+</section>

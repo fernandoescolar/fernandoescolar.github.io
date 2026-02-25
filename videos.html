@@ -2,7 +2,7 @@
 layout: default
 title: Vídeos
 menu: vídeos
-background: '/assets/uploads/bg/videos.jpg'
+background: '/assets/uploads/bg/video.png'
 ---
 
 <header>
@@ -13,7 +13,6 @@ background: '/assets/uploads/bg/videos.jpg'
   <ul>
     {% for post in site.categories.video %}
     <li>
-      <i class="fa fa-video category"></i>
       <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
         {% if post.background %}
         <img src="{{ post.background | prepend: site.baseurl | replace: '//', '/' }}" alt="Ilustración que queda bonita en el layout del portfolio" />
@@ -23,7 +22,12 @@ background: '/assets/uploads/bg/videos.jpg'
 
         <article>
           <h2>{{ post.title }}</h2>
-          <small>{{ post.date | date_to_string }}</small>
+          <small>
+            {{ post.date | date_to_string }}
+            &middot;
+             {% include video_durantion.html %}
+            <i class="fa fa-video category"></i>
+          </small>
         </article>
       </a>
     </li>

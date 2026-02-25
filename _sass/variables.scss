@@ -1,35 +1,56 @@
 body {
-  --accent-color: #ac4142;
-  --accent-color-light: #bf616a;
+  --accent-color: #22d3ee;
+  --accent-color-light: #8b5cf6;
+  --background-color: #0b1224;
+  --background-color-light: #111a2e;
+  --background-color-light-alt: #1b253b;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --header-title-color: #e2e8f0;
+  --header-color-1: rgba(11, 18, 36, 0.92);
+  --header-color-2: rgba(139, 92, 246, 0.42);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --text-color: #e2e8f0;
+  --text-color-light: #94a3b8;
+  --watermark-color: rgba(138, 92, 246, 0.8);
+  --nav-background-color: rgba(13, 19, 33, 0.8);
+  --nav-a-color: #e2e8f0;
+  --color-scheme: dark;
+  --accent-gradient: linear-gradient(120deg, #22d3ee, #6366f1, #14b8a6);
+  --body-gradient: radial-gradient(120% 120% at 15% 20%, rgba(34, 211, 238, 0.1), transparent 35%), radial-gradient(120% 120% at 80% 0%, rgba(99, 102, 241, 0.08), transparent 35%), radial-gradient(180% 120% at 40% 100%, rgba(20, 184, 166, 0.08), transparent 45%);
+  --tag-cloud-background: linear-gradient(135deg, var(--background-color) 0%, var(--background-color-light) 35%, color-mix(in srgb, var(--accent-color) 65%, transparent) 70%, color-mix(in srgb, var(--accent-color-light) 60%, transparent) 100%);
+  --tag-cloud-text-color: #e6f3ff;
+  --tag-cloud-border-color: var(--border-color);
+  --tag-cloud-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --tag-cloud-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --header-text-color: var(--accent-color);
+}
+
+
+body.light-theme {
+  --accent-color: #22d3ee;
+  --accent-color-light: #8b5cf6;
   --background-color: #f1f5f9;
   --background-color-light: #fff;
   --background-color-light-alt: #f9f9f9;
   --border-color: rgba(0, 0, 0, 0.1);
   --header-title-color: #fff;
   --header-color-1: rgba(255, 255, 255, 0.95);
-  --header-color-2: rgba(172, 65, 66, 0.55);
+  --header-color-2: rgba(37, 99, 235, 0.55);
   --shadow-color: rgba(0, 0, 0, 0.2);
   --text-color: #212529;
   --text-color-light: #717171;
-  --watermark-color: rgba(255, 255, 255, 0.4);
-}
-
-
-body.dark-theme {
-  --accent-color: #E11D48;
-  --accent-color-light: #F43F5E;
-  --background-color: #0f172a;
-  --background-color-light: #1e293b;
-  --background-color-light-alt: #334155;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --header-title-color: #fff;
-  --header-color-1: rgba(15, 23, 42, 0.95);
-  --header-color-2: rgba(225, 29, 72, 0.55);
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --text-color: #f1f5f9;
-  --text-color-light: #94a3b8;
-  --watermark-color: rgba(255, 255, 255, 0.1);
-  --nav-background-color: rgba(15, 23, 42, 0.7);
+  --watermark-color: rgba(138, 92, 246, 0.8);
+  --nav-background-color: rgba(255, 255, 255, 0.92);
+  --nav-a-color: #212529;
+  --color-scheme: light;
+  --accent-gradient: linear-gradient(120deg, #2563eb, #22d3ee, #14b8a6);
+  --body-gradient: radial-gradient(120% 120% at 10% 10%, rgba(37, 99, 235, 0.08), transparent 35%), radial-gradient(120% 120% at 90% 0%, rgba(34, 211, 238, 0.08), transparent 35%);
+  --tag-cloud-background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 35%, rgba(37, 99, 235, 0.16) 70%, rgba(34, 211, 238, 0.2) 100%);
+  --tag-cloud-text-color: #1e293b;
+  --tag-cloud-border-color: var(--border-color);
+  --tag-cloud-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --tag-cloud-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --header-text-color: var(--accent-color-light);
 }
 
 body {
@@ -59,10 +80,10 @@ body {
   --message-background-color: var(--background-color-light-alt);
 
   --footer-background-color: var(--background-color-light);
-  --footer-button-text-color: var(--background-color-light);
-  --footer-button-background-color: var(--text-color);
-  --footer-button-hover-text-color: var(--background-color-light);
-  --footer-button-hover-background-color: var(--accent-color);
+  --footer-button-text-color: var(--accent-color);
+  --footer-button-background-color: var(--background-color-light);
+  --footer-button-hover-text-color: var(--text-color);
+  --footer-button-hover-background-color:  var(--accent-color);
 
   --header-title-font-family: 'Inter', sans-serif;
   --header-title-text-color: var(--header-title-color);
@@ -73,9 +94,6 @@ body {
   --box-background-color: var(--background-color-light);
   --box-icon-color: var(--watermark-color);
   --box-aboutme-text-color: var(--text-color-light);
-
-  --nav-background-color: var(--background-color-light);
-  --nav-a-color: var(--text-color);
 
   --a-color: var(--accent-color);
 

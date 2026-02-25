@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 400"
+     role="img"
+     aria-label="Hand-drawn-ish dog paw with &lt;/&gt;">
+
+  <defs>
+    <style>
+      .purple { fill: #8b5cf6; }
+      .blue   { fill: #22d3ee; }
+      .code {
+        fill: #fff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                     "Liberation Mono", "Courier New", monospace;
+        font-weight: 800;
+        letter-spacing: -4px;
+      }
+    </style>
+  </defs>
+
+<g transform="translate(-100, -10)">
+  <!-- 🟣 CONTORNO (capa inferior ligeramente escalada) -->
+  <g class="purple" transform="scale(1.06) translate(-14,-18)">
+    <!-- dedos -->
+    <ellipse cx="165" cy="135" rx="46" ry="58"/>
+    <ellipse cx="236" cy="94"  rx="48" ry="62"/>
+    <ellipse cx="312" cy="96"  rx="44" ry="58"/>
+    <ellipse cx="380" cy="136" rx="42" ry="54"/>
+
+    <!-- almohadilla -->
+    <path d="
+      M 254 178
+      C 206 170, 160 206, 148 254
+      C 132 321, 176 390, 252 398
+      C 332 406, 382 352, 374 276
+      C 368 220, 318 188, 254 178
+      Z
+    " />
+  </g>
+
+  <!-- 🔵 CAPA PRINCIPAL -->
+  <g class="blue">
+    <g transform="translate(-6,6) rotate(-6 165 135)">
+      <ellipse cx="165" cy="135" rx="46" ry="58"/>
+    </g>
+
+    <g transform="translate(4,-2) rotate(-9 236 94)">
+      <ellipse cx="236" cy="94" rx="48" ry="62"/>
+    </g>
+
+    <g transform="translate(-3,13) rotate(7 312 96)">
+      <ellipse cx="312" cy="96" rx="44" ry="58"/>
+    </g>
+
+    <g transform="translate(0,25) rotate(10 380 136)">
+      <ellipse cx="380" cy="136" rx="42" ry="54"/>
+    </g>
+
+    <g transform="translate(6,-10)">
+      <path d="
+        M 254 178
+        C 206 170, 160 206, 148 254
+        C 132 321, 176 390, 252 398
+        C 332 406, 382 352, 374 276
+        C 368 220, 318 188, 254 178
+        Z
+      " />
+    </g>
+  </g>
+
+  <!-- </> -->
+  <g transform="translate(4,-2) rotate(-3 256 458)">
+    <text class="code"
+          x="266"
+          y="332"
+          text-anchor="middle"
+          font-size="118">&lt;/&gt;</text>
+  </g>
+</g>
+</svg>

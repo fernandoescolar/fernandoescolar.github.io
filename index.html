@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Home
-background: '/assets/uploads/bg/mydesktop.jpg'
+background: '/assets/uploads/bg/future.png'
 ---
 <header class="home">
   <h1>developerro</h1>
@@ -12,13 +12,7 @@ background: '/assets/uploads/bg/mydesktop.jpg'
   <ul>
     {% for post in site.posts limit:5 %}
     <li>
-      {% if post.categories contains "video" %}
-      <i class="fa fa-video category"></i>
-      {% elsif post.categories contains "podcast" %}
-      <i class="fa fa-headphones category"></i>
-      {% else %}
-      <i class="fa fa-book category"></i>
-      {% endif %}
+
 
       <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
         {% if post.background %}
@@ -30,7 +24,16 @@ background: '/assets/uploads/bg/mydesktop.jpg'
           <h2>{{ post.title }}</h2>
 
           <small>
-            {{ post.date | date_to_string }} &middot; {% include read_time.html content=post.content %}
+            {{ post.date | date_to_string }} &middot;
+            {% if post.categories contains "video" %}
+              {% include video_durantion.html %}
+              <i class="fa fa-video category"></i>
+            {% elsif post.categories contains "podcast" %}
+              <i class="fa fa-headphones category"></i>
+            {% else %}
+              {% include read_time.html content=post.content %}
+              <i class="fa fa-book category"></i>
+            {% endif %}
           </small>
 
           <p>
@@ -52,7 +55,7 @@ background: '/assets/uploads/bg/mydesktop.jpg'
       <a href="/about">
         <img src="/assets/uploads/fernandoescolar400x400.jpg" class="avatar" alt="Foto de Fernando Escolar"
           loading="lazy" decoding="async" />
-        <h2>sobre mí</h2>
+        <h2>Sobre mí</h2>
         <p>
           <i class="fa fa-heart" title="Me gusta"></i> Estrella Galicia<br>
           <i class="fa fa-thumbs-down" title="No me gusta"></i> Verdura<br>
@@ -66,10 +69,27 @@ background: '/assets/uploads/bg/mydesktop.jpg'
     {% endfor %}
     <li class="tags">
       {% assign tags = site.tags | sort %}
+      {% assign min_count = 999999 %}
+      {% assign max_count = 0 %}
       {% for tag in tags %}
-      {% assign count = tag | last | size %}
+      {% assign count = tag[1].size %}
+      {% if count < min_count %}{% assign min_count = count %}{% endif %}
+      {% if count > max_count %}{% assign max_count = count %}{% endif %}
+      {% endfor %}
+
+      {% assign min_font = 90 %}
+      {% assign max_font = 200 %}
+      {% assign spread = max_count | minus: min_count %}
+      {% if spread == 0 %}{% assign spread = 1 %}{% endif %}
+      {% assign scale = max_font | minus: min_font %}
+
+      {% for tag in tags %}
+      {% assign count = tag[1].size %}
+      {% assign weight = count | minus: min_count %}
+      {% assign scaled = weight | times: scale %}
+      {% assign font = scaled | divided_by: spread | plus: min_font %}
       {% if count > 0 %}
-      <a href="/tags#{{ tag | first | slugify }}" style="font-size: {{ tag | last | size | times: 4 | plus: 100  }}%">
+      <a href="/tags#{{ tag | first | slugify }}" style="font-size: {{ font }}%">
         {{ tag[0] | replace:'-', ' ' }}
       </a>
       {% endif %}
