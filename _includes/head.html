@@ -7,9 +7,7 @@
   {% assign seo_url = page.url | replace:'index.html','' | prepend: site.url %}
   {% assign seo_image = page.background | default: site.icon | prepend: site.url %}
   {% assign seo_locale = site.locale | default: 'es_ES' %}
-  {% if seo_image | ends_with: '.webp' %}
-    {% assign seo_image = "/assets/web-app-manifest-512x512.png"  %}
-  {% endif %}
+
   <title>
     {% if page.title == "Home" %}
     {{ site.title }} &middot; {{ site.tagline }}
