@@ -2,7 +2,7 @@
 published: true
 title: "Novedades en developerro"
 author: Fernando Escolar
-post_date: 2026-02-25 01:00:00
+post_date: 2026-02-27 01:00:00
 layout: post
 tags: blog jekyll ia codex docker devops
 background: '/assets/uploads/bg/home.png'
