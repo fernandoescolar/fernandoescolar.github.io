@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2019-03-19 08:26:33
 layout: post
 tags: oauth csharp jwt
-background: '/assets/uploads/bg/security2.jpg'
+background: '/assets/uploads/bg/security2.webp'
 ---
 
 Muy buenos días y gracias por acompañarnos un martes más. La pregunta de hoy y por 25 pesetas la respuesta acertada: díganos tipos de concesión (Grant Types) permitidos por OAuth 2.0, como por ejemplo "password". Un, dos, tres, responda otra vez<!--break-->.

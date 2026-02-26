@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-04-27 01:20:57
 layout: post
 tags: azure webapp ip vnet nat gateway
-background: '/assets/uploads/bg/street.jpg'
+background: '/assets/uploads/bg/street.webp'
 ---
 
 Uno de los grandes inconvenientes de usar Azure Web Apps ha sido el de configurar una IP estática de salida. Simplemente no se podía. Ha habido soluciones de lo más variopintas: usar un ASE, montar una máquina virtual tipo pasarela, Application Gateway, proxies... Pero ninguna de ellas se ha visto como una solución verdaderamente aceptable, hasta hoy<!--break-->.
@@ -28,7 +28,7 @@ Para poder poner esto en marcha tendremos que crear una *Virtual Network* dentro
 
  La topología quedaría de esta forma:
 
-![Topología de servicios de Microsoft Azure](/assets/uploads/2021/04/nat-webapp.png)
+![Topología de servicios de Microsoft Azure](/assets/uploads/2021/04/nat-webapp.webp)
 
 No nos distraemos más, vamos a ponernos manos a la obra:
 
@@ -36,11 +36,11 @@ No nos distraemos más, vamos a ponernos manos a la obra:
 
 Primero vamos a crear un *Resource group* donde agruparemos todos los recursos que crearemos. Para ello podremos acceder al [portal de Azure](https://portal.Azure.com/) y presionar el botón de crear un nuevo recurso.
 
-![Microsoft Azure -> Create a resource: Resource group](/assets/uploads/2021/04/outboundip-rg-1.png)
+![Microsoft Azure -> Create a resource: Resource group](/assets/uploads/2021/04/outboundip-rg-1.webp)
 
 Después de seleccionar el tipo "Resource Group", le daremos un nombre y elegiremos una región:
 
-![Create Resource group](/assets/uploads/2021/04/outboundip-rg-2.png)
+![Create Resource group](/assets/uploads/2021/04/outboundip-rg-2.webp)
 
 Para finalizar lo creamos y listo.
 
@@ -48,15 +48,15 @@ Para finalizar lo creamos y listo.
 
 Las redes virtuales de Azure son muy sencillas de configurar. Como es habitual, tendremos que buscar "Virtual Network" en el [portal de Azure](https://portal.Azure.com/).
 
-![Microsoft Azure -> Create a resource: Virtual Network](/assets/uploads/2021/04/outboundip-vnet-1.png)
+![Microsoft Azure -> Create a resource: Virtual Network](/assets/uploads/2021/04/outboundip-vnet-1.webp)
 
 En el primer paso del asistente de creación tendremos que introducir el nombre y la región:
 
-![Create Virtual Network](/assets/uploads/2021/04/outboundip-vnet-2.png)
+![Create Virtual Network](/assets/uploads/2021/04/outboundip-vnet-2.webp)
 
 En el siguiente paso podremos asignar los rangos de IP para nuestra red virtual y podremos gestionar las *subnets* que necesitamos:
 
-![Configure IP ranges](/assets/uploads/2021/04/outboundip-vnet-3.png)
+![Configure IP ranges](/assets/uploads/2021/04/outboundip-vnet-3.webp)
 
 En este caso podemos dejar los valores por defecto ya que no necesitamos ninguna configuración especial.
 
@@ -66,11 +66,11 @@ El resto de los valores, como es habitual, podremos obviarlos y terminar con la 
 
 Ha llegado la hora de crear un *Azure App Service* donde hospedar nuestra aplicación web. Nos dirigiremos al [portal de Azure](https://portal.Azure.com/) y en la opción de crear un nuevo recurso buscaremos "Web App":
 
-![Microsoft Azure -> Create a resource: Web App](/assets/uploads/2021/04/outboundip-web-1.png)
+![Microsoft Azure -> Create a resource: Web App](/assets/uploads/2021/04/outboundip-web-1.webp)
 
 En el primer paso definiremos el nombre de la aplicación, la región y podremos crear un plan de hospedaje para la misma. Este plan solo hay que recordar que tiene que ser un entorno productivo de tamaño `S` o `P`. En este ejemplo usaremo el más barato de ellos: `S1`.
 
-![Create Web App](/assets/uploads/2021/04/outboundip-web-2.png)
+![Create Web App](/assets/uploads/2021/04/outboundip-web-2.webp)
 
 El resto de los valores que encontremos en el asistente podremos dejarlos como vienen por defecto. Finalmente crearemos la aplicación web.
 
@@ -78,25 +78,25 @@ Una vez el recurso esté listo tendremo que integrarlo con la *subnet* privada q
 
 Tendremos que dirigirnos a la página de configuración de la *Web App*. Allí buscaremos en el menú de la izquierda la opción de "Networking". Y al cargar en el panel principal esta opción, buscaremos "VNet Integration" y dentro de esta sección presionaremos "Click here to configure":
 
-![Web App Networking](/assets/uploads/2021/04/outboundip-web-3.png)
+![Web App Networking](/assets/uploads/2021/04/outboundip-web-3.webp)
 
 Una vez hayamos navegado al panel de "VNet Integration", haremos clic en la opción de "Add VNet":
 
-![Web App VNet integration](/assets/uploads/2021/04/outboundip-web-4.png)
+![Web App VNet integration](/assets/uploads/2021/04/outboundip-web-4.webp)
 
 Entonces aparecerá un modal a la derecha donde tendremos que buscar la red virtual que creamos en el paso anterior y seleccionar la *subnet* donde queremos integrar la Web App. Hay que tener en cuenta que solo se puede asignar una WebApp por *subnet*.
 
-![Web App private subnet integration](/assets/uploads/2021/04/outboundip-web-5.png)
+![Web App private subnet integration](/assets/uploads/2021/04/outboundip-web-5.webp)
 
 Una vez guardados estos cambios ya tendremos la aplicación dentro de la *subnet*, pero eso no quiere decir que estemos usándo la red virtual para redirigir el tráfico.
 
 Para hacer que el tráfico interno sea redireccionado por la *vnet* tendremos que dirigirnos a la sección de "Configuration" dentro del menú de la izquierda y añadir un nuevo "application setting":
 
-![Web App application settings](/assets/uploads/2021/04/outboundip-web-6.png)
+![Web App application settings](/assets/uploads/2021/04/outboundip-web-6.webp)
 
 El nombre de este parámetro será "WEBSITE_VNET_ROUTE_ALL" y su valor "1":
 
-![Web App New application setting](/assets/uploads/2021/04/outboundip-web-7.png)
+![Web App New application setting](/assets/uploads/2021/04/outboundip-web-7.webp)
 
 Al terminar de añadirlo, recuerdapresionar el botón de "Save" de la barra de herramientas que encontrarás en la parte superior.
 
@@ -104,11 +104,11 @@ Al terminar de añadirlo, recuerdapresionar el botón de "Save" de la barra de h
 
 Si queremos tener una IP pública y estática de salida, ahora será el momento de crearla. Para ello tendremos que buscar "Public IP address" en la opción de crear un nuevo recurso del [portal de Azure](https://portal.Azure.com/).
 
-![Microsoft Azure -> Create a resource: Public IP address](/assets/uploads/2021/04/outboundip-pip-1.png)
+![Microsoft Azure -> Create a resource: Public IP address](/assets/uploads/2021/04/outboundip-pip-1.webp)
 
 Seleccionaremos un nombre y nos aseguraremos de que tenga marcado que la IP queremos que sea estática:
 
-![Create Public IP address](/assets/uploads/2021/04/outboundip-pip-2.png)
+![Create Public IP address](/assets/uploads/2021/04/outboundip-pip-2.webp)
 
 Los demás valores los podemos dejar como vienen por defecto.
 
@@ -118,25 +118,25 @@ El último paso será la creación del *NAT gateway*. Este servicio nos permitir
 
 Como siempre, nos dirigiremos al [portal de Azure](https://portal.Azure.com/), a la opción de crear nuevo recurso y buscaremos "NAT gateway":
 
-![Microsoft Azure -> Create a resource: NAT gateway](/assets/uploads/2021/04/outboundip-nat-1.png)
+![Microsoft Azure -> Create a resource: NAT gateway](/assets/uploads/2021/04/outboundip-nat-1.webp)
 
 En el primer paso le daremos un nombre y lo asignaremos a una región:
 
-![Create NAT gateway](/assets/uploads/2021/04/outboundip-nat-2.png)
+![Create NAT gateway](/assets/uploads/2021/04/outboundip-nat-2.webp)
 
 En el segundo paso, lo vincularemos con la IP pública que hemos creado para que la use como salida del tráfico. Y podremos ignorar el tema de los prefijos si no nos interesa.
 
-![NAT gateway outbound IP](/assets/uploads/2021/04/outboundip-nat-3.png)
+![NAT gateway outbound IP](/assets/uploads/2021/04/outboundip-nat-3.webp)
 
 En el tercer paso lo vincularemos con la *subnet* privada donde se encuentra nuestra aplicación web:
 
-![NAT gateway subnet](/assets/uploads/2021/04/outboundip-nat-4.png)
+![NAT gateway subnet](/assets/uploads/2021/04/outboundip-nat-4.webp)
 
 El resto de los pasos no tendremos por qué configurar nada. Así que solo quedará crear el recurso nuevo.
 
 Una vez se haya creado en *NAT gateway* os recomiendo que vayais a su página de configuración y elijais la opción del menú de la izquierda de "Subnets". En este panel es muy posible que NO encontremos la configuración que añadimos en el paso de creación. Si este es el caso buscaremos nuestra red virtual, marcaremos la *subnet* y presionaremos el botón de "Save":
 
-![Actually NAT gateway subnet](/assets/uploads/2021/04/outboundip-nat-5.png)
+![Actually NAT gateway subnet](/assets/uploads/2021/04/outboundip-nat-5.webp)
 
 Huelga decir que si os encontrais la configuración correcta no tenéis por qué hacer nada.
 
@@ -146,7 +146,7 @@ Y con este último paso ya tendremos creado el entorno para que nuestra *Web App
 
 Una forma muy rápida de comprobar que nuestra *Web App* está usando la IP que configuramos es usar el terminal de *kudu*. Así que, abriremos en el  [portal de Azure](https://portal.Azure.com/) la página de configuración de nuestra aplicación, buscaremos la opción de "Advanced Tools" en el menú de la izquierda y presionaremos el botón de "Go ->":
 
-![Web App > kudu](/assets/uploads/2021/04/outboundip-web-8.png)
+![Web App > kudu](/assets/uploads/2021/04/outboundip-web-8.webp)
 
 Entonces se abrirá una nueva pestaña en el navegador. En el menú superior encontraremos la opción de "Debug console" y en el desplegable seleccionaremos "CMD".
 
@@ -158,7 +158,7 @@ curl https://api.myip.com/
 
 Lo que vamos a hacer es llamar a una API que nos devuelve la IP pública desde donde la hemos llamado. De esta forma, podremos comparar ese valor con el de la IP pública:
 
-![Web App > kudu > CMD](/assets/uploads/2021/04/outboundip-web-9.png)
+![Web App > kudu > CMD](/assets/uploads/2021/04/outboundip-web-9.webp)
 
 Si en la primera ejecución no coincide os invito a intentarlo un par de minutos más tarde para comprobar que se han realizado los cambios en Azure.
 

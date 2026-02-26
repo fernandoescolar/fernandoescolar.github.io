@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-10-18 01:04:36
 layout: post
 tags: dev-containers dotnet
-background: '/assets/uploads/bg/metrics.jpg'
+background: '/assets/uploads/bg/metrics.webp'
 ---
 
 Recuerdo que con la última versión del *framework* de .Net estuve haciendo pruebas con las versiones *preview* meses antes de que saliera la versión final. Esto provocó ciertos problemas con el *tooling*, que desembocaron en demos y charlas con demos en las que encontraba más problemas de los que esperaba. Eso me pasa por ser un *early adopter*, como dirían un par de compañeros de trabajo.<!--break-->

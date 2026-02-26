@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-06-10 01:05:31
 layout: post
 tags: rust
-background: '/assets/uploads/bg/crab3.jpg'
+background: '/assets/uploads/bg/crab3.webp'
 ---
 
 Rust es un lenguaje de programación que no ha venido a hacer que programemos menos. Desde el primer momento de empezar a escribir código vamos a descubrir que, cosas relativamente comunes son mucho más fáciles de desarrollar usando lenguajes interpretados o compilados para una máquina virtual. Quizá ahí resida su encanto<!--break-->.

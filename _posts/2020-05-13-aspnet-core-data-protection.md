@@ -6,12 +6,12 @@ author: fernandoescolar
 post_date: 2020-05-13 07:00:41
 layout: post
 tags: aspnetcore data protection dotnet
-background: '/assets/uploads/2020/05/hogwarts.jpg'
+background: '/assets/uploads/2020/05/hogwarts.webp'
 ---
 
 Cuando encontré en [stackoverflow](https://stackoverflow.com/search?q=c%23+encrypt+data) mi primer algoritmo para encriptar datos, fue como entrar por primera vez en Hogwarts, la escuela de magia y hechicería. No entendía muy bien que era eso, pero podía copiar el código y hacer lo mismo en mis aplicaciones<!--break-->.
 
-![Hogwarts](/assets/uploads/2020/05/hogwarts.jpg)
+![Hogwarts](/assets/uploads/2020/05/hogwarts.webp)
 
 La criptografía, a pesar de ser una ciencia que resulta muy divertida, es también muy complicada. Cada algoritmo, las claves públicas, las privadas, los saltos, base64, los certificados y sus movidas.
 

@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:48:52
 tags: net7 aspnet aspnetcore dotnet csharp
-background: '/assets/uploads/bg/engineering1.jpg'
+background: '/assets/uploads/bg/engineering1.webp'
 ---
 Hacer APIs en dotnet ya no se reduce a un controlador MVC. En los últimos años se han ido introduciendo una serie de mejoras a nivel de framework y lenguaje que nos permitirán desarrollar servicios rápidos, seguros y eficientes siguiendo los patrones que más nos convengan. Quieres verlo?<!--break-->
 

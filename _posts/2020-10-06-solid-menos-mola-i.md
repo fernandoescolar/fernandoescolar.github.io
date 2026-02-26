@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2020-10-06 02:16:54
 layout: post
 tags: solid best-practices
-background: '/assets/uploads/bg/solid6.jpg'
+background: '/assets/uploads/bg/solid6.webp'
 ---
 La *I* de *SOLID* se refiere al principio de segregación de interfaz o **ISP** por sus siglas en inglés (**I**nterface **S**egregation  **P**rinciple). Se puede definir como que muchas interfaces específicas son mejores que una interfaz de propósito general. O como diría [Robert C. Martin](https://twitter.com/unclebobmartin), "los clientes no deben ser forzados a depender de interfaces que no utilizan"<!--break-->.
 

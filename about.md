@@ -2,10 +2,10 @@
 layout: page
 title: Acerca de...
 menu: acerca de
-background: '/assets/uploads/bg/popurri.png'
+background: '/assets/uploads/bg/popurri.webp'
 ---
 
-<img src="/assets/uploads/fernandoescolar400x400.jpg" class="avatar" alt="Foto de Fernando Escolar" />
+<img src="/assets/uploads/fernandoescolar400x400.webp" class="avatar" alt="Foto de Fernando Escolar" />
 
 > Creo que fue tomando unas cañas. Alguien comentó que "desarrolladora" en Euskera venía a decirse "developerra". Así que, aunque no vivo en el Pais Vasco ni conozco otro idioma más que el que escribo, me entró envidía. Iba a ser un "developerro".
 

@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 02:06:42
 tags: azure webapp appservice
-background: '/assets/uploads/bg/cloud2.jpg'
+background: '/assets/uploads/bg/cloud2.webp'
 ---
 
 La grabación del evento de Twitch de [Catzure](https://twitter.com/CAT_zure) junto con [Robert Bermejo](https://twitter.com/robertbemejo). En esta sesión os enseñamos algunos de esos truquillos que solemos utilizar para mantener nuestras aplicaciones con vida a pesar de que el mundo las quiera matar<!--break-->.

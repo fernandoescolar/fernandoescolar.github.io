@@ -5,7 +5,7 @@ author: Fernando Escolar
 post_date: 2026-02-27 01:00:00
 layout: post
 tags: blog jekyll ia codex docker devops
-background: '/assets/uploads/bg/home.png'
+background: '/assets/uploads/bg/home.webp'
 ---
 
 Si has entrado estos días, lo has visto: el blog ha cambiado. No "un poco". Ha cambiado en plan "¿seguro que estoy en la misma URL?".

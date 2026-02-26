@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 01:01:12
 tags: copilot codex dotnet js
-background: '/assets/uploads/bg/radio.jpg'
+background: '/assets/uploads/bg/radio.webp'
 ---
 GitHub Copilot es un sistema de IA basado en Codex que extrae el contexto del código fuente que tenemos, y nos sugiere desde líneas individuales hasta funciones completas. Su página oficial lo define como “Your AI pair programmer”. Así que, hemos decidido ponerlo a prueba ¿sabrá trabajar bien en equipo? ¿nos ayudará? ¿entenderá la dinámica de una Kata? ¿nos saboteará?<!--break-->
 

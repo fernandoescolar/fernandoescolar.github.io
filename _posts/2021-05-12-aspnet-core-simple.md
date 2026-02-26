@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-05-12 01:05:31
 layout: post
 tags: aspnet net5 dotnet routing
-background: '/assets/uploads/bg/fast.jpg'
+background: '/assets/uploads/bg/fast.webp'
 ---
 
 La vida está plagada de casualidades. Si no preguntadle a [David Heinemeier Hansson](https://en.wikipedia.org/wiki/David_Heinemeier_Hansson). Quién le iba a decir que, en 2005 iba a hacer explotar las mentes de los desarrolladores y poner [Ruby On Rails](https://rubyonrails.org) en boca de todos. Tampoco pensaría que iba a ser la fuente de inspiración de un proyecto en .net llamado [MonoRail](http://www.castleproject.org/projects/monorail/), desarrollado por el grupo de [Castle Project en 2007](https://www.infoq.com/news/2007/09/castleproject/).<!--break--> O quién le iba a decir a [Miguel de Icaza](https://en.wikipedia.org/wiki/Miguel_de_Icaza) que iba a recibir un montón de preguntas sobre este proyecto sin tener nada que ver con él. Quizá que el nombre empezara por [Mono](https://www.mono-project.com) nos llevó a equívocos a más de uno. De lo que estoy seguro es de que los chicos de Castle Project no imaginaban que un grupo de ingenieros de [Redmon](https://en.wikipedia.org/wiki/Redmond,_Washington) copiaría su proyecto y llegarían a tener un éxito que para ellos fue esquivo. Lo cierto es que en 2009 cambió el mundo del desarrollo web con tecnologías Microsoft: se lanzó la primera versión de [Asp.Net MVC](https://weblogs.asp.net/scottgu/asp-net-mvc-1-0).

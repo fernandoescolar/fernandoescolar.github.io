@@ -17,7 +17,7 @@ Al llegar a este punto podríamos pensar que <strong>algo huele dentro del </
 <h3>¿A qué huele el código?</h3>
 En castellano “<em>Code Smells</em>” se traduce como “<em>Olores de código</em>”. Parece ser que fue Kent Beck quien acuñó este concepto a finales de la década de los 90. Pero no se popularizó hasta su aparición en el conocido libro de Martin Fowler: “<em>Refactoring: improving the Design of Existing Code</em>”.
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/code-smells.png" alt="" width="424" height="339" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/code-smells.webp" alt="" width="424" height="339" />
 
 Los olores de un código fuente, indican por lo general un problema más profundo. La mejor forma que tenemos de tratarlos es evitando hacerlos. Y si por alguna razón no se ha podido evitar, corregirlo lo antes posible.
 
@@ -53,7 +53,7 @@ De la misma forma, si creamos código que huele, podemos decir que estamos contr
 <h3>Endeudando el código</h3>
 El término “<em>Technical Debt</em>” (Deuda Técnica) fue introducido en 1992 por Ward Cunningham. Es una metáfora que viene a explicar que la falta de calidad en el código fuente de nuestro proyecto, genera una deuda que repercutirá en sobrecostes, tanto en el mantenimiento de un software, como en la propia operativa funcional de la aplicación.
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/technical-debt.png" alt="" width="424" height="339" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/technical-debt.webp" alt="" width="424" height="339" />
 
 Cuando hablamos de un sobrecoste, puede significar desde tener que dedicarle más tiempo o más desarrolladores de los estimados, hasta acumular malestar general y mal ambiente. Lo que nos puede llevar a rotaciones habituales en el equipo de desarrollo, que nunca tendrá esa experiencia que se adquiere con el tiempo, en cada proyecto específico. En adición, un número elevado de problemas funcionales pueden crear la desconfianza del cliente y unas relaciones tensas con los comerciales, el equipo de desarrollo y en general, todos los involucrados en el proyecto.
 
@@ -69,7 +69,7 @@ El problema es que algunas veces no es tan fácil evitar la deuda técnica. En m
 <h3>Tipos de deudas</h3>
 Es Martin Fowler quien confecciona el <strong>Cuadrante de la Deuda Técnica</strong>, clasificándola según dos factores: La prudencia y la deliberación de incurrir en este tipo de deuda. Combinándolos obtenemos como resultado cuatro tipos posibles:
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/technical-debt-cuadrante.png" alt="" width="640" height="411" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/technical-debt-cuadrante.webp" alt="" width="640" height="411" />
 <ul>
 	<li>La <strong>deuda prudente y deliberada</strong> es la que se produce cuando somos conscientes de que estamos haciendo las cosas mal, y factores externos nos obligan ha incurrir en deuda técnica que tendremos que pagar posteriormente.</li>
 </ul>
@@ -118,7 +118,7 @@ Además el pago de deuda técnica hay que <strong>explicárselo a todos los sta
 
 En economía se conoce como curva J, a esa gráfica que representa como para corregir el balance negativo(-XN) de caja, se recurre a devaluar el valor (D). De esta forma, en un principio prevé una bajada mayor debido a unos costes mayores por culpa de esta devaluación. Pero con el paso del tiempo (Tº), esta situación se revertirá terminando con un saldo positivo mayor (XN). Como la curva resultante tiene una forma semejante a la letra “J” recibe este nombre (aunque personalmente no le encuentro tanto parecido).
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/curva-j.png" alt="" width="476" height="306" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/curva-j.webp" alt="" width="476" height="306" />
 Así pues, aplicando este concepto al pago de deuda técnica, vamos a poder explicar que vamos a realizar una inversión de tiempo en solucionar parte de esta deuda. En el eje vertical interpretaremos que tenemos la velocidad de producción de nuestro equipo. Y en el eje horizontal el tiempo. Si invertimos en pagar la deuda técnica, nuestro proyecto va a tener una bajada de velocidad del desarrollo, que repercutirá en que no avancemos con la producción de la funcionalidad esperada. Pero al haber conseguido mejorar la calidad del código en un futuro recuperaremos la inversión con creces, porque será más fácil afrontar desarrollos futuros.
 <h3>Sobre la rentabilidad</h3>
 Por lo general, el pago de deuda <strong>hay que planificarlo</strong>. Encontrar el momento adecuado dentro del ciclo de producción. Hay que tener presente que no hay que enfrentarse a todos los problemas a la vez: <strong>poco a poco será más sencillo</strong> y productivo. Y sobre todo hay que estar seguro de que <strong>se va a obtener un beneficio claro y visible</strong> al invertir en solucionar estos problemas. Lo que se conoce como asegurar el <strong>ROI</strong> (Return of Investment o <strong>Retorno de Inversión</strong>, en castellano).

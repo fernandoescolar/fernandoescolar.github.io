@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-03-22 01:04:36
 layout: post
 tags: aspnet aspnetcore dotnet csharp
-background: '/assets/uploads/bg/programming4.jpg'
+background: '/assets/uploads/bg/programming4.webp'
 ---
 
 **ASP.NET** es un framework desarrollado por Microsoft para construir aplicaciones web y servicios web. Lleva muchos años en el mercado y es una solución muy robusta. Con la aparición de **.Net Core**, se creó **Asp.Net Core**. Una versión moderna y más ligera, diseñada para ser multiplataforma y compatible con una variedad de sistemas operativos, incluyendo *Windows*, *MacOS* y *Linux*. Pero su gran robusted sigue vinculada a cierta complejidad a la hora de programarla. Aquí es donde entra **Minimal API**.<!--break-->

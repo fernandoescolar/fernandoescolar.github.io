@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-07-12 01:04:36
 layout: post
 tags: routing aspnet aspnetcore dotnet csharp
-background: '/assets/uploads/bg/route.jpg'
+background: '/assets/uploads/bg/route.webp'
 ---
 
 No se me ocurre una mejor forma de explicar el routing que con un ejemplo basado en una cervecería. Imagina "The Router's Brew", el pub donde todo desarrollador es bienvenido para tomarse una refrescante cerveza. Aquí hay un camarero cuya misión es escuchar las solicitudes de los clientes y servirles la cerveza que han pedido. El camarero sería el enrutador, y el cliente es el navegador web<!--break-->.

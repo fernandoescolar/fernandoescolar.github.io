@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:51:28
 tags: ia productivity vscode
-background: "/assets/uploads/bg/programming3.jpg"
+background: "/assets/uploads/bg/programming3.webp"
 ---
 
 Esta charla, presentada en la [NetCoreConf Madrid 2025](https://netcoreconf.com/madrid/) cuento cómo decidí dar un paso lógico en mi evolución profesional: sustituir a mi equipo de desarrollo por GitHub Copilot. Y lo mejor de todo es que, aparentemente, todo son ventajas.<!--break-->

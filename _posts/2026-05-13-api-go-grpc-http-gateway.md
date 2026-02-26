@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-05-13 01:15:54
 layout: post
 tags: go grpc http api
-background: '/assets/uploads/bg/golang.jpg'
+background: '/assets/uploads/bg/golang.webp'
 mermaid: true
 ---
 

@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:56:28
 tags: rest net7 aspnet aspnetcore dotnet csharp
-background: '/assets/uploads/bg/programming5.jpg'
+background: '/assets/uploads/bg/programming5.webp'
 ---
 
 El pasado sábado 4 de marzo estuvimos en la NetCoreConf 2023 de Barcelona. Allí tuvimos el placer de ver muchas charlas interesantes, tomar una cerveza con amigos e incluso nos dió tiempo a hablar del modelo de madurez de Richardson<!--break-->.

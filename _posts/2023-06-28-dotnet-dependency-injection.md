@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-06-28 01:04:36
 layout: post
 tags: di dotnet csharp best-practices
-background: '/assets/uploads/bg/inversion-of-control.jpg'
+background: '/assets/uploads/bg/inversion-of-control.webp'
 ---
 
 Desde la primera versión de .Net Core se ha incluido un inyector de dependencias en el framework. Este inyector forma parte del núcleo de las aplicaciones ASP.NET Core, las basadas en `IHost` y se puede utilizar en cualquier aplicación .Net de forma independiente. De hecho, prácticamente todos los programadores de c# lo estamos usando aun sin saberlo. Pero esto no es excusa para no implementarlo de la mejor forma posible<!--break-->.

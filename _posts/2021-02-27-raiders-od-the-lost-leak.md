@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:46:16
 tags: net5 dotnet tools monitoring dump memory
-background: '/assets/uploads/bg/adventure.jpg'
+background: '/assets/uploads/bg/adventure.webp'
 ---
 Esto que has terminado la primera fase de tu proyecto. Subes la aplicación a azure. Lo pones en producción. Empiezan a llegar visitas. Todo genial. Se empieza a caer la aplicación. Aleatoriamente. Miras la herramienta de monitoring y tienes la memoria a tope. Miras Application Insights y tienes un montón de excepciones de tipo "OutOfMemoryException". Ay yai yai! Tienes un memory leak<!--break-->.
 

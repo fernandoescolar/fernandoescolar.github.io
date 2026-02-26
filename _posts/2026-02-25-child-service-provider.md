@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-02-25 01:06:21
 layout: post
 tags: di dotnet csharp
-background: '/assets/uploads/bg/clone.jpg'
+background: '/assets/uploads/bg/clone.webp'
 ---
 
 Hay días extraños en los que no tienes nada urgente que hacer.

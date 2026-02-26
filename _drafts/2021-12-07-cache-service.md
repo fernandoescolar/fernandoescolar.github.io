@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-12-07 01:05:31
 layout: post
 tags: aspnet cache net6 dotnet
-background: '/assets/uploads/bg/circuit.jpg'
+background: '/assets/uploads/bg/circuit.webp'
 ---
 
 Un día estábamos tomando una cerveza con [Jorge Turrado](https://twitter.com/JorgeTurrado) y salió a colación un servicio que desarrollamos en el trabajo. Algo que nos permite relajar el consumo de nuestras bases de datos, asegurarnos un plan de contingencia contra las caídas de servicio y en definitiva, algo que nos hace la vida más fácil<!--break-->. El problema es que este servicio no es *open source*. Así que, la idea era desarrollarlo nosotros mismos y en directo. El objetivo: un servicio de caché de doble capa. Tanto en memoria local, como en un servidor de caché distribuida. Y he aquí el resultado:

@@ -7,7 +7,7 @@ post_date: 2019-02-05 05:08:11
 post_excerpt: ""
 layout: post
 tags: csharp dotnet history
-background: '/assets/uploads/bg/programming4.jpg'
+background: '/assets/uploads/bg/programming4.webp'
 ---
 
 Dicen que la historia la escriben siempre los vencedores. Aunque en mi opinión, la historia la ha escrito siempre el que tenía un medio para hacerlo. Esta afirmación puede demostrarse hoy en día echando un vistazo a un medio al que todo el mundo tiene acceso: internet. Una plataforma donde todos podemos escribir _nuestra propia historia_. Así pues, al igual que cualquier otro ignorante de la red, os voy a dar mi versión de la historia de C#. Y además os aseguro que esta sí cuenta lo que sucedió de verdad de la buena.<!--break-->
@@ -18,11 +18,11 @@ La historia prohibida que nunca nadie se atrevió a contar comienza en una tierr
 
 Nuestra protagonista desarrolló una plataforma de desarrollo basada en virtualizar el lenguaje máquina. La máquina virtual, conocida como Java Virtual Machine (aka JVM), era capaz de interpretar unos archivos llamados _bytecode_. Estos archivos eran el resultado de compilar programas realizados en un nuevo lenguaje de programación de alto nivel llamado Java. Y para conseguir que esta máquina virtual interactuara con el hardware existente se diseñaron un conjunto de librerías que recibieron el nombre de Java Runtime Environment (aka JRE).
 
-![Sun Microsystems logo](/assets/uploads/2019/02/sun-microsystems.png)
+![Sun Microsystems logo](/assets/uploads/2019/02/sun-microsystems.webp)
 
 El lenguaje de programación Java empezó a tener éxito. Y como la JVM y el JRE eran open source, no tardaron en unirse _3rd parties_ a la carrera por desarrollar su propia máquina virtual privada. Con muchas más funcionalidades que la original, pero partiendo de las implementaciones open source. La más conocida y extendida de estas era la implementación propia de IBM (la versión de hoy en día se conoce como J9). Pero otras empresas como Hewlett-Packard, SAP, Novell o Microsoft, también implementaron las suyas.
 
-![Java logo](/assets/uploads/2019/02/old-java-logos.png)
+![Java logo](/assets/uploads/2019/02/old-java-logos.webp)
 
 Entre tanto, también se estaba desarrollando una dura batalla por implementar el _Integrated Development Environment_ (IDE) preferido por los desarrolladores. Sun Microsystems decidió comprar a unos estudiantes universitarios el IDE Netbeans. Aunque esto en realidad fue una débil respuesta contra una serie de IDEs que eran muy superiores y ya estaban asentados en el mercado. JBuilder, producto de Borland, escrito en el propio lenguaje de Java, era un producto muy avanzado y extendido. Mientras que Eclipse empezaba a mostrarse como la plataforma dominante open source, de la mano de IBM.
 
@@ -58,7 +58,7 @@ Como decíamos antes, 2002 fue el año en el que pudimos ver la primera versión
 
 Un año más tarde y con el fin de solucionar varios problemas, tuvimos la versión 1.2 del lenguaje C#. No obstante, lo más importante de este año fue la versión 1.1 del .Net Framework que la acompañaba. Este _Runtime_ por fin solucionaba los problemas de liberación de memoria del Garbage Collector.
 
-![Visual Studio .Net logo](/assets/uploads/2019/02/visual-studio-net.png)
+![Visual Studio .Net logo](/assets/uploads/2019/02/visual-studio-net.webp)
 
 Hasta aquí todo era muy parecido a Java. Básicamente, si cambiabas los "import" por "using", "java." por "System." y las llamadas en _pascal Case_ por _Camel Case_, todo funcionaba prácticamente igual. Exceptuando esa cosa llamada _region_. Un trucazo, una chama, un pragma del IDE que servía para ocultar cierto código que se autogeneraba al usar los diseñadores visuales de formularios.
 
@@ -66,7 +66,7 @@ Hasta aquí todo era muy parecido a Java. Básicamente, si cambiabas los "import
 
 Con la versión **2.0** se empezó a vislumbrar lo que es hoy en día el lenguaje gracias a los _generics_, iteradores, los métodos anónimos, la covarianza y la contravarianza... Y no nos olvidemos de las clases parciales. Era demasiado evidente que eso de  _region_ era un poco horrible. Así que para dar solución al código generado por los diseñadores de formularios de Windows.Forms y WebForms, en esta versión se añadieron clases que podían ser definidas en varios archivos añadiendo la palabra clave "partial".
 
-![Microsoft .Net logo](/assets/uploads/2019/02/microsoft-net.png)
+![Microsoft .Net logo](/assets/uploads/2019/02/microsoft-net.webp)
 
 ### 2007
 
@@ -76,7 +76,7 @@ Además, por estas fechas, como habíamos llegado al límite de calor con respec
 
 También de esta versión salió otra librería llamada Reactive Extensions. Hoy por hoy se utiliza más su port para javascript (en React o Angular), pero la librería original era para C#. Las _Rx_ sacaban el mayor partido de la mezcla de eventos, observables e iteraciones.
 
-![New Microsoft .Net logo](/assets/uploads/2019/02/microsoft-net-new.png)
+![New Microsoft .Net logo](/assets/uploads/2019/02/microsoft-net-new.webp)
 
 ### 2010
 
@@ -94,7 +94,7 @@ Buscando la excelencia de su lenguaje bandera, Microsoft nos dio un montón de _
 
 La última gran actualización de C#, la versión **7.0**. Lo más destacable de esta versión es que vino de la mano del nuevo _Runtime_ multi plataforma y open source de .Net: dotnet core. Además de un montón de funcionalidades que venían inspiradas de un lenguaje funcional de .Net: F#. _Pattern maching_, tuplas, deconstrucción, _wildcards_... Ahora C# es un lenguaje orientado a objetos y funcional.
 
-![dotNet logo](/assets/uploads/2019/02/dotnet.png)
+![dotNet logo](/assets/uploads/2019/02/dotnet.webp)
 
 ### 2019
 

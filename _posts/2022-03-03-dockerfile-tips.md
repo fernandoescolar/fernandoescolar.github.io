@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2022-03-03 06:15:41
 layout: post
 tags: best-practices docker k8s
-background: '/assets/uploads/bg/tip.jpg'
+background: '/assets/uploads/bg/tip.webp'
 ---
 
 Hace unos años, la entradilla de un artículo de este mismo blog, que hablaba de contenedores y Azure Functions, comenzaba:

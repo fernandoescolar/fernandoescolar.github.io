@@ -6,12 +6,12 @@ author: fernandoescolar
 post_date: 2023-05-31 01:04:36
 layout: post
 tags: dotnet csharp net7 timer
-background: '/assets/uploads/bg/time.jpg'
+background: '/assets/uploads/bg/time.webp'
 ---
 
 Si te preguntas cuántas implementaciones de `Timer` hay en C#, te diré que hay un montón. ¡Es un locurón! Y lo mejor de todo es que cada uno tiene su propio estilo, forma de programar y funcionalidad. Así que, si necesitas un temporizador en tu proyecto, tienes muchas opciones para elegir. ¡Es hora de poner en marcha esa cuenta regresiva!<!--break-->
 
-![Timers, timers everywhere](/assets/uploads/2023/05/timers-timers-everywhere.jpg)
+![Timers, timers everywhere](/assets/uploads/2023/05/timers-timers-everywhere.webp)
 
 - [System.Windows.Forms.Timer](#systemwindowsformstimer)
 - [System.Windows.Threading.DispatcherTimer](#systemwindowsthreadingdispatchertimer)

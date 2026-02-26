@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:46:44
 tags: solid best-practices
-background: '/assets/uploads/bg/clean.jpg'
+background: '/assets/uploads/bg/clean.webp'
 ---
 
 Durante la [SCBCN24](https://softwarecrafters.barcelona/2024/index.html) tuve la oportunidad de presentar esta charla titulada *Tidying up your code*. Cortesía de la última creación de Kent Beck de 2023, «Tidy First?», vamos a sumergirnos en las cuestiones más importantes del diseño de software y proponer algunas técnicas que nos ayudarán a tener mejor código<!--break-->.

@@ -6,14 +6,14 @@ author: fernandoescolar
 post_date: 2023-03-08 01:04:36
 layout: post
 tags: management
-background: '/assets/uploads/bg/manager.jpg'
+background: '/assets/uploads/bg/manager.webp'
 ---
 
 Hace unos días que, por equivocación, me recomendaron un libro al que le tenía muchas ganas. Así que aproveché tan dulce error para retomar ese ya olvidado objetivo y empecé a leerlo. Su título: *"The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change"*. Muy sugerente. <!--break-->
 
 El libro ["The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change"](https://www.amazon.com/Managers-Path-Leaders-Navigating-Growth-ebook/dp/B06XP3GJ7F) es un libro escrito por [Camille Fournier](https://twitter.com/skamille), una experta en liderazgo técnico y escritora con una amplia experiencia en la industria de la tecnología. Se publicó originalmente en 2017 y ha sido muy bien recibido por la crítica y la comunidad de tecnología.
 
-![The Manager's Path](/assets/uploads/2023/03/the-managers-path.jpg)
+![The Manager's Path](/assets/uploads/2023/03/the-managers-path.webp)
 
 Se centra en proporcionar una guía para los líderes técnicos que están liderando equipos en momentos de crecimiento y cambio. Se divide en seis capítulos, cada uno abordando diferentes etapas en el camino de un líder técnico, desde el liderazgo de un equipo pequeño hasta el liderazgo de equipos más grandes y más complejos. En general, el libro destaca la importancia de ser un líder auténtico, alineado con tus valores y principios, y de ser consciente de tus propias limitaciones y fortalezas como líder. También se enfatiza la importancia de desarrollar habilidades para comunicarte eficazmente con tus equipos y para tomar decisiones informadas. La autora también proporciona una guía para ayudar a los líderes a navegar por los diferentes niveles de liderazgo, desde el liderazgo individual hasta la gestión de equipos y la toma de decisiones a nivel de liderazgo de dirección.
 

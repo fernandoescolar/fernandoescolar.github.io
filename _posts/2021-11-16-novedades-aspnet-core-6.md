@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-11-16 01:05:31
 layout: post
 tags: aspnet novedades net6 dotnet
-background: '/assets/uploads/bg/programming2.jpg'
+background: '/assets/uploads/bg/programming2.webp'
 ---
 
 La semana pasada asistimos a una vorágine de eventos de Microsoft en los que pudimos ver desde la presentación de Visual Studio 2022 hasta un evento plagado de sesiones de desarrollo llamado [.NET Conf 2021](https://www.dotnetconf.net/). El resultado: nueva versión de todo y un montón de cosas para probar<!--break-->. Y como es imposible analizarlo todo de una sola vez, hoy nos centraremos en Asp.Net Core 6.0: el nuevo framework para el desarrollo de aplicaciones web de Microsoft.

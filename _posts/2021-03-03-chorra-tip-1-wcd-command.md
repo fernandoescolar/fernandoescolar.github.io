@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-03-03 13:20:00
 layout: post
 tags: bash git windows
-background: '/assets/uploads/bg/tip.jpg'
+background: '/assets/uploads/bg/tip.webp'
 ---
 ¿No te ha pasado nunca que estás navegando por carpetas en el explorador de windows y copias la ruta para pegar en el terminal? A mí sí. Y resulta que esto no funciona con el **bash** de *Git for Windows*. Así que he decidido hacer que sí que funcione<!--break-->. Porque infravaloramos el poder que tiene el simple deseo de ser mas vago. Es una de las fuerzas más importantes que dan impulso a la evolución de la humanidad.
 

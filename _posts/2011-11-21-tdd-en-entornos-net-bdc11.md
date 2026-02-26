@@ -15,7 +15,7 @@ Durante poco más de una hora intenté que los asistentes entendieran el por qu�
 
 Si no pudisteis asistir, os diré que <strong>TDD </strong>son las siglas de<strong> Test Driven Development</strong> o en castellano: desarrollo guiado por las pruebas. Y es una técnica de desarrollo (de <em>eXtreme Programing</em>) que se basa en dos pasos: primero escribir la pruebas y después refactorizar.
 
-<img style="margin-right: 5px;" src="/assets/uploads/2012/09/test-driven.jpg" alt="test driven" align="left" />
+<img style="margin-right: 5px;" src="/assets/uploads/2012/09/test-driven.webp" alt="test driven" align="left" />
 
 La <strong>programación extrema</strong> engloba una serie de metodologías de programación ágiles, basadas en que a lo largo de un desarrollo van a ocurrir cambios de especificaciones y en lugar de intentar prevenir esto con una gran cantidad de código, que en ocasiones sobra, se decide adaptarse a esos cambios en cualquier fase del ciclo de vida del proyecto.
 
@@ -69,7 +69,7 @@ Me gustaría poneros un ejemplo (en la <a href="https://twitter.com/#!/search/%2
 
 Para terminar con este enorme post comentar los <strong>beneficios de esta técnica</strong>:
 
-<img src="/assets/uploads/2012/09/tdd-beneficios.png" alt="" align="right" />
+<img src="/assets/uploads/2012/09/tdd-beneficios.webp" alt="" align="right" />
 
 Esto que vemos es una<strong> curva de coste</strong>. Se suele utilizar para representar el coste de desarrollo de una aplicación en dependencia de la metodología utilizada. Muy común cuando la temática de la charla es sobre <strong>deuda técnica</strong>.
 

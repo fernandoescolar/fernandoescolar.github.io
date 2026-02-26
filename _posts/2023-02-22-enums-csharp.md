@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-02-22 01:04:36
 layout: post
 tags: csharp dotnet enum best-practices
-background: '/assets/uploads/bg/programming1.jpg'
+background: '/assets/uploads/bg/programming1.webp'
 ---
 
 Antes de que existieran los tipos enumeración (`enum`), los programadores teníamos que usar otras técnicas para representar conjuntos de valores constantes con nombres significativos. Estas técnicas incluían el uso de constantes, estructuras y cadenas de texto. Sin embargo, estos apaños tenían sus propias desventajas y no eran tan flexibles ni tan fáciles de usar. <!--break--> Puede resultar un poco básico, pero ¿qué te parece si le damos juntos un repaso a los `enum`?

@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-06-14 01:04:36
 layout: post
 tags: golang goroutine channel
-background: '/assets/uploads/bg/golang.jpg'
+background: '/assets/uploads/bg/golang.webp'
 ---
 
 Si hay algo que hace a *Go* especial, son las *goroutines* y los *channels*. Es como tener una varita mágica que te permite hacer malabares con múltiples tareas al mismo tiempo sin caer en el caos. Y si *Golang* es la varita mágica de los desarrolladores, entonces las *goroutines* y los *channels* son los hechizos de la programación. Y por consiguiente, los *gophers* vienen del mundo mágico de *Harry Potter*<!--break--> ¿O no?

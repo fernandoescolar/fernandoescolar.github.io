@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-01-25 01:04:36
 layout: post
 tags: csharp dotnet best-practices
-background: '/assets/uploads/bg/programming2.jpg'
+background: '/assets/uploads/bg/programming2.webp'
 ---
 
 ¿Alguna vez has intentado tomarte un botellín de cerveza sin abrir? Puede ser divertido, pero también será decepcionante. Si no andas con cuidado, podrías hacerte una herida con la chapa que cierra el botellín. Siempre deberías abrir una cerveza antes de tomarla, o terminarás con la garganta seca, el estómago vacío y una estupenda cerveza en la mano que no te puedes beber.<!--break--> Esto mismo es lo que pasa con `NullReferenceException`.

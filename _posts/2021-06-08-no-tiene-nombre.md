@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-06-08 01:05:31
 layout: post
 tags: podcast
-background: '/assets/uploads/bg/radio.jpg'
+background: '/assets/uploads/bg/radio.webp'
 ---
 
 Lo que más me gusta de los eventos técnicos presenciales es lo de las "charlas del bar". Esas que surgen esporádicamente en el bar más cercano al lugar donde se celebra la convención y, cerveza en mano, se monta un corro improvisado donde todo el que quiera está invitado a hablar o expresar su opinión sobre: tecnologías, experiencias, lo que está por venir, lo que nos gustaría viniera... sobre todo. Y eso mismo es lo que nos ofrece el podcast [No Tiene Nombre](https://www.ivoox.com/podcast-bruno-no-tiene-nombre_sq_f1277993_1.html).<!--break-->

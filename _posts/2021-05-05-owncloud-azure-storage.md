@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-05-05 01:05:31
 layout: post
 tags: azure-storage azure owncloud blobfuse files azure-files
-background: '/assets/uploads/bg/warehouse.jpg'
+background: '/assets/uploads/bg/warehouse.webp'
 ---
 
 Todos conocemos sistemas como *OneDrive*, *Dropbox*, *iCloud*, *Google Drive*, *Cloud Drive* o *Mega*. Unos pocos de los muchos servicios de almacenamiento de archivos en la nube. Lo cierto es que además son bastante económicos. Debe ser gracias a la fuerte competencia. Pero ¿para qué usar un servicio de terceros si puedo montar el mío propio?<!--break-->
@@ -217,7 +217,7 @@ Por fin habrá llegado el momento de abrir un navegador y dirigirnos a nuestro s
 - Elegir la carpeta de datos: `/var/www/owncloud/data`.
 - Configurar la conexión con la base de datos usando las credenciales: `owncloud_user` con la contraseña que introdujimos y apuntando a `localhost`.
 
-![Primera vez en ownCloud](/assets/uploads/2021/05/owncloud.png)
+![Primera vez en ownCloud](/assets/uploads/2021/05/owncloud.webp)
 
 Para finalizar presionaremos "Finish setup" y ya podremos empezar a manejar nuestra nube privada :).
 
@@ -233,7 +233,7 @@ apt install smbclient
 
 Ahora podremos ir al portal, a los "settings" a "Storages" y ahí añadir uno nuevo de tipo "SMB Collaborative":
 
-![ownCloud external storage SMB](/assets/uploads/2021/05/owncloud-smb.png)
+![ownCloud external storage SMB](/assets/uploads/2021/05/owncloud-smb.webp)
 
 En el formulario tendremos que añadir:
 

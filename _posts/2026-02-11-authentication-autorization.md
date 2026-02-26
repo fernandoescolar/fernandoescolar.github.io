@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-02-11 01:04:36
 layout: post
 tags: oauth csharp jwt
-background: '/assets/uploads/bg/security1.jpg'
+background: '/assets/uploads/bg/security1.webp'
 ---
 
 Imagina que estás en un aeropuerto internacional a punto de viajar al extranjero. Si has viajado antes, sabrás que hay varias cosas que debes hacer antes de que puedas partir a tu destino en el avión. Lo primero que encontrarás será el control de pasaportes. Aquí, el objetivo es verificar que eres la persona que dices ser<!--break-->. Para lograrlo, muestras tu pasaporte y quizás tu visa, respondes a algunas preguntas de seguridad y te toman una fotografía. Una vez que has pasado este proceso, te permiten ingresar a la zona de embarque.

@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-04-19 01:04:36
 layout: post
 tags: csharp dotnet aspnet aspnetcore best-practices
-background: '/assets/uploads/bg/programming5.jpg'
+background: '/assets/uploads/bg/programming5.webp'
 ---
 
 Hace ya un tiempo que me preguntaron cómo podríamos hacer un servicio de *Windows* usando los nuevos *framework open source* de **.Net**. En ese momento no pensé en los `BackgoundService` ni conocía la existencia de los tipos de proyecto *"Worker Service"*. Hoy, después de haber investigado más sobre el tema y haberlo usado en diferentes ámbitos, creo ya estoy listo para escribir sobre el tema:<!--break-->

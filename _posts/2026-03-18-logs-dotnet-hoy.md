@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-03-18 01:06:21
 layout: post
 tags: observability dotnet csharp
-background: '/assets/uploads/bg/programming4.jpg'
+background: '/assets/uploads/bg/programming4.webp'
 ---
 
 Después de unos cuantos años trabajando con aplicaciones .NET en producción, uno acaba desarrollando cierto respeto por los logs. No porque sean una pieza especialmente elegante del sistema, sino porque suelen ser lo único que queda cuando algo va mal y no hay forma rápida de reproducirlo.<!--break-->

@@ -52,7 +52,7 @@ A temporary task icon was created.  Replace with a 32x32 png with transparencies
 
 Si echamos un vistazo veremos que nos ha creado una carpeta con el nombre de tarea que indicamos. Si miramos el contenido de esa carpeta debería ser semejante al siguiente:
 
-![New VSTS Task](/assets/uploads/2016/11/vsts-tasks-folder.png)
+![New VSTS Task](/assets/uploads/2016/11/vsts-tasks-folder.webp)
 
 - **icon.png**: será el logo de nuestro step en la web de Team Services. Es una imagen de 32x32 pixels.
 - **sample.js**: es un script de nodejs que se ejecutará. Es la tarea en sí.

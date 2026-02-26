@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2022-04-27 05:15:41
 layout: post
 tags: docker k8s net6 test pipelines azure
-background: '/assets/uploads/bg/docker.jpg'
+background: '/assets/uploads/bg/docker.webp'
 ---
 
 Hoy vamos a proponer un reto: a ver si conseguimos hacer un artículo sobre contenedores sin usar la palabra *docker* españolizada y verbalizada. Y ya que estamos, a ver si también conseguimos hablar de como *dockerizar* nuestras aplicaciones en *.Net 6*... oh vaya... bueno, como iba diciendo: a ver si conseguimos no escribir la palabra *kubernetes* en todo el artículo. Difícil<!--break-->.
@@ -390,7 +390,7 @@ Si usáramos todos estos comandos para automatizar estas pruebas en una *pipelin
 
 Y podríamos encontrar en los informes de la ejecución de la *pipeline* algo parecido a esto:
 
-![Azure DevOps: Pipeline - Test Coverage](/assets/uploads/2022/03/pipeline-test-coverage.png)
+![Azure DevOps: Pipeline - Test Coverage](/assets/uploads/2022/03/pipeline-test-coverage.webp)
 
 >Si no ves el tab de cobertura de código es porque hasta que no aparece hasta que no finaliza la pipeline completa
 

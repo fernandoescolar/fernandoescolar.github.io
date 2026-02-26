@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2025-10-30 01:05:17
 layout: post
 tags: ia best-practices team ironic
-background: '/assets/uploads/bg/ai-code.jpg'
+background: '/assets/uploads/bg/ai-code.webp'
 ---
 
 Llevo varios años programando con ayuda de Inteligencias Artificiales y mi productividad ha aumentado desde entonces muchísimo. Da igual cuál uses: **Copilot**, **Claude**, **Gemini**, **Codex**... son todas geniales y el resultado es siempre el mismo: programo más, programo mejor y me siento como un auténtico superhéroe del teclado.<!--break-->

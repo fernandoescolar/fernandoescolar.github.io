@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:49:33
 tags: solid best-practices
-background: '/assets/uploads/bg/solid3.jpg'
+background: '/assets/uploads/bg/solid3.webp'
 ---
 He de reconocer que el trabajo de Uncle Bob (Robert C. Martin) me ayuda a ser mejor programador. Cada vez que leo uno de sus libros o veo una de sus charlas, aprendo algo. Incluso si no es la primera vez que lo hago. Y los principios S.O.L.I.D. no son una excepción<!--break-->.
 

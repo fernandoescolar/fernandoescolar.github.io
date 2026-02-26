@@ -7,7 +7,7 @@ post_date: 2019-02-12 07:18:25
 post_excerpt: ""
 layout: post
 tags: azure-functions azure functions typescript
-background: '/assets/uploads/bg/thunder5.jpg'
+background: '/assets/uploads/bg/thunder5.webp'
 ---
 
 No os ha pasado alguna vez que al leer un artículo en lugar de leer los textos explicativos que su autor ha añadido, vais directamente al contenido de los _code snipets_ y vais copiando y pegando... No os ha pasado que ignoráis la prosa que tanto tiempo ha costado escribir y solo leéis el código, porque ya os resulta bastante auto explicativo... <!--break--> Pues hoy es el día en el que he entendido vuestras necesidades. Voy a poner código y reducir mis comentarios a la mínima expresión.

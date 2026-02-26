@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-05-26 01:05:31
 layout: post
 tags: rust
-background: '/assets/uploads/bg/crab1.jpg'
+background: '/assets/uploads/bg/crab1.webp'
 ---
 
 El año 2020 corona por quinta vez consecutiva a [Rust](https://www.rust-lang.org/) como [el lenguaje de programación más querido](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved) por los visitantes de [stackoverflow](https://stackoverflow.com/). Puede ser que en 2016 la gente tuviera un poco de *hype*. No en vano, ese año ya había salido su versión 1.0. Después de varios años de desarrollo empezaba a parecer una plataforma muy rápida, eficiente, solvente y, en definitiva, interesante<!--break-->. Y que [Google haya añadido soporte para Rust en android](https://security.googleblog.com/2021/04/rust-in-android-platform.html), que [Microsoft decidiera unirse a la Rust Foundation](https://cloudblogs.microsoft.com/opensource/2021/02/08/microsoft-joins-rust-foundation/) y que [AWS, Huawei, Mozilla o Facebook](https://foundation.rust-lang.org/members/) también estén en el barco, me hace pensar que es el momento de aprender un poco de Rust.
@@ -39,7 +39,7 @@ Rust es un proyecto *Open Source* cuyo código fuente puedes encontrar en [su p�
 
 Existe una mascota (no oficial pero sí oficiosa) de Rust con forma de cangrejo que se llama "[Ferris](https://www.rustacean.net/)". Debido a esto, los programadores de este lenguaje se autodenominan "*rustaceans*" (que se podría traducir como "*rustáceos*"). Una mezcla de "rust" y "*crustacean*" (crustáceo).
 
-<img src="/assets/uploads/2021/05/ferris.png" alt="Ferris the crab" width="300" />
+<img src="/assets/uploads/2021/05/ferris.webp" alt="Ferris the crab" width="300" />
 
 Hay un documento al que los *rustaceans* llaman "[El Libro](https://doc.rust-lang.org/book/)" que es considerado como la enciclopedia-tutorial-guía-manual (todo en uno) sobre Rust. Un *must-read* en toda regla si quieres conocer algo de este lenguaje.
 

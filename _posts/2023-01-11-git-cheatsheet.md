@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-01-11 01:01:46
 layout: post
 tags: git best-practices
-background: '/assets/uploads/bg/libros.jpg'
+background: '/assets/uploads/bg/libros.webp'
 ---
 
 Los repositorios de Git pueden ser muy útiles, pero a veces el uso del terminal puede ser intimidante. No es el objetivo de este artículo tratar todo lo que abarca esta tecnología de una forma pormenorizada, simplemente mostrar algunos trucos para hacer el trabajo con Git del día a día un poco más fácil<!--break-->.

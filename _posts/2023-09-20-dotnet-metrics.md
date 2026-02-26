@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-09-20 01:04:36
 layout: post
 tags: observability dotnet csharp
-background: '/assets/uploads/bg/metrics.jpg'
+background: '/assets/uploads/bg/metrics.webp'
 ---
 
 Dentro de la rama de la observabilidad existen tres pilares fundamentales: métricas, logs y [trazas](/2023/09/06/dotnet-traces/). En este artículo vamos a hablar de métricas y cómo podemos medir diferentes factores de nuestras aplicaciones de manera efectiva. Pero espera, ¿qué tienen que ver las métricas con la programación? Bueno, todo. Las métricas son importantes para cualquier tipo de proyecto, y más aún si se trata de programación. Y en .Net existe un sistema muy completo que nos permite medir casi todo tipo de cosas<!--break-->.

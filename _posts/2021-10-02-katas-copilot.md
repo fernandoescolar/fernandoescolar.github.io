@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 01:46:34
 tags: ia copilot codex dotnet kata marsrober fizzbuzz twitch
-background: '/assets/uploads/bg/kata1.jpg'
+background: '/assets/uploads/bg/kata1.webp'
 ---
 Dice la página web oficial de Github Copilot que es "Your AI pair programmer" y hemos decidido ponerlo a prueba ¿sabrá trabajar bien en equipo? ¿nos ayudará? ¿entenderá la dinámica de una Kata? ¿nos saboteará?<!--break-->.
 

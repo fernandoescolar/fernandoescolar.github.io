@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-03-10 03:21:02
 layout: post
 tags: ef efcore entity-framework record net5 dotnet
-background: '/assets/uploads/bg/storage.jpg'
+background: '/assets/uploads/bg/storage.webp'
 ---
 No cabe duda de que los *tipos registro* son la funcionalidad más molona de C# 9. Es el abrazo definitivo que necesitábamos para poder mezclar, de una vez por todas, el paradigma funcional con el orientado a objetos. Es la expresión con nombre propio de la inmutabilidad en el mundo *.Net*<!--break-->. Es una oda de rima libre, que une `record` con `with`, y allí donde no llega aparece `init`, a la forma en la que nos gustaría programar.
 

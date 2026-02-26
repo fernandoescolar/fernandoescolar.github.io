@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-04-01 02:15:54
 layout: post
 tags: solid best-practices
-background: '/assets/uploads/bg/organize.jpg'
+background: '/assets/uploads/bg/organize.webp'
 ---
 
 A los desarrolladores nos sobra ego. Mucho. Nos gusta pensar que nuestro código es especial, que nuestras decisiones técnicas tienen algo de irrepetible y que, si alguien osa tocarlo sin cuidado, el sistema colapsaría<!--break-->. La realidad es bastante menos épica: casi cualquier solución técnica que aporte valor puede ser replicada rápido. El valor no está en el código, sino en **la funcionalidad que entrega y en lo caro que resulta cambiarla con el tiempo**.
@@ -17,7 +17,7 @@ Esta idea no nace de la nada. Aparece una y otra vez en las reflexiones de este 
 
 Diseñar software no es un problema técnico. Es un problema humano: equipos, comunicación, expectativas, incentivos y dinero. Cuando un sistema empieza a doler, casi nunca es por un framework o lenguaje equivocado, sino porque **no hay alineación entre quienes esperan resultados y quienes pueden implementarlos**.
 
-![trabajo en equipo](/assets/uploads/2026/03/team.jpg)
+![trabajo en equipo](/assets/uploads/2026/03/team.webp)
 
 Este es el mismo patrón que ya exploramos cuando hablábamos de [¿Qué podemos esperar de nuestra Manager?](https://www.developerro.com/2023/03/08/nuestra-manager/): los problemas “técnicos” son casi siempre conflictos humanos disfrazados de errores sintácticos. El código solo termina reflejando decisiones, compromisos y tensiones humanas.
 
@@ -39,7 +39,7 @@ El desarrollo inicial de un sistema suele ser relativamente barato. A veces incl
 
 Los cambios pequeños son casi gratuitos. Los cambios grandes son caros, lentos y peligrosos. No porque sean conceptualmente complejos, sino porque obligan a tocar muchas piezas a la vez, en lugares que ya nadie recuerda del todo bien.
 
-![cálculos](/assets/uploads/2026/03/maths.jpg)
+![cálculos](/assets/uploads/2026/03/maths.webp)
 
 Esto no deja de ser una forma práctica de hablar de [deuda técnica](https://www.developerro.com/2012/05/29/deuda-tecnica/): un sistema va acumulando atajos, decisiones difíciles de revertir y soluciones parciales que terminan encareciendo cualquier cambio futuro. Y aunque el término pueda sonar a metáfora entretenida, la idea es bastante simple: **lo que hoy parece pequeño, mañana puede costar una fortuna en esfuerzo y coordinación**.
 
@@ -79,7 +79,7 @@ La idea es simple: ya que estás tocando ese código, déjalo un poco mejor de c
 
 Muchos sistemas no sufren por falta de abstracciones sofisticadas, sino por falta de cohesión. Código repartido en capas, carpetas y módulos que obligan a saltar constantemente para entender una sola funcionalidad. Arquitecturas “correctas” que hacen el código más difícil de seguir.
 
-![complejidad](/assets/uploads/2026/03/complexity.jpg)
+![complejidad](/assets/uploads/2026/03/complexity.webp)
 
 A veces mejorar el diseño no significa separar más, sino **juntar lo que conceptualmente pertenece junto**. Menos heroicidad arquitectónica y más sentido común. Esta idea conecta directamente con lo que ya discutimos en [SOLID menos mola (I)](https://www.developerro.com/2020/10/06/solid-menos-mola-i/): no es malo aplicar principios, es malo aplicarlos sin entender el coste real que implican.
 
@@ -91,7 +91,7 @@ Otra idea que conviene normalizar: **cambiar de opinión no es un fracaso**. Dec
 
 Lo peligroso no es cambiar, sino dejar que el código se degrade porque “total, ya está mal”. Aquí entra la metáfora de la [teoría de las ventanas rotas](https://es.wikipedia.org/wiki/Teor%C3%ADa_de_las_ventanas_rotas), introducida por James Q. Wilson y George L. Kelling en 1982, y aplicada muchas veces al desarrollo de software para explicar cómo pequeños defectos visibles acaban normalizando el desorden.
 
-![ventanas rotas](/assets/uploads/2026/03/broken-windows.jpg)
+![ventanas rotas](/assets/uploads/2026/03/broken-windows.webp)
 
 En este contexto, arreglar esas “ventanas rotas” tan pronto como aparecen evita que la calidad se deteriore y que las malas prácticas se conviertan en norma. Es menos épico que un gran refactor, pero casi siempre más eficaz.
 

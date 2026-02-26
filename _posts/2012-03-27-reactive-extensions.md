@@ -72,7 +72,7 @@ En este otro ejemplo podemos ver como aplicamos algoritmos de ordenación, de fi
 
 Y así vamos llegando hasta el contexto actual de aplicación:
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/app-context.png" alt="contexto de aplicación actual" width="650" height="349" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/app-context.webp" alt="contexto de aplicación actual" width="650" height="349" />
 
 Lo que nos podemos encontrar actualmente son aplicaciones distribuidas. Pongamos el ejemplo de twitter, donde encontramos unos servicios que están alojados en la nube y una serie de clientes diferentes según sean plataformas móviles, páginas web o aplicaciones de escritorio.
 

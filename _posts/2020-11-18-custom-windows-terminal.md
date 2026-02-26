@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2020-11-18 01:06:54
 layout: post
 tags: terminal bash powershell windows git cmd cmder
-background: '/assets/uploads/bg/terminal.jpg'
+background: '/assets/uploads/bg/terminal.webp'
 ---
 
 Todos sabemos que, para conseguir el respeto de tus compañeros y jefes, solo hace falta tener un terminal que mole. Da igual si luego escribes usando solo los dedos índices. Si tu terminal parece *3\|173*, es que eres *3\|173*. Incluso si lo que usas en realidad es un producto de Microsoft con el nombre "Windows" delante<!--break-->.
@@ -38,7 +38,7 @@ Os presentamos la guía definitiva de cómo molar con **Windows Terminal**:
 
 La forma más fácil de conseguir Windows Terminal es tener un Windows 10, ir a la Microsoft Store e [instalarlo desde ahí](https://aka.ms/terminal). Aunque, para los más atrevidos, también podemos descargar el código fuente desde [su página de github](https://github.com/microsoft/terminal).
 
-![windows terminal with git bash](/assets/uploads/2020/11/wt-00.png)
+![windows terminal with git bash](/assets/uploads/2020/11/wt-00.webp)
 
 Aunque seguro, que tú, que has llegado hasta este artículo oculto en la *deep web*, preferirás instalarlo usando alguna *tool* de consola como:
 
@@ -55,7 +55,7 @@ scoop install windows-terminal
 
 Una vez instalado, tendremos que dirigirnos, en la barra superior, al menú emergente que aparece al pulsar sobre el símbolo de flechita hacía abajo al lado del símbolo de suma:
 
-![windows terminal settings](/assets/uploads/2020/11/wt-settings.png)
+![windows terminal settings](/assets/uploads/2020/11/wt-settings.webp)
 
 Así encontraremos la opción de "Settings". Al presionar sobre ella se nos abrirá un editor de texto (o código, depende de lo que tengas instalado en tu máquina) donde podremos editar un archivo llamado `settings.json`.
 
@@ -169,7 +169,7 @@ El cursor que se muestra parpadeando en pantalla, donde se indica que vamos a es
 
 - `cursorShape`:  puede tener los valores `bar`, `underscore`, `vintage`, `filledBox` o `emptyBox`.
 
-![windows terminal cursor shapes](/assets/uploads/2020/11/wt-cursor-shapes.png)
+![windows terminal cursor shapes](/assets/uploads/2020/11/wt-cursor-shapes.webp)
 - `cursorColor`: especifica un color para el cursor.
 
 Y cómo no, la fuente. Es un detalle muy importante de nuestro terminal poder determinar la fuente que vamos a usar:
@@ -185,7 +185,7 @@ Y como bonus, una característica que podrían borrar en el futuro (espero que n
 
 - `experimental.retroTerminalEffect`: `true` o `false`.
 
-![windows terminal efecto retro](/assets/uploads/2020/11/wt-retro.png)
+![windows terminal efecto retro](/assets/uploads/2020/11/wt-retro.webp)
 
 ### Schemes
 
@@ -300,7 +300,7 @@ Aquí podréis encontrar los comandos relacionados con duplicar y dividir en dos
 
 El resultado final puede ser algo tan llamativo como esto:
 
-![windows terminal split panels](/assets/uploads/2020/11/wt-split.png)
+![windows terminal split panels](/assets/uploads/2020/11/wt-split.webp)
 
 ## Integraciones
 
@@ -417,7 +417,7 @@ En este punto podríamos cambiar esta variable para que pusiera otra cosa:
 C:\> set PROMPT=$E[31mfer $E[33msays $E[32m$P$E[37m$_$$$S
 ```
 
-![Un 'prompt' molón para 'cmd'](/assets/uploads/2020/11/cool-cmd.png)
+![Un 'prompt' molón para 'cmd'](/assets/uploads/2020/11/cool-cmd.webp)
 
 Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code).
 
@@ -425,7 +425,7 @@ Para cambiarlo de forma global, tienes que ir a las propiedades de "My Pc", de a
 
 Ahora se abrirá una ventana donde podemos añadir o editar variables del sistema. Si no existe, tendrás que crear una nueva con nombre "PROMPT" y el valor que más te guste:
 
-![Cambiando el 'prompt' de 'cmd'](/assets/uploads/2020/11/cmd-prompt.png)
+![Cambiando el 'prompt' de 'cmd'](/assets/uploads/2020/11/cmd-prompt.webp)
 
 La próxima vez que arranques un `cmd` verás los resultados.
 
@@ -471,7 +471,7 @@ PS1="$PS1"'\w'                 # current working directory
 
 Este código a mitad del archivo creará el *prompt* tan guay que veis en la introducción de este artículo:
 
-![Un 'bash' molón](/assets/uploads/2020/11/cool-bash.png)
+![Un 'bash' molón](/assets/uploads/2020/11/cool-bash.webp)
 
 Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code).
 
@@ -523,7 +523,7 @@ end
 
 Obtendremos un terminal semejante a este:
 
-![Un 'Cmder' molón](/assets/uploads/2020/11/cool-cmder.png)
+![Un 'Cmder' molón](/assets/uploads/2020/11/cool-cmder.webp)
 
 Para jugar con los colores y algunas cosas más, tendremos que echar un vistazo los [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code).
 

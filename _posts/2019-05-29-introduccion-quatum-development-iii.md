@@ -6,12 +6,12 @@ author: fernandoescolar
 post_date: 2019-05-29 08:01:23
 layout: post
 tags: quantum programming
-background: '/assets/uploads/bg/engineering3.jpg'
+background: '/assets/uploads/bg/engineering3.webp'
 ---
 
 Sé que tenéis miedo. Teméis los _qubits_. Teméis el cambio. Yo no conozco el futuro. No he venido para deciros cómo acabará todo esto. Al contrario, he venido a deciros cómo va a comenzar. Voy a terminar de escribir este artículo. Voy a enseñarles a todos lo que vosotros no queréis que vean. Les enseñaré un mundo sin vosotros. Un mundo sin _bits_ y sin problemas de calor en los transistores, sin limites ni fronteras. Un mundo donde todos los estados sean posibles. Lo que hagáis después, es una decisión que dejo en vuestras manos.<!--break-->
 
-![We need qubits, lots of qubits (meme)](/assets/uploads/2019/05/quantum3-meme.jpg)
+![We need qubits, lots of qubits (meme)](/assets/uploads/2019/05/quantum3-meme.webp)
 
 En artículos anteriores ([i](/2019/05/10/introduccion-quatum-development) y [ii](/2019/05/23/introduccion-quatum-development-ii)) ya introdujimos la computación cuántica, el [Microsoft Quantum Development Kit](/2019/05/10/introduccion-quatum-development/#microsoft-quantum-development-kit), los _qubits_ de forma [básica](/2019/05/10/introduccion-quatum-development/#qubit) y algo [más avanzada](/2019/05/23/introduccion-quatum-development-ii/#qubit), además de varias operaciones y puertas lógicas de este nuevo paradigma.
 
@@ -41,7 +41,7 @@ Podríamos decir que un estado de entrelazamiento es un estado en el que tener u
 
 A estos estados de entrelazamiento completo se les conoce como [estados de Bell](https://en.wikipedia.org/wiki/Bell_state). Y para este ejemplo en concréto, se puede conseguir aplicando una fórmula con operaciones que ya hemos visto:
 
-![CNOT de H](/assets/uploads/2019/05/quantum3-bell-state.png)
+![CNOT de H](/assets/uploads/2019/05/quantum3-bell-state.webp)
 
 Esta misma formula escrita en Q# podría ser:
 
@@ -117,7 +117,7 @@ Aunque podría tener diferentes combinaciones (por eso del 50% de posibilidades 
 
 La [teleportación cuántica](https://es.wikipedia.org/wiki/Teleportaci%C3%B3n_cu%C3%A1ntica) es algo parecido a lo que piensas, pero no es exactamente como piensas.
 
-![¿Esquivar balas? Puedes teletransportarte (meme)](/assets/uploads/2019/05/quantum3-meme3.jpg)
+![¿Esquivar balas? Puedes teletransportarte (meme)](/assets/uploads/2019/05/quantum3-meme3.webp)
 
 La idea es conseguir enviar el estado de un _qubit_ `a` a otro `b` que no se encuentra en el mismo lugar.
 
@@ -231,7 +231,7 @@ Zero = Zero
 One = One
 ```
 
-![Goku: ¿teletransporte? Esto es teletransporte (meme)](/assets/uploads/2019/05/quantum3-meme4.jpg)
+![Goku: ¿teletransporte? Esto es teletransporte (meme)](/assets/uploads/2019/05/quantum3-meme4.webp)
 
 Como curiosidad, unos científicos chinos tienen el [record de distancia de teleportación cuántica](http://www.rtve.es/noticias/20170615/dos-particulas-separadas-1200-kilometros-se-entrelazan-forma-cuantica/1565524.shtml), llegando a 1200km de separación entre dos partículas entrelazadas ¡Ahí es nada!
 
@@ -241,7 +241,7 @@ Creo que con esta tercera parte he conseguido resarcirme del fiasco de la anteri
 
 Por ejemplo, el uso de estas técnicas es fundamental en la [criptografía cuántica](https://es.wikipedia.org/wiki/Criptograf%C3%ADa_cu%C3%A1ntica): un tipo de encriptación de información mucho más seguro de los usados hoy en día. Y por extensión sería muy interesante el uso de ambas técnicas para conseguir una comunicación muy rápida y segura.
 
-![Quantum entanglement, is all about Aliens (meme)](/assets/uploads/2019/05/quantum3-meme5.jpg)
+![Quantum entanglement, is all about Aliens (meme)](/assets/uploads/2019/05/quantum3-meme5.webp)
 
 Eso sí, todo esto que comentamos, hoy en día, sería muy difícil de aplicar en el mundo real...
 

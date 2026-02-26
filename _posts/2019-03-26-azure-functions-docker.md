@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2019-03-26 07:35:02
 layout: post
 tags: azure-functions azure functions docker node
-background: '/assets/uploads/bg/containers.jpg'
+background: '/assets/uploads/bg/containers.webp'
 ---
 
 Docker y los containers son a la programación, lo que el rebozado y empanado a la cocina tradicional. Si bien añade un paso extra que ensucia y a veces se hace un poco difícil, después puedes transportar la comida con mucha facilidad, sin romperla, y además te resulta muy fácil de comer. Y no nos engañemos, está claro que a todo el mundo le gustan las croquetas<!--break-->.
@@ -117,7 +117,7 @@ func deploy --platform kubernetes --name azurefunctionsdemo --registry <docker-h
 
 Un poquito de perejil y ¡para el clúster!
 
-![Arguiñano con gafas "fuckyou"](/assets/uploads/2019/03/arguinano-gafas.jpg)
+![Arguiñano con gafas "fuckyou"](/assets/uploads/2019/03/arguinano-gafas.webp)
 
 ## Receta 2
 
@@ -141,4 +141,4 @@ Una mina de oro.
 
 A mi me gustan mucho las pechugas a la villaroy y también la propuesta de containers de docker con Azure Functions. Ambas cosas son sencillas de conseguir, aunque tener maestría requiere práctica y tiempo.
 
-![Rico, rico y con fundamento](/assets/uploads/2019/03/arguinano-end.jpg)
+![Rico, rico y con fundamento](/assets/uploads/2019/03/arguinano-end.webp)

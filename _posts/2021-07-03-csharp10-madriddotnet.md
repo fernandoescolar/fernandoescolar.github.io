@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:56:56
 tags: csharp dotnet novedades
-background: '/assets/uploads/bg/programming1.jpg'
+background: '/assets/uploads/bg/programming1.webp'
 ---
 Hablamos de los planes que hay para C#10. Repasaremos todas esas funcionalidades curiosas que podemos encontrar en el backlog del equipo de desarrollo y lo que es más divertido: les pondremos nota <!--break-->.
 

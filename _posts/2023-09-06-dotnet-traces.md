@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-09-06 01:04:36
 layout: post
 tags: observability dotnet csharp
-background: '/assets/uploads/bg/observe.jpg'
+background: '/assets/uploads/bg/observe.webp'
 ---
 
 Las trazas son una de las herramientas más antiguas y conocidas para la observabilidad de aplicaciones. Históricamente, las trazas se han utilizado para registrar información sobre el estado de una aplicación, como mensajes de error, advertencias o información de depuración. <!--break--> En el mundo de .Net, existen varias formas diferentes de generar trazas, pero hoy nos centraremos en los nuevos artefactos que nos proporciona Microsoft para crear trazas distribuidas en nuestras aplicaciones.

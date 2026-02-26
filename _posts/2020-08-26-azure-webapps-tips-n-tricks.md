@@ -6,12 +6,12 @@ author: fernandoescolar
 post_date: 2020-08-26 01:03:24
 layout: post
 tags: azure webapp appservice
-background: '/assets/uploads/bg/cloud3.jpg'
+background: '/assets/uploads/bg/cloud3.webp'
 ---
 
 *Si no nos anticipamos a los imprevistos, si no esperamos lo inesperado en una nube con infinitas posibilidades, podríamos hallarnos a merced de cualquiera y de cualquier cosa que no pueda ser programada, etiquetada o clasificada*.<!--break-->
 
-![X-Files](/assets/uploads/2020/08/x-files.jpg)
+![X-Files](/assets/uploads/2020/08/x-files.webp)
 
 *A fin de cuentas, todos los servicios de Azure son parte de un todo mucho más grande que los integra, todos llevan dentro el caos y el orden, la creación y la destrucción. Todos son al mismo tiempo víctimas y responsables de su propia vida*<abbr title="parafraseando de nuevo a la serie Expediente X">*</abbr>.
 
@@ -19,7 +19,7 @@ El problema es que no podemos ni sabemos cómo anticiparnos a todo. A veces los 
 
 Este es el caso que nos ocurrió hace unos días. En una de nuestras Web Apps de producción, una instancia empezó a dar errores 500 (*Server Error*). Eso significaba que una serie de usuarios estaban recibiendo páginas de error en lugar de respuestas correctas a sus peticiones. No todos, pero sí algunos.
 
-![Monitoring Web App Errors](/assets/uploads/2020/08/monitoring-errors.png)
+![Monitoring Web App Errors](/assets/uploads/2020/08/monitoring-errors.webp)
 
 Antes de ponernos a analizar e intentar identificar el problema, teníamos la obligación de dar servicio a nuestros clientes. Y como algunas instancias sí funcionaban y otras no, decidimos que lo mejor era reiniciar el proceso de dotnet core de esa instancia.
 
@@ -40,11 +40,11 @@ Pero a veces eso no es suficiente. Así que hoy os mostraremos diferentes trucos
 
 La forma más sencilla de reiniciar los procesos que sirven nuestra página web en una Web App de Azure es ir al portal y seleccionar la opción de "Diagnose and solve problems" dentro de la propia Web App:
 
-![Diagnose and solve problems](/assets/uploads/2020/08/diagnose-and-solve-problems.png)
+![Diagnose and solve problems](/assets/uploads/2020/08/diagnose-and-solve-problems.webp)
 
 Una vez ahí, se nos mostrará un buscador y varias opciones. Si en el buscador escribimos "Advanced Application Restart", nos aparecerá la opción que estamos buscando. Al hacer clic sobre ella navegaremos a un panel de control:
 
-![Advanced Application Restart](/assets/uploads/2020/08/advanced-application-restart.png)
+![Advanced Application Restart](/assets/uploads/2020/08/advanced-application-restart.webp)
 
 Aquí se nos mostrarán 3 secciones y la forma de fijarnos en ellas es a la inversa:
 
@@ -78,11 +78,11 @@ Para eso sirve el primer método de la API. Para listar las instancias de nuestr
 
 Si navegamos [aquí](https://docs.microsoft.com/en-us/rest/api/appservice/webapps/listinstanceidentifiers), nos encontraremos una definición del servicio:
 
-![Get Web Apps instances](/assets/uploads/2020/08/api-webapp-list-instances.png)
+![Get Web Apps instances](/assets/uploads/2020/08/api-webapp-list-instances.webp)
 
 Al pulsar en el botón verde de `Try It` podremos hacer identificarnos en Azure y conseguir autorización para usar este servicio desde el propio navegador:
 
-![Get Web Apps instances - try](/assets/uploads/2020/08/api-webapp-list-instances-try.png)
+![Get Web Apps instances - try](/assets/uploads/2020/08/api-webapp-list-instances-try.webp)
 
 Para poder ejecutarlo tendremos que introducir:
 
@@ -92,7 +92,7 @@ Para poder ejecutarlo tendremos que introducir:
 
 Al ejecutar el comando veremos que en la parte inferior de la pantalla nos aparece el resultado en formato `json`:
 
-![Get Web Apps instances - result](/assets/uploads/2020/08/api-webapp-list-instances-try-result.png)
+![Get Web Apps instances - result](/assets/uploads/2020/08/api-webapp-list-instances-try-result.webp)
 
 Aquí lo más importante es conocer el nombre de cada una de las instancias, en el campo `name`.
 
@@ -102,11 +102,11 @@ Cada una de las instancias de una Web App tiene varios procesos en funcionamient
 
 A tal fin navegaremos [aquí](https://docs.microsoft.com/en-us/rest/api/appservice/webapps/listinstanceprocesses):
 
-![Get Web Apps instances Processes](/assets/uploads/2020/08/api-webapp-list-instance-processes.png)
+![Get Web Apps instances Processes](/assets/uploads/2020/08/api-webapp-list-instance-processes.webp)
 
 Repetiremos la acción de darle al botón de `Try It` e identificarnos, si hiciera falta:
 
-![Get Web Apps instances Processes - try](/assets/uploads/2020/08/api-webapp-list-instance-processes-try.png)
+![Get Web Apps instances Processes - try](/assets/uploads/2020/08/api-webapp-list-instance-processes-try.webp)
 
 En este caso tendremos que indicar:
 
@@ -117,7 +117,7 @@ En este caso tendremos que indicar:
 
 Al ejecutar obtendremos un listado de procesos:
 
-![Get Web Apps instances Processes - result](/assets/uploads/2020/08/api-webapp-list-instance-processes-try-result.png)
+![Get Web Apps instances Processes - result](/assets/uploads/2020/08/api-webapp-list-instance-processes-try-result.webp)
 
 Cuando estamos hablando de IIS los procesos se llaman `w3wp`. Tendremos que buscar los procesos con ese nombre y guardar su `id` para poder realizar operaciones con él.
 
@@ -129,11 +129,11 @@ Una vez hemos llegado a este paso, ya podemos *matar* el proceso que nos causa p
 
 Nos dirigiremos a [esta página](https://docs.microsoft.com/en-us/rest/api/appservice/webapps/deleteinstanceprocess):
 
-![Restart Web App Instance Processes](/assets/uploads/2020/08/api-webapp-list-instance-process-delete.png)
+![Restart Web App Instance Processes](/assets/uploads/2020/08/api-webapp-list-instance-process-delete.webp)
 
 Haremos clic en el botón de `Try It`:
 
-![Restart Web App Instance Processes - try](/assets/uploads/2020/08/api-webapp-list-instance-process-delete-try.png)
+![Restart Web App Instance Processes - try](/assets/uploads/2020/08/api-webapp-list-instance-process-delete-try.webp)
 
 Rellenaremos los siguientes parámetros:
 
@@ -152,11 +152,11 @@ Después de ejecutar esperaremos dos tipos de resultado:
 
 Si queremos conocer más detalles sobre los procesos, como por ejemplo, su relación con los App Service Workers (las máquinas virtuales donde se ejecutan nuestras instancias, por así decirlo), tendremos que visitar [esta página](https://docs.microsoft.com/en-us/rest/api/appservice/webapps/getinstanceprocess):
 
-![Get Web App Instance Process Details](/assets/uploads/2020/08/api-webapp-list-instance-process-details.png)
+![Get Web App Instance Process Details](/assets/uploads/2020/08/api-webapp-list-instance-process-details.webp)
 
 Aquí encontraremos un servicio que nos devuelve los detalles de un proceso dentro de una instancia de una Web App de Azure.
 
-![Get Web App Instance Process Details - try](/assets/uploads/2020/08/api-webapp-list-instance-process-details-try.png)
+![Get Web App Instance Process Details - try](/assets/uploads/2020/08/api-webapp-list-instance-process-details-try.webp)
 
 Para ejecutarla, introduciremos:
 
@@ -166,7 +166,7 @@ Para ejecutarla, introduciremos:
 - **resourceGroupName**: el nombre de grupo de recursos al que pertenece la Web App (el mismo que introdujimos en los pasos anteriores).
 - **subscriptionId**: la suscripción que tiene nuestra Web App (la misma que introdujimos en los pasos anteriores).
 
-![Get Web App Instance Process Details - result](/assets/uploads/2020/08/api-webapp-list-instance-process-details-try-result.png)
+![Get Web App Instance Process Details - result](/assets/uploads/2020/08/api-webapp-list-instance-process-details-try-result.webp)
 
 Y en el resultado, entre muchos parámetros, dentro de las variables de entorno, encontraremos `COMPUTERNAME` que coincide con el nombre del App Service Worker y a su vez es el nombre que encontramos en la herramienta de *monitoring* cuando realizamos el *split* por instancia.
 
@@ -176,11 +176,11 @@ Cuando los problemas parecen no solucionarse dentro de una instancia, quizá es 
 
 Si ya tenemos el nombre del Worker, podemos realizar un cambio. Para ello usaremos el servicio de [reboot worker](https://docs.microsoft.com/en-us/rest/api/appservice/appserviceplans/rebootworker):
 
-![Reboot app service plan worker](/assets/uploads/2020/08/api-appserviceplan-worker-reboot.png)
+![Reboot app service plan worker](/assets/uploads/2020/08/api-appserviceplan-worker-reboot.webp)
 
 Este servicio reinicia un App Service Plan Worker, que es donde se hospedan nuestras instancias de Web App. Al reiniciarlo, el sistema no espera a que vuelva a estar disponible, lo sustituye automáticamente por otro Worker que sí que está funcionando. Así que podríamos interpretar esta acción como un reemplazo de una instancia:
 
-![Reboot app service plan worker - try](/assets/uploads/2020/08/api-appserviceplan-worker-reboot-try.png)
+![Reboot app service plan worker - try](/assets/uploads/2020/08/api-appserviceplan-worker-reboot-try.webp)
 
 Introduciremos:
 
@@ -191,7 +191,7 @@ Introduciremos:
 
 Después de ejecutar, podremos comprobar en la herramienta de *monitoring* cómo el worker que hemos reiniciado para de recibir peticiones y estas pasan a un Worker nuevo que entra en juego (líneas rosa y morada respectivamente):
 
-![App service plan requests/worker](/assets/uploads/2020/08/monitoring-change-instance.png)
+![App service plan requests/worker](/assets/uploads/2020/08/monitoring-change-instance.webp)
 
 Y también podríamos apreciar cómo han dejado de suceder errores al cambiar de Worker.
 
@@ -201,11 +201,11 @@ Si estamos experimentando problemas de forma periódica, lo más recomendable, m
 
 Esta herramienta nace sabiendo que algunos comportamientos inesperados pueden resolverse temporalmente con algunos simples pasos de mitigación (reiniciar el proceso, iniciar otro ejecutable o requerir la recopilación de datos adicionales). Esto es lo que nos va a permitir esta utilidad.
 
-![Diagnose and solve problems](/assets/uploads/2020/08/diagnose-and-solve-problems.png)
+![Diagnose and solve problems](/assets/uploads/2020/08/diagnose-and-solve-problems.webp)
 
 Para acceder a ella tan solo tendremos que ir a la opción de "Diagnose and solve problems" dentro de nuestra Web App en el portal de Azure y en el buscador introducir "Auto-Healing". Al hacer clic en la opción que aparece encontraremos un nuevo panel:
 
-![Auto Healing](/assets/uploads/2020/08/auto-healing.png)
+![Auto Healing](/assets/uploads/2020/08/auto-healing.webp)
 
 Aquí podremos configurar diferentes acciones (reciclar procesos, añadir trazas de log o acciones customizadas), para diferentes eventos (duración de una *request*, límite de memoria, *response status codes* ...).
 

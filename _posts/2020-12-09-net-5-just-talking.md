@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 01:53:02
 tags: net5 dotnet csharp
-background: '/assets/uploads/bg/talk2.jpg'
+background: '/assets/uploads/bg/talk2.webp'
 ---
 Al fin ha llegó el día de la publicación de **.Net 5 - *A unified platform***. Y todo el mundo tiene dudas: ¿Es tán unificada como decían? ¿Es fácil actualizar a esta nueva versión? ¿Cuando sacan la 5.1? ¿Al final mola tanto C# 9 como parecía? ¿Qué novedades trae todo esto? ¿Estamos ante un cambio de ciclo?<!--break-->.
 

@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-03-24 02:21:02
 layout: post
 tags: azure-functions azure functions net5 dotnet
-background: '/assets/uploads/bg/thunder.jpg'
+background: '/assets/uploads/bg/thunder.webp'
 ---
 
 Ha tardado más de lo que esperábamos, pero ya está aquí. Después de meses de espera y escondiendo el [anuncio](https://techcommunity.microsoft.com/t5/apps-on-azure/net-on-azure-functions-roadmap/ba-p/2197916) dentro de un roadmap de las próximas versiones de *.Net*, las *dotnet Isolated Functions* pasan a RTM<!--break-->. Y con ellas llega el soporte de .Net 5.0 en Azure Functions. Pero esta vez, la migración no va a ser tan sencilla como, simplemente, subir la versión del runtime.
@@ -191,7 +191,7 @@ func start
 
 Al usar nuestro navegador para dirigirnos a una de nuestras funciones *HTTP* encontraremos:
 
-![Vista en el navegador](/assets/uploads/2021/03/functions-net5.png)
+![Vista en el navegador](/assets/uploads/2021/03/functions-net5.webp)
 
 ## Dependency Injection
 
@@ -294,7 +294,7 @@ func start
 
 Y comprobaremos que hemos llamado correctamente al servicio de frases del día:
 
-![Vista en el navegador](/assets/uploads/2021/03/functions-net5-2.png)
+![Vista en el navegador](/assets/uploads/2021/03/functions-net5-2.webp)
 
 ## Middlewares
 

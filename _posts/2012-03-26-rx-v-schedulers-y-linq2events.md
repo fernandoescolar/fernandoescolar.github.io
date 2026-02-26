@@ -9,7 +9,7 @@ tags: dotnet csharp rx reactive-extensions schedulers linq
 ---
 Hoy os vamos a proponer el último artículo teórico acerca de las <strong>reactive extensions</strong>. Una vez hemos <a title="Rx I - Qué son las Reactive eXtensions" href="/2011/12/12/rx-i-que-son-las-reactive-extensions">definido las rx</a>, sabemos <a title="Rx II - Observables: los sujetos" href="/2011/12/19/rx-ii-observables-los-sujetos">qué son los <strong>sujetos</strong></a> y las operaciónes de <a title="Rx III - Linq: crear objetos observables" href="/2012/01/02/rx-iii-linq-crear-objetos-observables">creación</a> y <a title="Rx IV - Linq: operaciones con observables" href="/2012/02/15/rx-iv-linq-operaciones-con-observables"><strong>Linq</strong></a>, ya podemos hablar de el último parámetro de la fórmula que definimos en su día: los <strong>Schedulers</strong>.
 <!--break-->
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-schedulers.png" alt="Rx Schedulers" width="450" height="182" align="middle" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-schedulers.webp" alt="Rx Schedulers" width="450" height="182" align="middle" />
 
 Es muy normal en el contexto actual de aplicaciones hablar de hilos de ejecución (<strong>Thread</strong>), de las <strong>Task Parallel Library</strong> o de <strong>sincronismo/asincronismo</strong>. Y es aquí donde vamos a encontrar la utilidad de los <strong>schedulers</strong> de las<strong> reactive extensions</strong>:
 <h2>Schedulers</h2>
@@ -71,7 +71,7 @@ Así que ahora vamos a tratar la última característica de las reactive extensi
 <h2>Linq To Events</h2>
 La primera vez que nos referimos a los sujetos, hablamos de sus semejanzas con la gestión de eventos. Podríamos compararlos de la siguiente forma:
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-vs-events.png" alt="rx vs. events" width="600" height="288" />
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/assets/uploads/2012/10/rx-vs-events.webp" alt="rx vs. events" width="600" height="288" />
 
 Ambos tienen su declaración, su suscripción, publicación y la forma de dejar de "escuchar" los acontecimientos. Y es gracias a esta característica que las reactive extensions nos proporcionarán una forma de gestionar los eventos con linq.
 

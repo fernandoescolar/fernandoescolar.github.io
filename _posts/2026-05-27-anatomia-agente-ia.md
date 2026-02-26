@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-05-27 01:15:54
 layout: post
 tags: ia agentes embeddings rag
-background: '/assets/uploads/bg/ai2.jpg'
+background: '/assets/uploads/bg/ai2.webp'
 mermaid: true
 ---
 

@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-04-05 01:04:36
 layout: post
 tags: rest aspnet aspnetcore dotnet csharp best-practices
-background: '/assets/uploads/bg/programming3.jpg'
+background: '/assets/uploads/bg/programming3.webp'
 ---
 
 Al *loco* de [Leonard Richardson](https://twitter.com/leonardr) se le ocurrió la feliz idea de que para implementar una *API* en internet solo hacía falta seguir las normas de la *WWW*. Necesitábamos recoger los principios del protocolo *HTTP* y construir un modelo propio basado en 3 pilares: dividir correctamente la información, refactorizar nuestro código y describir el comportamiento de una forma estandarizada<!--break-->. A todo esto se le bautizó como el **Modelo de Madurez de Richardson** en el libro [REST in Practice](https://www.oreilly.com/library/view/rest-in-practice/9781449383312/). Y más tarde fue popularizado por [Martin Fowler](https://twitter.com/martinfowler) en su artículo [Richardson Maturity Model](https://www.martinfowler.com/articles/richardsonMaturityModel.html).

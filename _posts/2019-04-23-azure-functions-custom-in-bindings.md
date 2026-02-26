@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2019-04-23 07:44:11
 layout: post
 tags: azure-functions azure functions csharp bindings
-background: '/assets/uploads/bg/thunder3.jpg'
+background: '/assets/uploads/bg/thunder3.webp'
 ---
 
 El otro día veíamos [cómo crear _custom out bindings_ para _Azure Functions_](/2019/04/15/azure-functions-custom-out-bindings), así que hoy me he visto obligado a tratar los _custom in bindings_ o de entrada. Para ello utilizaremos de ejemplo la creación de un _binding_ que lea un valor (secret) del servicio Azure Key Vault<!--break-->.
@@ -238,6 +238,6 @@ Ahora podemos ejecutar el proyecto, llamar a la función con nuestro browser pre
 
 Pues lo mismo del otro día pero con _in_ en lugar de _out_.
 
-![Deal with it](/assets/uploads/2019/04/deal-with-it.jpg)
+![Deal with it](/assets/uploads/2019/04/deal-with-it.webp)
 
 Puedes ver el proyecto completo que hemos utilizado en este artículo en [este repositorio de Github](https://github.com/fernandoescolar/Developerro.AzureFunctions.CustomBindings).

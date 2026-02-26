@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2021-06-02 01:05:31
 layout: post
 tags: rust
-background: '/assets/uploads/bg/crab2.jpg'
+background: '/assets/uploads/bg/crab2.webp'
 ---
 
 Dicen las leyendas que uno de los juegos de beber más conocidos de Inglaterra es el FizzBuzz. El *quinito* en cuestión consiste en montar un corro de personas e ir contando desde 1 en adelante. Cada jugador va diciendo un número secuencialmente. Pero hay 3 condiciones: si el número es múltiplo de 3 en lugar del número, debes decir "Fizz", si es múltiplo de 5 dices "Buzz" y si es múltiplo de ambos, "FizzBuzz". El que falle al decir su número o palabra, bebe<!--break-->. Parece fácil, pero prueba a hacerlo con unos chupitos de por medio.

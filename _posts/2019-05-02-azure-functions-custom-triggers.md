@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2019-05-02 07:59:43
 layout: post
 tags: azure-functions azure functions csharp triggers
-background: '/assets/uploads/bg/thunder4.jpg'
+background: '/assets/uploads/bg/thunder4.webp'
 ---
 
 Si ya sé que soy un vago. Es el tercer artículo más o menos igual que escribo. Este es sobre cómo crear _triggers_ personalizados de _Azure Functions_. Y antes ya tuvimos los de los bindings de [_out_](/2019/04/15/azure-functions-custom-out-bindings/) y de [_in_](/2019/04/23/azure-functions-custom-in-bindings/). Tenéis que entender que tengo otra vida más allá de este blog. Además, creo que al final queda mucho mejor separado<!--break-->. De cualquier forma, si no os gusta así, hago un cuarto artículo juntando el contenido de todos ;).
@@ -370,6 +370,6 @@ Cuidado con los ciclos de vida de los _triggers_.
 
 Y lo demás, pues lo mismo de los otros días con los bindings [_in_](/2019/04/23/azure-functions-custom-in-bindings/) y [_out_](/2019/04/15/azure-functions-custom-out-bindings/). Pero en este caso es un poco más complejo.
 
-![Deal with it](/assets/uploads/2019/04/deal-with-it.jpg)
+![Deal with it](/assets/uploads/2019/04/deal-with-it.webp)
 
 Puedes ver el proyecto completo que hemos utilizado en este artículo en [este repositorio de Github](https://github.com/fernandoescolar/Developerro.AzureFunctions.CustomBindings).

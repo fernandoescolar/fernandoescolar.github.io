@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-04-15 02:15:54
 layout: post
 tags: golang csharp proxy
-background: '/assets/uploads/bg/network.jpg'
+background: '/assets/uploads/bg/network.webp'
 ---
 
 Go es mejor que C# para hacer proxies *(y no pasa nada por decirlo)*. Hay discusiones técnicas que nunca mueren. No porque sean profundas, sino porque son cómodas. Lenguajes, frameworks, tabs vs spaces… y, por supuesto, proxies.<!--break-->

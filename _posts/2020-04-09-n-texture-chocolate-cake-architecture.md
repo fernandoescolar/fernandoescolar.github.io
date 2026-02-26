@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 00:52:13
 tags: best-practices csharp architecture
-background: '/assets/uploads/bg/programming1.jpg'
+background: '/assets/uploads/bg/programming1.webp'
 ---
 
 La arquitectura de "la tarta de chocolate de n-texturas", también conocida como "arquitectura tarta sacher" o, por su nombre más informal, "Vertical Slice"; es un modelo de desarrollo que ha venido a revolucionar el mundo de la arquitectura de software tal y como lo conocemos<!--break-->.

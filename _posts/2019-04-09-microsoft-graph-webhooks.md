@@ -35,7 +35,7 @@ De esta forma surgieron las implementaciones que podemos encontrar hoy en día d
 - Cuando suceden eventos, el sistema original envía peticiones POST a la URL indicada con los detalles de estos.
 - A esa petición, se le añade la contraseña que se especificó en la creación de la suscripción. De esta forma, podemos validar que es una llamada válida.
 
-![Your Webhool is going to be legen... wait fo it to be approved... dary!](/assets/uploads/2019/04/webhook-legendary.jpg)
+![Your Webhool is going to be legen... wait fo it to be approved... dary!](/assets/uploads/2019/04/webhook-legendary.webp)
 
 ## Webhooks en Microsoft Graph
 
@@ -358,4 +358,4 @@ Y en el contexto de Microsoft Graph nos aporta la funcionalidad necesaria para p
 
 Una solución simple, elegante y fácil de implementar, que nació para cubrir un problema bastante más complejo.
 
-![Yo dawg, I heard you like Webhooks... So I added a Webhook to your Webhook](/assets/uploads/2019/04/webhook-meme.jpg)
+![Yo dawg, I heard you like Webhooks... So I added a Webhook to your Webhook](/assets/uploads/2019/04/webhook-meme.webp)

@@ -8,7 +8,7 @@ layout: post
 categories: video
 duration: 01:21:28
 tags: azure webapp appservice
-background: '/assets/uploads/bg/cloud1.jpg'
+background: '/assets/uploads/bg/cloud1.webp'
 ---
 Tengo una aplicación Web que podría calificarse en todo sentido como una web normal. Una WebApp que vive en un pacífico hosting en un data center empresarial, donde se ha desarrollado al igual que otras tantas aplicaciones. Pero ese día no fue para nada normal: nuestra aplicación debería subir a la nube y aguantar 100 millones de usuarios<!--break-->.
 

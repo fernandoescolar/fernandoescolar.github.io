@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-04-29 01:15:54
 layout: post
 tags: ia
-background: '/assets/uploads/bg/ai3.jpg'
+background: '/assets/uploads/bg/ai3.webp'
 ---
 
 La paradoja de Fermi no nació en un congreso, ni en una pizarra llena de ecuaciones, ni en un paper con veinte coautores peleándose por el orden del apellido. Nació como nacen las mejores ideas. En una conversación informal.<!--break--> Año 1950. Los Álamos. Gente brillante que venía de inventar cosas que no deberían inventarse dos veces. Y en medio del debate sobre ovnis, viajes interestelares y civilizaciones avanzadas, Enrico Fermi soltó la pregunta que lo arruina todo por simple.
@@ -21,7 +21,7 @@ Pero no vemos nada. Ni un recibo. Ni una factura. Ni un “hola” en radio. Ni 
 
 La paradoja, en el fondo, no es una afirmación sobre extraterrestres. Es una tensión entre dos ideas que parecen razonables a la vez y, aun así, chocan.
 
-![Cohete espacial](/assets/uploads/2026/04/rocket.jpg)
+![Cohete espacial](/assets/uploads/2026/04/rocket.webp)
 
 Por un lado, todo invita al optimismo estadístico. Hay muchísimas estrellas. Muchísimas con planetas. Muchísimas con tiempo suficiente. Si una civilización tecnológica aparece y dura, aunque sea un rato, debería poder expandirse. No hace falta viajar más rápido que la luz. Con paciencia y tecnología “normal”, una galaxia se recorre en escalas de tiempo que, comparadas con la edad de la galaxia, son un fin de semana largo.
 
@@ -54,7 +54,7 @@ La ecuación no resuelve la paradoja de Fermi. La vuelve más incómoda. Ya no e
 
 Hay explicaciones tranquilizadoras. Son las que dicen que no pasa nada, que simplemente la vida es rara. O la vida compleja lo es. O la inteligencia tecnológica es un accidente. O todo a la vez. Y entonces la Tierra sería una lotería cósmica ganada con un décimo que nadie recuerda haber comprado. Suena bonito. También suena sospechosamente conveniente.
 
-![Bosque oscuro](/assets/uploads/2026/04/dark.jpg)
+![Bosque oscuro](/assets/uploads/2026/04/dark.webp)
 
 Hay explicaciones más prácticas. Civilizaciones que existen, pero no emiten señales reconocibles. O que no usan radio mucho tiempo. O que se comunican de formas que no detectamos. O que deciden no gritar en la oscuridad porque gritar en la oscuridad es una estrategia brillante solo si nadie hostil escucha. También cabe la versión sociológica: que simplemente no les interesamos. Que somos ruido de fondo. Que estamos en una esquina irrelevante del mapa galáctico. La reserva natural de primates que se pelean por quién tiene razón en internet.
 
@@ -66,7 +66,7 @@ La idea del Gran Filtro es simple. Y por eso inquieta. El camino desde “quími
 
 La parte psicológica del Gran Filtro es la posición. Si el filtro está detrás, celebramos. Significa que ya superamos lo más improbable. Que lo difícil era que apareciera vida, o células complejas, o inteligencia. En ese caso, lo que queda por delante sería “solo” gestionar el progreso sin suicidarnos en el proceso. Es el escenario en el que te sientes especial y, por una vez, la estadística te deja.
 
-![Piezas](/assets/uploads/2026/04/puzzle.jpg)
+![Piezas](/assets/uploads/2026/04/puzzle.webp)
 
 Si el filtro está delante, cambia el gesto. Significa que llegar hasta aquí es relativamente común, pero que a partir de cierto punto casi todas las civilizaciones fallan. Y fallan de una manera tan consistente que el universo, a efectos prácticos, queda en silencio. Como si el patrón fuese “aparecen”, “avanzan”, “se vuelven peligrosas para sí mismas”, “se apagan”. No hace falta un apocalipsis cinematográfico. Puede ser algo aburrido. Algo gradual. Algo sistémico. Algo que no se arregla con entusiasmo.
 
@@ -98,7 +98,7 @@ La desinformación es un ejemplo visible. Antes era costosa. Ahora es programabl
 
 Y la capacidad, cuando existe, tiende a usarse.
 
-![AI Code](/assets/uploads/2026/04/code.jpg)
+![AI Code](/assets/uploads/2026/04/code.webp)
 
 Hay además un efecto menos evidente. La delegación progresiva. Cuanto más confiamos en sistemas que producen respuestas plausibles, menos ejercitamos el juicio crítico sobre el proceso que las generó. No porque seamos ingenuos. Sino porque el sistema funciona lo suficiente como para que cuestionarlo tenga coste. Y cuando suficientes decisiones relevantes se apoyan en sistemas opacos, el margen para detectar desviaciones estructurales se reduce.
 

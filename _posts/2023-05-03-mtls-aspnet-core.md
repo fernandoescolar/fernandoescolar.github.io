@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2023-05-03 01:04:36
 layout: post
 tags: aspnet aspnetcore mtls tls ssl
-background: '/assets/uploads/bg/security3.jpg'
+background: '/assets/uploads/bg/security3.webp'
 ---
 
 ¡Hey! ¿Te preocupa la seguridad de tus conexiones? ¿Quieres que tus datos sean privados y confidenciales? Seguro que conoces SSL/TLS. Esto está bastante bien para proteger conexiones. Pero quizá te pueda parecez insuficiente y te interese conocer el protocolo de autenticación de transporte mutuo, o mTLS para los amigos ¡Sigue leyendo!<!--break-->

@@ -13,7 +13,7 @@ Y aunque nuestras opiniones pueden diferir, me gustaría compartir algunas concl
 <h3>Un poco de historia</h3>
 La primera vez que oímos hablar del patrón "Repository" fue en el famoso libro de <a href="http://www.martinfowler.com" target="_blank">Martin Fowler</a>, <a href="http://www.martinfowler.com/books/eaa.html" target="_blank">Patterns of Enterprise Application Architecture</a>, y la autoría se le atribuye a Edward Hieatt y Rob Mee.
 
-Para el que no se haya leído este libro (ya está tardando <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style: none;" src="/assets/uploads/2012/12/wlEmoticon-winkingsmile.png" alt="Guiño" />) lo resumiremos diciendo que se nos plantean varios patrones de diseño que ayudarán a mejorar nuestras aplicaciones. Entre tantos conceptos, se nos introduce una forma de gestionar las interacciones con la capa de almacenamiento de la aplicación: la capa “Data Mapper”.
+Para el que no se haya leído este libro (ya está tardando <img class="wlEmoticon wlEmoticon-winkingsmile" style="border-style: none;" src="/assets/uploads/2012/12/wlEmoticon-winkingsmile.webp" alt="Guiño" />) lo resumiremos diciendo que se nos plantean varios patrones de diseño que ayudarán a mejorar nuestras aplicaciones. Entre tantos conceptos, se nos introduce una forma de gestionar las interacciones con la capa de almacenamiento de la aplicación: la capa “Data Mapper”.
 <h4>Data Mapper</h4>
 Imaginemos que tenemos un sistema de almacenamiento de datos complejo, algo así como una base de datos. La gestión mediante nuestro lenguaje de programación preferido de esta información, puede resultar compleja y para nada relacionada con la forma de gestionar la información dentro de nuestra aplicación.
 
@@ -185,7 +185,7 @@ Hasta este momento hemos hablado de la teoría del patrón "Repository" y como l
 
 Vamos a poner el ejemplo de un blog simple, en el que queremos almacenar las entradas que escribimos "Post" y los comentarios que dejan los visitantes dentro de esas entradas "Comment":
 
-<a href="/assets/uploads/2012/12/simple-blog-class-digram.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="simple-blog-class-digram" src="/assets/uploads/2012/12/simple-blog-class-digram_thumb.png" alt="simple-blog-class-digram" width="515" height="89" border="0" /></a>
+<a href="/assets/uploads/2012/12/simple-blog-class-digram.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border-width: 0px;" title="simple-blog-class-digram" src="/assets/uploads/2012/12/simple-blog-class-digram_thumb.webp" alt="simple-blog-class-digram" width="515" height="89" border="0" /></a>
 
 Si seguimos a rajatabla la primera implementación que encontremos en los buscadores más conocidos, el resultado será algo parecido a esto:
 <pre class="brush: csharp">public interface IRepository&lt;TEntity&gt; where TEntity : class

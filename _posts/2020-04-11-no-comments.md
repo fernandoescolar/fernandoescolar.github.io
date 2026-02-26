@@ -5,7 +5,7 @@ title: 'No comments...'
 author: fernandoescolar
 post_date: 2020-04-11 11:02:29
 layout: post
-background: '/assets/uploads/bg/silence.jpg'
+background: '/assets/uploads/bg/silence.webp'
 tags: blog community comments social
 ---
 

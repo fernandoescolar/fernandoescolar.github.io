@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2022-05-11 05:15:46
 layout: post
 tags: docker k8s rust
-background: '/assets/uploads/bg/rust-docker.jpg'
+background: '/assets/uploads/bg/rust-docker.webp'
 ---
 
 He de reconocer que tengo una debilidad con *rust*. No es mi lenguaje de programación favorito ni de referencia. Ni si quiera lo uso en mi trabajo diario. Pero siempre que puedo hago alguna pequeña aplicación usándolo. Es un lenguaje de programación que me gusta mucho<!--break-->. Así que he decido crear una buena imagen de *rust* a base de aplicar buenas prácticas en un `Dockerfile`.
