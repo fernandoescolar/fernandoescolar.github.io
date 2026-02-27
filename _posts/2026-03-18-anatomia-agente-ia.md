@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 2026052701
+ID: 2026031801
 title: 'Anatomía de un agente de IA'
 author: fernandoescolar
-post_date: 2026-05-27 01:15:54
+post_date: 2026-03-18 01:15:54
 layout: post
 tags: ia agentes embeddings rag
 background: '/assets/uploads/bg/ai2.webp'

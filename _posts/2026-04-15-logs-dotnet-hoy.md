@@ -1,9 +1,9 @@
 ---
 published: true
-ID: 202603181
+ID: 202604151
 title: 'Hacer logs en .NET hoy'
 author: fernandoescolar
-post_date: 2026-03-18 01:06:21
+post_date: 2026-04-15 01:06:21
 layout: post
 tags: observability dotnet csharp
 background: '/assets/uploads/bg/programming4.webp'
