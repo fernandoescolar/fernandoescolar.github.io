@@ -208,7 +208,7 @@ Ese "no inventes" parece redundante hasta que te acuerdas de que esto corre cada
 
 Este es el músculo. Hace clone/pull. Genera el fichero del día en `_news`. Luego commit y push.
 
-La parte más delicada es SSH: yo busco la clave en `workspace/.ssh/id_rsa` o en `workspace/.shh/id_rsa` (sí, existe porque la vida real existe). Luego la copio a `/tmp` para asegurar permisos sin pelearme con mounts de solo lectura. Y fijo `GIT_SSH_COMMAND` para que Git use esa identidad y un `known_hosts` controlado.
+La parte más delicada es SSH: yo busco la clave en `workspace/.ssh/id_rsa` o en `workspace/.shh/id_rsa` (sí, porque esto es para el mundo real). Luego la copio a `/tmp` para asegurar permisos sin pelearme con mounts de solo lectura. Y fijo `GIT_SSH_COMMAND` para que Git use esa identidad y un `known_hosts` controlado.
 
 ```bash
 #!/usr/bin/env bash
@@ -235,6 +235,8 @@ echo "[job] DATE=${DATE_YYYY_MM_DD}"
 SSH_KEY=""
 if [[ -f "${WORKSPACE}/.ssh/id_rsa" ]]; then
   SSH_KEY="${WORKSPACE}/.ssh/id_rsa"
+elif [[ -f "${WORKSPACE}/.shh/id_rsa" ]]; then
+  SSH_KEY="${WORKSPACE}/.shh/id_rsa"
 else
   echo "[error] No SSH key found at ${WORKSPACE}/.ssh/id_rsa or ${WORKSPACE}/.shh/id_rsa"
   exit 1
