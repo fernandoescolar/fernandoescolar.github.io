@@ -6,16 +6,16 @@ background: '/assets/uploads/bg/news.webp'
 {% assign sorted_news = site.news | sort: "date" | reverse %}
 {% assign idx = 0 %}
 {% for item in sorted_news %}
-  {% if item.url == page.url %}
-    {% assign idx = forloop.index0 %}
-  {% endif %}
+{% if item.url == page.url %}
+{% assign idx = forloop.index0 %}
+{% endif %}
 {% endfor %}
 
 {% assign prev_idx = idx | plus: 1 %}
 {% assign next_idx = idx | minus: 1 %}
 {% assign prev = sorted_news[prev_idx] %}
 {% if next_idx >= 0 %}
-  {% assign next = sorted_news[next_idx] %}
+{% assign next = sorted_news[next_idx] %}
 {% endif %}
 
 <header class="news">
@@ -23,14 +23,22 @@ background: '/assets/uploads/bg/news.webp'
 </header>
 
 <section class="page">
+  <p>
+    {% if prev %}
+    Si buscas las noticias del día anterior, puedes encontrarlas <a href="{{ prev.url | relative_url }}">aquí</a>.
+    {% endif %}
+    {% if next %}
+    O si lo que buscas son las noticias del día siguiente, haz clic <a href="{{ next.url | relative_url }}">aquí</a>.
+    {% endif %}
+  </p>
   {{ content }}
 </section>
 
 <section id="pagination">
   {% if prev %}
-    <a class="button" href="{{ prev.url | relative_url }}">← día anterior</a>
+  <a class="button" href="{{ prev.url | relative_url }}">← día anterior</a>
   {% endif %}
   {% if next %}
-    <a class="button" href="{{ next.url | relative_url }}">día siguiente →</a>
+  <a class="button" href="{{ next.url | relative_url }}">día siguiente →</a>
   {% endif %}
 </section>

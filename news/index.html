@@ -13,7 +13,9 @@ background: '/assets/uploads/bg/news.webp'
 </header>
 
 <section class="page">
-  <h1>Titulares:</h1>
+  <p>
+    Si buscas las noticias de ayer, puedes encontrarlas <a href="{{ older.url | relative_url }}">aquí</a>.
+  </p>
   {{ current.content }}
 </section>
 
