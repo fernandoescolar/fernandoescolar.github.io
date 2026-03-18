@@ -225,15 +225,15 @@ Lo importante no es memorizar definiciones. Lo importante es ver cuándo se escr
 flowchart TD
     A[Inicio de turno] --> B[STM: cargar estado mínimo de la sesión]
     B --> C[Embedding de la consulta]
-    C --> D[LTM: recuperar memoria semántica relevante\n(top-K + umbral + filtros)]
+    C --> D["LTM: recuperar memoria semántica relevante\n(top-K + umbral + filtros)"]
     D --> E[Construir contexto: STM + hechos semánticos\n+ historial mínimo]
     E --> F[Loop: Generar respuesta ]
-    F --> G(Respuesta al usuario)
+    F --> G("Respuesta al usuario")
     G --> H[Registrar episodio en STM]
     H --> I[Registrar episodio en memoria episódica]
     I --> N[Consolidación asíncrona]
     N --> O[Leer episodios de la sesión]
-    O --> P[Generación: extraer hechos verificables\n(formato estructurado)]
+    O --> P["Generación: extraer hechos verificables\n(formato estructurado)"]
     P --> Q[Embedding de hechos]
     Q --> S[LTM: guardar semántica + indexar vectores]
 ```
