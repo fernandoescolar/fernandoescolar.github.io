@@ -222,6 +222,7 @@ public record Fact(string Content, DateTime Timestamp);
 Lo importante no es memorizar definiciones. Lo importante es ver cuándo se escribe cada cosa y cuándo se lee.
 
 ```mermaid
+%%{init: {'themeVariables': { 'graphPadding': 50 }}}%%
 flowchart TD
     A[Inicio de turno] --> B[STM: cargar estado mínimo de la sesión]
     B --> C[Embedding de la consulta]
