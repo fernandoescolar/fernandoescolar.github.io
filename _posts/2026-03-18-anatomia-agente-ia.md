@@ -413,14 +413,14 @@ Ese loop tiene una ventaja: te permite instrumentar. Registrar episodios. Poner 
 ```mermaid
 flowchart TD
     U[Pregunta del usuario] --> S0[Iniciar sesión en MemoryManager]
-    S0 --> R0[Recuperar memorias semánticas relevantes\n(similitud de embeddings)]
+    S0 --> R0["Recuperar memorias semánticas relevantes\n(similitud de embeddings)"]
     R0 --> P1[Fase 1: Análisis de intención\nsin herramientas expandidas]
-    P1 --> C1[Router de capacidades\n(intent embedding vs embeddings de capacidades)]
+    P1 --> C1["Router de capacidades\n(intent embedding vs embeddings de capacidades)"]
     C1 --> P2[Fase 2: Ejecución\nsolo IDs de capacidades + hechos relevantes]
     P2 --> D{Decisión del modelo}
 
     D -->|responder| F1[Respuesta final]
-    D -->|exec| X1[ExecRuntime ejecuta comando\n(timeout + stdout/stderr)]
+    D -->|exec| X1["ExecRuntime ejecuta comando\n(timeout + stdout/stderr)"]
     D -->|usar_skill| L1[Cargar skill en lazy\nMarkdown completo]
     D -->|usar_mcp| L2[Traer schema MCP en lazy\nvalidar args + invocar]
 
@@ -436,7 +436,7 @@ flowchart TD
     F1 --> E1[Fin de sesión]
     E1 --> BG[Consolidación asíncrona]
     BG --> EP[Cargar eventos episódicos]
-    EP --> EX[Extraer hechos con LLM\n(factual, formato estricto)]
+    EP --> EX["Extraer hechos con LLM\n(factual, formato estricto)"]
     EX --> SM[Guardar memoria semántica + indexar vectores]
 ```
 
