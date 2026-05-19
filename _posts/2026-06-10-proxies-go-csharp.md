@@ -3,7 +3,7 @@ published: true
 ID: 2026052701
 title: 'Proxies en Go o C#'
 author: fernandoescolar
-post_date: 2026-05-27 02:15:54
+post_date: 2026-06-10 02:15:54
 layout: post
 tags: golang csharp proxy
 background: '/assets/uploads/bg/network.webp'
