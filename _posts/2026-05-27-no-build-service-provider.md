@@ -9,7 +9,7 @@ tags: di dotnet csharp best-practices
 background: '/assets/uploads/bg/stop.webp'
 ---
 
-Hay una llamada en .NET que parece inocente, que puede pasar inadvertida. No dará error, compilará sin problemas y, si buscas en internet, seguro que encuestras más de un ejemplo o solución a un problema que la usa. Es inocente, simple y los asistentes de código la sugieren como si fuera una función más del contenedor de dependencias.
+Hay una llamada en .NET que parece inocente, que puede pasar inadvertida. No dará error, compilará sin problemas y, si buscas en internet, seguro que encuestras más de un ejemplo o solución a un problema que la usa. Es inocente, simple y los asistentes de código la sugieren como si fuera una función más del contenedor de dependencias.<!--break-->
 
 La llamada es:
 
