@@ -6,7 +6,7 @@ author: fernandoescolar
 post_date: 2026-06-24 01:15:54
 layout: post
 tags: golang csharp proxy
-background: '/assets/uploads/bg/network.webp'
+background: '/assets/uploads/bg/programming2.webp'
 ---
 
 Desde que las IAs y los asistentes de código basados en estas han dejado de ser *"gratis"* y las grandes corporaciones han empezado a comportarse como lo que siempre fueron (empresas que venden software ejecutándose en ordenadores absurdamente caros), ha empezado a escucharse una crítica que me parece equivocada.<!--break-->

@@ -34,7 +34,7 @@ author:
   youtube:        fernandoescolar
   buymeacoffee:   fernandoescolar
 
-paginate:         5
+paginate:         10
 paginate_path:    'posts/page:num'
 
 version:          2.1.0

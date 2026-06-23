@@ -1,7 +1,7 @@
 ---
 published: true
 ID: 2026052701
-title: 'No llames a `BuildServiceProvider()`'
+title: 'No llames a BuildServiceProvider()'
 author: fernandoescolar
 post_date: 2026-05-27 02:15:54
 layout: post

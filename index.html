@@ -10,7 +10,7 @@ background: '/assets/uploads/bg/future.webp'
 
 <main id="portfolio">
   <ul>
-    {% for post in site.posts limit:5 %}
+    {% for post in site.posts limit:7 %}
     <li>
 
 
@@ -50,7 +50,28 @@ background: '/assets/uploads/bg/future.webp'
         </article>
       </a>
     </li>
-    {% if forloop.index == 3 %}
+    {% if forloop.index == 1 %}
+    <li>
+      <a href="/news/">
+        <img src="{{ '/assets/uploads/bg/news.webp' | prepend: site.baseurl | replace: '//', '/' }}"
+          alt="Noticias" loading="lazy" decoding="async" />
+
+        <article>
+          <h2>Noticias</h2>
+
+          <small>
+            {{ site.time | date_to_string }} &middot;
+            <i class="fa fa-newspaper category"></i>
+          </small>
+
+          <p>
+            Las noticias de hoy sobre el mundo de la programación, la tecnología y la informática en general. Guardadas en el blog para que no se pierdan en el tiempo y puedas consultarlas cuando quieras.
+          </p>
+        </article>
+      </a>
+    </li>
+    {% endif %}
+    {% if forloop.index == 2 %}
     <li class="about-me">
       <a href="/about">
         <img src="/assets/uploads/fernandoescolar400x400.webp" class="avatar" alt="Foto de Fernando Escolar"
@@ -66,7 +87,7 @@ background: '/assets/uploads/bg/future.webp'
       </a>
     </li>
     {% endif %}
-    {% endfor %}
+    {% if forloop.index == 4 %}
     <li class="tags">
       {% assign tags = site.tags | sort %}
       {% assign min_count = 999999 %}
@@ -95,6 +116,9 @@ background: '/assets/uploads/bg/future.webp'
       {% endif %}
       {% endfor %}
     </li>
+    {% endif %}
+    {% endfor %}
+
     <li class="subscribe">
       <h2>Suscríbete</h2>
       <p>
