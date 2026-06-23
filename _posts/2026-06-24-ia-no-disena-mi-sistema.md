@@ -5,15 +5,15 @@ title: 'La IA no diseña mi sistema'
 author: fernandoescolar
 post_date: 2026-06-24 01:15:54
 layout: post
-tags: golang csharp proxy
+tags: ia coding refactoring
 background: '/assets/uploads/bg/programming2.webp'
 ---
 
-Desde que las IAs y los asistentes de código basados en estas han dejado de ser *"gratis"* y las grandes corporaciones han empezado a comportarse como lo que siempre fueron (empresas que venden software ejecutándose en ordenadores absurdamente caros), ha empezado a escucharse una crítica que me parece equivocada.<!--break-->
+Desde que las IAs y los asistentes de código han dejado de ser *"gratis"* y las grandes corporaciones han empezado a comportarse como lo que siempre fueron (empresas que venden software ejecutándose en ordenadores absurdamente caros), ha empezado a escucharse una crítica que me parece equivocada.
 
-Que si malgastamos tokens. Que usamos agentes de código para tareas demasiado simples. Que si renombrar variables, que si ordenar imports, que si separar funciones, que si limpiar una clase que lleva tres años acumulando pequeñas decisiones desafortunadas como quien guarda cables en un cajón. Que eso no merece una IA. Que para eso ya estamos nosotros.
+Que si malgastamos tokens. Que usamos agentes de código para tareas demasiado simples.<!--break--> Que si renombrar variables, que si ordenar imports, que si separar funciones, que si limpiar una clase que lleva tres años acumulando pequeñas decisiones desafortunadas como quien guarda cables en un cajón. Que eso no merece una IA. Que para eso ya estamos nosotros.
 
-Y justo ahí es donde *IMHO* creo que la crítica se equivoca.
+Y justo ahí es donde creo que la crítica se equivoca.
 
 Porque precisamente para eso quiero yo la IA.
 
@@ -25,7 +25,9 @@ La parte que me interesa del desarrollo no es apretar teclas hasta que aparece c
 
 Ahí es donde quiero estar.
 
-## Craftmanship
+![image](/assets/uploads/2026/06/ia-clean.webp)
+
+## Craftsmanship
 
 A los desarrolladores nos gusta mucho hablar de artesanía. De oficio. De criterio. De experiencia. De ese momento casi místico en el que miras un problema, entrecierras los ojos y dices: *"esto huele a acoplamiento accidental"*. Somos así. Tenemos nuestras cosas.
 
@@ -45,7 +47,7 @@ Eso es pasar la escoba.
 
 Y yo estoy encantado de pagar tokens para que alguien (o algo) pase la escoba.
 
-## Inversión de valor
+## El valor está al revés
 
 La reacción habitual cuando los agentes empiezan a consumir más tokens es intentar reservarlos para las tareas "importantes". Parece lógico. Si algo cuesta dinero, úsalo solo para lo difícil.
 
@@ -59,9 +61,11 @@ No porque sea brillante. Precisamente porque no necesito que lo sea.
 
 Necesito que sea obediente, incansable y razonablemente cuidadosa. Necesito que pueda hacer veinte pequeños cambios mecánicos mientras yo reviso el resultado con criterio. Necesito que convierta una tarde de tedio en una revisión de diff. Que no es la felicidad absoluta, de acuerdo, pero se le parece bastante más que renombrar a mano cuarenta variantes de `data`, `result`, `item`, `obj` y ese clásico inmortal: `manager`.
 
-Cuando uso un agente para limpiar código, no estoy pagando para que piense por mí. Estoy pagando para no gastar mi cabeza en una tarea donde mi cabeza aporta poco.
+Cuando uso un agente para limpiar código, no estoy pagando para que piense por mí. Estoy pagando para no gastar mi tiempo y esfuerzo en una tarea donde mi cabeza aporta poco.
 
 Y eso me parece una buena inversión.
+
+No hablo de soltar un agente contra el repositorio, irse a tomar un café y hacer merge de tres mil líneas con la fe de quien pulsa el botón de "aceptar términos y condiciones". La IA para refactorizar tiene sentido cuando la tarea está acotada, cuando hay tests, cuando el cambio se puede revisar y cuando alguien sigue mirando el `diff` antes de bendecirlo. No es magia. Es una herramienta. Y las herramientas, por muy caras que sean, siguen necesitando a alguien que las use de forma correcta.
 
 ## I ❤️ coding
 
@@ -71,7 +75,7 @@ Eso no quiero delegarlo.
 
 No porque tenga una visión romántica del programador como genio solitario. Esa película ya la hemos visto y normalmente acaba con un monolito emocionalmente inestable. No. Lo quiero hacer yo porque ahí es donde está el criterio. Ahí es donde mi experiencia sí aporta algo distinto. Ahí es donde haber visto sistemas romperse de maneras creativas sirve para no repetir algunas tonterías. No todas, porque tampoco conviene ponerse arrogante. Pero algunas.
 
-La IA puede ayudarme en esa fase. Puede hacer preguntas. Puede señalar riesgos. Puede proponer alternativas. Puede recordarme que quizá no necesito *Nats* para enviar tres notificaciones al día, aunque siempre duela escucharlo. Pero no quiero que tome la decisión.
+La IA puede ayudarme en esa fase. Puede hacer preguntas. Puede señalar riesgos. Puede proponer alternativas. Puede recordarme que quizá no necesito *NATS* para enviar tres notificaciones al día, aunque siempre duela escucharlo. Pero no quiero que tome la decisión.
 
 Quiero que me acompañe.
 
@@ -99,7 +103,7 @@ La pregunta no es si la IA debe programar o no debe programar. Esa pregunta ya l
 
 La pregunta interesante es otra: **qué parte del trabajo queremos proteger**.
 
-Yo quiero proteger el diseño. El criterio. La comprensión del problema. La conversación con la realidad. La decisión incómoda. El compromiso técnico consciente. La arquitectura que no sale de aplicar un patrón, sino de entender qué duele hoy y qué dolerá mañana.
+Yo quiero proteger el diseño. La comprensión del problema. La comprensión del problema. La conversación con la realidad. La decisión incómoda. El compromiso técnico consciente. La arquitectura que no sale de aplicar un patrón, sino de entender qué duele hoy y qué dolerá mañana.
 
 Lo demás, si puede automatizarse razonablemente, que se automatice.
 
